@@ -10,7 +10,7 @@
 
       <div class="w-fit text-center font-bold pt-10 space-y-2">
         <div class="bg-primary-color text-white rounded-lg hover:bg-accent-blue hover:text-primary-color duration-150 ease-in-out ">
-          <button class="text-xl px-8 py-1.5">Get Started</button>
+          <button class="text-xl px-8 py-1.5" (click)="clickedRegister()">Get Started</button>
         </div>
 
         <div class="bg-accent-blue rounded-lg text-primary-color hover:bg-primary-color hover:text-accent-blue duration-150 ease-in-out">
@@ -25,12 +25,19 @@
   <div class="w-1/2 h-full flex items-center justify-center overflow-hidden relative">
    <!--<div class="absolute inset-y-0 left-0 w-96 bg-gradient-to-r from-white to-transparent z-20"></div> -->
 
-    <div class="w-full absolute transition-transform duration-1000" [ngClass]="{'-translate-x-full': isLoginClicked}">
+    <!-- Logo Container -->
+    <div class="w-full absolute transition-transform duration-1000" [ngClass]="{'-translate-x-full': isLoginClicked || isRegisterClicked}">
       <img src="assets/Melius_TBP_SP_png.png" alt="melius_logo" class="ml-10 w-9/12 h-9/12">
     </div>
 
-    <div class="w-full absolute transition-transform duration-1000 translate-x-full" [ngClass]="{'translate-x-0': isLoginClicked}">
+    <!-- Login Container -->
+    <div class="w-full absolute transition-transform duration-1000 transform translate-x-full" [ngClass]="{'translate-x-full': !isLoginClicked, 'translate-x-0': isLoginClicked}">
       <app-login-form></app-login-form>
+    </div>
+
+    <!-- Register Container -->
+    <div class="w-full absolute transition-transform duration-1000 transform translate-x-full" [ngClass]="{'translate-x-full': !isRegisterClicked, 'translate-x-0': isRegisterClicked}">
+      <app-register-form></app-register-form>
     </div>
   </div>
 
