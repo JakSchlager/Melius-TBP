@@ -14,7 +14,7 @@
         </div>
 
         <div class="bg-accent-blue rounded-lg text-primary-color hover:bg-primary-color hover:text-accent-blue duration-150 ease-in-out">
-          <button class="text-xl w-full py-1.5">Login</button>
+          <button class="text-xl w-full py-1.5" (click)="clickedLogin()">Login</button>
         </div>
       </div>
 
@@ -22,12 +22,14 @@
   </div>
 
 
-  <div class="w-1/2 overflow-hidden relative">
-    <div class="z-10 mt-5 overflow-hidden items-center absolute flex flex-col justify-center -ml-10">
-      <img src="assets/Melius_TBP_SP_png.png" alt="melius_logo" class="w-9/12 h-9/12">
+  <div class="w-1/2 h-full flex items-center justify-center overflow-hidden relative">
+   <!--<div class="absolute inset-y-0 left-0 w-96 bg-gradient-to-r from-white to-transparent z-20"></div> -->
+
+    <div class="w-full absolute transition-transform duration-1000" [ngClass]="{'-translate-x-full': isLoginClicked}">
+      <img src="assets/Melius_TBP_SP_png.png" alt="melius_logo" class="ml-10 w-9/12 h-9/12">
     </div>
 
-    <div class="z-10 overflow-hidden items-center absolute flex flex-col justify-center">
+    <div class="w-full absolute transition-transform duration-1000 translate-x-full" [ngClass]="{'translate-x-0': isLoginClicked}">
       <app-login-form></app-login-form>
     </div>
   </div>
