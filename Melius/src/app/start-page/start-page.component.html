@@ -1,5 +1,5 @@
 <div class="w-screen h-screen flex">
-  <div class="absolute -z-10 w-screen h-screen overflow-hidden bg-no-repeat bg-contain">
+  <div class="absolute -z-10 w-screen h-screen overflow-hidden bg-no-repeat object-fill">
     <img src="assets/Radio_Waves_SP.svg" alt="radio_waves" class="w-full h-full">
   </div>
   <div class="w-1/2 h-full items-center grid columns-1 justify-center">
@@ -8,12 +8,12 @@
       <h1 class="text-8xl font-extrabold bg-gradient-to-r from-primary-color to-secondary-color inline-block text-transparent bg-clip-text">Melius</h1>
       <h1 class="text-6xl font-extrabold">The Better Profile</h1>
 
-      <div class="w-fit text-center font-bold pt-10 space-y-2">
-        <div class="bg-primary-color text-white rounded-lg hover:bg-accent-blue hover:text-primary-color duration-150 ease-in-out ">
+      <div class="w-fit text-center font-bold pt-10 space-y-2.5">
+        <div class="bg-primary-color text-white rounded-lg hover:bg-accent-blue hover:text-primary-color duration-150 ease-in-out">
           <button class="text-xl px-8 py-1.5" (click)="clickedRegister()">Get Started</button>
         </div>
 
-        <div class="bg-accent-blue rounded-lg text-primary-color hover:bg-primary-color hover:text-accent-blue duration-150 ease-in-out">
+        <div class="bg-primary-color text-white rounded-lg hover:bg-accent-blue hover:text-primary-color duration-150 ease-in-out">
           <button class="text-xl w-full py-1.5" (click)="clickedLogin()">Login</button>
         </div>
       </div>
@@ -23,11 +23,10 @@
 
 
   <div class="w-1/2 h-full flex items-center justify-center overflow-hidden relative">
-   <!--<div class="absolute inset-y-0 left-0 w-96 bg-gradient-to-r from-white to-transparent z-20"></div> -->
 
     <!-- Logo Container -->
-    <div class="w-full absolute transition-transform duration-1000" [ngClass]="{'-translate-x-full': isLoginClicked || isRegisterClicked}">
-      <img src="assets/Melius_TBP_SP_png.png" alt="melius_logo" class="ml-10 w-9/12 h-9/12">
+    <div class="w-full max-h-full items-center absolute transition-transform transform duration-1000 ease-in-out" [ngClass]="{'translate-x-full': isLoginClicked || isRegisterClicked}">
+      <img src="assets/Melius_TBP_SP_png.png" alt="melius_logo" class="ml-32 w-4/6 h-4/6">
     </div>
 
     <!-- Login Container -->
