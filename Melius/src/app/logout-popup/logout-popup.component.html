@@ -1,0 +1,23 @@
+<div class="p-5" xmlns="http://www.w3.org/1999/html">
+
+  <h1 class="text-3xl px-2 py-2">Wirklich Ausloggen?</h1>
+
+  <mat-dialog-content class="mat-typography">
+    <div class="flex space-x-1">
+      <p>Bist du dir sicher das du dich wirklich </p>
+      <p class="font-bold "> abmelden </p>
+      <p> möchtest?</p>
+    </div>
+    <p>Deine Daten werden natürlich gespeichert bleiben, dein Account geht also nicht vollständig verloren,  keine Sorge!</p>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end" class="space-x-3">
+    <button class="bg-primary-color text-white px-2.5 py-1.5 rounded-lg hover:bg-accent-blue hover:text-primary-color duration-150" mat-dialog-close>
+      Abbrechen
+    </button>
+    <button class="bg-red-600 text-white px-2.5 py-1.5 rounded-lg hover:text-gray-200 duration-150" [mat-dialog-close]="true" [routerLink]="['']">
+      Ausloggen
+    </button>
+  </mat-dialog-actions>
+
+</div>
