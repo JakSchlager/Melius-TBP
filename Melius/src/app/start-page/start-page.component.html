@@ -1,20 +1,21 @@
 <div class="w-screen h-screen flex">
-  <div class="absolute -z-10 w-screen h-screen overflow-hidden bg-no-repeat bg-contain">
+  <div class="absolute -z-10 w-screen h-screen overflow-hidden bg-no-repeat object-fill">
     <img src="assets/Radio_Waves_SP.svg" alt="radio_waves" class="w-full h-full">
   </div>
-  <div class="w-1/2 h-full items-center grid columns-1 justify-center">
+
+  <div class="w-1/2 h-full items-center grid columns-1 justify-center animate-fade-up-slower overflow-hidden">
     <div>
 
       <h1 class="text-8xl font-extrabold bg-gradient-to-r from-primary-color to-secondary-color inline-block text-transparent bg-clip-text">Melius</h1>
       <h1 class="text-6xl font-extrabold">The Better Profile</h1>
 
-      <div class="w-fit text-center font-bold pt-10 space-y-2">
-        <div class="bg-primary-color text-white rounded-lg hover:bg-accent-blue hover:text-primary-color duration-150 ease-in-out ">
-          <button class="text-xl px-8 py-1.5">Get Started</button>
+      <div class="w-fit text-center font-bold pt-10 space-y-2.5">
+        <div class="bg-primary-color text-white rounded-lg hover:bg-accent-blue hover:text-primary-color duration-150 ease-in-out">
+          <button class="text-xl px-8 py-1.5" (click)="clickedRegister()">Get Started</button>
         </div>
 
-        <div class="bg-accent-blue rounded-lg text-primary-color hover:bg-primary-color hover:text-accent-blue duration-150 ease-in-out">
-          <button class="text-xl w-full py-1.5">Login</button>
+        <div class="bg-primary-color text-white rounded-lg hover:bg-accent-blue hover:text-primary-color duration-150 ease-in-out">
+          <button class="text-xl w-full py-1.5" (click)="clickedLogin()">Login</button>
         </div>
       </div>
 
@@ -22,13 +23,21 @@
   </div>
 
 
-  <div class="w-1/2 overflow-hidden relative">
-    <div class="z-10 mt-5 overflow-hidden items-center absolute flex flex-col justify-center -ml-10">
-      <img src="assets/Melius_TBP_SP_png.png" alt="melius_logo" class="w-9/12 h-9/12">
+  <div class="w-1/2 h-full flex items-center justify-center overflow-hidden relative">
+
+    <!-- Logo Container -->
+    <div class="w-full max-h-full items-center absolute transition-transform transform duration-1000 ease-in-out" [ngClass]="{'translate-x-full': isLoginClicked || isRegisterClicked}">
+      <img src="assets/Melius_TBP_SP_png.png" alt="melius_logo" class="ml-32 w-4/6 h-4/6">
     </div>
 
-    <div class="z-10 overflow-hidden items-center absolute flex flex-col justify-center">
+    <!-- Login Container -->
+    <div class="w-full absolute transition-transform duration-1000 transform translate-x-full" [ngClass]="{'translate-x-full': !isLoginClicked, 'translate-x-0': isLoginClicked}">
       <app-login-form></app-login-form>
+    </div>
+
+    <!-- Register Container -->
+    <div class="w-full absolute transition-transform duration-1000 transform translate-x-full" [ngClass]="{'translate-x-full': !isRegisterClicked, 'translate-x-0': isRegisterClicked}">
+      <app-register-form></app-register-form>
     </div>
   </div>
 
