@@ -1,0 +1,10 @@
+POST http://localhost:8080/profile/register
+Content-Type: application/json
+
+{
+  "firstName": "Seppi",
+  "lastName": "Stieg",
+  "email": "stiegjosef@gmail.com",
+  "phoneNumber": "0660 1150403",
+  "password": "TestPasswort"
+}
