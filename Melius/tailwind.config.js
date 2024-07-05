@@ -13,6 +13,22 @@ module.exports = {
       },
       boxShadow: {
         'custom-shadow': '0px 0px 15px 4px rgba(0,0,0,0.1)',
+      },
+
+      keyframes: {
+        'fade-up': {
+          '0%': {transform: 'translateY(30px)', opacity: 0},
+          '100%': {transform: 'translateY(0px)', opacity: 1}
+        },
+        'fade-up-slower': {
+          '0%': {transform: 'translateY(-30px)', opacity: 0},
+          '100%': {transform: 'translateY(0px)', opacity: 1}
+        }
+      },
+
+      animation: {
+        'fade-up': 'fade-up 0.4s ease-in-out',
+        'fade-up-slower': 'fade-up 1s ease-out'
       }
     },
 
