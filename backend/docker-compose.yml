@@ -1,0 +1,20 @@
+version: '3.9'
+
+services:
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 5431:8080
+
+  postgres:
+    image: postgres:16-alpine
+    restart: always
+    ports:
+      - 5432:5432
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: melius
+      PGDATA: /var/lib/postgresql/data/pgdata
+    user: ${UID:-501}:${GID:-20}

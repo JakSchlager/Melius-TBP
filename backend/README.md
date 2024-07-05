@@ -55,9 +55,18 @@ If you want to learn more about building native executables, please consult <htt
 
 ## Related Guides
 
-- JDBC Driver - Derby ([guide](https://quarkus.io/guides/datasource)): Connect to the Derby database via JDBC
+- Hibernate ORM ([guide](https://quarkus.io/guides/hibernate-orm)): Define your persistent model with Hibernate ORM and Jakarta Persistence
+- JDBC Driver - PostgreSQL ([guide](https://quarkus.io/guides/datasource)): Connect to the PostgreSQL database via JDBC
 
 ## Provided Code
+
+### Hibernate ORM
+
+Create your first JPA entity
+
+[Related guide section...](https://quarkus.io/guides/hibernate-orm)
+
+
 
 ### RESTEasy JAX-RS
 
