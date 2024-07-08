@@ -16,11 +16,24 @@ public class ProfileResource {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     @Path("/register")
     public Profile registerProfile(Profile newProfile) {
         System.out.println(newProfile);
 
         return this.profileRepository.addProfile(newProfile);
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/login")
+    public Profile loginProfile(Profile profile) {
+        if(this.profileRepository.checkProfile(profile.getEmail(), profile.getPassword())) {
+            return this.profileRepository.getProfileByEmail(profile.getEmail());
+        }
+
+        return null;
     }
 
     @GET

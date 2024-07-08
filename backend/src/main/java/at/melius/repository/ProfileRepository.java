@@ -39,4 +39,9 @@ public class ProfileRepository {
         return null;
     }
 
+    public boolean checkProfile(String email, String password) {
+        Profile profile = getProfileByEmail(email);
+        return profile != null && profile.getPassword().equals(password);
+    }
+
 }
