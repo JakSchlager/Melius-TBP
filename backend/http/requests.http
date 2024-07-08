@@ -8,3 +8,8 @@ Content-Type: application/json
   "phoneNumber": "0660 1150403",
   "password": "TestPasswort"
 }
+
+###
+
+GET http://localhost:8080/profile/list
+Content-Type: */*

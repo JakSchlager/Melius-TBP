@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {RouterLink} from "@angular/router";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {NgIf} from "@angular/common";
+import {UserRegistrationLoginService} from "../services/user-registration-login.service";
 
 @Component({
   selector: 'app-register-form',
@@ -15,10 +16,13 @@ import {NgIf} from "@angular/common";
   styleUrl: './register-form.component.css'
 })
 export class RegisterFormComponent {
+  registrationLoginService: UserRegistrationLoginService = inject(UserRegistrationLoginService);
+
   saveForm = new FormGroup( {
-    first_name: new FormControl('', Validators.required),
-    last_name: new FormControl('', Validators.required),
-    e_mail: new FormControl('', [Validators.required, Validators.email]),
+    firstName: new FormControl('', Validators.required),
+    lastName: new FormControl('', Validators.required),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    phoneNumber: new FormControl('', Validators.required),
     password: new FormControl('', [Validators.required, Validators.pattern(
       /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*#?&^_-]).{8,}/
     ),]),
@@ -27,7 +31,15 @@ export class RegisterFormComponent {
 
   onSave() {
     if (this.saveForm.valid) {
-      console.log(this.saveForm.value);
+      this.registrationLoginService.handelUserRegistration(this.saveForm.value).subscribe({
+        next: response => {
+          console.log('User registered successfully.', response);
+        },
+
+        error: error => {
+          console.log('Error during the registration process.', error);
+        }
+      })
     }
   }
 }

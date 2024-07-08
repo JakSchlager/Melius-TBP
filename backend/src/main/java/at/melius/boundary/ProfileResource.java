@@ -3,11 +3,10 @@ package at.melius.boundary;
 import at.melius.model.Profile;
 import at.melius.repository.ProfileRepository;
 import jakarta.inject.Inject;
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.POST;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
+
+import java.util.List;
 
 @Path("/profile")
 public class ProfileResource {
@@ -22,5 +21,12 @@ public class ProfileResource {
         System.out.println(newProfile);
 
         return this.profileRepository.addProfile(newProfile);
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/list")
+    public List<Profile> getAllProfiles() {
+        return this.profileRepository.getAllProfiles();
     }
 }
