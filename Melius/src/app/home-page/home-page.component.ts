@@ -3,13 +3,15 @@ import {SideBarComponent} from "../side-bar/side-bar.component";
 import {UserRegistrationData} from "../interfaces/user-registration-data";
 import {UserRegistrationLoginService} from "../services/user-registration-login.service";
 import {NgIf} from "@angular/common";
+import {HomeNavbarComponent} from "../home-navbar/home-navbar.component";
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
   imports: [
     SideBarComponent,
-    NgIf
+    NgIf,
+    HomeNavbarComponent
   ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'
