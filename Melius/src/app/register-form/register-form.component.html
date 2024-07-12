@@ -5,51 +5,59 @@
         <h1 class="text-3xl font-bold leading-tight tracking-tight bg-gradient-to-r from-primary-color to-secondary-color inline-block text-transparent bg-clip-text">
           Erstelle deinen Account!
         </h1>
+
         <form [formGroup]="saveForm" class="space-y-4 md:space-y-6" action="#">
 
           <div class="flex justify-evenly space-x-5">
             <div>
               <label class="block mb-2 text-sm font-medium text-gray-900">* Vorname</label>
               <input type="text" formControlName="firstName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Max">
-              <span *ngIf="saveForm.get('firstName')?.touched && !saveForm.get('firstName')?.valid" class="form-text text-xs text-muted text-red-600">*Vorname darf nicht leer sein!</span>
+              <span *ngIf="saveForm.get('firstName')?.touched && !saveForm.get('firstName')?.valid" class="form-text text-xs text-muted text-red-600">*Vorname darf nicht leer sein</span>
             </div>
 
             <div>
               <label class="block mb-2 text-sm font-medium text-gray-900">* Nachname</label>
               <input type="text" formControlName="lastName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Mustermann">
-              <span *ngIf="saveForm.get('lastName')?.touched && !saveForm.get('lastName')?.valid" class="form-text text-xs text-muted text-red-600">*Nachname darf nicht leer sein!</span>
+              <span *ngIf="saveForm.get('lastName')?.touched && !saveForm.get('lastName')?.valid" class="form-text text-xs text-muted text-red-600">*Nachname darf nicht leer sein</span>
             </div>
           </div>
 
           <div>
             <label for="mail" class="block mb-2 text-sm font-medium text-gray-900">* Email</label>
-            <input type="email" formControlName="email" id="mail" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="max.mustermann@gmail.com">
-            <span *ngIf="saveForm.get('email')?.touched && !saveForm.get('email')?.valid" class="form-text text-xs text-muted text-red-600">*Email muss gültig sein!</span>
+            <input type="email" formControlName="email" id="mail" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="max.mustermann@gmail.com" required="">
+            <span *ngIf="saveForm.get('email')?.touched && !saveForm.get('email')?.valid" class="form-text text-xs text-muted text-red-600">*Email muss gültig sein</span>
           </div>
 
           <div>
             <label for="terms" class="block mb-2 text-sm font-medium text-gray-900">* Telefonnummer</label>
             <input type="tel" formControlName="phoneNumber" id="telefon" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="1234 567 890" required="">
-            <span *ngIf="saveForm.get('phoneNumber')?.touched && !saveForm.get('phoneNumber')?.valid" class="form-text text-xs text-muted text-red-600">*Telefonnummer muss gültig sein!</span>
+            <span *ngIf="saveForm.get('phoneNumber')?.touched && !saveForm.get('phoneNumber')?.valid" class="form-text text-xs text-muted text-red-600">*Telefonnummer muss vorhanden sein</span>
           </div>
+
           <div>
             <label for="password" class="block mb-2 text-sm font-medium text-gray-900">* Passwort</label>
-            <input type="password" formControlName="password" id="password" placeholder="123•••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
-            <span *ngIf="saveForm.get('password')?.touched && !saveForm.get('password')?.valid" class="form-text text-xs text-muted text-red-600">*Passwort muss mindestens 8 Zeichen lang sein und einen Groß- und einen Kleinbuchstaben enthalten!</span>
+            <input type="password" formControlName="password" id="password" placeholder="123•••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required="">
+            <span *ngIf="saveForm.get('password')?.touched && !saveForm.get('password')?.valid" class="form-text text-xs text-muted text-red-600">*Passwort muss mindestens 8 Zeichen lang sein und einen Groß- und einen Kleinbuchstaben enthalten</span>
           </div>
+
           <div>
             <label for="confirm-password" class="block mb-2 text-sm font-medium text-gray-900 ">Bestätige dein Passwort</label>
-            <input type="password" name="confirm-password" id="confirm-password" placeholder="123•••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required="">
+            <input type="password" formControlName="confirmPassword" id="confirm-password" placeholder="123•••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required="">
+            <span *ngIf="saveForm.get('confirmPassword')?.touched && saveForm.hasError('passwordDoesNotMatch')" class="form-text text-xs text-muted text-red-600">*Passwörter stimmen nicht überein</span>
           </div>
+
           <div class="flex items-start">
             <div class="flex items-center h-5">
-              <input id="terms" aria-describedby="terms" type="checkbox" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300" required="">
+              <input id="terms" formControlName="termsAndServiceBox" type="checkbox" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300" required="">
             </div>
+
             <div class="ml-3 text-sm">
-              <label for="terms" class="font-light text-gray-500 ">Ich akzeptiere die <a class="font-medium text-primary-color hover:underline " href="#">Geschätfsbedingungen</a></label>
+              <label for="terms" class="font-light text-gray-500">Ich akzeptiere die <a class="font-medium text-primary-color hover:underline " href="#">Geschätfsbedingungen</a></label>
             </div>
           </div>
-          <button type="submit" class="w-full font-bold bg-primary-color text-accent-blue focus:ring-4 focus:outline-none focus:ring-primary-300 rounded-lg text-sm px-5 py-2.5 text-center hover:bg-accent-blue hover:text-primary-color duration-150 ease-in-out" (click)="onSave()" [disabled]="!saveForm.valid" [routerLink]="['/home']">Erstelle meinen Account</button>
+          <span *ngIf="!saveForm.get('termsAndServiceBox')?.touched && !saveForm.get('termsAndServiceBox')?.valid" class="form-text text-xs text-muted text-red-600">*Bitte akzeptieren Sie die Geschäftsbedingungen</span>
+
+          <button type="submit" class="w-full font-bold bg-primary-color text-accent-blue focus:ring-4 focus:outline-none focus:ring-primary-300 rounded-lg text-sm px-5 py-2.5 text-center hover:bg-accent-blue hover:text-primary-color duration-150 ease-in-out" (click)="onRegister()" [disabled]="!saveForm.valid" [routerLink]="['/home']">Erstelle meinen Account</button>
         </form>
       </div>
     </div>

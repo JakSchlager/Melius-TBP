@@ -10,8 +10,8 @@
         <form [formGroup]="saveForm" class="space-y-4 md:space-y-6" action="#">
           <div>
             <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
-            <input type="email" formControlName="e_mail" id="email" class="bg-accent-blue border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="max.mustermann@gmail.com" required="">
-            <span *ngIf="saveForm.get('e_mail')?.touched && !saveForm.get('e_mail')?.valid" class="form-text text-xs text-muted text-red-600">*Email muss gültig sein!</span>
+            <input type="email" formControlName="email" id="email" class="bg-accent-blue border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="max.mustermann@gmail.com" required="">
+            <span *ngIf="saveForm.get('email')?.touched && !saveForm.get('email')?.valid" class="form-text text-xs text-muted text-red-600">*Email muss gültig sein</span>
           </div>
           <div>
             <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Passwort</label>
@@ -23,7 +23,7 @@
                 <input id="remember" aria-describedby="remember" type="checkbox" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800" required="">
               </div>
               <div class="ml-3 text-sm">
-                <label for="remember" class="text-gray-500">Daten speichern</label>
+                <label for="remember" class="text-gray-500">Benutzerdaten speichern?</label>
               </div>
             </div>
           </div>

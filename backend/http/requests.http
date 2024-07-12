@@ -15,8 +15,8 @@ POST http://localhost:8080/profile/login
 Content-Type: application/json
 
 {
-  "email": "stiegjosef@gmail.com",
-  "password": "TestPasswort"
+  "email": "test3.test@gmail.com",
+  "password": "TestTest3!"
 }
 
 ###

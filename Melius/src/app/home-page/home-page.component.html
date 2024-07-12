@@ -1,1 +1,10 @@
-<app-side-bar></app-side-bar>
+<div class="w-screen h-screen flex">
+  <div>
+    <app-side-bar></app-side-bar>
+  </div>
+
+  <div>
+    <h1>Welcome Back!</h1>
+    <h1>{{registrationLoginService.loggedInUser?.firstName}} {{registrationLoginService.loggedInUser?.lastName}}</h1>
+  </div>
+</div>

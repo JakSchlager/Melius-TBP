@@ -1,8 +1,9 @@
 import {Component, inject} from '@angular/core';
 import {RouterLink} from "@angular/router";
-import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
+import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule, ValidatorFn, Validators} from "@angular/forms";
 import {NgIf} from "@angular/common";
 import {UserRegistrationLoginService} from "../services/user-registration-login.service";
+import {UserRegistrationData} from "../interfaces/user-registration-data";
 
 @Component({
   selector: 'app-register-form',
@@ -19,20 +20,32 @@ export class RegisterFormComponent {
   registrationLoginService: UserRegistrationLoginService = inject(UserRegistrationLoginService);
 
   saveForm = new FormGroup( {
-    firstName: new FormControl('', Validators.required),
-    lastName: new FormControl('', Validators.required),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    phoneNumber: new FormControl('', Validators.required),
-    password: new FormControl('', [Validators.required, Validators.pattern(
+    firstName: new FormControl<string>('', Validators.required),
+    lastName: new FormControl<string>('', Validators.required),
+    email: new FormControl<string>('', [Validators.required, Validators.email]),
+    phoneNumber: new FormControl<string>('', Validators.required),
+    password: new FormControl<string>('', [Validators.required, Validators.pattern(
       /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*#?&^_-]).{8,}/
     ),]),
-  })
+    confirmPassword: new FormControl<string>('', Validators.required),
+    termsAndServiceBox: new FormControl<boolean>(false, Validators.requiredTrue),
+  }, { validators: this.checkPasswordMatch() });
 
 
-  onSave() {
+  onRegister() {
+    this.saveForm.markAllAsTouched();
     if (this.saveForm.valid) {
-      this.registrationLoginService.handelUserRegistration(this.saveForm.value).subscribe({
-        next: response => {
+      const newUser: UserRegistrationData = {
+        firstName: this.saveForm.controls['firstName']?.value || '',
+        lastName: this.saveForm.controls['lastName'].value  || '',
+        email: this.saveForm.controls['email'].value || '',
+        phoneNumber: this.saveForm.controls['phoneNumber'].value || '',
+        password: this.saveForm.controls['password'].value || '',
+      }
+
+      this.registrationLoginService.handelUserRegistration(newUser).subscribe({
+        next: (response: UserRegistrationData) => {
+          this.registrationLoginService.loggedInUser = response;
           console.log('User registered successfully.', response);
         },
 
@@ -42,4 +55,19 @@ export class RegisterFormComponent {
       })
     }
   }
+
+  checkPasswordMatch(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: boolean } | null => {
+        const password = control.get('password');
+        const confirmPassword = control.get('confirmPassword');
+
+        if (password && confirmPassword && password.value !== confirmPassword.value) {
+          return { 'passwordDoesNotMatch': true }
+        }
+
+        return null;
+    };
+  }
+
+
 }
