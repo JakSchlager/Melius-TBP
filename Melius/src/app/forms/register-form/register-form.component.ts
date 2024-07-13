@@ -2,8 +2,8 @@ import {Component, inject} from '@angular/core';
 import {RouterLink} from "@angular/router";
 import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule, ValidatorFn, Validators} from "@angular/forms";
 import {NgIf} from "@angular/common";
-import {UserRegistrationLoginService} from "../services/user-registration-login.service";
-import {UserRegistrationData} from "../interfaces/user-registration-data";
+import {UserRegistrationLoginService} from "../../services/user-registration-login.service";
+import {UserRegistrationData} from "../../interfaces/user-registration-data";
 
 @Component({
   selector: 'app-register-form',

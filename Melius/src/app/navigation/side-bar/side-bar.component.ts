@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {NgClass, NgIf} from "@angular/common";
-import {LogoutPopupComponent} from "../logout-popup/logout-popup.component";
-import {RouterLink} from "@angular/router";
+import {LogoutPopupComponent} from "../../popups/logout-popup/logout-popup.component";
+import {RouterLink, RouterLinkActive} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
 import {MatButton} from "@angular/material/button";
 
@@ -13,6 +13,7 @@ import {MatButton} from "@angular/material/button";
     NgClass,
     RouterLink,
     MatButton,
+    RouterLinkActive,
   ],
   templateUrl: './side-bar.component.html',
   styleUrl: './side-bar.component.css',

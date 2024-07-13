@@ -1,0 +1,29 @@
+<div class="w-screen h-screen flex">
+  <div class="w-1/6 h-full ">
+    <div class="fixed">
+      <app-side-bar></app-side-bar>
+    </div>
+  </div>
+
+  <div class="w-5/6 mt-5 overflow-hidden animate-fade-up-slower">
+    <div class="p-10 h-1/4 flex space-x-10 animate-fade-down">
+      <img src="../../../assets/icons/no-profile-icon.svg" alt="no_profile_img" class="w-56 h-56">
+
+      <div class="h-full items-center grid ">
+        <div class="space-y-2">
+          <h1 class="text-6xl font-bold">Welcome Back!</h1>
+          <h1 class="text-5xl">Jakob Schlager</h1>
+        </div>
+        <!--<h1>{{registrationLoginService.loggedInUser?.firstName}} {{registrationLoginService.loggedInUser?.lastName}}</h1>-->
+      </div>
+    </div>
+
+
+    <div class="w-full h-fit">
+      <hr class="w-5/6">
+      <div class="mt-5">
+        <app-home-navbar></app-home-navbar>
+      </div>
+    </div>
+  </div>
+</div>

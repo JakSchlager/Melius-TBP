@@ -2,9 +2,9 @@ import {Component, inject} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {NgIf} from "@angular/common";
 import {RouterLink} from "@angular/router";
-import {UserRegistrationLoginService} from "../services/user-registration-login.service";
-import {UserLoginData} from "../interfaces/user-login-data";
-import {UserRegistrationData} from "../interfaces/user-registration-data";
+import {UserRegistrationLoginService} from "../../services/user-registration-login.service";
+import {UserLoginData} from "../../interfaces/user-login-data";
+import {UserRegistrationData} from "../../interfaces/user-registration-data";
 
 @Component({
   selector: 'app-login-form',

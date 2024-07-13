@@ -1,7 +1,7 @@
   <div class="h-screen w-fit">
     <div class="absolute bg-white cursor-pointer h-fit px-4 py-4">
-      <img *ngIf="!hamburgerIconClicked" src="assets/icons/hamburger-icon-menu.svg" alt="hamburger-icon" class="h-10 w-10" (click)="openMenu()">
-      <img *ngIf="hamburgerIconClicked" src="assets/icons/close-icon-menu.svg" alt="close-icon" class="h-10 w-10" (click)="closeMenu()">
+      <img *ngIf="!hamburgerIconClicked" src="./assets/icons/hamburger-icon-menu.svg" alt="hamburger-icon" class="h-10 w-10" (click)="openMenu()">
+      <img *ngIf="hamburgerIconClicked" src="./assets/icons/close-icon-menu.svg" alt="close-icon" class="h-10 w-10" (click)="closeMenu()">
     </div>
     <div class="w-full h-full flex items-center">
       <div class="">
@@ -9,24 +9,24 @@
         <div class="h-fit space-y-96 rounded-r-lg shadow-custom-shadow w-full px-2 py-12 items-center transition-transform transform duration-150" [ngClass]="{'-translate-x-full': !hamburgerIconClicked, 'translate-x-0': hamburgerIconClicked}">
           <div class="space-y-6 grid columns-1">
             <button class="flex items-center text-md space-y-1 hover:text-primary-color duration-150">
-              <img src="assets/icons/home-icon.svg" alt="home-icon" class="w-8 h-8">
-              <h1 class="text-lg px-2">Home</h1>
+              <img src="./assets/icons/home-icon.svg" alt="home-icon" class="w-8 h-8">
+              <h1 class="text-lg px-2" [routerLink]="['/home/cv']" [routerLinkActive]="['activeSidebarTap']" [routerLinkActiveOptions]="{exact: false}">Home</h1>
             </button>
 
             <button class="flex items-center text-md hover:text-primary-color duration-150">
-              <img src="assets/icons/group-icon.svg" alt="group-icon" class="w-8 h-8">
-              <h1 class="text-lg px-2">Gruppen</h1>
+              <img src="./assets/icons/group-icon.svg" alt="group-icon" class="w-8 h-8">
+              <h1 class="text-lg px-2" [routerLink]="['/groups']" [routerLinkActive]="['activeSidebarTap']">Gruppen</h1>
             </button>
 
             <button class="flex items-center text-md hover:text-primary-color duration-150">
-              <img src="assets/icons/settings-icon.svg" alt="setting-icon" class="w-8 h-8">
-              <h1 class="text-lg px-2">Einstellungen</h1>
+              <img src="./assets/icons/settings-icon.svg" alt="setting-icon" class="w-8 h-8">
+              <h1 class="text-lg px-2" [routerLink]="['/settings']" [routerLinkActive]="['activeSidebarTap']">Einstellungen</h1>
             </button>
           </div>
 
           <div class="flex items-center text-black">
             <button (click)="openDialog()" class="font-bold flex items-center text-md hover:text-red-600 duration-150">
-              <img src="assets/icons/logout-icon.svg" alt="logout_icon" class="w-8 h-8">
+              <img src="./assets/icons/logout-icon.svg" alt="logout_icon" class="w-8 h-8">
               <h1 class="text-lg px-2">Ausloggen</h1>
             </button>
           </div>

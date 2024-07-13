@@ -1,9 +1,9 @@
 import {Component, inject, OnInit} from '@angular/core';
-import {SideBarComponent} from "../side-bar/side-bar.component";
-import {UserRegistrationData} from "../interfaces/user-registration-data";
-import {UserRegistrationLoginService} from "../services/user-registration-login.service";
+import {SideBarComponent} from "../../navigation/side-bar/side-bar.component";
+import {UserRegistrationData} from "../../interfaces/user-registration-data";
+import {UserRegistrationLoginService} from "../../services/user-registration-login.service";
 import {NgIf} from "@angular/common";
-import {HomeNavbarComponent} from "../home-navbar/home-navbar.component";
+import {HomeNavbarComponent} from "../../navigation/home-navbar/home-navbar.component";
 
 @Component({
   selector: 'app-home-page',

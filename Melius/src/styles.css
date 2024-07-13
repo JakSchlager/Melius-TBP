@@ -4,3 +4,27 @@
 
 html, body { height: 100%; }
 body { margin: 0; }
+
+.activeSidebarTap {
+  color: #0d91fa;
+  font-weight: bold;
+}
+
+
+.activeHomeCVNavTap {
+  border-bottom: solid;
+  border-color: #0D91FA;
+  font-weight: bold;
+}
+
+.activeHomeProjectsNavTap {
+  border-bottom: solid;
+  border-color: #8087FD;
+  font-weight: bold;
+}
+
+.activeHomeStrengthsNavTap {
+  border-bottom: solid;
+  border-color: #5E4DFC;
+  font-weight: bold;
+}
