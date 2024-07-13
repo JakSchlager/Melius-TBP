@@ -23,12 +23,17 @@ module.exports = {
         'fade-up-slower': {
           '0%': {transform: 'translateY(-30px)', opacity: 0},
           '100%': {transform: 'translateY(0px)', opacity: 1}
+        },
+        'fade-down': {
+          '0%': {transform: 'translateY(-80px)', opacity: 0},
+          '100%': {transform: 'translateY(0px)', opacity: 1}
         }
       },
 
       animation: {
         'fade-up': 'fade-up 0.4s ease-in-out',
-        'fade-up-slower': 'fade-up 1s ease-out'
+        'fade-up-slower': 'fade-up 1s ease-out',
+        'fade-down': 'fade-down 1s ease-out',
       }
     },
 
