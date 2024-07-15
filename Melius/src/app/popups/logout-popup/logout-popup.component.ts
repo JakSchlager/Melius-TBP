@@ -3,6 +3,8 @@ import {MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle} from
 import {MatButton} from "@angular/material/button";
 import {RouterLink} from "@angular/router";
 import {MatLabel} from "@angular/material/form-field";
+import {NgOptimizedImage} from "@angular/common";
+import {MatIcon} from "@angular/material/icon";
 
 @Component({
   selector: 'app-logout-popup',
@@ -14,7 +16,9 @@ import {MatLabel} from "@angular/material/form-field";
     MatButton,
     MatDialogClose,
     RouterLink,
-    MatLabel
+    MatLabel,
+    NgOptimizedImage,
+    MatIcon
   ],
   templateUrl: './logout-popup.component.html',
   styleUrl: './logout-popup.component.css'
