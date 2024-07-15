@@ -8,10 +8,14 @@ import {CvAreaComponent} from "./pages/home/cv-area/cv-area.component";
 
 export const routes: Routes = [
   {path: "", component: StartPageComponent, title: 'Start Page'},
-  {path: "home", component: HomePageComponent, title: 'Home', },
-  {path: "home/cv", component: CvAreaComponent, title: 'Lebenslauf'},
-  {path: "home/projects", component: CvAreaComponent, title: 'Projekte'},
-  {path: "home/strengths", component: CvAreaComponent, title: 'Stärken'},
+  {path: "home", component: HomePageComponent, title: 'Home',
+    children: [
+      {path: "cv", component: CvAreaComponent, title: 'Lebenslauf'},
+      {path: "projects", component: CvAreaComponent, title: 'Projekte'},
+      {path: "strengths", component: CvAreaComponent, title: 'Stärken'},
+    ]
+  },
+
   {path: "groups", component: GroupsPageComponent, title: 'Groups'},
   {path: "settings", component: SettingsPageComponent, title: 'Settings'},
   {path: "**", component: NotFoundComponent, title: 'Nothing Found'},
