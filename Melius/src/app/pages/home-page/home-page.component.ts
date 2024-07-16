@@ -26,12 +26,16 @@ export class HomePageComponent implements OnInit{
   constructor(private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
+    // Listens for navigation events
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(() => {
+
+      // Checks if there's a firstChild route (home/cv, home/projects, home/strengths)
       this.isChildRoute = !!this.route.firstChild;
     });
 
+    // Initial check to see if you are on one of the three suboages
     this.isChildRoute = !!this.route.firstChild;
   }
 }
