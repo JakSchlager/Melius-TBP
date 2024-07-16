@@ -1,16 +1,16 @@
-<div class="w-full inline-grid columns-3">
+<div class="w-full inline-grid columns-3 relative">
 
-  <div class="flex justify-evenly w-5/6 text-center font-bold">
+  <div class="flex justify-evenly w-5/6 text-center font-bold absolute">
     <a class="w-full cursor-pointer">
-      <h1 class="text-2xl px-10 hover:border-b-2 border-primary-color overflow-hidden duration-150 ease-in-out" [ngClass]="lifeMarked" (click)="onLifePage" [routerLinkActive]="['activeHomeCVNavTap']" [routerLink]="['/home/cv']">Lebenslauf</h1>
+      <h1 class="text-2xl px-10 hover:border-b-2 border-primary-color duration-150 ease-in-out" [ngClass]="lifeMarked" (click)="onLifePage" [routerLinkActive]="['activeHomeCVNavTap']" [routerLink]="['/home/cv']">Lebenslauf</h1>
     </a>
 
     <a class="w-full cursor-pointer">
-      <h1 class="text-2xl px-10 hover:border-b-2 border-intermediate-color overflow-hidden duration-150 ease-in-out" [ngClass]="projectsMarked" (click)="onProjects" [routerLinkActive]="['activeHomeProjectsNavTap']" [routerLink]="['/home/projects']">Projekte</h1>
+      <h1 class="text-2xl px-10 hover:border-b-2 border-intermediate-color duration-150 ease-in-out" [ngClass]="projectsMarked" (click)="onProjects" [routerLinkActive]="['activeHomeProjectsNavTap']" [routerLink]="['/home/projects']">Projekte</h1>
     </a>
 
     <a class="w-full cursor-pointer">
-      <h1 class="text-2xl px-10 hover:border-b-2 border-secondary-color overflow-hidden duration-150 ease-in-out" [ngClass]="strengthsMarked" (click)="onStrengths" [routerLinkActive]="['activeHomeStrengthsNavTap']" [routerLink]="['/home/strengths']">Stärken</h1>
+      <h1 class="text-2xl px-10 hover:border-b-2 border-secondary-color duration-150 ease-in-out" [ngClass]="strengthsMarked" (click)="onStrengths" [routerLinkActive]="['activeHomeStrengthsNavTap']" [routerLink]="['/home/strengths']">Stärken</h1>
     </a>
   </div>
 
