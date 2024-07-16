@@ -14,28 +14,4 @@ import {RouterLink, RouterLinkActive} from "@angular/router";
   styleUrl: './home-navbar.component.css'
 })
 export class HomeNavbarComponent {
-  lifeMarked!: string
-  clicked : boolean = false;
-  projectsMarked!: string
-  strengthsMarked!: string
-
-  onLifePage() {
-    this.clicked = true;
-
-    if (this.clicked) {
-      this.lifeMarked = 'border-b-2 border-primary-color';
-    }
-  }
-
-  onProjects() {
-    this.lifeMarked = '';
-    this.projectsMarked = 'border-b-2 border-primary-color';
-    this.strengthsMarked = '';
-  }
-
-  onStrengths() {
-    this.lifeMarked = '';
-    this.projectsMarked = '';
-    this.strengthsMarked = 'border-b-2 border-primary-color';
-  }
 }

@@ -4,6 +4,8 @@ import {UserRegistrationData} from "../../interfaces/user-registration-data";
 import {UserRegistrationLoginService} from "../../services/user-registration-login.service";
 import {NgIf, NgOptimizedImage} from "@angular/common";
 import {HomeNavbarComponent} from "../../navigation/home-navbar/home-navbar.component";
+import {ActivatedRoute, NavigationEnd, Router, RouterOutlet} from "@angular/router";
+import {filter} from "rxjs";
 
 @Component({
   selector: 'app-home-page',
@@ -12,16 +14,24 @@ import {HomeNavbarComponent} from "../../navigation/home-navbar/home-navbar.comp
     SideBarComponent,
     NgIf,
     HomeNavbarComponent,
-    NgOptimizedImage
+    NgOptimizedImage,
+    RouterOutlet
   ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'
 })
 export class HomePageComponent implements OnInit{
-  registrationLoginService: UserRegistrationLoginService = inject(UserRegistrationLoginService);
+  isChildRoute: boolean = false;
 
-  constructor() {}
+  constructor(private route: ActivatedRoute, private router: Router) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      this.isChildRoute = !!this.route.firstChild;
+    });
+
+    this.isChildRoute = !!this.route.firstChild;
   }
 }
