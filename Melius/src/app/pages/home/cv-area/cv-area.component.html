@@ -1,6 +1,6 @@
 
 <div class="w-full">
-  <div class="flex justify-end p-6 z-30 ">
+  <div class="sticky top-0 p-6 flex justify-end z-30 ">
     <img src="assets/icons/home-page/add_form_icon.svg" alt="add_form" class="w-10 h-10 cursor-pointer">
   </div>
 
@@ -13,6 +13,21 @@
           <h1 class="text-center font-bold text-2xl py-2">Allgemein</h1>
 
           <div class="space-y-6">
+            <div class="grid grid-cols-1 space-y-1">
+              <span class="row-start-1 col-start-1 text-gray-500">Ansprache</span>
+                <div class="flex items-center pb-2">
+                  <div class="grid">
+                    <svg class="pointer-events-none z-10 right-1 relative col-start-1 row-start-1 h-4 w-4 self-center justify-self-end forced-colors:hidden" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"></path>
+                    </svg>
+                    <select class="w-20 appearance-none forced-colors:appearance-auto border row-start-1 col-start-1 rounded-lg bg-accent-blue text-black px-2">
+                      <option>Herr</option>
+                      <option>Frau</option>
+                      <option>Divers</option>
+                    </select>
+                  </div>
+                </div>
+
             <div class="flex justify-between">
               <div class="grid grid-cols-1">
                 <span class="text-gray-500">Vorname</span>
@@ -55,190 +70,134 @@
           </div>
         </div>
       </div>
-
+    </div>
 
       <!-- Ausbildung Informationen -->
       <div class="p-4 animate-in slide-in-from-bottom-32 duration-700">
-        <div class="bg-white rounded-xl drop-shadow-lg px-10  py-4">
+        <div class="bg-white rounded-xl drop-shadow-lg px-10 py-4">
           <h1 class="text-center font-bold text-2xl py-2">Ausbildungen</h1>
 
-          <div class="space-y-8">
+          <div [formGroup]="educationForm">
+            <div formArrayName="educationFormItems" class="space-y-8">
+              <div *ngFor="let educationItem of educationFormItems.controls; let i = index" [formGroupName]="i">
 
-            <div class="space-y-4">
-              <div class="grid grid-cols-1">
-                <span class="text-gray-500">Bildungseinrichtung/Ort</span>
-                <input class="border-b-2">
-              </div>
+                <div class="flex justify-between">
+                  <div class="grid space-y-4">
+                    <div class="grid grid-cols-1">
+                      <span class="text-gray-500">Bildungseinrichtung/Ort</span>
+                      <input formControlName="educationalInst" class="border-b-2">
+                    </div>
 
 
-              <div class="w-full grid grid-cols-3">
-                <div class="w-full">
-                  <div class="w-fit grid grid-cols-1">
-                    <span class="text-gray-500">Von</span>
-                    <input type="date" class="border-b-2">
+                    <div class="w-full grid grid-cols-3">
+                      <div class="w-full">
+                        <div class="w-fit grid grid-cols-1">
+                          <span class="text-gray-500">Von</span>
+                          <input formControlName="eIdateFrom" type="date" class="border-b-2">
+                        </div>
+                      </div>
+
+                      <div class="w-full">
+                        <div class="w-fit grid grid-cols-1">
+                          <span class="text-gray-500">Bis</span>
+                          <input formControlName="eIdateTo" type="date" class="border-b-2">
+                        </div>
+                      </div>
+
+                      <div class="w-full flex justify-end">
+                        <div class="grid grid-cols-1">
+                          <span class="row-start-1 col-start-1 text-gray-500">Absolviert</span>
+                          <div class="flex items-center pb-2">
+                            <div class="grid">
+                              <svg class="pointer-events-none z-10 right-1 relative col-start-1 row-start-1 h-4 w-4 self-center justify-self-end forced-colors:hidden" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"></path>
+                              </svg>
+                              <select formControlName="eIFinished" class="w-fit appearance-none forced-colors:appearance-auto border row-start-1 col-start-1 rounded-lg bg-accent-blue text-black px-2">
+                                <option>Ja</option>
+                                <option>Nein</option>
+                                <option>In Ausbildung</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="py-8">
+                    <button (click)="deleteEducationInfo(i)">
+                      <mat-icon class="w-full h-full text-red-600 hover:text-red-700 duration-150">delete</mat-icon>
+                    </button>
                   </div>
                 </div>
 
-                <div class="w-full">
-                  <div class="w-fit grid grid-cols-1">
-                    <span class="text-gray-500">Bis</span>
-                    <input type="date" class="border-b-2">
-                  </div>
-                </div>
-
-                <div class="w-full flex justify-end">
-                  <div class="grid grid-cols-1">
-                    <span class="row-start-1 col-start-1 text-gray-500">Absolviert</span>
-                    <select class="w-fit appearance-auto bg-accent-blue">
-                      <option>Ja</option>
-                      <option>Nein</option>
-                      <option>In Ausbildung</option>
-                    </select>
-                  </div>
-                </div>
               </div>
             </div>
 
             <div class="flex justify-end">
-              <img src="assets/icons/home-page/add_element-icon.svg" alt="add_icon" class="w-10 h-10 cursor-pointer">
+              <button (click)="addEducationInfo()">
+                <img src="assets/icons/home-page/add_element-icon.svg" alt="add_icon" class="w-10 h-10 cursor-pointer">
+              </button>
             </div>
-
           </div>
         </div>
       </div>
 
 
       <!-- Berufserfahrungen Informationen -->
-      <div class="p-4 animate-in slide-in-from-bottom-32 duration-1000">
-        <div class="bg-white rounded-xl drop-shadow-lg px-10  py-4">
+      <div class="p-4 animate-in slide-in-from-bottom-32 duration-700">
+        <div class="bg-white rounded-xl drop-shadow-lg px-10 py-4">
           <h1 class="text-center font-bold text-2xl py-2">Berufserfahrungen</h1>
 
-          <div class="space-y-8">
+          <div [formGroup]="jobExperiencesForm">
+            <div formArrayName="jobExperiencesFormItems" class="space-y-8">
 
-            <div class="space-y-4">
-              <div class="grid grid-cols-1">
-                <span class="text-gray-500">Firma/Ort</span>
-                <input class="border-b-2">
-              </div>
+              <div *ngFor="let jobExperienceItem of jobExperiencesFormItems.controls; let i = index" [formGroupName]="i" class="space-y-4">
+                <div class="flex justify-between space-x-6">
+                  <div class="w-full grid space-y-4">
+
+                    <div class="w-full grid grid-cols-1">
+                      <span class="text-gray-500">Firma/Ort</span>
+                      <input formControlName="companyName" class="border-b-2">
+                    </div>
 
 
-              <div class="w-full grid grid-cols-2 justify-between">
-                <div class="w-full">
-                  <div class="w-fit grid grid-cols-1">
-                    <span class="text-gray-500">Von</span>
-                    <input type="date" class="border-b-2">
+                    <div class="w-full grid grid-cols-2 justify-between">
+                      <div class="w-full">
+                        <div class="w-fit grid grid-cols-1">
+                          <span class="text-gray-500">Von</span>
+                          <input formControlName="workFrom" type="date" class="border-b-2">
+                        </div>
+                      </div>
+
+                      <div class="w-full">
+                        <div class="w-fit grid grid-cols-1">
+                          <span class="text-gray-500">Bis</span>
+                          <input formControlName="workTo" type="date" class="border-b-2">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="w-full grid grid-cols-1">
+                      <span class="text-gray-500">Zusätzliche Informationen: </span>
+                      <textarea formControlName="moreInfo" class="bg-accent-blue resize-y rounded-md border-2"></textarea>
+                    </div>
+                  </div>
+
+                  <div class="py-8">
+                    <button (click)="deleteJobExperiencesInfo(i)">
+                      <mat-icon class="w-full h-full text-red-600 hover:text-red-700 duration-150">delete</mat-icon>
+                    </button>
                   </div>
                 </div>
-
-                <div class="w-full">
-                  <div class="w-fit grid grid-cols-1">
-                    <span class="text-gray-500">Bis</span>
-                    <input type="date" class="border-b-2">
-                  </div>
-                </div>
               </div>
-
-              <div class="grid grid-cols-1">
-                <span class="text-gray-500">Zusätzliche Informationen: </span>
-                <textarea class="resize-y rounded-md border-2"></textarea>
-              </div>
-
             </div>
 
             <div class="flex justify-end">
-              <img src="assets/icons/home-page/add_element-icon.svg" alt="add_icon" class="w-10 h-10 cursor-pointer">
+              <button (click)="addJobExperiencesInfo()">
+                <img src="assets/icons/home-page/add_element-icon.svg" alt="add_icon" class="w-10 h-10 cursor-pointer">
+              </button>
             </div>
-
-          </div>
-        </div>
-      </div>
-
-      <!-- Berufserfahrungen Informationen -->
-      <div class="p-4 animate-in slide-in-from-bottom-32 duration-1000">
-        <div class="bg-white rounded-xl drop-shadow-lg px-10  py-4">
-          <h1 class="text-center font-bold text-2xl py-2">Berufserfahrungen</h1>
-
-          <div class="space-y-8">
-
-            <div class="space-y-4">
-              <div class="grid grid-cols-1">
-                <span class="text-gray-500">Firma/Ort</span>
-                <input class="border-b-2">
-              </div>
-
-
-              <div class="w-full grid grid-cols-2 justify-between">
-                <div class="w-full">
-                  <div class="w-fit grid grid-cols-1">
-                    <span class="text-gray-500">Von</span>
-                    <input type="date" class="border-b-2">
-                  </div>
-                </div>
-
-                <div class="w-full">
-                  <div class="w-fit grid grid-cols-1">
-                    <span class="text-gray-500">Bis</span>
-                    <input type="date" class="border-b-2">
-                  </div>
-                </div>
-              </div>
-
-              <div class="grid grid-cols-1">
-                <span class="text-gray-500">Zusätzliche Informationen: </span>
-                <textarea class="resize-y rounded-md border-2"></textarea>
-              </div>
-
-            </div>
-
-            <div class="flex justify-end">
-              <img src="assets/icons/home-page/add_element-icon.svg" alt="add_icon" class="w-10 h-10 cursor-pointer">
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-      <!-- Berufserfahrungen Informationen -->
-      <div class="p-4 animate-in slide-in-from-bottom-32 duration-1000">
-        <div class="bg-white rounded-xl drop-shadow-lg px-10  py-4">
-          <h1 class="text-center font-bold text-2xl py-2">Berufserfahrungen</h1>
-
-          <div class="space-y-8">
-
-            <div class="space-y-4">
-              <div class="grid grid-cols-1">
-                <span class="text-gray-500">Firma/Ort</span>
-                <input class="border-b-2">
-              </div>
-
-
-              <div class="w-full grid grid-cols-2 justify-between">
-                <div class="w-full">
-                  <div class="w-fit grid grid-cols-1">
-                    <span class="text-gray-500">Von</span>
-                    <input type="date" class="border-b-2">
-                  </div>
-                </div>
-
-                <div class="w-full">
-                  <div class="w-fit grid grid-cols-1">
-                    <span class="text-gray-500">Bis</span>
-                    <input type="date" class="border-b-2">
-                  </div>
-                </div>
-              </div>
-
-              <div class="grid grid-cols-1">
-                <span class="text-gray-500">Zusätzliche Informationen: </span>
-                <textarea class="resize-y rounded-md border-2"></textarea>
-              </div>
-
-            </div>
-
-            <div class="flex justify-end">
-              <img src="assets/icons/home-page/add_element-icon.svg" alt="add_icon" class="w-10 h-10 cursor-pointer">
-            </div>
-
           </div>
         </div>
       </div>
