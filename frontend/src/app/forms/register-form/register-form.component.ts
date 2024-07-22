@@ -25,7 +25,7 @@ export class RegisterFormComponent {
     email: new FormControl<string>('', [Validators.required, Validators.email]),
     phoneNumber: new FormControl<string>('', Validators.required),
     password: new FormControl<string>('', [Validators.required, Validators.pattern(
-      /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*#?&^_-]).{8,}/
+      /(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*#?&^_-]).{8,}/
     ),]),
     confirmPassword: new FormControl<string>('', Validators.required),
     termsAndServiceBox: new FormControl<boolean>(false, Validators.requiredTrue),
