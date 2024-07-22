@@ -6,6 +6,10 @@ import {NgIf, NgOptimizedImage} from "@angular/common";
 import {HomeNavbarComponent} from "../../navigation/home-navbar/home-navbar.component";
 import {ActivatedRoute, NavigationEnd, Router, RouterOutlet} from "@angular/router";
 import {filter} from "rxjs";
+import {FormsModule} from "@angular/forms";
+import {VERSION} from "@angular/cdk";
+import {MatIcon} from "@angular/material/icon";
+import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
 
 @Component({
   selector: 'app-home-page',
@@ -15,13 +19,44 @@ import {filter} from "rxjs";
     NgIf,
     HomeNavbarComponent,
     NgOptimizedImage,
-    RouterOutlet
+    RouterOutlet,
+    FormsModule,
+    MatIcon,
+    MatMenu,
+    MatMenuItem,
+    MatMenuTrigger
   ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'
 })
 export class HomePageComponent implements OnInit{
   isChildRoute: boolean = false;
+  registrationLoginService: UserRegistrationLoginService = inject(UserRegistrationLoginService);
+  showAvatarOptions: boolean = true;
+  url: any = '';
+
+  onSelectFile(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+
+      reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+      reader.onload = (event) => {
+        // called once readAsDataURL is completed
+        // @ts-ignore
+        this.url = event.target.result;
+        console.log(this.url);
+      };
+    }
+  }
+  public deleteAvatar() {
+    this.url = null;
+  }
+
+  triggerFileInput() {
+    const fileInput = document.getElementById("fileInput") as HTMLElement;
+    fileInput.click();
+  }
 
   constructor(private route: ActivatedRoute, private router: Router) {}
 
@@ -38,4 +73,10 @@ export class HomePageComponent implements OnInit{
     // Initial check to see if you are on one of the three suboages
     this.isChildRoute = !!this.route.firstChild;
   }
+
+  showOptions(): boolean {
+    this.showAvatarOptions = !this.showAvatarOptions;
+    return this.showAvatarOptions;
+  }
+
 }
