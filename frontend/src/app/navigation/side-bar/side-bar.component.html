@@ -1,0 +1,40 @@
+
+<mat-nav-list class="">
+  <div class="w-auto h-12 mx-4 mt-4 items-center flex">
+    <img ngSrc="assets/Melius-TBP_Logo_Simple.svg" height="1" width="1" class="w-16 h-16" alt="melius_logo_simple">
+    <button type="button" class="bg-transparent rounded-lg absolute end-2.5 inline-flex items-center" >
+      <img ngSrc="./assets/icons/close-icon-menu.svg" alt="close-icon" (click)="closeMenu()" class="w-8 h-8" height="1" width="1">
+      <span class="sr-only">Close menu</span>
+    </button>
+  </div>
+
+  <div class="h-auto mt-8 space-y-3">
+    <a mat-list-item class="text-black hover:text-primary-color duration-150" [routerLink]="['/home']" routerLinkActive="text-primary-color">
+      <button class="flex items-center text-md space-y-1">
+        <img src="./assets/icons/home-icon.svg" alt="home-icon" class="w-8 h-8">
+        <h1 class="text-lg px-2">Home</h1>
+      </button>
+    </a>
+
+    <a mat-list-item class="text-black hover:text-primary-color duration-150" [routerLink]="['/groups']">
+      <button class="flex items-center text-md">
+        <img src="./assets/icons/group-icon.svg" alt="group-icon" class="w-8 h-8">
+        <h1 class="text-lg px-2" >Gruppen</h1>
+      </button>
+    </a>
+
+    <a mat-list-item class="text-black hover:text-primary-color duration-150" [routerLink]="['/settings']">
+      <button class="flex items-center text-md">
+        <img src="./assets/icons/settings-icon.svg" alt="setting-icon" class="w-8 h-8">
+        <h1 class="text-lg px-2">Einstellungen</h1>
+      </button>
+    </a>
+
+    <a mat-list-item class="text-black hover:text-red600 duration-150">
+      <button (click)="openDialog()" class="font-bold flex items-center text-md">
+        <img src="./assets/icons/logout-icon.svg" alt="logout_icon" class="w-8 h-8">
+        <h1 class="text-lg px-2">Ausloggen</h1>
+      </button>
+    </a>
+  </div>
+</mat-nav-list>

@@ -1,0 +1,20 @@
+<div class="w-screen h-screen" *ngIf="showSideNavBar()">
+  <mat-drawer-container>
+    <mat-drawer #drawer mode="over">
+      <app-side-bar></app-side-bar>
+    </mat-drawer>
+
+    <mat-drawer-content class="bg-white">
+      <div class="p-6 fixed">
+        <button type="button"  class="text-2xl" (click)="drawer.toggle()">
+          <img ngSrc="./assets/icons/hamburger-icon-menu.svg" alt="hamburger-icon" class="h-10 w-10" height="24" width="24">
+        </button>
+      </div>
+      <router-outlet ></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>
+
+<div class="w-screen h-screen" *ngIf="!showSideNavBar()">
+  <router-outlet></router-outlet>
+</div>

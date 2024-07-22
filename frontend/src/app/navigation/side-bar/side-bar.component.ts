@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import {NgClass, NgIf} from "@angular/common";
+import {NgClass, NgIf, NgOptimizedImage} from "@angular/common";
 import {LogoutPopupComponent} from "../../popups/logout-popup/logout-popup.component";
-import {RouterLink, RouterLinkActive} from "@angular/router";
-import {MatDialog} from "@angular/material/dialog";
+import {Router, RouterLink, RouterLinkActive} from "@angular/router";
+import {MatDialog, MatDialogClose} from "@angular/material/dialog";
 import {MatButton} from "@angular/material/button";
+import {MatListItem, MatNavList} from "@angular/material/list";
 
 @Component({
   selector: 'app-side-bar',
@@ -14,13 +15,18 @@ import {MatButton} from "@angular/material/button";
     RouterLink,
     MatButton,
     RouterLinkActive,
+    MatListItem,
+    MatNavList,
+    MatDialogClose,
+    NgOptimizedImage,
   ],
   templateUrl: './side-bar.component.html',
   styleUrl: './side-bar.component.css',
 
 })
 export class SideBarComponent {
-  hamburgerIconClicked : boolean = false;
+
+  constructor(private router: Router, private dialogRef: MatDialog) {}
   /*
     constructor(public dialog: MatDialog) {}
 
@@ -38,18 +44,14 @@ export class SideBarComponent {
 
     */
 
-  constructor(private dialogRef: MatDialog) {
-  }
+
   openDialog() {
     this.dialogRef.open(LogoutPopupComponent);
   }
 
-  openMenu() {
-    this.hamburgerIconClicked = true;
-  }
 
   closeMenu() {
-    this.hamburgerIconClicked = false;
+    this.router.navigate(['/home'])
   }
 
 
