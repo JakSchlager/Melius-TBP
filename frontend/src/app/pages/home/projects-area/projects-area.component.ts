@@ -62,8 +62,8 @@ function genRepo(user: string) {
             }
 
             // Puts repo information into div
-            $("#repo-box").append("<div class='border-2 w-3/4 m-auto flex flex-col rounded-2xl overflow-hidden'><a href='" + repo_url + "' target='_blank'>" +
-                  "<h1 class='text-white bg-gray-900 w-full p-3 font-bold'>" + username + "/" + repo_name + "</h1>" +
+            $("#repo-box").append("<div class='animate-in fade-in zoom-in duration-300 shadow-custom-shadow border-2 w-3/4 m-auto flex flex-col rounded-2xl overflow-hidden'><a href='" + repo_url + "' target='_blank'>" +
+                  "<h1 class='text-white bg-intermediate-color w-full p-3 font-bold'>" + username + "/" + repo_name + "</h1>" +
                   "<p class='p-3'>" + repo_description + "</p>" +
                   "<div class='p-3'><span class='img' uk-icon='code' class='uk-icon'></span>" + repo_language + "</div> " +
                   "</div>");

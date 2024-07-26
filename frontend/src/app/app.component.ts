@@ -28,7 +28,4 @@ export class AppComponent implements OnInit{
     return this.router.url !== '/';
   }
 
-  closeDrawer() {
-    this.drawer.close();
-  }
 }

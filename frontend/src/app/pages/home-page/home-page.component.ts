@@ -1,4 +1,4 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, HostListener, inject, OnInit} from '@angular/core';
 import {SideBarComponent} from "../../navigation/side-bar/side-bar.component";
 import {UserRegistrationData} from "../../interfaces/user-registration-data";
 import {UserRegistrationLoginService} from "../../services/user-registration-login.service";
@@ -32,7 +32,7 @@ import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
 export class HomePageComponent implements OnInit{
   isChildRoute: boolean = false;
   registrationLoginService: UserRegistrationLoginService = inject(UserRegistrationLoginService);
-  showAvatarOptions: boolean = true;
+  showAvatarOptions: boolean = false;
   url: any = '';
 
   onSelectFile(event: any) {
@@ -70,13 +70,22 @@ export class HomePageComponent implements OnInit{
       this.isChildRoute = !!this.route.firstChild;
     });
 
-    // Initial check to see if you are on one of the three suboages
+    // Initial check to see if you are on one of the three subpages
     this.isChildRoute = !!this.route.firstChild;
   }
 
-  showOptions(): boolean {
-    this.showAvatarOptions = !this.showAvatarOptions;
-    return this.showAvatarOptions;
+  showOptions(): void {
+    if (!this.showAvatarOptions) {
+      this.showAvatarOptions = true;
+      return;
+    }
+
+    else {
+      this.showAvatarOptions = false;
+      return;
+    }
+
   }
 
+  protected readonly onscroll = onscroll;
 }
