@@ -46,8 +46,9 @@ export class RegisterFormComponent {
 
       this.registrationLoginService.handelUserRegistration(newUser).subscribe({
         next: (response: UserRegistrationData) => {
-          this.registrationLoginService.loggedInUser = response;
+          //this.registrationLoginService.loggedInUser = response;
           this.router.navigate(['/home']);
+          localStorage.setItem("loggedInUser", JSON.stringify(response));
           console.log('User registered successfully.', response);
         },
 

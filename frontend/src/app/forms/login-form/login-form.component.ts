@@ -34,8 +34,9 @@ export class LoginFormComponent {
 
     this.registrationLoginService.handleUserLogin(loginData).subscribe({
       next: (userInfo: UserRegistrationData) => {
-        this.registrationLoginService.loggedInUser = userInfo;
+        //this.registrationLoginService.loggedInUser = userInfo;
         this.router.navigate(['/home']);
+        localStorage.setItem("loggedInUser", JSON.stringify(userInfo));
         console.log('User logged in successfully', userInfo);
       },
 
