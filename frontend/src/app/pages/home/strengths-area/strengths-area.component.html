@@ -1,50 +1,228 @@
+<script src="strengths-area.component.ts"></script>
 <div class="w-full">
-  <div class="sticky top-0 p-4 flex justify-end z-30 ">
-    <img src="assets/icons/home-page/add_form_icon.svg" alt="add_form" class="bg-white rounded-md w-10 h-10 cursor-pointer hover:shadow-md duration-150">
-  </div>
+  <app-dropdown-menu-home></app-dropdown-menu-home>
 
-  <div class="max-w-full flex justify-center">
+  <div class="w-full flex justify-center">
+    <div class="w-4/12 space-y-10">
 
-    <!-- Programmier Kenntnisse -->
-    <div class="min-w-96 bg-white rounded-lg px-2 py-1 shadow-md animate-in slide-in-from-bottom-32 duration-500">
-      <h1 class=" text-start text-xl font-bold py-6">Programmier Kentnisse</h1>
+      <!-- Allgemein Kenntnisse -->
+      <div class="w-full p-4 grid rounded-lg px-10 py-4 shadow-md animate-in slide-in-from-bottom-32 duration-500">
+        <h1 class="text-center font-bold text-2xl py-2">Persönliche Eigenschaften</h1>
+          <div class="w-full mt-2 grid grid-cols-1 space-y-2">
+            <div class="w-max border rounded-lg">
+              <p-multiSelect
+                [options]="characteristics"
+                [(ngModel)]="selectedCharacteristic"
+                placeholder="Stärken auswählen"
+                optionLabel="label"
+                display="chip"
+                [showClear]="true"
+              />
+            </div>
+            <small class="text-gray-400">Wähle drei primäre Stärken aus, die angezeigt werden sollen!</small>
+          </div>
+      </div>
 
-      <div [formGroup]="programmingKnowledgeForm" class="">
-        <div formArrayName="programminKnowledgeItems" class="space-y-8">
-          <div *ngFor="let programmingItem of programmingKnowledgeFormItems.controls; let i = index" [formGroupName]="i">
+      <!-- Sprachliche Kenntnisse -->
+      <div class="w-full p-4 grid rounded-lg px-10 py-4 shadow-md animate-in slide-in-from-bottom-32 duration-500">
+        <h1 class="text-center font-bold text-2xl py-2 pb-4">Sprachliche Stärken</h1>
 
-            <div class="w-auto mx-2 flex justify-between space-x-10 animate-in fade-in zoom-in duration-500">
-
-              <input formControlName="programmingName" placeholder="Sprache" class="bg-white shadow-md rounded py-1 w-1/5 font-bold">
-
-              <div class="flex-grow">
-                <div class="flex flex-col">
-                  <input class="rounded-lg overflow-hidden appearance-none bg-gray-400 h-3 w-full" type="range" min="1" max="100" step="1" value="15" />
-
-                  <div class="w-full flex justify-between mt-1">
-                    <span class="text-sm text-intermediate-color">Schlecht</span>
-                    <span class="text-sm text-intermediate-color">Meh</span>
-                    <span class="text-sm text-intermediate-color">Okay</span>
-                    <span class="text-sm text-intermediate-color">Gut</span>
-                    <span class="text-sm text-intermediate-color">Sehr Gut</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="flex-shrink-0">
-                <svg (click)="deleteProgrammingLanguage(i)" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#EA3323" class="cursor-pointer"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
-              </div>
+        <div class="h-full flex flex-col space-y-4">
+          <div class="flex justify-evenly items-center animate-in fade-in zoom-in duration-500">
+            <div>
+              <input formControlName="programmingName" placeholder="Sprache" class="bg-white shadow-md rounded-md py-1.5 font-bold">
             </div>
 
+            <div>
+              <p-rating [ngModel]="userLanguageRating"></p-rating>
+            </div>
+          </div>
+
+          <div class="flex justify-evenly items-center animate-in fade-in zoom-in duration-700">
+            <div>
+              <input formControlName="programmingName" placeholder="Sprache" class="bg-white shadow-md rounded py-2 font-bold">
+            </div>
+
+            <div>
+              <p-rating [ngModel]="userLanguageRating"></p-rating>
+            </div>
+          </div>
+
+          <div class="flex justify-evenly items-center animate-in fade-in zoom-in duration-1000">
+            <div>
+              <input formControlName="programmingName" placeholder="Sprache" class="bg-white shadow-md rounded py-2 font-bold">
+            </div>
+
+            <div>
+              <p-rating [ngModel]="userLanguageRating"></p-rating>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+
+      <!-- Programmier Kenntnisse -->
+      <div class="p-4 min-w-96 bg-white rounded-lg px-2 py-1 shadow-md animate-in slide-in-from-bottom-32 duration-500">
+        <h1 class="text-center font-bold text-2xl py-6">Programmier Kentnisse</h1>
+
+        <div class="w-auto mx-2 flex justify-between space-x-10 animate-in fade-in zoom-in duration-500">
+          <div class="w-fit flex justify-center bg-white border rounded-lg">
+            <p-dropdown
+              [options]="programmingLanguages"
+              [(ngModel)]="selectedProgrammingLanguage"
+              optionLabel="name"
+              placeholder="Sprache" />
+          </div>
+
+          <div class="flex-grow">
+            <div class="flex flex-col">
+              <input class="rounded-lg overflow-hidden appearance-none bg-gray-400 h-3 w-full" type="range" min="1" max="100" step="1" value="15" />
+
+              <div class="w-full flex justify-between mt-1">
+                <span class="text-sm text-intermediate-color">Schlecht</span>
+                <span class="text-sm text-intermediate-color">Meh</span>
+                <span class="text-sm text-intermediate-color">Okay</span>
+                <span class="text-sm text-intermediate-color">Gut</span>
+                <span class="text-sm text-intermediate-color">Sehr Gut</span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="flex justify-end py-2">
-          <button class="bg-white rounded-md hover:shadow-md duration-150" (click)="addProgrammingLanguage()">
-            <img src="assets/icons/home-page/add_element-icon.svg" alt="add_icon" class="w-10 h-10 cursor-pointer">
-          </button>
+        <div [formGroup]="programmingKnowledgeForm" class="mt-8">
+          <div formArrayName="programminKnowledgeItems" class="space-y-8">
+            <div *ngFor="let programmingItem of programmingKnowledgeFormItems.controls; let i = index" [formGroupName]="i">
+
+              <div class="w-auto mx-2 flex justify-between space-x-10 animate-in fade-in zoom-in duration-500">
+                <div class="flex justify-center bg-white border rounded-lg">
+                  <p-dropdown
+                    [options]="programmingLanguages"
+                    [(ngModel)]="selectedProgrammingLanguage"
+                    optionLabel="name"
+                    [showClear]="true"
+                    placeholder="Sprache" />
+                </div>
+
+                <div class="flex-grow">
+                  <div class="flex flex-col">
+                    <input formControlName="programmingKnowledge" class="rounded-lg overflow-hidden appearance-none bg-gray-400 h-3 w-full" type="range" min="1" max="100" step="1" value="15" />
+
+                    <div class="w-full flex justify-between mt-1">
+                      <span class="text-sm text-intermediate-color">Schlecht</span>
+                      <span class="text-sm text-intermediate-color">Meh</span>
+                      <span class="text-sm text-intermediate-color">Okay</span>
+                      <span class="text-sm text-intermediate-color">Gut</span>
+                      <span class="text-sm text-intermediate-color">Sehr Gut</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex-shrink-0">
+                  <svg (click)="deleteProgrammingLanguage(i)" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#EA3323" class="cursor-pointer"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="flex justify-end py-2">
+            <button class="bg-white rounded-md hover:shadow-md duration-150" (click)="addProgrammingLanguage()">
+              <img src="assets/icons/home-page/add_element-icon.svg" alt="add_icon" class="w-10 h-10 cursor-pointer">
+            </button>
+          </div>
         </div>
       </div>
+
+
+      <!-- Software Kenntnisse -->
+      <div class="p-4 min-w-96 bg-white rounded-lg px-2 py-1 shadow-md animate-in slide-in-from-bottom-32 duration-500">
+        <h1 class="text-center font-bold text-2xl py-6">EDV Kentnisse</h1>
+
+        <div class="w-auto mx-2 flex justify-between space-x-10 animate-in fade-in zoom-in duration-500">
+          <div class="w-fit flex justify-center bg-white border rounded-lg">
+            <p-dropdown
+              [options]="groupedSoftwareApps"
+              [(ngModel)]="selectedSoftwareApp"
+              placeholder="Software"
+              [group]="true">
+              <ng-template let-group pTemplate="group">
+                <div class="flex align-items-center">
+                  <span>{{ group.label }}</span>
+                </div>
+              </ng-template>
+            </p-dropdown>
+          </div>
+
+          <div class="flex-grow">
+            <div class="flex flex-col items-center">
+              <input class="rounded-lg overflow-hidden appearance-none bg-gray-400 h-3 w-full" type="range" min="1" max="100" step="1" value="15" />
+
+              <div class="w-full flex justify-between mt-1">
+                <span class="text-sm text-intermediate-color">Schlecht</span>
+                <span class="text-sm text-intermediate-color">Meh</span>
+                <span class="text-sm text-intermediate-color">Okay</span>
+                <span class="text-sm text-intermediate-color">Gut</span>
+                <span class="text-sm text-intermediate-color">Sehr Gut</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div [formGroup]="softwareKnowledgeForm" class="mt-8">
+          <div formArrayName="programminKnowledgeItems" class="space-y-8">
+            <div *ngFor="let softwareItem of softwareKnowledgeFormItems.controls; let i = index" [formGroupName]="i">
+
+              <div class="w-auto mx-2 flex justify-between space-x-10 animate-in fade-in zoom-in duration-500">
+                <div class="w-fit flex justify-center bg-white border rounded-lg">
+                  <p-dropdown
+                    [options]="groupedSoftwareApps"
+                    [(ngModel)]="selectedSoftwareApp"
+                    placeholder="Software"
+                    optionLabel="label"
+                    [filter]="true"
+                    filterBy="label"
+                    [showClear]="true"
+                    [group]="true">
+                    <ng-template let-group pTemplate="group">
+                      <div class="flex align-items-center">
+                        <span>{{ group.label }}</span>
+                      </div>
+                    </ng-template>
+                  </p-dropdown>
+                </div>
+
+                <div class="flex-grow">
+                  <div class="flex flex-col">
+                    <input formControlName="softwareAppKnowledge" class="rounded-lg overflow-hidden appearance-none bg-gray-400 h-3 w-full" type="range" min="1" max="100" step="1" value="15" />
+
+                    <div class="w-full flex justify-between mt-1">
+                      <span class="text-sm text-intermediate-color">Schlecht</span>
+                      <span class="text-sm text-intermediate-color">Meh</span>
+                      <span class="text-sm text-intermediate-color">Okay</span>
+                      <span class="text-sm text-intermediate-color">Gut</span>
+                      <span class="text-sm text-intermediate-color">Sehr Gut</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex-shrink-0">
+                  <svg (click)="deleteSoftware(i)" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#EA3323" class="cursor-pointer"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="flex justify-end py-2">
+            <button class="bg-white rounded-md hover:shadow-md duration-150" (click)="addSoftware()">
+              <img src="assets/icons/home-page/add_element-icon.svg" alt="add_icon" class="w-10 h-10 cursor-pointer">
+            </button>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>

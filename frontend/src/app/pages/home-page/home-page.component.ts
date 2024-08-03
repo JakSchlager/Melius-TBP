@@ -2,7 +2,7 @@ import {Component, HostListener, inject, OnInit} from '@angular/core';
 import {SideBarComponent} from "../../navigation/side-bar/side-bar.component";
 import {UserRegistrationData} from "../../interfaces/user-registration-data";
 import {UserRegistrationLoginService} from "../../services/user-registration-login.service";
-import {NgIf, NgOptimizedImage} from "@angular/common";
+import {NgClass, NgIf, NgOptimizedImage} from "@angular/common";
 import {HomeNavbarComponent} from "../../navigation/home-navbar/home-navbar.component";
 import {ActivatedRoute, NavigationEnd, Router, RouterOutlet} from "@angular/router";
 import {filter} from "rxjs";
@@ -24,7 +24,8 @@ import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
     MatIcon,
     MatMenu,
     MatMenuItem,
-    MatMenuTrigger
+    MatMenuTrigger,
+    NgClass
   ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'
@@ -84,7 +85,6 @@ export class HomePageComponent implements OnInit{
       this.showAvatarOptions = false;
       return;
     }
-
   }
 
   protected readonly onscroll = onscroll;

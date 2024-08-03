@@ -10,7 +10,7 @@
 
   <div class="w-5/6">
 
-    <div class="p-10 h-1/4 mt-6 items-center flex space-x-10 animate-fade-down">
+    <div class="p-10 h-1/4 mt-6 items-center flex space-x-10 animate-fade-down drop-shadow-md">
 
       <div class="flex">
         <div class="relative inline-block text-center">
@@ -33,12 +33,12 @@
           <div class="absolute animate-in fade-in ease-in-out" *ngIf="showAvatarOptions">
             <div class="bg-white border shadow-lg rounded-lg">
               <a class="flex cursor-pointer hover:bg-gray-100 duration-150 p-2" (click)="triggerFileInput()">
-                <mat-icon class="text-primary-color">add</mat-icon>
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#8087FD"><path d="M440-440H240q-17 0-28.5-11.5T200-480q0-17 11.5-28.5T240-520h200v-200q0-17 11.5-28.5T480-760q17 0 28.5 11.5T520-720v200h200q17 0 28.5 11.5T760-480q0 17-11.5 28.5T720-440H520v200q0 17-11.5 28.5T480-200q-17 0-28.5-11.5T440-240v-200Z"/></svg>
                 <h1>hinzufügen</h1>
               </a>
               <hr>
               <a class="flex cursor-pointer hover:bg-gray-100 duration-150 p-2" (click)="deleteAvatar()">
-                <mat-icon class="text-red-600">delete</mat-icon>
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#EA3323"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
                 <h1>löschen</h1>
               </a>
             </div>
@@ -58,7 +58,7 @@
 
     <div class="flex flex-col space-y-20">
 
-      <div class="h-fit bg-white sticky top-0 z-10 w-full animate-fade-up-slower">
+      <div class="h-10 bg-white sticky top-0 z-10 w-full animate-fade-up-slower">
         <hr class="">
         <div class="">
           <app-home-navbar></app-home-navbar>
