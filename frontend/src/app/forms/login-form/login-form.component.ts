@@ -23,7 +23,8 @@ export class LoginFormComponent {
 
   saveForm = new FormGroup( {
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [])
+    password: new FormControl('', []),
+    remember: new FormControl('true', [])
   })
 
   onLogin() {
@@ -34,9 +35,15 @@ export class LoginFormComponent {
 
     this.registrationLoginService.handleUserLogin(loginData).subscribe({
       next: (userInfo: UserRegistrationData) => {
-        //this.registrationLoginService.loggedInUser = userInfo;
+        localStorage.setItem("rememberUser", this.saveForm.controls['remember'].value!.toString());
+
+        if(localStorage.getItem("rememberUser") === "true") {
+          localStorage.setItem("loggedInUser", JSON.stringify(userInfo));
+        } else {
+          sessionStorage.setItem("loggedInUser", JSON.stringify(userInfo));
+        }
+
         this.router.navigate(['/home']);
-        localStorage.setItem("loggedInUser", JSON.stringify(userInfo));
         console.log('User logged in successfully', userInfo);
       },
 

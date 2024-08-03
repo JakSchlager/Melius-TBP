@@ -35,10 +35,20 @@ export class SideBarComponent implements OnInit {
   constructor(private dialogRef: MatDialog) {}
 
   ngOnInit() {
-    if(localStorage.getItem("loggedInUser") !== null) {
-      this.registrationLoginService.loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")!);
+    if(localStorage.getItem("rememberUser") === "true") {
+
+      if(localStorage.getItem("loggedInUser") !== null) {
+        this.registrationLoginService.loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")!);
+      } else {
+        this.router.navigate(["/"]);
+      }
+
     } else {
-      this.router.navigate(["/"])
+      if(sessionStorage.getItem("loggedInUser") !== null) {
+        this.registrationLoginService.loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser")!);
+      } else {
+        this.router.navigate(["/"]);
+      }
     }
   }
 

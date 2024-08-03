@@ -26,7 +26,7 @@ export class StartPageComponent implements OnInit{
   router: Router = inject(Router);
 
   ngOnInit() {
-    if(localStorage.getItem("loggedInUser") !== null) {
+    if(localStorage.getItem("loggedInUser") !== null || sessionStorage.getItem("loggedInUser") !== null) {
       this.router.navigate(["/home"])
     }
   }

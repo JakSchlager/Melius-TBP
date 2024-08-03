@@ -28,6 +28,7 @@ export class LogoutPopupComponent {
 
   logOut() {
     localStorage.removeItem("loggedInUser");
+    sessionStorage.removeItem("loggedInUser");
     this.router.navigate([""]);
   }
 
