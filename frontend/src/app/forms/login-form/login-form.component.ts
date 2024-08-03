@@ -1,7 +1,7 @@
 import {Component, inject} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {NgIf} from "@angular/common";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {UserRegistrationLoginService} from "../../services/user-registration-login.service";
 import {UserLoginData} from "../../interfaces/user-login-data";
 import {UserRegistrationData} from "../../interfaces/user-registration-data";
@@ -19,6 +19,7 @@ import {UserRegistrationData} from "../../interfaces/user-registration-data";
 })
 export class LoginFormComponent {
   registrationLoginService: UserRegistrationLoginService = inject(UserRegistrationLoginService);
+  router: Router = inject(Router);
 
   saveForm = new FormGroup( {
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -33,13 +34,14 @@ export class LoginFormComponent {
 
     this.registrationLoginService.handleUserLogin(loginData).subscribe({
       next: (userInfo: UserRegistrationData) => {
-        this.saveForm.valid
-        this.registrationLoginService.loggedInUser = userInfo;
+        //this.registrationLoginService.loggedInUser = userInfo;
+        this.router.navigate(['/home']);
+        localStorage.setItem("loggedInUser", JSON.stringify(userInfo));
         console.log('User logged in successfully', userInfo);
       },
 
       error: error => {
-        !this.saveForm.valid
+        document.getElementById("login_error")!.innerHTML = "Email oder Passwort falsch!";
         console.log('Error during the login process.', error);
       }
     });

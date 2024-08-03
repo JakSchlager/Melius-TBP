@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
 import {MatButton} from "@angular/material/button";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {MatLabel} from "@angular/material/form-field";
 import {NgOptimizedImage} from "@angular/common";
 import {MatIcon} from "@angular/material/icon";
@@ -23,9 +23,12 @@ import {MatIcon} from "@angular/material/icon";
   templateUrl: './logout-popup.component.html',
   styleUrl: './logout-popup.component.css'
 })
-export class LogoutPopupComponent implements OnInit{
-  ngOnInit(): void {
-  }
+export class LogoutPopupComponent {
+  router: Router = inject(Router);
 
+  logOut() {
+    localStorage.removeItem("loggedInUser");
+    this.router.navigate([""]);
+  }
 
 }

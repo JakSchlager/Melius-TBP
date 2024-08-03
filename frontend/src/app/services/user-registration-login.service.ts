@@ -17,10 +17,22 @@ export class UserRegistrationLoginService {
   constructor() { }
 
   handelUserRegistration(userData: UserRegistrationData): Observable<UserRegistrationData> {
-    return this.httpClient.post<UserRegistrationData>(this.registrationURL, userData);
+    let user= this.httpClient.post<UserRegistrationData>(this.registrationURL, userData);
+
+    if(user !== null) {
+      return user;
+    } else {
+      throw new Error("Benutzer mit dieser Email existiert bereits!");
+    }
   }
 
   handleUserLogin(loginData: UserLoginData): Observable<UserRegistrationData> {
-    return this.httpClient.post<UserRegistrationData>(this.loginURL, loginData);
+    let user = this.httpClient.post<UserRegistrationData>(this.loginURL, loginData);
+
+    if(user !== null) {
+      return user;
+    } else {
+      throw new Error("Email oder Passwort sind nicht korrekt!");
+    }
   }
 }

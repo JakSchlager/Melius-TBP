@@ -1,5 +1,5 @@
 import {Component, inject} from '@angular/core';
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule, ValidatorFn, Validators} from "@angular/forms";
 import {NgIf} from "@angular/common";
 import {UserRegistrationLoginService} from "../../services/user-registration-login.service";
@@ -18,6 +18,7 @@ import {UserRegistrationData} from "../../interfaces/user-registration-data";
 })
 export class RegisterFormComponent {
   registrationLoginService: UserRegistrationLoginService = inject(UserRegistrationLoginService);
+  router: Router = inject(Router);
 
   saveForm = new FormGroup( {
     firstName: new FormControl<string>('', Validators.required),
@@ -45,11 +46,14 @@ export class RegisterFormComponent {
 
       this.registrationLoginService.handelUserRegistration(newUser).subscribe({
         next: (response: UserRegistrationData) => {
-          this.registrationLoginService.loggedInUser = response;
+          //this.registrationLoginService.loggedInUser = response;
+          this.router.navigate(['/home']);
+          localStorage.setItem("loggedInUser", JSON.stringify(response));
           console.log('User registered successfully.', response);
         },
 
         error: error => {
+          document.getElementById("registration_error")!.innerHTML = "Ein Account mit dieser Email existiert bereits!";
           console.log('Error during the registration process.', error);
         }
       })

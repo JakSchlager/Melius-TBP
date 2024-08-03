@@ -5,6 +5,8 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
+import jakarta.ws.rs.BadRequestException;
+import jakarta.ws.rs.NotFoundException;
 
 import java.util.List;
 
@@ -24,7 +26,7 @@ public class ProfileRepository {
             return profile;
         }
 
-        return null;
+        throw new BadRequestException();
     }
 
     public Profile getProfileByEmail(String email) {
