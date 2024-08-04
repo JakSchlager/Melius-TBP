@@ -28,33 +28,33 @@
         <h1 class="text-center font-bold text-2xl py-2 pb-4">Sprachliche Stärken</h1>
 
         <div class="h-full flex flex-col space-y-4">
-          <div class="flex justify-evenly items-center animate-in fade-in zoom-in duration-500">
+          <div class="w-auto mx-10 flex justify-evenly items-center animate-in fade-in zoom-in duration-500">
             <div>
-              <input formControlName="programmingName" placeholder="Sprache" class="bg-white shadow-md rounded-md py-1.5 font-bold">
+              <input formControlName="programmingName" placeholder="Sprache" class="w-3/5 bg-white shadow-md rounded-md px-1 py-1.5 font-bold">
             </div>
 
-            <div>
-              <p-rating [ngModel]="userLanguageRating"></p-rating>
-            </div>
-          </div>
-
-          <div class="flex justify-evenly items-center animate-in fade-in zoom-in duration-700">
-            <div>
-              <input formControlName="programmingName" placeholder="Sprache" class="bg-white shadow-md rounded py-2 font-bold">
-            </div>
-
-            <div>
-              <p-rating [ngModel]="userLanguageRating"></p-rating>
+            <div >
+              <p-rating [ngModel]="userLanguageRating" class="w-2/5"></p-rating>
             </div>
           </div>
 
-          <div class="flex justify-evenly items-center animate-in fade-in zoom-in duration-1000">
+          <div class="w-auto mx-10 flex justify-evenly items-center animate-in fade-in zoom-in duration-700">
             <div>
-              <input formControlName="programmingName" placeholder="Sprache" class="bg-white shadow-md rounded py-2 font-bold">
+              <input formControlName="programmingName" placeholder="Sprache" class="w-3/5 bg-white shadow-md rounded px-1 py-2 font-bold">
             </div>
 
             <div>
-              <p-rating [ngModel]="userLanguageRating"></p-rating>
+              <p-rating [ngModel]="userLanguageRating" class="w-2/5"></p-rating>
+            </div>
+          </div>
+
+          <div class="w-auto mx-10 flex justify-evenly items-center animate-in fade-in zoom-in duration-1000">
+            <div>
+              <input formControlName="programmingName" placeholder="Sprache" class="w-3/5 bg-white shadow-md rounded px-1 py-2 font-bold">
+            </div>
+
+            <div>
+              <p-rating [ngModel]="userLanguageRating" class="w-2/5"></p-rating>
             </div>
           </div>
 
@@ -181,9 +181,6 @@
                     [(ngModel)]="selectedSoftwareApp"
                     placeholder="Software"
                     optionLabel="label"
-                    [filter]="true"
-                    filterBy="label"
-                    [showClear]="true"
                     [group]="true">
                     <ng-template let-group pTemplate="group">
                       <div class="flex align-items-center">

@@ -10,6 +10,7 @@ import {FormsModule} from "@angular/forms";
 import {VERSION} from "@angular/cdk";
 import {MatIcon} from "@angular/material/icon";
 import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
+import {DropdownAvatarComponent} from "../../single-components/user-avatar/dropdown-avatar.component";
 
 @Component({
   selector: 'app-home-page',
@@ -25,7 +26,8 @@ import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
     MatMenu,
     MatMenuItem,
     MatMenuTrigger,
-    NgClass
+    NgClass,
+    DropdownAvatarComponent
   ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'
@@ -33,7 +35,8 @@ import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
 export class HomePageComponent implements OnInit{
   isChildRoute: boolean = false;
   registrationLoginService: UserRegistrationLoginService = inject(UserRegistrationLoginService);
-  showAvatarOptions: boolean = false;
+
+  /*
   url: any = '';
 
   onSelectFile(event: any) {
@@ -58,7 +61,7 @@ export class HomePageComponent implements OnInit{
     const fileInput = document.getElementById("fileInput") as HTMLElement;
     fileInput.click();
   }
-
+*/
   constructor(private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
@@ -75,17 +78,6 @@ export class HomePageComponent implements OnInit{
     this.isChildRoute = !!this.route.firstChild;
   }
 
-  showOptions(): void {
-    if (!this.showAvatarOptions) {
-      this.showAvatarOptions = true;
-      return;
-    }
-
-    else {
-      this.showAvatarOptions = false;
-      return;
-    }
-  }
 
   protected readonly onscroll = onscroll;
 }

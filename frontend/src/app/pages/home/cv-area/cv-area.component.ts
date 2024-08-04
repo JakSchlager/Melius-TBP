@@ -5,7 +5,7 @@ import {NgForOf, NgOptimizedImage} from "@angular/common";
 import {MatDateRangeInput} from "@angular/material/datepicker";
 import {FormArray, FormBuilder, ReactiveFormsModule} from "@angular/forms";
 import {MatIcon} from "@angular/material/icon";
-import {DropdownMenuHomeComponent} from "../single-components/dropdown-menu-home/dropdown-menu-home.component";
+import {DropdownMenuHomeComponent} from "../../../single-components/dropdown-menu-home/dropdown-menu-home.component";
 
 @Component({
   selector: 'app-cv-area',

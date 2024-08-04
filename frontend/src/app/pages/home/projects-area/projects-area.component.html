@@ -1,7 +1,8 @@
 <div class="w-full animate-in slide-in-from-bottom-32 duration-500">
-  <h1 class="text-center font-bold text-3xl py-2 my-5">GitHub Projekte</h1>
 
   <div class="w-full flex flex-col items-center">
+    <h1 class="text-center font-bold text-3xl py-2 my-5">Deine GitHub Projekte</h1>
+
     <div id="ghUserForm" [formGroup]="ghUserForm" class=" my-10 box-content rounded-lg bg-white shadow-custom-shadow md:mt-0 sm:max-w-md xl:p-20 xl:py-10 flex flex-col justify-evenly items-center">
       <h1 class="text-3xl mb-5 font-bold leading-tight tracking-tight bg-gradient-to-r from-primary-color to-secondary-color inline-block text-transparent bg-clip-text">
         GitHub Repositories anzeigen
@@ -12,7 +13,13 @@
     </div>
 
     <div id="repo-box" class="w-full grid grid-cols-3 gap-5"></div>
-    <input id="file" type="file" accept="application/pdf" class="w-3/4 h-56 my-5 bg-accent-blue border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-2.5" [required]="true">
+  </div>
 
+  <div class="w-full flex flex-col items-center">
+    <h1 class="text-center font-bold text-3xl py-2 my-5">Deine Kunstwerke</h1>
+
+    <div class="w-3/4 h-56">
+      <input id="file" type="file" accept="application/pdf" class="w-full h-full bg-accent-blue border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-2.5" [required]="true">
+    </div>
   </div>
 </div>
