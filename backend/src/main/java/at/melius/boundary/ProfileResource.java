@@ -33,7 +33,7 @@ public class ProfileResource {
             return this.profileRepository.getProfileByEmail(profile.getEmail());
         }
 
-        return null;
+        throw new NotFoundException();
     }
 
     @GET

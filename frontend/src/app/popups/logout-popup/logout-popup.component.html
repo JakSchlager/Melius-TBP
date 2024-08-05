@@ -11,7 +11,7 @@
     <button class="bg-white text-red-600 border border-red-600 px-2.5 py-1.5 rounded-lg animate-pulse duration-1000 hover:bg-red-600 hover:text-white transition-duration-150" mat-dialog-close>
       Abbrechen
     </button>
-    <button class="bg-white text-red-600 border border-red-600 px-2.5 py-1.5 rounded-lg hover:bg-red-600 hover:text-white duration-150" [mat-dialog-close]="true" [routerLink]="['']">
+    <button class="bg-white text-red-600 border border-red-600 px-2.5 py-1.5 rounded-lg hover:bg-red-600 hover:text-white duration-150" [mat-dialog-close]="true" (click)="logOut()">
       Ausloggen
     </button>
   </mat-dialog-actions>

@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {LoginFormComponent} from "../../forms/login-form/login-form.component";
 import {NgClass, NgIf, NgOptimizedImage} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {RegisterFormComponent} from "../../forms/register-form/register-form.component";
+import {UserRegistrationLoginService} from "../../services/user-registration-login.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-start-page',
@@ -18,9 +20,16 @@ import {RegisterFormComponent} from "../../forms/register-form/register-form.com
   templateUrl: './start-page.component.html',
   styleUrl: './start-page.component.css'
 })
-export class StartPageComponent {
+export class StartPageComponent implements OnInit{
   isLoginClicked: boolean = false;
   isRegisterClicked: boolean = false;
+  router: Router = inject(Router);
+
+  ngOnInit() {
+    if(localStorage.getItem("loggedInUser") !== null || sessionStorage.getItem("loggedInUser") !== null) {
+      this.router.navigate(["/home"])
+    }
+  }
 
   clickedLogin() {
     this.isLoginClicked = true;
