@@ -5,11 +5,11 @@ import {NgForOf, NgOptimizedImage} from "@angular/common";
 import {MatDateRangeInput} from "@angular/material/datepicker";
 import {FormArray, FormBuilder, ReactiveFormsModule} from "@angular/forms";
 import {MatIcon} from "@angular/material/icon";
-import {DropdownMenuHomeComponent} from "../single-components/dropdown-menu-home/dropdown-menu-home.component";
 import {GeneralInfoService} from "../../../services/general-info.service";
 import {UserRegistrationLoginService} from "../../../services/user-registration-login.service";
 import {UserRegistrationData} from "../../../interfaces/user-registration-data";
 import {GeneralInfo} from "../../../interfaces/general-info";
+import {DropdownMenuHomeComponent} from "../../../single-components/dropdown-menu-home/dropdown-menu-home.component";
 
 @Component({
   selector: 'app-cv-area',

@@ -1,7 +1,8 @@
 
 <div class="w-full">
-  <app-dropdown-menu-home></app-dropdown-menu-home>
-
+  <div class="w-full sticky top-12 flex justify-end z-30">
+    <app-dropdown-menu-home></app-dropdown-menu-home>
+  </div>
   <div class="w-full flex justify-center">
     <div class="">
 
@@ -76,7 +77,51 @@
         <div class="bg-white rounded-xl px-10 py-4">
           <h1 class="text-center font-bold text-2xl py-2">Ausbildungen</h1>
 
-          <div [formGroup]="educationForm">
+          <div class="flex justify-between space-x-6 animate-in fade-in zoom-in duration-500">
+            <div class="w-full grid space-y-4">
+              <div class="grid grid-cols-1">
+                <span class="text-gray-500">Bildungseinrichtung/Ort</span>
+                <input formControlName="educationalInst" class="border-b-2">
+              </div>
+
+
+              <div class="w-full grid grid-cols-3">
+                <div class="w-full">
+                  <div class="w-fit grid grid-cols-1">
+                    <span class="text-gray-500">Von</span>
+                    <input formControlName="eIdateFrom" type="date" class="border-b-2">
+                  </div>
+                </div>
+
+                <div class="w-full">
+                  <div class="w-fit grid grid-cols-1">
+                    <span class="text-gray-500">Bis</span>
+                    <input formControlName="eIdateTo" type="date" class="border-b-2">
+                  </div>
+                </div>
+
+                <div class="w-full flex justify-end">
+                  <div class="grid grid-cols-1">
+                    <span class="row-start-1 col-start-1 text-gray-500">Absolviert</span>
+                    <div class="flex items-center pb-2">
+                      <div class="grid">
+                        <svg class="pointer-events-none z-10 right-1 relative col-start-1 row-start-1 h-4 w-4 self-center justify-self-end forced-colors:hidden" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                          <path fill-rule="evenodd" d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"></path>
+                        </svg>
+                        <select formControlName="eIFinished" class="w-fit appearance-none forced-colors:appearance-auto border row-start-1 col-start-1 rounded-lg bg-accent-blue text-black px-2">
+                          <option>Ja</option>
+                          <option>Nein</option>
+                          <option>In Ausbildung</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div [formGroup]="educationForm" class="mt-8">
             <div formArrayName="educationFormItems" class="space-y-8">
               <div *ngFor="let educationItem of educationFormItems.controls; let i = index" [formGroupName]="i">
 
@@ -131,8 +176,10 @@
               </div>
             </div>
 
-            <div class="flex justify-end">
-              <svg class="bg-white cursor-pointer rounded-md hover:shadow-md duration-150" (click)="addEducationInfo()" xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 -960 960 960" width="36px" fill="#0D91FA"><path d="M160-320q-17 0-28.5-11.5T120-360q0-17 11.5-28.5T160-400h200q17 0 28.5 11.5T400-360q0 17-11.5 28.5T360-320H160Zm0-160q-17 0-28.5-11.5T120-520q0-17 11.5-28.5T160-560h360q17 0 28.5 11.5T560-520q0 17-11.5 28.5T520-480H160Zm0-160q-17 0-28.5-11.5T120-680q0-17 11.5-28.5T160-720h360q17 0 28.5 11.5T560-680q0 17-11.5 28.5T520-640H160Zm520 480q-17 0-28.5-11.5T640-200v-120H520q-17 0-28.5-11.5T480-360q0-17 11.5-28.5T520-400h120v-120q0-17 11.5-28.5T680-560q17 0 28.5 11.5T720-520v120h120q17 0 28.5 11.5T880-360q0 17-11.5 28.5T840-320H720v120q0 17-11.5 28.5T680-160Z"/></svg>
+            <div class="flex justify-end py-2">
+              <button class="bg-white rounded-md hover:shadow-md duration-150" (click)="addEducationInfo()">
+                <img src="assets/icons/home-page/add_element-icon.svg" alt="add_icon" class="w-10 h-10 cursor-pointer">
+              </button>
             </div>
           </div>
         </div>
@@ -144,7 +191,39 @@
         <div class="bg-white rounded-xl  px-10 py-4">
           <h1 class="text-center font-bold text-2xl py-2">Berufserfahrungen</h1>
 
-          <div [formGroup]="jobExperiencesForm">
+          <div class="h-full flex justify-between space-x-6 animate-in fade-in zoom-in duration-500">
+            <div class="w-full grid space-y-4">
+
+              <div class="w-full grid grid-cols-1">
+                <span class="text-gray-500">Firma/Ort</span>
+                <input formControlName="companyName" class="border-b-2">
+              </div>
+
+
+              <div class="w-full grid grid-cols-2 justify-between">
+                <div class="w-full">
+                  <div class="w-fit grid grid-cols-1">
+                    <span class="text-gray-500">Von</span>
+                    <input formControlName="workFrom" type="date" class="border-b-2">
+                  </div>
+                </div>
+
+                <div class="w-full">
+                  <div class="w-fit grid grid-cols-1">
+                    <span class="text-gray-500">Bis</span>
+                    <input formControlName="workTo" type="date" class="border-b-2">
+                  </div>
+                </div>
+              </div>
+
+              <div class="w-full grid grid-cols-1">
+                <span class="text-gray-500">Zusätzliche Informationen: </span>
+                <textarea formControlName="moreInfo" class="bg-accent-blue resize-y rounded-md border-2"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div [formGroup]="jobExperiencesForm" class="mt-8">
             <div formArrayName="jobExperiencesFormItems" class="space-y-8">
               <div *ngFor="let jobExperienceItem of jobExperiencesFormItems.controls; let i = index" [formGroupName]="i" class="space-y-4">
 
@@ -186,8 +265,10 @@
               </div>
             </div>
 
-            <div class="flex justify-end">
-              <svg class="bg-white cursor-pointer rounded-md hover:shadow-md duration-150" (click)="addJobExperiencesInfo()" xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 -960 960 960" width="36px" fill="#0D91FA"><path d="M160-320q-17 0-28.5-11.5T120-360q0-17 11.5-28.5T160-400h200q17 0 28.5 11.5T400-360q0 17-11.5 28.5T360-320H160Zm0-160q-17 0-28.5-11.5T120-520q0-17 11.5-28.5T160-560h360q17 0 28.5 11.5T560-520q0 17-11.5 28.5T520-480H160Zm0-160q-17 0-28.5-11.5T120-680q0-17 11.5-28.5T160-720h360q17 0 28.5 11.5T560-680q0 17-11.5 28.5T520-640H160Zm520 480q-17 0-28.5-11.5T640-200v-120H520q-17 0-28.5-11.5T480-360q0-17 11.5-28.5T520-400h120v-120q0-17 11.5-28.5T680-560q17 0 28.5 11.5T720-520v120h120q17 0 28.5 11.5T880-360q0 17-11.5 28.5T840-320H720v120q0 17-11.5 28.5T680-160Z"/></svg>
+            <div class="flex justify-end py-2">
+              <button class="bg-white rounded-md hover:shadow-md duration-150" (click)="addJobExperiencesInfo()">
+                <img src="assets/icons/home-page/add_element-icon.svg" alt="add_icon" class="w-10 h-10 cursor-pointer">
+              </button>
             </div>
           </div>
         </div>

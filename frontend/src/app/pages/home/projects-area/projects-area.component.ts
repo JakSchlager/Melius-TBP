@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import {Component, ElementRef, signal, ViewChild} from '@angular/core';
 import $ from 'jquery';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {NgIf} from "@angular/common";
+import {MatIcon} from "@angular/material/icon";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 
 @Component({
@@ -9,7 +11,8 @@ import {NgIf} from "@angular/common";
   standalone: true,
   imports: [
     ReactiveFormsModule,
-    NgIf
+    NgIf,
+    MatIcon
   ],
   templateUrl: './projects-area.component.html',
   styleUrl: './projects-area.component.css'
@@ -57,7 +60,9 @@ export class ProjectsAreaComponent {
                  <div class='p-3'>
                    <p>${repo_description}</p>
                    <div>${repo_language}</div>
-                   <a class='w-1/3 mx-auto my-3 py-2 bg-gray-900 rounded-md text-white flex align-middle justify-center font-bold hover:bg-gray-300 hover:text-black duration-150 ease-in-out' href='${repo_url}' target='_blank'>Zum Repo</a>
+                   <button id="repo-link-${index}" class='w-1/3 mx-auto my-3 py-2 bg-gray-900 rounded-md text-white flex align-middle justify-center font-bold hover:bg-gray-300 hover:text-black duration-150 ease-in-out'>
+                      <a href='${repo_url}' target='_blank'>Zum Repo</a>
+                   </button>
                  </div>
                </div>
               </div>`
@@ -75,10 +80,12 @@ declare var window: any;
 window.toggleRepo = function (index: number) {
   const repoElement = document.getElementById(`repo-${index}`);
   const toggleBtn = document.getElementById(`toggle-btn-${index}`);
+  const repoLinkButton = document.getElementById(`repo-link-${index}`);
 
-
-  if (repoElement && toggleBtn) {
+  if (repoElement && toggleBtn && repoLinkButton) {
     repoElement.classList.toggle('blur-sm');
+    repoLinkButton.classList.add('disabled');
+    repoLinkButton.setAttribute('disabled', 'true');
     if (repoElement.classList.contains('blur-sm')) {
       toggleBtn.innerHTML = `
         <svg class="mt-2 mr-2" xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="#00000">
@@ -94,75 +101,3 @@ window.toggleRepo = function (index: number) {
     }
   }
 };
-
-
-
-/*
-function genRepo(user: string) {
-
-  var requestURL = 'https://api.github.com/users/' + user + '/repos?type=all';
-  var request = $.get(requestURL, function () {
-  })
-    .done(function () {
-      request = request.responseJSON;
-      if (!Array.isArray(request) || !request.length) {
-        $("#repo-box").html("<div class='error-box'><h1 class='error-msg'> Dieser GitHub Benutzername existiert nicht. Bitte gib deinen eigenen GitHub Benutzernamen an! </h1></div>");
-      } else {
-        $("#repo-box").html("");
-        $("#ghUserForm").remove();
-        for (let i = 0; i < request.length; i++) {
-          // variables from api request
-          var repo_url = request[i].html_url;
-          var username = request[i].owner.login;
-          var repo_name = request[i].name;
-          var repo_description = request[i].description;
-          var repo_language = request[i].language;
-          var repo_stars = request[i].stargazers_count;
-          var repo_forks = request[i].forks;
-
-
-          // replaces null values to be better represented when displayed
-          if (repo_description == null) {
-            repo_description = "<i>No Description</i>";
-          }
-          if (repo_language == null) {
-            repo_language = "-";
-          }
-
-          // Puts repo information into div
-          $("#repo-box").append(
-            "<div class='w-4/5 m-auto flex flex-col rounded-2xl overflow-hidden shadow-md animate-in fade-in zoom-in duration-500 hover:shadow-custom-shadow hover:-translate-y-2 transition-duration-150'>" +
-            "<div class='flex justify-around bg-gray-900'>" +
-            "<h1 class='text-white w-full p-3 font-bold'>" + username + "/" + repo_name + "</h1>" +
-            "<button>" +
-            "<svg class='mt-2 mr-2' xmlns=\"http://www.w3.org/2000/svg\" height=\"32px\" viewBox=\"0 -960 960 960\" width=\"32px\" fill=\"#FFFFFF\"><path d=\"M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-134 0-244.5-72T61-462q-5-9-7.5-18.5T51-500q0-10 2.5-19.5T61-538q64-118 174.5-190T480-800q134 0 244.5 72T899-538q5 9 7.5 18.5T909-500q0 10-2.5 19.5T899-462q-64 118-174.5 190T480-200Zm0-300Zm0 220q113 0 207.5-59.5T832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280Z\"/></svg>" +
-            "</button>" +
-            "</div>" +
-            "<p class='p-3'>" + repo_description + "</p>" +
-            "<div class='p-3'><span class='img' uk-icon='code' class='uk-icon'></span>" + repo_language + "</div> " +
-            "<a class='w-1/3 mx-auto my-3 py-2 bg-gray-900 rounded-md text-white flex align-middle justify-center font-bold hover:bg-gray-300 hover:text-black duration-150 ease-in-out' href='" + repo_url + "' target='_blank'>Zum Repo</a>" +
-            "</div>");
-        }
-      }
-    });
-}
-
- */
-
-/*var file: HTMLInputElement | null = <HTMLInputElement> document.getElementById('file');
-
-file!.onchange = function(e) {
-  var ext = file!.value.match(/\.([^\.]+)$/)[1];
-  switch (ext) {
-    case 'jpg':
-    case 'bmp':
-    case 'png':
-    case 'tif':
-      alert('Allowed');
-      break;
-    default:
-      alert('Not allowed');
-      this.value = '';
-  }
-};*/
-

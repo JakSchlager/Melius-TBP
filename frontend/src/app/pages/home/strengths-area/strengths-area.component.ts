@@ -7,7 +7,7 @@ import {MultiSelectModule} from "primeng/multiselect";
 import {FloatLabelModule} from "primeng/floatlabel";
 import {ChipsModule} from "primeng/chips";
 import {CheckboxModule} from "primeng/checkbox";
-import {DropdownMenuHomeComponent} from "../single-components/dropdown-menu-home/dropdown-menu-home.component";
+import {DropdownMenuHomeComponent} from "../../../single-components/dropdown-menu-home/dropdown-menu-home.component";
 import { RatingModule } from 'primeng/rating';
 import { SelectItemGroup } from 'primeng/api';
 import {DropdownModule} from "primeng/dropdown";

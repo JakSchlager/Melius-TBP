@@ -31,6 +31,24 @@ import {UserRegistrationLoginService} from "../../services/user-registration-log
 export class SideBarComponent implements OnInit {
   registrationLoginService: UserRegistrationLoginService = inject(UserRegistrationLoginService);
   router: Router = inject(Router);
+  hamburgerIconClicked : boolean = false;
+  isAnimating: boolean = false;
+
+  openDialog() {
+    this.dialogRef.open(LogoutPopupComponent);
+  }
+  toggleMenu() {
+    if (this.hamburgerIconClicked) {
+      this.isAnimating = true;
+    }
+    this.hamburgerIconClicked = !this.hamburgerIconClicked;
+  }
+
+  onAnimationEnd() {
+    if(!this.hamburgerIconClicked){
+      this.isAnimating = false;
+    }
+  }
 
   constructor(private dialogRef: MatDialog) {}
 
@@ -52,8 +70,5 @@ export class SideBarComponent implements OnInit {
     }
   }
 
-  openDialog() {
-    this.dialogRef.open(LogoutPopupComponent);
-  }
 
 }
