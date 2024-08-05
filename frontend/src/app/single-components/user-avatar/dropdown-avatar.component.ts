@@ -1,6 +1,6 @@
 import {Component, inject} from '@angular/core';
 import {MatIcon} from "@angular/material/icon";
-import {NgIf} from "@angular/common";
+import {NgClass, NgIf} from "@angular/common";
 import {HomePageComponent} from "../../pages/home-page/home-page.component";
 import {FormsModule} from "@angular/forms";
 
@@ -10,13 +10,15 @@ import {FormsModule} from "@angular/forms";
   imports: [
     MatIcon,
     NgIf,
-    FormsModule
+    FormsModule,
+    NgClass
   ],
   templateUrl: './dropdown-avatar.component.html',
   styleUrl: './dropdown-avatar.component.css'
 })
 export class DropdownAvatarComponent {
   showAvatarOptions: boolean = false
+  isAnimating: boolean = false;
   url: any = '';
 
   onSelectFile(event: any) {
@@ -43,14 +45,15 @@ export class DropdownAvatarComponent {
   }
 
   showOptions(): void {
-    if (!this.showAvatarOptions) {
-      this.showAvatarOptions = true;
-      return;
+    if (this.showAvatarOptions) {
+      this.isAnimating = true;
     }
+    this.showAvatarOptions = !this.showAvatarOptions;
+  }
 
-    else {
-      this.showAvatarOptions = false;
-      return;
+  onAnimationEnd() {
+    if(!this.showAvatarOptions){
+      this.isAnimating = false;
     }
   }
 }
