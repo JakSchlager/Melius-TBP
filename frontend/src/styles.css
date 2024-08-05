@@ -14,10 +14,6 @@
 html, body { height: 100%; }
 body { margin: 0; }
 
-.activeSidebarTap {
-  color: #0d91fa;
-  font-weight: bold;
-}
 
 
 .activeHomeCVNavTap {
