@@ -1,5 +1,6 @@
 package at.melius.repository;
 
+import at.melius.model.GeneralInfo;
 import at.melius.model.Profile;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
@@ -27,6 +28,16 @@ public class ProfileRepository {
         }
 
         throw new BadRequestException();
+    }
+
+    @Transactional
+    public void updateProfile(Profile profile) {
+        Profile currProfile = entityManager.find(Profile.class, profile.getId());
+
+        currProfile.setFirstName(profile.getFirstName());
+        currProfile.setLastName(profile.getLastName());
+        currProfile.setEmail(profile.getEmail());
+        currProfile.setPhoneNumber(profile.getPhoneNumber());
     }
 
     public Profile getProfileByEmail(String email) {

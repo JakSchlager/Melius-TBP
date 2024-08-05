@@ -1,3 +1,5 @@
+//PROFILE
+
 POST http://localhost:8080/profile/register
 Content-Type: application/json
 
@@ -23,3 +25,25 @@ Content-Type: application/json
 
 GET http://localhost:8080/profile/list
 Content-Type: */*
+
+
+############
+
+//GENERAL INFO
+
+POST http://localhost:8080/info/add
+Content-Type: application/json
+
+{
+  "profile": {
+    "id": 1,
+    "firstName": "Jakob",
+    "lastName": "Schlager",
+    "email": "jak.schlag@gmail.com",
+    "phoneNumber": "7589748392"
+  },
+  "zipCode": "7477",
+  "city": "Houston",
+  "gender": "Divers",
+  "address": "Houston Street 187"
+}

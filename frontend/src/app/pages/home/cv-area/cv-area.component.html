@@ -30,41 +30,41 @@
               <div class="w-full flex justify-between space-x-10">
                 <div class="flex flex-col">
                   <span class="text-gray-500">Vorname</span>
-                  <input type="text" class="border-b-2">
+                  <input [value]="currGeneralInfo!.profile.firstName" type="text" class="border-b-2">
                 </div>
 
                 <div class="flex flex-col">
                   <span class="text-gray-500">Nachname</span>
-                  <input type="text" class="border-b-2">
+                  <input [value]="currGeneralInfo!.profile.lastName" type="text" class="border-b-2">
                 </div>
               </div>
 
               <div class="grid grid-cols-1">
                 <span class="text-gray-500">Email</span>
-                <input type="email" class="border-b-2">
+                <input [value]="currGeneralInfo!.profile.email" type="email" class="border-b-2">
               </div>
 
               <div class="grid grid-cols-1">
                 <span class="text-gray-500">Telefonnummer</span>
-                <input type="tel" class="border-b-2">
+                <input [value]="currGeneralInfo!.profile.phoneNumber" type="tel" class="border-b-2">
               </div>
 
               <div class="w-full flex justify-between space-x-10">
                 <div class="flex flex-col">
                   <span class="text-gray-500">PLZ</span>
-                  <input type="text" class="border-b-2">
+                  <input [value]="currGeneralInfo!.zipCode" type="text" class="border-b-2">
                 </div>
 
                 <div class="flex flex-col">
                   <span class="text-gray-500">Ort</span>
-                  <input type="text" class="border-b-2">
+                  <input [value]="currGeneralInfo!.city" type="text" class="border-b-2">
                 </div>
               </div>
 
 
               <div class="grid grid-cols-1">
                 <span class="text-gray-500">Addresse</span>
-                <input class="border-b-2">
+                <input [value]="currGeneralInfo!.address" class="border-b-2">
               </div>
             </div>
           </div>
