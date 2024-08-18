@@ -3,17 +3,17 @@
   <div class="w-full sticky top-12 flex justify-end z-30">
     <app-dropdown-menu-home></app-dropdown-menu-home>
   </div>
-  <div class="w-full flex justify-center">
-    <div class="">
+  <div class="w-full grid grid-cols-3 justify-center">
+    <div class="col-start-2 space-y-10">
 
       <!-- Allgemeine Informationen -->
-      <div class="p-4 drop-shadow-lg animate-in slide-in-from-bottom-32 duration-500">
+      <div class="drop-shadow-lg animate-in slide-in-from-bottom-32 duration-500">
         <div class="bg-white rounded-xl px-10 py-6">
           <h1 class="text-center font-bold text-2xl py-2">Allgemein</h1>
 
           <div class="space-y-6">
-            <div class="space-y-2">
-              <span class="row-start-1 col-start-1 text-gray-500">Ansprache</span>
+            <div class="flex flex-col space-y-1">
+              <span class="text-gray-500">Ansprache</span>
 
               <div class="flex items-center pb-2">
                 <div class="grid">
@@ -27,36 +27,36 @@
                   </select>
                 </div>
               </div>
-
-              <div class="w-full flex justify-between space-x-10">
-                <div class="flex flex-col">
+            </div>
+              <div class="grid grid-cols-2">
+                <div class="flex flex-col pr-2">
                   <span class="text-gray-500">Vorname</span>
                   <input [value]="currGeneralInfo!.profile.firstName" type="text" class="border-b-2">
                 </div>
 
-                <div class="flex flex-col">
+                <div class="flex flex-col pl-2">
                   <span class="text-gray-500">Nachname</span>
                   <input [value]="currGeneralInfo!.profile.lastName" type="text" class="border-b-2">
                 </div>
               </div>
 
-              <div class="grid grid-cols-1">
+              <div class="flex flex-col">
                 <span class="text-gray-500">Email</span>
                 <input [value]="currGeneralInfo!.profile.email" type="email" class="border-b-2">
               </div>
 
-              <div class="grid grid-cols-1">
+              <div class="flex flex-col">
                 <span class="text-gray-500">Telefonnummer</span>
                 <input [value]="currGeneralInfo!.profile.phoneNumber" type="tel" class="border-b-2">
               </div>
 
-              <div class="w-full flex justify-between space-x-10">
-                <div class="flex flex-col">
+              <div class="grid grid-cols-2">
+                <div class="flex flex-col pr-2">
                   <span class="text-gray-500">PLZ</span>
                   <input [value]="currGeneralInfo!.zipCode" type="text" class="border-b-2">
                 </div>
 
-                <div class="flex flex-col">
+                <div class="flex flex-col pl-2">
                   <span class="text-gray-500">Ort</span>
                   <input [value]="currGeneralInfo!.city" type="text" class="border-b-2">
                 </div>
@@ -67,13 +67,12 @@
                 <span class="text-gray-500">Addresse</span>
                 <input [value]="currGeneralInfo!.address" class="border-b-2">
               </div>
-            </div>
           </div>
         </div>
       </div>
 
       <!-- Ausbildung Informationen -->
-      <div class="p-4 drop-shadow-lg animate-in slide-in-from-bottom-32 duration-700">
+      <div class="drop-shadow-lg animate-in slide-in-from-bottom-32 duration-700">
         <div class="bg-white rounded-xl px-10 py-4">
           <h1 class="text-center font-bold text-2xl py-2">Ausbildungen</h1>
 
@@ -187,7 +186,7 @@
 
 
       <!-- Berufserfahrungen Informationen -->
-      <div class="p-4 drop-shadow-lg animate-in slide-in-from-bottom-32 duration-700">
+      <div class="drop-shadow-lg animate-in slide-in-from-bottom-32 duration-700">
         <div class="bg-white rounded-xl  px-10 py-4">
           <h1 class="text-center font-bold text-2xl py-2">Berufserfahrungen</h1>
 
