@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormArray, FormsModule} from "@angular/forms";
 import {DropdownModule} from "primeng/dropdown";
 import {NgClass, NgIf} from "@angular/common";
@@ -14,6 +14,7 @@ import {identity} from "rxjs";
   styleUrl: './dropdown-menu-home.component.css'
 })
 export class DropdownMenuHomeComponent{
+  @Output() newFormAdded = new EventEmitter<void>();
   isOpen: boolean = false;
   isAnimating: boolean = false;
 
@@ -28,5 +29,9 @@ export class DropdownMenuHomeComponent{
     if(!this.isOpen){
       this.isAnimating = false;
     }
+  }
+
+  addCustomForm() {
+    this.newFormAdded.emit()
   }
 }

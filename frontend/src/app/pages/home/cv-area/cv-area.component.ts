@@ -3,7 +3,7 @@ import {HomeNavbarComponent} from "../../../navigation/home-navbar/home-navbar.c
 import {SideBarComponent} from "../../../navigation/side-bar/side-bar.component";
 import {NgForOf, NgOptimizedImage} from "@angular/common";
 import {MatDateRangeInput} from "@angular/material/datepicker";
-import {FormArray, FormBuilder, ReactiveFormsModule} from "@angular/forms";
+import {FormArray, FormBuilder, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {MatIcon} from "@angular/material/icon";
 import {GeneralInfoService} from "../../../services/general-info.service";
 import {UserRegistrationLoginService} from "../../../services/user-registration-login.service";

@@ -11,6 +11,8 @@ import {DropdownMenuHomeComponent} from "../../../single-components/dropdown-men
 import { RatingModule } from 'primeng/rating';
 import { SelectItemGroup } from 'primeng/api';
 import {DropdownModule} from "primeng/dropdown";
+import {DropStrProgrComponent} from "../../../single-components/strengths/drop-str-progr/drop-str-progr.component";
+import {DropStrEdvComponent} from "../../../single-components/strengths/drop-str-edv/drop-str-edv.component";
 
 @Component({
   selector: 'app-strengths-area',
@@ -30,7 +32,9 @@ import {DropdownModule} from "primeng/dropdown";
     CheckboxModule,
     DropdownMenuHomeComponent,
     RatingModule,
-    DropdownModule
+    DropdownModule,
+    DropStrProgrComponent,
+    DropStrEdvComponent,
   ],
   templateUrl: './strengths-area.component.html',
   styleUrl: './strengths-area.component.css'

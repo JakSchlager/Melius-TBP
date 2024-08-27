@@ -1,7 +1,7 @@
 import {Component, ElementRef, signal, ViewChild} from '@angular/core';
 import $ from 'jquery';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {NgIf} from "@angular/common";
+import {NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
 import {MatIcon} from "@angular/material/icon";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
@@ -12,12 +12,63 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   imports: [
     ReactiveFormsModule,
     NgIf,
-    MatIcon
+    MatIcon,
+    NgForOf,
+    NgOptimizedImage
   ],
   templateUrl: './projects-area.component.html',
   styleUrl: './projects-area.component.css'
 })
 export class ProjectsAreaComponent {
+  selectedFiles: { name: string, url: string }[] = [];
+  uploadedFiles: { name: string, url: string }[] = [];
+  uploadBtnClicked: boolean = false;
+
+  onFileSelected(event: any) {
+    const files = event.target.files;
+    for (let file of files) {
+      if (this.isValidFile(file)) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.selectedFiles.push({
+          name: file.name,
+          url: e.target.result
+        });
+      };
+      reader.readAsDataURL(file);
+      }
+      else {
+        alert('Only JPEG, PNG and PDF files are allowed.')
+      }
+    }
+  }
+
+  isValidFile(file: any): boolean {
+    const fileType = file.type;
+    return (
+      fileType === 'image/jpeg' ||
+      fileType === 'image/png' ||
+      fileType === 'application/pdf'
+    )
+  }
+
+  isPdf(url: string): boolean {
+    return url.includes('application/pdf');
+  }
+
+  removeFile(index: number) {
+    this.selectedFiles.splice(index, 1);
+  }
+
+  uploadFiles() {
+    this.uploadBtnClicked = true;
+    this.uploadedFiles = this.uploadedFiles.concat(this.selectedFiles);
+    this.selectedFiles = [];
+  }
+
+  removeSpecificFile(index: number) {
+    this.uploadedFiles.slice(index);
+  }
 
   ghUserForm = new FormGroup( {
     username: new FormControl('', [Validators.required]),

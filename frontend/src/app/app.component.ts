@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {Router, RouterOutlet} from '@angular/router';
+import { Router, RouterOutlet} from '@angular/router';
 import {SideBarComponent} from "./navigation/side-bar/side-bar.component";
 import {NgIf, NgOptimizedImage} from "@angular/common";
 import {MatDrawer, MatDrawerContainer, MatDrawerContent} from "@angular/material/sidenav";
@@ -17,12 +17,10 @@ export class AppComponent implements OnInit{
   title = 'Melius-TBP';
   @ViewChild('drawer') drawer!: MatDrawer;
 
-
   constructor(private router: Router) {}
 
   ngOnInit() {
   }
-
 
   showSideNavBar(): boolean{
     return this.router.url !== '/';
