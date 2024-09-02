@@ -12,7 +12,7 @@
           <h1 class="text-center font-bold text-2xl py-2">Allgemein</h1>
 
           <div class="space-y-6">
-            <div class="space-y-2">
+            <form class="space-y-2" [formGroup]="generalInfoForm">
               <span class="row-start-1 col-start-1 text-gray-500">Ansprache</span>
 
               <div class="flex items-center pb-2">
@@ -20,7 +20,8 @@
                   <svg class="pointer-events-none z-10 right-1 relative col-start-1 row-start-1 h-4 w-4 self-center justify-self-end forced-colors:hidden" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
                     <path fill-rule="evenodd" d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"></path>
                   </svg>
-                  <select class="w-20 appearance-none forced-colors:appearance-auto border row-start-1 col-start-1 rounded-lg bg-accent-blue text-black px-2">
+                  <select formControlName="gender" class="w-20 appearance-none forced-colors:appearance-auto border row-start-1 col-start-1 rounded-lg bg-accent-blue text-black px-2">
+                    <option></option>
                     <option>Herr</option>
                     <option>Frau</option>
                     <option>Divers</option>
@@ -31,43 +32,45 @@
               <div class="w-full flex justify-between space-x-10">
                 <div class="flex flex-col">
                   <span class="text-gray-500">Vorname</span>
-                  <input [value]="currGeneralInfo!.profile.firstName" type="text" class="border-b-2">
+                  <input formControlName="firstName" type="text" class="border-b-2">
                 </div>
 
                 <div class="flex flex-col">
                   <span class="text-gray-500">Nachname</span>
-                  <input [value]="currGeneralInfo!.profile.lastName" type="text" class="border-b-2">
+                  <input formControlName="lastName" type="text" class="border-b-2">
                 </div>
               </div>
 
               <div class="grid grid-cols-1">
                 <span class="text-gray-500">Email</span>
-                <input [value]="currGeneralInfo!.profile.email" type="email" class="border-b-2">
+                <input formControlName="email" type="email" class="border-b-2">
               </div>
 
               <div class="grid grid-cols-1">
                 <span class="text-gray-500">Telefonnummer</span>
-                <input [value]="currGeneralInfo!.profile.phoneNumber" type="tel" class="border-b-2">
+                <input formControlName="phoneNumber" type="tel" class="border-b-2">
               </div>
 
               <div class="w-full flex justify-between space-x-10">
                 <div class="flex flex-col">
                   <span class="text-gray-500">PLZ</span>
-                  <input [value]="currGeneralInfo!.zipCode" type="text" class="border-b-2">
+                  <input formControlName="zipCode" type="text" class="border-b-2">
                 </div>
 
                 <div class="flex flex-col">
                   <span class="text-gray-500">Ort</span>
-                  <input [value]="currGeneralInfo!.city" type="text" class="border-b-2">
+                  <input formControlName="city" type="text" class="border-b-2">
                 </div>
               </div>
 
 
               <div class="grid grid-cols-1">
                 <span class="text-gray-500">Addresse</span>
-                <input [value]="currGeneralInfo!.address" class="border-b-2">
+                <input formControlName="address" class="border-b-2">
               </div>
-            </div>
+
+              <button type="submit" (click)="updateGeneralInfo()" class="w-1/5 font-bold bg-primary-color text-accent-blue focus:ring-4 focus:outline-none focus:ring-primary-300 rounded-lg text-sm px-5 py-2 text-center hover:bg-accent-blue hover:text-primary-color duration-150 ease-in-out">Speichern</button>
+            </form>
           </div>
         </div>
       </div>

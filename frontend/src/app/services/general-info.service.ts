@@ -26,4 +26,8 @@ export class GeneralInfoService {
   loadGeneralInfo(profile: UserRegistrationData): Observable<GeneralInfo> {
     return this.httpClient.get<GeneralInfo>(this.url + "get/" + profile.id);
   }
+
+  updateGeneralInfo(newGeneralInfo: GeneralInfo) {
+    return this.httpClient.post<GeneralInfo>(this.url + "update", newGeneralInfo);
+  }
 }

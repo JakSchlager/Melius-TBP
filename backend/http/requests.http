@@ -47,3 +47,22 @@ Content-Type: application/json
   "gender": "Divers",
   "address": "Houston Street 187"
 }
+
+###
+
+POST http://localhost:8080/info/update
+Content-Type: application/json
+
+{
+  "profile": {
+    "id": 1,
+    "firstName": "Jakob",
+    "lastName": "Schlager",
+    "email": "jak.schlag@gmail.com",
+    "phoneNumber": "7589748392"
+  },
+  "zipCode": "7477",
+  "city": "husten",
+  "gender": "Divers",
+  "address": "Houston Street 187"
+}
