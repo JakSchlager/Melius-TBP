@@ -1,15 +1,18 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {HomeNavbarComponent} from "../../../navigation/home-navbar/home-navbar.component";
 import {SideBarComponent} from "../../../navigation/side-bar/side-bar.component";
-import {NgForOf, NgOptimizedImage} from "@angular/common";
+import {formatDate, NgForOf, NgOptimizedImage} from "@angular/common";
 import {MatDateRangeInput} from "@angular/material/datepicker";
-import {FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
+import {Form, FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {MatIcon} from "@angular/material/icon";
 import {GeneralInfoService} from "../../../services/general-info.service";
 import {UserRegistrationLoginService} from "../../../services/user-registration-login.service";
 import {GeneralInfo} from "../../../interfaces/general-info";
 import {DropdownMenuHomeComponent} from "../../../single-components/dropdown-menu-home/dropdown-menu-home.component";
 import {Router} from "@angular/router";
+import {Education} from "../../../interfaces/education";
+import {EducationService} from "../../../services/education.service";
+import {dateTimestampProvider} from "rxjs/internal/scheduler/dateTimestampProvider";
 
 @Component({
   selector: 'app-cv-area',
@@ -30,10 +33,11 @@ import {Router} from "@angular/router";
 export class CvAreaComponent implements OnInit{
   generalInfoService: GeneralInfoService = inject(GeneralInfoService);
   userRegistrationLoginService: UserRegistrationLoginService = inject(UserRegistrationLoginService);
+  educationService: EducationService = inject(EducationService);
   currGeneralInfo: GeneralInfo | undefined;
   router: Router = inject(Router);
 
-  generalInfoForm = new FormGroup({
+  generalInfoForm: FormGroup = new FormGroup({
     gender: new FormControl(''),
     firstName: new FormControl(''),
     lastName: new FormControl(''),
@@ -63,6 +67,13 @@ export class CvAreaComponent implements OnInit{
 
         }
       })
+
+      this.educationService.getEducationsByProfileId(this.userRegistrationLoginService.loggedInUser!.id).subscribe(v => {
+        v = <Education[]> v;
+        for(let currEducation of v) {
+          this.addEducationInfo(currEducation);
+        }
+      })
     }, 100);
 
   }
@@ -78,18 +89,36 @@ export class CvAreaComponent implements OnInit{
   }
 
   deleteEducationInfo(index: number) {
+    this.educationService.deleteEducation(this.educationFormItems.at(index).value.id).subscribe();
+
     this.educationFormItems.removeAt(index);
   }
 
-  addEducationInfo() {
-    this.educationFormItems.push(
-      this.fb.group({
-        educationalInst: [''],
-        eIdateFrom: [''],
-        eIdateTo: [''],
-        eIFinished: ['']
-      })
-    )
+  addEducationInfo(education?: Education) {
+    if(education !== undefined) {
+      this.educationFormItems.push(
+        this.fb.group({
+          id: education.id,
+          educationalInst: education.name,
+          eIdateFrom: formatDate(education.fromDate, 'yyyy-MM-dd', 'en') ,
+          eIdateTo: formatDate(education.toDate, 'yyyy-MM-dd', 'en') ,
+          eIFinished: education.finished
+        })
+      )
+    }
+
+    else {
+      this.educationFormItems.push(
+        this.fb.group({
+          id: [""],
+          educationalInst: [""],
+          eIdateFrom: [""],
+          eIdateTo: [""],
+          eIFinished: [""]
+        })
+      )
+    }
+
   }
 
 
@@ -138,5 +167,27 @@ export class CvAreaComponent implements OnInit{
     setTimeout(() => {
       this.router.navigateByUrl("/", {skipLocationChange: true});
     }, 100);
+  }
+
+  updateEducation(formNumber: number) {
+      let education: Education = {
+        fromDate: new Date(this.educationFormItems.at(formNumber).value.eIdateFrom),
+        finished: this.educationFormItems.at(formNumber).value.eIFinished,
+        id: this.educationFormItems.at(formNumber).value.id,
+        name: this.educationFormItems.at(formNumber).value.educationalInst,
+        toDate: new Date(this.educationFormItems.at(formNumber).value.eIdateTo),
+        profile: {
+          id: this.userRegistrationLoginService.loggedInUser!.id,
+          firstName: this.userRegistrationLoginService.loggedInUser!.firstName,
+          lastName: this.userRegistrationLoginService.loggedInUser!.lastName,
+          email: this.userRegistrationLoginService.loggedInUser!.email,
+          phoneNumber: this.userRegistrationLoginService.loggedInUser!.phoneNumber,
+          password: this.userRegistrationLoginService.loggedInUser!.password
+        }
+      }
+
+      this.educationService.updateEducation(education).subscribe();
+
+      this.router.navigateByUrl("/", {skipLocationChange: true});
   }
 }

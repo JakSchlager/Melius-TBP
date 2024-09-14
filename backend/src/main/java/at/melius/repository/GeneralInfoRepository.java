@@ -13,9 +13,6 @@ public class GeneralInfoRepository {
     @Inject
     EntityManager entityManager;
 
-    @Inject
-    ProfileRepository profileRepository;
-
     @Transactional
     public GeneralInfo addGeneralInfo(GeneralInfo generalInfo) {
         if(getInfoByProfile(generalInfo.getProfile()) == null) {
