@@ -47,6 +47,7 @@ export class ProjectsAreaComponent {
     const fileType = file.type;
     return (
       fileType === 'image/jpeg' ||
+      fileType === 'image/jpg' ||
       fileType === 'image/png' ||
       fileType === 'application/pdf'
     )
@@ -67,7 +68,7 @@ export class ProjectsAreaComponent {
   }
 
   removeSpecificFile(index: number) {
-    this.uploadedFiles.slice(index);
+    this.uploadedFiles.splice(index, 1);
   }
 
   ghUserForm = new FormGroup( {

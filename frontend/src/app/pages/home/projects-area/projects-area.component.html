@@ -9,69 +9,69 @@
       </h1>
 
       <input type="text" placeholder="GitHub Benutzernamen eingeben" formControlName="username" class="w-3/4 my-5 bg-accent-blue border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-2.5" [required]="true">
-      <button class="w-1/3 font-bold bg-primary-color text-accent-blue focus:ring-4 focus:outline-none focus:ring-primary-300 rounded-lg text-sm px-5 py-2.5 text-center hover:bg-accent-blue hover:text-primary-color duration-150 ease-in-out" (click)="genRepo(ghUserForm.controls.username.value!)">Bestätigen</button>
+      <button class="w-1/3 font-bold bg-primary-color text-accent-blue focus:ring-4 focus:outline-none focus:ring-primary-300 rounded-lg text-sm px-5 py-2.5 text-center hover:bg-blue-500 duration-150 ease-in-out" (click)="genRepo(ghUserForm.controls.username.value!)">Bestätigen</button>
     </div>
 
     <div id="repo-box" class="w-full grid grid-cols-3 gap-5"></div>
   </div>
 
-  <div class="w-full flex flex-col items-center">
-    <h1 class="text-center font-bold text-3xl py-2 my-5">Deine Kunstwerke</h1>
+  <div class="w-full pb-8 flex flex-col items-center">
+    <div class="w-2/5">
+      <h1 class="text-center font-bold text-3xl py-2 my-5">Deine Kunstwerke</h1>
 
 
-    <div class="bg-accent-blue border border-dashed border-gray-400 px-10 py-6 rounded-lg hover:bg-blue-100 duration-200">
-      <input
-        type="file"
-        (change)="onFileSelected($event)"
-        multiple
-        class="hidden"
-        id="fileUpload"
-        accept=".jpeg, .png, .pdf"
-      />
-      <label
-        for="fileUpload"
-        class="w-full h-full flex items-center justify-center cursor-pointer">
-        <span class="text-gray-500">Hier klicken um deine Bilder hochzuladen!</span>
-      </label>
+      <div class="bg-accent-blue border border-dashed border-gray-400 rounded-lg hover:bg-blue-100 duration-200">
+        <input
+          type="file"
+          (change)="onFileSelected($event)"
+          multiple
+          class="hidden"
+          id="fileUpload"
+          accept=".jpeg, .png, .pdf, .jpg"
+        />
+        <label
+          for="fileUpload"
+          class="w-full h-full py-12 flex items-center justify-center cursor-pointer">
+          <span class="text-gray-500">Hier klicken um deine Bilder hochzuladen!</span>
+        </label>
+      </div>
+
+      <div class="">
+        <div *ngIf="selectedFiles.length > 0" class="mt-4">
+          <div *ngFor="let file of selectedFiles; let i = index" class="flex items-center justify-between bg-gray-100 p-2 rounded mb-2">
+            <div class="min-w-96 w-fit flex items-center space-x-10">
+              <div class="w-10 h-10 bg-gray-300 rounded overflow-hidden">
+                <img [src]="file.url" alt="preview" class="object-cover w-full h-full"/>
+                <span *ngIf="isPdf(file.url)" class="text-gray-500 text-sm">PDF</span>
+              </div>
+              <span>{{ file.name }}</span>
+            </div>
+            <button (click)="removeFile(i)" class="text-red-500 hover:text-red-700">
+              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#EA3323"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <button *ngIf="selectedFiles.length > 0" (click)="uploadFiles()" class="flex items-center font-bold bg-primary-color text-white rounded-lg text-sm px-5 py-2.5 text-center gap-x-2 hover:bg-blue-500 duration-150 ease-in-out">
+          <h1>Hochladen</h1>
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M440-320v-326L336-542l-56-58 200-200 200 200-56 58-104-104v326h-80ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/></svg>
+        </button>
+      </div>
     </div>
 
-    <div class="">
-      <div *ngIf="selectedFiles.length > 0" class="mt-4">
-        <div *ngFor="let file of selectedFiles; let i = index" class="flex items-center justify-between bg-gray-100 p-2 rounded mb-2">
-          <div class="min-w-96 w-fit flex items-center space-x-10">
-            <div class="w-10 h-10 bg-gray-300 rounded overflow-hidden">
-              <img [src]="file.url" alt="preview" class="object-cover w-full h-full"/>
-              <span *ngIf="isPdf(file.url)" class="text-gray-500 text-sm">PDF</span>
+    <div class="w-full">
+        <div *ngIf="uploadBtnClicked && uploadedFiles.length > 0" class="relative top-0 w-full mt-6 grid grid-cols-4 h-fit space-x-2">
+          <div *ngFor="let uploadedFile of uploadedFiles; let i = index" class="p-2 animate-in fade-in zoom-in duration-700 flex flex-col w-fit h-fit overflow-hidden">
+            <div class="w-full flex justify-end">
+              <button class="bg-white p-1 rounded-lg shadow-lg w-fit hover:bg-gray-100 duration-150 ease-in-out" (click)="removeSpecificFile(i)">
+                <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px" fill="#EA3323"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
+              </button>
             </div>
-            <span>{{ file.name }}</span>
-          </div>
-          <button (click)="removeFile(i)" class="text-red-500 hover:text-red-700">
-            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#EA3323"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
-          </button>
-        </div>
-      </div>
-
-      <button *ngIf="selectedFiles.length > 0" (click)="uploadFiles()" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-        Hochladen
-      </button>
-
-
-      <div *ngIf="uploadBtnClicked && uploadedFiles.length > 0" class="mt-4 grid grid-cols-3 gap-10">
-        <div *ngFor="let uploadedFile of uploadedFiles; let i = index" class="w-fit h-fit rounded-lg shadow-lg overflow-hidden">
-          <div class="h-fit relative" *ngIf="uploadedFile.url.includes('application/pdf')">
-            <button (click)="removeSpecificFile(i)" class="absolute right-0 -mt-10 p-2 text-red-500 hover:text-red-700">
-              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#EA3323"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
-            </button>
-            <img [src]="uploadedFile.url" alt="uploaded_file" class=""/>
-          </div>
-          <div class="h-fit relative" *ngIf="uploadedFile.url.includes('image/jpeg' || 'image/png')">
-            <button (click)="removeSpecificFile(i)" class="absolute right-0 -mt-10 p-2 text-red-500 hover:text-red-700">
-              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#EA3323"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
-            </button>
-            <img [src]="uploadedFile.url" alt="uploaded_file" class="overflow-hidden"/>
+            <div class="py-2">
+              <img [src]="uploadedFile.url" alt="uploaded_file" class="rounded-lg shadow-lg"/>
+            </div>
           </div>
         </div>
-      </div>
     </div>
 
   </div>
