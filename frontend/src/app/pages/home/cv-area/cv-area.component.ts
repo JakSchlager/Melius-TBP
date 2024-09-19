@@ -69,7 +69,10 @@ export class CvAreaComponent implements OnInit{
       })
 
       this.educationService.getEducationsByProfileId(this.userRegistrationLoginService.loggedInUser!.id).subscribe(v => {
-        v = <Education[]> v;
+        v = <Education[]> v.slice().sort((a: Education, b: Education) => {
+          console.log(a.fromDate);
+          return new Date(a.fromDate).getTime() - new Date(b.fromDate).getTime();
+        });
         for(let currEducation of v) {
           this.addEducationInfo(currEducation);
         }
@@ -188,6 +191,5 @@ export class CvAreaComponent implements OnInit{
 
       this.educationService.updateEducation(education).subscribe();
 
-      this.router.navigateByUrl("/", {skipLocationChange: true});
   }
 }
