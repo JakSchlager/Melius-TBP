@@ -12,7 +12,8 @@ import {DropdownMenuHomeComponent} from "../../../single-components/dropdown-men
 import {Router} from "@angular/router";
 import {Education} from "../../../interfaces/education";
 import {EducationService} from "../../../services/education.service";
-import {dateTimestampProvider} from "rxjs/internal/scheduler/dateTimestampProvider";
+import {WorkExperience} from "../../../interfaces/work-experience";
+import {WorkExperienceService} from "../../../services/work-experience.service";
 
 @Component({
   selector: 'app-cv-area',
@@ -34,6 +35,7 @@ export class CvAreaComponent implements OnInit{
   generalInfoService: GeneralInfoService = inject(GeneralInfoService);
   userRegistrationLoginService: UserRegistrationLoginService = inject(UserRegistrationLoginService);
   educationService: EducationService = inject(EducationService);
+  workExperienceService: WorkExperienceService = inject(WorkExperienceService);
   currGeneralInfo: GeneralInfo | undefined;
   router: Router = inject(Router);
 
@@ -70,13 +72,23 @@ export class CvAreaComponent implements OnInit{
 
       this.educationService.getEducationsByProfileId(this.userRegistrationLoginService.loggedInUser!.id).subscribe(v => {
         v = <Education[]> v.slice().sort((a: Education, b: Education) => {
-          console.log(a.fromDate);
           return new Date(a.fromDate).getTime() - new Date(b.fromDate).getTime();
         });
         for(let currEducation of v) {
           this.addEducationInfo(currEducation);
         }
       })
+
+      this.workExperienceService.getWorkExperiencesByProfileId(this.userRegistrationLoginService.loggedInUser!.id).subscribe(v => {
+        v = <WorkExperience[]> v.slice().sort((a: WorkExperience, b: WorkExperience) => {
+          return new Date(a.fromDate).getTime() - new Date(b.fromDate).getTime();
+        });
+        for(let currWorkExperience of v) {
+          this.addJobExperiencesInfo(currWorkExperience);
+        }
+      })
+
+
     }, 100);
 
   }
@@ -135,18 +147,33 @@ export class CvAreaComponent implements OnInit{
   }
 
   deleteJobExperiencesInfo(index: number) {
+    this.workExperienceService.deleteWorkExperience(this.jobExperiencesFormItems.at(index).value.id).subscribe();
+
     this.jobExperiencesFormItems.removeAt(index);
   }
 
-  addJobExperiencesInfo() {
-    this.jobExperiencesFormItems.push(
-      this.fb.group({
-        companyName: [''],
-        workFrom: [''],
-        workTo: [''],
-        moreInfo: ['']
-      })
-    )
+  addJobExperiencesInfo(workExperience?: WorkExperience) {
+    if(workExperience !== undefined) {
+      this.jobExperiencesFormItems.push(
+        this.fb.group({
+          id: workExperience.id,
+          companyName: workExperience.company,
+          workFrom: formatDate(workExperience.fromDate, 'yyyy-MM-dd', 'en'),
+          workTo: formatDate(workExperience.toDate, 'yyyy-MM-dd', 'en'),
+          moreInfo: workExperience.information
+        })
+      )
+    } else {
+      this.jobExperiencesFormItems.push(
+        this.fb.group({
+          id: [''],
+          companyName: [''],
+          workFrom: [''],
+          workTo: [''],
+          moreInfo: ['']
+        })
+      )
+    }
   }
 
   updateGeneralInfo() {
@@ -191,5 +218,25 @@ export class CvAreaComponent implements OnInit{
 
       this.educationService.updateEducation(education).subscribe();
 
+  }
+
+  updateWorkExperience(formNumber: number) {
+    let workExperience: WorkExperience = {
+      id: this.jobExperiencesFormItems.at(formNumber).value.id,
+      fromDate: new Date(this.jobExperiencesFormItems.at(formNumber).value.workFrom),
+      toDate: new Date(this.jobExperiencesFormItems.at(formNumber).value.workTo),
+      company: this.jobExperiencesFormItems.at(formNumber).value.companyName,
+      information: this.jobExperiencesFormItems.at(formNumber).value.moreInfo,
+      profile: {
+        id: this.userRegistrationLoginService.loggedInUser!.id,
+        firstName: this.userRegistrationLoginService.loggedInUser!.firstName,
+        lastName: this.userRegistrationLoginService.loggedInUser!.lastName,
+        email: this.userRegistrationLoginService.loggedInUser!.email,
+        phoneNumber: this.userRegistrationLoginService.loggedInUser!.phoneNumber,
+        password: this.userRegistrationLoginService.loggedInUser!.password
+      }
+    }
+
+    this.workExperienceService.updateWorkExperience(workExperience).subscribe();
   }
 }
