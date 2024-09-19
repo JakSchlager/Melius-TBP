@@ -48,7 +48,7 @@ public class EducationRepository {
     public List<Education> getEducationsByProfile(int profileId) {
         TypedQuery<Education> query = entityManager.createNamedQuery(Education.GET_BY_PROFILE_ID, Education.class);
 
-        query.setParameter("id", this.entityManager.find(Profile.class, profileId));
+        query.setParameter("profile", this.entityManager.find(Profile.class, profileId));
 
         return query.getResultList();
     }
