@@ -76,6 +76,38 @@ export class ProjectsAreaComponent {
     submit: new FormControl('', [])
   })
 
+  // Drag and Drop functionality
+
+  draggedItem: any;
+  allowDrag: boolean = false;
+
+  // Wird ausgelöst, wenn das Ziehen beginnt
+  onDragStart(event: DragEvent, item: any) {
+    if (this.allowDrag) {
+      this.draggedItem = item;
+      event.dataTransfer?.setData('text/plain', event.target?.toString() || '');
+    }
+    else {
+      event.stopPropagation();
+    }
+  }
+
+  // Wird ausgelöst, wenn das Element über ein gültiges Drop-Ziel gezogen wird
+  onDragOver(event: DragEvent) {
+    event.preventDefault(); // Muss aufgerufen werden, damit ein Drop möglich ist
+  }
+
+  // Wird ausgelöst, wenn das Element fallen gelassen wird
+  onDrop(event: DragEvent, targetContainerId: string) {
+    event.preventDefault();
+    const targetElement = document.getElementById(targetContainerId);
+    if (targetElement && this.draggedItem) {
+      // Füge das gezogene Element dem Ziel hinzu
+      targetElement.appendChild(this.draggedItem);
+      this.draggedItem = null;
+    }
+  }
+
   // Hier werden die github repositories herausgefiltert und gestyled
   genRepo(user: string) {
     var requestURL = 'https://api.github.com/users/' + user + '/repos?type=all';
@@ -112,7 +144,7 @@ export class ProjectsAreaComponent {
                  <div class='p-3'>
                    <p>${repo_description}</p>
                    <div>${repo_language}</div>
-                   <button id="repo-link-${index}" class='w-1/3 mx-auto my-3 py-2 bg-gray-900 rounded-md text-white flex align-middle justify-center font-bold hover:bg-gray-300 hover:text-black duration-150 ease-in-out'>
+                   <button id="repo-link-${index}" class='w-1/3 mx-auto my-3 py-2 bg-primary-color rounded-md text-accent-blue flex align-middle justify-center font-bold hover:bg-blue-500 duration-150 ease-in-out'>
                       <a href='${repo_url}' target='_blank'>Zum Repo</a>
                    </button>
                  </div>
@@ -124,6 +156,7 @@ export class ProjectsAreaComponent {
         }
       });
   }
+
 }
 
 
