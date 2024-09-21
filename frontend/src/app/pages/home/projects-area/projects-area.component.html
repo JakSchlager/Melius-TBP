@@ -60,51 +60,51 @@
     </div>
 
     <div class="w-full">
-        <div *ngIf="uploadBtnClicked && uploadedFiles.length > 0" class="relative top-0 w-full mt-6 h-fit ">
+      <div *ngIf="uploadBtnClicked && uploadedFiles.length > 0" class="relative top-0 w-full mt-6 h-fit ">
+        <div class="grid grid-cols-4 space-x-4">
 
-          <div class="grid grid-cols-4 space-x-4">
-            <!-- File Column One -->
-            <div class="col-start-1 border-2 border-dashed border-gray-100  rounded-lg space-y-10" id="firstFileProjectCol"
-                 (dragover)="onDragOver($event)"
-                 (drop)="onDrop($event, 'firstFileProjectCol')">
+          <!-- File Column One -->
+          <div class="col-start-1 border-2 border-dashed border-gray-100  rounded-lg space-y-10" id="firstFileProjectCol"
+               (dragover)="onDragOver($event)"
+               (drop)="onDrop($event, 'firstFileProjectCol')">
 
-              <div *ngFor="let uploadedFile of uploadedFiles; let i = index" draggable="true" (dragstart)="onDragStart($event, $event.target)" class="bg-white p-2 animate-in fade-in zoom-in duration-700 flex flex-col w-fit h-fit overflow-hidden">
-                <div class="w-fit h-fit">
-                  <div class="w-full h-full flex justify-between items-center">
-                    <div class="bg-white p-1 rounded-lg shadow-lg cursor-grab" (mouseenter)="allowDrag = true" (mouseleave)="allowDrag = false">
-                      <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px" fill="#B7B7B7"><path d="M360-160q-33 0-56.5-23.5T280-240q0-33 23.5-56.5T360-320q33 0 56.5 23.5T440-240q0 33-23.5 56.5T360-160Zm240 0q-33 0-56.5-23.5T520-240q0-33 23.5-56.5T600-320q33 0 56.5 23.5T680-240q0 33-23.5 56.5T600-160ZM360-400q-33 0-56.5-23.5T280-480q0-33 23.5-56.5T360-560q33 0 56.5 23.5T440-480q0 33-23.5 56.5T360-400Zm240 0q-33 0-56.5-23.5T520-480q0-33 23.5-56.5T600-560q33 0 56.5 23.5T680-480q0 33-23.5 56.5T600-400ZM360-640q-33 0-56.5-23.5T280-720q0-33 23.5-56.5T360-800q33 0 56.5 23.5T440-720q0 33-23.5 56.5T360-640Zm240 0q-33 0-56.5-23.5T520-720q0-33 23.5-56.5T600-800q33 0 56.5 23.5T680-720q0 33-23.5 56.5T600-640Z"/></svg>
-                    </div>
-                    <button draggable="false" class="bg-white p-1 rounded-lg shadow-lg w-fit hover:bg-gray-100 duration-150 ease-in-out" (click)="removeSpecificFile(i)">
-                      <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px" fill="#EA3323"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
-                    </button>
+            <div *ngFor="let uploadedFile of uploadedFiles; let i = index" draggable="true" (dragstart)="onDragStart($event, $event.target)" class="bg-transparent p-2 animate-in fade-in zoom-in duration-700 flex flex-col w-fit h-fit overflow-hidden">
+              <div class="w-fit h-fit">
+                <div class="w-full h-full flex justify-between items-center">
+                  <div class="bg-white p-1 rounded-lg shadow-lg cursor-grab" (mouseenter)="allowDrag = true" (mouseleave)="allowDrag = false">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px" fill="#B7B7B7"><path d="M360-160q-33 0-56.5-23.5T280-240q0-33 23.5-56.5T360-320q33 0 56.5 23.5T440-240q0 33-23.5 56.5T360-160Zm240 0q-33 0-56.5-23.5T520-240q0-33 23.5-56.5T600-320q33 0 56.5 23.5T680-240q0 33-23.5 56.5T600-160ZM360-400q-33 0-56.5-23.5T280-480q0-33 23.5-56.5T360-560q33 0 56.5 23.5T440-480q0 33-23.5 56.5T360-400Zm240 0q-33 0-56.5-23.5T520-480q0-33 23.5-56.5T600-560q33 0 56.5 23.5T680-480q0 33-23.5 56.5T600-400ZM360-640q-33 0-56.5-23.5T280-720q0-33 23.5-56.5T360-800q33 0 56.5 23.5T440-720q0 33-23.5 56.5T360-640Zm240 0q-33 0-56.5-23.5T520-720q0-33 23.5-56.5T600-800q33 0 56.5 23.5T680-720q0 33-23.5 56.5T600-640Z"/></svg>
                   </div>
-                  <div class="py-2" draggable="false">
-                    <img [src]="uploadedFile.url" alt="uploaded_file" class="rounded-lg shadow-lg"/>
-                  </div>
+                  <button draggable="false" class="bg-white p-1 rounded-lg shadow-lg w-fit hover:bg-gray-100 duration-150 ease-in-out" (click)="removeSpecificFile(i)">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px" fill="#EA3323"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
+                  </button>
+                </div>
+                <div class="py-2" draggable="false">
+                  <img [src]="uploadedFile.url" alt="uploaded_file" class="rounded-lg shadow-lg"/>
                 </div>
               </div>
             </div>
+          </div>
 
 
-            <!-- File Column Two -->
-            <div class="col-start-2 border-2 border-dashed border-gray-100  rounded-lg space-y-10" id="secondFileProjectCol"
-                 (dragover)="onDragOver($event)"
-                 (drop)="onDrop($event, 'secondFileProjectCol')">
-            </div>
+          <!-- File Column Two -->
+          <div class="col-start-2 border-2 border-dashed border-gray-100  rounded-lg space-y-10" id="secondFileProjectCol"
+               (dragover)="onDragOver($event)"
+               (drop)="onDrop($event, 'secondFileProjectCol')">
+          </div>
 
 
             <!-- File Column Three -->
-            <div class="col-start-3 border-2 border-dashed border-gray-100  rounded-lg space-y-10" id="thirdFileProjectCol"
-                 (dragover)="onDragOver($event)"
-                 (drop)="onDrop($event, 'thirdFileProjectCol')">
-            </div>
+          <div class="col-start-3 border-2 border-dashed border-gray-100  rounded-lg space-y-10" id="thirdFileProjectCol"
+               (dragover)="onDragOver($event)"
+               (drop)="onDrop($event, 'thirdFileProjectCol')">
+          </div>
 
 
-            <!-- File Column Four -->
-            <div class="col-start-4 border-2 border-dashed border-gray-100  rounded-lg space-y-10" id="fourthFileProjectCol"
-                 (dragover)="onDragOver($event)"
-                 (drop)="onDrop($event, 'fourthFileProjectCol')">
-            </div>
+          <!-- File Column Four -->
+          <div class="col-start-4 border-2 border-dashed border-gray-100  rounded-lg space-y-10" id="fourthFileProjectCol"
+               (dragover)="onDragOver($event)"
+               (drop)="onDrop($event, 'fourthFileProjectCol')">
+          </div>
           </div>
         </div>
     </div>

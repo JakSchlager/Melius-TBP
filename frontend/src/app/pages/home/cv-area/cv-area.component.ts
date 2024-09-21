@@ -239,4 +239,31 @@ export class CvAreaComponent implements OnInit{
 
     this.workExperienceService.updateWorkExperience(workExperience).subscribe();
   }
+
+
+  // Drag and Drop functionality
+
+  draggedItem: any;
+
+  // Wird ausgelöst, wenn das Ziehen beginnt
+  onDragStart(event: DragEvent, item: any) {
+    this.draggedItem = item;
+    event.dataTransfer?.setData('text/plain', event.target?.toString() || '');
+  }
+
+  // Wird ausgelöst, wenn das Element über ein gültiges Drop-Ziel gezogen wird
+  onDragOver(event: DragEvent) {
+    event.preventDefault(); // Muss aufgerufen werden, damit ein Drop möglich ist
+  }
+
+  // Wird ausgelöst, wenn das Element fallen gelassen wird
+  onDrop(event: DragEvent, targetContainerId: string) {
+    event.preventDefault();
+    const targetElement = document.getElementById(targetContainerId);
+    if (targetElement && this.draggedItem) {
+      // Füge das gezogene Element dem Ziel hinzu
+      targetElement.appendChild(this.draggedItem);
+      this.draggedItem = null;
+    }
+  }
 }
