@@ -13,9 +13,6 @@ public class GeneralInfoRepository {
     @Inject
     EntityManager entityManager;
 
-    @Inject
-    ProfileRepository profileRepository;
-
     @Transactional
     public GeneralInfo addGeneralInfo(GeneralInfo generalInfo) {
         if(getInfoByProfile(generalInfo.getProfile()) == null) {
@@ -28,7 +25,7 @@ public class GeneralInfoRepository {
 
     @Transactional
     public void updateGeneralInfo(GeneralInfo generalInfo) {
-        GeneralInfo currGeneralInfo = entityManager.find(GeneralInfo.class, generalInfo.getProfile());
+        GeneralInfo currGeneralInfo = entityManager.find(GeneralInfo.class, generalInfo.getProfile().getId());
 
         currGeneralInfo.setGender(generalInfo.getGender());
         currGeneralInfo.setZipCode(generalInfo.getZipCode());
