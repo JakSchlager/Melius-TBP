@@ -74,44 +74,50 @@
       </div>
 
       <!-- Programmier Kenntnisse -->
-      <div draggable="true" (dragstart)="onDragStart($event, $event.target)" class="bg-white rounded-lg px-2 py-1 shadow-md animate-in slide-in-from-bottom-32 duration-500 hover:cursor-grab">
-        <h1 class="text-center font-bold text-2xl py-6">Programmier Kenntnisse</h1>
+      <div draggable="true" (dragstart)="onDragStart($event, $event.target)" class="animate-in slide-in-from-bottom-32 duration-500 hover:cursor-grab">
 
-        <div [formGroup]="programmingKnowledgeForm" class="mt-2 hover:cursor-default">
-          <div formArrayName="programminKnowledgeItems" class="space-y-8">
-            <div *ngFor="let programmingItem of programmingKnowledgeFormItems.controls; let i = index" [formGroupName]="i">
+        <div class="flex flex-col space-y-2 ">
 
-              <div class="w-auto mx-2 flex justify-between space-x-10 animate-in fade-in zoom-in duration-500">
-                <app-drop-str-progr></app-drop-str-progr>
+          <div draggable="false" class="bg-white rounded-lg px-2 py-1 shadow-md">
+            <h1 class="text-center font-bold text-2xl py-6">Programmier Kenntnisse</h1>
+            <div [formGroup]="programmingKnowledgeForm" class="mt-2 hover:cursor-default" >
+              <div formArrayName="programminKnowledgeItems" class="space-y-8">
+                <div *ngFor="let programmingItem of programmingKnowledgeFormItems.controls; let i = index" [formGroupName]="i">
 
-                <div class="flex-grow" draggable="false">
-                  <div class="flex flex-col">
-                    <input formControlName="programmingKnowledge" class="rounded-lg overflow-hidden appearance-none bg-gray-400 h-3 w-full" type="range" min="1" max="100" step="1" value="30" />
+                  <div class="w-auto mx-2 flex justify-between space-x-10 animate-in fade-in zoom-in duration-500">
+                    <app-drop-str-progr></app-drop-str-progr>
 
-                    <div class="w-full flex justify-between mt-1">
-                      <span class="text-sm text-intermediate-color">Schlecht</span>
-                      <span class="text-sm text-intermediate-color">Meh</span>
-                      <span class="text-sm text-intermediate-color">Okay</span>
-                      <span class="text-sm text-intermediate-color">Gut</span>
-                      <span class="text-sm text-intermediate-color">Sehr Gut</span>
+                    <div class="flex-grow" draggable="false">
+                      <div class="flex flex-col" draggable="false">
+                        <input formControlName="programmingKnowledge" class="rounded-lg overflow-hidden appearance-none bg-gray-400 h-3 w-full" type="range" min="1" max="100" step="1" value="30" draggable="false"/>
+
+                        <div class="w-full flex justify-between mt-1" draggable="false">
+                          <span class="text-sm text-intermediate-color">Schlecht</span>
+                          <span class="text-sm text-intermediate-color">Meh</span>
+                          <span class="text-sm text-intermediate-color">Okay</span>
+                          <span class="text-sm text-intermediate-color">Gut</span>
+                          <span class="text-sm text-intermediate-color">Sehr Gut</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="flex-shrink-0">
+                      <svg (click)="deleteProgrammingLanguage(i)" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#EA3323" class="cursor-pointer"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
                     </div>
                   </div>
-                </div>
 
-                <div class="flex-shrink-0">
-                  <svg (click)="deleteProgrammingLanguage(i)" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#EA3323" class="cursor-pointer"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
                 </div>
               </div>
 
+              <div class="flex justify-end py-2">
+                <button class="bg-white rounded-md hover:shadow-md duration-150" (click)="addProgrammingLanguage()">
+                  <img src="assets/icons/home-page/add_element-icon.svg" alt="add_icon" class="w-10 h-10 cursor-pointer">
+                </button>
+              </div>
             </div>
           </div>
-
-          <div class="flex justify-end py-2">
-            <button class="bg-white rounded-md hover:shadow-md duration-150" (click)="addProgrammingLanguage()">
-              <img src="assets/icons/home-page/add_element-icon.svg" alt="add_icon" class="w-10 h-10 cursor-pointer">
-            </button>
-          </div>
         </div>
+
       </div>
 
 

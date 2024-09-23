@@ -187,7 +187,6 @@ export class StrengthsAreaComponent implements OnInit{
 
 
   // Drag and Drop functionality
-
   draggedItem: any;
 
   // Wird ausgelöst, wenn das Ziehen beginnt
@@ -211,6 +210,5 @@ export class StrengthsAreaComponent implements OnInit{
       this.draggedItem = null;
     }
   }
-
 }
 

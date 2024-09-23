@@ -266,4 +266,23 @@ export class CvAreaComponent implements OnInit{
       this.draggedItem = null;
     }
   }
+
+
+  // Saving Notification
+  notifications: { message: string, fade: boolean }[] = [];
+
+  newSavingNotification(formName : string) {
+    const newNotification = { message: `${formName} wurde erfolgreich gespeichert!`, fade: false };
+    this.notifications.push(newNotification);
+
+    // Automatisches Entfernen nach 3 Sekunden mit "smooth fading"
+    setTimeout(() => {
+      newNotification.fade = true;  // Füge die Fade-Klasse hinzu, um das Verblassen zu starten
+    }, 3000);
+  }
+
+  removeNotification(index: number) {
+    // Wenn die Animation beendet ist, entferne die Benachrichtigung aus der Liste
+    this.notifications.splice(index, 1);
+  }
 }
