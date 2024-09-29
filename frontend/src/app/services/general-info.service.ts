@@ -1,8 +1,8 @@
 import {inject, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {GeneralInfo} from "../interfaces/general-info";
-import {UserRegistrationLoginService} from "./user-registration-login.service";
-import {UserRegistrationData} from "../interfaces/user-registration-data";
+import {UserService} from "./user.service";
+import {User} from "../interfaces/user";
 import {Observable} from "rxjs";
 
 @Injectable({
@@ -23,11 +23,11 @@ export class GeneralInfoService {
     }
   }
 
-  loadGeneralInfo(profile: UserRegistrationData): Observable<GeneralInfo> {
+  loadGeneralInfo(profile: User): Observable<GeneralInfo> {
     return this.httpClient.get<GeneralInfo>(this.url + "get/" + profile.id);
   }
 
   updateGeneralInfo(newGeneralInfo: GeneralInfo) {
-    return this.httpClient.post<GeneralInfo>(this.url + "update", newGeneralInfo);
+    return this.httpClient.put<GeneralInfo>(this.url + "update", newGeneralInfo);
   }
 }

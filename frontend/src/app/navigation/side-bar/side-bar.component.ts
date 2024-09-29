@@ -7,8 +7,8 @@ import {MatButton} from "@angular/material/button";
 import {MatListItem, MatNavList} from "@angular/material/list";
 import {MatIcon} from "@angular/material/icon";
 import {AppComponent} from "../../app.component";
-import {UserRegistrationLoginService} from "../../services/user-registration-login.service";
-import {UserRegistrationData} from "../../interfaces/user-registration-data";
+import {UserService} from "../../services/user.service";
+import {User} from "../../interfaces/user";
 
 @Component({
   selector: 'app-side-bar',
@@ -30,7 +30,7 @@ import {UserRegistrationData} from "../../interfaces/user-registration-data";
 
 })
 export class SideBarComponent implements OnInit {
-  registrationLoginService: UserRegistrationLoginService = inject(UserRegistrationLoginService);
+  registrationLoginService: UserService = inject(UserService);
   router: Router = inject(Router);
   hamburgerIconClicked : boolean = false;
   isAnimating: boolean = false;
@@ -58,7 +58,7 @@ export class SideBarComponent implements OnInit {
 
       if(localStorage.getItem("loggedInUser") !== null) {
         this.registrationLoginService.handleUserLogin(JSON.parse(localStorage.getItem("loggedInUser")!)).subscribe({
-          next: (user: UserRegistrationData) => {
+          next: (user: User) => {
             this.registrationLoginService.loggedInUser = user;
         }
         });

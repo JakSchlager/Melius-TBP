@@ -121,8 +121,8 @@
         </plugins>
     </build>
 
-    <profiles>
-        <profile>
+    <users>
+        <user>
             <id>native</id>
             <activation>
                 <property>
@@ -133,6 +133,6 @@
                 <skipITs>false</skipITs>
                 <quarkus.native.enabled>true</quarkus.native.enabled>
             </properties>
-        </profile>
-    </profiles>
+        </user>
+    </users>
 </project>

@@ -14,7 +14,7 @@ public class EducationResource {
     @Inject
     EducationRepository educationRepository;
 
-    @POST
+    @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/update")
     public void updateEducation(Education education) {

@@ -6,7 +6,7 @@ import {MatDateRangeInput} from "@angular/material/datepicker";
 import {Form, FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {MatIcon} from "@angular/material/icon";
 import {GeneralInfoService} from "../../../services/general-info.service";
-import {UserRegistrationLoginService} from "../../../services/user-registration-login.service";
+import {UserService} from "../../../services/user.service";
 import {GeneralInfo} from "../../../interfaces/general-info";
 import {DropdownMenuHomeComponent} from "../../../single-components/dropdown-menu-home/dropdown-menu-home.component";
 import {Router} from "@angular/router";
@@ -14,6 +14,7 @@ import {Education} from "../../../interfaces/education";
 import {EducationService} from "../../../services/education.service";
 import {WorkExperience} from "../../../interfaces/work-experience";
 import {WorkExperienceService} from "../../../services/work-experience.service";
+import {User} from "../../../interfaces/user";
 
 @Component({
   selector: 'app-cv-area',
@@ -33,7 +34,7 @@ import {WorkExperienceService} from "../../../services/work-experience.service";
 })
 export class CvAreaComponent implements OnInit{
   generalInfoService: GeneralInfoService = inject(GeneralInfoService);
-  userRegistrationLoginService: UserRegistrationLoginService = inject(UserRegistrationLoginService);
+  userRegistrationLoginService: UserService = inject(UserService);
   educationService: EducationService = inject(EducationService);
   workExperienceService: WorkExperienceService = inject(WorkExperienceService);
   currGeneralInfo: GeneralInfo | undefined;
@@ -59,10 +60,10 @@ export class CvAreaComponent implements OnInit{
           this.currGeneralInfo = generalInfo;
 
           this.generalInfoForm.controls['gender'].setValue(this.currGeneralInfo.gender);
-          this.generalInfoForm.controls['firstName'].setValue(this.currGeneralInfo.profile.firstName);
-          this.generalInfoForm.controls['lastName'].setValue(this.currGeneralInfo.profile.lastName);
-          this.generalInfoForm.controls['email'].setValue(this.currGeneralInfo.profile.email);
-          this.generalInfoForm.controls['phoneNumber'].setValue(this.currGeneralInfo.profile.phoneNumber);
+          this.generalInfoForm.controls['firstName'].setValue(this.currGeneralInfo.user.firstName);
+          this.generalInfoForm.controls['lastName'].setValue(this.currGeneralInfo.user.lastName);
+          this.generalInfoForm.controls['email'].setValue(this.currGeneralInfo.user.email);
+          this.generalInfoForm.controls['phoneNumber'].setValue(this.currGeneralInfo.user.phoneNumber);
           this.generalInfoForm.controls['zipCode'].setValue(this.currGeneralInfo.zipCode);
           this.generalInfoForm.controls['city'].setValue(this.currGeneralInfo.city);
           this.generalInfoForm.controls['address'].setValue(this.currGeneralInfo.address);
@@ -181,21 +182,25 @@ export class CvAreaComponent implements OnInit{
       address: this.generalInfoForm!.controls["address"].value!,
       city: this.generalInfoForm!.controls["city"].value!,
       gender: this.generalInfoForm!.controls["gender"].value!,
-      profile: {
-        id: this.userRegistrationLoginService.loggedInUser!.id,
-        firstName: this.generalInfoForm!.controls["firstName"].value!,
-        lastName: this.generalInfoForm!.controls["lastName"].value!,
-        email: this.generalInfoForm!.controls["email"].value!,
-        phoneNumber: this.generalInfoForm!.controls["phoneNumber"].value!,
-        password: this.userRegistrationLoginService.loggedInUser!.password
-      },
+      user: this.userRegistrationLoginService.loggedInUser!,
       zipCode: this.generalInfoForm!.controls["zipCode"].value!
     }
 
+    let updatedUser: User = {
+      id: this.userRegistrationLoginService.loggedInUser!.id,
+      firstName: this.generalInfoForm!.controls["firstName"].value!,
+      lastName: this.generalInfoForm!.controls["lastName"].value!,
+      email: this.generalInfoForm!.controls["email"].value!,
+      phoneNumber: this.generalInfoForm!.controls["phoneNumber"].value!,
+      password: this.userRegistrationLoginService.loggedInUser!.password,
+      githubUsername: this.userRegistrationLoginService.loggedInUser!.githubUsername
+    }
+
     this.generalInfoService.updateGeneralInfo(newGeneralInfo).subscribe();
+    this.userRegistrationLoginService.updateUser(updatedUser).subscribe();
 
     setTimeout(() => {
-      this.router.navigateByUrl("/", {skipLocationChange: true});
+      this.router.navigateByUrl("/", {skipLocationChange: true}).then;
     }, 100);
   }
 
@@ -206,14 +211,7 @@ export class CvAreaComponent implements OnInit{
         id: this.educationFormItems.at(formNumber).value.id,
         name: this.educationFormItems.at(formNumber).value.educationalInst,
         toDate: new Date(this.educationFormItems.at(formNumber).value.eIdateTo),
-        profile: {
-          id: this.userRegistrationLoginService.loggedInUser!.id,
-          firstName: this.userRegistrationLoginService.loggedInUser!.firstName,
-          lastName: this.userRegistrationLoginService.loggedInUser!.lastName,
-          email: this.userRegistrationLoginService.loggedInUser!.email,
-          phoneNumber: this.userRegistrationLoginService.loggedInUser!.phoneNumber,
-          password: this.userRegistrationLoginService.loggedInUser!.password
-        }
+        user: this.userRegistrationLoginService.loggedInUser!,
       }
 
       this.educationService.updateEducation(education).subscribe();
@@ -227,14 +225,7 @@ export class CvAreaComponent implements OnInit{
       toDate: new Date(this.jobExperiencesFormItems.at(formNumber).value.workTo),
       company: this.jobExperiencesFormItems.at(formNumber).value.companyName,
       information: this.jobExperiencesFormItems.at(formNumber).value.moreInfo,
-      profile: {
-        id: this.userRegistrationLoginService.loggedInUser!.id,
-        firstName: this.userRegistrationLoginService.loggedInUser!.firstName,
-        lastName: this.userRegistrationLoginService.loggedInUser!.lastName,
-        email: this.userRegistrationLoginService.loggedInUser!.email,
-        phoneNumber: this.userRegistrationLoginService.loggedInUser!.phoneNumber,
-        password: this.userRegistrationLoginService.loggedInUser!.password
-      }
+      user: this.userRegistrationLoginService.loggedInUser!,
     }
 
     this.workExperienceService.updateWorkExperience(workExperience).subscribe();

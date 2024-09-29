@@ -15,7 +15,7 @@ public class WorkExperienceResource {
     @Inject
     WorkExperienceRepository workExperienceRepository;
 
-    @POST
+    @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/update")
     public void updateWorkExperience(WorkExperience workExperience) {

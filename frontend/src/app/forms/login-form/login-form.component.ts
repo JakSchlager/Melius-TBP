@@ -2,9 +2,9 @@ import {Component, inject} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {NgIf} from "@angular/common";
 import {Router, RouterLink} from "@angular/router";
-import {UserRegistrationLoginService} from "../../services/user-registration-login.service";
+import {UserService} from "../../services/user.service";
 import {UserLoginData} from "../../interfaces/user-login-data";
-import {UserRegistrationData} from "../../interfaces/user-registration-data";
+import {User} from "../../interfaces/user";
 
 @Component({
   selector: 'app-login-form',
@@ -18,7 +18,7 @@ import {UserRegistrationData} from "../../interfaces/user-registration-data";
   styleUrl: './login-form.component.css'
 })
 export class LoginFormComponent {
-  registrationLoginService: UserRegistrationLoginService = inject(UserRegistrationLoginService);
+  registrationLoginService: UserService = inject(UserService);
   router: Router = inject(Router);
 
   saveForm = new FormGroup( {
@@ -34,7 +34,7 @@ export class LoginFormComponent {
     };
 
     this.registrationLoginService.handleUserLogin(loginData).subscribe({
-      next: (userInfo: UserRegistrationData) => {
+      next: (userInfo: User) => {
         localStorage.setItem("rememberUser", this.saveForm.controls['remember'].value!.toString());
 
         if(localStorage.getItem("rememberUser") === "true") {

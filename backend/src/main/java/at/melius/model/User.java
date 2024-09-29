@@ -2,10 +2,10 @@ package at.melius.model;
 
 import jakarta.persistence.*;
 
-@NamedQuery(name = Profile.QUERY_FIND_ALL, query = "SELECT p from Profile p")
+@NamedQuery(name = User.QUERY_FIND_ALL, query = "SELECT p from User p")
 
 @Entity
-public class Profile {
+public class User {
     public static final String QUERY_FIND_ALL = "Profile.findAll";
 
     @Id
@@ -26,6 +26,13 @@ public class Profile {
 
     @Column(name = "password")
     private String password;
+
+    @Column(name = "github_username")
+    private String githubUsername;
+
+    public String getGithubUsername() {
+        return githubUsername;
+    }
 
     public int getId() {
         return id;
@@ -49,6 +56,10 @@ public class Profile {
 
     public String getPassword() {
         return password;
+    }
+
+    public void setGithubUsername(String githubUsername) {
+        this.githubUsername = githubUsername;
     }
 
     public void setFirstName(String firstName) {

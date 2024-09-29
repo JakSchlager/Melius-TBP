@@ -1,11 +1,10 @@
 package at.melius.model;
 
 import jakarta.persistence.*;
-import org.hibernate.jdbc.Work;
 
 import java.util.Date;
 
-@NamedQuery(name= WorkExperience.GET_BY_PROFILE_ID, query="SELECT w FROM WorkExperience w WHERE profile = :profile")
+@NamedQuery(name= WorkExperience.GET_BY_PROFILE_ID, query="SELECT w FROM WorkExperience w WHERE user = :profile")
 
 @Entity
 public class WorkExperience {
@@ -17,7 +16,7 @@ public class WorkExperience {
     private int id;
 
     @ManyToOne
-    private Profile profile;
+    private User user;
 
     @Column(name="company")
     private String company;
@@ -67,11 +66,11 @@ public class WorkExperience {
         this.information = information;
     }
 
-    public Profile getProfile() {
-        return profile;
+    public User getProfile() {
+        return user;
     }
 
-    public void setProfile(Profile profile) {
-        this.profile = profile;
+    public void setProfile(User user) {
+        this.user = user;
     }
 }

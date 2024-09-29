@@ -7,7 +7,7 @@ public class GeneralInfo {
 
     @OneToOne
     @Id
-    private Profile profile;
+    private User user;
 
     @Column(name="gender")
     private String gender;
@@ -21,8 +21,8 @@ public class GeneralInfo {
     @Column(name="address")
     private String address;
 
-    public Profile getProfile() {
-        return profile;
+    public User getProfile() {
+        return user;
     }
 
     public String getGender() {
