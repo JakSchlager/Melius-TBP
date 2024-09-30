@@ -210,5 +210,6 @@ export class StrengthsAreaComponent implements OnInit{
       this.draggedItem = null;
     }
   }
+
 }
 

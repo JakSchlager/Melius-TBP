@@ -76,9 +76,7 @@
       <!-- Programmier Kenntnisse -->
       <div draggable="true" (dragstart)="onDragStart($event, $event.target)" class="animate-in slide-in-from-bottom-32 duration-500 hover:cursor-grab">
 
-        <div class="flex flex-col space-y-2 ">
-
-          <div draggable="false" class="bg-white rounded-lg px-2 py-1 shadow-md">
+          <div draggable="false" class="flex flex-col space-y-2 bg-white rounded-lg px-2 py-1 shadow-md">
             <h1 class="text-center font-bold text-2xl py-6">Programmier Kenntnisse</h1>
             <div [formGroup]="programmingKnowledgeForm" class="mt-2 hover:cursor-default" >
               <div formArrayName="programminKnowledgeItems" class="space-y-8">
@@ -116,7 +114,7 @@
               </div>
             </div>
           </div>
-        </div>
+
 
       </div>
 

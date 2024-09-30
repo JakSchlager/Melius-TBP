@@ -250,7 +250,7 @@
   <!-- Notification List -->
   <div class="fixed bottom-4 left-4 space-y-2 w-72 ">
     <div *ngFor="let notification of notifications; let i = index"
-         class="bg-green-600 text-white px-4 py-2 rounded shadow-lg transition-opacity duration-500 ease-in-out"
+         class="bg-white border border-black rounded-lg text-black px-4 py-2 shadow-lg transition-opacity duration-500 ease-in-out"
          [class.opacity-0]="notification.fade"
          (animationend)="removeNotification(i)">
       {{ notification.message }}
