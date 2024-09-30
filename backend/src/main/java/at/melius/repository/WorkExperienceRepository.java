@@ -1,13 +1,16 @@
 package at.melius.repository;
 
-import at.melius.model.User;
+import at.melius.model.Education;
+import at.melius.model.Profile;
 import at.melius.model.WorkExperience;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.persistence.Entity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.BadRequestException;
+import org.hibernate.jdbc.Work;
 
 import java.util.List;
 
@@ -46,7 +49,7 @@ public class WorkExperienceRepository {
     public List<WorkExperience> getWorkExperiencesByProfile(int profileId) {
         TypedQuery<WorkExperience> query = entityManager.createNamedQuery(WorkExperience.GET_BY_PROFILE_ID, WorkExperience.class);
 
-        query.setParameter("profile", this.entityManager.find(User.class, profileId));
+        query.setParameter("profile", this.entityManager.find(Profile.class, profileId));
 
         return query.getResultList();
     }

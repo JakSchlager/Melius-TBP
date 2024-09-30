@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 import java.util.Date;
 
-@NamedQuery(name= Education.GET_BY_PROFILE_ID, query = "Select e from Education e where user = :profile")
+@NamedQuery(name= Education.GET_BY_PROFILE_ID, query = "Select e from Education e where profile = :profile")
 
 @Entity
 public class Education {
@@ -16,7 +16,7 @@ public class Education {
     private int id;
 
     @ManyToOne
-    private User user;
+    private Profile profile;
 
     @Column(name="name")
     private String name;
@@ -34,12 +34,12 @@ public class Education {
         return id;
     }
 
-    public User getProfile() {
-        return user;
+    public Profile getProfile() {
+        return profile;
     }
 
-    public void setProfile(User user) {
-        this.user = user;
+    public void setProfile(Profile profile) {
+        this.profile = profile;
     }
 
     public String getName() {

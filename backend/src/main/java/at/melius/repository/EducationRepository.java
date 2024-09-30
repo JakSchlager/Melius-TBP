@@ -1,7 +1,7 @@
 package at.melius.repository;
 
 import at.melius.model.Education;
-import at.melius.model.User;
+import at.melius.model.Profile;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
@@ -48,7 +48,7 @@ public class EducationRepository {
     public List<Education> getEducationsByProfile(int profileId) {
         TypedQuery<Education> query = entityManager.createNamedQuery(Education.GET_BY_PROFILE_ID, Education.class);
 
-        query.setParameter("profile", this.entityManager.find(User.class, profileId));
+        query.setParameter("profile", this.entityManager.find(Profile.class, profileId));
 
         return query.getResultList();
     }
