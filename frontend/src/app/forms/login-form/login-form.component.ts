@@ -2,9 +2,9 @@ import {Component, inject} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {NgIf} from "@angular/common";
 import {Router, RouterLink} from "@angular/router";
-import {UserRegistrationLoginService} from "../../services/user-registration-login.service";
+import {UserService} from "../../services/user.service";
 import {UserLoginData} from "../../interfaces/user-login-data";
-import {UserRegistrationData} from "../../interfaces/user-registration-data";
+import {Profile} from "../../interfaces/profile";
 
 @Component({
   selector: 'app-login-form',
@@ -18,7 +18,7 @@ import {UserRegistrationData} from "../../interfaces/user-registration-data";
   styleUrl: './login-form.component.css'
 })
 export class LoginFormComponent {
-  registrationLoginService: UserRegistrationLoginService = inject(UserRegistrationLoginService);
+  userService: UserService = inject(UserService);
   router: Router = inject(Router);
 
   saveForm = new FormGroup( {
@@ -33,8 +33,8 @@ export class LoginFormComponent {
       password: this.saveForm.controls['password'].value || ''
     };
 
-    this.registrationLoginService.handleUserLogin(loginData).subscribe({
-      next: (userInfo: UserRegistrationData) => {
+    this.userService.handleUserLogin(loginData).subscribe({
+      next: (userInfo: Profile) => {
         localStorage.setItem("rememberUser", this.saveForm.controls['remember'].value!.toString());
 
         if(localStorage.getItem("rememberUser") === "true") {
@@ -44,7 +44,7 @@ export class LoginFormComponent {
         }
 
         this.router.navigate(['/home']);
-        console.log('User logged in successfully', userInfo);
+        console.log('Profile logged in successfully', userInfo);
       },
 
       error: error => {

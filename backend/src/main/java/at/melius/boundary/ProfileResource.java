@@ -36,6 +36,13 @@ public class ProfileResource {
         throw new NotFoundException();
     }
 
+    @PATCH
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/update")
+    public void updateProfile(Profile profile) {
+        this.profileRepository.updateProfile(profile);
+    }
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/list")

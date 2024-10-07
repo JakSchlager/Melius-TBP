@@ -1,9 +1,13 @@
-import {Component, ElementRef, signal, ViewChild} from '@angular/core';
+import {Component, ElementRef, inject, OnInit, signal, ViewChild} from '@angular/core';
 import $ from 'jquery';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
 import {MatIcon} from "@angular/material/icon";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {UserService} from "../../../services/user.service";
+import {isEmpty} from "rxjs";
+import {Profile} from "../../../interfaces/profile";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -19,10 +23,20 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   templateUrl: './projects-area.component.html',
   styleUrl: './projects-area.component.css'
 })
-export class ProjectsAreaComponent {
+export class ProjectsAreaComponent implements OnInit {
   selectedFiles: { name: string, url: string }[] = [];
   uploadedFiles: { name: string, url: string }[] = [];
   uploadBtnClicked: boolean = false;
+  router: Router = inject(Router);
+  userService: UserService = inject(UserService);
+
+  ngOnInit() {
+    setTimeout(() => {
+      if(this.userService.loggedInUser!.githubUser !== "") {
+        this.genRepo(this.userService.loggedInUser!.githubUser);
+      }
+    }, 100)
+  }
 
   onFileSelected(event: any) {
     const files = event.target.files;
@@ -157,6 +171,18 @@ export class ProjectsAreaComponent {
       });
   }
 
+  setGithubUser(username: string) {
+    let profile: Profile = this.userService.loggedInUser!;
+    profile.githubUser = username;
+
+    this.userService.updateProfile(profile).subscribe();
+
+    setTimeout(() => {
+      this.router.navigateByUrl("/", {skipLocationChange: true}).then(() => {
+        this.router.navigate(['/home/projects']);
+      });
+    }, 100);
+  }
 }
 
 

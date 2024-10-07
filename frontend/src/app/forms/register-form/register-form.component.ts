@@ -2,8 +2,8 @@ import {Component, inject} from '@angular/core';
 import {Router, RouterLink} from "@angular/router";
 import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule, ValidatorFn, Validators} from "@angular/forms";
 import {NgIf} from "@angular/common";
-import {UserRegistrationLoginService} from "../../services/user-registration-login.service";
-import {UserRegistrationData} from "../../interfaces/user-registration-data";
+import {UserService} from "../../services/user.service";
+import {Profile} from "../../interfaces/profile";
 import {GeneralInfoService} from "../../services/general-info.service";
 import {GeneralInfo} from "../../interfaces/general-info";
 
@@ -19,7 +19,7 @@ import {GeneralInfo} from "../../interfaces/general-info";
   styleUrl: './register-form.component.css'
 })
 export class RegisterFormComponent {
-  registrationLoginService: UserRegistrationLoginService = inject(UserRegistrationLoginService);
+  userService: UserService = inject(UserService);
   generalInfoService: GeneralInfoService = inject(GeneralInfoService);
   router: Router = inject(Router);
 
@@ -40,22 +40,23 @@ export class RegisterFormComponent {
     this.saveForm.markAllAsTouched();
     if (this.saveForm.valid) {
 
-      const newUser: UserRegistrationData = {
+      const newUser: Profile = {
         id: 0,
         firstName: this.saveForm.controls['firstName']?.value || '',
         lastName: this.saveForm.controls['lastName'].value  || '',
         email: this.saveForm.controls['email'].value || '',
         phoneNumber: this.saveForm.controls['phoneNumber'].value || '',
         password: this.saveForm.controls['password'].value || '',
+        githubUser: ''
       }
 
 
-      this.registrationLoginService.handelUserRegistration(newUser).subscribe({
-        next: (response: UserRegistrationData) => {
-          //this.registrationLoginService.loggedInUser = response;
+      this.userService.handelUserRegistration(newUser).subscribe({
+        next: (response: Profile) => {
+          //this.userService.loggedInUser = response;
           this.router.navigate(['/home']);
           localStorage.setItem("loggedInUser", JSON.stringify(response));
-          console.log('User registered successfully.', response);
+          console.log('Profile registered successfully.', response);
 
           const generalInfo: GeneralInfo = {
             address: "",

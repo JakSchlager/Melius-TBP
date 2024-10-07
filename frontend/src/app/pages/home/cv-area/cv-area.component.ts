@@ -6,7 +6,7 @@ import {MatDateRangeInput} from "@angular/material/datepicker";
 import {Form, FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {MatIcon} from "@angular/material/icon";
 import {GeneralInfoService} from "../../../services/general-info.service";
-import {UserRegistrationLoginService} from "../../../services/user-registration-login.service";
+import {UserService} from "../../../services/user.service";
 import {GeneralInfo} from "../../../interfaces/general-info";
 import {DropdownMenuHomeComponent} from "../../../single-components/dropdown-menu-home/dropdown-menu-home.component";
 import {Router} from "@angular/router";
@@ -33,7 +33,7 @@ import {WorkExperienceService} from "../../../services/work-experience.service";
 })
 export class CvAreaComponent implements OnInit{
   generalInfoService: GeneralInfoService = inject(GeneralInfoService);
-  userRegistrationLoginService: UserRegistrationLoginService = inject(UserRegistrationLoginService);
+  userService: UserService = inject(UserService);
   educationService: EducationService = inject(EducationService);
   workExperienceService: WorkExperienceService = inject(WorkExperienceService);
   currGeneralInfo: GeneralInfo | undefined;
@@ -54,7 +54,7 @@ export class CvAreaComponent implements OnInit{
 
   ngOnInit() {
     setTimeout(() => {
-      this.generalInfoService.loadGeneralInfo(this.userRegistrationLoginService.loggedInUser!).subscribe({
+      this.generalInfoService.loadGeneralInfo(this.userService.loggedInUser!).subscribe({
         next: (generalInfo: GeneralInfo) => {
           this.currGeneralInfo = generalInfo;
 
@@ -70,7 +70,7 @@ export class CvAreaComponent implements OnInit{
         }
       })
 
-      this.educationService.getEducationsByProfileId(this.userRegistrationLoginService.loggedInUser!.id).subscribe(v => {
+      this.educationService.getEducationsByProfileId(this.userService.loggedInUser!.id).subscribe(v => {
         v = <Education[]> v.slice().sort((a: Education, b: Education) => {
           return new Date(a.fromDate).getTime() - new Date(b.fromDate).getTime();
         });
@@ -79,7 +79,7 @@ export class CvAreaComponent implements OnInit{
         }
       })
 
-      this.workExperienceService.getWorkExperiencesByProfileId(this.userRegistrationLoginService.loggedInUser!.id).subscribe(v => {
+      this.workExperienceService.getWorkExperiencesByProfileId(this.userService.loggedInUser!.id).subscribe(v => {
         v = <WorkExperience[]> v.slice().sort((a: WorkExperience, b: WorkExperience) => {
           return new Date(a.fromDate).getTime() - new Date(b.fromDate).getTime();
         });
@@ -182,12 +182,13 @@ export class CvAreaComponent implements OnInit{
       city: this.generalInfoForm!.controls["city"].value!,
       gender: this.generalInfoForm!.controls["gender"].value!,
       profile: {
-        id: this.userRegistrationLoginService.loggedInUser!.id,
+        id: this.userService.loggedInUser!.id,
         firstName: this.generalInfoForm!.controls["firstName"].value!,
         lastName: this.generalInfoForm!.controls["lastName"].value!,
         email: this.generalInfoForm!.controls["email"].value!,
         phoneNumber: this.generalInfoForm!.controls["phoneNumber"].value!,
-        password: this.userRegistrationLoginService.loggedInUser!.password
+        password: this.userService.loggedInUser!.password,
+        githubUser: this.userService.loggedInUser!.githubUser
       },
       zipCode: this.generalInfoForm!.controls["zipCode"].value!
     }
@@ -195,7 +196,9 @@ export class CvAreaComponent implements OnInit{
     this.generalInfoService.updateGeneralInfo(newGeneralInfo).subscribe();
 
     setTimeout(() => {
-      this.router.navigateByUrl("/", {skipLocationChange: true});
+      this.router.navigateByUrl("/", {skipLocationChange: true}).then(() => {
+        this.router.navigate(['/home/cv']);
+      });
     }, 100);
   }
 
@@ -206,17 +209,16 @@ export class CvAreaComponent implements OnInit{
         id: this.educationFormItems.at(formNumber).value.id,
         name: this.educationFormItems.at(formNumber).value.educationalInst,
         toDate: new Date(this.educationFormItems.at(formNumber).value.eIdateTo),
-        profile: {
-          id: this.userRegistrationLoginService.loggedInUser!.id,
-          firstName: this.userRegistrationLoginService.loggedInUser!.firstName,
-          lastName: this.userRegistrationLoginService.loggedInUser!.lastName,
-          email: this.userRegistrationLoginService.loggedInUser!.email,
-          phoneNumber: this.userRegistrationLoginService.loggedInUser!.phoneNumber,
-          password: this.userRegistrationLoginService.loggedInUser!.password
-        }
+        profile: this.userService.loggedInUser!
       }
 
       this.educationService.updateEducation(education).subscribe();
+
+    setTimeout(() => {
+      this.router.navigateByUrl("/", {skipLocationChange: true}).then(() => {
+        this.router.navigate(['/home/cv']);
+      });
+    }, 100);
 
   }
 
@@ -227,17 +229,16 @@ export class CvAreaComponent implements OnInit{
       toDate: new Date(this.jobExperiencesFormItems.at(formNumber).value.workTo),
       company: this.jobExperiencesFormItems.at(formNumber).value.companyName,
       information: this.jobExperiencesFormItems.at(formNumber).value.moreInfo,
-      profile: {
-        id: this.userRegistrationLoginService.loggedInUser!.id,
-        firstName: this.userRegistrationLoginService.loggedInUser!.firstName,
-        lastName: this.userRegistrationLoginService.loggedInUser!.lastName,
-        email: this.userRegistrationLoginService.loggedInUser!.email,
-        phoneNumber: this.userRegistrationLoginService.loggedInUser!.phoneNumber,
-        password: this.userRegistrationLoginService.loggedInUser!.password
-      }
+      profile: this.userService.loggedInUser!
     }
 
     this.workExperienceService.updateWorkExperience(workExperience).subscribe();
+
+    setTimeout(() => {
+      this.router.navigateByUrl("/", {skipLocationChange: true}).then(() => {
+        this.router.navigate(['/home/cv']);
+      });
+    }, 100);
   }
 
 

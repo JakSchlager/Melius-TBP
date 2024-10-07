@@ -1,7 +1,7 @@
-import {UserRegistrationData} from "./user-registration-data";
+import {Profile} from "./profile";
 
 export interface GeneralInfo {
-  profile: UserRegistrationData,
+  profile: Profile,
   gender: string,
   zipCode: string,
   city: string,

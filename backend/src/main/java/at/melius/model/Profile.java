@@ -27,8 +27,15 @@ public class Profile {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "githubUser")
+    private String githubUser;
+
     public int getId() {
         return id;
+    }
+
+    public String getGithubUser() {
+        return githubUser;
     }
 
     public String getFirstName() {
@@ -53,6 +60,10 @@ public class Profile {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    public void setGithubUser(String githubUser) {
+        this.githubUser = githubUser;
     }
 
     public void setLastName(String lastName) {

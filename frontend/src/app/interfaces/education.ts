@@ -1,4 +1,4 @@
-import {UserRegistrationData} from "./user-registration-data";
+import {Profile} from "./profile";
 
 export interface Education {
   id: number,
@@ -6,5 +6,5 @@ export interface Education {
   fromDate: Date,
   toDate: Date,
   finished: string
-  profile: UserRegistrationData
+  profile: Profile
 }
