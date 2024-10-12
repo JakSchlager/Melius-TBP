@@ -212,8 +212,8 @@ export class StrengthsAreaComponent implements OnInit{
 
   checkDraggable(): boolean {
     if (this.homePageService.isBoxDraggable) {
-      this.dragBox = 'cursor-pointer';
       this.showBorders = 'border-2 border-dashed border-gray-200 rounded-lg';
+      this.dragBox = 'cursor-pointer';
 
       return true;
     }
