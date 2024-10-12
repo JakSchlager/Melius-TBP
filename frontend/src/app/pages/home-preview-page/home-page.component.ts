@@ -13,7 +13,7 @@ import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
 import {DropdownAvatarComponent} from "../../single-components/user-avatar/dropdown-avatar.component";
 
 @Component({
-  selector: 'app-home-page',
+  selector: 'app-home-preview-page',
   standalone: true,
   imports: [
     SideBarComponent,

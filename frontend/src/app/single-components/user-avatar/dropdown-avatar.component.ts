@@ -1,7 +1,7 @@
 import {Component, inject} from '@angular/core';
 import {MatIcon} from "@angular/material/icon";
 import {NgClass, NgIf} from "@angular/common";
-import {HomePageComponent} from "../../pages/home-page/home-page.component";
+import {HomePageComponent} from "../../pages/home-preview-page/home-page.component";
 import {FormsModule} from "@angular/forms";
 
 @Component({
