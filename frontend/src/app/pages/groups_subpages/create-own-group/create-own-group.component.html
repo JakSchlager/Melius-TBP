@@ -1,44 +1,58 @@
 <div class="w-screen h-screen">
-    <div class="bg-white rounded-lg shadow-lg">
-      <h1>Starte das Organisieren!</h1>
+  <div class="absolute -z-10 w-screen h-screen overflow-hidden bg-no-repeat object-fill">
+    <img ngSrc="../../../../assets/Melius-Groups-Background.svg" alt="radio_waves" class="min-w-max min-h-max object-fill bg-no-repeat overflow-hidden" height="16"
+         width="16">
+  </div>
 
-      <div class="flex">
-        <div class="h-full flex flex-col justify-center">
-          <div class="h-52 w-52 bg-gray-400 rounded-full shadow-lg"></div>
+  <div class="h-full flex justify-center items-center animate-fade-up duration-500">
+    <div class="w-5/12 bg-white py-4 rounded-lg shadow-lg">
+
+      <div class="flex items-center pt-1 pb-4">
+        <div class="w-fit ml-1 absolute cursor-pointer" [routerLink]="['/groups']">
+          <svg xmlns="http://www.w3.org/2000/svg" height="38px" viewBox="0 -960 960 960" width="38px" fill="#000000"><path d="m272-440 116 116q11 11 11 28t-11 28q-11 11-28 11t-28-11L148-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 28-11t28 11q11 11 11 28t-11 28L272-520h528q17 0 28.5 11.5T840-480q0 17-11.5 28.5T800-440H272Z"/></svg>
         </div>
 
-        <div class=" space-y-4">
-          <div class="">
-            <h1>Gruppenname</h1>
-            <input class="w-full px-2 py-1.5 border border-gray-500 bg-white rounded-lg shadow-md" type="text" placeholder="Gib hier den Namen deiner Gruppe ein...">
+        <h1 class="w-full text-3xl font-bold text-center py-2">Starte das Organisieren</h1>
+      </div>
+
+      <div class="h-full w-full flex justify-center space-x-20 items-center">
+        <div class="h-full w-fit border-8 border-black rounded-full p-4 flex flex-col justify-center">
+          <svg class="" xmlns="http://www.w3.org/2000/svg" height="190px" viewBox="0 -960 960 960" width="190px" fill="#000000"><path d="M40-240q-17 0-28.5-11.5T0-280v-23q0-43 44-70t116-27q13 0 25 .5t23 2.5q-14 21-21 44t-7 48v65H40Zm240 0q-17 0-28.5-11.5T240-280v-25q0-32 17.5-58.5T307-410q32-20 76.5-30t96.5-10q53 0 97.5 10t76.5 30q32 20 49 46.5t17 58.5v25q0 17-11.5 28.5T680-240H280Zm500 0v-65q0-26-6.5-49T754-397q11-2 22.5-2.5t23.5-.5q72 0 116 26.5t44 70.5v23q0 17-11.5 28.5T920-240H780Zm-455-80h311q-10-20-55.5-35T480-370q-55 0-100.5 15T325-320ZM160-440q-33 0-56.5-23.5T80-520q0-34 23.5-57t56.5-23q34 0 57 23t23 57q0 33-23 56.5T160-440Zm640 0q-33 0-56.5-23.5T720-520q0-34 23.5-57t56.5-23q34 0 57 23t23 57q0 33-23 56.5T800-440Zm-320-40q-50 0-85-35t-35-85q0-51 35-85.5t85-34.5q51 0 85.5 34.5T600-600q0 50-34.5 85T480-480Zm0-80q17 0 28.5-11.5T520-600q0-17-11.5-28.5T480-640q-17 0-28.5 11.5T440-600q0 17 11.5 28.5T480-560Zm1 240Zm-1-280Z"/></svg>
+        </div>
+
+        <div class="w-5/12 space-y-4">
+          <div class="w-full">
+            <h1 class="font-semibold">Gruppenname</h1>
+            <input class="w-full px-2 py-1.5 border border-gray-200 bg-white rounded-lg shadow-md" type="text" placeholder="Name deiner Gruppe...">
           </div>
 
           <div>
-            <h1>Unternehmen</h1>
-            <input class="w-fit px-2 py-1.5 border-gray-500 bg-white rounded-lg shadow-md" type="text" placeholder="Gib hier den Namen deines Unternehmens ein...">
+            <h1 class="font-semibold">Unternehmen</h1>
+            <input class="w-full px-2 py-1.5 border border-gray-200 bg-white rounded-lg shadow-md" type="text" placeholder="Name deines Unternehmens...">
           </div>
 
           <div>
-            <h1>Abteilung</h1>
-            <input class="w-fit px-2 py-1.5 border-gray-500 bg-white rounded-lg shadow-md" type="text" placeholder="Gib hier den Namen deiner Abteilung ein...">
+            <h1 class="font-semibold">Abteilung</h1>
+            <input class="w-full px-2 py-1.5 border border-gray-200 bg-white rounded-lg shadow-md" type="text" placeholder="Name deiner Abteilung...">
           </div>
 
           <div>
-            <h1>Erstellungsdatum</h1>
-            <input class="w-fit px-2 py-1.5 border-gray-500 bg-white rounded-lg shadow-md"type="date" placeholder="Gib hier deinen Gruppennamen ein...">
+            <h1 class="font-semibold">Erstellungsdatum</h1>
+            <input class="w-fit px-2 py-1.5 border border-gray-200 bg-white rounded-lg shadow-md" type="date">
           </div>
 
-          <div>
-            <h1>Anzahl an Mitgliedern</h1>
-            <input class="max-w-fit px-2 py-1.5 border-gray-500 bg-white rounded-lg shadow-md" type="number" >
+          <div class="w-fit">
+            <h1 class="font-semibold">Anzahl der Mitglieder</h1>
+            <input class="w-1/3 px-2 py-1.5 border border-gray-200 bg-white rounded-lg shadow-md" type="number" placeholder="0" >
           </div>
 
-          <div>
-            <button class="bg-primary-color text-lg text-white rounded-lg shadow-lg px-2 py-1.5 hover:bg-blue-500 duration-150 ease-in-out">
-              Gruppe eröffnen!
+          <div class="w-full flex justify-center">
+            <button class="bg-primary-color font-semibold text-lg text-white rounded-lg shadow-lg px-4 py-1.5 hover:bg-accent-blue hover:text-primary-color duration-150 ease-in-out">
+              Gruppe gründen
             </button>
           </div>
         </div>
       </div>
     </div>
+  </div>
 </div>
