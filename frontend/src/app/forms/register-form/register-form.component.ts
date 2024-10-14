@@ -2,7 +2,7 @@ import {Component, inject} from '@angular/core';
 import {Router, RouterLink} from "@angular/router";
 import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule, ValidatorFn, Validators} from "@angular/forms";
 import {NgIf} from "@angular/common";
-import {UserService} from "../../services/user.service";
+import {ProfileService} from "../../services/profile.service";
 import {Profile} from "../../interfaces/profile";
 import {GeneralInfoService} from "../../services/general-info.service";
 import {GeneralInfo} from "../../interfaces/general-info";
@@ -19,7 +19,7 @@ import {GeneralInfo} from "../../interfaces/general-info";
   styleUrl: './register-form.component.css'
 })
 export class RegisterFormComponent {
-  userService: UserService = inject(UserService);
+  profileService: ProfileService = inject(ProfileService);
   generalInfoService: GeneralInfoService = inject(GeneralInfoService);
   router: Router = inject(Router);
 
@@ -51,9 +51,9 @@ export class RegisterFormComponent {
       }
 
 
-      this.userService.handelUserRegistration(newUser).subscribe({
+      this.profileService.handelUserRegistration(newUser).subscribe({
         next: (response: Profile) => {
-          //this.userService.loggedInUser = response;
+          //this.profileService.loggedInUser = response;
           this.router.navigate(['/home']);
           localStorage.setItem("loggedInUser", JSON.stringify(response));
           console.log('Profile registered successfully.', response);

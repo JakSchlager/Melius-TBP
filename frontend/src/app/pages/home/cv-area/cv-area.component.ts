@@ -6,7 +6,7 @@ import {MatDateRangeInput} from "@angular/material/datepicker";
 import {Form, FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {MatIcon} from "@angular/material/icon";
 import {GeneralInfoService} from "../../../services/general-info.service";
-import {UserService} from "../../../services/user.service";
+import {ProfileService} from "../../../services/profile.service";
 import {GeneralInfo} from "../../../interfaces/general-info";
 import {DropdownMenuHomeComponent} from "../../../single-components/dropdown-menu-home/dropdown-menu-home.component";
 import {Router} from "@angular/router";
@@ -33,7 +33,7 @@ import {WorkExperienceService} from "../../../services/work-experience.service";
 })
 export class CvAreaComponent implements OnInit{
   generalInfoService: GeneralInfoService = inject(GeneralInfoService);
-  userService: UserService = inject(UserService);
+  profileService: ProfileService = inject(ProfileService);
   educationService: EducationService = inject(EducationService);
   workExperienceService: WorkExperienceService = inject(WorkExperienceService);
   currGeneralInfo: GeneralInfo | undefined;
@@ -54,7 +54,7 @@ export class CvAreaComponent implements OnInit{
 
   ngOnInit() {
     setTimeout(() => {
-      this.generalInfoService.loadGeneralInfo(this.userService.loggedInUser!).subscribe({
+      this.generalInfoService.loadGeneralInfo(this.profileService.loggedInUser!).subscribe({
         next: (generalInfo: GeneralInfo) => {
           this.currGeneralInfo = generalInfo;
 
@@ -70,7 +70,7 @@ export class CvAreaComponent implements OnInit{
         }
       })
 
-      this.educationService.getEducationsByProfileId(this.userService.loggedInUser!.id).subscribe(v => {
+      this.educationService.getEducationsByProfileId(this.profileService.loggedInUser!.id).subscribe(v => {
         v = <Education[]> v.slice().sort((a: Education, b: Education) => {
           return new Date(a.fromDate).getTime() - new Date(b.fromDate).getTime();
         });
@@ -79,7 +79,7 @@ export class CvAreaComponent implements OnInit{
         }
       })
 
-      this.workExperienceService.getWorkExperiencesByProfileId(this.userService.loggedInUser!.id).subscribe(v => {
+      this.workExperienceService.getWorkExperiencesByProfileId(this.profileService.loggedInUser!.id).subscribe(v => {
         v = <WorkExperience[]> v.slice().sort((a: WorkExperience, b: WorkExperience) => {
           return new Date(a.fromDate).getTime() - new Date(b.fromDate).getTime();
         });
@@ -182,13 +182,13 @@ export class CvAreaComponent implements OnInit{
       city: this.generalInfoForm!.controls["city"].value!,
       gender: this.generalInfoForm!.controls["gender"].value!,
       profile: {
-        id: this.userService.loggedInUser!.id,
+        id: this.profileService.loggedInUser!.id,
         firstName: this.generalInfoForm!.controls["firstName"].value!,
         lastName: this.generalInfoForm!.controls["lastName"].value!,
         email: this.generalInfoForm!.controls["email"].value!,
         phoneNumber: this.generalInfoForm!.controls["phoneNumber"].value!,
-        password: this.userService.loggedInUser!.password,
-        githubUser: this.userService.loggedInUser!.githubUser
+        password: this.profileService.loggedInUser!.password,
+        githubUser: this.profileService.loggedInUser!.githubUser
       },
       zipCode: this.generalInfoForm!.controls["zipCode"].value!
     }
@@ -209,7 +209,7 @@ export class CvAreaComponent implements OnInit{
         id: this.educationFormItems.at(formNumber).value.id,
         name: this.educationFormItems.at(formNumber).value.educationalInst,
         toDate: new Date(this.educationFormItems.at(formNumber).value.eIdateTo),
-        profile: this.userService.loggedInUser!
+        profile: this.profileService.loggedInUser!
       }
 
       this.educationService.updateEducation(education).subscribe();
@@ -229,7 +229,7 @@ export class CvAreaComponent implements OnInit{
       toDate: new Date(this.jobExperiencesFormItems.at(formNumber).value.workTo),
       company: this.jobExperiencesFormItems.at(formNumber).value.companyName,
       information: this.jobExperiencesFormItems.at(formNumber).value.moreInfo,
-      profile: this.userService.loggedInUser!
+      profile: this.profileService.loggedInUser!
     }
 
     this.workExperienceService.updateWorkExperience(workExperience).subscribe();

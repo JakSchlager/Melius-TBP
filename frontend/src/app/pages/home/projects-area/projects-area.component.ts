@@ -4,7 +4,7 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/
 import {NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
 import {MatIcon} from "@angular/material/icon";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {UserService} from "../../../services/user.service";
+import {ProfileService} from "../../../services/profile.service";
 import {isEmpty} from "rxjs";
 import {Profile} from "../../../interfaces/profile";
 import {Router} from "@angular/router";
@@ -28,12 +28,12 @@ export class ProjectsAreaComponent implements OnInit {
   uploadedFiles: { name: string, url: string }[] = [];
   uploadBtnClicked: boolean = false;
   router: Router = inject(Router);
-  userService: UserService = inject(UserService);
+  profileService: ProfileService = inject(ProfileService);
 
   ngOnInit() {
     setTimeout(() => {
-      if(this.userService.loggedInUser!.githubUser !== "") {
-        this.genRepo(this.userService.loggedInUser!.githubUser);
+      if(this.profileService.loggedInUser!.githubUser !== "") {
+        this.genRepo(this.profileService.loggedInUser!.githubUser);
       }
     }, 100)
   }
@@ -172,10 +172,10 @@ export class ProjectsAreaComponent implements OnInit {
   }
 
   setGithubUser(username: string) {
-    let profile: Profile = this.userService.loggedInUser!;
+    let profile: Profile = this.profileService.loggedInUser!;
     profile.githubUser = username;
 
-    this.userService.updateProfile(profile).subscribe();
+    this.profileService.updateProfile(profile).subscribe();
 
     setTimeout(() => {
       this.router.navigateByUrl("/", {skipLocationChange: true}).then(() => {

@@ -38,6 +38,7 @@ public class ProfileRepository {
         currProfile.setLastName(profile.getLastName());
         currProfile.setEmail(profile.getEmail());
         currProfile.setPhoneNumber(profile.getPhoneNumber());
+        currProfile.setGithubUser(profile.getGithubUser());
     }
 
     public Profile getProfileByEmail(String email) {

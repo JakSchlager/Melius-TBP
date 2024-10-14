@@ -2,7 +2,7 @@ import {Component, inject} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {NgIf} from "@angular/common";
 import {Router, RouterLink} from "@angular/router";
-import {UserService} from "../../services/user.service";
+import {ProfileService} from "../../services/profile.service";
 import {UserLoginData} from "../../interfaces/user-login-data";
 import {Profile} from "../../interfaces/profile";
 
@@ -18,7 +18,7 @@ import {Profile} from "../../interfaces/profile";
   styleUrl: './login-form.component.css'
 })
 export class LoginFormComponent {
-  userService: UserService = inject(UserService);
+  profileService: ProfileService = inject(ProfileService);
   router: Router = inject(Router);
 
   saveForm = new FormGroup( {
@@ -33,7 +33,7 @@ export class LoginFormComponent {
       password: this.saveForm.controls['password'].value || ''
     };
 
-    this.userService.handleUserLogin(loginData).subscribe({
+    this.profileService.handleUserLogin(loginData).subscribe({
       next: (userInfo: Profile) => {
         localStorage.setItem("rememberUser", this.saveForm.controls['remember'].value!.toString());
 

@@ -1,7 +1,7 @@
 import {inject, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {GeneralInfo} from "../interfaces/general-info";
-import {UserService} from "./user.service";
+import {ProfileService} from "./profile.service";
 import {Profile} from "../interfaces/profile";
 import {Observable} from "rxjs";
 

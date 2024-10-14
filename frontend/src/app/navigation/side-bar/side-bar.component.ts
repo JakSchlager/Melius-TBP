@@ -7,7 +7,7 @@ import {MatButton} from "@angular/material/button";
 import {MatListItem, MatNavList} from "@angular/material/list";
 import {MatIcon} from "@angular/material/icon";
 import {AppComponent} from "../../app.component";
-import {UserService} from "../../services/user.service";
+import {ProfileService} from "../../services/profile.service";
 import {Profile} from "../../interfaces/profile";
 
 @Component({
@@ -30,7 +30,7 @@ import {Profile} from "../../interfaces/profile";
 
 })
 export class SideBarComponent implements OnInit {
-  userService: UserService = inject(UserService);
+  profileService: ProfileService = inject(ProfileService);
   router: Router = inject(Router);
   hamburgerIconClicked : boolean = false;
   isAnimating: boolean = false;
@@ -57,9 +57,9 @@ export class SideBarComponent implements OnInit {
     if(localStorage.getItem("rememberUser") === "true") {
 
       if(localStorage.getItem("loggedInUser") !== null) {
-        this.userService.handleUserLogin(JSON.parse(localStorage.getItem("loggedInUser")!)).subscribe({
+        this.profileService.handleUserLogin(JSON.parse(localStorage.getItem("loggedInUser")!)).subscribe({
           next: (user: Profile) => {
-            this.userService.loggedInUser = user;
+            this.profileService.loggedInUser = user;
         }
         });
       } else {
@@ -68,7 +68,7 @@ export class SideBarComponent implements OnInit {
 
     } else {
       if(sessionStorage.getItem("loggedInUser") !== null) {
-        this.userService.loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser")!);
+        this.profileService.loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser")!);
       } else {
         this.router.navigate(["/"]);
       }

@@ -7,7 +7,7 @@ import {UserLoginData} from "../interfaces/user-login-data";
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class ProfileService {
   httpClient: HttpClient = inject(HttpClient);
   private readonly url = "http://localhost:8080/profile/";
   loggedInUser: Profile | undefined;
