@@ -1,4 +1,4 @@
-import {User} from "./user";
+import {Profile} from "./profile";
 
 export interface WorkExperience {
   id: number;
@@ -6,5 +6,5 @@ export interface WorkExperience {
   fromDate: Date,
   toDate: Date,
   information: string,
-  user: User
+  profile: Profile
 }

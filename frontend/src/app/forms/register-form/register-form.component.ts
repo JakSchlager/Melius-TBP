@@ -2,8 +2,8 @@ import {Component, inject} from '@angular/core';
 import {Router, RouterLink} from "@angular/router";
 import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule, ValidatorFn, Validators} from "@angular/forms";
 import {NgIf} from "@angular/common";
-import {UserService} from "../../services/user.service";
-import {User} from "../../interfaces/user";
+import {ProfileService} from "../../services/profile.service";
+import {Profile} from "../../interfaces/profile";
 import {GeneralInfoService} from "../../services/general-info.service";
 import {GeneralInfo} from "../../interfaces/general-info";
 
@@ -19,7 +19,7 @@ import {GeneralInfo} from "../../interfaces/general-info";
   styleUrl: './register-form.component.css'
 })
 export class RegisterFormComponent {
-  registrationLoginService: UserService = inject(UserService);
+  profileService: ProfileService = inject(ProfileService);
   generalInfoService: GeneralInfoService = inject(GeneralInfoService);
   router: Router = inject(Router);
 
@@ -40,30 +40,30 @@ export class RegisterFormComponent {
     this.saveForm.markAllAsTouched();
     if (this.saveForm.valid) {
 
-      const newUser: User = {
+      const newUser: Profile = {
         id: 0,
         firstName: this.saveForm.controls['firstName']?.value || '',
         lastName: this.saveForm.controls['lastName'].value  || '',
         email: this.saveForm.controls['email'].value || '',
         phoneNumber: this.saveForm.controls['phoneNumber'].value || '',
         password: this.saveForm.controls['password'].value || '',
-        githubUsername: ''
+        githubUser: ''
       }
 
 
-      this.registrationLoginService.handelUserRegistration(newUser).subscribe({
-        next: (response: User) => {
-          //this.registrationLoginService.loggedInUser = response;
+      this.profileService.handelUserRegistration(newUser).subscribe({
+        next: (response: Profile) => {
+          //this.profileService.loggedInUser = response;
           this.router.navigate(['/home']);
           localStorage.setItem("loggedInUser", JSON.stringify(response));
-          console.log('User registered successfully.', response);
+          console.log('Profile registered successfully.', response);
 
           const generalInfo: GeneralInfo = {
             address: "",
             city: "",
             gender: "",
             zipCode: "",
-            user: response
+            profile: response
           };
 
           this.generalInfoService.addGeneralInfo(generalInfo).subscribe({

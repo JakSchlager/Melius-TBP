@@ -3,16 +3,29 @@
   <div class="w-full sticky top-12 flex justify-end z-30">
     <app-dropdown-menu-home></app-dropdown-menu-home>
   </div>
-  <div class="w-full flex justify-center">
-    <div class="">
+
+
+  <div class="w-full grid grid-cols-3 space-x-4 justify-center">
+
+    <!-- CV Column One -->
+    <div class="col-start-1 border-2 border-dashed border-gray-100  rounded-lg space-y-10" id="leftSkillCol"
+         (dragover)="onDragOver($event)"
+         (drop)="onDrop($event, 'leftSkillCol')">
+    </div>
+
+
+    <!-- CV Column Two -->
+    <div class="col-start-2 border-2 border-dashed border-gray-100 rounded-lg space-y-10" id="middleSkillCol"
+         (dragover)="onDragOver($event)"
+         (drop)="onDrop($event, 'middleSkillCol')">
 
       <!-- Allgemeine Informationen -->
-      <div class="p-4 drop-shadow-lg animate-in slide-in-from-bottom-32 duration-500">
+      <div draggable="true" (dragstart)="onDragStart($event, $event.target)" class="drop-shadow-lg animate-in slide-in-from-bottom-32 duration-500 hover:cursor-grab">
         <div class="bg-white rounded-xl px-10 py-6">
           <h1 class="text-center font-bold text-2xl py-2">Allgemein</h1>
 
-          <div class="space-y-6">
-            <form class="space-y-2" [formGroup]="generalInfoForm">
+          <div class="space-y-10 hover:cursor-default">
+            <form class="space-y-4" [formGroup]="generalInfoForm">
               <span class="row-start-1 col-start-1 text-gray-500">Ansprache</span>
 
               <div class="flex items-center pb-2">
@@ -29,15 +42,19 @@
                 </div>
               </div>
 
-              <div class="w-full flex justify-between space-x-10">
-                <div class="flex flex-col">
+              <div class="grid grid-cols-2">
+                <div class="w-11/12 col-start-1">
                   <span class="text-gray-500">Vorname</span>
-                  <input formControlName="firstName" type="text" class="border-b-2">
+                  <div class="border-b-2">
+                    <input formControlName="firstName" type="text" class="w-11/12">
+                  </div>
                 </div>
 
-                <div class="flex flex-col">
+                <div class="w-11/12 col-start-2">
                   <span class="text-gray-500">Nachname</span>
-                  <input formControlName="lastName" type="text" class="border-b-2">
+                  <div class=" border-b-2">
+                    <input formControlName="firstName" type="text" class="w-11/12">
+                  </div>
                 </div>
               </div>
 
@@ -51,15 +68,19 @@
                 <input formControlName="phoneNumber" type="tel" class="border-b-2">
               </div>
 
-              <div class="w-full flex justify-between space-x-10">
-                <div class="flex flex-col">
+              <div class="grid grid-cols-2">
+                <div class="w-11/12 col-start-1">
                   <span class="text-gray-500">PLZ</span>
-                  <input formControlName="zipCode" type="text" class="border-b-2">
+                  <div class="border-b-2">
+                    <input formControlName="zipCode" type="text" class="w-11/12">
+                  </div>
                 </div>
 
-                <div class="flex flex-col">
+                <div class="w-11/12 col-start-2">
                   <span class="text-gray-500">Ort</span>
-                  <input formControlName="city" type="text" class="border-b-2">
+                  <div class=" border-b-2">
+                    <input formControlName="city" type="text" class="w-11/12">
+                  </div>
                 </div>
               </div>
 
@@ -69,62 +90,20 @@
                 <input formControlName="address" class="border-b-2">
               </div>
 
-              <button type="submit" (click)="updateGeneralInfo()" class="w-1/5 font-bold bg-primary-color text-accent-blue focus:ring-4 focus:outline-none focus:ring-primary-300 rounded-lg text-sm px-5 py-2 text-center hover:bg-accent-blue hover:text-primary-color duration-150 ease-in-out">Speichern</button>
+              <div class="w-full flex justify-center">
+                <button type="submit" (click)="updateGeneralInfo(); newSavingNotification('Allgemeine Informationen')" class="w-fit font-bold bg-primary-color text-white rounded-lg text-sm px-5 py-2.5 text-center gap-x-2 hover:bg-blue-500 duration-150 ease-in-out">Speichern</button>
+              </div>
             </form>
           </div>
         </div>
       </div>
 
       <!-- Ausbildung Informationen -->
-      <div class="p-4 drop-shadow-lg animate-in slide-in-from-bottom-32 duration-700">
+      <div draggable="true" (dragstart)="onDragStart($event, $event.target)" class="drop-shadow-lg animate-in slide-in-from-bottom-32 duration-700 hover:cursor-grab">
         <div class="bg-white rounded-xl px-10 py-4">
           <h1 class="text-center font-bold text-2xl py-2">Ausbildungen</h1>
 
-          <!--<div class="flex justify-between space-x-6 animate-in fade-in zoom-in duration-500">
-            <div class="w-full grid space-y-4">
-              <div class="grid grid-cols-1">
-                <span class="text-gray-500">Bildungseinrichtung/Ort</span>
-                <input formControlName="educationalInst" class="border-b-2">
-              </div>
-
-
-              <div class="w-full grid grid-cols-3">
-                <div class="w-full">
-                  <div class="w-fit grid grid-cols-1">
-                    <span class="text-gray-500">Von</span>
-                    <input formControlName="eIdateFrom" type="date" class="border-b-2">
-                  </div>
-                </div>
-
-                <div class="w-full">
-                  <div class="w-fit grid grid-cols-1">
-                    <span class="text-gray-500">Bis</span>
-                    <input formControlName="eIdateTo" type="date" class="border-b-2">
-                  </div>
-                </div>
-
-                <div class="w-full flex justify-end">
-                  <div class="grid grid-cols-1">
-                    <span class="row-start-1 col-start-1 text-gray-500">Absolviert</span>
-                    <div class="flex items-center pb-2">
-                      <div class="grid">
-                        <svg class="pointer-events-none z-10 right-1 relative col-start-1 row-start-1 h-4 w-4 self-center justify-self-end forced-colors:hidden" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                          <path fill-rule="evenodd" d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"></path>
-                        </svg>
-                        <select formControlName="eIFinished" class="w-fit appearance-none forced-colors:appearance-auto border row-start-1 col-start-1 rounded-lg bg-accent-blue text-black px-2">
-                          <option>Ja</option>
-                          <option>Nein</option>
-                          <option>In Ausbildung</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>-->
-
-          <div [formGroup]="educationForm" class="mt-8">
+          <div [formGroup]="educationForm" class="mt-8 hover:cursor-default">
             <div formArrayName="educationFormItems" class="space-y-8">
               <div *ngFor="let educationItem of educationFormItems.controls; let i = index" [formGroupName]="i">
 
@@ -171,12 +150,17 @@
                     </div>
                   </div>
 
-                  <div class="h-full items-center py-8 px-1">
-                    <svg (click)="deleteEducationInfo(i)" class="cursor-pointer" xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px" fill="#EA3323"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
+                  <div class="h-full items-center py-8 space-y-4">
+                    <div class="bg-white rounded-lg shadow-md p-1 hover:bg-gray-50 duration-150 ease-in-out">
+                      <svg (click)="deleteEducationInfo(i)" class="cursor-pointer" xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px" fill="#EA3323"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-md p-1 hover:bg-gray-50 duration-150 ease-in-out">
+                      <svg (click)="updateEducation(i); newSavingNotification('Ausbildungen')" class="cursor-pointer" xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px" fill="#6C9732"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q65 0 123 19t107 53l-58 59q-38-24-81-37.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160q133 0 226.5-93.5T800-480q0-18-2-36t-6-35l65-65q11 32 17 66t6 70q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm-56-216L254-466l56-56 114 114 400-401 56 56-456 457Z"/></svg>
+                    </div>
                   </div>
                 </div>
 
-                <button (click)="updateEducation(i)" type="submit" class="w-1/5 font-bold bg-primary-color text-accent-blue focus:ring-4 focus:outline-none focus:ring-primary-300 rounded-lg text-sm px-5 py-2 text-center hover:bg-accent-blue hover:text-primary-color duration-150 ease-in-out">Speichern</button>
 
               </div>
             </div>
@@ -192,43 +176,11 @@
 
 
       <!-- Berufserfahrungen Informationen -->
-      <div class="p-4 drop-shadow-lg animate-in slide-in-from-bottom-32 duration-700">
+      <div draggable="true" (dragstart)="onDragStart($event, $event.target)" class="drop-shadow-lg animate-in slide-in-from-bottom-32 duration-700 hover:cursor-grab">
         <div class="bg-white rounded-xl  px-10 py-4">
           <h1 class="text-center font-bold text-2xl py-2">Berufserfahrungen</h1>
 
-          <!--<div class="h-full flex justify-between space-x-6 animate-in fade-in zoom-in duration-500">
-            <div class="w-full grid space-y-4">
-
-              <div class="w-full grid grid-cols-1">
-                <span class="text-gray-500">Firma/Ort</span>
-                <input formControlName="companyName" class="border-b-2">
-              </div>
-
-
-              <div class="w-full grid grid-cols-2 justify-between">
-                <div class="w-full">
-                  <div class="w-fit grid grid-cols-1">
-                    <span class="text-gray-500">Von</span>
-                    <input formControlName="workFrom" type="date" class="border-b-2">
-                  </div>
-                </div>
-
-                <div class="w-full">
-                  <div class="w-fit grid grid-cols-1">
-                    <span class="text-gray-500">Bis</span>
-                    <input formControlName="workTo" type="date" class="border-b-2">
-                  </div>
-                </div>
-              </div>
-
-              <div class="w-full grid grid-cols-1">
-                <span class="text-gray-500">Zusätzliche Informationen: </span>
-                <textarea formControlName="moreInfo" class="bg-accent-blue resize-y rounded-md border-2"></textarea>
-              </div>
-            </div>
-          </div>-->
-
-          <div [formGroup]="jobExperiencesForm" class="mt-8">
+          <div [formGroup]="jobExperiencesForm" class="mt-8 hover:cursor-default">
             <div formArrayName="jobExperiencesFormItems" class="space-y-8">
               <div *ngFor="let jobExperienceItem of jobExperiencesFormItems.controls; let i = index" [formGroupName]="i" class="space-y-4">
 
@@ -263,13 +215,16 @@
                     </div>
                   </div>
 
-                  <div class="h-full items-center py-8 px-1">
-                    <svg (click)="deleteJobExperiencesInfo(i)" class="cursor-pointer" xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px" fill="#EA3323"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
+                  <div class="h-full items-center py-8 space-y-4">
+                    <div class="bg-white rounded-lg shadow-md p-1 hover:bg-gray-50 duration-150 ease-in-out">
+                      <svg (click)="deleteJobExperiencesInfo(i)" class="cursor-pointer" xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px" fill="#EA3323"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-md p-1 hover:bg-gray-50 duration-150 ease-in-out">
+                      <svg (click)="updateWorkExperience(i); newSavingNotification('Berufserfahrungen')" class="cursor-pointer" xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px" fill="#6C9732"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q65 0 123 19t107 53l-58 59q-38-24-81-37.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160q133 0 226.5-93.5T800-480q0-18-2-36t-6-35l65-65q11 32 17 66t6 70q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm-56-216L254-466l56-56 114 114 400-401 56 56-456 457Z"/></svg>
+                    </div>
                   </div>
                 </div>
-
-                <button (click)="updateWorkExperience(i)" type="submit" class="w-1/5 font-bold bg-primary-color text-accent-blue focus:ring-4 focus:outline-none focus:ring-primary-300 rounded-lg text-sm px-5 py-2 text-center hover:bg-accent-blue hover:text-primary-color duration-150 ease-in-out">Speichern</button>
-
               </div>
             </div>
 
@@ -281,7 +236,24 @@
           </div>
         </div>
       </div>
+    </div>
 
+
+    <!-- CV Column Three -->
+    <div class="col-start-3 border-2 border-dashed border-gray-100 rounded-lg space-y-10" id="rightSkillCol"
+         (dragover)="onDragOver($event)"
+         (drop)="onDrop($event, 'rightSkillCol')">
+    </div>
+  </div>
+
+
+  <!-- Notification List -->
+  <div class="fixed bottom-4 left-4 space-y-2 w-72 ">
+    <div *ngFor="let notification of notifications; let i = index"
+         class="bg-white border border-black rounded-lg text-black px-4 py-2 shadow-lg transition-opacity duration-500 ease-in-out"
+         [class.opacity-0]="notification.fade"
+         (animationend)="removeNotification(i)">
+      {{ notification.message }}
     </div>
   </div>
 </div>

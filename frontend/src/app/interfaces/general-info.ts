@@ -1,7 +1,7 @@
-import {User} from "./user";
+import {Profile} from "./profile";
 
 export interface GeneralInfo {
-  user: User,
+  profile: Profile,
   gender: string,
   zipCode: string,
   city: string,

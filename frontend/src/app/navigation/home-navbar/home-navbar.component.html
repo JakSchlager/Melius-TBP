@@ -1,17 +1,19 @@
 <div class="py-1 relative">
 
-  <div class="w-full h-fit shadow-md rounded-b-lg flex justify-evenly text-center font-bold box-content absolute">
-    <a class=" cursor-pointer">
-      <h1 class="text-2xl px-40 hover:border-b-2 border-primary-color duration-150 ease-in-out" [routerLinkActive]="['activeHomeCVNavTap']" [routerLink]="['/home/cv']">Lebenslauf</h1>
-    </a>
+  <div class="w-full bg-white h-fit shadow-md rounded-b-lg font-bold box-content absolute">
+    <div class="w-auto mx-10 gap-x-20 grid grid-cols-3 text-center">
+      <a class="cursor-pointer col-start-1">
+        <h1 class="text-2xl px-40 hover:border-b-2 border-primary-color duration-150 ease-in-out" [routerLinkActive]="['activeHomeCVNavTap']" [routerLink]="['/home/cv']">Lebenslauf</h1>
+      </a>
 
-    <a class=" cursor-pointer">
-      <h1 class="text-2xl px-40 hover:border-b-2 border-intermediate-color duration-150 ease-in-out" [routerLinkActive]="['activeHomeProjectsNavTap']" [routerLink]="['/home/projects']">Projekte</h1>
-    </a>
+      <a class="cursor-pointer col-start-2">
+        <h1 class="text-2xl px-40 hover:border-b-2 border-intermediate-color duration-150 ease-in-out" [routerLinkActive]="['activeHomeProjectsNavTap']" [routerLink]="['/home/projects']">Projekte</h1>
+      </a>
 
-    <a class=" cursor-pointer">
-      <h1 class="text-2xl px-40 hover:border-b-2 border-secondary-color duration-150 ease-in-out" [routerLinkActive]="['activeHomeStrengthsNavTap']" [routerLink]="['/home/strengths']">Kompetenzen</h1>
-    </a>
+      <a class=" cursor-pointer col-start-3">
+        <h1 class="text-2xl px-40 hover:border-b-2 border-secondary-color duration-150 ease-in-out" [routerLinkActive]="['activeHomeStrengthsNavTap']" [routerLink]="['/home/strengths']">Kompetenzen</h1>
+      </a>
+    </div>
   </div>
 
 </div>

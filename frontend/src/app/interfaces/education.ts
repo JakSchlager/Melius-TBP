@@ -1,4 +1,4 @@
-import {User} from "./user";
+import {Profile} from "./profile";
 
 export interface Education {
   id: number,
@@ -6,5 +6,5 @@ export interface Education {
   fromDate: Date,
   toDate: Date,
   finished: string
-  user: User
+  profile: Profile
 }

@@ -1,7 +1,7 @@
 import {Component, HostListener, inject, OnInit} from '@angular/core';
 import {SideBarComponent} from "../../navigation/side-bar/side-bar.component";
-import {User} from "../../interfaces/user";
-import {UserService} from "../../services/user.service";
+import {Profile} from "../../interfaces/profile";
+import {ProfileService} from "../../services/profile.service";
 import {NgClass, NgIf, NgOptimizedImage} from "@angular/common";
 import {HomeNavbarComponent} from "../../navigation/home-navbar/home-navbar.component";
 import {ActivatedRoute, NavigationEnd, Router, RouterOutlet} from "@angular/router";
@@ -34,7 +34,7 @@ import {DropdownAvatarComponent} from "../../single-components/user-avatar/dropd
 })
 export class HomePageComponent implements OnInit{
   isChildRoute: boolean = false;
-  registrationLoginService: UserService = inject(UserService);
+  profileService: ProfileService = inject(ProfileService);
 
   /*
   url: any = '';
