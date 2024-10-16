@@ -36,6 +36,6 @@ export class ProfileService {
   }
 
   updateProfile(profile: Profile) {
-    return this.httpClient.patch<Profile>(this.url + "update", profile);
+    return this.httpClient.put<Profile>(this.url + "update", profile);
   }
 }

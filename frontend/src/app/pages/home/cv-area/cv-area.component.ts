@@ -237,6 +237,8 @@ export class CvAreaComponent implements OnInit{
       this.router.navigateByUrl("/", {skipLocationChange: true}).then(() => {
         this.router.navigate(['/home/cv']);
       });
+
+      this.newSavingNotification('Berufserfahrungen')
     }, 100);
   }
 

@@ -28,6 +28,6 @@ export class GeneralInfoService {
   }
 
   updateGeneralInfo(newGeneralInfo: GeneralInfo) {
-    return this.httpClient.post<GeneralInfo>(this.url + "update", newGeneralInfo);
+    return this.httpClient.put<GeneralInfo>(this.url + "update", newGeneralInfo);
   }
 }

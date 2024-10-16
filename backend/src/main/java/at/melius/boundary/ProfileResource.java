@@ -36,7 +36,7 @@ public class ProfileResource {
         throw new NotFoundException();
     }
 
-    @PATCH
+    @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/update")
     public void updateProfile(Profile profile) {

@@ -13,7 +13,7 @@ export class EducationService {
 
   updateEducation(education: Education) {
     console.log(education)
-    return this.httpClient.post<Education>(this.url + "update", education);
+    return this.httpClient.put<Education>(this.url + "update", education);
   }
 
   getEducationsByProfileId(profileId: number) {
