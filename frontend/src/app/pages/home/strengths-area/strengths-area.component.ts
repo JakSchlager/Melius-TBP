@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, inject} from '@angular/core';
 import {FormArray, FormBuilder, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgClass, NgForOf} from "@angular/common";
 import {MatSlider, MatSliderThumb, MatSliderVisualThumb} from "@angular/material/slider";
@@ -13,6 +13,9 @@ import { SelectItemGroup } from 'primeng/api';
 import {DropdownModule} from "primeng/dropdown";
 import {DropStrProgrComponent} from "../../../single-components/strengths/drop-str-progr/drop-str-progr.component";
 import {DropStrEdvComponent} from "../../../single-components/strengths/drop-str-edv/drop-str-edv.component";
+import {CharacteristicService} from "../../../services/characteristic.service";
+import {Characteristic} from "../../../interfaces/Characteristic";
+import {ProfileService} from "../../../services/profile.service";
 
 @Component({
   selector: 'app-strengths-area',
@@ -40,8 +43,11 @@ import {DropStrEdvComponent} from "../../../single-components/strengths/drop-str
   styleUrl: './strengths-area.component.css'
 })
 export class StrengthsAreaComponent implements OnInit{
-  characteristics!: any[];
-  selectedCharacteristic!: any[];
+  characteristicService: CharacteristicService = inject(CharacteristicService);
+  profileService: ProfileService = inject(ProfileService);
+
+  characteristics!: Characteristic[];
+  selectedCharacteristic!: Characteristic[];
   userLanguageRating !: number;
 
   programmingLanguages !: any[]
@@ -52,6 +58,16 @@ export class StrengthsAreaComponent implements OnInit{
 
 
   ngOnInit(): void {
+    this.characteristicService.loadAllCharacteristics().subscribe(c => {
+      console.log("Characteristics loaded",c)
+      this.characteristics = c
+    });
+
+    setTimeout(() => {
+      this.selectedCharacteristic = this.profileService.loggedInUser!.characteristics
+    },100)
+
+
     this.programmingLanguages = [
       { name: 'Java', code: 'java' },
       { name: 'C', code: 'c' },
@@ -65,24 +81,6 @@ export class StrengthsAreaComponent implements OnInit{
       { name: 'Python', code: 'py' },
       { name: 'Swift', code: 'swift' },
       { name: 'Ruby', code: 'ruby' },
-    ];
-
-    this.characteristics = [
-      { label: 'Kreativ', value: 'kreativ' },
-      { label: 'Pünktlich', value: 'puenktlich' },
-      { label: 'Teamfähig', value: 'teamfaehig' },
-      { label: 'Freundlich', value: 'freundlich' },
-      { label: 'Hilfsbereit', value: 'hilfsbereit' },
-      { label: 'Organisiert', value: 'organisiert' },
-      { label: 'Zuverlässig', value: 'zuverlaessig' },
-      { label: 'Engagiert', value: 'engagiert' },
-      { label: 'Motiviert', value: 'motiviert' },
-      { label: 'Flexibel', value: 'flexibel' },
-      { label: 'Kommunikativ', value: 'kommunikativ' },
-      { label: 'Kooperativ', value: 'kooperativ' },
-      { label: 'Analytisches Denken', value: 'analytisches-denken' },
-      { label: 'Belastbarkeit', value: 'belastbarkeit' },
-      { label: 'Eigeniniziative', value: 'eigeniniziative' },
     ];
     this.selectedCharacteristic = [];
   }
@@ -211,5 +209,13 @@ export class StrengthsAreaComponent implements OnInit{
     }
   }
 
+  changeCharacteristics() {
+    console.log("Characteristics changed",this.selectedCharacteristic)
+    let profile = this.profileService.loggedInUser;
+
+    profile!.characteristics = this.selectedCharacteristic;
+
+    this.profileService.updateProfile(profile!).subscribe();
+  }
 }
 

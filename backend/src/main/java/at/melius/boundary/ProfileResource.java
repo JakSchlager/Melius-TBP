@@ -49,4 +49,11 @@ public class ProfileResource {
     public List<Profile> getAllProfiles() {
         return this.profileRepository.getAllProfiles();
     }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/get/{id}")
+    public Profile getProfileById(@PathParam("id") Long id) {
+        return this.profileRepository.getProfileById(id);
+    }
 }

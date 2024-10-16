@@ -177,19 +177,18 @@ export class CvAreaComponent implements OnInit{
   }
 
   updateGeneralInfo() {
+    let profile = this.profileService.loggedInUser;
+
+    profile!.firstName = this.generalInfoForm!.controls["firstName"].value!
+    profile!.lastName = this.generalInfoForm!.controls["lastName"].value!
+    profile!.email = this.generalInfoForm!.controls["email"].value!
+    profile!.phoneNumber = this.generalInfoForm!.controls["phoneNumber"].value!
+
     let newGeneralInfo: GeneralInfo = {
       address: this.generalInfoForm!.controls["address"].value!,
       city: this.generalInfoForm!.controls["city"].value!,
       gender: this.generalInfoForm!.controls["gender"].value!,
-      profile: {
-        id: this.profileService.loggedInUser!.id,
-        firstName: this.generalInfoForm!.controls["firstName"].value!,
-        lastName: this.generalInfoForm!.controls["lastName"].value!,
-        email: this.generalInfoForm!.controls["email"].value!,
-        phoneNumber: this.generalInfoForm!.controls["phoneNumber"].value!,
-        password: this.profileService.loggedInUser!.password,
-        githubUser: this.profileService.loggedInUser!.githubUser
-      },
+      profile: profile!,
       zipCode: this.generalInfoForm!.controls["zipCode"].value!
     }
 

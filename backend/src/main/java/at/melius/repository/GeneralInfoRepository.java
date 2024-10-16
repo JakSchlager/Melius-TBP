@@ -1,7 +1,7 @@
 package at.melius.repository;
 
 import at.melius.model.GeneralInfo;
-import at.melius.model.User;
+import at.melius.model.Profile;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
@@ -33,8 +33,8 @@ public class GeneralInfoRepository {
         currGeneralInfo.setAddress(generalInfo.getAddress());
     }
 
-    public GeneralInfo getInfoByProfile(User user) {
-        return this.entityManager.find(GeneralInfo.class, user.getId());
+    public GeneralInfo getInfoByProfile(Profile profile) {
+        return this.entityManager.find(GeneralInfo.class, profile.getId());
     }
 
     public GeneralInfo getInfoById(int id) {
