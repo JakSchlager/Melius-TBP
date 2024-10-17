@@ -22,7 +22,7 @@ export class CreateOwnGroupComponent {
   constructor(@Inject(GroupsPageComponent) private groupsPage: GroupsPageComponent) {
   }
 
-  closeForm() {
+  closeCreationForm(): void {
     this.groupsPage.createGroupBtnPressed = false;
   }
 }
