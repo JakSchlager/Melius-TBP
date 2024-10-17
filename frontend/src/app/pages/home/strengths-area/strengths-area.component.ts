@@ -225,5 +225,13 @@ export class StrengthsAreaComponent implements OnInit{
       return false;
     }
   }
+
+  updateSoftware(i: number) {
+
+  }
+
+  updateProgrammingLanguage(i: number) {
+
+  }
 }
 

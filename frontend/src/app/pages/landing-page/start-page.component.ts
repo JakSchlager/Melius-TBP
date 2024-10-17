@@ -3,7 +3,6 @@ import {LoginFormComponent} from "../../forms/login-form/login-form.component";
 import {NgClass, NgIf, NgOptimizedImage} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {RegisterFormComponent} from "../../forms/register-form/register-form.component";
-import {UserService} from "../../services/user.service";
 import {Router} from "@angular/router";
 
 @Component({
