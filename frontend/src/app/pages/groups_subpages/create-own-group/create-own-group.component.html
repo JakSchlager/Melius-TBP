@@ -1,14 +1,9 @@
-<div class="w-screen h-screen">
-  <div class="absolute -z-10 w-screen h-screen overflow-hidden bg-no-repeat object-fill">
-    <img ngSrc="../../../../assets/Melius-Groups-Background.svg" alt="radio_waves" class="min-w-max min-h-max object-fill bg-no-repeat overflow-hidden" height="16"
-         width="16">
-  </div>
 
-  <div class="h-full flex justify-center items-center animate-fade-up duration-500">
-    <div class="w-5/12 bg-white py-4 rounded-lg shadow-lg">
+  <div class="w-full h-full items-center flex">
+    <div class="h-fit w-full bg-white pt-4 pb-6 rounded-lg shadow-lg">
 
       <div class="flex items-center pt-1 pb-4">
-        <div class="w-fit ml-1 absolute cursor-pointer" [routerLink]="['/groups']">
+        <div class="w-fit ml-1 absolute cursor-pointer" (click)="closeForm()">
           <svg xmlns="http://www.w3.org/2000/svg" height="38px" viewBox="0 -960 960 960" width="38px" fill="#000000"><path d="m272-440 116 116q11 11 11 28t-11 28q-11 11-28 11t-28-11L148-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 28-11t28 11q11 11 11 28t-11 28L272-520h528q17 0 28.5 11.5T840-480q0 17-11.5 28.5T800-440H272Z"/></svg>
         </div>
 
@@ -36,10 +31,6 @@
             <input class="w-full px-2 py-1.5 border border-gray-200 bg-white rounded-lg shadow-md" type="text" placeholder="Name deiner Abteilung...">
           </div>
 
-          <div>
-            <h1 class="font-semibold">Erstellungsdatum</h1>
-            <input class="w-fit px-2 py-1.5 border border-gray-200 bg-white rounded-lg shadow-md" type="date">
-          </div>
 
           <div class="w-fit">
             <h1 class="font-semibold">Anzahl der Mitglieder</h1>
@@ -55,4 +46,3 @@
       </div>
     </div>
   </div>
-</div>

@@ -1,6 +1,6 @@
 import {Component, createComponent} from '@angular/core';
 import {RouterLink} from "@angular/router";
-import {NgIf, NgOptimizedImage} from "@angular/common";
+import {NgClass, NgIf, NgOptimizedImage} from "@angular/common";
 import {CreateOwnGroupComponent} from "../groups_subpages/create-own-group/create-own-group.component";
 
 @Component({
@@ -10,23 +10,21 @@ import {CreateOwnGroupComponent} from "../groups_subpages/create-own-group/creat
     RouterLink,
     NgOptimizedImage,
     CreateOwnGroupComponent,
-    NgIf
+    NgIf,
+    NgClass
   ],
   templateUrl: './groups-page.component.html',
   styleUrl: './groups-page.component.css'
 })
 export class GroupsPageComponent {
   createGroupBtnPressed: boolean = false;
+  moveCreateForm !: string;
 
-  createGroup(): boolean {
-    if (!this.createGroupBtnPressed) {
-      this.createGroupBtnPressed = true;
-      return this.createGroupBtnPressed;
-    }
+  createGroup() {
+    this.createGroupBtnPressed = !this.createGroupBtnPressed;
+  }
 
-    else {
-      this.createGroupBtnPressed = false;
-      return this.createGroupBtnPressed;
-    }
+  closeCreateBtn() {
+    this.createGroupBtnPressed = false;
   }
 }
