@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, inject, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgClass, NgForOf} from "@angular/common";
 import {MatSlider, MatSliderThumb, MatSliderVisualThumb} from "@angular/material/slider";
@@ -13,6 +13,7 @@ import { SelectItemGroup } from 'primeng/api';
 import {DropdownModule} from "primeng/dropdown";
 import {DropStrProgrComponent} from "../../../single-components/strengths/drop-str-progr/drop-str-progr.component";
 import {DropStrEdvComponent} from "../../../single-components/strengths/drop-str-edv/drop-str-edv.component";
+import {HomePageServiceService} from "../../../services/home-page-service.service";
 
 @Component({
   selector: 'app-strengths-area',
@@ -43,13 +44,11 @@ export class StrengthsAreaComponent implements OnInit{
   characteristics!: any[];
   selectedCharacteristic!: any[];
   userLanguageRating !: number;
-
   programmingLanguages !: any[]
-  selectedProgrammingLanguage !: any;
-
   groupedSoftwareApps: SelectItemGroup[]
-  selectedSoftwareApp !: string;
-
+  dragBox !: string;
+  showBorders !: string;
+  homePageService : HomePageServiceService = inject(HomePageServiceService);
 
   ngOnInit(): void {
     this.programmingLanguages = [
@@ -87,7 +86,7 @@ export class StrengthsAreaComponent implements OnInit{
     this.selectedCharacteristic = [];
   }
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private cdRef: ChangeDetectorRef) {
     this.groupedSoftwareApps = [
       {
         label: 'Microsoft',
@@ -211,5 +210,20 @@ export class StrengthsAreaComponent implements OnInit{
     }
   }
 
+  checkDraggable(): boolean {
+    if (this.homePageService.isBoxDraggable) {
+      this.showBorders = 'border-2 border-dashed border-gray-200 rounded-lg';
+      this.dragBox = 'cursor-pointer';
+
+      return true;
+    }
+
+    else {
+      this.dragBox = 'cursor-default';
+      this.showBorders = 'border-none';
+
+      return false;
+    }
+  }
 }
 

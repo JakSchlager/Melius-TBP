@@ -4,7 +4,7 @@ import {Profile} from "../../interfaces/profile";
 import {ProfileService} from "../../services/profile.service";
 import {NgClass, NgIf, NgOptimizedImage} from "@angular/common";
 import {HomeNavbarComponent} from "../../navigation/home-navbar/home-navbar.component";
-import {ActivatedRoute, NavigationEnd, Router, RouterOutlet} from "@angular/router";
+import {ActivatedRoute, NavigationEnd, Router, RouterLink, RouterOutlet} from "@angular/router";
 import {filter} from "rxjs";
 import {FormsModule} from "@angular/forms";
 import {VERSION} from "@angular/cdk";
@@ -13,7 +13,7 @@ import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
 import {DropdownAvatarComponent} from "../../single-components/user-avatar/dropdown-avatar.component";
 
 @Component({
-  selector: 'app-home-page',
+  selector: 'app-home-preview-page',
   standalone: true,
   imports: [
     SideBarComponent,
@@ -27,7 +27,8 @@ import {DropdownAvatarComponent} from "../../single-components/user-avatar/dropd
     MatMenuItem,
     MatMenuTrigger,
     NgClass,
-    DropdownAvatarComponent
+    DropdownAvatarComponent,
+    RouterLink
   ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'

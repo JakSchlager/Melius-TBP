@@ -5,18 +5,20 @@
   </div>
 
   <div class="w-full mt-5 content-center grid grid-cols-3 space-x-4 justify-center">
-    <div class="col-start-1 border-2 border-dashed border-gray-100  rounded-lg space-y-10" id="leftSkillCol"
+
+    <!-- Column 1 -->
+    <div [ngClass]="showBorders" class="col-start-1 space-y-10" id="leftSkillCol"
          (dragover)="onDragOver($event)"
          (drop)="onDrop($event, 'leftSkillCol')">
     </div>
 
-
-    <div class="col-start-2 border-2 border-dashed border-gray-100 rounded-lg space-y-10" id="middleSkillCol"
+    <!-- Column 2 -->
+    <div [ngClass]="showBorders" class="col-start-2 space-y-10" id="middleSkillCol"
          (dragover)="onDragOver($event)"
          (drop)="onDrop($event, 'middleSkillCol')">
 
       <!-- Allgemein Kenntnisse -->
-      <div draggable="true" (dragstart)="onDragStart($event, $event.target)" class="colListItem grid animate-in slide-in-from-bottom-32 duration-500 hover:cursor-grab">
+      <div [ngClass]="dragBox" [draggable]="checkDraggable()" (dragstart)="onDragStart($event, $event.target)" class="colListItem grid animate-in slide-in-from-bottom-32 duration-500">
           <div class="bg-white px-10 py-4 rounded-lg shadow-md">
             <h1 class="text-center font-bold text-2xl py-2">Persönliche Eigenschaften</h1>
             <div class="w-full mt-2 grid grid-cols-1 space-y-2 hover:cursor-default">
@@ -36,7 +38,7 @@
       </div>
 
       <!-- Sprachliche Kenntnisse -->
-      <div draggable="true" (dragstart)="onDragStart($event, $event.target)" class="colListItem bg-white grid rounded-lg px-10 py-4 shadow-md animate-in slide-in-from-bottom-32 duration-500 hover:cursor-grab">
+      <div [ngClass]="dragBox" [draggable]="checkDraggable()" (dragstart)="onDragStart($event, $event.target)" class="colListItem bg-white grid rounded-lg px-10 py-4 shadow-md animate-in slide-in-from-bottom-32 duration-500">
         <h1 class="text-center font-bold text-2xl py-2 pb-4">Sprachliche Stärken</h1>
 
         <div class="h-full flex flex-col space-y-4 hover:cursor-default">
@@ -74,9 +76,9 @@
       </div>
 
       <!-- Programmier Kenntnisse -->
-      <div draggable="true" (dragstart)="onDragStart($event, $event.target)" class="animate-in slide-in-from-bottom-32 duration-500 hover:cursor-grab">
+      <div [ngClass]="dragBox" [draggable]="checkDraggable()" (dragstart)="onDragStart($event, $event.target)" class="animate-in slide-in-from-bottom-32 duration-500">
 
-          <div draggable="false" class="flex flex-col space-y-2 bg-white rounded-lg px-2 py-1 shadow-md">
+          <div class="flex flex-col space-y-2 bg-white rounded-lg px-2 py-1 shadow-md">
             <h1 class="text-center font-bold text-2xl py-6">Programmier Kenntnisse</h1>
             <div [formGroup]="programmingKnowledgeForm" class="mt-2 hover:cursor-default" >
               <div formArrayName="programminKnowledgeItems" class="space-y-8">
@@ -85,11 +87,11 @@
                   <div class="w-auto mx-2 flex justify-between space-x-10 animate-in fade-in zoom-in duration-500">
                     <app-drop-str-progr></app-drop-str-progr>
 
-                    <div class="flex-grow" draggable="false">
-                      <div class="flex flex-col" draggable="false">
-                        <input formControlName="programmingKnowledge" class="rounded-lg overflow-hidden appearance-none bg-gray-400 h-3 w-full" type="range" min="1" max="100" step="1" value="30" draggable="false"/>
+                    <div class="flex-grow" >
+                      <div class="flex flex-col">
+                        <input formControlName="programmingKnowledge" class="rounded-lg overflow-hidden appearance-none bg-gray-400 h-3 w-full" type="range" min="1" max="100" step="1" value="30"/>
 
-                        <div class="w-full flex justify-between mt-1" draggable="false">
+                        <div class="w-full flex justify-between mt-1">
                           <span class="text-sm text-intermediate-color">Schlecht</span>
                           <span class="text-sm text-intermediate-color">Meh</span>
                           <span class="text-sm text-intermediate-color">Okay</span>
@@ -120,7 +122,7 @@
 
 
       <!-- Software Kenntnisse -->
-      <div draggable="true" (dragstart)="onDragStart($event, $event.target)" class="colListItem bg-white rounded-lg px-2 py-1 shadow-md animate-in slide-in-from-bottom-32 duration-500 hover:cursor-grab">
+      <div [ngClass]="dragBox" [draggable]="checkDraggable()" (dragstart)="onDragStart($event, $event.target)" class="colListItem bg-white rounded-lg px-2 py-1 shadow-md animate-in slide-in-from-bottom-32 duration-500">
         <h1 class="text-center font-bold text-2xl py-6">EDV Kenntnisse</h1>
 
         <div [formGroup]="softwareKnowledgeForm" class="mt-2 hover:cursor-default">
@@ -130,7 +132,7 @@
               <div class="w-auto mx-2 flex justify-between space-x-10 animate-in fade-in zoom-in duration-500">
                 <app-drop-str-edv></app-drop-str-edv>
 
-                <div class="flex-grow" draggable="false">
+                <div class="flex-grow">
                   <div class="flex flex-col">
                     <input formControlName="softwareAppKnowledge" class="rounded-lg overflow-hidden appearance-none bg-gray-400 h-3 w-full" type="range" min="1" max="100" step="1" value="30" />
 
@@ -161,10 +163,11 @@
       </div>
     </div>
 
-    <div class="col-start-3 border-2 border-dashed border-gray-100 rounded-lg space-y-10" id="rightSkillCol"
+
+    <!-- Column 3 -->
+    <div [ngClass]="showBorders" class="col-start-3 space-y-10" id="rightSkillCol"
          (dragover)="onDragOver($event)"
          (drop)="onDrop($event, 'rightSkillCol')">
     </div>
-
   </div>
 </div>
