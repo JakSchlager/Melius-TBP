@@ -44,3 +44,8 @@ body { margin: 0; }
   border-color: #5E4DFC;
   font-weight: bold;
 }
+
+
+.activeSideBarNavTap {
+  background-color: #F0F8FF;
+}
