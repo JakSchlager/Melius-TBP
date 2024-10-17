@@ -50,9 +50,6 @@ export class StrengthsAreaComponent implements OnInit{
   selectedCharacteristic!: Characteristic[];
   userLanguageRating !: number;
 
-  programmingLanguages !: any[]
-  selectedProgrammingLanguage !: any;
-
   groupedSoftwareApps: SelectItemGroup[]
   selectedSoftwareApp !: string;
 
@@ -66,23 +63,6 @@ export class StrengthsAreaComponent implements OnInit{
     setTimeout(() => {
       this.selectedCharacteristic = this.profileService.loggedInUser!.characteristics
     },100)
-
-
-    this.programmingLanguages = [
-      { name: 'Java', code: 'java' },
-      { name: 'C', code: 'c' },
-      { name: 'C#', code: 'c#' },
-      { name: 'C++', code: 'c++' },
-      { name: 'JavaScript', code: 'js' },
-      { name: 'TypeScript', code: 'ts' },
-      { name: 'PHP', code: 'php' },
-      { name: 'HTML', code: 'html' },
-      { name: 'CSS', code: 'css' },
-      { name: 'Python', code: 'py' },
-      { name: 'Swift', code: 'swift' },
-      { name: 'Ruby', code: 'ruby' },
-    ];
-    this.selectedCharacteristic = [];
   }
 
   constructor(private fb: FormBuilder) {
@@ -154,7 +134,7 @@ export class StrengthsAreaComponent implements OnInit{
   addProgrammingLanguage() {
     this.programmingKnowledgeFormItems.push(
       this.fb.group({
-        programmingName: [''],
+        programmingName: [],
         programmingKnowledge: [Number],
       })
     )
@@ -216,6 +196,11 @@ export class StrengthsAreaComponent implements OnInit{
     profile!.characteristics = this.selectedCharacteristic;
 
     this.profileService.updateProfile(profile!).subscribe();
+  }
+
+  selectProgrammingLanguage(selectedProgrammingLanguage: any, formNumber: number) {
+    this.programmingKnowledgeFormItems.at(formNumber).value.programmingName = selectedProgrammingLanguage;
+    console.log(this.programmingKnowledgeFormItems.at(formNumber).value.programmingName);
   }
 }
 

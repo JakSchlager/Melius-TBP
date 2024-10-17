@@ -80,11 +80,11 @@
           <div draggable="false" class="flex flex-col space-y-2 bg-white rounded-lg px-2 py-1 shadow-md">
             <h1 class="text-center font-bold text-2xl py-6">Programmier Kenntnisse</h1>
             <div [formGroup]="programmingKnowledgeForm" class="mt-2 hover:cursor-default" >
-              <div formArrayName="programminKnowledgeItems" class="space-y-8">
+              <div formArrayName="programmingKnowledgeFormItems" class="space-y-8">
                 <div *ngFor="let programmingItem of programmingKnowledgeFormItems.controls; let i = index" [formGroupName]="i">
 
                   <div class="w-auto mx-2 flex justify-between space-x-10 animate-in fade-in zoom-in duration-500">
-                    <app-drop-str-progr></app-drop-str-progr>
+                    <app-drop-str-progr (eventEmitter)="selectProgrammingLanguage($event, i)"></app-drop-str-progr>
 
                     <div class="flex-grow" draggable="false">
                       <div class="flex flex-col" draggable="false">
@@ -100,13 +100,13 @@
                       </div>
                     </div>
 
-                    <div class="bg-white rounded-lg shadow-md p-1 hover:bg-gray-50 duration-150 ease-in-out">
-                      <svg class="cursor-pointer" xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px" fill="#6C9732"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q65 0 123 19t107 53l-58 59q-38-24-81-37.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160q133 0 226.5-93.5T800-480q0-18-2-36t-6-35l65-65q11 32 17 66t6 70q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm-56-216L254-466l56-56 114 114 400-401 56 56-456 457Z"/></svg>
-                    </div>
-
                     <div class="flex-shrink-0">
                       <svg (click)="deleteProgrammingLanguage(i)" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#EA3323" class="cursor-pointer"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
                     </div>
+                  </div>
+
+                  <div class="bg-white rounded-lg shadow-md p-1 hover:bg-gray-50 duration-150 ease-in-out">
+                    <svg class="cursor-pointer" xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px" fill="#6C9732"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q65 0 123 19t107 53l-58 59q-38-24-81-37.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160q133 0 226.5-93.5T800-480q0-18-2-36t-6-35l65-65q11 32 17 66t6 70q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm-56-216L254-466l56-56 114 114 400-401 56 56-456 457Z"/></svg>
                   </div>
 
                 </div>
@@ -129,7 +129,7 @@
         <h1 class="text-center font-bold text-2xl py-6">EDV Kenntnisse</h1>
 
         <div [formGroup]="softwareKnowledgeForm" class="mt-2 hover:cursor-default">
-          <div formArrayName="programminKnowledgeItems" class="space-y-8">
+          <div formArrayName="softwareKnowledgeFormItems" class="space-y-8">
             <div *ngFor="let softwareItem of softwareKnowledgeFormItems.controls; let i = index" [formGroupName]="i">
 
               <div class="w-auto mx-2 flex justify-between space-x-10 animate-in fade-in zoom-in duration-500">

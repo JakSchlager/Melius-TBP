@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {NgForOf} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 
@@ -13,6 +13,10 @@ import {FormsModule} from "@angular/forms";
   styleUrl: './drop-str-progr.component.css'
 })
 export class DropStrProgrComponent implements OnInit{
+
+  selectedLanguage!: any;
+  @Output() eventEmitter: EventEmitter<any> = new EventEmitter<any>();
+
   programmingLanguages !: any[]
 
   ngOnInit() {
@@ -32,4 +36,7 @@ export class DropStrProgrComponent implements OnInit{
     ];
   }
 
+  selectLanguage() {
+   this.eventEmitter.emit(this.selectedLanguage);
+  }
 }
