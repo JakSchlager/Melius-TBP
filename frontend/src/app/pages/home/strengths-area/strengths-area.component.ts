@@ -200,7 +200,10 @@ export class StrengthsAreaComponent implements OnInit{
 
   selectProgrammingLanguage(selectedProgrammingLanguage: any, formNumber: number) {
     this.programmingKnowledgeFormItems.at(formNumber).value.programmingName = selectedProgrammingLanguage;
-    console.log(this.programmingKnowledgeFormItems.at(formNumber).value.programmingName);
+  }
+
+  updateProgrammingKnowledge(formNumber: number) {
+    console.log(this.programmingKnowledgeFormItems.at(formNumber).value.programmingName)
   }
 }
 
