@@ -6,7 +6,7 @@ import {DropdownAvatarComponent} from "../../../single-components/user-avatar/dr
 import {GroupsPageComponent} from "../../groups-page/groups-page.component";
 
 @Component({
-  selector: 'app-create-own-group',
+  selector: 'app-create-group-form',
   standalone: true,
   imports: [
     RouterLink,
@@ -22,7 +22,7 @@ export class CreateOwnGroupComponent {
   constructor(@Inject(GroupsPageComponent) private groupsPage: GroupsPageComponent) {
   }
 
-  closeForm() {
+  closeCreationForm(): void {
     this.groupsPage.createGroupBtnPressed = false;
   }
 }

@@ -23,14 +23,14 @@
             </div>
 
             <div class="animate-fade-up fade-in-0 duration-700">
-              <button class="w-full font-semibold flex justify-center space-x-4 items-center bg-primary-color px-2 py-2 rounded-xl shadow-lg cursor-pointer hover:bg-blue-500 duration-150 ease-in-out" (click)="createGroup()">
+              <button class="w-full font-semibold flex justify-center space-x-4 items-center bg-primary-color px-2 py-2 rounded-xl shadow-lg cursor-pointer hover:bg-blue-500 duration-150 ease-in-out" (click)="openCreateGroupForm()">
                 <h1 class="text-white text-lg">Eine eigene Gruppe erstellen</h1>
                 <svg xmlns="http://www.w3.org/2000/svg" height="38px" viewBox="0 -960 960 960" width="38px" fill="#FFFFFF"><path d="M440-440H240q-17 0-28.5-11.5T200-480q0-17 11.5-28.5T240-520h200v-200q0-17 11.5-28.5T480-760q17 0 28.5 11.5T520-720v200h200q17 0 28.5 11.5T760-480q0 17-11.5 28.5T720-440H520v200q0 17-11.5 28.5T480-200q-17 0-28.5-11.5T440-240v-200Z"/></svg>
               </button>
             </div>
 
             <div class="animate-fade-up fade-in-0 duration-1000">
-              <button class="w-full font-semibold flex justify-center space-x-4 items-center bg-intermediate-color px-2 py-2 rounded-xl shadow-lg cursor-pointer hover:bg-secondary-color duration-150 ease-in-out">
+              <button class="w-full font-semibold flex justify-center space-x-4 items-center bg-intermediate-color px-2 py-2 rounded-xl shadow-lg cursor-pointer hover:bg-secondary-color duration-150 ease-in-out" (click)="openMyGroupsList()">
                 <h1 class="text-white text-lg">Meine Gruppen</h1>
                 <svg xmlns="http://www.w3.org/2000/svg" height="38px" viewBox="0 -960 960 960" width="38px" fill="#FFFFFF"><path d="M400-200q-17 0-28.5-11.5T360-240q0-17 11.5-28.5T400-280h400q17 0 28.5 11.5T840-240q0 17-11.5 28.5T800-200H400Zm0-240q-17 0-28.5-11.5T360-480q0-17 11.5-28.5T400-520h400q17 0 28.5 11.5T840-480q0 17-11.5 28.5T800-440H400Zm0-240q-17 0-28.5-11.5T360-720q0-17 11.5-28.5T400-760h400q17 0 28.5 11.5T840-720q0 17-11.5 28.5T800-680H400ZM200-160q-33 0-56.5-23.5T120-240q0-33 23.5-56.5T200-320q33 0 56.5 23.5T280-240q0 33-23.5 56.5T200-160Zm0-240q-33 0-56.5-23.5T120-480q0-33 23.5-56.5T200-560q33 0 56.5 23.5T280-480q0 33-23.5 56.5T200-400Zm0-240q-33 0-56.5-23.5T120-720q0-33 23.5-56.5T200-800q33 0 56.5 23.5T280-720q0 33-23.5 56.5T200-640Z"/></svg>
               </button>
@@ -40,7 +40,11 @@
       </div>
 
       <div class="absolute w-1/2 h-full transition-transform duration-1000 -translate-x-[125%]" [ngClass]="{'-translate-x-[125%]': !createGroupBtnPressed, 'translate-x-0': createGroupBtnPressed}">
-        <app-create-own-group></app-create-own-group>
+        <app-create-group-form></app-create-group-form>
+      </div>
+
+      <div class="absolute w-1/2 h-full transition-transform duration-1000 -translate-x-[125%]" [ngClass]="{'-translate-x-[125%]': !myGroupsBtnPressed, 'translate-x-0': myGroupsBtnPressed}">
+        <app-my-groups></app-my-groups>
       </div>
 
       <div class="w-1/2 h-full flex flex-col justify-center">
