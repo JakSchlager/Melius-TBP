@@ -1,7 +1,7 @@
 import {Component, createComponent} from '@angular/core';
 import {RouterLink} from "@angular/router";
 import {NgClass, NgIf, NgOptimizedImage} from "@angular/common";
-import {CreateOwnGroupComponent} from "../groups_subpages/create-own-group/create-own-group.component";
+import {CreateOwnGroupComponent} from "../groups_subpages/create-group-form/create-own-group.component";
 import {MyGroupsComponent} from "../groups_subpages/my-groups/my-groups.component";
 
 @Component({

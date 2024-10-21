@@ -26,7 +26,7 @@ export class AppComponent implements OnInit{
   }
 
   showSideNavBar(): boolean{
-    return this.router.url === '/home' || this.router.url === '/home/cv' || this.router.url === '/home/projects' || this.router.url === '/home/strengths' || this.router.url === '/groups' || this.router.url === '/settings';
+    return this.router.url === '/home' || this.router.url === '/home/cv' || this.router.url === '/home/projects' || this.router.url === '/home/strengths' || this.router.url === '/groups' || this.router.url === '/settings' || this.router.url === '/groups/myGroup';
   }
 
 }
