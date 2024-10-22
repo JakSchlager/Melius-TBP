@@ -8,7 +8,8 @@ import {CvAreaComponent} from "./pages/home/cv-area/cv-area.component";
 import {ProjectsAreaComponent} from "./pages/home/projects-area/projects-area.component";
 import {StrengthsAreaComponent} from "./pages/home/strengths-area/strengths-area.component";
 import {StartPageComponent} from "./pages/landing-page/start-page.component";
-import {CreateOwnGroupComponent} from "./pages/groups_subpages/create-own-group/create-own-group.component";
+import {CreateOwnGroupComponent} from "./pages/groups_subpages/create-group-form/create-own-group.component";
+import {CreatedGroupComponent} from "./pages/groups_subpages/created-group/created-group.component";
 
 export const routes: Routes = [
   {path: "", component: StartPageComponent, title: 'Start Page'},
@@ -21,7 +22,7 @@ export const routes: Routes = [
   },
 
   {path: "groups", component: GroupsPageComponent, title: 'Groups'},
-  {path: "groups/create", component: CreateOwnGroupComponent, title: 'Create Group'},
+  {path: "groups/myGroup", component: CreatedGroupComponent, title: 'My Group'},
   {path: "settings", component: SettingsPageComponent, title: 'Settings'},
   {path: "**", component: NotFoundComponent, title: 'Nothing Found'},
 ];

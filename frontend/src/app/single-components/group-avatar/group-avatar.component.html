@@ -1,0 +1,36 @@
+<div class="flex">
+  <div class="relative inline-block text-center">
+    <label class="cursor-pointer" for="fileInput">
+
+      <img class="h-56 w-56 rounded-full p-2" [src]="url ? url : './assets/icons/groups-page/people.svg'"  alt="user_img"/>
+    </label>
+    <br />
+    <input
+      id="fileInput"
+      type="file"
+      [(ngModel)]="url"
+      class="absolute top-0 left-0 z-40 opacity-0 w-full h-full cursor-pointer"
+      (change)="onSelectFile($event)"
+    />
+  </div>
+
+  <div class="relative top-3">
+    <button (click)="showOptions()" class="cursor-pointer text-gray-500 hover:text-gray-600 duration-150">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#00000"><path d="M240-400q-33 0-56.5-23.5T160-480q0-33 23.5-56.5T240-560q33 0 56.5 23.5T320-480q0 33-23.5 56.5T240-400Zm240 0q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm240 0q-33 0-56.5-23.5T640-480q0-33 23.5-56.5T720-560q33 0 56.5 23.5T800-480q0 33-23.5 56.5T720-400Z"/></svg>
+    </button>
+
+    <div class="relative">
+      <div *ngIf="showAvatarOptions || isAnimating" [ngClass]="{'animate-fade-down duration-150': showAvatarOptions, 'animate-out fade-out': !showAvatarOptions && isAnimating}" (animationend)="onAnimationEnd()" class="absolute w-fit flex flex-col justify-between h-fit px-2 py-1.5 bg-white border rounded-lg shadow-md ">
+        <button class="w-full flex px-1 py-1.5 bg-white rounded-lg text-start hover:bg-accent-blue ease-in-out duration-150" (click)="triggerFileInput()">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#8087FD"><path d="M440-440H240q-17 0-28.5-11.5T200-480q0-17 11.5-28.5T240-520h200v-200q0-17 11.5-28.5T480-760q17 0 28.5 11.5T520-720v200h200q17 0 28.5 11.5T760-480q0 17-11.5 28.5T720-440H520v200q0 17-11.5 28.5T480-200q-17 0-28.5-11.5T440-240v-200Z"/></svg>
+          <h1>hinzufügen</h1>
+        </button>
+
+        <button class="w-full flex px-1 py-1.5 bg-white rounded-lg text-start hover:bg-accent-blue ease-in-out duration-150" (click)="deleteAvatar()">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#EA3323"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
+          <h1>löschen</h1>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
