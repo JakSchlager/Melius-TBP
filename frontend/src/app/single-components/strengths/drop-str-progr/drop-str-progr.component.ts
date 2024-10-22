@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {NgForOf} from "@angular/common";
 import {FormsModule} from "@angular/forms";
+import {Characteristic} from "../../../interfaces/Characteristic";
 
 @Component({
   selector: 'app-drop-str-progr',
@@ -13,23 +14,30 @@ import {FormsModule} from "@angular/forms";
   styleUrl: './drop-str-progr.component.css'
 })
 export class DropStrProgrComponent implements OnInit{
-  programmingLanguages !: any[]
+
+  selectedLanguage!: any;
+  @Output() eventEmitter: EventEmitter<any> = new EventEmitter<any>();
+
+  programmingLanguages !: Characteristic[]
 
   ngOnInit() {
     this.programmingLanguages = [
-      { name: 'Java', value: 'java' },
-      { name: 'C', value: 'c' },
-      { name: 'C#', value: 'c#' },
-      { name: 'C++', value: 'c++' },
-      { name: 'JavaScript', value: 'js' },
-      { name: 'TypeScript', value: 'ts' },
-      { name: 'PHP', value: 'php' },
-      { name: 'HTML', value: 'html' },
-      { name: 'CSS', value: 'css' },
-      { name: 'Python', value: 'py' },
-      { name: 'Swift', value: 'swift' },
-      { name: 'Ruby', value: 'ruby' },
+      { label: 'Java', value: 'java' },
+      { label: 'C', value: 'c' },
+      { label: 'C#', value: 'c#' },
+      { label: 'C++', value: 'c++' },
+      { label: 'JavaScript', value: 'js' },
+      { label: 'TypeScript', value: 'ts' },
+      { label: 'PHP', value: 'php' },
+      { label: 'HTML', value: 'html' },
+      { label: 'CSS', value: 'css' },
+      { label: 'Python', value: 'py' },
+      { label: 'Swift', value: 'swift' },
+      { label: 'Ruby', value: 'ruby' },
     ];
   }
 
+  selectLanguage() {
+   this.eventEmitter.emit(this.selectedLanguage);
+  }
 }

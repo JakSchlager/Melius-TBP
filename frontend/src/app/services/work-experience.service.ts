@@ -14,7 +14,7 @@ export class WorkExperienceService {
   constructor() { }
 
   updateWorkExperience(workExperience: WorkExperience) {
-    return this.httpClient.post<WorkExperience>(this.url + "update", workExperience);
+    return this.httpClient.put<WorkExperience>(this.url + "update", workExperience);
   }
 
   getWorkExperiencesByProfileId(profileId: number) {

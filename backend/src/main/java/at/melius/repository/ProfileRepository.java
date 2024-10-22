@@ -39,6 +39,7 @@ public class ProfileRepository {
         currProfile.setEmail(profile.getEmail());
         currProfile.setPhoneNumber(profile.getPhoneNumber());
         currProfile.setGithubUser(profile.getGithubUser());
+        currProfile.setCharacteristics(profile.getCharacteristics());
     }
 
     public Profile getProfileByEmail(String email) {
@@ -56,6 +57,10 @@ public class ProfileRepository {
     public boolean checkProfile(String email, String password) {
         Profile profile = getProfileByEmail(email);
         return profile != null && profile.getPassword().equals(password);
+    }
+
+    public Profile getProfileById(Long id) {
+        return this.entityManager.find(Profile.class, id);
     }
 
 }

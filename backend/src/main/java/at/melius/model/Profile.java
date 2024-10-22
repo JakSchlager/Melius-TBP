@@ -1,6 +1,9 @@
 package at.melius.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+
+import java.util.Set;
 
 @NamedQuery(name = Profile.QUERY_FIND_ALL, query = "SELECT p from Profile p")
 
@@ -30,6 +33,15 @@ public class Profile {
     @Column(name = "githubUser")
     private String githubUser;
 
+    @ManyToMany
+    @JoinTable(
+            name="profile_characteristic",
+            joinColumns = @JoinColumn(name="profile_id"),
+            inverseJoinColumns = @JoinColumn(name="characteristic_id")
+    )
+    @JsonIgnoreProperties({"profiles"})
+    private Set<Characteristic> characteristics;
+
     public int getId() {
         return id;
     }
@@ -56,6 +68,14 @@ public class Profile {
 
     public String getPassword() {
         return password;
+    }
+
+    public Set<Characteristic> getCharacteristics() {
+        return characteristics;
+    }
+
+    public void setCharacteristics(Set<Characteristic> characteristics) {
+        this.characteristics = characteristics;
     }
 
     public void setFirstName(String firstName) {

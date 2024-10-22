@@ -5,20 +5,18 @@
   </div>
 
   <div class="w-full mt-5 content-center grid grid-cols-3 space-x-4 justify-center">
-
-    <!-- Column 1 -->
-    <div [ngClass]="showBorders" class="col-start-1 space-y-10" id="leftSkillCol"
+    <div class="col-start-1 border-2 border-dashed border-gray-100  rounded-lg space-y-10" id="leftSkillCol"
          (dragover)="onDragOver($event)"
          (drop)="onDrop($event, 'leftSkillCol')">
     </div>
 
-    <!-- Column 2 -->
-    <div [ngClass]="showBorders" class="col-start-2 space-y-10" id="middleSkillCol"
+
+    <div class="col-start-2 border-2 border-dashed border-gray-100 rounded-lg space-y-10" id="middleSkillCol"
          (dragover)="onDragOver($event)"
          (drop)="onDrop($event, 'middleSkillCol')">
 
       <!-- Allgemein Kenntnisse -->
-      <div [ngClass]="dragBox" [draggable]="checkDraggable()" (dragstart)="onDragStart($event, $event.target)" class="colListItem grid animate-in slide-in-from-bottom-32 duration-500">
+      <div draggable="true" (dragstart)="onDragStart($event, $event.target)" class="colListItem grid animate-in slide-in-from-bottom-32 duration-500 hover:cursor-grab">
           <div class="bg-white px-10 py-4 rounded-lg shadow-md">
             <h1 class="text-center font-bold text-2xl py-2">Persönliche Eigenschaften</h1>
             <div class="w-full mt-2 grid grid-cols-1 space-y-2 hover:cursor-default">
@@ -26,6 +24,7 @@
                 <p-multiSelect
                   [options]="characteristics"
                   [(ngModel)]="selectedCharacteristic"
+                  (onChange)="changeCharacteristics()"
                   placeholder="Stärken auswählen"
                   optionLabel="label"
                   display="chip"
@@ -38,7 +37,7 @@
       </div>
 
       <!-- Sprachliche Kenntnisse -->
-      <div [ngClass]="dragBox" [draggable]="checkDraggable()" (dragstart)="onDragStart($event, $event.target)" class="colListItem bg-white grid rounded-lg px-10 py-4 shadow-md animate-in slide-in-from-bottom-32 duration-500">
+      <div draggable="true" (dragstart)="onDragStart($event, $event.target)" class="colListItem bg-white grid rounded-lg px-10 py-4 shadow-md animate-in slide-in-from-bottom-32 duration-500 hover:cursor-grab">
         <h1 class="text-center font-bold text-2xl py-2 pb-4">Sprachliche Stärken</h1>
 
         <div class="h-full flex flex-col space-y-4 hover:cursor-default">
@@ -76,22 +75,22 @@
       </div>
 
       <!-- Programmier Kenntnisse -->
-      <div [ngClass]="dragBox" [draggable]="checkDraggable()" (dragstart)="onDragStart($event, $event.target)" class="animate-in slide-in-from-bottom-32 duration-500">
+      <div draggable="true" (dragstart)="onDragStart($event, $event.target)" class="animate-in slide-in-from-bottom-32 duration-500 hover:cursor-grab">
 
-          <div class="flex flex-col space-y-2 bg-white rounded-lg px-2 py-1 shadow-md">
+          <div draggable="false" class="flex flex-col space-y-2 bg-white rounded-lg px-2 py-1 shadow-md">
             <h1 class="text-center font-bold text-2xl py-6">Programmier Kenntnisse</h1>
             <div [formGroup]="programmingKnowledgeForm" class="mt-2 hover:cursor-default" >
-              <div formArrayName="programminKnowledgeItems" class="space-y-8">
+              <div formArrayName="programmingKnowledgeFormItems" class="space-y-8">
                 <div *ngFor="let programmingItem of programmingKnowledgeFormItems.controls; let i = index" [formGroupName]="i">
 
-                  <div class="w-auto mx-2 items-center flex justify-between space-x-10 animate-in fade-in zoom-in duration-500">
-                    <app-drop-str-progr></app-drop-str-progr>
+                  <div class="w-auto mx-2 flex justify-between space-x-10 animate-in fade-in zoom-in duration-500">
+                    <app-drop-str-progr (eventEmitter)="selectProgrammingLanguage($event, i)"></app-drop-str-progr>
 
-                    <div class="flex-grow" >
-                      <div class="flex flex-col">
-                        <input formControlName="programmingKnowledge" class="rounded-lg overflow-hidden appearance-none bg-gray-400 h-3 w-full" type="range" min="1" max="100" step="1" value="30"/>
+                    <div class="flex-grow" draggable="false">
+                      <div class="flex flex-col" draggable="false">
+                        <input formControlName="programmingKnowledge" class="rounded-lg overflow-hidden appearance-none bg-gray-400 h-3 w-full" type="range" min="1" max="100" step="1" value="30" draggable="false"/>
 
-                        <div class="w-full flex justify-between mt-1">
+                        <div class="w-full flex justify-between mt-1" draggable="false">
                           <span class="text-sm text-intermediate-color">Schlecht</span>
                           <span class="text-sm text-intermediate-color">Meh</span>
                           <span class="text-sm text-intermediate-color">Okay</span>
@@ -101,15 +100,13 @@
                       </div>
                     </div>
 
-                    <div class="h-full items-center py-8 space-y-4">
-                      <div class="bg-white rounded-lg shadow-md p-1 hover:bg-gray-50 duration-150 ease-in-out">
-                        <svg (click)="deleteProgrammingLanguage(i)" xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px" fill="#EA3323" class="cursor-pointer"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
-                      </div>
-
-                      <div class="bg-white rounded-lg shadow-md p-1 hover:bg-gray-50 duration-150 ease-in-out">
-                        <svg (click)="updateProgrammingLanguage(i)" class="cursor-pointer" xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px" fill="#6C9732"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q65 0 123 19t107 53l-58 59q-38-24-81-37.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160q133 0 226.5-93.5T800-480q0-18-2-36t-6-35l65-65q11 32 17 66t6 70q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm-56-216L254-466l56-56 114 114 400-401 56 56-456 457Z"/></svg>
-                      </div>
+                    <div class="flex-shrink-0">
+                      <svg (click)="deleteProgrammingLanguage(i)" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#EA3323" class="cursor-pointer"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
                     </div>
+                  </div>
+
+                  <div (click)="updateProgrammingKnowledge(i)" class="bg-white rounded-lg shadow-md p-1 hover:bg-gray-50 duration-150 ease-in-out">
+                    <svg class="cursor-pointer" xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px" fill="#6C9732"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q65 0 123 19t107 53l-58 59q-38-24-81-37.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160q133 0 226.5-93.5T800-480q0-18-2-36t-6-35l65-65q11 32 17 66t6 70q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm-56-216L254-466l56-56 114 114 400-401 56 56-456 457Z"/></svg>
                   </div>
 
                 </div>
@@ -128,17 +125,17 @@
 
 
       <!-- Software Kenntnisse -->
-      <div [ngClass]="dragBox" [draggable]="checkDraggable()" (dragstart)="onDragStart($event, $event.target)" class="colListItem bg-white rounded-lg px-2 py-1 shadow-md animate-in slide-in-from-bottom-32 duration-500">
+      <div draggable="true" (dragstart)="onDragStart($event, $event.target)" class="colListItem bg-white rounded-lg px-2 py-1 shadow-md animate-in slide-in-from-bottom-32 duration-500 hover:cursor-grab">
         <h1 class="text-center font-bold text-2xl py-6">EDV Kenntnisse</h1>
 
         <div [formGroup]="softwareKnowledgeForm" class="mt-2 hover:cursor-default">
-          <div formArrayName="programminKnowledgeItems" class="space-y-8">
+          <div formArrayName="softwareKnowledgeFormItems" class="space-y-8">
             <div *ngFor="let softwareItem of softwareKnowledgeFormItems.controls; let i = index" [formGroupName]="i">
 
-              <div class="w-auto mx-2 flex items-center justify-between space-x-10 animate-in fade-in zoom-in duration-500">
+              <div class="w-auto mx-2 flex justify-between space-x-10 animate-in fade-in zoom-in duration-500">
                 <app-drop-str-edv></app-drop-str-edv>
 
-                <div class="flex-grow">
+                <div class="flex-grow" draggable="false">
                   <div class="flex flex-col">
                     <input formControlName="softwareAppKnowledge" class="rounded-lg overflow-hidden appearance-none bg-gray-400 h-3 w-full" type="range" min="1" max="100" step="1" value="30" />
 
@@ -152,14 +149,8 @@
                   </div>
                 </div>
 
-                <div class="h-full items-center py-8 space-y-4">
-                  <div class="bg-white rounded-lg shadow-md p-1 hover:bg-gray-50 duration-150 ease-in-out">
-                    <svg (click)="deleteSoftware(i)" xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px" fill="#EA3323" class="cursor-pointer"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
-                  </div>
-
-                  <div class="bg-white rounded-lg shadow-md p-1 hover:bg-gray-50 duration-150 ease-in-out">
-                    <svg (click)="updateSoftware(i)" class="cursor-pointer" xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px" fill="#6C9732"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q65 0 123 19t107 53l-58 59q-38-24-81-37.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160q133 0 226.5-93.5T800-480q0-18-2-36t-6-35l65-65q11 32 17 66t6 70q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm-56-216L254-466l56-56 114 114 400-401 56 56-456 457Z"/></svg>
-                  </div>
+                <div class="flex-shrink-0">
+                  <svg (click)="deleteSoftware(i)" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#EA3323" class="cursor-pointer"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
                 </div>
               </div>
 
@@ -175,11 +166,10 @@
       </div>
     </div>
 
-
-    <!-- Column 3 -->
-    <div [ngClass]="showBorders" class="col-start-3 space-y-10" id="rightSkillCol"
+    <div class="col-start-3 border-2 border-dashed border-gray-100 rounded-lg space-y-10" id="rightSkillCol"
          (dragover)="onDragOver($event)"
          (drop)="onDrop($event, 'rightSkillCol')">
     </div>
+
   </div>
 </div>

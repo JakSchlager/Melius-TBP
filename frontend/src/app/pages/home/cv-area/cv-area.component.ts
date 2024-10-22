@@ -64,10 +64,10 @@ export class CvAreaComponent implements OnInit{
           this.currGeneralInfo = generalInfo;
 
           this.generalInfoForm.controls['gender'].setValue(this.currGeneralInfo.gender);
-          this.generalInfoForm.controls['firstName'].setValue(this.currGeneralInfo.profile.firstName);
-          this.generalInfoForm.controls['lastName'].setValue(this.currGeneralInfo.profile.lastName);
-          this.generalInfoForm.controls['email'].setValue(this.currGeneralInfo.profile.email);
-          this.generalInfoForm.controls['phoneNumber'].setValue(this.currGeneralInfo.profile.phoneNumber);
+          this.generalInfoForm.controls['firstName'].setValue(this.profileService.loggedInUser!.firstName);
+          this.generalInfoForm.controls['lastName'].setValue(this.profileService.loggedInUser!.lastName);
+          this.generalInfoForm.controls['email'].setValue(this.profileService.loggedInUser!.email);
+          this.generalInfoForm.controls['phoneNumber'].setValue(this.profileService.loggedInUser!.phoneNumber);
           this.generalInfoForm.controls['zipCode'].setValue(this.currGeneralInfo.zipCode);
           this.generalInfoForm.controls['city'].setValue(this.currGeneralInfo.city);
           this.generalInfoForm.controls['address'].setValue(this.currGeneralInfo.address);
@@ -182,22 +182,22 @@ export class CvAreaComponent implements OnInit{
   }
 
   updateGeneralInfo() {
+    let profile = this.profileService.loggedInUser;
+
+    profile!.firstName = this.generalInfoForm!.controls["firstName"].value!
+    profile!.lastName = this.generalInfoForm!.controls["lastName"].value!
+    profile!.email = this.generalInfoForm!.controls["email"].value!
+    profile!.phoneNumber = this.generalInfoForm!.controls["phoneNumber"].value!
+
     let newGeneralInfo: GeneralInfo = {
       address: this.generalInfoForm!.controls["address"].value!,
       city: this.generalInfoForm!.controls["city"].value!,
       gender: this.generalInfoForm!.controls["gender"].value!,
-      profile: {
-        id: this.profileService.loggedInUser!.id,
-        firstName: this.generalInfoForm!.controls["firstName"].value!,
-        lastName: this.generalInfoForm!.controls["lastName"].value!,
-        email: this.generalInfoForm!.controls["email"].value!,
-        phoneNumber: this.generalInfoForm!.controls["phoneNumber"].value!,
-        password: this.profileService.loggedInUser!.password,
-        githubUser: this.profileService.loggedInUser!.githubUser
-      },
+      profile: profile!,
       zipCode: this.generalInfoForm!.controls["zipCode"].value!
     }
 
+    this.profileService.updateProfile(profile!).subscribe();
     this.generalInfoService.updateGeneralInfo(newGeneralInfo).subscribe();
 
     setTimeout(() => {
@@ -243,6 +243,8 @@ export class CvAreaComponent implements OnInit{
       this.router.navigateByUrl("/", {skipLocationChange: true}).then(() => {
         this.router.navigate(['/home/cv']);
       });
+
+
     }, 100);
   }
 

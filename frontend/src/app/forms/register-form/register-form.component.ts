@@ -40,18 +40,18 @@ export class RegisterFormComponent {
     this.saveForm.markAllAsTouched();
     if (this.saveForm.valid) {
 
-      const newUser: Profile = {
+      let newProfile: Profile = {
         id: 0,
-        firstName: this.saveForm.controls['firstName']?.value || '',
-        lastName: this.saveForm.controls['lastName'].value  || '',
-        email: this.saveForm.controls['email'].value || '',
-        phoneNumber: this.saveForm.controls['phoneNumber'].value || '',
-        password: this.saveForm.controls['password'].value || '',
-        githubUser: ''
+        firstName: this.saveForm.controls['firstName'].value!,
+        lastName: this.saveForm.controls['lastName'].value!,
+        email: this.saveForm.controls['email'].value!,
+        phoneNumber: this.saveForm.controls['phoneNumber'].value!,
+        password: this.saveForm.controls['password'].value!,
+        githubUser: '',
+        characteristics: []
       }
 
-
-      this.profileService.handelUserRegistration(newUser).subscribe({
+      this.profileService.handelUserRegistration(newProfile).subscribe({
         next: (response: Profile) => {
           //this.profileService.loggedInUser = response;
           this.router.navigate(['/home']);

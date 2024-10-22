@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, inject, OnInit} from '@angular/core';
+import {Component, OnInit, inject} from '@angular/core';
 import {FormArray, FormBuilder, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgClass, NgForOf} from "@angular/common";
 import {MatSlider, MatSliderThumb, MatSliderVisualThumb} from "@angular/material/slider";
@@ -13,7 +13,9 @@ import { SelectItemGroup } from 'primeng/api';
 import {DropdownModule} from "primeng/dropdown";
 import {DropStrProgrComponent} from "../../../single-components/strengths/drop-str-progr/drop-str-progr.component";
 import {DropStrEdvComponent} from "../../../single-components/strengths/drop-str-edv/drop-str-edv.component";
-import {HomePageServiceService} from "../../../services/home-page-service.service";
+import {CharacteristicService} from "../../../services/characteristic.service";
+import {Characteristic} from "../../../interfaces/Characteristic";
+import {ProfileService} from "../../../services/profile.service";
 
 @Component({
   selector: 'app-strengths-area',
@@ -41,52 +43,29 @@ import {HomePageServiceService} from "../../../services/home-page-service.servic
   styleUrl: './strengths-area.component.css'
 })
 export class StrengthsAreaComponent implements OnInit{
-  characteristics!: any[];
-  selectedCharacteristic!: any[];
+  characteristicService: CharacteristicService = inject(CharacteristicService);
+  profileService: ProfileService = inject(ProfileService);
+
+  characteristics!: Characteristic[];
+  selectedCharacteristic!: Characteristic[];
   userLanguageRating !: number;
-  programmingLanguages !: any[]
+
   groupedSoftwareApps: SelectItemGroup[]
-  dragBox !: string;
-  showBorders !: string;
-  homePageService : HomePageServiceService = inject(HomePageServiceService);
+  selectedSoftwareApp !: string;
+
 
   ngOnInit(): void {
-    this.programmingLanguages = [
-      { name: 'Java', code: 'java' },
-      { name: 'C', code: 'c' },
-      { name: 'C#', code: 'c#' },
-      { name: 'C++', code: 'c++' },
-      { name: 'JavaScript', code: 'js' },
-      { name: 'TypeScript', code: 'ts' },
-      { name: 'PHP', code: 'php' },
-      { name: 'HTML', code: 'html' },
-      { name: 'CSS', code: 'css' },
-      { name: 'Python', code: 'py' },
-      { name: 'Swift', code: 'swift' },
-      { name: 'Ruby', code: 'ruby' },
-    ];
+    this.characteristicService.loadAllCharacteristics().subscribe(c => {
+      console.log("Characteristics loaded",c)
+      this.characteristics = c
+    });
 
-    this.characteristics = [
-      { label: 'Kreativ', value: 'kreativ' },
-      { label: 'Pünktlich', value: 'puenktlich' },
-      { label: 'Teamfähig', value: 'teamfaehig' },
-      { label: 'Freundlich', value: 'freundlich' },
-      { label: 'Hilfsbereit', value: 'hilfsbereit' },
-      { label: 'Organisiert', value: 'organisiert' },
-      { label: 'Zuverlässig', value: 'zuverlaessig' },
-      { label: 'Engagiert', value: 'engagiert' },
-      { label: 'Motiviert', value: 'motiviert' },
-      { label: 'Flexibel', value: 'flexibel' },
-      { label: 'Kommunikativ', value: 'kommunikativ' },
-      { label: 'Kooperativ', value: 'kooperativ' },
-      { label: 'Analytisches Denken', value: 'analytisches-denken' },
-      { label: 'Belastbarkeit', value: 'belastbarkeit' },
-      { label: 'Eigeniniziative', value: 'eigeniniziative' },
-    ];
-    this.selectedCharacteristic = [];
+    setTimeout(() => {
+      this.selectedCharacteristic = this.profileService.loggedInUser!.characteristics
+    },100)
   }
 
-  constructor(private fb: FormBuilder, private cdRef: ChangeDetectorRef) {
+  constructor(private fb: FormBuilder) {
     this.groupedSoftwareApps = [
       {
         label: 'Microsoft',
@@ -155,7 +134,7 @@ export class StrengthsAreaComponent implements OnInit{
   addProgrammingLanguage() {
     this.programmingKnowledgeFormItems.push(
       this.fb.group({
-        programmingName: [''],
+        programmingName: [],
         programmingKnowledge: [Number],
       })
     )
@@ -210,28 +189,21 @@ export class StrengthsAreaComponent implements OnInit{
     }
   }
 
-  checkDraggable(): boolean {
-    if (this.homePageService.isBoxDraggable) {
-      this.showBorders = 'border-2 border-dashed border-gray-200 rounded-lg';
-      this.dragBox = 'cursor-pointer';
+  changeCharacteristics() {
+    console.log("Characteristics changed",this.selectedCharacteristic)
+    let profile = this.profileService.loggedInUser;
 
-      return true;
-    }
+    profile!.characteristics = this.selectedCharacteristic;
 
-    else {
-      this.dragBox = 'cursor-default';
-      this.showBorders = 'border-none';
-
-      return false;
-    }
+    this.profileService.updateProfile(profile!).subscribe();
   }
 
-  updateSoftware(i: number) {
-
+  selectProgrammingLanguage(selectedProgrammingLanguage: any, formNumber: number) {
+    this.programmingKnowledgeFormItems.at(formNumber).value.programmingName = selectedProgrammingLanguage;
   }
 
-  updateProgrammingLanguage(i: number) {
-
+  updateProgrammingKnowledge(formNumber: number) {
+    console.log(this.programmingKnowledgeFormItems.at(formNumber).value.programmingName)
   }
 }
 
