@@ -1,7 +1,7 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, inject, OnInit} from '@angular/core';
 import {HomeNavbarComponent} from "../../../navigation/home-navbar/home-navbar.component";
 import {SideBarComponent} from "../../../navigation/side-bar/side-bar.component";
-import {formatDate, NgForOf, NgOptimizedImage} from "@angular/common";
+import {formatDate, NgClass, NgForOf, NgOptimizedImage} from "@angular/common";
 import {MatDateRangeInput} from "@angular/material/datepicker";
 import {Form, FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {MatIcon} from "@angular/material/icon";
@@ -14,6 +14,7 @@ import {Education} from "../../../interfaces/education";
 import {EducationService} from "../../../services/education.service";
 import {WorkExperience} from "../../../interfaces/work-experience";
 import {WorkExperienceService} from "../../../services/work-experience.service";
+import {HomePageServiceService} from "../../../services/home-page-service.service";
 
 @Component({
   selector: 'app-cv-area',
@@ -26,7 +27,8 @@ import {WorkExperienceService} from "../../../services/work-experience.service";
     ReactiveFormsModule,
     NgForOf,
     MatIcon,
-    DropdownMenuHomeComponent
+    DropdownMenuHomeComponent,
+    NgClass
   ],
   templateUrl: './cv-area.component.html',
   styleUrl: './cv-area.component.css'
@@ -38,6 +40,9 @@ export class CvAreaComponent implements OnInit{
   workExperienceService: WorkExperienceService = inject(WorkExperienceService);
   currGeneralInfo: GeneralInfo | undefined;
   router: Router = inject(Router);
+  dragBox !: string;
+  showBorders !: string;
+  homePageService : HomePageServiceService = inject(HomePageServiceService);
 
   generalInfoForm: FormGroup = new FormGroup({
     gender: new FormControl(''),
@@ -50,7 +55,7 @@ export class CvAreaComponent implements OnInit{
     address: new FormControl(''),
 });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private cdRef: ChangeDetectorRef) {}
 
   ngOnInit() {
     setTimeout(() => {
@@ -151,6 +156,7 @@ export class CvAreaComponent implements OnInit{
 
     this.jobExperiencesFormItems.removeAt(index);
   }
+
 
   addJobExperiencesInfo(workExperience?: WorkExperience) {
     if(workExperience !== undefined) {
@@ -287,5 +293,21 @@ export class CvAreaComponent implements OnInit{
   removeNotification(index: number) {
     // Wenn die Animation beendet ist, entferne die Benachrichtigung aus der Liste
     this.notifications.splice(index, 1);
+  }
+
+  checkDraggable(): boolean {
+    if (this.homePageService.isBoxDraggable) {
+      this.dragBox = 'cursor-pointer';
+      this.showBorders = 'border-2 border-dashed border-gray-200 rounded-lg';
+
+      return true;
+    }
+
+    else {
+      this.dragBox = 'cursor-default';
+      this.showBorders = 'border-none';
+
+      return false;
+    }
   }
 }

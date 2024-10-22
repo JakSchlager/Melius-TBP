@@ -1,4 +1,5 @@
 import {Component, OnInit, inject} from '@angular/core';
+import {ChangeDetectorRef, Component, inject, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgClass, NgForOf} from "@angular/common";
 import {MatSlider, MatSliderThumb, MatSliderVisualThumb} from "@angular/material/slider";
@@ -16,6 +17,7 @@ import {DropStrEdvComponent} from "../../../single-components/strengths/drop-str
 import {CharacteristicService} from "../../../services/characteristic.service";
 import {Characteristic} from "../../../interfaces/Characteristic";
 import {ProfileService} from "../../../services/profile.service";
+import {HomePageServiceService} from "../../../services/home-page-service.service";
 
 @Component({
   selector: 'app-strengths-area',
@@ -51,8 +53,9 @@ export class StrengthsAreaComponent implements OnInit{
   userLanguageRating !: number;
 
   groupedSoftwareApps: SelectItemGroup[]
-  selectedSoftwareApp !: string;
-
+  dragBox !: string;
+  showBorders !: string;
+  homePageService : HomePageServiceService = inject(HomePageServiceService);
 
   ngOnInit(): void {
     this.characteristicService.loadAllCharacteristics().subscribe(c => {
@@ -65,7 +68,7 @@ export class StrengthsAreaComponent implements OnInit{
     },100)
   }
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private cdRef: ChangeDetectorRef) {
     this.groupedSoftwareApps = [
       {
         label: 'Microsoft',
@@ -204,6 +207,29 @@ export class StrengthsAreaComponent implements OnInit{
 
   updateProgrammingKnowledge(formNumber: number) {
     console.log(this.programmingKnowledgeFormItems.at(formNumber).value.programmingName)
+  }
+  checkDraggable(): boolean {
+    if (this.homePageService.isBoxDraggable) {
+      this.showBorders = 'border-2 border-dashed border-gray-200 rounded-lg';
+      this.dragBox = 'cursor-pointer';
+
+      return true;
+    }
+
+    else {
+      this.dragBox = 'cursor-default';
+      this.showBorders = 'border-none';
+
+      return false;
+    }
+  }
+
+  updateSoftware(i: number) {
+
+  }
+
+  updateProgrammingLanguage(i: number) {
+
   }
 }
 

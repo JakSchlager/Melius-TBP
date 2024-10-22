@@ -8,19 +8,19 @@
   <div class="w-full grid grid-cols-3 space-x-4 justify-center">
 
     <!-- CV Column One -->
-    <div class="col-start-1 border-2 border-dashed border-gray-100  rounded-lg space-y-10" id="leftSkillCol"
+    <div [ngClass]="showBorders" class="col-start-1 space-y-10" id="leftSkillCol"
          (dragover)="onDragOver($event)"
          (drop)="onDrop($event, 'leftSkillCol')">
     </div>
 
 
     <!-- CV Column Two -->
-    <div class="col-start-2 border-2 border-dashed border-gray-100 rounded-lg space-y-10" id="middleSkillCol"
+    <div [ngClass]="showBorders" class="col-start-2 space-y-10" id="middleSkillCol"
          (dragover)="onDragOver($event)"
          (drop)="onDrop($event, 'middleSkillCol')">
 
       <!-- Allgemeine Informationen -->
-      <div draggable="true" (dragstart)="onDragStart($event, $event.target)" class="drop-shadow-lg animate-in slide-in-from-bottom-32 duration-500 hover:cursor-grab">
+      <div [ngClass]="dragBox" [draggable]="checkDraggable()" (dragstart)="onDragStart($event, $event.target)" class="drop-shadow-lg animate-in slide-in-from-bottom-32 duration-500">
         <div class="bg-white rounded-xl px-10 py-6">
           <h1 class="text-center font-bold text-2xl py-2">Allgemein</h1>
 
@@ -99,7 +99,7 @@
       </div>
 
       <!-- Ausbildung Informationen -->
-      <div draggable="true" (dragstart)="onDragStart($event, $event.target)" class="drop-shadow-lg animate-in slide-in-from-bottom-32 duration-700 hover:cursor-grab">
+      <div [ngClass]="dragBox" [draggable]="checkDraggable()" (dragstart)="onDragStart($event, $event.target)" class="drop-shadow-lg animate-in slide-in-from-bottom-32 duration-700">
         <div class="bg-white rounded-xl px-10 py-4">
           <h1 class="text-center font-bold text-2xl py-2">Ausbildungen</h1>
 
@@ -176,7 +176,7 @@
 
 
       <!-- Berufserfahrungen Informationen -->
-      <div draggable="true" (dragstart)="onDragStart($event, $event.target)" class="drop-shadow-lg animate-in slide-in-from-bottom-32 duration-700 hover:cursor-grab">
+      <div [ngClass]="dragBox" [draggable]="checkDraggable()" (dragstart)="onDragStart($event, $event.target)" class="drop-shadow-lg animate-in slide-in-from-bottom-32 duration-700">
         <div class="bg-white rounded-xl  px-10 py-4">
           <h1 class="text-center font-bold text-2xl py-2">Berufserfahrungen</h1>
 
@@ -240,7 +240,7 @@
 
 
     <!-- CV Column Three -->
-    <div class="col-start-3 border-2 border-dashed border-gray-100 rounded-lg space-y-10" id="rightSkillCol"
+    <div [ngClass]="showBorders" class="col-start-3 space-y-10" id="rightSkillCol"
          (dragover)="onDragOver($event)"
          (drop)="onDrop($event, 'rightSkillCol')">
     </div>
