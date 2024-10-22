@@ -1,4 +1,3 @@
-import {Component, OnInit, inject} from '@angular/core';
 import {ChangeDetectorRef, Component, inject, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgClass, NgForOf} from "@angular/common";
@@ -225,10 +224,6 @@ export class StrengthsAreaComponent implements OnInit{
   }
 
   updateSoftware(i: number) {
-
-  }
-
-  updateProgrammingLanguage(i: number) {
 
   }
 }
