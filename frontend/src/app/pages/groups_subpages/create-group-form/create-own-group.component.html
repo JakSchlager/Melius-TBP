@@ -15,26 +15,34 @@
           <app-group-avatar></app-group-avatar>
         </div>
 
-        <div class="w-5/12 space-y-4">
+        <div [formGroup]="newGroupForm" class="w-5/12 space-y-4">
           <div class="w-full">
             <h1 class="font-semibold">Gruppenname</h1>
-            <input class="w-full px-2 py-1.5 border border-gray-200 bg-white rounded-lg shadow-md" type="text" placeholder="Name deiner Gruppe...">
+            <input formControlName="groupName" class="w-full px-2 py-1.5 border border-gray-200 bg-white rounded-lg shadow-md" type="text" placeholder="Name deiner Gruppe...">
+            <span *ngIf="newGroupForm.get('groupName')?.touched && !newGroupForm.get('groupName')?.valid" class="form-text text-xs text-muted text-red-600">*Gruppenname darf nicht leer sein</span>
           </div>
 
           <div>
             <h1 class="font-semibold">Unternehmen</h1>
-            <input class="w-full px-2 py-1.5 border border-gray-200 bg-white rounded-lg shadow-md" type="text" placeholder="Name deines Unternehmens...">
+            <input formControlName="company" class="w-full px-2 py-1.5 border border-gray-200 bg-white rounded-lg shadow-md" type="text" placeholder="Name deines Unternehmens...">
+            <span *ngIf="newGroupForm.get('company')?.touched && !newGroupForm.get('company')?.valid" class="form-text text-xs text-muted text-red-600">*Unternehmen darf nicht leer sein</span>
           </div>
 
           <div>
             <h1 class="font-semibold">Abteilung</h1>
-            <input class="w-full px-2 py-1.5 border border-gray-200 bg-white rounded-lg shadow-md" type="text" placeholder="Name deiner Abteilung...">
+            <input formControlName="department" class="w-full px-2 py-1.5 border border-gray-200 bg-white rounded-lg shadow-md" type="text" placeholder="Name deiner Abteilung...">
+            <span *ngIf="newGroupForm.get('department')?.touched && !newGroupForm.get('department')?.valid" class="form-text text-xs text-muted text-red-600">*Abteilung darf nicht leer sein</span>
           </div>
 
+          <div>
+            <h1 class="font-semibold">Einschreibeschlüssel</h1>
+            <input formControlName="groupPassword" class="w-full px-2 py-1.5 border border-gray-200 bg-white rounded-lg shadow-md" type="text" placeholder="********" >
+          </div>
 
           <div class="w-fit">
             <h1 class="font-semibold">Anzahl der Mitglieder</h1>
-            <input class="w-1/3 px-2 py-1.5 border border-gray-200 bg-white rounded-lg shadow-md" type="number" placeholder="0" >
+            <input formControlName="amountOfMembers" class="w-1/3 px-2 py-1.5 border border-gray-200 bg-white rounded-lg shadow-md" type="number" placeholder="0" >
+            <span *ngIf="newGroupForm.get('amountOfMembers')?.touched && !newGroupForm.get('amountOfMembers')?.valid" class="form-text text-xs text-muted text-red-600">*Die Anzahl muss mehr als 1 betragen</span>
           </div>
 
           <div class="w-full h-full flex justify-center">
