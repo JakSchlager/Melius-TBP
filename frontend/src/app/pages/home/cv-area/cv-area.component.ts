@@ -157,6 +157,7 @@ export class CvAreaComponent implements OnInit{
     this.jobExperiencesFormItems.removeAt(index);
   }
 
+
   addJobExperiencesInfo(workExperience?: WorkExperience) {
     if(workExperience !== undefined) {
       this.jobExperiencesFormItems.push(

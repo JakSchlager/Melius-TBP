@@ -1,4 +1,4 @@
-import {Component, OnInit, inject} from '@angular/core';
+import {ChangeDetectorRef, Component, inject, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgClass, NgForOf} from "@angular/common";
 import {MatSlider, MatSliderThumb, MatSliderVisualThumb} from "@angular/material/slider";
@@ -8,14 +8,13 @@ import {FloatLabelModule} from "primeng/floatlabel";
 import {ChipsModule} from "primeng/chips";
 import {CheckboxModule} from "primeng/checkbox";
 import {DropdownMenuHomeComponent} from "../../../single-components/dropdown-menu-home/dropdown-menu-home.component";
-import { RatingModule } from 'primeng/rating';
+import {Rating, RatingModule} from 'primeng/rating';
 import { SelectItemGroup } from 'primeng/api';
 import {DropdownModule} from "primeng/dropdown";
 import {DropStrProgrComponent} from "../../../single-components/strengths/drop-str-progr/drop-str-progr.component";
 import {DropStrEdvComponent} from "../../../single-components/strengths/drop-str-edv/drop-str-edv.component";
-import {CharacteristicService} from "../../../services/characteristic.service";
-import {Characteristic} from "../../../interfaces/Characteristic";
-import {ProfileService} from "../../../services/profile.service";
+import {HomePageServiceService} from "../../../services/home-page-service.service";
+import {StarRatingComponent} from "../../../single-components/star-rating/star-rating.component";
 
 @Component({
   selector: 'app-strengths-area',
@@ -23,11 +22,8 @@ import {ProfileService} from "../../../services/profile.service";
   imports: [
     FormsModule,
     NgForOf,
-    MatSlider,
-    MatSliderVisualThumb,
-    MatSliderThumb,
-    MatIcon,
     ReactiveFormsModule,
+    RatingModule,
     MultiSelectModule,
     NgClass,
     FloatLabelModule,
@@ -38,34 +34,58 @@ import {ProfileService} from "../../../services/profile.service";
     DropdownModule,
     DropStrProgrComponent,
     DropStrEdvComponent,
+    StarRatingComponent,
   ],
   templateUrl: './strengths-area.component.html',
   styleUrl: './strengths-area.component.css'
 })
 export class StrengthsAreaComponent implements OnInit{
-  characteristicService: CharacteristicService = inject(CharacteristicService);
-  profileService: ProfileService = inject(ProfileService);
-
-  characteristics!: Characteristic[];
-  selectedCharacteristic!: Characteristic[];
+  characteristics!: any[];
+  selectedCharacteristic!: any[];
   userLanguageRating !: number;
-
+  programmingLanguages !: any[]
   groupedSoftwareApps: SelectItemGroup[]
-  selectedSoftwareApp !: string;
-
+  dragBox : string = "cursor-default";
+  showBorders : string = "";
+  homePageService : HomePageServiceService = inject(HomePageServiceService);
 
   ngOnInit(): void {
-    this.characteristicService.loadAllCharacteristics().subscribe(c => {
-      console.log("Characteristics loaded",c)
-      this.characteristics = c
-    });
+    this.programmingLanguages = [
+      { name: 'Java', code: 'java' },
+      { name: 'C', code: 'c' },
+      { name: 'C#', code: 'c#' },
+      { name: 'C++', code: 'c++' },
+      { name: 'JavaScript', code: 'js' },
+      { name: 'TypeScript', code: 'ts' },
+      { name: 'PHP', code: 'php' },
+      { name: 'HTML', code: 'html' },
+      { name: 'CSS', code: 'css' },
+      { name: 'Python', code: 'py' },
+      { name: 'Swift', code: 'swift' },
+      { name: 'Ruby', code: 'ruby' },
+    ];
 
-    setTimeout(() => {
-      this.selectedCharacteristic = this.profileService.loggedInUser!.characteristics
-    },100)
+    this.characteristics = [
+      { label: 'Kreativ', value: 'kreativ' },
+      { label: 'Pünktlich', value: 'puenktlich' },
+      { label: 'Teamfähig', value: 'teamfaehig' },
+      { label: 'Freundlich', value: 'freundlich' },
+      { label: 'Hilfsbereit', value: 'hilfsbereit' },
+      { label: 'Organisiert', value: 'organisiert' },
+      { label: 'Zuverlässig', value: 'zuverlaessig' },
+      { label: 'Engagiert', value: 'engagiert' },
+      { label: 'Motiviert', value: 'motiviert' },
+      { label: 'Flexibel', value: 'flexibel' },
+      { label: 'Kommunikativ', value: 'kommunikativ' },
+      { label: 'Kooperativ', value: 'kooperativ' },
+      { label: 'Analytisches Denken', value: 'analytisches-denken' },
+      { label: 'Belastbarkeit', value: 'belastbarkeit' },
+      { label: 'Eigeniniziative', value: 'eigeniniziative' },
+    ];
+    this.selectedCharacteristic = [];
   }
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private cdRef: ChangeDetectorRef) {
     this.groupedSoftwareApps = [
       {
         label: 'Microsoft',
@@ -118,7 +138,29 @@ export class StrengthsAreaComponent implements OnInit{
     ];
   }
 
+  // Add, Get and delete Languages from List
+  knownLanguagesForm = this.fb.group({
+    knownLanguagesFormItems: this.fb.array([])
+  });
 
+  get knownLanguagesFormItems() {
+    return this.knownLanguagesForm.get('knownLanguagesFormItems') as FormArray;
+  }
+
+  deleteKnownLanguage(index: number) {
+    this.knownLanguagesFormItems.removeAt(index);
+  }
+
+  addKnownLanguage() {
+    const newLanguage =  this.fb.group({
+      languageName: [''],
+      languageKnowledge: [0],
+    });
+    this.knownLanguagesFormItems.push(newLanguage);
+  }
+
+
+  // Add, Get and delete Programming Knowledge from List
   programmingKnowledgeForm = this.fb.group({
     programmingKnowledgeFormItems: this.fb.array([])
   });
@@ -134,13 +176,13 @@ export class StrengthsAreaComponent implements OnInit{
   addProgrammingLanguage() {
     this.programmingKnowledgeFormItems.push(
       this.fb.group({
-        programmingName: [],
+        programmingName: [''],
         programmingKnowledge: [Number],
       })
     )
   }
 
-
+  // Add, Get and delete Software Knowledge from List
   softwareKnowledgeForm = this.fb.group({
     softwareKnowledgeFormItems: this.fb.array([])
   });
@@ -189,21 +231,31 @@ export class StrengthsAreaComponent implements OnInit{
     }
   }
 
-  changeCharacteristics() {
-    console.log("Characteristics changed",this.selectedCharacteristic)
-    let profile = this.profileService.loggedInUser;
+  checkDraggable(): boolean {
+    if (this.homePageService.isBoxDraggable) {
+      this.showBorders = 'border-2 border-dashed border-gray-200 rounded-lg';
+      this.dragBox = 'cursor-pointer';
 
-    profile!.characteristics = this.selectedCharacteristic;
+      return true;
+    }
 
-    this.profileService.updateProfile(profile!).subscribe();
+    else {
+      this.showBorders = 'border-none';
+      this.dragBox = 'cursor-default';
+
+      return false;
+    }
   }
 
-  selectProgrammingLanguage(selectedProgrammingLanguage: any, formNumber: number) {
-    this.programmingKnowledgeFormItems.at(formNumber).value.programmingName = selectedProgrammingLanguage;
+  updateLanguage(i: number) {
   }
 
-  updateProgrammingKnowledge(formNumber: number) {
-    console.log(this.programmingKnowledgeFormItems.at(formNumber).value.programmingName)
+  updateSoftware(i: number) {
+
+  }
+
+  updateProgrammingLanguage(i: number) {
+
   }
 }
 
