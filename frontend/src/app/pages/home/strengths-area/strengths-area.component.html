@@ -38,40 +38,40 @@
       </div>
 
       <!-- Sprachliche Kenntnisse -->
-      <div [ngClass]="dragBox" [draggable]="checkDraggable()" (dragstart)="onDragStart($event, $event.target)" class="colListItem bg-white grid rounded-lg px-10 py-4 shadow-md animate-in slide-in-from-bottom-32 duration-500">
+      <div [ngClass]="dragBox" [draggable]="checkDraggable()" (dragstart)="onDragStart($event, $event.target)" class="colListItem bg-white rounded-lg px-2 py-1 shadow-md animate-in slide-in-from-bottom-32 duration-500">
         <h1 class="text-center font-bold text-2xl py-2 pb-4">Sprachliche Stärken</h1>
 
-        <div class="h-full flex flex-col space-y-4 hover:cursor-default">
-          <div class="w-auto mx-10 flex justify-evenly items-center animate-in fade-in zoom-in duration-500">
-            <div>
-              <input formControlName="programmingName" placeholder="Sprache" class="w-3/5 bg-white shadow-md rounded-md px-1 py-1.5 font-bold">
-            </div>
+        <div [formGroup]="knownLanguagesForm" class="mt-2 hover:cursor-default">
+          <div formArrayName="knownLanguagesFormItems" class="">
+            <div *ngFor="let langauge of knownLanguagesFormItems.controls; let i = index" [formGroupName]="i">
 
-            <div >
-              <p-rating [ngModel]="userLanguageRating" class="w-2/5"></p-rating>
-            </div>
-          </div>
+              <div class="w-auto mx-10 flex items-center space-x-10 animate-in fade-in zoom-in duration-500">
+                <div>
+                  <input type="text" formControlName="languageName" placeholder="Sprache" class="w-4/5 bg-white shadow-md rounded px-1 py-2 font-bold">
+                </div>
 
-          <div class="w-auto mx-10 flex justify-evenly items-center animate-in fade-in zoom-in duration-700">
-            <div>
-              <input formControlName="programmingName" placeholder="Sprache" class="w-3/5 bg-white shadow-md rounded px-1 py-2 font-bold">
-            </div>
+                <div>
+                  <app-star-rating formControlName="languageKnowledge"></app-star-rating>
+                </div>
 
-            <div>
-              <p-rating [ngModel]="userLanguageRating" class="w-2/5"></p-rating>
-            </div>
-          </div>
+                <div class="h-full items-center py-8 space-y-4">
+                  <div class="bg-white rounded-lg shadow-md p-1 hover:bg-gray-50 duration-150 ease-in-out">
+                    <svg (click)="deleteKnownLanguage(i)" xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px" fill="#EA3323" class="cursor-pointer"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
+                  </div>
 
-          <div class="w-auto mx-10 flex justify-evenly items-center animate-in fade-in zoom-in duration-1000">
-            <div>
-              <input formControlName="programmingName" placeholder="Sprache" class="w-3/5 bg-white shadow-md rounded px-1 py-2 font-bold">
-            </div>
+                  <div class="bg-white rounded-lg shadow-md p-1 hover:bg-gray-50 duration-150 ease-in-out">
+                    <svg (click)="updateLanguage(i)" class="cursor-pointer" xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px" fill="#6C9732"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q65 0 123 19t107 53l-58 59q-38-24-81-37.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160q133 0 226.5-93.5T800-480q0-18-2-36t-6-35l65-65q11 32 17 66t6 70q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm-56-216L254-466l56-56 114 114 400-401 56 56-456 457Z"/></svg>
+                  </div>
+                </div>
+              </div>
 
-            <div>
-              <p-rating [ngModel]="userLanguageRating" class="w-2/5"></p-rating>
             </div>
           </div>
-
+          <div class="flex justify-end py-2">
+            <button class="bg-white rounded-md hover:shadow-md duration-150" (click)="addKnownLanguage()">
+              <img [draggable]="false" src="assets/icons/home-page/add_element-icon.svg" alt="add_icon" class="w-10 h-10 cursor-pointer">
+            </button>
+          </div>
         </div>
       </div>
 
@@ -85,7 +85,7 @@
                 <div *ngFor="let programmingItem of programmingKnowledgeFormItems.controls; let i = index" [formGroupName]="i">
 
                   <div class="w-auto mx-2 items-center flex justify-between space-x-10 animate-in fade-in zoom-in duration-500">
-                    <app-drop-str-progr></app-drop-str-progr>
+                    <app-drop-str-progr formControlName="programmingName"></app-drop-str-progr>
 
                     <div class="flex-grow" >
                       <div class="flex flex-col">
@@ -134,7 +134,7 @@
             <div *ngFor="let softwareItem of softwareKnowledgeFormItems.controls; let i = index" [formGroupName]="i">
 
               <div class="w-auto mx-2 flex items-center justify-between space-x-10 animate-in fade-in zoom-in duration-500">
-                <app-drop-str-edv></app-drop-str-edv>
+                <app-drop-str-edv formControlName="softwareApp"></app-drop-str-edv>
 
                 <div class="flex-grow">
                   <div class="flex flex-col">
