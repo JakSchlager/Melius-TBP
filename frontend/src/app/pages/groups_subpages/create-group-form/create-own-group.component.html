@@ -10,12 +10,12 @@
         <h1 class="w-full text-3xl font-bold text-center py-2">Starte das Organisieren</h1>
       </div>
 
-      <div class="h-fit w-full flex justify-center space-x-20 items-center">
+      <div class="h-fit w-full flex justify-center space-x-20 p-2 items-center">
         <div>
           <app-group-avatar></app-group-avatar>
         </div>
 
-        <div [formGroup]="newGroupForm" class="w-5/12 space-y-4">
+        <div [formGroup]="newGroupForm" class="w-5/12 space-y-4 overflow-hidden px-2">
           <div class="w-full">
             <h1 class="font-semibold">Gruppenname</h1>
             <input formControlName="groupName" class="w-full px-2 py-1.5 border border-gray-200 bg-white rounded-lg shadow-md" type="text" placeholder="Name deiner Gruppe...">
@@ -24,29 +24,30 @@
 
           <div>
             <h1 class="font-semibold">Unternehmen</h1>
-            <input formControlName="company" class="w-full px-2 py-1.5 border border-gray-200 bg-white rounded-lg shadow-md" type="text" placeholder="Name deines Unternehmens...">
-            <span *ngIf="newGroupForm.get('company')?.touched && !newGroupForm.get('company')?.valid" class="form-text text-xs text-muted text-red-600">*Unternehmen darf nicht leer sein</span>
+            <input formControlName="companyName" class="w-full px-2 py-1.5 border border-gray-200 bg-white rounded-lg shadow-md" type="text" placeholder="Name deines Unternehmens...">
+            <span *ngIf="newGroupForm.get('companyName')?.touched && !newGroupForm.get('companyName')?.valid" class="form-text text-xs text-muted text-red-600">*Unternehmen darf nicht leer sein</span>
           </div>
 
           <div>
             <h1 class="font-semibold">Abteilung</h1>
-            <input formControlName="department" class="w-full px-2 py-1.5 border border-gray-200 bg-white rounded-lg shadow-md" type="text" placeholder="Name deiner Abteilung...">
-            <span *ngIf="newGroupForm.get('department')?.touched && !newGroupForm.get('department')?.valid" class="form-text text-xs text-muted text-red-600">*Abteilung darf nicht leer sein</span>
+            <input formControlName="departmentName" class="w-full px-2 py-1.5 border border-gray-200 bg-white rounded-lg shadow-md" type="text" placeholder="Name deiner Abteilung...">
+            <span *ngIf="newGroupForm.get('departmentName')?.touched && !newGroupForm.get('departmentName')?.valid" class="form-text text-xs text-muted text-red-600">*Abteilung darf nicht leer sein</span>
           </div>
 
           <div>
             <h1 class="font-semibold">Einschreibeschlüssel</h1>
-            <input formControlName="groupPassword" class="w-full px-2 py-1.5 border border-gray-200 bg-white rounded-lg shadow-md" type="text" placeholder="********" >
+            <input formControlName="password" class="w-full px-2 py-1.5 border border-gray-200 bg-white rounded-lg shadow-md" type="text" placeholder="********" >
+            <span *ngIf="newGroupForm.get('password')?.touched && !newGroupForm.get('password')?.valid" class="form-text text-xs text-muted text-red-600">*Password mus <strong>mindestens 6</strong> Zeichen lang sein</span>
           </div>
 
-          <div class="w-fit">
+          <div class="flex flex-col">
             <h1 class="font-semibold">Anzahl der Mitglieder</h1>
             <input formControlName="amountOfMembers" class="w-1/3 px-2 py-1.5 border border-gray-200 bg-white rounded-lg shadow-md" type="number" placeholder="0" >
-            <span *ngIf="newGroupForm.get('amountOfMembers')?.touched && !newGroupForm.get('amountOfMembers')?.valid" class="form-text text-xs text-muted text-red-600">*Die Anzahl muss mehr als 1 betragen</span>
+            <span *ngIf="newGroupForm.get('amountOfMembers')?.touched && !newGroupForm.get('amountOfMembers')?.valid" class="form-text text-xs text-muted text-red-600">*Die Anzahl an Mitglieder muss <strong>mindestens 2</strong> betragen</span>
           </div>
 
           <div class="w-full h-full flex justify-center">
-            <button class="bg-primary-color font-semibold text-lg text-white rounded-lg shadow-lg px-4 py-1.5 hover:bg-accent-blue hover:text-primary-color duration-150 ease-in-out" [routerLink]="['/groups/myGroup']">
+            <button [disabled]="newGroupForm.invalid || !newGroupForm.dirty" class="bg-primary-color font-semibold text-lg text-white rounded-lg shadow-lg px-4 py-1.5 hover:bg-accent-blue hover:text-primary-color duration-150 ease-in-out" (click)="onSubmit()" [routerLink]="['/groups/myGroup']">
               Gruppe gründen
             </button>
           </div>

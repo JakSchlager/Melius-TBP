@@ -1,5 +1,4 @@
 export interface Group {
-  id: string;
   groupName: string;
   company: string;
   department: string;
