@@ -8,7 +8,7 @@ import {FloatLabelModule} from "primeng/floatlabel";
 import {ChipsModule} from "primeng/chips";
 import {CheckboxModule} from "primeng/checkbox";
 import {DropdownMenuHomeComponent} from "../../../single-components/dropdown-menu-home/dropdown-menu-home.component";
-import { RatingModule } from 'primeng/rating';
+import {Rating, RatingModule} from 'primeng/rating';
 import { SelectItemGroup } from 'primeng/api';
 import {DropdownModule} from "primeng/dropdown";
 import {DropStrProgrComponent} from "../../../single-components/strengths/drop-str-progr/drop-str-progr.component";
@@ -17,6 +17,8 @@ import {CharacteristicService} from "../../../services/characteristic.service";
 import {Selectable} from "../../../interfaces/Selectable";
 import {ProfileService} from "../../../services/profile.service";
 import {HomePageServiceService} from "../../../services/home-page-service.service";
+import {HomePageServiceService} from "../../../services/home-page-service.service";
+import {StarRatingComponent} from "../../../single-components/star-rating/star-rating.component";
 
 @Component({
   selector: 'app-strengths-area',
@@ -24,11 +26,8 @@ import {HomePageServiceService} from "../../../services/home-page-service.servic
   imports: [
     FormsModule,
     NgForOf,
-    MatSlider,
-    MatSliderVisualThumb,
-    MatSliderThumb,
-    MatIcon,
     ReactiveFormsModule,
+    RatingModule,
     MultiSelectModule,
     NgClass,
     FloatLabelModule,
@@ -39,6 +38,7 @@ import {HomePageServiceService} from "../../../services/home-page-service.servic
     DropdownModule,
     DropStrProgrComponent,
     DropStrEdvComponent,
+    StarRatingComponent,
   ],
   templateUrl: './strengths-area.component.html',
   styleUrl: './strengths-area.component.css'
@@ -52,8 +52,8 @@ export class StrengthsAreaComponent implements OnInit{
   userLanguageRating !: number;
 
   groupedSoftwareApps: SelectItemGroup[]
-  dragBox !: string;
-  showBorders !: string;
+  dragBox : string = "cursor-default";
+  showBorders : string = "";
   homePageService : HomePageServiceService = inject(HomePageServiceService);
 
   ngOnInit(): void {
@@ -120,7 +120,29 @@ export class StrengthsAreaComponent implements OnInit{
     ];
   }
 
+  // Add, Get and delete Languages from List
+  knownLanguagesForm = this.fb.group({
+    knownLanguagesFormItems: this.fb.array([])
+  });
 
+  get knownLanguagesFormItems() {
+    return this.knownLanguagesForm.get('knownLanguagesFormItems') as FormArray;
+  }
+
+  deleteKnownLanguage(index: number) {
+    this.knownLanguagesFormItems.removeAt(index);
+  }
+
+  addKnownLanguage() {
+    const newLanguage =  this.fb.group({
+      languageName: [''],
+      languageKnowledge: [0],
+    });
+    this.knownLanguagesFormItems.push(newLanguage);
+  }
+
+
+  // Add, Get and delete Programming Knowledge from List
   programmingKnowledgeForm = this.fb.group({
     programmingKnowledgeFormItems: this.fb.array([])
   });
@@ -142,7 +164,7 @@ export class StrengthsAreaComponent implements OnInit{
     )
   }
 
-
+  // Add, Get and delete Software Knowledge from List
   softwareKnowledgeForm = this.fb.group({
     softwareKnowledgeFormItems: this.fb.array([])
   });
@@ -201,12 +223,20 @@ export class StrengthsAreaComponent implements OnInit{
   }
 
   selectProgrammingLanguage(selectedProgrammingLanguage: any, formNumber: number) {
-    this.programmingKnowledgeFormItems.at(formNumber).patchValue({programmingName: selectedProgrammingLanguage})
+    this.programmingKnowledgeFormItems.at(formNumber).value.programmingName = selectedProgrammingLanguage;
+  }
+
+  updateLanguage(i: number) {
+  }
+
+  updateSoftware(i: number) {
+
   }
 
   updateProgrammingKnowledge(formNumber: number) {
     console.log(this.programmingKnowledgeFormItems.at(formNumber))
   }
+
   checkDraggable(): boolean {
     if (this.homePageService.isBoxDraggable) {
       this.showBorders = 'border-2 border-dashed border-gray-200 rounded-lg';
@@ -216,15 +246,11 @@ export class StrengthsAreaComponent implements OnInit{
     }
 
     else {
-      this.dragBox = 'cursor-default';
       this.showBorders = 'border-none';
+      this.dragBox = 'cursor-default';
 
       return false;
     }
-  }
-
-  updateSoftware(i: number) {
-
   }
 }
 
