@@ -1,6 +1,65 @@
-<div>
-  <div class=" flex bg-white rounded-lg shadow-md px-3 py-2">
-    <h1>Filter</h1>
+<div class="relative">
 
+  <!-- Filter Button -->
+  <Button class="flex bg-white hover:bg-gray-50 hover:cursor-pointer duration-150 ease-in-out rounded-lg shadow-md px-4 py-2 space-x-2 items-center" (click)="toggleFilterMenu()">
+    <h1 class="text-lg font-semibold">Filter</h1>
+
+    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M440-240q-17 0-28.5-11.5T400-280q0-17 11.5-28.5T440-320h80q17 0 28.5 11.5T560-280q0 17-11.5 28.5T520-240h-80ZM280-440q-17 0-28.5-11.5T240-480q0-17 11.5-28.5T280-520h400q17 0 28.5 11.5T720-480q0 17-11.5 28.5T680-440H280ZM160-640q-17 0-28.5-11.5T120-680q0-17 11.5-28.5T160-720h640q17 0 28.5 11.5T840-680q0 17-11.5 28.5T800-640H160Z"/></svg>
+  </Button>
+
+
+  <!-- Filter Dropdown -->
+  <div *ngIf="isOpen || isAnimating" [ngClass]="{'animate-fade-down duration-150': isOpen, 'animate-out fade-out': !isOpen && isAnimating}" (animationend)="onAnimationEnd()" class="absolute right-0 mt-2 w-fit">
+    <div class="p-2 bg-white rounded-lg shadow-lg space-y-3">
+
+      <!-- Filter date joined -->
+      <div>
+        <h1 class="text-lg font-semibold">Beigetreten</h1>
+        <div class="flex justify-between">
+          <div class="flex flex-col">
+            <h1 class="flex-1">Von</h1>
+            <input class="border-2 rounded-lg" type="date">
+          </div>
+
+          <div class="flex flex-col">
+            <h1 class="flex-1">Bis</h1>
+            <input class="border-2 rounded-lg" type="date">
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Filter roles -->
+      <div>
+        <h1 class="text-lg font-semibold">Rollen</h1>
+        <div class="flex space-x-10">
+          <input class="p-0.5 border-2 rounded-lg" type="text" placeholder="Nach Rolle suchen...">
+        </div>
+      </div>
+
+      <!-- Filter Programming-Skill -->
+      <div>
+        <h1 class="text-lg font-semibold">Programmier Kenntnisse</h1>
+        <div class="flex space-x-10">
+          <input class="p-0.5 border-2 rounded-lg" type="text" placeholder="Nach Pr. Kenntnisse suchen...">
+        </div>
+      </div>
+
+      <!-- Filter EDV-Skill -->
+      <div>
+        <h1 class="text-lg font-semibold">EDV Kenntnisse</h1>
+        <div class="flex space-x-10">
+          <input class="p-0.5 border-2 rounded-lg" type="text" placeholder="Nach EDV Kenntnisse suchen...">
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <div class="flex justify-center">
+        <button class="bg-intermediate-color text-white px-2.5 py-1.5 rounded-lg hover:bg-secondary-color duration-150 ease-in-out" (click)="filterMembers()">
+          Suchen
+        </button>
+      </div>
+
+    </div>
   </div>
 </div>
