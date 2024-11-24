@@ -11,14 +11,23 @@ export class GroupPageService {
   private readonly baseUrl: string  = "";
   amountOfUserGroups : Group[] = [];
 
+
   constructor() { }
 
-  getUserGroups (): number {
+
+  // My Groups
+  getFromUserCreatedGroups (): number {
     return 0;
   }
 
+
+  // Create new Group
   createNewGroup (group: Group): Observable<Group> {
     //TODO: endpoint wird noch benötigt
     return this.httpClient.post<Group>(`${this.baseUrl}/groups`, group);
   }
+
+
+  // Already created Group
+
 }

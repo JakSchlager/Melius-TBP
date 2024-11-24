@@ -25,7 +25,7 @@ export class MyGroupsComponent  {
   }
 
   getAmountOfGroups() : number {
-    this.amountOfUserGroups = this.groupService.getUserGroups();
+    this.amountOfUserGroups = this.groupService.getFromUserCreatedGroups();
     return this.amountOfUserGroups;
   }
 }
