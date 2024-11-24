@@ -36,7 +36,7 @@
 
           <div>
             <h1 class="font-semibold">Einschreibeschlüssel</h1>
-            <input formControlName="password" class="w-full px-2 py-1.5 border border-gray-200 bg-white rounded-lg shadow-md" type="text" placeholder="********" >
+            <input formControlName="password" class="w-full px-2 py-1.5 border border-gray-200 bg-white rounded-lg shadow-md" type="password" placeholder="********" >
             <span *ngIf="newGroupForm.get('password')?.touched && !newGroupForm.get('password')?.valid" class="form-text text-xs text-muted text-red-600">*Password mus <strong>mindestens 6</strong> Zeichen lang sein</span>
           </div>
 

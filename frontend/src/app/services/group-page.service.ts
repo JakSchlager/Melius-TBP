@@ -16,6 +16,7 @@ export class GroupPageService {
 
 
   // My Groups
+  //TODO: endpoint wird noch benötigt
   getFromUserCreatedGroups (): number {
     return 0;
   }
@@ -29,5 +30,8 @@ export class GroupPageService {
 
 
   // Already created Group
-
+  //TODO: endpoint wird noch benötigt
+  getAllGroups(): number {
+    return 0;
+  }
 }
