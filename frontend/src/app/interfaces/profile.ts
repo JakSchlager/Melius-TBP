@@ -1,4 +1,4 @@
-import {Characteristic} from "./Characteristic";
+import {Selectable} from "./Selectable";
 
 export interface Profile {
   id: number
@@ -8,5 +8,5 @@ export interface Profile {
   phoneNumber: string
   password: string
   githubUser: string
-  characteristics: Characteristic[]
+  characteristics: Selectable[]
 }

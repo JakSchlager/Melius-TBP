@@ -14,7 +14,7 @@ import {DropdownModule} from "primeng/dropdown";
 import {DropStrProgrComponent} from "../../../single-components/strengths/drop-str-progr/drop-str-progr.component";
 import {DropStrEdvComponent} from "../../../single-components/strengths/drop-str-edv/drop-str-edv.component";
 import {CharacteristicService} from "../../../services/characteristic.service";
-import {Characteristic} from "../../../interfaces/Characteristic";
+import {Selectable} from "../../../interfaces/Selectable";
 import {ProfileService} from "../../../services/profile.service";
 import {HomePageServiceService} from "../../../services/home-page-service.service";
 
@@ -47,8 +47,8 @@ export class StrengthsAreaComponent implements OnInit{
   characteristicService: CharacteristicService = inject(CharacteristicService);
   profileService: ProfileService = inject(ProfileService);
 
-  characteristics!: Characteristic[];
-  selectedCharacteristic!: Characteristic[];
+  characteristics!: Selectable[];
+  selectedCharacteristic!: Selectable[];
   userLanguageRating !: number;
 
   groupedSoftwareApps: SelectItemGroup[]
@@ -136,8 +136,8 @@ export class StrengthsAreaComponent implements OnInit{
   addProgrammingLanguage() {
     this.programmingKnowledgeFormItems.push(
       this.fb.group({
-        programmingName: [],
-        programmingKnowledge: [Number],
+        programmingName: [""],
+        programmingKnowledge: [0],
       })
     )
   }
@@ -160,7 +160,7 @@ export class StrengthsAreaComponent implements OnInit{
     this.softwareKnowledgeFormItems.push(
       this.fb.group({
         softwareApp: [''],
-        softwareAppKnowledge: [Number],
+        softwareAppKnowledge: [0],
       })
     )
   }
@@ -201,11 +201,11 @@ export class StrengthsAreaComponent implements OnInit{
   }
 
   selectProgrammingLanguage(selectedProgrammingLanguage: any, formNumber: number) {
-    this.programmingKnowledgeFormItems.at(formNumber).value.programmingName = selectedProgrammingLanguage;
+    this.programmingKnowledgeFormItems.at(formNumber).patchValue({programmingName: selectedProgrammingLanguage})
   }
 
   updateProgrammingKnowledge(formNumber: number) {
-    console.log(this.programmingKnowledgeFormItems.at(formNumber).value.programmingName)
+    console.log(this.programmingKnowledgeFormItems.at(formNumber))
   }
   checkDraggable(): boolean {
     if (this.homePageService.isBoxDraggable) {

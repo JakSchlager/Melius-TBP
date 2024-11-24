@@ -1,7 +1,8 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, inject, Input, OnInit, Output} from '@angular/core';
 import {NgForOf} from "@angular/common";
 import {FormsModule} from "@angular/forms";
-import {Characteristic} from "../../../interfaces/Characteristic";
+import {Selectable} from "../../../interfaces/Selectable";
+import {ProgrammingKnowledgeService} from "../../../services/programming-knowledge.service";
 
 @Component({
   selector: 'app-drop-str-progr',
@@ -17,8 +18,9 @@ export class DropStrProgrComponent implements OnInit{
 
   selectedLanguage!: any;
   @Output() eventEmitter: EventEmitter<any> = new EventEmitter<any>();
+  programmingKnowledgeService: ProgrammingKnowledgeService = inject(ProgrammingKnowledgeService)
 
-  programmingLanguages !: Characteristic[]
+  programmingLanguages !: Selectable[]
 
   ngOnInit() {
     this.programmingLanguages = [
@@ -35,6 +37,13 @@ export class DropStrProgrComponent implements OnInit{
       { label: 'Swift', value: 'swift' },
       { label: 'Ruby', value: 'ruby' },
     ];
+
+    this.programmingKnowledgeService.loadAllProgrammingKnowledges().subscribe(p => {
+      this.programmingLanguages = p;
+    })
+
+    this.selectedLanguage = "java";
+    this.selectLanguage()
   }
 
   selectLanguage() {

@@ -42,6 +42,15 @@ public class Profile {
     @JsonIgnoreProperties({"profiles"})
     private Set<Characteristic> characteristics;
 
+    @ManyToMany
+    @JoinTable(
+            name="profile_programming",
+            joinColumns = @JoinColumn(name="profile_id"),
+            inverseJoinColumns = @JoinColumn(name="programming_id")
+    )
+    @JsonIgnoreProperties({"profiles"})
+    private Set<ProgrammingKnowledge> programming;
+
     public int getId() {
         return id;
     }

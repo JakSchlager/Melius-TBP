@@ -9,13 +9,9 @@ import java.util.Set;
 @NamedQuery(name = Characteristic.QUERY_FIND_ALL, query = "SELECT c FROM Characteristic c")
 
 @Entity
-public class Characteristic {
+public class Characteristic extends Selectable {
 
     public static final String QUERY_FIND_ALL = "Characteristic.findAll";
-
-    @Id
-    @GeneratedValue
-    private Long id;
 
     @ManyToMany
     @JoinTable(
@@ -26,14 +22,6 @@ public class Characteristic {
     @JsonIgnoreProperties({"characteristics"})
     private Set<Profile> profiles;
 
-    public Long getId() {
-        return id;
-    }
-
-    private String label;
-
-    private String value;
-
     public Set<Profile> getProfiles() {
         return profiles;
     }
@@ -42,19 +30,4 @@ public class Characteristic {
         this.profiles = profiles;
     }
 
-    public String getLabel() {
-        return label;
-    }
-
-    public void setLabel(String label) {
-        this.label = label;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
 }
