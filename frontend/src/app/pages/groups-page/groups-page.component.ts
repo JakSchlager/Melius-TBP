@@ -28,7 +28,6 @@ export class GroupsPageComponent {
   createGroupBtnPressed: boolean = false;
   myGroupsBtnPressed : boolean = false;
   isAnimating: boolean = false;
-  moveCreateForm !: string;
   amtOfAllGroups: number = 0;
 
   isSearchBoxOpen: boolean = false;
@@ -73,6 +72,8 @@ export class GroupsPageComponent {
     }
   }
 
+
+  // Für später wenn der endpoint vorhanden ist
   getAllGroups(): number {
     this.amtOfAllGroups = this.groupsService.getAllGroups();
     return this.amtOfAllGroups;
