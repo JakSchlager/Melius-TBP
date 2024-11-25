@@ -5,6 +5,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'ghost': ['monospace', 'sans-serif'],
+
+      },
+
       colors: {
         'accent-blue': '#F0F8FF',
         'primary-color': '#0D91FA',
