@@ -13,7 +13,7 @@
           <h1 class="text-7xl font-extrabold">Willkommen bei Gruppen</h1>
         </div>
 
-        <div class="">
+        <div class="w-full">
           <div class="mr-72 h-full space-y-3">
             <!-- Search Bar -->
             <div class="relative w-full" #searchBox>
@@ -25,9 +25,15 @@
               </div>
 
               <!-- Dropdown Box -->
-              <div *ngIf="isSearchBoxOpen || isAnimating" [ngClass]="{'animate-fade-down duration-150': isSearchBoxOpen, 'animate-out fade-out': !isSearchBoxOpen && isAnimating}" (animationend)="onAnimationEnd()" class="absolute dropdown-list w-full bg-white shadow-lg rounded-lg mt-2 min-h-64 overflow-y-auto z-50">
-                <div *ngFor="let group of filteredGroups" class="p-2 hover:bg-gray-100 cursor-pointer">
-                  {{ group }}
+              <div *ngIf="isSearchBoxOpen || isAnimating" [ngClass]="{'animate-fade-down duration-150': isSearchBoxOpen, 'animate-out fade-out': !isSearchBoxOpen && isAnimating}" (animationend)="onAnimationEnd()" class="absolute dropdown-list w-max bg-white shadow-lg rounded-lg mt-2 min-h-64 overflow-y-auto z-50">
+                <div *ngFor="let group of filteredGroups" class="grid grid-cols-5 items-center text-gray-500 p-4 hover:bg-gray-50">
+                  <h1 class="min-w-fit flex justify-start">{{ group }}</h1>
+                  <h1 class="text-center">Abteilung</h1>
+                  <h1 class="text-center">Unternehmen</h1>
+                  <h1 class="text-center">01.01.2024</h1>
+                  <div class="flex justify-center">
+                    <button class="bg-primary-color text-white px-2 py-1 rounded-lg shadow-md hover:bg-accent-blue hover:text-primary-color duration-150">Beitreten</button>
+                  </div>
                 </div>
                 <div *ngIf="filteredGroups.length === 0" class="h-full text-center p-2 flex flex-col justify-center items-center">
                   <h1 class="font-semibold text-xl">Es konnten keine Gruppen gefunden werden.</h1>

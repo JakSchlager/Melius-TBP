@@ -1,4 +1,4 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, ElementRef, HostListener, inject, OnInit, ViewChild} from '@angular/core';
 import {NgClass, NgIf, NgOptimizedImage} from "@angular/common";
 import {LogoutPopupComponent} from "../../popups/logout-popup/logout-popup.component";
 import {Router, RouterLink, RouterLinkActive} from "@angular/router";
@@ -17,13 +17,7 @@ import {Profile} from "../../interfaces/profile";
     NgIf,
     NgClass,
     RouterLink,
-    MatButton,
     RouterLinkActive,
-    MatListItem,
-    MatNavList,
-    MatDialogClose,
-    NgOptimizedImage,
-    MatIcon,
   ],
   templateUrl: './side-bar.component.html',
   styleUrl: './side-bar.component.css',
@@ -74,6 +68,5 @@ export class SideBarComponent implements OnInit {
       }
     }
   }
-
 
 }
