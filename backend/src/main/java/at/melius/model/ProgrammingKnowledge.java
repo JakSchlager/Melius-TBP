@@ -3,29 +3,50 @@ package at.melius.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
-import java.util.Set;
-
-@NamedQuery(name = ProgrammingKnowledge.QUERY_FIND_ALL, query = "SELECT p FROM ProgrammingKnowledge p")
+@NamedQuery(name = ProgrammingKnowledge.QUERY_FIND_BY_PROFILE_ID, query = "SELECT p FROM ProgrammingKnowledge p WHERE profile = :profile")
 
 @Entity
-public class ProgrammingKnowledge extends Selectable{
+public class ProgrammingKnowledge {
 
-    public static final String QUERY_FIND_ALL = "ProgrammingKnowledge.findAll";
+    public static final String QUERY_FIND_BY_PROFILE_ID = "ProgrammingKnowledgeQuery.findByProfileId";
 
-    @ManyToMany
-    @JoinTable(
-            name="profile_programming",
-            joinColumns = @JoinColumn(name="programming_id"),
-            inverseJoinColumns = @JoinColumn(name="profile_id")
-    )
-    @JsonIgnoreProperties({"programming"})
-    private Set<Profile> profiles;
+    @Id
+    @GeneratedValue
+    private int id;
 
-    public Set<Profile> getProfiles() {
-        return profiles;
+    private int rating;
+
+    @ManyToOne
+    private ProgrammingLanguage programming;
+
+    public int getId() {
+        return id;
     }
 
-    public void setProfiles(Set<Profile> profiles) {
-        this.profiles = profiles;
+    @ManyToOne
+    private Profile profile;
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
+    public ProgrammingLanguage getProgramming() {
+        return programming;
+    }
+
+    public void setProgramming(ProgrammingLanguage programming) {
+        this.programming = programming;
+    }
+
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
     }
 }

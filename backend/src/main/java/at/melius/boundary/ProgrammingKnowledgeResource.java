@@ -8,25 +8,30 @@ import jakarta.ws.rs.core.MediaType;
 
 import java.util.List;
 
-@Path("/programming")
+@Path("/progr-knowledge")
 public class ProgrammingKnowledgeResource {
 
     @Inject
     ProgrammingKnowledgeRepository programmingKnowledgeRepository;
 
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/get")
-    public List<ProgrammingKnowledge> getAllProgrammingknowledges() {
-        return this.programmingKnowledgeRepository.getAllProgrammingKnowledges();
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/update")
+    public void updateProgrammingKnowledge(ProgrammingKnowledge programmingKnowledge) {
+        this.programmingKnowledgeRepository.updateProgrammingKnowledge(programmingKnowledge);
     }
 
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void addProgrammingKnowledges(ProgrammingKnowledge[] programmingKnowledges) {
-        for(ProgrammingKnowledge currP: programmingKnowledges) {
-            this.programmingKnowledgeRepository.addProgrammingKnowledge(currP);
-        }
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/get/{id}")
+    public List<ProgrammingKnowledge> getProgrammingKnowledgeByProfileId(@PathParam("id") int id) {
+        return this.programmingKnowledgeRepository.getProgrammingKnowledgeByProfileId(id);
+    }
+
+    @DELETE
+    @Path("/delete/{id}")
+    public void deleteProgrammingKnowledge(@PathParam("id") int id) {
+        this.programmingKnowledgeRepository.deleteProgrammingKnowledge(id);
     }
 
 }
