@@ -34,7 +34,7 @@ export class ProjectsAreaComponent implements OnInit {
 
   ngOnInit() {
     setTimeout(() => {
-      if(this.profileService.loggedInUser!.githubUser !== "") {
+      if(this.profileService.loggedInUser!.githubUser !== undefined) {
         this.genRepo(this.profileService.loggedInUser!.githubUser);
       }
     }, 100)

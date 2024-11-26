@@ -16,7 +16,7 @@ export class StarRatingComponent {
   @Input() rating: number = 0;
 
   // Gibt die Bewertung an den Eltern-Component zurück
-  @Output() ratingChange: EventEmitter<number> = new EventEmitter<number>();
+  @Output() eventEmitter: EventEmitter<number> = new EventEmitter<number>();
 
   // Maximale Anzahl an Sternen
   stars: number[] = [1, 2, 3, 4, 5];
@@ -24,6 +24,6 @@ export class StarRatingComponent {
   // Methode zum Setzen der Bewertung
   setRating(star: number) {
     this.rating = star;
-    this.ratingChange.emit(this.rating); // Gibt die Bewertung zurück
+    this.eventEmitter.emit(this.rating); // Gibt die Bewertung zurück
   }
 }

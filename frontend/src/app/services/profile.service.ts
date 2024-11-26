@@ -36,6 +36,7 @@ export class ProfileService {
   }
 
   updateProfile(profile: Profile) {
+    console.log("Updated Profile",profile)
     return this.httpClient.put<Profile>(this.url + "update", profile);
   }
 }

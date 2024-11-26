@@ -32,14 +32,7 @@ public class ProfileRepository {
 
     @Transactional
     public void updateProfile(Profile profile) {
-        Profile currProfile = entityManager.find(Profile.class, profile.getId());
-
-        currProfile.setFirstName(profile.getFirstName());
-        currProfile.setLastName(profile.getLastName());
-        currProfile.setEmail(profile.getEmail());
-        currProfile.setPhoneNumber(profile.getPhoneNumber());
-        currProfile.setGithubUser(profile.getGithubUser());
-        currProfile.setCharacteristics(profile.getCharacteristics());
+        this.entityManager.merge(profile);
     }
 
     public Profile getProfileByEmail(String email) {

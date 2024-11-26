@@ -1,8 +1,7 @@
 import {inject, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {WorkExperience} from "../interfaces/work-experience";
-import {Selectable} from "../interfaces/Selectable";
-import {map} from "rxjs";
+import {ProgrammingKnowledge} from "../interfaces/ProgrammingKnowledge";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -10,26 +9,19 @@ import {map} from "rxjs";
 export class ProgrammingKnowledgeService {
 
   httpClient: HttpClient = inject(HttpClient);
-  private readonly url = "http://localhost:8080/programming/";
+  private readonly url = "http://localhost:8080/progr-knowledge";
 
   constructor() { }
 
-  loadAllProgrammingKnowledges() {
-    return this.httpClient.get<Selectable[]>(this.url + "get")
-      .pipe(
-        map(p => {
-          let programmings: Selectable[] = [];
+  updateProgrammingLanguage(programmingKnowledge: ProgrammingKnowledge) {
+    return this.httpClient.put<ProgrammingKnowledge>(this.url + "/update", programmingKnowledge);
+  }
 
-          for (const currProgramming of p) {
-            programmings.push({
-              id: currProgramming.id,
-              label: currProgramming.label,
-              value: currProgramming.value,
-            })
-          }
+  getProgrammingKnowledgeByProfileId(profileId: number) {
+    return this.httpClient.get<ProgrammingKnowledge[]>(`${this.url}/get/${profileId}`);
+  }
 
-          return programmings;
-        })
-      )
+  deleteProgrammingKnowledge(id: number) {
+    return this.httpClient.delete(`${this.url}/delete/${id}`);
   }
 }

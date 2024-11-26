@@ -19,12 +19,7 @@ public class WorkExperienceRepository {
     @Transactional
     public void updateWorkExperience(WorkExperience workExperience) {
         if(this.entityManager.find(WorkExperience.class, workExperience.getId()) != null) {
-            WorkExperience currWorkExperience = entityManager.find(WorkExperience.class, workExperience.getId());
-            currWorkExperience.setCompany(workExperience.getCompany());
-            currWorkExperience.setInformation(workExperience.getInformation());
-            currWorkExperience.setFromDate(workExperience.getFromDate());
-            currWorkExperience.setToDate(workExperience.getToDate());
-            currWorkExperience.setProfile(workExperience.getProfile());
+            this.entityManager.merge(workExperience);
         } else {
             entityManager.persist(workExperience);
         }

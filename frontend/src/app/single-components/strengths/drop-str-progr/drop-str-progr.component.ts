@@ -2,7 +2,7 @@ import {Component, EventEmitter, inject, Input, OnInit, Output} from '@angular/c
 import {NgForOf} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {Selectable} from "../../../interfaces/Selectable";
-import {ProgrammingKnowledgeService} from "../../../services/programming-knowledge.service";
+import {ProgrammingLanguageService} from "../../../services/programming-language.service";
 
 @Component({
   selector: 'app-drop-str-progr',
@@ -16,14 +16,14 @@ import {ProgrammingKnowledgeService} from "../../../services/programming-knowled
 })
 export class DropStrProgrComponent implements OnInit{
 
-  selectedLanguage!: any;
+  @Input() selectedLanguage!: string;
   @Output() eventEmitter: EventEmitter<any> = new EventEmitter<any>();
-  programmingKnowledgeService: ProgrammingKnowledgeService = inject(ProgrammingKnowledgeService)
+  programmingLanguageService: ProgrammingLanguageService = inject(ProgrammingLanguageService)
 
   programmingLanguages !: Selectable[]
 
   ngOnInit() {
-    this.programmingLanguages = [
+    /*this.programmingLanguages = [
       { label: 'Java', value: 'java' },
       { label: 'C', value: 'c' },
       { label: 'C#', value: 'c#' },
@@ -36,17 +36,21 @@ export class DropStrProgrComponent implements OnInit{
       { label: 'Python', value: 'py' },
       { label: 'Swift', value: 'swift' },
       { label: 'Ruby', value: 'ruby' },
-    ];
+    ];*/
 
-    this.programmingKnowledgeService.loadAllProgrammingKnowledges().subscribe(p => {
+    this.programmingLanguageService.loadAllProgrammingLanguages().subscribe(p => {
       this.programmingLanguages = p;
+      console.log("Programming languages: ",this.programmingLanguages);
+
+      if(this.selectedLanguage === undefined) {
+          this.selectedLanguage = this.programmingLanguages.at(0)!.value;
+          this.selectLanguage()
+      }
     })
 
-    this.selectedLanguage = "java";
-    this.selectLanguage()
   }
 
   selectLanguage() {
-   this.eventEmitter.emit(this.selectedLanguage);
+    this.eventEmitter.emit(this.programmingLanguages.find(p => p.value == this.selectedLanguage));
   }
 }

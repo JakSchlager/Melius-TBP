@@ -60,6 +60,7 @@ export class SideBarComponent implements OnInit {
         this.profileService.handleUserLogin(JSON.parse(localStorage.getItem("loggedInUser")!)).subscribe({
           next: (user: Profile) => {
             this.profileService.loggedInUser = user;
+            console.log(user)
         }
         });
       } else {

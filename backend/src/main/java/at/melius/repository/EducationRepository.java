@@ -20,12 +20,7 @@ public class EducationRepository {
     @Transactional
     public void updateEducation(Education education) {
         if(this.entityManager.find(Education.class, education.getId()) != null) {
-            Education currEducation = this.entityManager.find(Education.class, education.getId());
-
-            currEducation.setName(education.getName());
-            currEducation.setFromDate(education.getFromDate());
-            currEducation.setToDate(education.getToDate());
-            currEducation.setFinished(education.getFinished());
+            this.entityManager.merge(education);
         } else {
             this.entityManager.persist(education);
         }
