@@ -37,3 +37,20 @@ INSERT INTO public.programminglanguage (id, label, value) VALUES (9, 'CSS', 'css
 INSERT INTO public.programminglanguage (id, label, value) VALUES (10, 'Python', 'py');
 INSERT INTO public.programminglanguage (id, label, value) VALUES (11, 'Swift', 'swift');
 INSERT INTO public.programminglanguage (id, label, value) VALUES (12, 'Ruby', 'ruby');
+
+
+INSERT INTO public.characteristic (id, label, value) VALUES (1, 'Kreativ', 'kreativ');
+INSERT INTO public.characteristic (id, label, value) VALUES (2, 'Pünktlich', 'puenktlich');
+INSERT INTO public.characteristic (id, label, value) VALUES (3, 'Teamfähig', 'teamfaehig');
+INSERT INTO public.characteristic (id, label, value) VALUES (4, 'Freundlich', 'freundlich');
+INSERT INTO public.characteristic (id, label, value) VALUES (5, 'Hilfsbereit', 'hilfsbereit');
+INSERT INTO public.characteristic (id, label, value) VALUES (6, 'Organisiert', 'organisiert');
+INSERT INTO public.characteristic (id, label, value) VALUES (7, 'Zuverlässig', 'zuverlaessig');
+INSERT INTO public.characteristic (id, label, value) VALUES (8, 'Engagiert', 'engagiert');
+INSERT INTO public.characteristic (id, label, value) VALUES (9, 'Motiviert', 'motiviert');
+INSERT INTO public.characteristic (id, label, value) VALUES (10, 'Flexibel', 'flexibel');
+INSERT INTO public.characteristic (id, label, value) VALUES (11, 'Kommunikativ', 'kommunikativ');
+INSERT INTO public.characteristic (id, label, value) VALUES (12, 'Kooperativ', 'kooperativ');
+INSERT INTO public.characteristic (id, label, value) VALUES (13, 'Analytisches Denken', 'analytisches-denken');
+INSERT INTO public.characteristic (id, label, value) VALUES (14, 'Belastbarkeit', 'belastbarkeit');
+INSERT INTO public.characteristic (id, label, value) VALUES (15, 'Eigeninitiative', 'eigeninitiative');
