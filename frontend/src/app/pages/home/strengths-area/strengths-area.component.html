@@ -85,7 +85,7 @@
               <div formArrayName="programmingKnowledgeFormItems" class="space-y-8">
                 <div *ngFor="let programmingItem of programmingKnowledgeFormItems.controls; let i = index" [formGroupName]="i">
 
-                  <div class="w-auto mx-2 flex justify-between space-x-10 animate-in fade-in zoom-in duration-500">
+                  <div class="w-auto mx-2 flex items-center justify-between space-x-10 animate-in fade-in zoom-in duration-500">
                     <app-drop-str-progr [selectedLanguage]="this.programmingKnowledgeFormItems.at(i).value.value" (eventEmitter)="selectProgrammingLanguage($event, i)"></app-drop-str-progr>
 
                     <div class="flex-grow" draggable="false">
