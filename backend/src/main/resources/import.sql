@@ -1,6 +1,39 @@
--- This file allow to write SQL commands that will be emitted in test and dev.
--- The commands are commented as their support depends of the database
--- insert into myentity (id, field) values(1, 'field-1');
--- insert into myentity (id, field) values(2, 'field-2');
--- insert into myentity (id, field) values(3, 'field-3');
--- alter sequence myentity_seq restart with 4;
+INSERT INTO public.software (id, label, value) VALUES (1, 'Word', 'word');
+INSERT INTO public.software (id, label, value) VALUES (2, 'Excel', 'excel');
+INSERT INTO public.software (id, label, value) VALUES (3, 'PowerPoint', 'powerpoint');
+INSERT INTO public.software (id, label, value) VALUES (4, 'Premiere Pro', 'PP');
+INSERT INTO public.software (id, label, value) VALUES (5, 'Illustrator', 'Ill');
+INSERT INTO public.software (id, label, value) VALUES (6, 'Photoshop', 'Ph');
+INSERT INTO public.software (id, label, value) VALUES (7, 'InDesign', 'ID');
+INSERT INTO public.software (id, label, value) VALUES (8, 'MySQL', 'mySQL');
+INSERT INTO public.software (id, label, value) VALUES (9, 'Postgress', 'postgress');
+INSERT INTO public.software (id, label, value) VALUES (10, 'MongoDB', 'mongoDB');
+INSERT INTO public.software (id, label, value) VALUES (11, 'Derby', 'derby');
+INSERT INTO public.software (id, label, value) VALUES (12, 'Redshift', 'redshift');
+INSERT INTO public.software (id, label, value) VALUES (13, 'Hive', 'hive');
+INSERT INTO public.software (id, label, value) VALUES (14, 'AzureSQL', 'azure');
+INSERT INTO public.software (id, label, value) VALUES (15, 'BigQuery', 'bigQuery');
+INSERT INTO public.software (id, label, value) VALUES (16, 'ClickHouse', 'clickHouse');
+INSERT INTO public.software (id, label, value) VALUES (17, 'CockroachDB', 'cockroach');
+INSERT INTO public.software (id, label, value) VALUES (18, 'DynamoDB', 'dynamo');
+INSERT INTO public.software (id, label, value) VALUES (19, 'H2', 'h2');
+INSERT INTO public.software (id, label, value) VALUES (20, 'MariaDB', 'mariaDB');
+INSERT INTO public.software (id, label, value) VALUES (21, 'Oracle', 'oracle');
+INSERT INTO public.software (id, label, value) VALUES (22, 'SAP', 'sap');
+INSERT INTO public.software (id, label, value) VALUES (23, 'FinalCut', 'fC');
+INSERT INTO public.software (id, label, value) VALUES (24, 'OracleApex', 'apex');
+INSERT INTO public.software (id, label, value) VALUES (25, 'TYPO3', 't03');
+
+
+INSERT INTO public.programminglanguage (id, label, value) VALUES (1, 'Java', 'java');
+INSERT INTO public.programminglanguage (id, label, value) VALUES (2, 'C', 'c');
+INSERT INTO public.programminglanguage (id, label, value) VALUES (3, 'C#', 'c#');
+INSERT INTO public.programminglanguage (id, label, value) VALUES (4, 'C++', 'c++');
+INSERT INTO public.programminglanguage (id, label, value) VALUES (5, 'JavaScript', 'js');
+INSERT INTO public.programminglanguage (id, label, value) VALUES (6, 'TypeScript', 'ts');
+INSERT INTO public.programminglanguage (id, label, value) VALUES (7, 'PHP', 'php');
+INSERT INTO public.programminglanguage (id, label, value) VALUES (8, 'HTML', 'html');
+INSERT INTO public.programminglanguage (id, label, value) VALUES (9, 'CSS', 'css');
+INSERT INTO public.programminglanguage (id, label, value) VALUES (10, 'Python', 'py');
+INSERT INTO public.programminglanguage (id, label, value) VALUES (11, 'Swift', 'swift');
+INSERT INTO public.programminglanguage (id, label, value) VALUES (12, 'Ruby', 'ruby');

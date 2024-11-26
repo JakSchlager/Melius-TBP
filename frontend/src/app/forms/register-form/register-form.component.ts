@@ -46,9 +46,7 @@ export class RegisterFormComponent {
         lastName: this.saveForm.controls['lastName'].value!,
         email: this.saveForm.controls['email'].value!,
         phoneNumber: this.saveForm.controls['phoneNumber'].value!,
-        password: this.saveForm.controls['password'].value!,
-        githubUser: '',
-        characteristics: []
+        password: this.saveForm.controls['password'].value!
       }
 
       this.profileService.handelUserRegistration(newProfile).subscribe({

@@ -25,12 +25,7 @@ public class GeneralInfoRepository {
 
     @Transactional
     public void updateGeneralInfo(GeneralInfo generalInfo) {
-        GeneralInfo currGeneralInfo = entityManager.find(GeneralInfo.class, generalInfo.getProfile().getId());
-
-        currGeneralInfo.setGender(generalInfo.getGender());
-        currGeneralInfo.setZipCode(generalInfo.getZipCode());
-        currGeneralInfo.setCity(generalInfo.getCity());
-        currGeneralInfo.setAddress(generalInfo.getAddress());
+        this.entityManager.merge(generalInfo);
     }
 
     public GeneralInfo getInfoByProfile(Profile profile) {

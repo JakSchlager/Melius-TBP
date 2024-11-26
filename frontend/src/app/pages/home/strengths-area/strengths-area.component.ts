@@ -13,8 +13,18 @@ import { SelectItemGroup } from 'primeng/api';
 import {DropdownModule} from "primeng/dropdown";
 import {DropStrProgrComponent} from "../../../single-components/strengths/drop-str-progr/drop-str-progr.component";
 import {DropStrEdvComponent} from "../../../single-components/strengths/drop-str-edv/drop-str-edv.component";
+import {CharacteristicService} from "../../../services/characteristic.service";
+import {Selectable} from "../../../interfaces/Selectable";
+import {ProfileService} from "../../../services/profile.service";
 import {HomePageServiceService} from "../../../services/home-page-service.service";
 import {StarRatingComponent} from "../../../single-components/star-rating/star-rating.component";
+import {ProgrammingKnowledgeService} from "../../../services/programming-knowledge.service";
+import {KnownLanguageService} from "../../../services/known-language.service";
+import {KnownLanguage} from "../../../interfaces/KnownLanguage";
+import {Router} from "@angular/router";
+import {ProgrammingKnowledge} from "../../../interfaces/ProgrammingKnowledge";
+import {SoftwareKnowledgeService} from "../../../services/software-knowledge.service";
+import {SoftwareKnowledge} from "../../../interfaces/SoftwareKnowledge";
 
 @Component({
   selector: 'app-strengths-area',
@@ -40,102 +50,52 @@ import {StarRatingComponent} from "../../../single-components/star-rating/star-r
   styleUrl: './strengths-area.component.css'
 })
 export class StrengthsAreaComponent implements OnInit{
-  characteristics!: any[];
-  selectedCharacteristic!: any[];
-  userLanguageRating !: number;
-  programmingLanguages !: any[]
-  groupedSoftwareApps: SelectItemGroup[]
+  characteristicService: CharacteristicService = inject(CharacteristicService);
+  profileService: ProfileService = inject(ProfileService);
+
+  characteristics!: Selectable[];
+  selectedCharacteristic!: Selectable[];
+
+  router: Router = inject(Router);
   dragBox : string = "cursor-default";
   showBorders : string = "";
   homePageService : HomePageServiceService = inject(HomePageServiceService);
+  programmingKnowledgeService: ProgrammingKnowledgeService = inject(ProgrammingKnowledgeService);
+  knownLanguageService: KnownLanguageService = inject(KnownLanguageService);
+  softwareKnowledgeService: SoftwareKnowledgeService = inject(SoftwareKnowledgeService)
 
   ngOnInit(): void {
-    this.programmingLanguages = [
-      { name: 'Java', code: 'java' },
-      { name: 'C', code: 'c' },
-      { name: 'C#', code: 'c#' },
-      { name: 'C++', code: 'c++' },
-      { name: 'JavaScript', code: 'js' },
-      { name: 'TypeScript', code: 'ts' },
-      { name: 'PHP', code: 'php' },
-      { name: 'HTML', code: 'html' },
-      { name: 'CSS', code: 'css' },
-      { name: 'Python', code: 'py' },
-      { name: 'Swift', code: 'swift' },
-      { name: 'Ruby', code: 'ruby' },
-    ];
+    this.characteristicService.loadAllCharacteristics().subscribe(c => {
+      console.log("Characteristics loaded",c)
+      this.characteristics = c
+    });
 
-    this.characteristics = [
-      { label: 'Kreativ', value: 'kreativ' },
-      { label: 'Pünktlich', value: 'puenktlich' },
-      { label: 'Teamfähig', value: 'teamfaehig' },
-      { label: 'Freundlich', value: 'freundlich' },
-      { label: 'Hilfsbereit', value: 'hilfsbereit' },
-      { label: 'Organisiert', value: 'organisiert' },
-      { label: 'Zuverlässig', value: 'zuverlaessig' },
-      { label: 'Engagiert', value: 'engagiert' },
-      { label: 'Motiviert', value: 'motiviert' },
-      { label: 'Flexibel', value: 'flexibel' },
-      { label: 'Kommunikativ', value: 'kommunikativ' },
-      { label: 'Kooperativ', value: 'kooperativ' },
-      { label: 'Analytisches Denken', value: 'analytisches-denken' },
-      { label: 'Belastbarkeit', value: 'belastbarkeit' },
-      { label: 'Eigeniniziative', value: 'eigeniniziative' },
-    ];
-    this.selectedCharacteristic = [];
+    setTimeout(() => {
+      this.selectedCharacteristic = this.profileService.loggedInUser!.characteristics || [];
+
+      this.knownLanguageService.getKnownLanguagesByProfileId(this.profileService.loggedInUser!.id).subscribe(k => {
+        for(let currKnownLanguage of k) {
+          this.addKnownLanguage(currKnownLanguage)
+        }
+      })
+
+      this.programmingKnowledgeService.getProgrammingKnowledgeByProfileId(this.profileService.loggedInUser!.id).subscribe(p => {
+        for(let currProgrammingKnowledge of p) {
+          this.addProgrammingLanguage(currProgrammingKnowledge)
+        }
+      })
+
+      this.softwareKnowledgeService.getSoftwareKnowledgesByProfileId(this.profileService.loggedInUser!.id).subscribe(s => {
+        for(let currSoftwareKnowledge of s) {
+          this.addSoftware(currSoftwareKnowledge)
+        }
+      })
+
+    },100)
   }
 
   constructor(private fb: FormBuilder, private cdRef: ChangeDetectorRef) {
-    this.groupedSoftwareApps = [
-      {
-        label: 'Microsoft',
-        value: 'ms',
-        items: [
-          { label: 'Word', value: 'Berlin' },
-          { label: 'Excel', value: 'Frankfurt' },
-          { label: 'PowerPoint', value: 'Hamburg' },
-        ]
-      },
-      {
-        label: 'Adobe',
-        value: 'adobe',
-        items: [
-          { label: 'Premiere Pro', value: 'PP' },
-          { label: 'Illustrator', value: 'Ill' },
-          { label: 'Photoshop', value: 'Ph' },
-          { label: 'InDesign', value: 'ID' }
-        ]
-      },
-      {
-        label: 'Datenbanken',
-        value: 'db',
-        items: [
-          { label: 'MySQL', value: 'mySQL' },
-          { label: 'Postgress', value: 'postgress' },
-          { label: 'MongoDB', value: 'mongoDB' },
-          { label: 'Derby', value: 'derby' },
-          { label: 'Redshift', value: 'redshift' },
-          { label: 'Hive', value: 'hive' },
-          { label: 'Azure SQL', value: 'azure' },
-          { label: 'BigQuery', value: 'bigQuery' },
-          { label: 'ClickHouse', value: 'clickHouse' },
-          { label: 'CockroachDB', value: 'cockroach' },
-          { label: 'DynamoDB', value: 'dynamo' },
-          { label: 'H2', value: 'h2' },
-          { label: 'MariaDB', value: 'mariaDB' },
-          { label: 'Oracle', value: 'oracle' },
-        ]
-      },
-      {
-        label: 'Andere',
-        value: 'other',
-        items: [
-          { label: 'SAP', value: 'SAP' },
-          { label: 'Final Cut', value: 'FC' },
-          { label: 'TYPO3', value: 'TYP' },
-        ]
-      },
-    ];
+
   }
 
   // Add, Get and delete Languages from List
@@ -148,15 +108,28 @@ export class StrengthsAreaComponent implements OnInit{
   }
 
   deleteKnownLanguage(index: number) {
+    this.knownLanguageService.deleteKnownLanguage(this.knownLanguagesFormItems.at(index).value.id).subscribe()
     this.knownLanguagesFormItems.removeAt(index);
   }
 
-  addKnownLanguage() {
-    const newLanguage =  this.fb.group({
-      languageName: [''],
-      languageKnowledge: [0],
-    });
-    this.knownLanguagesFormItems.push(newLanguage);
+  addKnownLanguage(knownLanguage?: KnownLanguage) {
+    if(knownLanguage === undefined) {
+      this.knownLanguagesFormItems.push(
+        this.fb.group({
+          id: [0],
+          languageName: [''],
+          languageKnowledge: [0],
+        })
+      )
+    } else {
+      this.knownLanguagesFormItems.push(
+        this.fb.group({
+          id: knownLanguage.id,
+          languageName: knownLanguage.language,
+          languageKnowledge: knownLanguage.rating,
+        })
+      )
+    }
   }
 
 
@@ -170,16 +143,33 @@ export class StrengthsAreaComponent implements OnInit{
   }
 
   deleteProgrammingLanguage(index: number) {
+    this.programmingKnowledgeService.deleteProgrammingKnowledge(this.programmingKnowledgeFormItems.at(index).value.id).subscribe()
     this.programmingKnowledgeFormItems.removeAt(index);
   }
 
-  addProgrammingLanguage() {
-    this.programmingKnowledgeFormItems.push(
-      this.fb.group({
-        programmingName: [''],
-        programmingKnowledge: [Number],
-      })
-    )
+  addProgrammingLanguage(programmingKnowledge?: ProgrammingKnowledge) {
+    if(programmingKnowledge === undefined) {
+      this.programmingKnowledgeFormItems.push(
+        this.fb.group({
+          id: [""],
+          programmingId: [0],
+          label: [""],
+          value: [""],
+          programmingKnowledge: [0]
+        })
+      )
+    } else {
+      this.programmingKnowledgeFormItems.push(
+        this.fb.group({
+          id: programmingKnowledge.id,
+          programmingId: programmingKnowledge.programming.id,
+          label: programmingKnowledge.programming.label,
+          value: programmingKnowledge.programming.value,
+          programmingKnowledge: programmingKnowledge.rating
+        })
+      )
+    }
+
   }
 
   // Add, Get and delete Software Knowledge from List
@@ -193,16 +183,33 @@ export class StrengthsAreaComponent implements OnInit{
   }
 
   deleteSoftware(index: number) {
+    this.softwareKnowledgeService.deleteSoftwareKnowledge(this.softwareKnowledgeFormItems.at(index).value.id).subscribe();
     this.softwareKnowledgeFormItems.removeAt(index);
   }
 
-  addSoftware() {
-    this.softwareKnowledgeFormItems.push(
-      this.fb.group({
-        softwareApp: [''],
-        softwareAppKnowledge: [Number],
-      })
-    )
+  addSoftware(softwareKnowledge?: SoftwareKnowledge) {
+    if(softwareKnowledge === undefined) {
+        this.softwareKnowledgeFormItems.push(
+          this.fb.group({
+            id: [""],
+            softwareId: [0],
+            label: [""],
+            value: [""],
+            softwareAppKnowledge: [0]
+          })
+        )
+    } else {
+      this.softwareKnowledgeFormItems.push(
+        this.fb.group({
+          id: softwareKnowledge.id,
+          softwareId: softwareKnowledge.software.id,
+          label: softwareKnowledge.software.label,
+          value: softwareKnowledge.software.value,
+          softwareAppKnowledge: softwareKnowledge.rating
+        })
+      )
+    }
+
   }
 
 
@@ -231,6 +238,85 @@ export class StrengthsAreaComponent implements OnInit{
     }
   }
 
+  changeCharacteristics() {
+    console.log("Characteristics changed",this.selectedCharacteristic)
+    let profile = this.profileService.loggedInUser;
+
+    profile!.characteristics = this.selectedCharacteristic;
+
+    this.profileService.updateProfile(profile!).subscribe();
+  }
+
+  selectProgrammingLanguage(selectedProgrammingLanguage: Selectable, formNumber: number) {
+
+    this.programmingKnowledgeFormItems.at(formNumber).patchValue({
+      programmingId: selectedProgrammingLanguage.id,
+      label: selectedProgrammingLanguage.label,
+      value: selectedProgrammingLanguage.value
+    });
+
+    console.log(this.programmingKnowledgeFormItems.at(formNumber))
+  }
+
+  updateLanguage(formNumber: number) {
+    let language: KnownLanguage = {
+      id: this.knownLanguagesFormItems.at(formNumber).value.id,
+      language: this.knownLanguagesFormItems.at(formNumber).value.languageName,
+      rating: this.knownLanguagesFormItems.at(formNumber).value.languageKnowledge,
+      profile: this.profileService.loggedInUser!
+    }
+
+    this.knownLanguageService.updateKnownLanguage(language).subscribe();
+    setTimeout(() => {
+      this.router.navigateByUrl("/", {skipLocationChange: true}).then(() => {
+        this.router.navigate(['home/strengths/']);
+      });
+    }, 100);
+  }
+
+  updateSoftware(formNumber: number) {
+    let softwareKnowledge: SoftwareKnowledge = {
+      id: this.softwareKnowledgeFormItems.at(formNumber).value.id,
+      software: {
+        id: this.softwareKnowledgeFormItems.at(formNumber).value.softwareId,
+        label: this.softwareKnowledgeFormItems.at(formNumber).value.label,
+        value: this.softwareKnowledgeFormItems.at(formNumber).value.value
+      },
+      rating: this.softwareKnowledgeFormItems.at(formNumber).value.softwareAppKnowledge,
+      profile: this.profileService.loggedInUser!
+    }
+    console.log("New SoftwareKnowledge", softwareKnowledge);
+    this.softwareKnowledgeService.updateSoftwareKnowledge(softwareKnowledge).subscribe();
+
+    setTimeout(() => {
+      this.router.navigateByUrl("/", {skipLocationChange: true}).then(() => {
+        this.router.navigate(['home/strengths/']);
+      });
+    }, 100);
+
+  }
+
+  updateProgrammingKnowledge(formNumber: number) {
+    let programmingKnowledge: ProgrammingKnowledge = {
+      id: this.programmingKnowledgeFormItems.at(formNumber).value.id,
+      programming: {
+        id: this.programmingKnowledgeFormItems.at(formNumber).value.programmingId,
+        label: this.programmingKnowledgeFormItems.at(formNumber).value.label,
+        value: this.programmingKnowledgeFormItems.at(formNumber).value.value
+      },
+      profile: this.profileService.loggedInUser!,
+      rating: this.programmingKnowledgeFormItems.at(formNumber).value.programmingKnowledge
+    }
+    console.log("New ProgrammingKnowledge", programmingKnowledge);
+    this.programmingKnowledgeService.updateProgrammingLanguage(programmingKnowledge).subscribe();
+
+    setTimeout(() => {
+      this.router.navigateByUrl("/", {skipLocationChange: true}).then(() => {
+        this.router.navigate(['home/strengths/']);
+      });
+    }, 100);
+  }
+
   checkDraggable(): boolean {
     if (this.homePageService.isBoxDraggable) {
       this.showBorders = 'border-2 border-dashed border-gray-200 rounded-lg';
@@ -247,15 +333,19 @@ export class StrengthsAreaComponent implements OnInit{
     }
   }
 
-  updateLanguage(i: number) {
+  rateKnownLanguage(event: any, formNumber: number) {
+    console.log(event)
+    this.knownLanguagesFormItems.at(formNumber).patchValue({languageKnowledge: event});
   }
 
-  updateSoftware(i: number) {
+  selectSoftware(selectedSoftware: Selectable, formNumber: number) {
+    this.softwareKnowledgeFormItems.at(formNumber).patchValue({
+      softwareId: selectedSoftware.id,
+      label:  selectedSoftware.label,
+      value: selectedSoftware.value
+    })
 
-  }
-
-  updateProgrammingLanguage(i: number) {
-
+    console.log("Selected Software", this.softwareKnowledgeFormItems.at(formNumber))
   }
 }
 

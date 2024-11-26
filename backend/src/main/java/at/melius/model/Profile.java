@@ -42,6 +42,15 @@ public class Profile {
     @JsonIgnoreProperties({"profiles"})
     private Set<Characteristic> characteristics;
 
+    @OneToMany
+    @JoinColumn(name="knownLanguage_id", referencedColumnName = "id")
+
+    private Set<KnownLanguage> knownLanguages;
+
+    /*@OneToMany(mappedBy = "profile")
+    @JsonIgnoreProperties({"profile"})
+    private Set<ProgrammingKnowledge> programmingKnowledges;*/
+
     public int getId() {
         return id;
     }
@@ -72,6 +81,14 @@ public class Profile {
 
     public Set<Characteristic> getCharacteristics() {
         return characteristics;
+    }
+
+    public Set<KnownLanguage> getKnownLanguages() {
+        return knownLanguages;
+    }
+
+    public void setKnownLanguages(Set<KnownLanguage> knownLanguages) {
+        this.knownLanguages = knownLanguages;
     }
 
     public void setCharacteristics(Set<Characteristic> characteristics) {

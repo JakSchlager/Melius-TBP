@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Characteristic} from "../interfaces/Characteristic";
+import {Selectable} from "../interfaces/Selectable";
 import {map, tap} from "rxjs";
 
 @Injectable({
@@ -13,10 +13,10 @@ export class CharacteristicService {
   constructor() { }
 
   loadAllCharacteristics() {
-    return this.httpClient.get<Characteristic[]>(this.url + "get")
+    return this.httpClient.get<Selectable[]>(this.url + "get")
       .pipe(
         map(c => {
-          let characteristics: Characteristic[] = [];
+          let characteristics: Selectable[] = [];
 
           for (const currCharacteristic of c) {
             characteristics.push({
