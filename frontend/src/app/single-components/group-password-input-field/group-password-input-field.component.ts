@@ -1,10 +1,13 @@
 import {Component, inject} from '@angular/core';
 import {GroupsPageComponent} from "../../pages/groups-page/groups-page.component";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-group-password-input-field',
   standalone: true,
-  imports: [],
+  imports: [
+    RouterLink
+  ],
   templateUrl: './group-password-input-field.component.html',
   styleUrl: './group-password-input-field.component.css'
 })
