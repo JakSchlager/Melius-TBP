@@ -1,5 +1,5 @@
 export interface Selectable {
-  id?: number,
+  id: number,
   label: string
   value: string
 }

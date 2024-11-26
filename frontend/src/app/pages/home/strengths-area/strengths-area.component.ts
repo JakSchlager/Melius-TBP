@@ -17,8 +17,14 @@ import {CharacteristicService} from "../../../services/characteristic.service";
 import {Selectable} from "../../../interfaces/Selectable";
 import {ProfileService} from "../../../services/profile.service";
 import {HomePageServiceService} from "../../../services/home-page-service.service";
-import {HomePageServiceService} from "../../../services/home-page-service.service";
 import {StarRatingComponent} from "../../../single-components/star-rating/star-rating.component";
+import {ProgrammingKnowledgeService} from "../../../services/programming-knowledge.service";
+import {KnownLanguageService} from "../../../services/known-language.service";
+import {KnownLanguage} from "../../../interfaces/KnownLanguage";
+import {Router} from "@angular/router";
+import {ProgrammingKnowledge} from "../../../interfaces/ProgrammingKnowledge";
+import {SoftwareKnowledgeService} from "../../../services/software-knowledge.service";
+import {SoftwareKnowledge} from "../../../interfaces/SoftwareKnowledge";
 
 @Component({
   selector: 'app-strengths-area',
@@ -49,12 +55,14 @@ export class StrengthsAreaComponent implements OnInit{
 
   characteristics!: Selectable[];
   selectedCharacteristic!: Selectable[];
-  userLanguageRating !: number;
 
-  groupedSoftwareApps: SelectItemGroup[]
+  router: Router = inject(Router);
   dragBox : string = "cursor-default";
   showBorders : string = "";
   homePageService : HomePageServiceService = inject(HomePageServiceService);
+  programmingKnowledgeService: ProgrammingKnowledgeService = inject(ProgrammingKnowledgeService);
+  knownLanguageService: KnownLanguageService = inject(KnownLanguageService);
+  softwareKnowledgeService: SoftwareKnowledgeService = inject(SoftwareKnowledgeService)
 
   ngOnInit(): void {
     this.characteristicService.loadAllCharacteristics().subscribe(c => {
@@ -63,61 +71,31 @@ export class StrengthsAreaComponent implements OnInit{
     });
 
     setTimeout(() => {
-      this.selectedCharacteristic = this.profileService.loggedInUser!.characteristics
+      this.selectedCharacteristic = this.profileService.loggedInUser!.characteristics || [];
+
+      this.knownLanguageService.getKnownLanguagesByProfileId(this.profileService.loggedInUser!.id).subscribe(k => {
+        for(let currKnownLanguage of k) {
+          this.addKnownLanguage(currKnownLanguage)
+        }
+      })
+
+      this.programmingKnowledgeService.getProgrammingKnowledgeByProfileId(this.profileService.loggedInUser!.id).subscribe(p => {
+        for(let currProgrammingKnowledge of p) {
+          this.addProgrammingLanguage(currProgrammingKnowledge)
+        }
+      })
+
+      this.softwareKnowledgeService.getSoftwareKnowledgesByProfileId(this.profileService.loggedInUser!.id).subscribe(s => {
+        for(let currSoftwareKnowledge of s) {
+          this.addSoftware(currSoftwareKnowledge)
+        }
+      })
+
     },100)
   }
 
   constructor(private fb: FormBuilder, private cdRef: ChangeDetectorRef) {
-    this.groupedSoftwareApps = [
-      {
-        label: 'Microsoft',
-        value: 'ms',
-        items: [
-          { label: 'Word', value: 'Berlin' },
-          { label: 'Excel', value: 'Frankfurt' },
-          { label: 'PowerPoint', value: 'Hamburg' },
-        ]
-      },
-      {
-        label: 'Adobe',
-        value: 'adobe',
-        items: [
-          { label: 'Premiere Pro', value: 'PP' },
-          { label: 'Illustrator', value: 'Ill' },
-          { label: 'Photoshop', value: 'Ph' },
-          { label: 'InDesign', value: 'ID' }
-        ]
-      },
-      {
-        label: 'Datenbanken',
-        value: 'db',
-        items: [
-          { label: 'MySQL', value: 'mySQL' },
-          { label: 'Postgress', value: 'postgress' },
-          { label: 'MongoDB', value: 'mongoDB' },
-          { label: 'Derby', value: 'derby' },
-          { label: 'Redshift', value: 'redshift' },
-          { label: 'Hive', value: 'hive' },
-          { label: 'Azure SQL', value: 'azure' },
-          { label: 'BigQuery', value: 'bigQuery' },
-          { label: 'ClickHouse', value: 'clickHouse' },
-          { label: 'CockroachDB', value: 'cockroach' },
-          { label: 'DynamoDB', value: 'dynamo' },
-          { label: 'H2', value: 'h2' },
-          { label: 'MariaDB', value: 'mariaDB' },
-          { label: 'Oracle', value: 'oracle' },
-        ]
-      },
-      {
-        label: 'Andere',
-        value: 'other',
-        items: [
-          { label: 'SAP', value: 'SAP' },
-          { label: 'Final Cut', value: 'FC' },
-          { label: 'TYPO3', value: 'TYP' },
-        ]
-      },
-    ];
+
   }
 
   // Add, Get and delete Languages from List
@@ -130,15 +108,28 @@ export class StrengthsAreaComponent implements OnInit{
   }
 
   deleteKnownLanguage(index: number) {
+    this.knownLanguageService.deleteKnownLanguage(this.knownLanguagesFormItems.at(index).value.id).subscribe()
     this.knownLanguagesFormItems.removeAt(index);
   }
 
-  addKnownLanguage() {
-    const newLanguage =  this.fb.group({
-      languageName: [''],
-      languageKnowledge: [0],
-    });
-    this.knownLanguagesFormItems.push(newLanguage);
+  addKnownLanguage(knownLanguage?: KnownLanguage) {
+    if(knownLanguage === undefined) {
+      this.knownLanguagesFormItems.push(
+        this.fb.group({
+          id: [0],
+          languageName: [''],
+          languageKnowledge: [0],
+        })
+      )
+    } else {
+      this.knownLanguagesFormItems.push(
+        this.fb.group({
+          id: knownLanguage.id,
+          languageName: knownLanguage.language,
+          languageKnowledge: knownLanguage.rating,
+        })
+      )
+    }
   }
 
 
@@ -152,16 +143,33 @@ export class StrengthsAreaComponent implements OnInit{
   }
 
   deleteProgrammingLanguage(index: number) {
+    this.programmingKnowledgeService.deleteProgrammingKnowledge(this.programmingKnowledgeFormItems.at(index).value.id).subscribe()
     this.programmingKnowledgeFormItems.removeAt(index);
   }
 
-  addProgrammingLanguage() {
-    this.programmingKnowledgeFormItems.push(
-      this.fb.group({
-        programmingName: [""],
-        programmingKnowledge: [0],
-      })
-    )
+  addProgrammingLanguage(programmingKnowledge?: ProgrammingKnowledge) {
+    if(programmingKnowledge === undefined) {
+      this.programmingKnowledgeFormItems.push(
+        this.fb.group({
+          id: [""],
+          programmingId: [0],
+          label: [""],
+          value: [""],
+          programmingKnowledge: [0]
+        })
+      )
+    } else {
+      this.programmingKnowledgeFormItems.push(
+        this.fb.group({
+          id: programmingKnowledge.id,
+          programmingId: programmingKnowledge.programming.id,
+          label: programmingKnowledge.programming.label,
+          value: programmingKnowledge.programming.value,
+          programmingKnowledge: programmingKnowledge.rating
+        })
+      )
+    }
+
   }
 
   // Add, Get and delete Software Knowledge from List
@@ -175,16 +183,33 @@ export class StrengthsAreaComponent implements OnInit{
   }
 
   deleteSoftware(index: number) {
+    this.softwareKnowledgeService.deleteSoftwareKnowledge(this.softwareKnowledgeFormItems.at(index).value.id).subscribe();
     this.softwareKnowledgeFormItems.removeAt(index);
   }
 
-  addSoftware() {
-    this.softwareKnowledgeFormItems.push(
-      this.fb.group({
-        softwareApp: [''],
-        softwareAppKnowledge: [0],
-      })
-    )
+  addSoftware(softwareKnowledge?: SoftwareKnowledge) {
+    if(softwareKnowledge === undefined) {
+        this.softwareKnowledgeFormItems.push(
+          this.fb.group({
+            id: [""],
+            softwareId: [0],
+            label: [""],
+            value: [""],
+            softwareAppKnowledge: [0]
+          })
+        )
+    } else {
+      this.softwareKnowledgeFormItems.push(
+        this.fb.group({
+          id: softwareKnowledge.id,
+          softwareId: softwareKnowledge.software.id,
+          label: softwareKnowledge.software.label,
+          value: softwareKnowledge.software.value,
+          softwareAppKnowledge: softwareKnowledge.rating
+        })
+      )
+    }
+
   }
 
 
@@ -222,19 +247,74 @@ export class StrengthsAreaComponent implements OnInit{
     this.profileService.updateProfile(profile!).subscribe();
   }
 
-  selectProgrammingLanguage(selectedProgrammingLanguage: any, formNumber: number) {
-    this.programmingKnowledgeFormItems.at(formNumber).value.programmingName = selectedProgrammingLanguage;
+  selectProgrammingLanguage(selectedProgrammingLanguage: Selectable, formNumber: number) {
+
+    this.programmingKnowledgeFormItems.at(formNumber).patchValue({
+      programmingId: selectedProgrammingLanguage.id,
+      label: selectedProgrammingLanguage.label,
+      value: selectedProgrammingLanguage.value
+    });
+
+    console.log(this.programmingKnowledgeFormItems.at(formNumber))
   }
 
-  updateLanguage(i: number) {
+  updateLanguage(formNumber: number) {
+    let language: KnownLanguage = {
+      id: this.knownLanguagesFormItems.at(formNumber).value.id,
+      language: this.knownLanguagesFormItems.at(formNumber).value.languageName,
+      rating: this.knownLanguagesFormItems.at(formNumber).value.languageKnowledge,
+      profile: this.profileService.loggedInUser!
+    }
+
+    this.knownLanguageService.updateKnownLanguage(language).subscribe();
+    setTimeout(() => {
+      this.router.navigateByUrl("/", {skipLocationChange: true}).then(() => {
+        this.router.navigate(['home/strengths/']);
+      });
+    }, 100);
   }
 
-  updateSoftware(i: number) {
+  updateSoftware(formNumber: number) {
+    let softwareKnowledge: SoftwareKnowledge = {
+      id: this.softwareKnowledgeFormItems.at(formNumber).value.id,
+      software: {
+        id: this.softwareKnowledgeFormItems.at(formNumber).value.softwareId,
+        label: this.softwareKnowledgeFormItems.at(formNumber).value.label,
+        value: this.softwareKnowledgeFormItems.at(formNumber).value.value
+      },
+      rating: this.softwareKnowledgeFormItems.at(formNumber).value.softwareAppKnowledge,
+      profile: this.profileService.loggedInUser!
+    }
+    console.log("New SoftwareKnowledge", softwareKnowledge);
+    this.softwareKnowledgeService.updateSoftwareKnowledge(softwareKnowledge).subscribe();
+
+    setTimeout(() => {
+      this.router.navigateByUrl("/", {skipLocationChange: true}).then(() => {
+        this.router.navigate(['home/strengths/']);
+      });
+    }, 100);
 
   }
 
   updateProgrammingKnowledge(formNumber: number) {
-    console.log(this.programmingKnowledgeFormItems.at(formNumber))
+    let programmingKnowledge: ProgrammingKnowledge = {
+      id: this.programmingKnowledgeFormItems.at(formNumber).value.id,
+      programming: {
+        id: this.programmingKnowledgeFormItems.at(formNumber).value.programmingId,
+        label: this.programmingKnowledgeFormItems.at(formNumber).value.label,
+        value: this.programmingKnowledgeFormItems.at(formNumber).value.value
+      },
+      profile: this.profileService.loggedInUser!,
+      rating: this.programmingKnowledgeFormItems.at(formNumber).value.programmingKnowledge
+    }
+    console.log("New ProgrammingKnowledge", programmingKnowledge);
+    this.programmingKnowledgeService.updateProgrammingLanguage(programmingKnowledge).subscribe();
+
+    setTimeout(() => {
+      this.router.navigateByUrl("/", {skipLocationChange: true}).then(() => {
+        this.router.navigate(['home/strengths/']);
+      });
+    }, 100);
   }
 
   checkDraggable(): boolean {
@@ -251,6 +331,21 @@ export class StrengthsAreaComponent implements OnInit{
 
       return false;
     }
+  }
+
+  rateKnownLanguage(event: any, formNumber: number) {
+    console.log(event)
+    this.knownLanguagesFormItems.at(formNumber).patchValue({languageKnowledge: event});
+  }
+
+  selectSoftware(selectedSoftware: Selectable, formNumber: number) {
+    this.softwareKnowledgeFormItems.at(formNumber).patchValue({
+      softwareId: selectedSoftware.id,
+      label:  selectedSoftware.label,
+      value: selectedSoftware.value
+    })
+
+    console.log("Selected Software", this.softwareKnowledgeFormItems.at(formNumber))
   }
 }
 
