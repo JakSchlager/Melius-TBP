@@ -1,10 +1,10 @@
 import {Component, inject} from '@angular/core';
 import {NgIf, NgOptimizedImage} from "@angular/common";
-import {GroupAvatarComponent} from "../../../single-components/group-avatar/group-avatar.component";
+import {GroupAvatarComponent} from "../../../single-components/group/group-avatar/group-avatar.component";
 import {GroupPageService} from "../../../services/group-page.service";
 import {MyGroupService} from "../../../services/my-group.service";
-import {FilterMembersComponent} from "../../../single-components/filter-members/filter-members.component";
-import {CreateRoleComponent} from "../../../single-components/create-roles/create-role.component";
+import {FilterMembersComponent} from "../../../single-components/group/filter-members/filter-members.component";
+import {CreateRoleComponent} from "../../../single-components/group/create-roles/create-role.component";
 
 @Component({
   selector: 'app-created-group',

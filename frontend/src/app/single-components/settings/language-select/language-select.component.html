@@ -1,0 +1,49 @@
+<div class="relative inline-block text-left">
+  <!-- Button für die ausgewählte Sprache -->
+  <button
+    class="items-center font-semibold flex justify-between w-36 rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm text-gray-700 hover:bg-gray-100 duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+    id="menu-button"
+    aria-expanded="true"
+    aria-haspopup="true"
+    (click)="showOptions()"
+  >
+    <div class="flex">
+      <span class="mr-2">{{ selectedLanguage.flag }}</span>
+      <span>{{ selectedLanguage.name }}</span>
+    </div>
+    <svg
+      class="-mr-1 ml-2 h-5 w-5"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 20 20"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+        clip-rule="evenodd"
+      />
+    </svg>
+  </button>
+
+  <!-- Dropdown Menü -->
+  <div
+    class="origin-top-left absolute left-0 mt-2 px-1 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+    role="menu"
+    aria-orientation="vertical"
+    aria-labelledby="menu-button"
+    *ngIf="showAvatarOptions || isAnimating" [ngClass]="{'animate-fade-down duration-150': showAvatarOptions, 'animate-out fade-out': !showAvatarOptions && isAnimating}" (animationend)="onAnimationEnd()"
+  >
+    <div class="py-2" role="none">
+      <button
+        *ngFor="let language of languages"
+        class="flex items-center px-6 py-2 rounded-md font-semibold text-gray-700 hover:bg-accent-blue duration-150 w-full"
+        (click)="selectLanguage(language)"
+        role="menuitem"
+      >
+        <span class="mr-2">{{ language.flag }}</span>
+        {{ language.name }}
+      </button>
+    </div>
+  </div>
+</div>

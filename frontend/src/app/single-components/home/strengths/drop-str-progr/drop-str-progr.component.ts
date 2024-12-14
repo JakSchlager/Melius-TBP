@@ -1,8 +1,8 @@
 import {Component, EventEmitter, inject, Input, OnInit, Output} from '@angular/core';
 import {NgForOf} from "@angular/common";
 import {FormsModule} from "@angular/forms";
-import {Selectable} from "../../../interfaces/Selectable";
-import {ProgrammingLanguageService} from "../../../services/programming-language.service";
+import {Selectable} from "../../../../interfaces/Selectable";
+import {ProgrammingLanguageService} from "../../../../services/programming-language.service";
 
 @Component({
   selector: 'app-drop-str-progr',

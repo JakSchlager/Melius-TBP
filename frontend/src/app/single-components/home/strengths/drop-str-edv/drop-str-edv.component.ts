@@ -2,9 +2,9 @@ import {Component, EventEmitter, inject, Input, OnInit, Output} from '@angular/c
 import {SelectItemGroup} from "primeng/api";
 import {NgForOf} from "@angular/common";
 import {FormsModule} from "@angular/forms";
-import {Selectable} from "../../../interfaces/Selectable";
-import {SoftwareKnowledgeService} from "../../../services/software-knowledge.service";
-import {SoftwareService} from "../../../services/software.service";
+import {Selectable} from "../../../../interfaces/Selectable";
+import {SoftwareKnowledgeService} from "../../../../services/software-knowledge.service";
+import {SoftwareService} from "../../../../services/software.service";
 
 @Component({
   selector: 'app-drop-str-edv',

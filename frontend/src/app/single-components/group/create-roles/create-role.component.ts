@@ -1,6 +1,6 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {NgClass, NgForOf, NgIf} from "@angular/common";
-import {HomePageServiceService} from "../../services/home-page-service.service";
+import {HomePageServiceService} from "../../../services/home-page-service.service";
 import {FormsModule} from "@angular/forms";
 
 @Component({

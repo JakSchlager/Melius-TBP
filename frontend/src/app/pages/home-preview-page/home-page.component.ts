@@ -10,7 +10,7 @@ import {FormsModule} from "@angular/forms";
 import {VERSION} from "@angular/cdk";
 import {MatIcon} from "@angular/material/icon";
 import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
-import {DropdownAvatarComponent} from "../../single-components/user-avatar/dropdown-avatar.component";
+import {DropdownAvatarComponent} from "../../single-components/home/user-avatar/dropdown-avatar.component";
 
 @Component({
   selector: 'app-home-preview-page',

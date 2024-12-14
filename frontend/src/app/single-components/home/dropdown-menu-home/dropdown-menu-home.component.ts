@@ -3,7 +3,7 @@ import {FormArray, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {DropdownModule} from "primeng/dropdown";
 import {NgClass, NgIf} from "@angular/common";
 import {identity} from "rxjs";
-import {HomePageServiceService} from "../../services/home-page-service.service";
+import {HomePageServiceService} from "../../../services/home-page-service.service";
 
 
 

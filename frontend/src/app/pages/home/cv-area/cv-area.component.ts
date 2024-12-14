@@ -8,7 +8,7 @@ import {MatIcon} from "@angular/material/icon";
 import {GeneralInfoService} from "../../../services/general-info.service";
 import {ProfileService} from "../../../services/profile.service";
 import {GeneralInfo} from "../../../interfaces/general-info";
-import {DropdownMenuHomeComponent} from "../../../single-components/dropdown-menu-home/dropdown-menu-home.component";
+import {DropdownMenuHomeComponent} from "../../../single-components/home/dropdown-menu-home/dropdown-menu-home.component";
 import {Router} from "@angular/router";
 import {Education} from "../../../interfaces/education";
 import {EducationService} from "../../../services/education.service";

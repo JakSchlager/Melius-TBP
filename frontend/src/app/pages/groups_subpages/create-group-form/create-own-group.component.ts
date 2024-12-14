@@ -1,8 +1,8 @@
 import {Component, inject, Inject} from '@angular/core';
 import {RouterLink} from "@angular/router";
 import {NgClass, NgIf, NgOptimizedImage} from "@angular/common";
-import {GroupAvatarComponent} from "../../../single-components/group-avatar/group-avatar.component";
-import {DropdownAvatarComponent} from "../../../single-components/user-avatar/dropdown-avatar.component";
+import {GroupAvatarComponent} from "../../../single-components/group/group-avatar/group-avatar.component";
+import {DropdownAvatarComponent} from "../../../single-components/home/user-avatar/dropdown-avatar.component";
 import {GroupsPageComponent} from "../../groups-page/groups-page.component";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {Group} from "../../../interfaces/group";
