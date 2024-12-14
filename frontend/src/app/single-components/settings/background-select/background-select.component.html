@@ -1,1 +1,79 @@
-<p>background-select works!</p>
+<div *ngIf="settingsPage.isBackgroundSelectionVisible || isAnimating"
+  [ngClass]="{'animate-fade-down duration-150': settingsPage.isBackgroundSelectionVisible, 'animate-out fade-out': !settingsPage.isBackgroundSelectionVisible && isAnimating}"
+  (animationend)="onAnimationEnd()"
+  class="w-96 p-6 rounded-xl shadow-lg border-2 bg-white space-y-4 -mt-2">
+
+  <!-- Titel -->
+  <div class="w-full h-fit flex justify-between items-center">
+    <h2 class="text-lg font-semibold">Wähle deinen Hintergrund</h2>
+
+    <button (click)="closeBackgroundSelection()">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-400 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Statische Farbe -->
+  <div class="justify-between">
+      <label class="text-sm font-semibold">Statische Farbe</label>
+
+    <div class="grid grid-cols-2 items-center">
+      <div class="w-full h-8 bg-red-500 border border-black rounded-lg mt-2"></div>
+
+      <div>
+        <label class="flex justify-end items-center">
+          <input type="checkbox" class="toggle-checkbox" checked />
+          <span class="ml-2"></span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Eigenes Hintergrundbild -->
+  <div class="justify-between">
+    <h1 class="text-sm font-semibold">Eigenes Hintergrundbild</h1>
+
+    <div class="grid grid-cols-2 items-center">
+      <button class="mt-2 text-sm bg-blue-500 hover:bg-blue-600 text-white space-x-2 py-1 px-4 rounded-lg flex items-center">
+        <span class="font-semibold">Bild hochladen</span>
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M440-320v-326L336-542l-56-58 200-200 200 200-56 58-104-104v326h-80ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/></svg>
+      </button>
+
+      <div>
+        <label class="flex justify-end h-full items-center">
+          <input type="checkbox" class="toggle-checkbox" />
+          <span class="ml-2"></span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bereits verwendet -->
+  <div class="">
+    <label class="text-sm font-semibold">Bereits verwendet</label>
+    <div class="w-full flex overflow-x-auto space-x-2">
+      <div class="flex space-x-4 mt-2" *ngFor="let currBackground of usedBackgrounds">
+        <div class="w-fit flex flex-col">
+          <div class="w-24 h-12 bg-gray-300 rounded flex items-center justify-center border"></div>
+
+          <div class="w-full flex justify-center">
+            <button class="py-2 w-fit">
+              <label class="flex justify-end h-full items-center">
+                <input type="checkbox" class="toggle-checkbox" />
+                <span class="ml-2"></span>
+              </label>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Apply Button -->
+  <div class="w-full flex justify-center">
+    <button class="w-fit bg-intermediate-color hover:bg-secondary-color duration-150 ease-in-out text-white font-semibold py-1 px-4 rounded-lg">
+      Apply
+    </button>
+  </div>
+</div>
