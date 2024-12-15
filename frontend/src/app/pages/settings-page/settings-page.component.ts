@@ -24,6 +24,7 @@ import {NgClass, NgIf} from "@angular/common";
 export class SettingsPageComponent {
   isBackgroundSelectionVisible = false; // Steuert die Sichtbarkeit des Menüs
   isAnimating = false; // Steuert die Animation
+  selectedBackgroundColor: string = '#ffffff';
 
   openBackgroundSelection() {
     this.isAnimating = true; // Animation beginnt
