@@ -1,8 +1,8 @@
-import {Component, HostListener, inject, OnInit} from '@angular/core';
+import {Component, HostListener, Inject, inject, OnInit} from '@angular/core';
 import {SideBarComponent} from "../../navigation/side-bar/side-bar.component";
 import {Profile} from "../../interfaces/profile";
 import {ProfileService} from "../../services/profile.service";
-import {NgClass, NgIf, NgOptimizedImage} from "@angular/common";
+import {NgClass, NgIf, NgOptimizedImage, NgStyle} from "@angular/common";
 import {HomeNavbarComponent} from "../../navigation/home-navbar/home-navbar.component";
 import {ActivatedRoute, NavigationEnd, Router, RouterLink, RouterOutlet} from "@angular/router";
 import {filter} from "rxjs";
@@ -11,6 +11,7 @@ import {VERSION} from "@angular/cdk";
 import {MatIcon} from "@angular/material/icon";
 import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
 import {DropdownAvatarComponent} from "../../single-components/home/user-avatar/dropdown-avatar.component";
+import {BackgroundServiceService} from "../../services/background-service.service";
 
 @Component({
   selector: 'app-home-preview-page',
@@ -28,7 +29,8 @@ import {DropdownAvatarComponent} from "../../single-components/home/user-avatar/
     MatMenuTrigger,
     NgClass,
     DropdownAvatarComponent,
-    RouterLink
+    RouterLink,
+    NgStyle
   ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'
@@ -36,6 +38,8 @@ import {DropdownAvatarComponent} from "../../single-components/home/user-avatar/
 export class HomePageComponent implements OnInit{
   isChildRoute: boolean = false;
   profileService: ProfileService = inject(ProfileService);
+  newBackgroundColor: string = '';
+  newBackgroundImageUrl: string | ArrayBuffer | null = null;
 
   /*
   url: any = '';
@@ -63,7 +67,7 @@ export class HomePageComponent implements OnInit{
     fileInput.click();
   }
 */
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(private route: ActivatedRoute, private router: Router, private backgroundService: BackgroundServiceService) {}
 
   ngOnInit() {
     // Listens for navigation events
@@ -77,6 +81,14 @@ export class HomePageComponent implements OnInit{
 
     // Initial check to see if you are on one of the three subpages
     this.isChildRoute = !!this.route.firstChild;
+
+    this.backgroundService.getBackgroundColor().subscribe(color => {
+      this.newBackgroundColor = color;
+    });
+
+    this.backgroundService.getBackgroundImageUrl().subscribe(imageUrl => {
+      this.newBackgroundImageUrl = imageUrl;
+    })
   }
 
 

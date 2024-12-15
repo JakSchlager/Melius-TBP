@@ -154,7 +154,7 @@ export class ProjectsAreaComponent implements OnInit {
                       </svg>
                     </button>
                   </div>
-                  <div id="repo-${index}" class="w-full m-auto flex flex-col rounded-2xl overflow-hidden shadow-md hover:shadow-custom-shadow duration-150">
+                  <div id="repo-${index}" class="bg-white w-full m-auto flex flex-col rounded-2xl overflow-hidden shadow-md hover:shadow-custom-shadow duration-150">
                    <div class="flex justify-around bg-gray-900">
                      <h1 id="repo-elements" class='text-white w-full p-3 font-bold'>${username}/${repo_name}</h1>
                    </div>
