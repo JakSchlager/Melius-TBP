@@ -79,6 +79,10 @@ export class BackgroundSelectComponent {
   apply() {
     if (this.isStaticColorEnabled) {
       this.settingsPage.selectedBackgroundColor = this.selectedColor;
+      this.settingsPage.selectedBackgroundImageUrl = null; // Hintergrundbild zurücksetzen
+    } else if (this.isBackgroundPictureEnabled && this.selectedImageUrl) {
+      this.settingsPage.selectedBackgroundImageUrl = this.selectedImageUrl;
     }
   }
+
 }

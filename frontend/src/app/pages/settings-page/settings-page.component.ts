@@ -5,7 +5,7 @@ import {ColorPickerModule} from "primeng/colorpicker";
 import {
   BackgroundSelectComponent
 } from "../../single-components/settings/background-select/background-select.component";
-import {NgClass, NgIf} from "@angular/common";
+import {NgClass, NgIf, NgStyle} from "@angular/common";
 
 @Component({
   selector: 'app-settings-page',
@@ -16,7 +16,8 @@ import {NgClass, NgIf} from "@angular/common";
     ColorPickerModule,
     BackgroundSelectComponent,
     NgIf,
-    NgClass
+    NgClass,
+    NgStyle
   ],
   templateUrl: './settings-page.component.html',
   styleUrl: './settings-page.component.css'
@@ -24,7 +25,8 @@ import {NgClass, NgIf} from "@angular/common";
 export class SettingsPageComponent {
   isBackgroundSelectionVisible = false; // Steuert die Sichtbarkeit des Menüs
   isAnimating = false; // Steuert die Animation
-  selectedBackgroundColor: string = '#ffffff';
+  selectedBackgroundColor: string = '';
+  selectedBackgroundImageUrl: string | ArrayBuffer | null = null;
 
   openBackgroundSelection() {
     this.isAnimating = true; // Animation beginnt
@@ -39,5 +41,6 @@ export class SettingsPageComponent {
 
   removeBackgroundSelection() {
     this.selectedBackgroundColor = '#ffffff';
+    this.selectedBackgroundImageUrl = null;
   }
 }

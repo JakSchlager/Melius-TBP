@@ -32,8 +32,14 @@
 
             <div class="relative flex w-5/6">
               <!-- Background Image Preview -->
-              <div [style.background-color]="selectedBackgroundColor" class="w-11/12 py-10 rounded-xl border-2">
+              <div
+                [ngStyle]="{'background-color': selectedBackgroundImageUrl ? 'transparent' : selectedBackgroundColor,
+              'background-image': selectedBackgroundImageUrl ? 'url(' + selectedBackgroundImageUrl + ')' : 'none',
+              'background-size': 'cover', 'background-position': 'center'}"
+                class="w-11/12 py-10 rounded-xl border-2">
+
                 <div class="mx-10 min-h-fit space-y-6">
+                  <!-- Platzhalter für Inhalt -->
                   <div class="h-2/5 w-2/6 bg-gray-200 flex justify-start py-10 rounded-lg"></div>
                   <div class="h-1/5 w-full bg-gray-200 rounded-b-lg py-4"></div>
                   <div class="grid grid-cols-3 gap-x-4">
