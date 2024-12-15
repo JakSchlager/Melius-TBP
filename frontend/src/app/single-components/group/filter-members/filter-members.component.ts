@@ -18,6 +18,7 @@ export class FilterMembersComponent {
 
   toggleFilterMenu() {
     this.isOpen = !this.isOpen;
+    this.isAnimating = true;
   }
 
   onAnimationEnd() {

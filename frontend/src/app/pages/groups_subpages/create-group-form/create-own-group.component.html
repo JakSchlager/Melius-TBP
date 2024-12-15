@@ -1,13 +1,20 @@
 
   <div class="w-full h-full flex flex-col justify-center">
-    <div class="h-fit w-full bg-white pt-4 pb-6 rounded-lg shadow-lg">
+    <div class="h-fit w-full bg-white pt-4 pb-6 px-2 rounded-lg shadow-lg">
 
-      <div class="flex items-center pt-1 pb-4">
-        <div class="w-fit ml-1 absolute cursor-pointer" (click)="closeCreationForm()">
-          <svg xmlns="http://www.w3.org/2000/svg" height="38px" viewBox="0 -960 960 960" width="38px" fill="#000000"><path d="m272-440 116 116q11 11 11 28t-11 28q-11 11-28 11t-28-11L148-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 28-11t28 11q11 11 11 28t-11 28L272-520h528q17 0 28.5 11.5T840-480q0 17-11.5 28.5T800-440H272Z"/></svg>
+      <div class="relative flex items-center pt-1 pb-4">
+        <div class="w-full flex justify-center">
+          <h1 class="w-fit text-3xl font-bold py-2">Starte das Organisieren</h1>
         </div>
 
-        <h1 class="w-full text-3xl font-bold text-center py-2">Starte das Organisieren</h1>
+        <div class="w-full py-2 flex justify-end absolute">
+          <button class="w-fit px-2" (click)="closeCreationForm()">
+            <svg xmlns="http://www.w3.org/2000/svg" height="34px" width="34px" class="text-gray-400 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
       </div>
 
       <div class="h-fit w-full flex justify-center space-x-20 p-2 items-center">

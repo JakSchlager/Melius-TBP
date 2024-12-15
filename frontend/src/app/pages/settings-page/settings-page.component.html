@@ -2,93 +2,98 @@
   <div class="w-5/6 h-full relative">
 
     <!-- Header - Headline -->
-    <div class="">
-      <h1 class="text-7xl font-bold mt-20">Einstellungen</h1>
+    <div class="h-1/6">
+      <h1 class="h-full flex flex-col justify-end text-7xl font-bold">Einstellungen</h1>
     </div>
 
     <!-- Main Content - 2 Columns: settings & background image -->
-    <div class="absolute w-full max-h-fit flex-col justify-center">
-      <div class="flex h-full justify-between items-center">
+    <div class="h-5/6 w-full ">
+      <div class="w-full max-h-fit flex-col justify-center py-10">
+        <div class="flex h-full justify-between items-center">
 
-        <!-- Settings -->
-        <div class="w-1/2 h-full space-y-8">
-          <!-- Language -->
-          <div class="space-y-0.5 animate-fade-up fade-in-0 duration-500">
-            <h1 class="text-xl font-semibold">Sprache</h1>
-            <div>
-              <app-language-select></app-language-select>
-            </div>
-          </div>
-
-          <!-- Background Preview Image -->
-          <div class="space-y-6 animate-fade-up fade-in-0 duration-700">
-            <div class="space-y-0.5">
-              <h1 class="text-xl font-semibold">Hintergrundbild</h1>
-              <div class="w-fit">
-                <small class="text-gray-500 ">Hier kannst du das Hintergrundbild deiner Home-Seite <br>
-                  (inkl. Start-Seite, Lebenslauf, Projekte, Kompetenzen) ganz nach deinem Geschmack verändern.</small>
+          <!-- Settings -->
+          <div class="w-1/2 h-full space-y-8">
+            <!-- Language -->
+            <div class="space-y-0.5 animate-fade-up fade-in-0 duration-500">
+              <h1 class="text-xl font-semibold">Sprache</h1>
+              <div>
+                <app-language-select></app-language-select>
               </div>
             </div>
 
-            <div class="relative flex w-5/6">
-              <!-- Background Image Preview -->
-              <div
-                [ngStyle]="{'background-color': selectedBackgroundImageUrl ? 'transparent' : selectedBackgroundColor,
-              'background-image': selectedBackgroundImageUrl ? 'url(' + selectedBackgroundImageUrl + ')' : 'none',
-              'background-size': 'cover', 'background-position': 'center'}"
-                class="w-11/12 py-10 rounded-xl border-2">
+            <!-- Background Preview Image -->
+            <div class="space-y-6 animate-fade-up fade-in-0 duration-700">
+              <div class="space-y-0.5">
+                <h1 class="text-xl font-semibold">Hintergrundbild</h1>
+                <div class="w-fit">
+                  <small class="text-gray-500 ">Hier kannst du das Hintergrundbild deiner Home-Seite <br>
+                    (inkl. Start-Seite, Lebenslauf, Projekte, Kompetenzen) ganz nach deinem Geschmack verändern.</small>
+                </div>
+              </div>
 
-                <div class="mx-10 min-h-fit space-y-6">
-                  <!-- Platzhalter für Inhalt -->
-                  <div class="h-2/5 w-2/6 bg-gray-200 flex justify-start py-10 rounded-lg"></div>
-                  <div class="h-1/5 w-full bg-gray-200 rounded-b-lg py-4"></div>
-                  <div class="grid grid-cols-3 gap-x-4">
-                    <div class="py-20 bg-gray-200 rounded-lg h-full"></div>
-                    <div class="py-20 bg-gray-200 rounded-lg h-full"></div>
-                    <div class="py-20 bg-gray-200 rounded-lg h-full"></div>
+              <div class="relative flex w-5/6">
+                <!-- Background Image Preview -->
+                <div
+                  [ngStyle]="{'background-color': selectedBackgroundImageUrl ? 'transparent' : selectedBackgroundColor,
+                'background-image': selectedBackgroundImageUrl ? 'url(' + selectedBackgroundImageUrl + ')' : 'none',
+                'background-size': 'cover', 'background-position': 'center'}"
+                  class="w-11/12 py-10 rounded-xl border-2">
+
+                  <div class="mx-10 min-h-fit space-y-6">
+                    <!-- Platzhalter für Inhalt -->
+                    <div class="h-2/5 w-2/6 bg-gray-200 flex justify-start py-10 rounded-lg"></div>
+                    <div class="h-1/5 w-full bg-gray-200 rounded-b-lg py-4"></div>
+                    <div class="grid grid-cols-3 gap-x-4">
+                      <div class="py-20 bg-gray-200 rounded-lg h-full"></div>
+                      <div class="py-20 bg-gray-200 rounded-lg h-full"></div>
+                      <div class="py-20 bg-gray-200 rounded-lg h-full"></div>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <!-- Buttons -->
-              <div class="w-1/12 px-2 space-y-2 flex flex-col">
-                <!-- Open Dropdown Menu -->
-                <div class="bg-white w-fit p-1 rounded-lg hover:shadow-md hover:cursor-pointer duration-150" (click)="openBackgroundSelection()">
-                  <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px" fill="#8087FD"><path d="M440-440H240q-17 0-28.5-11.5T200-480q0-17 11.5-28.5T240-520h200v-200q0-17 11.5-28.5T480-760q17 0 28.5 11.5T520-720v200h200q17 0 28.5 11.5T760-480q0 17-11.5 28.5T720-440H520v200q0 17-11.5 28.5T480-200q-17 0-28.5-11.5T440-240v-200Z"/></svg>
+                <!-- Buttons -->
+                <div class="w-1/12 h-fit">
+                  <div class="w-full flex justify-center">
+                    <div class="flex flex-col space-y-2">
+                      <!-- Open Dropdown Menu -->
+                      <div class="bg-white w-fit p-1 rounded-lg hover:shadow-md hover:cursor-pointer duration-150" (click)="openBackgroundSelection()">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="#8087FD"><path d="M440-440H240q-17 0-28.5-11.5T200-480q0-17 11.5-28.5T240-520h200v-200q0-17 11.5-28.5T480-760q17 0 28.5 11.5T520-720v200h200q17 0 28.5 11.5T760-480q0 17-11.5 28.5T720-440H520v200q0 17-11.5 28.5T480-200q-17 0-28.5-11.5T440-240v-200Z"/></svg>
+                      </div>
+
+                      <!-- Remove chosen Background -->
+                      <div class="bg-white w-fit p-1 rounded-lg hover:shadow-md hover:cursor-pointer duration-150" (click)="removeBackgroundSelection()">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="#EA3323"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                <!-- Remove chosen Background -->
-                <div class="bg-white w-fit p-1 rounded-lg hover:shadow-md hover:cursor-pointer duration-150" (click)="removeBackgroundSelection()">
-                  <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px" fill="#EA3323"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
+                <!-- Background Select Menu -->
+                <div class="absolute left-full top-0 mt-2 transition-opacity duration-200"
+                     *ngIf="isBackgroundSelectionVisible || isAnimating"
+                     [ngClass]="{'animate-in fade-in duration-150': isBackgroundSelectionVisible, 'animate-out fade-out': !isBackgroundSelectionVisible && isAnimating}"
+                     (animationend)="onAnimationEnd()">
+                  <app-background-select></app-background-select>
                 </div>
               </div>
+            </div>
 
-              <!-- Background Select Menu -->
-              <div class="absolute left-full top-0 mt-2 transition-opacity duration-200"
-                   *ngIf="isBackgroundSelectionVisible || isAnimating"
-                   [ngClass]="{'animate-in fade-in duration-150': isBackgroundSelectionVisible, 'animate-out fade-out': !isBackgroundSelectionVisible && isAnimating}"
-                   (animationend)="onAnimationEnd()">
-                <app-background-select></app-background-select>
+
+            <!-- Footer - Save Changes Button -->
+            <div class="animate-fade-up fade-in-0 duration-700">
+              <div class="w-fit flex-justify-start hover:-translate-y-0.5 hover:shadow-md duration-150">
+                <button class="bg-intermediate-color text-white px-2.5 py-1.5 rounded-lg hover:bg-secondary-color duration-150 ease-in-out">Änderungen Speichern</button>
               </div>
             </div>
           </div>
 
-
-          <!-- Footer - Save Changes Button -->
-          <div class="animate-fade-up fade-in-0 duration-700">
-            <div class="w-fit flex-justify-start hover:-translate-y-0.5 hover:shadow-md duration-150">
-              <button class="bg-intermediate-color text-white px-2.5 py-1.5 rounded-lg hover:bg-secondary-color duration-150 ease-in-out">Änderungen Speichern</button>
-            </div>
+          <!-- Background Image -->
+          <div class="w-1/2 h-full items-center flex justify-end">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0,0,256,256" width="720px" height="720px" fill-rule="nonzero"><g fill-opacity="0.32941" fill="#9ca3af" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(8.53333,8.53333)"><path d="M15,2c-0.552,0 -1,0.448 -1,1v0.17188c0,0.478 -0.33659,0.90447 -0.80859,0.98047c-0.229,0.037 -0.45569,0.07986 -0.67969,0.13086c-0.464,0.106 -0.93323,-0.1567 -1.11524,-0.5957l-0.06641,-0.15625c-0.211,-0.51 -0.79564,-0.75302 -1.30664,-0.54102c-0.51,0.211 -0.75302,0.79564 -0.54102,1.30664l0.06641,0.16016c0.184,0.44 0.03686,0.96089 -0.36914,1.21289c-0.196,0.122 -0.38722,0.24981 -0.57422,0.38281c-0.388,0.277 -0.92472,0.21395 -1.26172,-0.12305l-0.12109,-0.12109c-0.391,-0.391 -1.02406,-0.391 -1.41406,0c-0.39,0.391 -0.39,1.02406 0,1.41406l0.12109,0.12109c0.337,0.337 0.40005,0.87272 0.12305,1.26172c-0.133,0.187 -0.26081,0.37822 -0.38281,0.57422c-0.252,0.406 -0.77384,0.55409 -1.21484,0.37109l-0.1582,-0.06641c-0.51,-0.211 -1.09659,0.03102 -1.30859,0.54102c-0.211,0.51 0.03102,1.09464 0.54102,1.30664l0.15625,0.06445c0.439,0.182 0.70366,0.65124 0.59766,1.11524c-0.051,0.224 -0.09581,0.45069 -0.13281,0.67969c-0.075,0.471 -0.50052,0.80859 -0.97852,0.80859h-0.17187c-0.552,0 -1,0.448 -1,1c0,0.552 0.448,1 1,1h0.17188c0.478,0 0.90447,0.33659 0.98047,0.80859c0.037,0.229 0.07986,0.45569 0.13086,0.67969c0.106,0.464 -0.1567,0.93323 -0.5957,1.11523l-0.15625,0.06641c-0.51,0.211 -0.75302,0.79564 -0.54102,1.30664c0.211,0.51 0.79564,0.75302 1.30664,0.54102l0.16016,-0.06641c0.441,-0.183 0.96184,-0.03586 1.21484,0.36914c0.122,0.196 0.24881,0.38817 0.38281,0.57617c0.277,0.388 0.21395,0.92472 -0.12305,1.26172l-0.12305,0.12109c-0.391,0.391 -0.391,1.02406 0,1.41406c0.391,0.39 1.02406,0.391 1.41406,0l0.12305,-0.12109c0.337,-0.337 0.87177,-0.402 1.25977,-0.125c0.188,0.134 0.38017,0.26277 0.57617,0.38477c0.405,0.252 0.55409,0.77384 0.37109,1.21484l-0.06641,0.1582c-0.211,0.51 0.03102,1.09659 0.54102,1.30859c0.51,0.211 1.09464,-0.03102 1.30664,-0.54102l0.06445,-0.15625c0.182,-0.439 0.65123,-0.70366 1.11523,-0.59766c0.224,0.051 0.45069,0.09581 0.67969,0.13281c0.469,0.073 0.80664,0.49856 0.80664,0.97656v0.17188c0,0.552 0.448,1 1,1c0.552,0 1,-0.448 1,-1v-0.17187c0,-0.478 0.33659,-0.90447 0.80859,-0.98047c0.229,-0.037 0.45569,-0.07986 0.67969,-0.13086c0.464,-0.106 0.93323,0.1567 1.11523,0.5957l0.06641,0.15625c0.211,0.51 0.79564,0.75302 1.30664,0.54102c0.51,-0.211 0.75302,-0.79564 0.54102,-1.30664l-0.06641,-0.16016c-0.183,-0.441 -0.03586,-0.96184 0.36914,-1.21484c0.196,-0.122 0.38817,-0.24881 0.57617,-0.38281c0.388,-0.277 0.92472,-0.21395 1.26172,0.12305l0.12109,0.12305c0.391,0.391 1.02406,0.391 1.41406,0c0.39,-0.391 0.391,-1.02406 0,-1.41406l-0.12109,-0.12305c-0.337,-0.337 -0.402,-0.87177 -0.125,-1.25977c0.134,-0.188 0.26277,-0.38017 0.38477,-0.57617c0.252,-0.405 0.77384,-0.55409 1.21484,-0.37109l0.1582,0.06641c0.51,0.211 1.09659,-0.03102 1.30859,-0.54102c0.211,-0.51 -0.03102,-1.09464 -0.54102,-1.30664l-0.15625,-0.06445c-0.439,-0.182 -0.70366,-0.65123 -0.59766,-1.11523c0.051,-0.224 0.09581,-0.45069 0.13281,-0.67969c0.073,-0.469 0.49856,-0.80664 0.97656,-0.80664h0.17188c0.552,0 1,-0.448 1,-1c0,-0.552 -0.448,-1 -1,-1h-0.17187c-0.478,0 -0.90447,-0.33659 -0.98047,-0.80859c-0.037,-0.229 -0.07986,-0.45569 -0.13086,-0.67969c-0.106,-0.464 0.1567,-0.93323 0.5957,-1.11524l0.15625,-0.06641c0.51,-0.211 0.75302,-0.79564 0.54102,-1.30664c-0.211,-0.51 -0.79564,-0.75302 -1.30664,-0.54102l-0.16016,0.06641c-0.441,0.183 -0.96184,0.03586 -1.21484,-0.36914c-0.122,-0.196 -0.24881,-0.38817 -0.38281,-0.57617c-0.277,-0.388 -0.21395,-0.92472 0.12305,-1.26172l0.12305,-0.12109c0.391,-0.391 0.391,-1.02406 0,-1.41406c-0.391,-0.391 -1.02406,-0.391 -1.41406,0l-0.12109,0.12305c-0.337,0.337 -0.87372,0.402 -1.26172,0.125c-0.188,-0.134 -0.38017,-0.26277 -0.57617,-0.38477c-0.405,-0.252 -0.55214,-0.77384 -0.36914,-1.21484l0.06641,-0.1582c0.211,-0.51 -0.03102,-1.09659 -0.54102,-1.30859c-0.51,-0.211 -1.09464,0.03102 -1.30664,0.54102l-0.06641,0.15625c-0.182,0.439 -0.65123,0.70366 -1.11523,0.59766c-0.224,-0.051 -0.45069,-0.09581 -0.67969,-0.13281c-0.47,-0.075 -0.80664,-0.50052 -0.80664,-0.97852v-0.17187c0,-0.552 -0.448,-1 -1,-1zM15,7c4.07865,0 7.43859,3.05488 7.93164,7h-6.20312c-0.35663,-0.61771 -1.01525,-0.99874 -1.72852,-1c-0.00065,0 -0.0013,0 -0.00195,0l-3.10156,-5.375c0.95452,-0.40227 2.00273,-0.625 3.10352,-0.625zM10.16992,8.63281l3.09961,5.36719c-0.17609,0.30389 -0.26905,0.64878 -0.26953,1c0.00117,0.34989 0.0941,0.69336 0.26953,0.99609l-3.10156,5.36914c-1.92154,-1.46124 -3.16797,-3.76516 -3.16797,-6.36523c0,-2.60106 1.24714,-4.90604 3.16992,-6.36719zM16.73047,16h6.20117c-0.49305,3.94512 -3.853,7 -7.93164,7c-1.10079,0 -2.149,-0.22273 -3.10352,-0.625l3.10156,-5.375c0.00065,0 0.0013,0 0.00195,0c0.71397,-0.00056 1.37349,-0.38169 1.73047,-1z"></path></g></g></svg>
           </div>
-        </div>
-
-        <!-- Background Image -->
-        <div class="w-1/2 h-full items-center flex justify-end">
-          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0,0,256,256" width="720px" height="720px" fill-rule="nonzero"><g fill-opacity="0.32941" fill="#9ca3af" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(8.53333,8.53333)"><path d="M15,2c-0.552,0 -1,0.448 -1,1v0.17188c0,0.478 -0.33659,0.90447 -0.80859,0.98047c-0.229,0.037 -0.45569,0.07986 -0.67969,0.13086c-0.464,0.106 -0.93323,-0.1567 -1.11524,-0.5957l-0.06641,-0.15625c-0.211,-0.51 -0.79564,-0.75302 -1.30664,-0.54102c-0.51,0.211 -0.75302,0.79564 -0.54102,1.30664l0.06641,0.16016c0.184,0.44 0.03686,0.96089 -0.36914,1.21289c-0.196,0.122 -0.38722,0.24981 -0.57422,0.38281c-0.388,0.277 -0.92472,0.21395 -1.26172,-0.12305l-0.12109,-0.12109c-0.391,-0.391 -1.02406,-0.391 -1.41406,0c-0.39,0.391 -0.39,1.02406 0,1.41406l0.12109,0.12109c0.337,0.337 0.40005,0.87272 0.12305,1.26172c-0.133,0.187 -0.26081,0.37822 -0.38281,0.57422c-0.252,0.406 -0.77384,0.55409 -1.21484,0.37109l-0.1582,-0.06641c-0.51,-0.211 -1.09659,0.03102 -1.30859,0.54102c-0.211,0.51 0.03102,1.09464 0.54102,1.30664l0.15625,0.06445c0.439,0.182 0.70366,0.65124 0.59766,1.11524c-0.051,0.224 -0.09581,0.45069 -0.13281,0.67969c-0.075,0.471 -0.50052,0.80859 -0.97852,0.80859h-0.17187c-0.552,0 -1,0.448 -1,1c0,0.552 0.448,1 1,1h0.17188c0.478,0 0.90447,0.33659 0.98047,0.80859c0.037,0.229 0.07986,0.45569 0.13086,0.67969c0.106,0.464 -0.1567,0.93323 -0.5957,1.11523l-0.15625,0.06641c-0.51,0.211 -0.75302,0.79564 -0.54102,1.30664c0.211,0.51 0.79564,0.75302 1.30664,0.54102l0.16016,-0.06641c0.441,-0.183 0.96184,-0.03586 1.21484,0.36914c0.122,0.196 0.24881,0.38817 0.38281,0.57617c0.277,0.388 0.21395,0.92472 -0.12305,1.26172l-0.12305,0.12109c-0.391,0.391 -0.391,1.02406 0,1.41406c0.391,0.39 1.02406,0.391 1.41406,0l0.12305,-0.12109c0.337,-0.337 0.87177,-0.402 1.25977,-0.125c0.188,0.134 0.38017,0.26277 0.57617,0.38477c0.405,0.252 0.55409,0.77384 0.37109,1.21484l-0.06641,0.1582c-0.211,0.51 0.03102,1.09659 0.54102,1.30859c0.51,0.211 1.09464,-0.03102 1.30664,-0.54102l0.06445,-0.15625c0.182,-0.439 0.65123,-0.70366 1.11523,-0.59766c0.224,0.051 0.45069,0.09581 0.67969,0.13281c0.469,0.073 0.80664,0.49856 0.80664,0.97656v0.17188c0,0.552 0.448,1 1,1c0.552,0 1,-0.448 1,-1v-0.17187c0,-0.478 0.33659,-0.90447 0.80859,-0.98047c0.229,-0.037 0.45569,-0.07986 0.67969,-0.13086c0.464,-0.106 0.93323,0.1567 1.11523,0.5957l0.06641,0.15625c0.211,0.51 0.79564,0.75302 1.30664,0.54102c0.51,-0.211 0.75302,-0.79564 0.54102,-1.30664l-0.06641,-0.16016c-0.183,-0.441 -0.03586,-0.96184 0.36914,-1.21484c0.196,-0.122 0.38817,-0.24881 0.57617,-0.38281c0.388,-0.277 0.92472,-0.21395 1.26172,0.12305l0.12109,0.12305c0.391,0.391 1.02406,0.391 1.41406,0c0.39,-0.391 0.391,-1.02406 0,-1.41406l-0.12109,-0.12305c-0.337,-0.337 -0.402,-0.87177 -0.125,-1.25977c0.134,-0.188 0.26277,-0.38017 0.38477,-0.57617c0.252,-0.405 0.77384,-0.55409 1.21484,-0.37109l0.1582,0.06641c0.51,0.211 1.09659,-0.03102 1.30859,-0.54102c0.211,-0.51 -0.03102,-1.09464 -0.54102,-1.30664l-0.15625,-0.06445c-0.439,-0.182 -0.70366,-0.65123 -0.59766,-1.11523c0.051,-0.224 0.09581,-0.45069 0.13281,-0.67969c0.073,-0.469 0.49856,-0.80664 0.97656,-0.80664h0.17188c0.552,0 1,-0.448 1,-1c0,-0.552 -0.448,-1 -1,-1h-0.17187c-0.478,0 -0.90447,-0.33659 -0.98047,-0.80859c-0.037,-0.229 -0.07986,-0.45569 -0.13086,-0.67969c-0.106,-0.464 0.1567,-0.93323 0.5957,-1.11524l0.15625,-0.06641c0.51,-0.211 0.75302,-0.79564 0.54102,-1.30664c-0.211,-0.51 -0.79564,-0.75302 -1.30664,-0.54102l-0.16016,0.06641c-0.441,0.183 -0.96184,0.03586 -1.21484,-0.36914c-0.122,-0.196 -0.24881,-0.38817 -0.38281,-0.57617c-0.277,-0.388 -0.21395,-0.92472 0.12305,-1.26172l0.12305,-0.12109c0.391,-0.391 0.391,-1.02406 0,-1.41406c-0.391,-0.391 -1.02406,-0.391 -1.41406,0l-0.12109,0.12305c-0.337,0.337 -0.87372,0.402 -1.26172,0.125c-0.188,-0.134 -0.38017,-0.26277 -0.57617,-0.38477c-0.405,-0.252 -0.55214,-0.77384 -0.36914,-1.21484l0.06641,-0.1582c0.211,-0.51 -0.03102,-1.09659 -0.54102,-1.30859c-0.51,-0.211 -1.09464,0.03102 -1.30664,0.54102l-0.06641,0.15625c-0.182,0.439 -0.65123,0.70366 -1.11523,0.59766c-0.224,-0.051 -0.45069,-0.09581 -0.67969,-0.13281c-0.47,-0.075 -0.80664,-0.50052 -0.80664,-0.97852v-0.17187c0,-0.552 -0.448,-1 -1,-1zM15,7c4.07865,0 7.43859,3.05488 7.93164,7h-6.20312c-0.35663,-0.61771 -1.01525,-0.99874 -1.72852,-1c-0.00065,0 -0.0013,0 -0.00195,0l-3.10156,-5.375c0.95452,-0.40227 2.00273,-0.625 3.10352,-0.625zM10.16992,8.63281l3.09961,5.36719c-0.17609,0.30389 -0.26905,0.64878 -0.26953,1c0.00117,0.34989 0.0941,0.69336 0.26953,0.99609l-3.10156,5.36914c-1.92154,-1.46124 -3.16797,-3.76516 -3.16797,-6.36523c0,-2.60106 1.24714,-4.90604 3.16992,-6.36719zM16.73047,16h6.20117c-0.49305,3.94512 -3.853,7 -7.93164,7c-1.10079,0 -2.149,-0.22273 -3.10352,-0.625l3.10156,-5.375c0.00065,0 0.0013,0 0.00195,0c0.71397,-0.00056 1.37349,-0.38169 1.73047,-1z"></path></g></g></svg>
         </div>
       </div>
     </div>
-
 
   </div>
 </div>

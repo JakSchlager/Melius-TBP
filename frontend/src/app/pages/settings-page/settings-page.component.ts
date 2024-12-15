@@ -35,7 +35,7 @@ export class SettingsPageComponent {
 
   onAnimationEnd() {
     if (!this.isBackgroundSelectionVisible) {
-      this.isAnimating = false; // Animation beendet
+      this.isAnimating = true; // Animation beendet
     }
   }
 

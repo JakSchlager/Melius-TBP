@@ -34,6 +34,7 @@ export class CreateRoleComponent implements OnInit {
 
   toggleDropdown() {
     this.isOpen = !this.isOpen;
+    this.isAnimating = true;
   }
 
   onAnimationEnd() {

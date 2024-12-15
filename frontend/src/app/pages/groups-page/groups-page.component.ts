@@ -55,6 +55,7 @@ export class GroupsPageComponent {
   toggleSearchBox(event: Event) {
     event.stopPropagation(); // Prevent click from bubbling to parent
     this.isSearchBoxOpen = true;
+    this.isAnimating = true;
     this.filteredGroups = this.testGroups; // Show all groups initially
   }
 

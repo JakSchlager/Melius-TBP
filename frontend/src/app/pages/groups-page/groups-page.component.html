@@ -1,7 +1,29 @@
 <div class="relative w-full h-screen flex justify-center z-0">
-  <div class="absolute -z-10 w-screen h-screen overflow-hidden bg-no-repeat object-fill">
-    <img ngSrc="../../../assets/Melius-Groups-Background.svg" alt="radio_waves" class="min-w-max min-h-max object-contain bg-no-repeat overflow-hidden" height="32"
-         width="32">
+  <div class="absolute -z-10 w-screen h-screen overflow-hidden bg-no-repeat object-cover">
+    <svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+      <defs>
+        <style>
+          .cls-1 {
+            fill: #5e4dfc;
+          }
+
+          .cls-1, .cls-2, .cls-3 {
+            stroke-width: 0px;
+          }
+
+          .cls-2 {
+            fill: #0d91fa;
+          }
+
+          .cls-3 {
+            fill: #8087fd;
+          }
+        </style>
+      </defs>
+      <rect class="cls-2" x="1072.84" y="-367.51" width="249.49" height="1815.85" transform="translate(-31.37 1005.1) rotate(-45)"/>
+      <rect class="cls-3" x="1249.25" y="-543.92" width="249.49" height="1815.85" transform="translate(145.05 1078.18) rotate(-45)"/>
+      <rect class="cls-1" x="1425.67" y="-720.34" width="249.49" height="1815.85" transform="translate(321.46 1151.25) rotate(-45)"/>
+    </svg>
   </div>
 
   <div class="w-5/6 h-full">
@@ -10,14 +32,14 @@
 
       <div class="w-1/2 h-full flex flex-col justify-center space-y-10 z-0">
         <div class="">
-          <h1 class="text-7xl font-extrabold">Willkommen bei Gruppen</h1>
+          <h1 class="text-7xl font-extrabold">Willkommen bei<br>Gruppen</h1>
         </div>
 
         <div class="w-full">
-          <div class="mr-72 h-full space-y-3">
+          <div class=" h-full space-y-3">
             <!-- Search Bar -->
             <div class="relative w-full" #searchBox>
-              <div class="font-semibold flex justify-center space-x-4 items-center bg-white px-2 py-2 rounded-xl shadow-lg cursor-pointer animate-fade-up fade-in-0 duration-500">
+              <div class="w-2/3 font-semibold flex justify-center space-x-4 items-center bg-white px-2 py-2 rounded-xl shadow-lg cursor-pointer animate-fade-up fade-in-0 duration-500">
                 <input class="w-full h-full rounded-lg py-2" placeholder="Nach einer Gruppe suchen..." (click)="toggleSearchBox($event)" [(ngModel)]="searchQuery" (keyup)="filterSearchResults()">
                 <button>
                   <svg xmlns="http://www.w3.org/2000/svg" height="38px" viewBox="0 -960 960 960" width="38px" fill="#CECECE"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg>
@@ -25,12 +47,12 @@
               </div>
 
               <!-- Dropdown Box -->
-              <div *ngIf="isSearchBoxOpen || isAnimating" [ngClass]="{'animate-fade-down duration-150': isSearchBoxOpen, 'animate-out fade-out': !isSearchBoxOpen && isAnimating}" (animationend)="onAnimationEnd()" class="absolute  w-max bg-white shadow-lg rounded-lg mt-2 min-h-64 overflow-y-auto z-50">
+              <div class="absolute w-full bg-white shadow-lg rounded-lg mt-2 min-h-64 overflow-y-auto z-50" *ngIf="isSearchBoxOpen || isAnimating" [ngClass]="{'animate-fade-down duration-150': isSearchBoxOpen, 'animate-out fade-out': !isSearchBoxOpen && isAnimating}" (animationend)="onAnimationEnd()">
                 <div class="grid grid-cols-5 items-center bg-accent-blue p-4 border-b-2">
                   <h1 class="min-w-fit flex justify-start">Gruppenname</h1>
                   <h1 class="text-center">Unternehmen</h1>
                   <h1 class="text-center">Abteilung</h1>
-                  <h1 class="text-center">Veröffentlichung</h1>
+                  <h1 class="text-center">Veröffentlicht am</h1>
                 </div>
                 <div class="dropdown-list min-h-64">
                   <div *ngFor="let group of filteredGroups" class="grid grid-cols-5 items-center text-gray-500 p-4 hover:bg-gray-50">
@@ -53,14 +75,14 @@
               </div>
             </div>
 
-            <div class="animate-fade-up fade-in-0 duration-700">
+            <div class="w-2/3 animate-fade-up fade-in-0 duration-700">
               <button class="w-full font-semibold flex justify-center space-x-4 items-center bg-primary-color px-2 py-2 rounded-xl shadow-lg cursor-pointer hover:bg-blue-500 duration-150 ease-in-out" (click)="openCreateGroupForm()">
                 <h1 class="text-white text-lg">Eine eigene Gruppe erstellen</h1>
                 <svg xmlns="http://www.w3.org/2000/svg" height="38px" viewBox="0 -960 960 960" width="38px" fill="#FFFFFF"><path d="M440-440H240q-17 0-28.5-11.5T200-480q0-17 11.5-28.5T240-520h200v-200q0-17 11.5-28.5T480-760q17 0 28.5 11.5T520-720v200h200q17 0 28.5 11.5T760-480q0 17-11.5 28.5T720-440H520v200q0 17-11.5 28.5T480-200q-17 0-28.5-11.5T440-240v-200Z"/></svg>
               </button>
             </div>
 
-            <div class="animate-fade-up fade-in-0 duration-1000">
+            <div class="w-2/3 animate-fade-up fade-in-0 duration-1000">
               <button class="w-full font-semibold flex justify-center space-x-4 items-center bg-intermediate-color px-2 py-2 rounded-xl shadow-lg cursor-pointer hover:bg-secondary-color duration-150 ease-in-out" (click)="openMyGroupsList()">
                 <h1 class="text-white text-lg">Meine Gruppen</h1>
                 <svg xmlns="http://www.w3.org/2000/svg" height="38px" viewBox="0 -960 960 960" width="38px" fill="#FFFFFF"><path d="M400-200q-17 0-28.5-11.5T360-240q0-17 11.5-28.5T400-280h400q17 0 28.5 11.5T840-240q0 17-11.5 28.5T800-200H400Zm0-240q-17 0-28.5-11.5T360-480q0-17 11.5-28.5T400-520h400q17 0 28.5 11.5T840-480q0 17-11.5 28.5T800-440H400Zm0-240q-17 0-28.5-11.5T360-720q0-17 11.5-28.5T400-760h400q17 0 28.5 11.5T840-720q0 17-11.5 28.5T800-680H400ZM200-160q-33 0-56.5-23.5T120-240q0-33 23.5-56.5T200-320q33 0 56.5 23.5T280-240q0 33-23.5 56.5T200-160Zm0-240q-33 0-56.5-23.5T120-480q0-33 23.5-56.5T200-560q33 0 56.5 23.5T280-480q0 33-23.5 56.5T200-400Zm0-240q-33 0-56.5-23.5T120-720q0-33 23.5-56.5T200-800q33 0 56.5 23.5T280-720q0 33-23.5 56.5T200-640Z"/></svg>
