@@ -36,4 +36,8 @@ export class SettingsPageComponent {
       this.isAnimating = false; // Animation beendet
     }
   }
+
+  removeBackgroundSelection() {
+    this.selectedBackgroundColor = '#ffffff';
+  }
 }

@@ -16,16 +16,49 @@
   <!-- Statische Farbe -->
   <div class="justify-between">
     <label class="text-sm font-semibold">Statische Farbe</label>
-    <div class="grid grid-cols-2 items-center">
+    <div class="grid grid-cols-2 items-center mt-1">
       <p-colorPicker
         [(ngModel)]="selectedColor"
-        class="w-full h-8 rounded-lg border mt-2">
+        class="w-full h-8">
       </p-colorPicker>
-      <div>
-        <label class="flex justify-end items-center">
-          <input type="checkbox" class="toggle-checkbox" [checked]="isStaticColorEnabled" (change)="toggleCheckbox('staticColor')" />
-          <span class="ml-2"></span>
+      <div class="flex justify-end text-white font-semibold">
+        <button
+          (click)="activateButton('staticColor')"
+          [ngClass]="{'bg-green-400 text-white': isStaticColorEnabled, 'bg-red-500 text-white': !isStaticColorEnabled}"
+          class="w-16 h-8 rounded-lg focus:outline-none">
+          {{ isStaticColorEnabled ? 'On' : 'Off' }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bild hochladen -->
+  <div class="justify-between">
+    <label class="text-sm font-semibold">Eigenes Hintergrundbild verwenden</label>
+    <div class="grid grid-cols-2 items-center mt-1">
+      <div class=" border rounded-lg py-1 bg-blue-500 hover:bg-blue-600 duration-150">
+        <input
+          type="file"
+          multiple
+          class="hidden"
+          id="fileUpload"
+          accept=".jpeg, .png, .pdf, .jpg"
+        />
+        <label
+          for="fileUpload"
+          class="w-full h-full space-x-1 flex items-center justify-center cursor-pointer">
+          <span class="text-white font-semibold">Bild hochladen</span>
+          <svg xmlns="http://www.w3.org/2000/svg" height="22px" viewBox="0 -960 960 960" width="22px" fill="#FFFFFF"><path d="M440-320v-326L336-542l-56-58 200-200 200 200-56 58-104-104v326h-80ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/></svg>
         </label>
+      </div>
+
+      <div class="flex justify-end text-white font-semibold">
+        <button
+          (click)="activateButton('backgroundImage')"
+          [ngClass]="{'bg-green-400 text-white': isBackgroundPictureEnabled, 'bg-red-500 text-white': !isBackgroundPictureEnabled}"
+          class="w-16 h-8 rounded-lg focus:outline-none">
+          {{ isBackgroundPictureEnabled ? 'On' : 'Off' }}
+        </button>
       </div>
     </div>
   </div>
