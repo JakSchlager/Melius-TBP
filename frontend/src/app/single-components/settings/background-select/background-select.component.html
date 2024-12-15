@@ -5,7 +5,7 @@
 
   <!-- Titel -->
   <div class="w-full h-fit flex justify-between items-center">
-    <h2 class="text-lg font-semibold">Wähle deinen Hintergrund</h2>
+    <h1 class="text-lg font-semibold">Wähle deinen Hintergrund</h1>
     <button (click)="closeBackgroundSelection()">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-400 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -15,7 +15,7 @@
 
   <!-- Statische Farbe -->
   <div class="justify-between">
-    <label class="text-sm font-semibold">Statische Farbe</label>
+    <h1 class="text-sm font-semibold">Statische Farbe</h1>
     <div class="grid grid-cols-2 items-center mt-1">
       <p-colorPicker
         [(ngModel)]="selectedColor"
@@ -34,7 +34,7 @@
 
   <!-- Bild hochladen -->
   <div class="justify-between">
-    <label class="text-sm font-semibold">Eigenes Hintergrundbild verwenden</label>
+    <h1 class="text-sm font-semibold">Eigenes Hintergrundbild verwenden</h1>
     <div class="grid grid-cols-2 items-center mt-1">
       <div class=" border rounded-lg py-1 bg-blue-500 hover:bg-blue-600 duration-150">
         <input
@@ -42,6 +42,7 @@
           multiple
           class="hidden"
           id="fileUpload"
+          (change)="onFileSelected($event)"
           accept=".jpeg, .png, .pdf, .jpg"
         />
         <label
@@ -59,6 +60,26 @@
           class="w-16 h-8 rounded-lg focus:outline-none">
           {{ isBackgroundPictureEnabled ? 'On' : 'Off' }}
         </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Kürzlich verwendet -->
+  <div>
+    <h1 class="text-sm font-semibold">Ausgewähltes Bild</h1>
+
+    <!-- Hier wird das upgeloaded Bild angezeigt -->
+    <div class="mt-1">
+      <div class="flex space-x-2 w-full h-28 overflow-hidden">
+        <img [src]="selectedImageUrl" alt="" class="w-full h-full border-2 rounded-lg object-cover">
+
+        <div class="h-full items-start">
+          <div class="p-1 w-fit h-fit bg-white hover:bg-gray-50 rounded-lg cursor-pointer" (click)="removeSelectedImage()">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-400 font-bold cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </div>
+        </div>
       </div>
     </div>
   </div>

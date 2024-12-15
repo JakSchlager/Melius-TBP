@@ -24,6 +24,8 @@ export class BackgroundSelectComponent {
   selectedColor: string = '#ff0000';
   isStaticColorEnabled: boolean = false;
   isBackgroundPictureEnabled: boolean =false
+  selectedImageUrl: string | ArrayBuffer | null = null; // Speichert die Bild-URL
+
 
   constructor(@Inject(SettingsPageComponent) public settingsPage: SettingsPageComponent) {}
 
@@ -36,12 +38,8 @@ export class BackgroundSelectComponent {
     this.isAnimating = false; // Animation beendet
   }
 
-  apply() {
-    if (this.isStaticColorEnabled) {
-      this.settingsPage.selectedBackgroundColor = this.selectedColor;
-    }
-  }
 
+  // Static color selection for background
   activateButton(type: string): void {
     if (type === 'staticColor') {
       // Zustand toggeln: Wenn bereits aktiv, ausschalten, ansonsten einschalten
@@ -58,4 +56,29 @@ export class BackgroundSelectComponent {
   }
 
 
+  // File selection for background
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+
+    if (input.files && input.files[0]) {
+      const file: File = input.files[0];
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        this.selectedImageUrl = reader.result; // Speichert die Base64-URL des Bildes
+      };
+
+      reader.readAsDataURL(file); // Liest die Datei als DataURL
+    }
+  }
+
+  removeSelectedImage(): void {
+    this.selectedImageUrl = null;
+  }
+
+  apply() {
+    if (this.isStaticColorEnabled) {
+      this.settingsPage.selectedBackgroundColor = this.selectedColor;
+    }
+  }
 }
