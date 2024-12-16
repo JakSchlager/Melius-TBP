@@ -21,9 +21,9 @@
       <div [ngClass]="dragBox" [draggable]="checkDraggable()" (dragstart)="onDragStart($event, $event.target)" class="colListItem grid animate-in slide-in-from-bottom-32 duration-500">
           <div class="bg-white px-10 py-4 rounded-lg shadow-md">
             <h1 class="text-center font-bold text-2xl py-2">Persönliche Eigenschaften</h1>
-            <div class="w-full mt-2 grid grid-cols-1 space-y-2 hover:cursor-default">
-              <div class="w-max border rounded-lg">
-                <p-multiSelect
+            <div class="w-full relative mt-2 grid grid-cols-1 space-y-2 hover:cursor-default">
+              <div class="max-w-full relative border rounded-lg">
+                <p-multiSelect class="max-w-full"
                   [options]="characteristics"
                   [(ngModel)]="selectedCharacteristic"
                   (onChange)="changeCharacteristics()"

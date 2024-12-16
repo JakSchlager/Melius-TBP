@@ -11,4 +11,5 @@ export interface Profile {
   password: string
   githubUser?: string;
   characteristics?: Selectable[]
+  profileImage?: Blob;
 }

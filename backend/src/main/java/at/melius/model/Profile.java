@@ -3,6 +3,7 @@ package at.melius.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
+import java.sql.Blob;
 import java.util.Set;
 
 @NamedQuery(name = Profile.QUERY_FIND_ALL, query = "SELECT p from Profile p")
@@ -44,8 +45,10 @@ public class Profile {
 
     @OneToMany
     @JoinColumn(name="knownLanguage_id", referencedColumnName = "id")
-
     private Set<KnownLanguage> knownLanguages;
+
+    @Lob
+    private Blob profileImage;
 
     /*@OneToMany(mappedBy = "profile")
     @JsonIgnoreProperties({"profile"})
@@ -85,6 +88,14 @@ public class Profile {
 
     public Set<KnownLanguage> getKnownLanguages() {
         return knownLanguages;
+    }
+
+    public Blob getProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(Blob profileImage) {
+        this.profileImage = profileImage;
     }
 
     public void setKnownLanguages(Set<KnownLanguage> knownLanguages) {
