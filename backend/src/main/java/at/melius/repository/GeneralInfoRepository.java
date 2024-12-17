@@ -24,8 +24,9 @@ public class GeneralInfoRepository {
     }
 
     @Transactional
-    public void updateGeneralInfo(GeneralInfo generalInfo) {
+    public GeneralInfo updateGeneralInfo(GeneralInfo generalInfo) {
         this.entityManager.merge(generalInfo);
+        return generalInfo;
     }
 
     public GeneralInfo getInfoByProfile(Profile profile) {

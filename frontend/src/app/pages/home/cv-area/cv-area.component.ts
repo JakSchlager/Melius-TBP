@@ -15,6 +15,7 @@ import {EducationService} from "../../../services/education.service";
 import {WorkExperience} from "../../../interfaces/work-experience";
 import {WorkExperienceService} from "../../../services/work-experience.service";
 import {HomePageServiceService} from "../../../services/home-page-service.service";
+import {PortfolioService} from "../../../services/portfolio.service";
 
 @Component({
   selector: 'app-cv-area',
@@ -38,6 +39,7 @@ export class CvAreaComponent implements OnInit{
   profileService: ProfileService = inject(ProfileService);
   educationService: EducationService = inject(EducationService);
   workExperienceService: WorkExperienceService = inject(WorkExperienceService);
+  portfolioService: PortfolioService = inject(PortfolioService);
   currGeneralInfo: GeneralInfo | undefined;
   router: Router = inject(Router);
   dragBox !: string;
@@ -45,6 +47,7 @@ export class CvAreaComponent implements OnInit{
   homePageService : HomePageServiceService = inject(HomePageServiceService);
 
   generalInfoForm: FormGroup = new FormGroup({
+    id: new FormControl(0),
     gender: new FormControl(''),
     firstName: new FormControl(''),
     lastName: new FormControl(''),
@@ -63,6 +66,7 @@ export class CvAreaComponent implements OnInit{
         next: (generalInfo: GeneralInfo) => {
           this.currGeneralInfo = generalInfo;
 
+          this.generalInfoForm.controls['id'].setValue(this.currGeneralInfo.id);
           this.generalInfoForm.controls['gender'].setValue(this.currGeneralInfo.gender);
           this.generalInfoForm.controls['firstName'].setValue(this.profileService.loggedInUser!.firstName);
           this.generalInfoForm.controls['lastName'].setValue(this.profileService.loggedInUser!.lastName);
@@ -190,16 +194,24 @@ export class CvAreaComponent implements OnInit{
     profile!.email = this.generalInfoForm!.controls["email"].value!
     profile!.phoneNumber = this.generalInfoForm!.controls["phoneNumber"].value!
 
-    let newGeneralInfo: GeneralInfo = {
-      address: this.generalInfoForm!.controls["address"].value!,
-      city: this.generalInfoForm!.controls["city"].value!,
-      gender: this.generalInfoForm!.controls["gender"].value!,
-      profile: profile!,
-      zipCode: this.generalInfoForm!.controls["zipCode"].value!
-    }
 
-    this.profileService.updateProfile(profile!).subscribe();
-    this.generalInfoService.updateGeneralInfo(newGeneralInfo).subscribe();
+    this.profileService.updateProfile(profile!).subscribe(p => {
+      let newGeneralInfo: GeneralInfo = {
+        id: this.generalInfoForm!.controls["id"].value!,
+        address: this.generalInfoForm!.controls["address"].value!,
+        city: this.generalInfoForm!.controls["city"].value!,
+        gender: this.generalInfoForm!.controls["gender"].value!,
+        profile: p,
+        zipCode: this.generalInfoForm!.controls["zipCode"].value!
+      }
+
+      this.generalInfoService.updateGeneralInfo(newGeneralInfo).subscribe(g => {
+        this.portfolioService.currPortfolio!.generalInfo = newGeneralInfo;
+        this.portfolioService.currPortfolio!.profile = profile!;
+        this.portfolioService.updatePortfolio(this.portfolioService.currPortfolio!).subscribe();
+      });
+    });
+
 
     setTimeout(() => {
       this.router.navigateByUrl("/", {skipLocationChange: true}).then(() => {
@@ -218,7 +230,10 @@ export class CvAreaComponent implements OnInit{
         profile: this.profileService.loggedInUser!
       }
 
-      this.educationService.updateEducation(education).subscribe();
+      this.educationService.updateEducation(education).subscribe(e => {
+          this.portfolioService.currPortfolio!.educations.push(e);
+          this.portfolioService.updatePortfolio(this.portfolioService.currPortfolio!).subscribe();
+      });
 
     setTimeout(() => {
       this.router.navigateByUrl("/", {skipLocationChange: true}).then(() => {
@@ -238,7 +253,11 @@ export class CvAreaComponent implements OnInit{
       profile: this.profileService.loggedInUser!
     }
 
-    this.workExperienceService.updateWorkExperience(workExperience).subscribe();
+
+    this.workExperienceService.updateWorkExperience(workExperience).subscribe(w => {
+      this.portfolioService.currPortfolio!.workExperiences.push(w);
+      this.portfolioService.updatePortfolio(this.portfolioService.currPortfolio!).subscribe();
+    });
 
     setTimeout(() => {
       this.router.navigateByUrl("/", {skipLocationChange: true}).then(() => {

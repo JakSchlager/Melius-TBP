@@ -25,6 +25,7 @@ import {Router} from "@angular/router";
 import {ProgrammingKnowledge} from "../../../interfaces/ProgrammingKnowledge";
 import {SoftwareKnowledgeService} from "../../../services/software-knowledge.service";
 import {SoftwareKnowledge} from "../../../interfaces/SoftwareKnowledge";
+import {PortfolioService} from "../../../services/portfolio.service";
 
 @Component({
   selector: 'app-strengths-area',
@@ -63,6 +64,7 @@ export class StrengthsAreaComponent implements OnInit{
   programmingKnowledgeService: ProgrammingKnowledgeService = inject(ProgrammingKnowledgeService);
   knownLanguageService: KnownLanguageService = inject(KnownLanguageService);
   softwareKnowledgeService: SoftwareKnowledgeService = inject(SoftwareKnowledgeService)
+  portfolioService: PortfolioService = inject(PortfolioService);
 
   ngOnInit(): void {
     this.characteristicService.loadAllCharacteristics().subscribe(c => {
@@ -244,7 +246,10 @@ export class StrengthsAreaComponent implements OnInit{
 
     profile!.characteristics = this.selectedCharacteristic;
 
+    this.portfolioService.currPortfolio!.profile = profile!;
+
     this.profileService.updateProfile(profile!).subscribe();
+    this.portfolioService.updatePortfolio(this.portfolioService.currPortfolio!).subscribe();
   }
 
   selectProgrammingLanguage(selectedProgrammingLanguage: Selectable, formNumber: number) {
@@ -266,7 +271,13 @@ export class StrengthsAreaComponent implements OnInit{
       profile: this.profileService.loggedInUser!
     }
 
-    this.knownLanguageService.updateKnownLanguage(language).subscribe();
+
+    this.knownLanguageService.updateKnownLanguage(language).subscribe(l => {
+      this.portfolioService.currPortfolio!.knownLanguages.push(l);
+      this.portfolioService.updatePortfolio(this.portfolioService.currPortfolio!).subscribe();
+    });
+
+
     setTimeout(() => {
       this.router.navigateByUrl("/", {skipLocationChange: true}).then(() => {
         this.router.navigate(['home/strengths/']);
@@ -286,7 +297,13 @@ export class StrengthsAreaComponent implements OnInit{
       profile: this.profileService.loggedInUser!
     }
     console.log("New SoftwareKnowledge", softwareKnowledge);
-    this.softwareKnowledgeService.updateSoftwareKnowledge(softwareKnowledge).subscribe();
+
+
+    this.softwareKnowledgeService.updateSoftwareKnowledge(softwareKnowledge).subscribe(s => {
+      this.portfolioService.currPortfolio!.softwareKnowledges.push(s);
+      this.portfolioService.updatePortfolio(this.portfolioService.currPortfolio!).subscribe();
+    });
+
 
     setTimeout(() => {
       this.router.navigateByUrl("/", {skipLocationChange: true}).then(() => {
@@ -308,7 +325,13 @@ export class StrengthsAreaComponent implements OnInit{
       rating: this.programmingKnowledgeFormItems.at(formNumber).value.programmingKnowledge
     }
     console.log("New ProgrammingKnowledge", programmingKnowledge);
-    this.programmingKnowledgeService.updateProgrammingLanguage(programmingKnowledge).subscribe();
+
+
+    this.programmingKnowledgeService.updateProgrammingLanguage(programmingKnowledge).subscribe(p => {
+      this.portfolioService.currPortfolio!.programmingKnowledges.push(p);
+      this.portfolioService.updatePortfolio(this.portfolioService.currPortfolio!).subscribe();
+    });
+
 
     setTimeout(() => {
       this.router.navigateByUrl("/", {skipLocationChange: true}).then(() => {

@@ -17,7 +17,7 @@ public class KnownLanguage {
 
     private int rating;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Profile profile;
 
     public int getId() {

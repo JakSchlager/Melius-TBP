@@ -18,9 +18,10 @@ public class CharacteristicRepository {
     EntityManager entityManager;
 
     @Transactional
-    public void addCharacteristic(Characteristic characteristic) {
+    public Characteristic addCharacteristic(Characteristic characteristic) {
         if(this.entityManager.find(Characteristic.class, characteristic.getId()) == null) {
             entityManager.persist(characteristic);
+            return characteristic;
         } else {
             throw new BadRequestException("Characteristic with label " + characteristic.getLabel() + " already exists");
         }

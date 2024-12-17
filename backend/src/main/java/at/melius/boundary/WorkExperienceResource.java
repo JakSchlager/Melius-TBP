@@ -13,8 +13,8 @@ public class WorkExperienceResource {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/update")
-    public void updateWorkExperience(WorkExperience workExperience) {
-        this.workExperienceRepository.updateWorkExperience(workExperience);
+    public WorkExperience updateWorkExperience(WorkExperience workExperience) {
+        return this.workExperienceRepository.updateWorkExperience(workExperience);
     }
     @GET
     @Produces(MediaType.APPLICATION_JSON)

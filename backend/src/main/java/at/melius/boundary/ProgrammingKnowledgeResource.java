@@ -17,8 +17,8 @@ public class ProgrammingKnowledgeResource {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/update")
-    public void updateProgrammingKnowledge(ProgrammingKnowledge programmingKnowledge) {
-        this.programmingKnowledgeRepository.updateProgrammingKnowledge(programmingKnowledge);
+    public ProgrammingKnowledge updateProgrammingKnowledge(ProgrammingKnowledge programmingKnowledge) {
+        return this.programmingKnowledgeRepository.updateProgrammingKnowledge(programmingKnowledge);
     }
 
     @GET

@@ -9,6 +9,7 @@ import {MatIcon} from "@angular/material/icon";
 import {AppComponent} from "../../app.component";
 import {ProfileService} from "../../services/profile.service";
 import {Profile} from "../../interfaces/profile";
+import {PortfolioService} from "../../services/portfolio.service";
 
 @Component({
   selector: 'app-side-bar',
@@ -31,6 +32,7 @@ import {Profile} from "../../interfaces/profile";
 })
 export class SideBarComponent implements OnInit {
   profileService: ProfileService = inject(ProfileService);
+  portfolioService: PortfolioService = inject(PortfolioService);
   router: Router = inject(Router);
   hamburgerIconClicked : boolean = false;
   isAnimating: boolean = false;
@@ -61,6 +63,11 @@ export class SideBarComponent implements OnInit {
           next: (user: Profile) => {
             this.profileService.loggedInUser = user;
             console.log(user)
+
+            this.portfolioService.getPortfolioById(user.id).subscribe(portfolio => {
+              this.portfolioService.currPortfolio = portfolio;
+              console.log(portfolio);
+            })
         }
         });
       } else {

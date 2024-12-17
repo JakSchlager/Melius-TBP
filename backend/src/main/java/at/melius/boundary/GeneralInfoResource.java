@@ -23,8 +23,8 @@ public class GeneralInfoResource {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/update")
-    public void updateGeneralInfo(GeneralInfo generalInfo) {
-        this.generalInfoRepository.updateGeneralInfo(generalInfo);
+    public GeneralInfo updateGeneralInfo(GeneralInfo generalInfo) {
+        return this.generalInfoRepository.updateGeneralInfo(generalInfo);
     }
 
     @GET

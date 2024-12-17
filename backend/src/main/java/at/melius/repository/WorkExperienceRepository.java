@@ -17,12 +17,14 @@ public class WorkExperienceRepository {
     @Inject
     EntityManager entityManager;
     @Transactional
-    public void updateWorkExperience(WorkExperience workExperience) {
+    public WorkExperience updateWorkExperience(WorkExperience workExperience) {
         if(this.entityManager.find(WorkExperience.class, workExperience.getId()) != null) {
             this.entityManager.merge(workExperience);
         } else {
             entityManager.persist(workExperience);
         }
+
+        return workExperience;
     }
     @Transactional
     public void deleteWorkExperience(int id) {

@@ -17,12 +17,14 @@ public class KnownLanguageRepository {
     EntityManager entityManager;
 
     @Transactional
-    public void updateKnownLanguage(KnownLanguage language) {
+    public KnownLanguage updateKnownLanguage(KnownLanguage language) {
         if(this.entityManager.find(KnownLanguage.class, language.getId()) != null) {
             this.entityManager.merge(language);
         } else {
             this.entityManager.persist(language);
         }
+
+        return language;
     }
 
     public List<KnownLanguage> getKnownLanguagesByProfileId(int profileId) {

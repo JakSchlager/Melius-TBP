@@ -17,8 +17,8 @@ public class KnownLanguageResource {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/update")
-    public void updateKnownLanguage(KnownLanguage language) {
-        knownLanguageRepository.updateKnownLanguage(language);
+    public KnownLanguage updateKnownLanguage(KnownLanguage language) {
+        return knownLanguageRepository.updateKnownLanguage(language);
     }
 
     @GET

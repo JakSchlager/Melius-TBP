@@ -26,8 +26,6 @@ public class ProfileResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/register")
     public Profile registerProfile(Profile newProfile) {
-        System.out.println(newProfile);
-
         return this.profileRepository.addProfile(newProfile);
     }
 
@@ -54,8 +52,8 @@ public class ProfileResource {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/update")
-    public void updateProfile(Profile profile) {
-        this.profileRepository.updateProfile(profile);
+    public Profile updateProfile(Profile profile) {
+        return this.profileRepository.updateProfile(profile);
     }
 
     @GET

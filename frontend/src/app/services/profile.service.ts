@@ -20,12 +20,12 @@ export class ProfileService {
     let user= this.httpClient.post<Profile>(this.url + "register", userData);
 
     if(user !== null) {
-      fetch(this.defaultProfileImg)
+      /*fetch(this.defaultProfileImg)
         .then(response => response.blob())
         .then(blob => {
           let file = new File([blob], 'no-user-icon.svg', {type: blob.type});
           this.uploadProfileImg(file)
-        })
+        })*/
 
       return user;
     } else {

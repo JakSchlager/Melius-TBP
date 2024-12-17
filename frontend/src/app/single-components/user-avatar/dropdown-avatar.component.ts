@@ -24,7 +24,7 @@ export class DropdownAvatarComponent implements OnInit {
   profileService: ProfileService = inject(ProfileService);
 
   ngOnInit() {
-    this.url = URL.createObjectURL(this.profileService.loggedInUser!.profileImage!)
+    //this.url = URL.createObjectURL(this.profileService.loggedInUser!.profileImage!)
   }
 
   onSelectFile(event: any) {

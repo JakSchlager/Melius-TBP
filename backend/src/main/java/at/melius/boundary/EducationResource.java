@@ -16,9 +16,10 @@ public class EducationResource {
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     @Path("/update")
-    public void updateEducation(Education education) {
-        this.educationRepository.updateEducation(education);
+    public Education updateEducation(Education education) {
+        return this.educationRepository.updateEducation(education);
     }
 
     @GET

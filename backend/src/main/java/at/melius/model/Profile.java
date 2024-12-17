@@ -3,6 +3,7 @@ package at.melius.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
+import javax.sound.sampled.Port;
 import java.sql.Blob;
 import java.util.Set;
 
@@ -43,9 +44,17 @@ public class Profile {
     @JsonIgnoreProperties({"profiles"})
     private Set<Characteristic> characteristics;
 
-    @OneToMany
-    @JoinColumn(name="knownLanguage_id", referencedColumnName = "id")
+    @OneToMany(mappedBy = "profile")
+    @JsonIgnoreProperties({"profile"})
     private Set<KnownLanguage> knownLanguages;
+
+    @OneToOne(mappedBy = "profile")
+    @JsonIgnoreProperties({"profile", "generalInfo"})
+    private Portfolio portfolio;
+
+    @OneToOne(mappedBy = "profile")
+    @JsonIgnoreProperties(value = {"portfolio"}, allowSetters = true)
+    private GeneralInfo generalInfo;
 
     @Lob
     private Blob profileImage;
@@ -92,6 +101,22 @@ public class Profile {
 
     public Blob getProfileImage() {
         return profileImage;
+    }
+
+    public Portfolio getPortfolio() {
+        return portfolio;
+    }
+
+    public void setPortfolio(Portfolio portfolio) {
+        this.portfolio = portfolio;
+    }
+
+    public GeneralInfo getGeneralInfo() {
+        return generalInfo;
+    }
+
+    public void setGeneralInfo(GeneralInfo generalInfo) {
+        this.generalInfo = generalInfo;
     }
 
     public void setProfileImage(Blob profileImage) {

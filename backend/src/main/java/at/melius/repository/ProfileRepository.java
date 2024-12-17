@@ -34,8 +34,9 @@ public class ProfileRepository {
     }
 
     @Transactional
-    public void updateProfile(Profile profile) {
+    public Profile updateProfile(Profile profile) {
         this.entityManager.merge(profile);
+        return profile;
     }
 
     public Profile getProfileByEmail(String email) {

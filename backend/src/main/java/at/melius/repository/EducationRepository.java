@@ -18,14 +18,13 @@ public class EducationRepository {
     EntityManager entityManager;
 
     @Transactional
-    public void updateEducation(Education education) {
+    public Education updateEducation(Education education) {
         if(this.entityManager.find(Education.class, education.getId()) != null) {
             this.entityManager.merge(education);
         } else {
             this.entityManager.persist(education);
         }
-
-
+        return education;
     }
 
     @Transactional
