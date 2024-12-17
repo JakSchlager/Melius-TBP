@@ -10,11 +10,6 @@ public class GeneralInfo {
     @GeneratedValue
     private int id;
 
-    @OneToOne
-    @JoinColumn(name = "profile_id", referencedColumnName = "id")
-    @JsonIgnoreProperties(value = {"generalInfo", "portfolio"}, allowSetters = true)
-    private Profile profile;
-
     @OneToOne(mappedBy = "generalInfo")
     @JsonIgnoreProperties({"generalInfo", "profile"})
     private Portfolio portfolio;
@@ -33,10 +28,6 @@ public class GeneralInfo {
 
     public int getId() {
         return id;
-    }
-
-    public Profile getProfile() {
-        return profile;
     }
 
     public String getGender() {
@@ -69,10 +60,6 @@ public class GeneralInfo {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public void setProfile(Profile profile) {
-        this.profile = profile;
     }
 
     public Portfolio getPortfolio() {

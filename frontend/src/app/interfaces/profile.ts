@@ -1,6 +1,7 @@
 import {Selectable} from "./Selectable";
 import {ProgrammingKnowledge} from "./ProgrammingKnowledge";
 import {KnownLanguage} from "./KnownLanguage";
+import {Portfolio} from "./Portfolio";
 
 export interface Profile {
   id: number
@@ -9,7 +10,7 @@ export interface Profile {
   email: string
   phoneNumber: string
   password: string
-  githubUser?: string;
-  characteristics?: Selectable[]
-  profileImage?: Blob;
+  githubUser?: string
+  profileImage?: Blob
+  portfolio?: Portfolio
 }

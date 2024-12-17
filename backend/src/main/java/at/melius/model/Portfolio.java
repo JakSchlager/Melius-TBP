@@ -12,32 +12,41 @@ public class Portfolio {
     @Id
     @OneToOne
     @JoinColumn(name="profile_id", referencedColumnName = "id")
-    @JsonIgnoreProperties(value = {"portfolio","generalInfo"}, allowSetters = true)
+    @JsonIgnoreProperties(value = {"portfolio"}, allowSetters = true)
     private Profile profile;
 
     @OneToOne
     @JoinColumn(name="generalInfo_id", referencedColumnName = "id")
-    @JsonIgnoreProperties(value = {"profile", "portfolio"}, allowSetters = true)
+    @JsonIgnoreProperties(value = {"portfolio"}, allowSetters = true)
     private GeneralInfo generalInfo;
 
-    @OneToMany
-    @JsonIgnoreProperties({"profile"})
+    @OneToMany(mappedBy = "portfolio")
+    @JsonIgnoreProperties({"portfolio"})
     private Set<Education> educations;
 
-    @OneToMany
-    @JsonIgnoreProperties({"profile"})
+    @OneToMany(mappedBy = "portfolio")
+    @JsonIgnoreProperties({"portfolio"})
     private Set<WorkExperience> workExperiences;
 
-    @OneToMany
-    @JsonIgnoreProperties({"profile"})
+    @ManyToMany
+    @JoinTable(
+            name="portfolio_characteristic",
+            joinColumns = @JoinColumn(name="portfolio_id"),
+            inverseJoinColumns = @JoinColumn(name="characteristic_id")
+    )
+    @JsonIgnoreProperties({"portfolio"})
+    private Set<Characteristic> characteristics;
+
+    @OneToMany(mappedBy = "portfolio")
+    @JsonIgnoreProperties({"portfolio"})
     private Set<KnownLanguage> knownLanguages;
 
-    @OneToMany
-    @JsonIgnoreProperties({"profile"})
+    @OneToMany(mappedBy = "portfolio")
+    @JsonIgnoreProperties({"portfolio"})
     private Set<ProgrammingKnowledge> programmingKnowledges;
 
-    @OneToMany
-    @JsonIgnoreProperties({"profile"})
+    @OneToMany(mappedBy = "portfolio")
+    @JsonIgnoreProperties({"portfolio"})
     private Set<SoftwareKnowledge> softwareKnowledges;
 
     public Profile getProfile() {

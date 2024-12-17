@@ -21,13 +21,6 @@ public class SoftwareKnowledgeResource {
         return this.softwareKnowledgeRepository.updateSoftwareKnowledge(softwareKnowledge);
     }
 
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/get/{id}")
-    public List<SoftwareKnowledge> getSoftwareKnowledgeByProfileId(@PathParam("id") int id) {
-        return this.softwareKnowledgeRepository.getSoftwareKnowledgeByProfileId(id);
-    }
-
     @DELETE
     @Path("/delete/{id}")
     public void deleteSoftwareKnowledge(@PathParam("id") int id) {

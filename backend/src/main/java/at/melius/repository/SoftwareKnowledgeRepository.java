@@ -29,13 +29,6 @@ public class SoftwareKnowledgeRepository {
         return softwareKnowledge;
     }
 
-    public List<SoftwareKnowledge> getSoftwareKnowledgeByProfileId(int id) {
-        TypedQuery<SoftwareKnowledge> query = this.entityManager.createNamedQuery(SoftwareKnowledge.QUERY_FIND_BY_PROFILE_ID, SoftwareKnowledge.class);
-
-        query.setParameter("profile", this.entityManager.find(Profile.class, id));
-        return query.getResultList();
-    }
-
     @Transactional
     public void deleteSoftwareKnowledge(int id) {
         this.entityManager.remove(this.entityManager.find(SoftwareKnowledge.class, id));

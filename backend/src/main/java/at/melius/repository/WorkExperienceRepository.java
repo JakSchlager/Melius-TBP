@@ -35,9 +35,4 @@ public class WorkExperienceRepository {
             throw new BadRequestException();
         }
     }
-    public List<WorkExperience> getWorkExperiencesByProfile(int profileId) {
-        TypedQuery<WorkExperience> query = entityManager.createNamedQuery(WorkExperience.GET_BY_PROFILE_ID, WorkExperience.class);
-        query.setParameter("profile", this.entityManager.find(Profile.class, profileId));
-        return query.getResultList();
-    }
 }

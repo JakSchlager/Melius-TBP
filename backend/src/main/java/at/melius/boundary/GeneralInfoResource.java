@@ -26,12 +26,4 @@ public class GeneralInfoResource {
     public GeneralInfo updateGeneralInfo(GeneralInfo generalInfo) {
         return this.generalInfoRepository.updateGeneralInfo(generalInfo);
     }
-
-    @GET
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/get/{id}")
-    public GeneralInfo getGeneralInfoByProfile(@PathParam("id")int id) {
-        return this.generalInfoRepository.getInfoById(id);
-    }
 }

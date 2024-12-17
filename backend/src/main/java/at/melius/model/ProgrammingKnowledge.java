@@ -3,12 +3,8 @@ package at.melius.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
-@NamedQuery(name = ProgrammingKnowledge.QUERY_FIND_BY_PROFILE_ID, query = "SELECT p FROM ProgrammingKnowledge p WHERE profile = :profile")
-
 @Entity
 public class ProgrammingKnowledge {
-
-    public static final String QUERY_FIND_BY_PROFILE_ID = "ProgrammingKnowledgeQuery.findByProfileId";
 
     @Id
     @GeneratedValue
@@ -23,8 +19,8 @@ public class ProgrammingKnowledge {
         return id;
     }
 
-    @ManyToOne
-    private Profile profile;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Portfolio portfolio;
 
     public int getRating() {
         return rating;
@@ -42,11 +38,11 @@ public class ProgrammingKnowledge {
         this.programming = programming;
     }
 
-    public Profile getProfile() {
-        return profile;
+    public Portfolio getPortfolio() {
+        return portfolio;
     }
 
-    public void setProfile(Profile profile) {
-        this.profile = profile;
+    public void setPortfolio(Portfolio portfolio) {
+        this.portfolio = portfolio;
     }
 }

@@ -2,12 +2,8 @@ package at.melius.model;
 
 import jakarta.persistence.*;
 
-@NamedQuery(name=SoftwareKnowledge.QUERY_FIND_BY_PROFILE_ID, query = "SELECT s FROM SoftwareKnowledge s WHERE profile = :profile")
-
 @Entity
 public class SoftwareKnowledge {
-
-    public static final String QUERY_FIND_BY_PROFILE_ID = "SoftwareKnowledge.findByProfileId";
 
     @Id
     @GeneratedValue
@@ -22,8 +18,8 @@ public class SoftwareKnowledge {
         return id;
     }
 
-    @ManyToOne
-    private Profile profile;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Portfolio portfolio;
 
     public int getRating() {
         return rating;
@@ -41,11 +37,11 @@ public class SoftwareKnowledge {
         this.software = software;
     }
 
-    public Profile getProfile() {
-        return profile;
+    public Portfolio getPortfolio() {
+        return portfolio;
     }
 
-    public void setProfile(Profile profile) {
-        this.profile = profile;
+    public void setPortfolio(Portfolio portfolio) {
+        this.portfolio = portfolio;
     }
 }

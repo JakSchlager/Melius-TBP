@@ -65,11 +65,11 @@ export class RegisterFormComponent {
           city: "",
           gender: "",
           zipCode: "",
-          profile: p
         };
 
         this.generalInfoService.addGeneralInfo(generalInfo).subscribe(g => {
           let portfolio: Portfolio = {
+            characteristics: [],
             educations: [],
             knownLanguages: [],
             programmingKnowledges: [],

@@ -37,13 +37,6 @@ public class ProgrammingKnowledgeRepository {
         return programmingKnowledge;
     }
 
-    public List<ProgrammingKnowledge> getProgrammingKnowledgeByProfileId(int id) {
-        TypedQuery<ProgrammingKnowledge> query = this.entityManager.createNamedQuery(ProgrammingKnowledge.QUERY_FIND_BY_PROFILE_ID, ProgrammingKnowledge.class);
-
-        query.setParameter("profile", this.entityManager.find(Profile.class, id));
-        return query.getResultList();
-    }
-
     @Transactional
     public void deleteProgrammingKnowledge(int id) {
         this.entityManager.remove(this.entityManager.find(ProgrammingKnowledge.class, id));

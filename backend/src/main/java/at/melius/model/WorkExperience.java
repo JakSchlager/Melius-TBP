@@ -2,15 +2,13 @@ package at.melius.model;
 import jakarta.persistence.*;
 import org.hibernate.jdbc.Work;
 import java.util.Date;
-@NamedQuery(name= WorkExperience.GET_BY_PROFILE_ID, query="SELECT w FROM WorkExperience w WHERE profile = :profile")
 @Entity
 public class WorkExperience {
-    public static final String GET_BY_PROFILE_ID = "WorkExperience.findByProfile";
     @Id
     @GeneratedValue
     private int id;
-    @ManyToOne
-    private Profile profile;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Portfolio portfolio;
     @Column(name="company")
     private String company;
     @Column(name="from_date")
@@ -46,10 +44,12 @@ public class WorkExperience {
     public void setInformation(String information) {
         this.information = information;
     }
-    public Profile getProfile() {
-        return profile;
+
+    public Portfolio getPortfolio() {
+        return portfolio;
     }
-    public void setProfile(Profile profile) {
-        this.profile = profile;
+
+    public void setPortfolio(Portfolio portfolio) {
+        this.portfolio = portfolio;
     }
 }

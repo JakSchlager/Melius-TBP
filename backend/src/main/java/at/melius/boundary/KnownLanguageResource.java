@@ -21,13 +21,6 @@ public class KnownLanguageResource {
         return knownLanguageRepository.updateKnownLanguage(language);
     }
 
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/get/{id}")
-    public List<KnownLanguage> getKnownLanguagesByProfileId(@PathParam("id") int id) {
-        return this.knownLanguageRepository.getKnownLanguagesByProfileId(id);
-    }
-
     @DELETE
     @Path("/delete/{id}")
     public void deleteKnownLanguageById(@PathParam("id") int id) {

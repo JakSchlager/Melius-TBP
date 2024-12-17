@@ -16,10 +16,6 @@ export class EducationService {
     return this.httpClient.put<Education>(this.url + "update", education);
   }
 
-  getEducationsByProfileId(profileId: number) {
-    return this.httpClient.get<Education[]>(this.url + "get/" + profileId);
-  }
-
   deleteEducation(educationId: number) {
     return this.httpClient.delete<Education>(this.url + "delete/" + educationId);
   }

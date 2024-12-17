@@ -17,10 +17,6 @@ export class SoftwareKnowledgeService {
     return this.httpClient.put<SoftwareKnowledge>(this.url + "/update", softwareKnowledge);
   }
 
-  getSoftwareKnowledgesByProfileId(profileId: number) {
-    return this.httpClient.get<SoftwareKnowledge[]>(`${this.url}/get/${profileId}`);
-  }
-
   deleteSoftwareKnowledge(id: number) {
     return this.httpClient.delete(`${this.url}/delete/${id}`);
   }

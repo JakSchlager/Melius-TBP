@@ -73,25 +73,22 @@ export class StrengthsAreaComponent implements OnInit{
     });
 
     setTimeout(() => {
-      this.selectedCharacteristic = this.profileService.loggedInUser!.characteristics || [];
+      this.selectedCharacteristic = this.portfolioService.currPortfolio!.characteristics || [];
 
-      this.knownLanguageService.getKnownLanguagesByProfileId(this.profileService.loggedInUser!.id).subscribe(k => {
-        for(let currKnownLanguage of k) {
-          this.addKnownLanguage(currKnownLanguage)
-        }
-      })
+      let knownLanguages = this.portfolioService.currPortfolio!.knownLanguages;
+      for(let currKnownLanguage of knownLanguages) {
+        this.addKnownLanguage(currKnownLanguage)
+      }
 
-      this.programmingKnowledgeService.getProgrammingKnowledgeByProfileId(this.profileService.loggedInUser!.id).subscribe(p => {
-        for(let currProgrammingKnowledge of p) {
-          this.addProgrammingLanguage(currProgrammingKnowledge)
-        }
-      })
+      let programmingKnowledges = this.portfolioService.currPortfolio!.programmingKnowledges
+      for(let currProgrammingKnowledge of programmingKnowledges) {
+        this.addProgrammingLanguage(currProgrammingKnowledge)
+      }
 
-      this.softwareKnowledgeService.getSoftwareKnowledgesByProfileId(this.profileService.loggedInUser!.id).subscribe(s => {
-        for(let currSoftwareKnowledge of s) {
-          this.addSoftware(currSoftwareKnowledge)
-        }
-      })
+      let softwareKnowledges = this.portfolioService.currPortfolio!.softwareKnowledges
+      for(let currSoftwareKnowledge of softwareKnowledges) {
+        this.addSoftware(currSoftwareKnowledge)
+      }
 
     },100)
   }
@@ -242,14 +239,11 @@ export class StrengthsAreaComponent implements OnInit{
 
   changeCharacteristics() {
     console.log("Characteristics changed",this.selectedCharacteristic)
-    let profile = this.profileService.loggedInUser;
+    let portfolio = this.portfolioService.currPortfolio;
 
-    profile!.characteristics = this.selectedCharacteristic;
+    portfolio!.characteristics = this.selectedCharacteristic;
 
-    this.portfolioService.currPortfolio!.profile = profile!;
-
-    this.profileService.updateProfile(profile!).subscribe();
-    this.portfolioService.updatePortfolio(this.portfolioService.currPortfolio!).subscribe();
+    this.portfolioService.updatePortfolio(portfolio!).subscribe();
   }
 
   selectProgrammingLanguage(selectedProgrammingLanguage: Selectable, formNumber: number) {
@@ -268,21 +262,12 @@ export class StrengthsAreaComponent implements OnInit{
       id: this.knownLanguagesFormItems.at(formNumber).value.id,
       language: this.knownLanguagesFormItems.at(formNumber).value.languageName,
       rating: this.knownLanguagesFormItems.at(formNumber).value.languageKnowledge,
-      profile: this.profileService.loggedInUser!
+      portfolio: this.portfolioService.currPortfolio!
     }
 
+    this.knownLanguageService.updateKnownLanguage(language).subscribe();
 
-    this.knownLanguageService.updateKnownLanguage(language).subscribe(l => {
-      this.portfolioService.currPortfolio!.knownLanguages.push(l);
-      this.portfolioService.updatePortfolio(this.portfolioService.currPortfolio!).subscribe();
-    });
-
-
-    setTimeout(() => {
-      this.router.navigateByUrl("/", {skipLocationChange: true}).then(() => {
-        this.router.navigate(['home/strengths/']);
-      });
-    }, 100);
+    this.reloadPage()
   }
 
   updateSoftware(formNumber: number) {
@@ -294,23 +279,14 @@ export class StrengthsAreaComponent implements OnInit{
         value: this.softwareKnowledgeFormItems.at(formNumber).value.value
       },
       rating: this.softwareKnowledgeFormItems.at(formNumber).value.softwareAppKnowledge,
-      profile: this.profileService.loggedInUser!
+      portfolio: this.portfolioService.currPortfolio!
     }
     console.log("New SoftwareKnowledge", softwareKnowledge);
 
 
-    this.softwareKnowledgeService.updateSoftwareKnowledge(softwareKnowledge).subscribe(s => {
-      this.portfolioService.currPortfolio!.softwareKnowledges.push(s);
-      this.portfolioService.updatePortfolio(this.portfolioService.currPortfolio!).subscribe();
-    });
+    this.softwareKnowledgeService.updateSoftwareKnowledge(softwareKnowledge).subscribe();
 
-
-    setTimeout(() => {
-      this.router.navigateByUrl("/", {skipLocationChange: true}).then(() => {
-        this.router.navigate(['home/strengths/']);
-      });
-    }, 100);
-
+    this.reloadPage()
   }
 
   updateProgrammingKnowledge(formNumber: number) {
@@ -321,23 +297,15 @@ export class StrengthsAreaComponent implements OnInit{
         label: this.programmingKnowledgeFormItems.at(formNumber).value.label,
         value: this.programmingKnowledgeFormItems.at(formNumber).value.value
       },
-      profile: this.profileService.loggedInUser!,
+      portfolio: this.portfolioService.currPortfolio!,
       rating: this.programmingKnowledgeFormItems.at(formNumber).value.programmingKnowledge
     }
     console.log("New ProgrammingKnowledge", programmingKnowledge);
 
 
-    this.programmingKnowledgeService.updateProgrammingLanguage(programmingKnowledge).subscribe(p => {
-      this.portfolioService.currPortfolio!.programmingKnowledges.push(p);
-      this.portfolioService.updatePortfolio(this.portfolioService.currPortfolio!).subscribe();
-    });
+    this.programmingKnowledgeService.updateProgrammingLanguage(programmingKnowledge).subscribe();
 
-
-    setTimeout(() => {
-      this.router.navigateByUrl("/", {skipLocationChange: true}).then(() => {
-        this.router.navigate(['home/strengths/']);
-      });
-    }, 100);
+    this.reloadPage()
   }
 
   checkDraggable(): boolean {
@@ -369,6 +337,12 @@ export class StrengthsAreaComponent implements OnInit{
     })
 
     console.log("Selected Software", this.softwareKnowledgeFormItems.at(formNumber))
+  }
+
+  reloadPage() {
+    setTimeout(() => {
+      window.location.reload()
+    }, 100);
   }
 }
 

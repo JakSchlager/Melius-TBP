@@ -23,10 +23,6 @@ export class GeneralInfoService {
     }
   }
 
-  loadGeneralInfo(profile: Profile): Observable<GeneralInfo> {
-    return this.httpClient.get<GeneralInfo>(this.url + "get/" + profile.id);
-  }
-
   updateGeneralInfo(newGeneralInfo: GeneralInfo) {
     return this.httpClient.put<GeneralInfo>(this.url + "update", newGeneralInfo);
   }

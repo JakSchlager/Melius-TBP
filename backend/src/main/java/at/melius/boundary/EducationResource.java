@@ -22,13 +22,6 @@ public class EducationResource {
         return this.educationRepository.updateEducation(education);
     }
 
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("get/{id}")
-    public List<Education> getEducationsByProfile(@PathParam("id")int profileId) {
-        return educationRepository.getEducationsByProfile(profileId);
-    }
-
     @DELETE
     @Path("/delete/{id}")
     public void deleteEducation(@PathParam("id")int id) {

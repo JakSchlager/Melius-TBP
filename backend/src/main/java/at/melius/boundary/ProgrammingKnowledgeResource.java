@@ -21,13 +21,6 @@ public class ProgrammingKnowledgeResource {
         return this.programmingKnowledgeRepository.updateProgrammingKnowledge(programmingKnowledge);
     }
 
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/get/{id}")
-    public List<ProgrammingKnowledge> getProgrammingKnowledgeByProfileId(@PathParam("id") int id) {
-        return this.programmingKnowledgeRepository.getProgrammingKnowledgeByProfileId(id);
-    }
-
     @DELETE
     @Path("/delete/{id}")
     public void deleteProgrammingKnowledge(@PathParam("id") int id) {

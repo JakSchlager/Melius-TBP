@@ -62,43 +62,33 @@ export class CvAreaComponent implements OnInit{
 
   ngOnInit() {
     setTimeout(() => {
-      this.generalInfoService.loadGeneralInfo(this.profileService.loggedInUser!).subscribe({
-        next: (generalInfo: GeneralInfo) => {
-          this.currGeneralInfo = generalInfo;
+      let generalInfo: GeneralInfo = this.portfolioService.currPortfolio!.generalInfo;
 
-          this.generalInfoForm.controls['id'].setValue(this.currGeneralInfo.id);
-          this.generalInfoForm.controls['gender'].setValue(this.currGeneralInfo.gender);
-          this.generalInfoForm.controls['firstName'].setValue(this.profileService.loggedInUser!.firstName);
-          this.generalInfoForm.controls['lastName'].setValue(this.profileService.loggedInUser!.lastName);
-          this.generalInfoForm.controls['email'].setValue(this.profileService.loggedInUser!.email);
-          this.generalInfoForm.controls['phoneNumber'].setValue(this.profileService.loggedInUser!.phoneNumber);
-          this.generalInfoForm.controls['zipCode'].setValue(this.currGeneralInfo.zipCode);
-          this.generalInfoForm.controls['city'].setValue(this.currGeneralInfo.city);
-          this.generalInfoForm.controls['address'].setValue(this.currGeneralInfo.address);
+      this.generalInfoForm.controls['id'].setValue(generalInfo!.id);
+      this.generalInfoForm.controls['gender'].setValue(generalInfo!.gender);
+      this.generalInfoForm.controls['firstName'].setValue(this.profileService.loggedInUser!.firstName);
+      this.generalInfoForm.controls['lastName'].setValue(this.profileService.loggedInUser!.lastName);
+      this.generalInfoForm.controls['email'].setValue(this.profileService.loggedInUser!.email);
+      this.generalInfoForm.controls['phoneNumber'].setValue(this.profileService.loggedInUser!.phoneNumber);
+      this.generalInfoForm.controls['zipCode'].setValue(generalInfo!.zipCode);
+      this.generalInfoForm.controls['city'].setValue(generalInfo!.city);
+      this.generalInfoForm.controls['address'].setValue(generalInfo!.address);
 
-        }
-      })
+      let educations: Education[] = this.portfolioService.currPortfolio!.educations.slice().sort((a: Education, b: Education) => {
+        return new Date(a.fromDate).getTime() - new Date(b.fromDate).getTime();
+      });
+      for (let currEducation of educations) {
+        this.addEducationInfo(currEducation);
+      }
 
-      this.educationService.getEducationsByProfileId(this.profileService.loggedInUser!.id).subscribe(v => {
-        v = <Education[]> v.slice().sort((a: Education, b: Education) => {
-          return new Date(a.fromDate).getTime() - new Date(b.fromDate).getTime();
-        });
-        for(let currEducation of v) {
-          this.addEducationInfo(currEducation);
-        }
-      })
+      let workExperiences = this.portfolioService.currPortfolio!.workExperiences.slice().sort((a: WorkExperience, b: WorkExperience) => {
+        return new Date(a.fromDate).getTime() - new Date(b.fromDate).getTime();
+      });
+      for (let currWorkExperience of workExperiences) {
+        this.addJobExperiencesInfo(currWorkExperience);
+      }
 
-      this.workExperienceService.getWorkExperiencesByProfileId(this.profileService.loggedInUser!.id).subscribe(v => {
-        v = <WorkExperience[]> v.slice().sort((a: WorkExperience, b: WorkExperience) => {
-          return new Date(a.fromDate).getTime() - new Date(b.fromDate).getTime();
-        });
-        for(let currWorkExperience of v) {
-          this.addJobExperiencesInfo(currWorkExperience);
-        }
-      })
-
-
-    }, 100);
+    }, 200)
 
   }
 
@@ -194,30 +184,19 @@ export class CvAreaComponent implements OnInit{
     profile!.email = this.generalInfoForm!.controls["email"].value!
     profile!.phoneNumber = this.generalInfoForm!.controls["phoneNumber"].value!
 
-
     this.profileService.updateProfile(profile!).subscribe(p => {
       let newGeneralInfo: GeneralInfo = {
         id: this.generalInfoForm!.controls["id"].value!,
         address: this.generalInfoForm!.controls["address"].value!,
         city: this.generalInfoForm!.controls["city"].value!,
         gender: this.generalInfoForm!.controls["gender"].value!,
-        profile: p,
         zipCode: this.generalInfoForm!.controls["zipCode"].value!
       }
 
-      this.generalInfoService.updateGeneralInfo(newGeneralInfo).subscribe(g => {
-        this.portfolioService.currPortfolio!.generalInfo = newGeneralInfo;
-        this.portfolioService.currPortfolio!.profile = profile!;
-        this.portfolioService.updatePortfolio(this.portfolioService.currPortfolio!).subscribe();
-      });
+      this.generalInfoService.updateGeneralInfo(newGeneralInfo).subscribe();
     });
 
-
-    setTimeout(() => {
-      this.router.navigateByUrl("/", {skipLocationChange: true}).then(() => {
-        this.router.navigate(['/home/cv']);
-      });
-    }, 100);
+    this.reloadPage()
   }
 
   updateEducation(formNumber: number) {
@@ -227,19 +206,12 @@ export class CvAreaComponent implements OnInit{
         id: this.educationFormItems.at(formNumber).value.id,
         name: this.educationFormItems.at(formNumber).value.educationalInst,
         toDate: new Date(this.educationFormItems.at(formNumber).value.eIdateTo),
-        profile: this.profileService.loggedInUser!
+        portfolio: this.portfolioService.currPortfolio!
       }
 
-      this.educationService.updateEducation(education).subscribe(e => {
-          this.portfolioService.currPortfolio!.educations.push(e);
-          this.portfolioService.updatePortfolio(this.portfolioService.currPortfolio!).subscribe();
-      });
+      this.educationService.updateEducation(education).subscribe();
 
-    setTimeout(() => {
-      this.router.navigateByUrl("/", {skipLocationChange: true}).then(() => {
-        this.router.navigate(['/home/cv']);
-      });
-    }, 100);
+      this.reloadPage()
 
   }
 
@@ -250,22 +222,11 @@ export class CvAreaComponent implements OnInit{
       toDate: new Date(this.jobExperiencesFormItems.at(formNumber).value.workTo),
       company: this.jobExperiencesFormItems.at(formNumber).value.companyName,
       information: this.jobExperiencesFormItems.at(formNumber).value.moreInfo,
-      profile: this.profileService.loggedInUser!
+      portfolio: this.portfolioService.currPortfolio!
     }
 
-
-    this.workExperienceService.updateWorkExperience(workExperience).subscribe(w => {
-      this.portfolioService.currPortfolio!.workExperiences.push(w);
-      this.portfolioService.updatePortfolio(this.portfolioService.currPortfolio!).subscribe();
-    });
-
-    setTimeout(() => {
-      this.router.navigateByUrl("/", {skipLocationChange: true}).then(() => {
-        this.router.navigate(['/home/cv']);
-      });
-
-
-    }, 100);
+    this.workExperienceService.updateWorkExperience(workExperience).subscribe();
+    this.reloadPage()
   }
 
 
@@ -328,5 +289,11 @@ export class CvAreaComponent implements OnInit{
 
       return false;
     }
+  }
+
+  reloadPage() {
+    setTimeout(() => {
+      window.location.reload()
+    }, 100);
   }
 }
