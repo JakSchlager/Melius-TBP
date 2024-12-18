@@ -8,6 +8,7 @@ import jakarta.inject.Inject;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
+import org.jboss.resteasy.annotations.Body;
 import org.jboss.resteasy.annotations.providers.multipart.MultipartForm;
 
 import java.io.File;
@@ -42,9 +43,9 @@ public class ProfileResource {
     }
 
     @PATCH
-    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    @Consumes(MediaType.APPLICATION_JSON)
     @Path("/img/{id}")
-    public void uploadProfileImg(@PathParam("id") int profileId, @MultipartForm FileUploadForm form) {
+    public void uploadProfileImg(@PathParam("id") int profileId, FileUploadForm form) {
         System.out.println(form);
         //profileRepository.saveProfileImg(profileId, );
     }

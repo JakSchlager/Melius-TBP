@@ -52,6 +52,7 @@ export class ProfileService {
     const formData = new FormData();
 
     formData.append("file", file);
-    return this.httpClient.patch<FormData>(this.url + "img/" + this.loggedInUser!.id, formData)
+
+    return this.httpClient.patch<FormData>(this.url + "img/" + this.loggedInUser!.id, {"file": file})
   }
 }
