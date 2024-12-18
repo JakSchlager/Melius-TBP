@@ -20,6 +20,8 @@ public class Portfolio {
     @JsonIgnoreProperties(value = {"portfolio"}, allowSetters = true)
     private GeneralInfo generalInfo;
 
+    
+
     @OneToMany(mappedBy = "portfolio")
     @JsonIgnoreProperties({"portfolio"})
     private Set<Education> educations;

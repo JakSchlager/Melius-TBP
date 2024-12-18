@@ -1,9 +1,9 @@
 import {ChangeDetectorRef, Component, inject, OnInit} from '@angular/core';
 import {HomeNavbarComponent} from "../../../navigation/home-navbar/home-navbar.component";
 import {SideBarComponent} from "../../../navigation/side-bar/side-bar.component";
-import {formatDate, NgClass, NgForOf, NgOptimizedImage} from "@angular/common";
+import {formatDate, NgClass, NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
 import {MatDateRangeInput} from "@angular/material/datepicker";
-import {Form, FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
+import {Form, FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {MatIcon} from "@angular/material/icon";
 import {GeneralInfoService} from "../../../services/general-info.service";
 import {ProfileService} from "../../../services/profile.service";
@@ -29,7 +29,8 @@ import {PortfolioService} from "../../../services/portfolio.service";
     NgForOf,
     MatIcon,
     DropdownMenuHomeComponent,
-    NgClass
+    NgClass,
+    NgIf
   ],
   templateUrl: './cv-area.component.html',
   styleUrl: './cv-area.component.css'
@@ -125,10 +126,10 @@ export class CvAreaComponent implements OnInit{
       this.educationFormItems.push(
         this.fb.group({
           id: [""],
-          educationalInst: [""],
-          eIdateFrom: [""],
-          eIdateTo: [""],
-          eIFinished: [""]
+          educationalInst: new FormControl("", Validators.required),
+          eIdateFrom: new FormControl("", Validators.required),
+          eIdateTo: new FormControl("", Validators.required),
+          eIFinished: new FormControl("", Validators.required)
         })
       )
     }
@@ -167,10 +168,10 @@ export class CvAreaComponent implements OnInit{
       this.jobExperiencesFormItems.push(
         this.fb.group({
           id: [''],
-          companyName: [''],
-          workFrom: [''],
-          workTo: [''],
-          moreInfo: ['']
+          companyName: new FormControl("", Validators.required),
+          workFrom: new FormControl("", Validators.required),
+          workTo: new FormControl("", Validators.required),
+          moreInfo: new FormControl("", Validators.required)
         })
       )
     }

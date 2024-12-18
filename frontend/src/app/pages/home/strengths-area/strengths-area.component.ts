@@ -1,6 +1,6 @@
 import {ChangeDetectorRef, Component, inject, OnInit} from '@angular/core';
-import {FormArray, FormBuilder, FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {NgClass, NgForOf} from "@angular/common";
+import {FormArray, FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
+import {NgClass, NgForOf, NgIf} from "@angular/common";
 import {MatSlider, MatSliderThumb, MatSliderVisualThumb} from "@angular/material/slider";
 import {MatIcon} from "@angular/material/icon";
 import {MultiSelectModule} from "primeng/multiselect";
@@ -46,6 +46,7 @@ import {PortfolioService} from "../../../services/portfolio.service";
     DropStrProgrComponent,
     DropStrEdvComponent,
     StarRatingComponent,
+    NgIf,
   ],
   templateUrl: './strengths-area.component.html',
   styleUrl: './strengths-area.component.css'
@@ -116,8 +117,8 @@ export class StrengthsAreaComponent implements OnInit{
       this.knownLanguagesFormItems.push(
         this.fb.group({
           id: [0],
-          languageName: [''],
-          languageKnowledge: [0],
+          languageName: new FormControl("", Validators.required),
+          languageKnowledge: new FormControl(0, Validators.required),
         })
       )
     } else {
@@ -151,10 +152,10 @@ export class StrengthsAreaComponent implements OnInit{
       this.programmingKnowledgeFormItems.push(
         this.fb.group({
           id: [""],
-          programmingId: [0],
-          label: [""],
-          value: [""],
-          programmingKnowledge: [0]
+          programmingId: new FormControl(0, Validators.required),
+          label: new FormControl("", Validators.required),
+          value: new FormControl("", Validators.required),
+          programmingKnowledge: new FormControl(0, Validators.required)
         })
       )
     } else {
@@ -191,10 +192,10 @@ export class StrengthsAreaComponent implements OnInit{
         this.softwareKnowledgeFormItems.push(
           this.fb.group({
             id: [""],
-            softwareId: [0],
-            label: [""],
-            value: [""],
-            softwareAppKnowledge: [0]
+            softwareId: new FormControl(0, Validators.required),
+            label: new FormControl("", Validators.required),
+            value: new FormControl("", Validators.required),
+            softwareAppKnowledge: new FormControl(0, Validators.required)
           })
         )
     } else {
