@@ -39,15 +39,15 @@ export class BackgroundSelectComponent {
   }
 
 
-  // Static color selection for background
   activateButton(type: string): void {
     if (type === 'staticColor') {
-      // Zustand toggeln: Wenn bereits aktiv, ausschalten, ansonsten einschalten
       this.isStaticColorEnabled = !this.isStaticColorEnabled;
       if (this.isStaticColorEnabled) {
         this.isBackgroundPictureEnabled = false; // Anderen Button ausschalten
       }
-    } else if (type === 'backgroundImage') {
+
+    }
+    else if (type === 'backgroundImage') {
       this.isBackgroundPictureEnabled = !this.isBackgroundPictureEnabled;
       if (this.isBackgroundPictureEnabled) {
         this.isStaticColorEnabled = false; // Anderen Button ausschalten
@@ -80,7 +80,9 @@ export class BackgroundSelectComponent {
     if (this.isStaticColorEnabled) {
       this.settingsPage.selectedBackgroundImageUrl = null; // Hintergrundbild zurücksetzen
       this.settingsPage.selectedBackgroundColor = this.selectedColor;
-    } else if (this.isBackgroundPictureEnabled && this.selectedImageUrl) {
+    }
+
+    else if (this.isBackgroundPictureEnabled && this.selectedImageUrl) {
       this.settingsPage.selectedBackgroundColor = ''; // Hintergrundfarbe zurücksetzen
       this.settingsPage.selectedBackgroundImageUrl = this.selectedImageUrl;
     }
