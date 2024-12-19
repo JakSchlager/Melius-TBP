@@ -15,7 +15,7 @@ public class GeneralInfoRepository {
 
     @Transactional
     public GeneralInfo addGeneralInfo(GeneralInfo generalInfo) {
-        if(getInfoByProfile(generalInfo.getProfile()) == null) {
+        if(this.entityManager.find(GeneralInfo.class, generalInfo.getId()) == null) {
             this.entityManager.persist(generalInfo);
             return generalInfo;
         }
@@ -24,17 +24,8 @@ public class GeneralInfoRepository {
     }
 
     @Transactional
-    public void updateGeneralInfo(GeneralInfo generalInfo) {
+    public GeneralInfo updateGeneralInfo(GeneralInfo generalInfo) {
         this.entityManager.merge(generalInfo);
+        return generalInfo;
     }
-
-    public GeneralInfo getInfoByProfile(Profile profile) {
-        return this.entityManager.find(GeneralInfo.class, profile.getId());
-    }
-
-    public GeneralInfo getInfoById(int id) {
-        return this.entityManager.find(GeneralInfo.class, id);
-    }
-
-
 }

@@ -16,16 +16,10 @@ public class EducationResource {
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
-    @Path("/update")
-    public void updateEducation(Education education) {
-        this.educationRepository.updateEducation(education);
-    }
-
-    @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("get/{id}")
-    public List<Education> getEducationsByProfile(@PathParam("id")int profileId) {
-        return educationRepository.getEducationsByProfile(profileId);
+    @Path("/update")
+    public Education updateEducation(Education education) {
+        return this.educationRepository.updateEducation(education);
     }
 
     @DELETE

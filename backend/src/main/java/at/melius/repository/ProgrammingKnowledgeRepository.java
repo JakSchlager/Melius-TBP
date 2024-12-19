@@ -20,7 +20,7 @@ public class ProgrammingKnowledgeRepository {
     EntityManager entityManager;
 
     @Transactional
-    public void updateProgrammingKnowledge(ProgrammingKnowledge programmingKnowledge){
+    public ProgrammingKnowledge updateProgrammingKnowledge(ProgrammingKnowledge programmingKnowledge){
         if(this.entityManager.find(ProgrammingKnowledge.class, programmingKnowledge.getId()) != null){
             this.entityManager.merge(programmingKnowledge);
         } else {
@@ -34,13 +34,7 @@ public class ProgrammingKnowledgeRepository {
             this.entityManager.merge(this.entityManager.find(Profile.class,programmingKnowledge.getProfile().getId()));
             //this.entityManager.merge(this.entityManager.find(ProgrammingLanguage.class,programmingKnowledge.getProgramming().getId()));*/
         }
-    }
-
-    public List<ProgrammingKnowledge> getProgrammingKnowledgeByProfileId(int id) {
-        TypedQuery<ProgrammingKnowledge> query = this.entityManager.createNamedQuery(ProgrammingKnowledge.QUERY_FIND_BY_PROFILE_ID, ProgrammingKnowledge.class);
-
-        query.setParameter("profile", this.entityManager.find(Profile.class, id));
-        return query.getResultList();
+        return programmingKnowledge;
     }
 
     @Transactional

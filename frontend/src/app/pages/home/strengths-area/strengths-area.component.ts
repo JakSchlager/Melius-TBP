@@ -1,6 +1,6 @@
 import {ChangeDetectorRef, Component, inject, OnInit} from '@angular/core';
-import {FormArray, FormBuilder, FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {NgClass, NgForOf} from "@angular/common";
+import {FormArray, FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
+import {NgClass, NgForOf, NgIf} from "@angular/common";
 import {MatSlider, MatSliderThumb, MatSliderVisualThumb} from "@angular/material/slider";
 import {MatIcon} from "@angular/material/icon";
 import {MultiSelectModule} from "primeng/multiselect";
@@ -25,6 +25,7 @@ import {Router} from "@angular/router";
 import {ProgrammingKnowledge} from "../../../interfaces/ProgrammingKnowledge";
 import {SoftwareKnowledgeService} from "../../../services/software-knowledge.service";
 import {SoftwareKnowledge} from "../../../interfaces/SoftwareKnowledge";
+import {PortfolioService} from "../../../services/portfolio.service";
 
 @Component({
   selector: 'app-strengths-area',
@@ -45,6 +46,7 @@ import {SoftwareKnowledge} from "../../../interfaces/SoftwareKnowledge";
     DropStrProgrComponent,
     DropStrEdvComponent,
     StarRatingComponent,
+    NgIf,
   ],
   templateUrl: './strengths-area.component.html',
   styleUrl: './strengths-area.component.css'
@@ -63,6 +65,7 @@ export class StrengthsAreaComponent implements OnInit{
   programmingKnowledgeService: ProgrammingKnowledgeService = inject(ProgrammingKnowledgeService);
   knownLanguageService: KnownLanguageService = inject(KnownLanguageService);
   softwareKnowledgeService: SoftwareKnowledgeService = inject(SoftwareKnowledgeService)
+  portfolioService: PortfolioService = inject(PortfolioService);
 
   ngOnInit(): void {
     this.characteristicService.loadAllCharacteristics().subscribe(c => {
@@ -71,25 +74,22 @@ export class StrengthsAreaComponent implements OnInit{
     });
 
     setTimeout(() => {
-      this.selectedCharacteristic = this.profileService.loggedInUser!.characteristics || [];
+      this.selectedCharacteristic = this.portfolioService.currPortfolio!.characteristics || [];
 
-      this.knownLanguageService.getKnownLanguagesByProfileId(this.profileService.loggedInUser!.id).subscribe(k => {
-        for(let currKnownLanguage of k) {
-          this.addKnownLanguage(currKnownLanguage)
-        }
-      })
+      let knownLanguages = this.portfolioService.currPortfolio!.knownLanguages;
+      for(let currKnownLanguage of knownLanguages) {
+        this.addKnownLanguage(currKnownLanguage)
+      }
 
-      this.programmingKnowledgeService.getProgrammingKnowledgeByProfileId(this.profileService.loggedInUser!.id).subscribe(p => {
-        for(let currProgrammingKnowledge of p) {
-          this.addProgrammingLanguage(currProgrammingKnowledge)
-        }
-      })
+      let programmingKnowledges = this.portfolioService.currPortfolio!.programmingKnowledges
+      for(let currProgrammingKnowledge of programmingKnowledges) {
+        this.addProgrammingLanguage(currProgrammingKnowledge)
+      }
 
-      this.softwareKnowledgeService.getSoftwareKnowledgesByProfileId(this.profileService.loggedInUser!.id).subscribe(s => {
-        for(let currSoftwareKnowledge of s) {
-          this.addSoftware(currSoftwareKnowledge)
-        }
-      })
+      let softwareKnowledges = this.portfolioService.currPortfolio!.softwareKnowledges
+      for(let currSoftwareKnowledge of softwareKnowledges) {
+        this.addSoftware(currSoftwareKnowledge)
+      }
 
     },100)
   }
@@ -117,8 +117,8 @@ export class StrengthsAreaComponent implements OnInit{
       this.knownLanguagesFormItems.push(
         this.fb.group({
           id: [0],
-          languageName: [''],
-          languageKnowledge: [0],
+          languageName: new FormControl("", Validators.required),
+          languageKnowledge: new FormControl(0, Validators.required),
         })
       )
     } else {
@@ -152,10 +152,10 @@ export class StrengthsAreaComponent implements OnInit{
       this.programmingKnowledgeFormItems.push(
         this.fb.group({
           id: [""],
-          programmingId: [0],
-          label: [""],
-          value: [""],
-          programmingKnowledge: [0]
+          programmingId: new FormControl(0, Validators.required),
+          label: new FormControl("", Validators.required),
+          value: new FormControl("", Validators.required),
+          programmingKnowledge: new FormControl(0, Validators.required)
         })
       )
     } else {
@@ -192,10 +192,10 @@ export class StrengthsAreaComponent implements OnInit{
         this.softwareKnowledgeFormItems.push(
           this.fb.group({
             id: [""],
-            softwareId: [0],
-            label: [""],
-            value: [""],
-            softwareAppKnowledge: [0]
+            softwareId: new FormControl(0, Validators.required),
+            label: new FormControl("", Validators.required),
+            value: new FormControl("", Validators.required),
+            softwareAppKnowledge: new FormControl(0, Validators.required)
           })
         )
     } else {
@@ -240,11 +240,11 @@ export class StrengthsAreaComponent implements OnInit{
 
   changeCharacteristics() {
     console.log("Characteristics changed",this.selectedCharacteristic)
-    let profile = this.profileService.loggedInUser;
+    let portfolio = this.portfolioService.currPortfolio;
 
-    profile!.characteristics = this.selectedCharacteristic;
+    portfolio!.characteristics = this.selectedCharacteristic;
 
-    this.profileService.updateProfile(profile!).subscribe();
+    this.portfolioService.updatePortfolio(portfolio!).subscribe();
   }
 
   selectProgrammingLanguage(selectedProgrammingLanguage: Selectable, formNumber: number) {
@@ -263,15 +263,12 @@ export class StrengthsAreaComponent implements OnInit{
       id: this.knownLanguagesFormItems.at(formNumber).value.id,
       language: this.knownLanguagesFormItems.at(formNumber).value.languageName,
       rating: this.knownLanguagesFormItems.at(formNumber).value.languageKnowledge,
-      profile: this.profileService.loggedInUser!
+      portfolio: this.portfolioService.currPortfolio!
     }
 
     this.knownLanguageService.updateKnownLanguage(language).subscribe();
-    setTimeout(() => {
-      this.router.navigateByUrl("/", {skipLocationChange: true}).then(() => {
-        this.router.navigate(['home/strengths/']);
-      });
-    }, 100);
+
+    this.reloadPage()
   }
 
   updateSoftware(formNumber: number) {
@@ -283,17 +280,14 @@ export class StrengthsAreaComponent implements OnInit{
         value: this.softwareKnowledgeFormItems.at(formNumber).value.value
       },
       rating: this.softwareKnowledgeFormItems.at(formNumber).value.softwareAppKnowledge,
-      profile: this.profileService.loggedInUser!
+      portfolio: this.portfolioService.currPortfolio!
     }
     console.log("New SoftwareKnowledge", softwareKnowledge);
+
+
     this.softwareKnowledgeService.updateSoftwareKnowledge(softwareKnowledge).subscribe();
 
-    setTimeout(() => {
-      this.router.navigateByUrl("/", {skipLocationChange: true}).then(() => {
-        this.router.navigate(['home/strengths/']);
-      });
-    }, 100);
-
+    this.reloadPage()
   }
 
   updateProgrammingKnowledge(formNumber: number) {
@@ -304,17 +298,15 @@ export class StrengthsAreaComponent implements OnInit{
         label: this.programmingKnowledgeFormItems.at(formNumber).value.label,
         value: this.programmingKnowledgeFormItems.at(formNumber).value.value
       },
-      profile: this.profileService.loggedInUser!,
+      portfolio: this.portfolioService.currPortfolio!,
       rating: this.programmingKnowledgeFormItems.at(formNumber).value.programmingKnowledge
     }
     console.log("New ProgrammingKnowledge", programmingKnowledge);
+
+
     this.programmingKnowledgeService.updateProgrammingLanguage(programmingKnowledge).subscribe();
 
-    setTimeout(() => {
-      this.router.navigateByUrl("/", {skipLocationChange: true}).then(() => {
-        this.router.navigate(['home/strengths/']);
-      });
-    }, 100);
+    this.reloadPage()
   }
 
   checkDraggable(): boolean {
@@ -346,6 +338,12 @@ export class StrengthsAreaComponent implements OnInit{
     })
 
     console.log("Selected Software", this.softwareKnowledgeFormItems.at(formNumber))
+  }
+
+  reloadPage() {
+    setTimeout(() => {
+      window.location.reload()
+    }, 100);
   }
 }
 

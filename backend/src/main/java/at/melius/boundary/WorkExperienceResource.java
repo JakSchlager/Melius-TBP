@@ -10,18 +10,14 @@ import java.util.List;
 public class WorkExperienceResource {
     @Inject
     WorkExperienceRepository workExperienceRepository;
+
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/update")
-    public void updateWorkExperience(WorkExperience workExperience) {
-        this.workExperienceRepository.updateWorkExperience(workExperience);
+    public WorkExperience updateWorkExperience(WorkExperience workExperience) {
+        return this.workExperienceRepository.updateWorkExperience(workExperience);
     }
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("get/{id}")
-    public List<WorkExperience> getWorkExperiencesByProfile(@PathParam("id")int profileId) {
-        return workExperienceRepository.getWorkExperiencesByProfile(profileId);
-    }
+
     @DELETE
     @Path("/delete/{id}")
     public void deleteEducation(@PathParam("id")int id) {

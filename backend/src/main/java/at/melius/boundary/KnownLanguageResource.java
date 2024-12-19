@@ -17,15 +17,8 @@ public class KnownLanguageResource {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/update")
-    public void updateKnownLanguage(KnownLanguage language) {
-        knownLanguageRepository.updateKnownLanguage(language);
-    }
-
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/get/{id}")
-    public List<KnownLanguage> getKnownLanguagesByProfileId(@PathParam("id") int id) {
-        return this.knownLanguageRepository.getKnownLanguagesByProfileId(id);
+    public KnownLanguage updateKnownLanguage(KnownLanguage language) {
+        return knownLanguageRepository.updateKnownLanguage(language);
     }
 
     @DELETE

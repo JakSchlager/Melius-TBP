@@ -17,15 +17,8 @@ public class ProgrammingKnowledgeResource {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/update")
-    public void updateProgrammingKnowledge(ProgrammingKnowledge programmingKnowledge) {
-        this.programmingKnowledgeRepository.updateProgrammingKnowledge(programmingKnowledge);
-    }
-
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/get/{id}")
-    public List<ProgrammingKnowledge> getProgrammingKnowledgeByProfileId(@PathParam("id") int id) {
-        return this.programmingKnowledgeRepository.getProgrammingKnowledgeByProfileId(id);
+    public ProgrammingKnowledge updateProgrammingKnowledge(ProgrammingKnowledge programmingKnowledge) {
+        return this.programmingKnowledgeRepository.updateProgrammingKnowledge(programmingKnowledge);
     }
 
     @DELETE

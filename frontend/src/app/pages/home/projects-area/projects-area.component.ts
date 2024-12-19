@@ -37,7 +37,7 @@ export class ProjectsAreaComponent implements OnInit {
       if(this.profileService.loggedInUser!.githubUser !== undefined) {
         this.genRepo(this.profileService.loggedInUser!.githubUser);
       }
-    }, 100)
+    }, 200)
   }
 
   onFileSelected(event: any) {
@@ -180,11 +180,7 @@ export class ProjectsAreaComponent implements OnInit {
 
     this.profileService.updateProfile(profile).subscribe();
 
-    setTimeout(() => {
-      this.router.navigateByUrl("/", {skipLocationChange: true}).then(() => {
-        this.router.navigate(['/home/projects']);
-      });
-    }, 100);
+    this.reloadPage()
   }
 
   deleteGithubUser() {
@@ -193,12 +189,13 @@ export class ProjectsAreaComponent implements OnInit {
 
     this.profileService.updateProfile(profile).subscribe();
 
-    setTimeout(() => {
-      this.router.navigateByUrl("/", {skipLocationChange: true}).then(() => {
-        this.router.navigate(['/home/projects']);
-      });
-    }, 100);
+    this.reloadPage()
+  }
 
+  reloadPage() {
+    setTimeout(() => {
+      window.location.reload()
+    }, 100);
   }
 }
 

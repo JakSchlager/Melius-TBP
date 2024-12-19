@@ -1,8 +1,9 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {MatIcon} from "@angular/material/icon";
 import {NgClass, NgIf} from "@angular/common";
 import {HomePageComponent} from "../../../pages/home-preview-page/home-page.component";
 import {FormsModule} from "@angular/forms";
+import {ProfileService} from "../../services/profile.service";
 
 @Component({
   selector: 'app-dropdown-avatar',
@@ -16,23 +17,32 @@ import {FormsModule} from "@angular/forms";
   templateUrl: './dropdown-avatar.component.html',
   styleUrl: './dropdown-avatar.component.css'
 })
-export class DropdownAvatarComponent {
+export class DropdownAvatarComponent implements OnInit {
   showAvatarOptions: boolean = false
   isAnimating: boolean = false;
   url: any = '';
+  profileService: ProfileService = inject(ProfileService);
+
+  ngOnInit() {
+    //this.url = URL.createObjectURL(this.profileService.loggedInUser!.profileImage!)
+  }
 
   onSelectFile(event: any) {
     if (event.target.files && event.target.files[0]) {
-      var reader = new FileReader();
+      let file: File = event.target.files[0];
 
-      reader.readAsDataURL(event.target.files[0]); // read file as data url
+      const fileBlob = new Blob([file], { type: file.type });
+      fileBlob.arrayBuffer().then(arrayBuffer => {
+        // Erstelle ein Uint8Array daraus
+        const byteArray = new Uint8Array(arrayBuffer);
 
-      reader.onload = (event) => {
-        // called once readAsDataURL is completed
-        // @ts-ignore
-        this.url = event.target.result;
-        console.log(this.url);
-      };
+        // Erstelle ein Blob aus den Bytes
+        const fileBlobForUpload = new Blob([byteArray], { type: file.type });
+
+        console.log(fileBlobForUpload);
+        // Upload des Blobs an das Backend
+        this.profileService.uploadProfileImg(fileBlobForUpload).subscribe();
+      })
     }
   }
   public deleteAvatar() {

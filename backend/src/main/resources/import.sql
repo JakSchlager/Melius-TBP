@@ -38,7 +38,6 @@ INSERT INTO public.programminglanguage (id, label, value) VALUES (10, 'Python', 
 INSERT INTO public.programminglanguage (id, label, value) VALUES (11, 'Swift', 'swift');
 INSERT INTO public.programminglanguage (id, label, value) VALUES (12, 'Ruby', 'ruby');
 
-
 INSERT INTO public.characteristic (id, label, value) VALUES (1, 'Kreativ', 'kreativ');
 INSERT INTO public.characteristic (id, label, value) VALUES (2, 'Pünktlich', 'puenktlich');
 INSERT INTO public.characteristic (id, label, value) VALUES (3, 'Teamfähig', 'teamfaehig');

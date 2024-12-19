@@ -1,7 +1,9 @@
 import {Profile} from "./profile";
+import {Portfolio} from "./Portfolio";
 
 export interface GeneralInfo {
-  profile: Profile,
+  id: number,
+  portfolio?: Portfolio,
   gender: string,
   zipCode: string,
   city: string,

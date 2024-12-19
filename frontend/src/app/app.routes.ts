@@ -10,6 +10,7 @@ import {StrengthsAreaComponent} from "./pages/home/strengths-area/strengths-area
 import {StartPageComponent} from "./pages/landing-page/start-page.component";
 import {CreateOwnGroupComponent} from "./pages/groups_subpages/create-group-form/create-own-group.component";
 import {CreatedGroupComponent} from "./pages/groups_subpages/created-group/created-group.component";
+import {PortfolioViewComponent} from "./pages/portfolio-view/portfolio-view.component";
 
 export const routes: Routes = [
   {path: "", component: StartPageComponent, title: 'Start Page'},
@@ -24,5 +25,6 @@ export const routes: Routes = [
   {path: "groups", component: GroupsPageComponent, title: 'Groups'},
   {path: "groups/myGroup", component: CreatedGroupComponent, title: 'My Group'},
   {path: "settings", component: SettingsPageComponent, title: 'Settings'},
+  {path: "portfolio/:id", component: PortfolioViewComponent, title: 'Portfolio'},
   {path: "**", component: NotFoundComponent, title: 'Nothing Found'},
 ];

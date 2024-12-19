@@ -2,12 +2,8 @@ package at.melius.model;
 
 import jakarta.persistence.*;
 
-@NamedQuery(name = KnownLanguage.QUERY_FIND_BY_USER, query = "SELECT k FROM KnownLanguage k WHERE profile = :profile")
-
 @Entity
 public class KnownLanguage {
-
-    public static final String QUERY_FIND_BY_USER = "KnownLanguage.findByUser";
 
     @Id
     @GeneratedValue
@@ -17,19 +13,19 @@ public class KnownLanguage {
 
     private int rating;
 
-    @ManyToOne
-    private Profile profile;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Portfolio portfolio;
 
     public int getId() {
         return id;
     }
 
-    public Profile getProfile() {
-        return profile;
+    public Portfolio getPortfolio() {
+        return portfolio;
     }
 
-    public void setProfile(Profile profile) {
-        this.profile = profile;
+    public void setPortfolio(Portfolio portfolio) {
+        this.portfolio = portfolio;
     }
 
     public String getLanguage() {

@@ -17,10 +17,6 @@ export class WorkExperienceService {
     return this.httpClient.put<WorkExperience>(this.url + "update", workExperience);
   }
 
-  getWorkExperiencesByProfileId(profileId: number) {
-    return this.httpClient.get<WorkExperience[]>(this.url + "get/" + profileId);
-  }
-
   deleteWorkExperience(workExperienceId: number) {
     return this.httpClient.delete<WorkExperience>(this.url + "delete/" + workExperienceId);
   }

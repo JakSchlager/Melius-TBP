@@ -17,12 +17,14 @@ public class WorkExperienceRepository {
     @Inject
     EntityManager entityManager;
     @Transactional
-    public void updateWorkExperience(WorkExperience workExperience) {
+    public WorkExperience updateWorkExperience(WorkExperience workExperience) {
         if(this.entityManager.find(WorkExperience.class, workExperience.getId()) != null) {
             this.entityManager.merge(workExperience);
         } else {
             entityManager.persist(workExperience);
         }
+
+        return workExperience;
     }
     @Transactional
     public void deleteWorkExperience(int id) {
@@ -32,10 +34,5 @@ public class WorkExperienceRepository {
         } else {
             throw new BadRequestException();
         }
-    }
-    public List<WorkExperience> getWorkExperiencesByProfile(int profileId) {
-        TypedQuery<WorkExperience> query = entityManager.createNamedQuery(WorkExperience.GET_BY_PROFILE_ID, WorkExperience.class);
-        query.setParameter("profile", this.entityManager.find(Profile.class, profileId));
-        return query.getResultList();
     }
 }

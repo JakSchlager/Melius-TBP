@@ -2,7 +2,10 @@ package at.melius.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import org.hibernate.jdbc.Work;
 
+import javax.sound.sampled.Port;
+import java.sql.Blob;
 import java.util.Set;
 
 @NamedQuery(name = Profile.QUERY_FIND_ALL, query = "SELECT p from Profile p")
@@ -33,89 +36,78 @@ public class Profile {
     @Column(name = "githubUser")
     private String githubUser;
 
-    @ManyToMany
-    @JoinTable(
-            name="profile_characteristic",
-            joinColumns = @JoinColumn(name="profile_id"),
-            inverseJoinColumns = @JoinColumn(name="characteristic_id")
-    )
-    @JsonIgnoreProperties({"profiles"})
-    private Set<Characteristic> characteristics;
+    @OneToOne(mappedBy = "profile")
+    @JsonIgnoreProperties({"profile", "generalInfo"})
+    private Portfolio portfolio;
 
-    @OneToMany
-    @JoinColumn(name="knownLanguage_id", referencedColumnName = "id")
-
-    private Set<KnownLanguage> knownLanguages;
-
-    /*@OneToMany(mappedBy = "profile")
-    @JsonIgnoreProperties({"profile"})
-    private Set<ProgrammingKnowledge> programmingKnowledges;*/
+    @Lob
+    private Blob profileImage;
 
     public int getId() {
         return id;
-    }
-
-    public String getGithubUser() {
-        return githubUser;
     }
 
     public String getFirstName() {
         return firstName;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public Set<Characteristic> getCharacteristics() {
-        return characteristics;
-    }
-
-    public Set<KnownLanguage> getKnownLanguages() {
-        return knownLanguages;
-    }
-
-    public void setKnownLanguages(Set<KnownLanguage> knownLanguages) {
-        this.knownLanguages = knownLanguages;
-    }
-
-    public void setCharacteristics(Set<Characteristic> characteristics) {
-        this.characteristics = characteristics;
-    }
-
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    public void setGithubUser(String githubUser) {
-        this.githubUser = githubUser;
+    public String getLastName() {
+        return lastName;
     }
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getGithubUser() {
+        return githubUser;
+    }
+
+    public void setGithubUser(String githubUser) {
+        this.githubUser = githubUser;
+    }
+
+    public Portfolio getPortfolio() {
+        return portfolio;
+    }
+
+    public void setPortfolio(Portfolio portfolio) {
+        this.portfolio = portfolio;
+    }
+
+    public Blob getProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(Blob profileImage) {
+        this.profileImage = profileImage;
     }
 }

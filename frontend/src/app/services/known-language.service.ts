@@ -18,10 +18,6 @@ export class KnownLanguageService {
     return this.httpClient.put<KnownLanguage>(`${this.url}/update`, language);
   }
 
-  getKnownLanguagesByProfileId(profileId: number) {
-    return this.httpClient.get<KnownLanguage[]>(`${this.url}/get/${profileId}`);
-  }
-
   deleteKnownLanguage(id: number) {
     return this.httpClient.delete<KnownLanguage>(`${this.url}/delete/${id}`);
   }

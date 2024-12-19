@@ -17,22 +17,15 @@ public class KnownLanguageRepository {
     EntityManager entityManager;
 
     @Transactional
-    public void updateKnownLanguage(KnownLanguage language) {
+    public KnownLanguage updateKnownLanguage(KnownLanguage language) {
         if(this.entityManager.find(KnownLanguage.class, language.getId()) != null) {
             this.entityManager.merge(language);
         } else {
             this.entityManager.persist(language);
         }
+
+        return language;
     }
-
-    public List<KnownLanguage> getKnownLanguagesByProfileId(int profileId) {
-        TypedQuery<KnownLanguage> query = this.entityManager.createNamedQuery(KnownLanguage.QUERY_FIND_BY_USER, KnownLanguage.class);
-
-        query.setParameter("profile", this.entityManager.find(Profile.class, profileId));
-
-        return query.getResultList();
-    }
-
     @Transactional
     public void deleteKnownLanguage(int id) {
         this.entityManager.remove(this.entityManager.find(KnownLanguage.class, id));

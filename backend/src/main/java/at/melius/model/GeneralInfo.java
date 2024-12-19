@@ -1,13 +1,18 @@
 package at.melius.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 @Entity
 public class GeneralInfo {
 
-    @OneToOne
     @Id
-    private Profile profile;
+    @GeneratedValue
+    private int id;
+
+    @OneToOne(mappedBy = "generalInfo")
+    @JsonIgnoreProperties({"generalInfo", "profile"})
+    private Portfolio portfolio;
 
     @Column(name="gender")
     private String gender;
@@ -21,8 +26,8 @@ public class GeneralInfo {
     @Column(name="address")
     private String address;
 
-    public Profile getProfile() {
-        return profile;
+    public int getId() {
+        return id;
     }
 
     public String getGender() {
@@ -55,5 +60,13 @@ public class GeneralInfo {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public Portfolio getPortfolio() {
+        return portfolio;
+    }
+
+    public void setPortfolio(Portfolio portfolio) {
+        this.portfolio = portfolio;
     }
 }

@@ -4,42 +4,38 @@ import jakarta.persistence.*;
 
 import java.util.Date;
 
-@NamedQuery(name= Education.GET_BY_PROFILE_ID, query = "Select e from Education e where profile = :id")
-
 @Entity
 public class Education {
-
-    public static final String GET_BY_PROFILE_ID = "Education.findByProfile";
 
     @Id
     @GeneratedValue
     int id;
 
-    @ManyToOne
-    Profile profile;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Portfolio portfolio;
 
     @Column(name="name")
-    String name;
+    private String name;
 
     @Column(name="from_date")
-    Date fromDate;
+    private Date fromDate;
 
     @Column(name="to_date")
-    Date toDate;
+    private Date toDate;
 
     @Column(name="finished")
-    String finished;
+    private String finished;
 
     public int getId() {
         return id;
     }
 
-    public Profile getProfile() {
-        return profile;
+    public Portfolio getPortfolio() {
+        return portfolio;
     }
 
-    public void setProfile(Profile profile) {
-        this.profile = profile;
+    public void setPortfolio(Portfolio portfolio) {
+        this.portfolio = portfolio;
     }
 
     public String getName() {

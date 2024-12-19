@@ -9,6 +9,9 @@ import jakarta.transaction.Transactional;
 import jakarta.ws.rs.BadRequestException;
 import jakarta.ws.rs.NotFoundException;
 
+import javax.sql.rowset.serial.SerialBlob;
+import java.sql.Blob;
+import java.sql.SQLException;
 import java.util.List;
 
 @ApplicationScoped
@@ -31,8 +34,9 @@ public class ProfileRepository {
     }
 
     @Transactional
-    public void updateProfile(Profile profile) {
+    public Profile updateProfile(Profile profile) {
         this.entityManager.merge(profile);
+        return profile;
     }
 
     public Profile getProfileByEmail(String email) {
@@ -56,4 +60,21 @@ public class ProfileRepository {
         return this.entityManager.find(Profile.class, id);
     }
 
+    public void saveProfileImg(int profileId, byte[] fileData) {
+        Profile profile = this.entityManager.find(Profile.class, profileId);
+
+        try {
+            if(profile.getProfileImage() != null) {
+                profile.getProfileImage().free();
+            }
+
+            Blob newBlob = new SerialBlob(fileData);
+            newBlob.setBytes(1, fileData);
+
+            profile.setProfileImage(newBlob);
+            updateProfile(profile);
+        } catch(SQLException e) {
+            throw new BadRequestException();
+        }
+    }
 }

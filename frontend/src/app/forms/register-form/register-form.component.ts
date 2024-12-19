@@ -6,6 +6,8 @@ import {ProfileService} from "../../services/profile.service";
 import {Profile} from "../../interfaces/profile";
 import {GeneralInfoService} from "../../services/general-info.service";
 import {GeneralInfo} from "../../interfaces/general-info";
+import {PortfolioService} from "../../services/portfolio.service";
+import {Portfolio} from "../../interfaces/Portfolio";
 
 @Component({
   selector: 'app-register-form',
@@ -21,6 +23,7 @@ import {GeneralInfo} from "../../interfaces/general-info";
 export class RegisterFormComponent {
   profileService: ProfileService = inject(ProfileService);
   generalInfoService: GeneralInfoService = inject(GeneralInfoService);
+  portfolioService: PortfolioService = inject(PortfolioService);
   router: Router = inject(Router);
 
   saveForm = new FormGroup( {
@@ -49,38 +52,40 @@ export class RegisterFormComponent {
         password: this.saveForm.controls['password'].value!
       }
 
-      this.profileService.handelUserRegistration(newProfile).subscribe({
-        next: (response: Profile) => {
-          //this.profileService.loggedInUser = response;
-          this.router.navigate(['/home']);
-          localStorage.setItem("loggedInUser", JSON.stringify(response));
-          console.log('Profile registered successfully.', response);
+      this.profileService.handelUserRegistration(newProfile).subscribe(p => {
 
-          const generalInfo: GeneralInfo = {
-            address: "",
-            city: "",
-            gender: "",
-            zipCode: "",
-            profile: response
-          };
+        //this.profileService.loggedInUser = response;
+        this.router.navigate(['/home']);
+        localStorage.setItem("loggedInUser", JSON.stringify(p));
+        console.log('Profile registered successfully.', p);
 
-          this.generalInfoService.addGeneralInfo(generalInfo).subscribe({
-            next: (response: GeneralInfo) => {
-              console.log(response)
-            },
-            error: error => {
-              console.log("nicht funktinoeirt")
-            }
-          })
-        },
+        let generalInfo: GeneralInfo = {
+          id: 0,
+          address: "",
+          city: "",
+          gender: "",
+          zipCode: "",
+        };
 
-        error: error => {
-          document.getElementById("registration_error")!.innerHTML = "Ein Account mit dieser Email existiert bereits!";
-          console.log('Error during the registration process.', error);
-        }
+        this.generalInfoService.addGeneralInfo(generalInfo).subscribe(g => {
+          let portfolio: Portfolio = {
+            characteristics: [],
+            educations: [],
+            knownLanguages: [],
+            programmingKnowledges: [],
+            softwareKnowledges: [],
+            workExperiences: [],
+            profile: p,
+            generalInfo: g
+          }
+
+          console.log(portfolio);
+
+          this.portfolioService.addPortfolio(portfolio).subscribe()
+        })
+
+
       });
-
-
     }
   }
 

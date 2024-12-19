@@ -18,14 +18,13 @@ public class EducationRepository {
     EntityManager entityManager;
 
     @Transactional
-    public void updateEducation(Education education) {
+    public Education updateEducation(Education education) {
         if(this.entityManager.find(Education.class, education.getId()) != null) {
             this.entityManager.merge(education);
         } else {
             this.entityManager.persist(education);
         }
-
-
+        return education;
     }
 
     @Transactional
@@ -38,13 +37,5 @@ public class EducationRepository {
             throw new BadRequestException();
         }
 
-    }
-
-    public List<Education> getEducationsByProfile(int profileId) {
-        TypedQuery<Education> query = entityManager.createNamedQuery(Education.GET_BY_PROFILE_ID, Education.class);
-
-        query.setParameter("id", this.entityManager.find(Profile.class, profileId));
-
-        return query.getResultList();
     }
 }

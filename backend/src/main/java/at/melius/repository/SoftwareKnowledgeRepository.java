@@ -19,19 +19,14 @@ public class SoftwareKnowledgeRepository {
     EntityManager entityManager;
 
     @Transactional
-    public void updateSoftwareKnowledge(SoftwareKnowledge softwareKnowledge){
+    public SoftwareKnowledge updateSoftwareKnowledge(SoftwareKnowledge softwareKnowledge){
         if(this.entityManager.find(SoftwareKnowledge.class, softwareKnowledge.getId()) != null){
             this.entityManager.merge(softwareKnowledge);
         } else {
             this.entityManager.persist(softwareKnowledge);
         }
-    }
 
-    public List<SoftwareKnowledge> getSoftwareKnowledgeByProfileId(int id) {
-        TypedQuery<SoftwareKnowledge> query = this.entityManager.createNamedQuery(SoftwareKnowledge.QUERY_FIND_BY_PROFILE_ID, SoftwareKnowledge.class);
-
-        query.setParameter("profile", this.entityManager.find(Profile.class, id));
-        return query.getResultList();
+        return softwareKnowledge;
     }
 
     @Transactional

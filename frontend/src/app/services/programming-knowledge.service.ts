@@ -17,10 +17,6 @@ export class ProgrammingKnowledgeService {
     return this.httpClient.put<ProgrammingKnowledge>(this.url + "/update", programmingKnowledge);
   }
 
-  getProgrammingKnowledgeByProfileId(profileId: number) {
-    return this.httpClient.get<ProgrammingKnowledge[]>(`${this.url}/get/${profileId}`);
-  }
-
   deleteProgrammingKnowledge(id: number) {
     return this.httpClient.delete(`${this.url}/delete/${id}`);
   }

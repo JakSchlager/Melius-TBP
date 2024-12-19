@@ -15,19 +15,19 @@ public class Characteristic extends Selectable {
 
     @ManyToMany
     @JoinTable(
-            name="profile_characteristic",
+            name="portfolio_characteristic",
             joinColumns = @JoinColumn(name="characteristic_id"),
-            inverseJoinColumns = @JoinColumn(name="profile_id")
+            inverseJoinColumns = @JoinColumn(name="portfolio_id")
     )
     @JsonIgnoreProperties({"characteristics"})
-    private Set<Profile> profiles;
+    private Set<Portfolio> portfolios;
 
-    public Set<Profile> getProfiles() {
-        return profiles;
+    public Set<Portfolio> getPortfolios() {
+        return portfolios;
     }
 
-    public void setProfile(Set<Profile> profiles) {
-        this.profiles = profiles;
+    public void setProfile(Set<Portfolio> portfolios) {
+        this.portfolios = portfolios;
     }
 
 }
