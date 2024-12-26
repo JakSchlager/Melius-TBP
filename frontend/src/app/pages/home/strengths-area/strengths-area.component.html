@@ -19,10 +19,10 @@
 
       <!-- Allgemein Kenntnisse -->
       <div [ngClass]="dragBox" [draggable]="checkDraggable()" (dragstart)="onDragStart($event, $event.target)" class="colListItem grid animate-in slide-in-from-bottom-32 duration-500">
-          <div class="bg-white px-10 py-4 rounded-lg shadow-md">
-            <h1 class="text-center font-bold text-2xl py-2">Persönliche Eigenschaften</h1>
-            <div class="w-full mt-2 grid grid-cols-1 space-y-2 hover:cursor-default">
-              <div class="w-max border rounded-lg">
+          <div class="w-fit bg-white px-10 py-4 rounded-lg shadow-md">
+            <h1 class="text-center font-bold text-2xl py-2">{{'home.compPage.personal.title' | translate}}</h1>
+            <div class="mt-2 grid space-y-2 hover:cursor-default">
+              <div class="border max-w-fit">
                 <p-multiSelect
                   [options]="characteristics"
                   [(ngModel)]="selectedCharacteristic"
@@ -33,14 +33,14 @@
                   [showClear]="true"
                 />
               </div>
-              <small class="text-gray-400">Wähle drei primäre Stärken aus die angezeigt werden sollen!</small>
+              <small class="text-gray-400">{{'home.compPage.personal.smallTxt' | translate}}</small>
             </div>
           </div>
       </div>
 
       <!-- Sprachliche Kenntnisse -->
       <div [ngClass]="dragBox" [draggable]="checkDraggable()" (dragstart)="onDragStart($event, $event.target)" class="colListItem bg-white rounded-lg px-2 py-1 shadow-md animate-in slide-in-from-bottom-32 duration-500">
-        <h1 class="text-center font-bold text-2xl py-2 pb-4">Sprachliche Stärken</h1>
+        <h1 class="text-center font-bold text-2xl py-2 pb-4">{{'home.compPage.languages.title' | translate}}</h1>
 
         <div [formGroup]="knownLanguagesForm" class="mt-2 hover:cursor-default">
           <div formArrayName="knownLanguagesFormItems" class="">
@@ -80,7 +80,7 @@
       <div [ngClass]="dragBox" [draggable]="checkDraggable()" (dragstart)="onDragStart($event, $event.target)" class="animate-in slide-in-from-bottom-32 duration-500">
 
           <div class="flex flex-col space-y-2 bg-white rounded-lg px-2 py-1 shadow-md">
-            <h1 class="text-center font-bold text-2xl py-6">Programmier Kenntnisse</h1>
+            <h1 class="text-center font-bold text-2xl py-6">{{'home.compPage.programming.title' | translate}}</h1>
             <div [formGroup]="programmingKnowledgeForm" class="mt-2 hover:cursor-default" >
               <div formArrayName="programmingKnowledgeFormItems" class="space-y-8">
                 <div *ngFor="let programmingItem of programmingKnowledgeFormItems.controls; let i = index" [formGroupName]="i">
@@ -93,11 +93,11 @@
                         <input formControlName="programmingKnowledge" class="rounded-lg overflow-hidden appearance-none bg-gray-400 h-3 w-full" type="range" min="1" max="100" step="1" draggable="false"/>
 
                         <div class="w-full flex justify-between mt-1">
-                          <span class="text-sm text-intermediate-color">Schlecht</span>
-                          <span class="text-sm text-intermediate-color">Meh</span>
-                          <span class="text-sm text-intermediate-color">Okay</span>
-                          <span class="text-sm text-intermediate-color">Gut</span>
-                          <span class="text-sm text-intermediate-color">Sehr Gut</span>
+                          <span class="text-sm text-intermediate-color">{{'home.compPage.programming.slider.bad' | translate}}</span>
+                          <span class="text-sm text-intermediate-color">{{'home.compPage.programming.slider.meh' | translate}}</span>
+                          <span class="text-sm text-intermediate-color">{{'home.compPage.programming.slider.ok' | translate}}</span>
+                          <span class="text-sm text-intermediate-color">{{'home.compPage.programming.slider.good' | translate}}</span>
+                          <span class="text-sm text-intermediate-color">{{'home.compPage.programming.slider.vg' | translate}}</span>
                         </div>
                       </div>
                     </div>
@@ -128,7 +128,7 @@
 
       <!-- Software Kenntnisse -->
       <div [ngClass]="dragBox" [draggable]="checkDraggable()" (dragstart)="onDragStart($event, $event.target)" class="colListItem bg-white rounded-lg px-2 py-1 shadow-md animate-in slide-in-from-bottom-32 duration-500">
-        <h1 class="text-center font-bold text-2xl py-6">EDV Kenntnisse</h1>
+        <h1 class="text-center font-bold text-2xl py-6">{{'home.compPage.edv.title' | translate}}</h1>
 
         <div [formGroup]="softwareKnowledgeForm" class="mt-2 hover:cursor-default">
           <div formArrayName="softwareKnowledgeFormItems" class="space-y-8">
@@ -142,11 +142,11 @@
                     <input formControlName="softwareAppKnowledge" class="rounded-lg overflow-hidden appearance-none bg-gray-400 h-3 w-full" type="range" min="1" max="100" step="1" />
 
                     <div class="w-full flex justify-between mt-1">
-                      <span class="text-sm text-intermediate-color">Schlecht</span>
-                      <span class="text-sm text-intermediate-color">Meh</span>
-                      <span class="text-sm text-intermediate-color">Okay</span>
-                      <span class="text-sm text-intermediate-color">Gut</span>
-                      <span class="text-sm text-intermediate-color">Sehr Gut</span>
+                      <span class="text-sm text-intermediate-color">{{'home.compPage.edv.slider.bad' | translate}}</span>
+                      <span class="text-sm text-intermediate-color">{{'home.compPage.edv.slider.meh' | translate}}</span>
+                      <span class="text-sm text-intermediate-color">{{'home.compPage.edv.slider.ok' | translate}}</span>
+                      <span class="text-sm text-intermediate-color">{{'home.compPage.edv.slider.good' | translate}}</span>
+                      <span class="text-sm text-intermediate-color">{{'home.compPage.edv.slider.vg' | translate}}</span>
                     </div>
                   </div>
                 </div>

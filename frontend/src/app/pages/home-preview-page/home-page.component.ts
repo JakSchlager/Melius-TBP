@@ -12,6 +12,7 @@ import {MatIcon} from "@angular/material/icon";
 import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
 import {DropdownAvatarComponent} from "../../single-components/home/user-avatar/dropdown-avatar.component";
 import {BackgroundServiceService} from "../../services/background-service.service";
+import {TranslatePipe} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-home-preview-page',
@@ -30,7 +31,8 @@ import {BackgroundServiceService} from "../../services/background-service.servic
     NgClass,
     DropdownAvatarComponent,
     RouterLink,
-    NgStyle
+    NgStyle,
+    TranslatePipe
   ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'

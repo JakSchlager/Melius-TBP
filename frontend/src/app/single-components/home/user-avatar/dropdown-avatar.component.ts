@@ -3,6 +3,7 @@ import {MatIcon} from "@angular/material/icon";
 import {NgClass, NgIf} from "@angular/common";
 import {HomePageComponent} from "../../../pages/home-preview-page/home-page.component";
 import {FormsModule} from "@angular/forms";
+import {TranslatePipe} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-dropdown-avatar',
@@ -11,7 +12,8 @@ import {FormsModule} from "@angular/forms";
     MatIcon,
     NgIf,
     FormsModule,
-    NgClass
+    NgClass,
+    TranslatePipe
   ],
   templateUrl: './dropdown-avatar.component.html',
   styleUrl: './dropdown-avatar.component.css'

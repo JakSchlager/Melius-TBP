@@ -25,6 +25,7 @@ import {Router} from "@angular/router";
 import {ProgrammingKnowledge} from "../../../interfaces/ProgrammingKnowledge";
 import {SoftwareKnowledgeService} from "../../../services/software-knowledge.service";
 import {SoftwareKnowledge} from "../../../interfaces/SoftwareKnowledge";
+import {TranslatePipe} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-strengths-area',
@@ -45,6 +46,7 @@ import {SoftwareKnowledge} from "../../../interfaces/SoftwareKnowledge";
     DropStrProgrComponent,
     DropStrEdvComponent,
     StarRatingComponent,
+    TranslatePipe,
   ],
   templateUrl: './strengths-area.component.html',
   styleUrl: './strengths-area.component.css'

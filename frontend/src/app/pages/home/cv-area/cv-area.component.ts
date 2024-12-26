@@ -15,6 +15,7 @@ import {EducationService} from "../../../services/education.service";
 import {WorkExperience} from "../../../interfaces/work-experience";
 import {WorkExperienceService} from "../../../services/work-experience.service";
 import {HomePageServiceService} from "../../../services/home-page-service.service";
+import {TranslatePipe} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-cv-area',
@@ -28,7 +29,8 @@ import {HomePageServiceService} from "../../../services/home-page-service.servic
     NgForOf,
     MatIcon,
     DropdownMenuHomeComponent,
-    NgClass
+    NgClass,
+    TranslatePipe
   ],
   templateUrl: './cv-area.component.html',
   styleUrl: './cv-area.component.css'
