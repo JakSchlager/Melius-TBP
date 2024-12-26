@@ -3,7 +3,7 @@
 
     <!-- Header - Headline -->
     <div class="h-1/6">
-      <h1 class="h-full flex flex-col justify-end text-7xl font-bold">Einstellungen</h1>
+      <h1 class="h-full flex flex-col justify-end text-7xl font-bold">{{ 'settings.title' | translate }}</h1>
     </div>
 
     <!-- Main Content - 2 Columns: settings & background image -->
@@ -15,7 +15,7 @@
           <div class="w-1/2 h-full space-y-8">
             <!-- Language -->
             <div class="space-y-0.5 animate-fade-up fade-in-0 duration-500">
-              <h1 class="text-xl font-semibold">Sprache</h1>
+              <h1 class="text-xl font-semibold">{{ 'settings.subHeader.language' | translate }}</h1>
               <div>
                 <app-language-select></app-language-select>
               </div>
@@ -24,10 +24,10 @@
             <!-- Background Preview Image -->
             <div class="space-y-6 animate-fade-up fade-in-0 duration-700">
               <div class="space-y-0.5">
-                <h1 class="text-xl font-semibold">Hintergrundbild</h1>
+                <h1 class="text-xl font-semibold">{{ 'settings.subHeader.background' | translate }}</h1>
                 <div class="w-fit">
-                  <small class="text-gray-500 ">Hier kannst du das Hintergrundbild deiner Home-Seite <br>
-                    (inkl. Start-Seite, Lebenslauf, Projekte, Kompetenzen) ganz nach deinem Geschmack verändern.</small>
+                  <small class="text-gray-500 ">{{ 'settings.text.backgroundParOne' | translate }} <br>
+                    {{ 'settings.text.backgroundParTwo' | translate }}</small>
                 </div>
               </div>
 
@@ -82,7 +82,7 @@
             <!-- Footer - Save Changes Button -->
             <div class="animate-fade-up fade-in-0 duration-700">
               <div class="w-fit flex-justify-start hover:-translate-y-0.5 hover:shadow-md duration-150">
-                <button (click)="confirmSettings()" class="bg-intermediate-color text-white px-2.5 py-1.5 rounded-lg hover:bg-secondary-color duration-150 ease-in-out">Änderungen Speichern</button>
+                <button (click)="confirmSettings()" class="bg-intermediate-color text-white px-2.5 py-1.5 rounded-lg hover:bg-secondary-color duration-150 ease-in-out">{{ 'settings.button.save' | translate }}</button>
               </div>
             </div>
           </div>
