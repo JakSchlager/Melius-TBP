@@ -3,12 +3,14 @@ import {Group} from "../../../interfaces/group";
 import {GroupPageService} from "../../../services/group-page.service";
 import {GroupsPageComponent} from "../../groups-page/groups-page.component";
 import {NgIf} from "@angular/common";
+import {TranslatePipe} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-my-groups',
   standalone: true,
   imports: [
-    NgIf
+    NgIf,
+    TranslatePipe
   ],
   templateUrl: './my-groups.component.html',
   styleUrl: './my-groups.component.css'

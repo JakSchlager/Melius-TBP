@@ -2,7 +2,7 @@
 
   <!-- Roles Button -->
   <Button class="flex bg-white hover:bg-gray-50 hover:cursor-pointer duration-150 ease-in-out rounded-lg shadow-md px-4 py-2 space-x-2 items-center" (click)="toggleDropdown()">
-    <h1 class="text-lg font-semibold">Roles</h1>
+    <h1 class="text-lg font-semibold">{{'groups.createdGroup.rolesBtn.btnTitle' | translate}}</h1>
 
     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#8087FD"><path d="m400-200-182 91q-20 10-39-1.5T160-145v-495q0-33 23.5-56.5T240-720h320q33 0 56.5 23.5T640-640v495q0 23-19 34.5t-39 1.5l-182-91Zm-160-1 122-66q18-10 38-10t38 10l122 66v-439H240v439Zm520-39q-17 0-28.5-11.5T720-280v-520H320q-17 0-28.5-11.5T280-840q0-17 11.5-28.5T320-880h400q33 0 56.5 23.5T800-800v520q0 17-11.5 28.5T760-240ZM240-640h320-320Z"/></svg>
   </Button>
@@ -11,7 +11,7 @@
   <!-- Create Roles Dropdown -->
   <div *ngIf="isOpen || isAnimating" [ngClass]="{'animate-fade-down duration-150': isOpen, 'animate-out fade-out': !isOpen && isAnimating}" (animationend)="onAnimationEnd()" class="absolute">
     <div class="px-2 py-2 flex bg-white rounded-lg shadow-lg border-b-2 mt-2 items-center space-x-2">
-      <input [(ngModel)]="newRoleInput" (keyup.enter)="addRole()" class="w-44 rounded-lg border-2 p-0.5" type="text" placeholder="Neue Rolle">
+      <input [(ngModel)]="newRoleInput" (keyup.enter)="addRole()" class="w-44 rounded-lg border-2 p-0.5" type="text" placeholder="{{'groups.createdGroup.rolesBtn.placeholder' | translate}}">
 
       <button (click)="addRole()" class="hover:text-intermediate-color duration-150 cursor-pointer">
         <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="#8087FD"><path d="M440-440H240q-17 0-28.5-11.5T200-480q0-17 11.5-28.5T240-520h200v-200q0-17 11.5-28.5T480-760q17 0 28.5 11.5T520-720v200h200q17 0 28.5 11.5T760-480q0 17-11.5 28.5T720-440H520v200q0 17-11.5 28.5T480-200q-17 0-28.5-11.5T440-240v-200Z"/></svg>

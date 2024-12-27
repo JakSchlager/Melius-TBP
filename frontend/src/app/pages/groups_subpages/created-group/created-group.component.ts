@@ -5,6 +5,7 @@ import {GroupPageService} from "../../../services/group-page.service";
 import {MyGroupService} from "../../../services/my-group.service";
 import {FilterMembersComponent} from "../../../single-components/group/filter-members/filter-members.component";
 import {CreateRoleComponent} from "../../../single-components/group/create-roles/create-role.component";
+import {TranslatePipe} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-created-group',
@@ -14,7 +15,8 @@ import {CreateRoleComponent} from "../../../single-components/group/create-roles
     GroupAvatarComponent,
     NgIf,
     FilterMembersComponent,
-    CreateRoleComponent
+    CreateRoleComponent,
+    TranslatePipe
   ],
   templateUrl: './created-group.component.html',
   styleUrl: './created-group.component.css'
