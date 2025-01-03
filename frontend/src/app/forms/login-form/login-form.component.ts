@@ -48,7 +48,7 @@ export class LoginFormComponent {
       },
 
       error: error => {
-        document.getElementById("login_error")!.innerHTML = "Email oder Passwort falsch!";
+        document.getElementById("login_error")!.innerHTML = "*Email oder Passwort falsch!";
         console.log('Error during the login process.', error);
       }
     });

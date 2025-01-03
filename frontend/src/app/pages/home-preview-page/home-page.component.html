@@ -3,7 +3,7 @@
   <!-- Aktualisierter Hintergrund -->
   <div class="absolute top-0 left-0 w-full h-full -z-10" [ngStyle]="{'background-color': newBackgroundImageUrl ? 'white' : newBackgroundColor,
                 'background-image': newBackgroundImageUrl ? 'url(' + newBackgroundImageUrl + ')' : 'none',
-                'background-size': 'cover', 'background-position': 'center'}">
+                'background-size': 'cover', 'background-position': 'center', 'background-repeat': 'no-repeat', 'background-attachment': 'fixed', 'overflow': 'auto'}">
   </div>
 
   <div class="w-5/6">
