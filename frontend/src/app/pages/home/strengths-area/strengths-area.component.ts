@@ -53,10 +53,14 @@ import {PortfolioService} from "../../../services/portfolio.service";
 })
 export class StrengthsAreaComponent implements OnInit{
   characteristicService: CharacteristicService = inject(CharacteristicService);
-  profileService: ProfileService = inject(ProfileService);
 
   characteristics!: Selectable[];
   selectedCharacteristic!: Selectable[];
+
+  characteristicsBox!: any
+  knownLanguagesBox!: any;
+  programmingKnowledgesBox!: any;
+  softwareKnowledgesBox!: any;
 
   router: Router = inject(Router);
   dragBox : string = "cursor-default";
@@ -68,6 +72,12 @@ export class StrengthsAreaComponent implements OnInit{
   portfolioService: PortfolioService = inject(PortfolioService);
 
   ngOnInit(): void {
+
+    this.characteristicsBox = document.getElementById("characteristics");
+    this.knownLanguagesBox = document.getElementById("knownLanguages");
+    this.programmingKnowledgesBox = document.getElementById("programmingKnowledges");
+    this.softwareKnowledgesBox = document.getElementById("softwareKnowledges");
+
     this.characteristicService.loadAllCharacteristics().subscribe(c => {
       console.log("Characteristics loaded",c)
       this.characteristics = c
@@ -90,6 +100,8 @@ export class StrengthsAreaComponent implements OnInit{
       for(let currSoftwareKnowledge of softwareKnowledges) {
         this.addSoftware(currSoftwareKnowledge)
       }
+
+      this.moveBoxes();
 
     },200)
   }
@@ -234,6 +246,24 @@ export class StrengthsAreaComponent implements OnInit{
     if (targetElement && this.draggedItem) {
       // Füge das gezogene Element dem Ziel hinzu
       targetElement.appendChild(this.draggedItem);
+
+      switch(this.draggedItem) {
+        case this.characteristicsBox:
+          this.portfolioService.currPortfolio!.characteristicsPosition = targetContainerId;
+          break;
+        case this.knownLanguagesBox:
+          this.portfolioService.currPortfolio!.knownLanguagesPosition = targetContainerId;
+          break;
+        case this.programmingKnowledgesBox:
+          this.portfolioService.currPortfolio!.programmingKnowledgesPosition = targetContainerId;
+          break;
+        case this.softwareKnowledgesBox:
+          this.portfolioService.currPortfolio!.softwareKnowledgesPosition = targetContainerId;
+          break;
+      }
+
+      this.portfolioService.updatePortfolio(this.portfolioService.currPortfolio!).subscribe();
+
       this.draggedItem = null;
     }
   }
@@ -344,6 +374,28 @@ export class StrengthsAreaComponent implements OnInit{
     setTimeout(() => {
       window.location.reload()
     }, 100);
+  }
+
+  moveBoxes() {
+    if(this.portfolioService.currPortfolio!.characteristicsPosition) {
+      this.draggedItem = this.characteristicsBox;
+      this.onDrop(new DragEvent("drag"), this.portfolioService.currPortfolio!.characteristicsPosition)
+    }
+
+    if(this.portfolioService.currPortfolio!.knownLanguagesPosition) {
+      this.draggedItem = this.knownLanguagesBox;
+      this.onDrop(new DragEvent("drag"), this.portfolioService.currPortfolio!.knownLanguagesPosition)
+    }
+
+    if(this.portfolioService.currPortfolio!.programmingKnowledgesPosition) {
+      this.draggedItem = this.programmingKnowledgesBox;
+      this.onDrop(new DragEvent("drag"), this.portfolioService.currPortfolio!.programmingKnowledgesPosition)
+    }
+
+    if(this.portfolioService.currPortfolio!.softwareKnowledgesPosition) {
+      this.draggedItem = this.softwareKnowledgesBox;
+      this.onDrop(new DragEvent("drag"), this.portfolioService.currPortfolio!.softwareKnowledgesPosition)
+    }
   }
 }
 
