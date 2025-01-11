@@ -3,13 +3,13 @@ import {ActivatedRoute} from "@angular/router";
 import {PortfolioService} from "../../services/portfolio.service";
 import {Portfolio} from "../../interfaces/Portfolio";
 import {HomeNavbarComponent} from "../../navigation/home-navbar/home-navbar.component";
-import {DropdownAvatarComponent} from "../../single-components/user-avatar/dropdown-avatar.component";
+import {DropdownAvatarComponent} from "../../single-components/home/user-avatar/dropdown-avatar.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgForOf, NgIf} from "@angular/common";
-import {DropStrEdvComponent} from "../../single-components/strengths/drop-str-edv/drop-str-edv.component";
-import {DropStrProgrComponent} from "../../single-components/strengths/drop-str-progr/drop-str-progr.component";
+import {DropStrEdvComponent} from "../../single-components/home/strengths/drop-str-edv/drop-str-edv.component";
+import {DropStrProgrComponent} from "../../single-components/home/strengths/drop-str-progr/drop-str-progr.component";
 import {MultiSelectModule} from "primeng/multiselect";
-import {StarRatingComponent} from "../../single-components/star-rating/star-rating.component";
+import {StarRatingComponent} from "../../single-components/home/star-rating/star-rating.component";
 import $ from "jquery";
 
 @Component({

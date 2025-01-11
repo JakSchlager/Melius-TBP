@@ -91,7 +91,7 @@ export class StrengthsAreaComponent implements OnInit{
         this.addSoftware(currSoftwareKnowledge)
       }
 
-    },100)
+    },200)
   }
 
   constructor(private fb: FormBuilder, private cdRef: ChangeDetectorRef) {

@@ -6,6 +6,6 @@ import java.sql.Blob;
 
 
 public class FileUploadForm {
-    @PartType(MediaType.APPLICATION_OCTET_STREAM)
     public byte[] file;
+    public String type;
 }

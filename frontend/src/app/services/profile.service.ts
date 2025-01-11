@@ -48,11 +48,11 @@ export class ProfileService {
     return this.httpClient.put<Profile>(this.url + "update", profile);
   }
 
-  uploadProfileImg(file: Blob) {
+  uploadProfileImg(file: any) {
     const formData = new FormData();
 
     formData.append("file", file);
 
-    return this.httpClient.patch<FormData>(this.url + "img/" + this.loggedInUser!.id, {"file": file})
+    return this.httpClient.patch<FormData>(this.url + "img/" + this.loggedInUser!.id, file)
   }
 }

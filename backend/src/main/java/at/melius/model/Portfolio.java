@@ -51,6 +51,14 @@ public class Portfolio {
     @JsonIgnoreProperties({"portfolio"})
     private Set<SoftwareKnowledge> softwareKnowledges;
 
+    public Set<Characteristic> getCharacteristics() {
+        return characteristics;
+    }
+
+    public void setCharacteristics(Set<Characteristic> characteristics) {
+        this.characteristics = characteristics;
+    }
+
     public Profile getProfile() {
         return profile;
     }

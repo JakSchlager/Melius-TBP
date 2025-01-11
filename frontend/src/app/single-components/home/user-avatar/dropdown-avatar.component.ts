@@ -3,7 +3,7 @@ import {MatIcon} from "@angular/material/icon";
 import {NgClass, NgIf} from "@angular/common";
 import {HomePageComponent} from "../../../pages/home-preview-page/home-page.component";
 import {FormsModule} from "@angular/forms";
-import {ProfileService} from "../../services/profile.service";
+import {ProfileService} from "../../../services/profile.service";
 
 @Component({
   selector: 'app-dropdown-avatar',
@@ -41,7 +41,7 @@ export class DropdownAvatarComponent implements OnInit {
 
         console.log(fileBlobForUpload);
         // Upload des Blobs an das Backend
-        this.profileService.uploadProfileImg(fileBlobForUpload).subscribe();
+        this.profileService.uploadProfileImg({"byte": byteArray, "type": file.type}).subscribe();
       })
     }
   }
