@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {NgClass, NgForOf, NgIf} from "@angular/common";
+import {TranslatePipe} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-filter-members',
@@ -7,7 +8,8 @@ import {NgClass, NgForOf, NgIf} from "@angular/common";
   imports: [
     NgForOf,
     NgIf,
-    NgClass
+    NgClass,
+    TranslatePipe
   ],
   templateUrl: './filter-members.component.html',
   styleUrl: './filter-members.component.css'

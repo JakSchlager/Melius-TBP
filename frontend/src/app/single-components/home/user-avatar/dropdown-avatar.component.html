@@ -20,14 +20,14 @@
 
     <div class="relative">
       <div *ngIf="showAvatarOptions || isAnimating" [ngClass]="{'animate-fade-down duration-150': showAvatarOptions, 'animate-out fade-out': !showAvatarOptions && isAnimating}" (animationend)="onAnimationEnd()" class="absolute w-fit flex flex-col justify-between h-fit px-2 py-1.5 bg-white border rounded-lg shadow-md ">
-        <button class="w-full flex px-1 py-1.5 bg-white rounded-lg text-start hover:bg-accent-blue ease-in-out duration-150" (click)="triggerFileInput()">
+        <button class="w-full flex px-1 py-1.5 space-x-1 bg-white rounded-lg text-start hover:bg-accent-blue ease-in-out duration-150" (click)="triggerFileInput()">
           <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#8087FD"><path d="M440-440H240q-17 0-28.5-11.5T200-480q0-17 11.5-28.5T240-520h200v-200q0-17 11.5-28.5T480-760q17 0 28.5 11.5T520-720v200h200q17 0 28.5 11.5T760-480q0 17-11.5 28.5T720-440H520v200q0 17-11.5 28.5T480-200q-17 0-28.5-11.5T440-240v-200Z"/></svg>
-          <h1>hinzufügen</h1>
+          <h1>{{'home.avatar.add' | translate}}</h1>
         </button>
 
-        <button class="w-full flex px-1 py-1.5 bg-white rounded-lg text-start hover:bg-accent-blue ease-in-out duration-150" (click)="deleteAvatar()">
+        <button class="w-full flex px-1 py-1.5 space-x-1 bg-white rounded-lg text-start hover:bg-accent-blue ease-in-out duration-150" (click)="deleteAvatar()">
           <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#EA3323"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
-          <h1>löschen</h1>
+          <h1>{{'home.avatar.remove' | translate}}</h1>
         </button>
       </div>
     </div>

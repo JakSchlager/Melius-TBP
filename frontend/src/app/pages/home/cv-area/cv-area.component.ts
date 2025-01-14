@@ -15,6 +15,7 @@ import {EducationService} from "../../../services/education.service";
 import {WorkExperience} from "../../../interfaces/work-experience";
 import {WorkExperienceService} from "../../../services/work-experience.service";
 import {HomePageServiceService} from "../../../services/home-page-service.service";
+import {TranslatePipe} from "@ngx-translate/core";
 import {PortfolioService} from "../../../services/portfolio.service";
 
 @Component({
@@ -30,7 +31,9 @@ import {PortfolioService} from "../../../services/portfolio.service";
     MatIcon,
     DropdownMenuHomeComponent,
     NgClass,
-    NgIf
+    NgIf,
+    NgClass,
+    TranslatePipe
   ],
   templateUrl: './cv-area.component.html',
   styleUrl: './cv-area.component.css'

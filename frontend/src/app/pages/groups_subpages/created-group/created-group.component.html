@@ -38,43 +38,42 @@
           </div>
 
           <div class="space-y-3 items-center mb-6">
-            <h1 class="text-6xl font-bold">Willkommen zu</h1>
+            <h1 class="text-6xl font-bold">{{'groups.createdGroup.title' | translate}}</h1>
             <h1 class="text-5xl font-bold">Group name</h1>
           </div>
         </div>
 
-        <div class="h-fit w-fit animate-fade-up fade-in-0 duration-700">
+        <div class="h-fit w-1/4 animate-fade-up fade-in-0 duration-700">
           <div class="space-y-4 bg-white py-4 px-4 rounded-xl drop-shadow-lg border border-gray-100">
             <!-- Informations about the group -->
             <div class="mx-5 space-y-5">
-              <div class="flex justify-between">
-                <div>
-                  <h1 class="text-2xl font-semibold">Unternehmen</h1>
+              <div class="grid grid-cols-2 row-span-1">
+                <div class="grid justify-start">
+                  <h1 class="text-2xl font-semibold">{{'groups.createdGroup.infoBox.compTitle' | translate}}</h1>
                   <h1 class="font-semibold text-lg">Name</h1>
                 </div>
-                <div>
-                  <h1 class="text-2xl font-semibold">Abteilung</h1>
+                <div class="grid ml-8">
+                  <h1 class="text-2xl font-semibold">{{'groups.createdGroup.infoBox.deptTitle' | translate}}</h1>
                   <h1 class="font-semibold text-lg">Name</h1>
                 </div>
               </div>
 
-
-              <div class="">
-                <h1 class="text-2xl font-semibold">Mitglieder</h1>
-                  <div class="flex justify-between space-x-8">
-                    <div>
-                      <h1 class="font-semibold text-lg">Zurzeit beigetreten</h1>
-                      <h1 class="font-semibold text-md">Anzahl</h1>
-                    </div>
-                    <div>
-                      <h1 class="font-semibold text-lg">Max. zulässig</h1>
-                      <h1 class="font-semibold text-md">Anzahl</h1>
-                    </div>
+              <div>
+                <h1 class="text-2xl font-semibold">{{'groups.createdGroup.infoBox.amtOfMembers.title' | translate}}</h1>
+                <div class="grid grid-cols-2 row-span-2">
+                  <div class="grid justify-start">
+                    <h1 class="font-semibold text-lg">{{'groups.createdGroup.infoBox.amtOfMembers.current' | translate}}</h1>
+                    <h1 class="font-semibold text-md">Anzahl</h1>
                   </div>
+                  <div class="grid ml-8">
+                    <h1 class="font-semibold text-lg">{{'groups.createdGroup.infoBox.amtOfMembers.max' | translate}}</h1>
+                    <h1 class="font-semibold text-md">Anzahl</h1>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="w-full flex justify-center">
-              <button class="bg-intermediate-color text-white px-2.5 py-1.5 rounded-lg hover:bg-secondary-color duration-150 ease-in-out">Änderungen Speichern</button>
+              <button class="bg-intermediate-color text-white px-2.5 py-1.5 rounded-lg hover:bg-secondary-color duration-150 ease-in-out">{{'groups.createdGroup.infoBox.saveBtn' | translate}}</button>
             </div>
           </div>
 
@@ -106,7 +105,7 @@
           <h1 class="text-gray-500">Mitarbeiter</h1>
           <h1 class="text-gray-500">01.01.2024</h1>
           <div>
-            <button class="bg-primary-color text-white px-2 py-1 rounded-lg shadow-md hover:bg-accent-blue hover:text-primary-color duration-150">Ansehen</button>
+            <button class="bg-primary-color text-white px-2 py-1 rounded-lg shadow-md hover:bg-accent-blue hover:text-primary-color duration-150">{{'groups.createdGroup.memberInfos.lookup' | translate}}</button>
           </div>
         </div>
       </div>

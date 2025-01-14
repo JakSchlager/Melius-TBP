@@ -8,6 +8,7 @@ import {ProfileService} from "../../../services/profile.service";
 import {isEmpty} from "rxjs";
 import {Profile} from "../../../interfaces/profile";
 import {Router} from "@angular/router";
+import {TranslatePipe} from "@ngx-translate/core";
 
 
 @Component({
@@ -19,7 +20,8 @@ import {Router} from "@angular/router";
     MatIcon,
     NgForOf,
     NgOptimizedImage,
-    NgClass
+    NgClass,
+    TranslatePipe
   ],
   templateUrl: './projects-area.component.html',
   styleUrl: './projects-area.component.css'

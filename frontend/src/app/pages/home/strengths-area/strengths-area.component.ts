@@ -25,6 +25,7 @@ import {Router} from "@angular/router";
 import {ProgrammingKnowledge} from "../../../interfaces/ProgrammingKnowledge";
 import {SoftwareKnowledgeService} from "../../../services/software-knowledge.service";
 import {SoftwareKnowledge} from "../../../interfaces/SoftwareKnowledge";
+import {TranslatePipe} from "@ngx-translate/core";
 import {PortfolioService} from "../../../services/portfolio.service";
 
 @Component({
@@ -46,7 +47,6 @@ import {PortfolioService} from "../../../services/portfolio.service";
     DropStrProgrComponent,
     DropStrEdvComponent,
     StarRatingComponent,
-    NgIf,
   ],
   templateUrl: './strengths-area.component.html',
   styleUrl: './strengths-area.component.css'

@@ -7,6 +7,7 @@ import {GroupsPageComponent} from "../../groups-page/groups-page.component";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {Group} from "../../../interfaces/group";
 import {GroupPageService} from "../../../services/group-page.service";
+import {TranslatePipe} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-create-group-form',
@@ -16,7 +17,8 @@ import {GroupPageService} from "../../../services/group-page.service";
     GroupAvatarComponent,
     ReactiveFormsModule,
     NgIf,
-    NgClass
+    NgClass,
+    TranslatePipe
   ],
   templateUrl: './create-own-group.component.html',
   styleUrl: './create-own-group.component.css'

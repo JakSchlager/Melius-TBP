@@ -8,6 +8,7 @@ import {GroupPageService} from "../../services/group-page.service";
 import {
   GroupPasswordInputFieldComponent
 } from "../../single-components/group/group-password-input-field/group-password-input-field.component";
+import {TranslatePipe} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-groups-page',
@@ -21,7 +22,8 @@ import {
     MyGroupsComponent,
     FormsModule,
     NgForOf,
-    GroupPasswordInputFieldComponent
+    GroupPasswordInputFieldComponent,
+    TranslatePipe
   ],
   templateUrl: './groups-page.component.html',
   styleUrl: './groups-page.component.css'

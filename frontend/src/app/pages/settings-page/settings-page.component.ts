@@ -1,25 +1,24 @@
-import {ChangeDetectorRef, Component, Inject} from '@angular/core';
-import {MatIcon} from "@angular/material/icon";
+import {ChangeDetectorRef, Component} from '@angular/core';
 import {LanguageSelectComponent} from "../../single-components/settings/language-select/language-select.component";
 import {ColorPickerModule} from "primeng/colorpicker";
 import {
   BackgroundSelectComponent
 } from "../../single-components/settings/background-select/background-select.component";
 import {NgClass, NgIf, NgStyle} from "@angular/common";
-import {HomePageComponent} from "../home-preview-page/home-page.component";
 import {BackgroundServiceService} from "../../services/background-service.service";
+import {TranslatePipe} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-settings-page',
   standalone: true,
   imports: [
-    MatIcon,
     LanguageSelectComponent,
     ColorPickerModule,
     BackgroundSelectComponent,
     NgIf,
     NgClass,
-    NgStyle
+    NgStyle,
+    TranslatePipe,
   ],
   templateUrl: './settings-page.component.html',
   styleUrl: './settings-page.component.css'
