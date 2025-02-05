@@ -1,0 +1,223 @@
+{
+  "home": {
+    "avatar": {
+      "add": "Add",
+      "remove": "Remove"
+    },
+    "header": "Welcome back!",
+    "nav": {
+      "cv": "CV",
+      "projects": "Projects",
+      "comps": "Competencies"
+    },
+    "start": {
+      "landingBoxCV": "Introduce yourself",
+      "landingBoxProjects": "Be proud of your projects",
+      "landingBoxComp": "Show what you've got"
+    },
+    "settingsButton":  {
+      "title": "Settings",
+      "dad": "Drag & Drop"
+    },
+    "cvPage": {
+      "generally": {
+        "title": "Generally",
+        "salutationHeader": "Salutation",
+        "salutationOptions": {
+          "man": "Mr.",
+          "women": "Ms.",
+          "diverse": "Diverse"
+        },
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "tel": "Phone number",
+        "postalCode": "Postal Code",
+        "location": "City",
+        "address": "Address",
+        "saveButton": "Save"
+      },
+
+      "educations": {
+        "title": "Educations",
+        "location": "Educational Establishment",
+        "from": "From",
+        "until": "Until",
+        "complete": "Status",
+        "completionStatus": {
+          "yes": "Yes",
+          "no": "No",
+          "inTraining": "In training"
+        }
+      },
+
+      "workExperience": {
+        "title": "Work Experience",
+        "company": "Company/Location",
+        "from": "From",
+        "until": "Until",
+        "moreInfos": "Additional Informationen"
+      }
+    },
+
+    "projectsPage": {
+      "ghProjects": {
+        "title": "Your GitHub Projekts",
+        "showRepoTxt": "Display github repositories",
+        "inputGhName": "Put in your username",
+        "confirmBtn": "Confirm",
+        "navToRepoBtn": "To the Repo"
+      },
+      "artworks": {
+        "title": "Your Artworks",
+        "uploadBtn": "Click here to upload your images!"
+      }
+    },
+    "compPage": {
+      "personal": {
+        "title": "Personal characteristics",
+        "smallTxt": "Select three key strengths to display!"
+      },
+
+      "languages": {
+        "title": "Linguistic strengths"
+      },
+
+      "programming": {
+        "title": "Programming knowledge",
+        "slider": {
+          "bad": "Bad",
+          "meh": "Meh",
+          "ok": "Okay",
+          "good": "Good",
+          "vg": "Very Good"
+        }
+      },
+
+      "edv": {
+        "title": "EDV knowledge",
+        "slider": {
+          "bad": "Bad",
+          "meh": "Meh",
+          "ok": "Okay",
+          "good": "Good",
+          "vg": "Very Good"
+        }
+      }
+    }
+  },
+
+  "groups": {
+    "startPage": {
+      "title": {
+        "parOne": "Welcome to",
+        "parTwo": "Groups"
+      },
+      "searchBar": "Search for a Group...",
+      "searchResultBox": {
+        "name": "Group name",
+        "comp": "Company",
+        "dept": "Department",
+        "released": "Release date",
+        "joinBtn": "Join group",
+        "noFound": "No groups could be found."
+      },
+      "joinThroughKey": {
+        "txt": "Before you can join the \"Group Name\" group, you must enter a specific access key.",
+        "keyPlaceholder": "Enter the password...",
+        "joinBtn": "Join group"
+      },
+      "create": {
+        "btnTitle": "Create your own Group",
+        "boxTitle": "Start Organizing",
+        "grName": {
+          "title": "Groupname",
+          "inputBox": "Name of the Group...",
+          "error": "*Groupname can't be empty"
+        },
+        "grComp": {
+          "title": "Company",
+          "inputBox": "Name of your Company...",
+          "error": "*Company can't be empty"
+        },
+        "grDept": {
+          "title": "Department",
+          "inputBox": "Name of your Department...",
+          "error": "*Department can't be empty"
+        },
+        "grKey": {
+          "title": "Password",
+          "errorParOne": "*Password must be ",
+          "errorParStrong": "at least 6",
+          "errorParTwo": " characters long"
+        },
+        "grAmtMembers": {
+          "title": "Amount of Members",
+          "errorParOne": "*The amount of members must be ",
+          "errorParStrong": "at least 2",
+          "errorParTwo": ""
+        },
+        "createBtn": "Create Group"
+      },
+      "myGroups": {
+        "btnTitle": "My Groups",
+        "boxTitle": "My Groups",
+        "searchBarSmall": "Search for Groups...",
+        "nothingFound": "You have no group created yet."
+      }
+    },
+
+    "createdGroup": {
+      "title": "Welcome to",
+      "infoBox": {
+        "compTitle": "Company",
+        "deptTitle": "Department",
+        "amtOfMembers": {
+          "title": "Members",
+          "current": "Current",
+          "max": "Max. capacity"
+        },
+        "saveBtn": "Save Changes"
+      },
+      "filterBtn": {
+        "joined": "Joined",
+        "from": "From",
+        "until": "Until",
+        "roles": {
+          "title": "Roles",
+          "placeholder": "Filter for roles..."
+        },
+        "programming": {
+          "title": "Pr.- Knowledge",
+          "placeholder": "Filter..."
+        },
+        "edv": {
+          "title": "EDV Knowledge",
+          "placeholder": "Filter..."
+        },
+        "searchBtn": "Search up"
+      },
+      "rolesBtn": {
+        "btnTitle": "Roles",
+        "placeholder": "Create new role"
+      },
+      "memberInfos": {
+        "lookup": "Lookup"
+      }
+    }
+  },
+
+  "settings": {
+    "title": "Settings",
+    "subHeader": {
+      "language": "Language",
+      "background": "Background Image"
+    },
+    "text": {
+      "backgroundParOne": "Here you can set the background image of your homepage",
+      "backgroundParTwo": "(incl. the Start-page, CV, projects, skills and the Groups-Page) according to your taste."
+    },
+    "button": {
+      "save": "Save Changes"
+    }
+  }
+}

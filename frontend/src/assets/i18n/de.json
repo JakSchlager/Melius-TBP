@@ -1,0 +1,224 @@
+{
+  "home": {
+    "avatar": {
+      "add": "Hinzufügen",
+      "remove": "Entfernen"
+    },
+    "header": "Wilkommen zurück!",
+    "nav": {
+      "cv": "Lebenslauf",
+      "projects": "Projekte",
+      "comps": "Kompetenzen"
+    },
+    "start": {
+      "landingBoxCV": "Stell dich vor",
+      "landingBoxProjects": "Sei stolz auf deine Projekte",
+      "landingBoxComp": "Zeig was du drauf hast"
+    },
+    "settingsButton":  {
+      "title": "Einstellungen",
+      "dad": "Drag & Drop"
+    },
+    "cvPage": {
+      "generally": {
+        "title": "Allgemein",
+        "salutationHeader":  "Anrede",
+        "salutationOptions": {
+          "man": "Herr",
+          "women": "Frau",
+          "diverse": "Divers"
+        },
+        "firstName": "Vorname",
+        "lastName": "Nachname",
+        "tel": "Telefonnummer",
+        "postalCode": "PLZ",
+        "location": "Stadt",
+        "address": "Adresse",
+        "saveButton": "Speichern"
+      },
+
+      "educations": {
+        "title": "Ausbildungen",
+        "location": "Bildungseinrichtung/Ort",
+        "from": "Von",
+        "until": "Bis",
+        "complete": "Absolviert",
+        "completionStatus": {
+          "yes": "Ja",
+          "no": "Nein",
+          "inTraining": "In Ausbildung"
+        }
+      },
+
+      "workExperience": {
+        "title": "Berufserfahrungen",
+        "company": "Firma/Ort",
+        "from": "Von",
+        "until": "Bis",
+        "moreInfos": "Zusätzliche Informationen"
+      }
+    },
+
+    "projectsPage": {
+      "ghProjects": {
+        "title": "Deine GitHube Projekte",
+        "showRepoTxt": "GitHub Repositories anzeigen",
+        "inputGhName": "Benutzernamen eingeben",
+        "confirmBtn": "Bestätigen",
+        "navToRepoBtn": "Zum Repo"
+      },
+      "artworks": {
+        "title": "Deine Kunstwerke",
+        "uploadBtn": "Hier klicken um deine Bilder hochzuladen!"
+      }
+    },
+
+    "compPage": {
+      "personal": {
+        "title": "Persönliche Eigenschaften",
+        "smallTxt": "Wähle drei primäre Stärken aus die angezeigt werden sollen!"
+      },
+
+      "languages": {
+        "title": "Sprachliche Stärken"
+      },
+
+      "programming": {
+        "title": "Programmierkenntnisse",
+        "slider": {
+          "bad": "Schlecht",
+          "meh": "Meh",
+          "ok": "Okay",
+          "good": "Gut",
+          "vg": "Sehr Gut"
+        }
+      },
+
+      "edv": {
+        "title": "EDV Kenntnisse",
+        "slider": {
+          "bad": "Schlecht",
+          "meh": "Meh",
+          "ok": "Okay",
+          "good": "Gut",
+          "vg": "Sehr Gut"
+        }
+      }
+    }
+  },
+
+  "groups": {
+    "startPage": {
+      "title": {
+        "parOne": "Willkommen bei",
+        "parTwo": "Gruppen"
+      },
+      "searchBar": "Nach einer Gruppe suchen...",
+      "searchResultBox": {
+        "name": "Gruppenname",
+        "comp": "Unternehmen",
+        "dept": "Abteilung",
+        "released": "Veröffentlicht am",
+        "joinBtn": "Beitreten",
+        "noFound": "Es konnten keine Gruppen gefunden werden."
+      },
+      "joinThroughKey": {
+        "txt": "Bevor du der Gruppe \"Group Name\" beitreten kannst, musst du noch einen bestimmten Einschreibeschlüssel eingeben.",
+        "keyPlaceholder": "Einschreibeschlüssel eingeben...",
+        "joinBtn": "Gruppe beitreten"
+      },
+      "create": {
+        "btnTitle": "Eine eigene Gruppe erstellen",
+        "boxTitle": "Starte das Organisieren",
+        "grName": {
+          "title": "Gruppenname",
+          "inputBox": "Name einer Gruppe...",
+          "error": "*Gruppenname darf nicht leer sein"
+        },
+        "grComp": {
+          "title": "Unternehmen",
+          "inputBox": "Name deines Unternehmens...",
+          "error": "*Unternehmen darf nicht leer sein"
+        },
+        "grDept": {
+          "title": "Abteilung",
+          "inputBox": "Name deiner Abteilung...",
+          "error": "*Abteilung darf nicht leer sein"
+        },
+        "grKey": {
+          "title": "Einschreibeschlüssel",
+          "errorParOne": "*Password muss ",
+          "errorParStrong": "mindestens 6",
+          "errorParTwo": " Zeichen lang sein"
+        },
+        "grAmtMembers": {
+          "title": "Anzahl der Mitglieder",
+          "errorParOne": "*Die Anzahl an Mitglieder muss ",
+          "errorParStrong": "mindestens 2",
+          "errorParTwo": " betragen"
+        },
+        "createBtn": "Gruppe gründen"
+      },
+      "myGroups": {
+        "btnTitle": "Meine Gruppen",
+        "boxTitle": "Meine Gruppen",
+        "searchBarSmall": "Nach Gruppen suchen...",
+        "nothingFound": "Derzeit hast du noch keine Gruppen erstellt."
+      }
+    },
+
+    "createdGroup": {
+      "title": "Willkommen zu",
+      "infoBox": {
+        "compTitle": "Unternehmen",
+        "deptTitle": "Abteilung",
+        "amtOfMembers": {
+          "title": "Mitglieder",
+          "current": "Momentan",
+          "max": "Max. zulässig"
+        },
+        "saveBtn": "Änderungen speichern"
+      },
+      "filterBtn": {
+        "joined": "Beigetreten",
+        "from": "Von",
+        "until": "Bis",
+        "roles": {
+          "title": "Rollen",
+          "placeholder": "Nach Rollen filtern..."
+        },
+        "programming": {
+          "title": "Pr.- Kenntnisse",
+          "placeholder": "Filtern..."
+        },
+        "edv": {
+          "title": "EDV Kenntnisse",
+          "placeholder": "Filtern..."
+        },
+        "searchBtn": "Suchen"
+      },
+      "rolesBtn": {
+        "btnTitle": "Rollen",
+        "placeholder": "Neue Rolle erstellen"
+      },
+      "memberInfos": {
+        "lookup": "Ansehen"
+      }
+    }
+  },
+
+  "settings": {
+    "title": "Einstellungen",
+    "subHeader": {
+      "language": "Sprache",
+      "background": "Hintergrundbild"
+    },
+    "text": {
+      "backgroundParOne": "Hier kannst du das Hintergrundbild deiner Home-Seite",
+      "backgroundParTwo": "(inkl. Start-Seite, Lebenslauf, Projekte, Kompetenzen, sowie die Gruppen Seite) ganz nach deinem Geschmack verändern."
+    },
+    "button": {
+      "save": "Änderungen speichern"
+    }
+  }
+}
