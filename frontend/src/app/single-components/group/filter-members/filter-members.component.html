@@ -14,15 +14,15 @@
 
       <!-- Filter date joined -->
       <div class="px-2">
-        <h1 class="text-lg font-semibold">Beigetreten</h1>
+        <h1 class="text-lg font-semibold">{{ 'groups.createdGroup.filterBtn.joined' | translate }}</h1>
         <div class="flex justify-between">
           <div class="flex flex-col">
-            <h1 class="flex-1 text-sm font-semibold">Von</h1>
+            <h1 class="flex-1 text-sm font-semibold">{{ 'groups.createdGroup.filterBtn.from' | translate }}</h1>
             <input class="border-2 rounded-lg" type="date">
           </div>
 
           <div class="flex flex-col">
-            <h1 class="flex-1 text-sm font-semibold">Bis</h1>
+            <h1 class="flex-1 text-sm font-semibold">{{ 'groups.createdGroup.filterBtn.until' | translate }}</h1>
             <input class="border-2 rounded-lg" type="date">
           </div>
         </div>
@@ -31,32 +31,32 @@
 
       <!-- Filter roles -->
       <div class="px-2">
-        <h1 class="text-lg font-semibold">Rollen</h1>
+        <h1 class="text-lg font-semibold">{{ 'groups.createdGroup.filterBtn.roles.title' | translate }}</h1>
         <div class="flex space-x-10">
-          <input class="p-0.5 border-2 rounded-lg" type="text" placeholder="Nach Rolle suchen...">
+          <input class="p-0.5 border-2 rounded-lg" type="text" placeholder="{{ 'groups.createdGroup.filterBtn.roles.placeholder' | translate }}">
         </div>
       </div>
 
       <!-- Filter Programming-Skill -->
       <div class="px-2 min-w-fit">
-        <h1 class=" text-lg font-semibold">Pr. Kenntnisse</h1>
+        <h1 class=" text-lg font-semibold">{{ 'groups.createdGroup.filterBtn.programming.title' | translate }}</h1>
         <div class="flex space-x-10">
-          <input class="p-0.5 border-2 rounded-lg" type="text" placeholder="Durchstöbern...">
+          <input class="p-0.5 border-2 rounded-lg" type="text" placeholder="{{ 'groups.createdGroup.filterBtn.programming.placeholder' | translate }}">
         </div>
       </div>
 
       <!-- Filter EDV-Skill -->
       <div class="px-2">
-        <h1 class="text-lg font-semibold">EDV Kenntnisse</h1>
+        <h1 class="text-lg font-semibold">{{ 'groups.createdGroup.filterBtn.edv.title' | translate }}</h1>
         <div class="flex space-x-10">
-          <input class="p-0.5 border-2 rounded-lg" type="text" placeholder="Durchstöbern...">
+          <input class="p-0.5 border-2 rounded-lg" type="text" placeholder="{{ 'groups.createdGroup.filterBtn.edv.placeholder' | translate }}">
         </div>
       </div>
 
       <!-- Submit -->
       <div class="px-2 flex justify-center">
         <button class="bg-intermediate-color text-white px-2.5 py-1 rounded-lg hover:bg-secondary-color duration-150 ease-in-out" (click)="filterMembers()">
-          Suchen
+          {{ 'groups.createdGroup.filterBtn.searchBtn' | translate }}
         </button>
       </div>
 

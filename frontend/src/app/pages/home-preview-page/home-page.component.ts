@@ -1,36 +1,27 @@
-import {Component, HostListener, Inject, inject, OnInit} from '@angular/core';
-import {SideBarComponent} from "../../navigation/side-bar/side-bar.component";
-import {Profile} from "../../interfaces/profile";
+import {Component, inject, OnInit} from '@angular/core';
 import {ProfileService} from "../../services/profile.service";
-import {NgClass, NgIf, NgOptimizedImage, NgStyle} from "@angular/common";
+import {NgIf, NgOptimizedImage, NgStyle} from "@angular/common";
 import {HomeNavbarComponent} from "../../navigation/home-navbar/home-navbar.component";
 import {ActivatedRoute, NavigationEnd, Router, RouterLink, RouterOutlet} from "@angular/router";
 import {filter} from "rxjs";
 import {FormsModule} from "@angular/forms";
-import {VERSION} from "@angular/cdk";
-import {MatIcon} from "@angular/material/icon";
-import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
 import {DropdownAvatarComponent} from "../../single-components/home/user-avatar/dropdown-avatar.component";
 import {BackgroundServiceService} from "../../services/background-service.service";
+import {TranslatePipe} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-home-preview-page',
   standalone: true,
   imports: [
-    SideBarComponent,
     NgIf,
     HomeNavbarComponent,
     NgOptimizedImage,
     RouterOutlet,
     FormsModule,
-    MatIcon,
-    MatMenu,
-    MatMenuItem,
-    MatMenuTrigger,
-    NgClass,
     DropdownAvatarComponent,
     RouterLink,
-    NgStyle
+    NgStyle,
+    TranslatePipe
   ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'

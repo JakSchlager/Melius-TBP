@@ -4,13 +4,14 @@ import {DropdownModule} from "primeng/dropdown";
 import {NgClass, NgIf} from "@angular/common";
 import {identity} from "rxjs";
 import {HomePageServiceService} from "../../../services/home-page-service.service";
+import {TranslatePipe} from "@ngx-translate/core";
 
 
 
 @Component({
   selector: 'app-dropdown-menu-home',
   standalone: true,
-  imports: [FormsModule, DropdownModule, NgIf, NgClass, ReactiveFormsModule],
+  imports: [FormsModule, DropdownModule, NgIf, NgClass, ReactiveFormsModule, TranslatePipe],
   templateUrl: './dropdown-menu-home.component.html',
   styleUrl: './dropdown-menu-home.component.css'
 })

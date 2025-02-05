@@ -1,8 +1,6 @@
 import {Component, ElementRef, HostListener, inject, OnInit, ViewChild} from '@angular/core';
 import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
 import {SideBarComponent} from "./navigation/side-bar/side-bar.component";
-import {NgIf, NgOptimizedImage} from "@angular/common";
-import {MatDrawer, MatDrawerContainer, MatDrawerContent} from "@angular/material/sidenav";
 import {MatButton} from "@angular/material/button";
 import {MatIcon} from "@angular/material/icon";
 import {NotFoundComponent} from "./pages/not-found/not-found.component";
@@ -10,11 +8,16 @@ import {filter} from "rxjs";
 import {Profile} from "./interfaces/profile";
 import {ProfileService} from "./services/profile.service";
 import {PortfolioService} from "./services/portfolio.service";
+import {NgIf} from "@angular/common";
+import {MatDrawer} from "@angular/material/sidenav";
+
+import {TranslateModule} from "@ngx-translate/core";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, SideBarComponent, NgIf, MatDrawerContent, MatIcon, MatDrawerContainer, MatButton, MatDrawer, NgOptimizedImage],
+  imports: [RouterOutlet, SideBarComponent, NgIf, TranslateModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -25,7 +28,11 @@ export class AppComponent implements OnInit{
   title = 'Melius-TBP';
   @ViewChild('drawer') drawer!: MatDrawer;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private translate: TranslateService) {
+    this.translate.addLangs(['de', 'en']);
+    this.translate.setDefaultLang('de');
+    this.translate.use('de');
+  }
 
   ngOnInit() {
     if(localStorage.getItem("rememberUser") === "true") {

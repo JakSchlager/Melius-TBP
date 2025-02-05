@@ -1,6 +1,6 @@
 
 <div class="w-full">
-  <div class="w-full sticky top-12 flex justify-end z-30">
+  <div class="w-full sticky top-8 pb-4 flex justify-end z-30">
     <app-dropdown-menu-home></app-dropdown-menu-home>
   </div>
 
@@ -22,36 +22,38 @@
       <!-- Allgemeine Informationen -->
       <div id="generalInfoBox" [ngClass]="dragBox" [draggable]="checkDraggable()" (dragstart)="onDragStart($event, $event.target)" class="drop-shadow-lg animate-in slide-in-from-bottom-32 duration-500">
         <div class="bg-white rounded-xl px-10 py-6">
-          <h1 class="text-center font-bold text-2xl py-2">Allgemein</h1>
+          <h1 class="text-center font-bold text-2xl py-2">{{'home.cvPage.generally.title' | translate}}</h1>
 
           <div class="space-y-10 hover:cursor-default">
             <form class="space-y-4" [formGroup]="generalInfoForm">
-              <span class="row-start-1 col-start-1 text-gray-500">Ansprache</span>
+              <div class="grid space-y-1">
+                <span class="row-start-1 col-start-1 text-gray-500">{{'home.cvPage.generally.salutationHeader' | translate}}</span>
 
-              <div class="flex items-center pb-2">
-                <div class="grid">
-                  <svg class="pointer-events-none z-10 right-1 relative col-start-1 row-start-1 h-4 w-4 self-center justify-self-end forced-colors:hidden" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"></path>
-                  </svg>
-                  <select formControlName="gender" class="w-20 appearance-none forced-colors:appearance-auto border row-start-1 col-start-1 rounded-lg bg-accent-blue text-black px-2">
-                    <option></option>
-                    <option>Herr</option>
-                    <option>Frau</option>
-                    <option>Divers</option>
-                  </select>
+                <div class="flex items-center">
+                  <div class="grid">
+                    <svg class="pointer-events-none z-10 right-1 relative col-start-1 row-start-1 h-4 w-4 self-center justify-self-end forced-colors:hidden" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"></path>
+                    </svg>
+                    <select formControlName="gender" class="w-20 appearance-none forced-colors:appearance-auto border row-start-1 col-start-1 rounded-lg bg-accent-blue text-black px-2">
+                      <option></option>
+                      <option>{{'home.cvPage.generally.salutationOptions.man' | translate}}</option>
+                      <option>{{'home.cvPage.generally.salutationOptions.women' | translate}}</option>
+                      <option>{{'home.cvPage.generally.salutationOptions.diverse' | translate}}</option>
+                    </select>
+                  </div>
                 </div>
               </div>
 
               <div class="grid grid-cols-2">
                 <div class="w-11/12 col-start-1">
-                  <span class="text-gray-500">Vorname</span>
+                  <span class="text-gray-500">{{'home.cvPage.generally.firstName' | translate}}</span>
                   <div class="border-b-2">
                     <input formControlName="firstName" type="text" class="w-11/12">
                   </div>
                 </div>
 
                 <div class="w-11/12 col-start-2">
-                  <span class="text-gray-500">Nachname</span>
+                  <span class="text-gray-500">{{'home.cvPage.generally.lastName' | translate}}</span>
                   <div class=" border-b-2">
                     <input formControlName="lastName" type="text" class="w-11/12">
                   </div>
@@ -64,20 +66,20 @@
               </div>
 
               <div class="grid grid-cols-1">
-                <span class="text-gray-500">Telefonnummer</span>
+                <span class="text-gray-500">{{'home.cvPage.generally.tel' | translate}}</span>
                 <input formControlName="phoneNumber" type="tel" class="border-b-2">
               </div>
 
               <div class="grid grid-cols-2">
                 <div class="w-11/12 col-start-1">
-                  <span class="text-gray-500">PLZ</span>
+                  <span class="text-gray-500">{{'home.cvPage.generally.postalCode' | translate}}</span>
                   <div class="border-b-2">
                     <input formControlName="zipCode" type="text" class="w-11/12">
                   </div>
                 </div>
 
                 <div class="w-11/12 col-start-2">
-                  <span class="text-gray-500">Ort</span>
+                  <span class="text-gray-500">{{'home.cvPage.generally.location' | translate}}</span>
                   <div class=" border-b-2">
                     <input formControlName="city" type="text" class="w-11/12">
                   </div>
@@ -86,12 +88,12 @@
 
 
               <div class="grid grid-cols-1">
-                <span class="text-gray-500">Addresse</span>
+                <span class="text-gray-500">{{'home.cvPage.generally.address' | translate}}</span>
                 <input formControlName="address" class="border-b-2">
               </div>
 
               <div class="w-full flex justify-center">
-                <button type="submit" (click)="updateGeneralInfo(); newSavingNotification('Allgemeine Informationen')" class="w-fit font-bold bg-primary-color text-white rounded-lg text-sm px-5 py-2.5 text-center gap-x-2 hover:bg-blue-500 duration-150 ease-in-out">Speichern</button>
+                <button type="submit" (click)="updateGeneralInfo(); newSavingNotification('Allgemeine Informationen')" class="w-fit font-bold bg-primary-color text-white rounded-lg text-sm px-5 py-2.5 text-center gap-x-2 hover:bg-blue-500 duration-150 ease-in-out">{{'home.cvPage.generally.saveButton' | translate}}</button>
               </div>
             </form>
           </div>
@@ -101,7 +103,7 @@
       <!-- Ausbildung Informationen -->
       <div id="educationsBox" [ngClass]="dragBox" [draggable]="checkDraggable()" (dragstart)="onDragStart($event, $event.target)" class="drop-shadow-lg animate-in slide-in-from-bottom-32 duration-700">
         <div class="bg-white rounded-xl px-10 py-4">
-          <h1 class="text-center font-bold text-2xl py-2">Ausbildungen</h1>
+          <h1 class="text-center font-bold text-2xl py-2">{{'home.cvPage.educations.title' | translate}}</h1>
 
           <div [formGroup]="educationForm" class="mt-8 hover:cursor-default">
             <div formArrayName="educationFormItems" class="space-y-8">
@@ -110,7 +112,7 @@
                 <div class="flex justify-between space-x-6 animate-in fade-in zoom-in duration-500">
                   <div class="w-full grid space-y-4">
                     <div class="grid grid-cols-1">
-                      <span class="text-gray-500">Bildungseinrichtung/Ort</span>
+                      <span class="text-gray-500">{{'home.cvPage.educations.location' | translate}}</span>
                       <input formControlName="educationalInst" class="border-b-2">
                     </div>
 
@@ -118,30 +120,30 @@
                     <div class="w-full grid grid-cols-3">
                       <div class="w-full">
                         <div class="w-fit grid grid-cols-1">
-                          <span class="text-gray-500">Von</span>
+                          <span class="text-gray-500">{{'home.cvPage.educations.from' | translate}}</span>
                           <input formControlName="eIdateFrom" type="date" class="border-b-2">
                         </div>
                       </div>
 
                       <div class="w-full">
                         <div class="w-fit grid grid-cols-1">
-                          <span class="text-gray-500">Bis</span>
+                          <span class="text-gray-500">{{'home.cvPage.educations.until' | translate}}</span>
                           <input formControlName="eIdateTo" type="date" class="border-b-2">
                         </div>
                       </div>
 
                       <div class="w-full flex justify-end">
                         <div class="grid grid-cols-1">
-                          <span class="row-start-1 col-start-1 text-gray-500">Absolviert</span>
-                          <div class="flex items-center pb-2">
+                          <span class="row-start-1 col-start-1 text-gray-500">{{'home.cvPage.educations.complete' | translate}}</span>
+                          <div class="flex items-center pb-4">
                             <div class="grid">
                               <svg class="pointer-events-none z-10 right-1 relative col-start-1 row-start-1 h-4 w-4 self-center justify-self-end forced-colors:hidden" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
                                 <path fill-rule="evenodd" d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"></path>
                               </svg>
                               <select formControlName="eIFinished" class="w-fit appearance-none forced-colors:appearance-auto border row-start-1 col-start-1 rounded-lg bg-accent-blue text-black px-2">
-                                <option>Ja</option>
-                                <option>Nein</option>
-                                <option>In Ausbildung</option>
+                                <option>{{'home.cvPage.educations.completionStatus.yes' | translate}}</option>
+                                <option>{{'home.cvPage.educations.completionStatus.no' | translate}}</option>
+                                <option>{{'home.cvPage.educations.completionStatus.inTraining' | translate}}</option>
                               </select>
                             </div>
                           </div>
@@ -179,7 +181,7 @@
       <!-- Berufserfahrungen Informationen -->
       <div id="workExperienceBox" [ngClass]="dragBox" [draggable]="checkDraggable()" (dragstart)="onDragStart($event, $event.target)" class="drop-shadow-lg animate-in slide-in-from-bottom-32 duration-700">
         <div class="bg-white rounded-xl  px-10 py-4">
-          <h1 class="text-center font-bold text-2xl py-2">Berufserfahrungen</h1>
+          <h1 class="text-center font-bold text-2xl py-2">{{'home.cvPage.workExperience.title' | translate}}</h1>
 
           <div [formGroup]="jobExperiencesForm" class="mt-8 hover:cursor-default">
             <div formArrayName="jobExperiencesFormItems" class="space-y-8">
@@ -189,7 +191,7 @@
                   <div class="w-full grid space-y-4">
 
                     <div class="w-full grid grid-cols-1">
-                      <span class="text-gray-500">Firma/Ort</span>
+                      <span class="text-gray-500">{{'home.cvPage.workExperience.company' | translate}}</span>
                       <input formControlName="companyName" class="border-b-2">
                     </div>
 
@@ -197,21 +199,21 @@
                     <div class="w-full grid grid-cols-2 justify-between">
                       <div class="w-full">
                         <div class="w-fit grid grid-cols-1">
-                          <span class="text-gray-500">Von</span>
+                          <span class="text-gray-500">{{'home.cvPage.workExperience.from' | translate}}</span>
                           <input formControlName="workFrom" type="date" class="border-b-2">
                         </div>
                       </div>
 
                       <div class="w-full">
                         <div class="w-fit grid grid-cols-1">
-                          <span class="text-gray-500">Bis</span>
+                          <span class="text-gray-500">{{'home.cvPage.workExperience.until' | translate}}</span>
                           <input formControlName="workTo" type="date" class="border-b-2">
                         </div>
                       </div>
                     </div>
 
                     <div class="w-full grid grid-cols-1">
-                      <span class="text-gray-500">Zusätzliche Informationen: </span>
+                      <span class="text-gray-500">{{'home.cvPage.workExperience.moreInfos' | translate}} </span>
                       <textarea formControlName="moreInfo" class="bg-accent-blue resize-y rounded-md border-2"></textarea>
                     </div>
                   </div>

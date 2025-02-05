@@ -32,7 +32,7 @@
 
       <div class="w-1/2 h-full flex flex-col justify-center space-y-10 z-0">
         <div class="">
-          <h1 class="text-7xl font-extrabold">Willkommen bei<br>Gruppen</h1>
+          <h1 class="text-7xl font-extrabold">{{ 'groups.startPage.title.parOne' | translate}}<br>{{ 'groups.startPage.title.parTwo' | translate}}</h1>
         </div>
 
         <div class="w-full">
@@ -40,7 +40,7 @@
             <!-- Search Bar -->
             <div class="relative w-full" #searchBox>
               <div class="w-2/3 font-semibold flex justify-center space-x-4 items-center bg-white px-2 py-2 rounded-xl shadow-lg cursor-pointer animate-fade-up fade-in-0 duration-500">
-                <input class="w-full h-full rounded-lg py-2" placeholder="Nach einer Gruppe suchen..." (click)="toggleSearchBox($event)" [(ngModel)]="searchQuery" (keyup)="filterSearchResults()">
+                <input class="w-full h-full rounded-lg py-2" placeholder="{{ 'groups.startPage.searchBar' | translate}}" (click)="toggleSearchBox($event)" [(ngModel)]="searchQuery" (keyup)="filterSearchResults()">
                 <button>
                   <svg xmlns="http://www.w3.org/2000/svg" height="38px" viewBox="0 -960 960 960" width="38px" fill="#CECECE"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg>
                 </button>
@@ -49,10 +49,10 @@
               <!-- Dropdown Box -->
               <div class="absolute w-full bg-white shadow-lg rounded-lg mt-2 min-h-64 overflow-y-auto z-50" *ngIf="isSearchBoxOpen || isAnimating" [ngClass]="{'animate-fade-down duration-150': isSearchBoxOpen, 'animate-out fade-out': !isSearchBoxOpen && isAnimating}" (animationend)="onAnimationEnd()">
                 <div class="grid grid-cols-5 items-center bg-accent-blue p-4 border-b-2">
-                  <h1 class="min-w-fit flex justify-start">Gruppenname</h1>
-                  <h1 class="text-center">Unternehmen</h1>
-                  <h1 class="text-center">Abteilung</h1>
-                  <h1 class="text-center">Veröffentlicht am</h1>
+                  <h1 class="min-w-fit flex justify-start">{{ 'groups.startPage.searchResultBox.name' | translate}}</h1>
+                  <h1 class="text-center">{{ 'groups.startPage.searchResultBox.comp' | translate}}</h1>
+                  <h1 class="text-center">{{ 'groups.startPage.searchResultBox.dept' | translate}}</h1>
+                  <h1 class="text-center">{{ 'groups.startPage.searchResultBox.released' | translate}}</h1>
                 </div>
                 <div class="dropdown-list min-h-64">
                   <div *ngFor="let group of filteredGroups" class="grid grid-cols-5 items-center text-gray-500 p-4 hover:bg-gray-50">
@@ -61,12 +61,12 @@
                     <h1 class="text-center">Abteilung</h1>
                     <h1 class="text-center">01.01.2024</h1>
                     <div class="flex justify-center">
-                      <button (click)="showPasswordInputBox(true)" class="bg-primary-color text-white px-2 py-1 rounded-lg shadow-md hover:bg-accent-blue hover:text-primary-color duration-150">Beitreten</button>
+                      <button (click)="showPasswordInputBox(true)" class="bg-primary-color text-white px-2 py-1 rounded-lg shadow-md hover:bg-accent-blue hover:text-primary-color duration-150">{{ 'groups.startPage.searchResultBox.joinBtn' | translate}}</button>
                     </div>
                   </div>
 
                   <div *ngIf="filteredGroups.length === 0" class="min-h-64 text-center p-2 flex flex-col justify-center items-center">
-                    <h1 class="font-semibold text-xl">Es konnten keine Gruppen gefunden werden.</h1>
+                    <h1 class="font-semibold text-xl">{{ 'groups.startPage.searchResultBox.noFound' | translate}}</h1>
                     <div class="w-full flex justify-center">
                       <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#000000"><path d="M640-600q8 0 14-6t6-14v-120q0-8-6-14t-14-6q-8 0-14 6t-6 14v120q0 8 6 14t14 6Zm0 80q8 0 14-6t6-14q0-8-6-14t-14-6q-8 0-14 6t-6 14q0 8 6 14t14 6ZM160-160q-17 0-28.5-11.5T120-200q0-17 11.5-28.5T160-240h400q17 0 28.5 11.5T600-200q0 17-11.5 28.5T560-160H160Zm480-280q-83 0-141.5-58.5T440-640q0-83 58.5-141.5T640-840q83 0 141.5 58.5T840-640q0 83-58.5 141.5T640-440Zm-480-40q-17 0-28.5-11.5T120-520q0-17 11.5-28.5T160-560h187q17 0 28.5 11.5T387-520q0 16-11.5 28T347-480H160Zm0 160q-17 0-28.5-11.5T120-360q0-17 11.5-28.5T160-400h317q17 0 28.5 11.5T517-360q0 16-11 28t-29 12H160Z"/></svg>
                     </div>
@@ -77,14 +77,14 @@
 
             <div class="w-2/3 animate-fade-up fade-in-0 duration-700">
               <button class="w-full font-semibold flex justify-center space-x-4 items-center bg-primary-color px-2 py-2 rounded-xl shadow-lg cursor-pointer hover:bg-blue-500 duration-150 ease-in-out" (click)="openCreateGroupForm()">
-                <h1 class="text-white text-lg">Eine eigene Gruppe erstellen</h1>
+                <h1 class="text-white text-lg">{{ 'groups.startPage.create.btnTitle' | translate}}</h1>
                 <svg xmlns="http://www.w3.org/2000/svg" height="38px" viewBox="0 -960 960 960" width="38px" fill="#FFFFFF"><path d="M440-440H240q-17 0-28.5-11.5T200-480q0-17 11.5-28.5T240-520h200v-200q0-17 11.5-28.5T480-760q17 0 28.5 11.5T520-720v200h200q17 0 28.5 11.5T760-480q0 17-11.5 28.5T720-440H520v200q0 17-11.5 28.5T480-200q-17 0-28.5-11.5T440-240v-200Z"/></svg>
               </button>
             </div>
 
             <div class="w-2/3 animate-fade-up fade-in-0 duration-1000">
               <button class="w-full font-semibold flex justify-center space-x-4 items-center bg-intermediate-color px-2 py-2 rounded-xl shadow-lg cursor-pointer hover:bg-secondary-color duration-150 ease-in-out" (click)="openMyGroupsList()">
-                <h1 class="text-white text-lg">Meine Gruppen</h1>
+                <h1 class="text-white text-lg">{{ 'groups.startPage.myGroups.btnTitle' | translate}}</h1>
                 <svg xmlns="http://www.w3.org/2000/svg" height="38px" viewBox="0 -960 960 960" width="38px" fill="#FFFFFF"><path d="M400-200q-17 0-28.5-11.5T360-240q0-17 11.5-28.5T400-280h400q17 0 28.5 11.5T840-240q0 17-11.5 28.5T800-200H400Zm0-240q-17 0-28.5-11.5T360-480q0-17 11.5-28.5T400-520h400q17 0 28.5 11.5T840-480q0 17-11.5 28.5T800-440H400Zm0-240q-17 0-28.5-11.5T360-720q0-17 11.5-28.5T400-760h400q17 0 28.5 11.5T840-720q0 17-11.5 28.5T800-680H400ZM200-160q-33 0-56.5-23.5T120-240q0-33 23.5-56.5T200-320q33 0 56.5 23.5T280-240q0 33-23.5 56.5T200-160Zm0-240q-33 0-56.5-23.5T120-480q0-33 23.5-56.5T200-560q33 0 56.5 23.5T280-480q0 33-23.5 56.5T200-400Zm0-240q-33 0-56.5-23.5T120-720q0-33 23.5-56.5T200-800q33 0 56.5 23.5T280-720q0 33-23.5 56.5T200-640Z"/></svg>
               </button>
             </div>
@@ -107,7 +107,7 @@
       </div>
 
       <div class="w-full h-full flex justify-center items-center absolute" *ngIf="showPasswordLoginField">
-        <app-group-password-input-field></app-group-password-input-field>
+        <app-group-password-input-field class="w-full"></app-group-password-input-field>
       </div>
 
     </div>

@@ -2,6 +2,7 @@ import {Component, inject, OnInit} from '@angular/core';
 import {NgClass, NgForOf, NgIf} from "@angular/common";
 import {HomePageServiceService} from "../../../services/home-page-service.service";
 import {FormsModule} from "@angular/forms";
+import {TranslatePipe} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-create-roles',
@@ -10,7 +11,8 @@ import {FormsModule} from "@angular/forms";
     NgForOf,
     NgIf,
     NgClass,
-    FormsModule
+    FormsModule,
+    TranslatePipe
   ],
   templateUrl: './create-role.component.html',
   styleUrl: './create-role.component.css'
