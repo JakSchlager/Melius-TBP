@@ -1,4 +1,4 @@
-import {Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, HostListener, inject, OnInit, ViewChild} from '@angular/core';
 import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
 import {SideBarComponent} from "./navigation/side-bar/side-bar.component";
 import {NgIf, NgOptimizedImage} from "@angular/common";
@@ -7,6 +7,9 @@ import {MatButton} from "@angular/material/button";
 import {MatIcon} from "@angular/material/icon";
 import {NotFoundComponent} from "./pages/not-found/not-found.component";
 import {filter} from "rxjs";
+import {Profile} from "./interfaces/profile";
+import {ProfileService} from "./services/profile.service";
+import {PortfolioService} from "./services/portfolio.service";
 
 @Component({
   selector: 'app-root',
@@ -16,13 +19,40 @@ import {filter} from "rxjs";
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit{
+  profileService: ProfileService = inject(ProfileService);
+  portfolioService: PortfolioService = inject(PortfolioService);
+
   title = 'Melius-TBP';
   @ViewChild('drawer') drawer!: MatDrawer;
 
   constructor(private router: Router) {}
 
   ngOnInit() {
+    if(localStorage.getItem("rememberUser") === "true") {
 
+      if(localStorage.getItem("loggedInUser") !== null) {
+        this.profileService.handleUserLogin(JSON.parse(localStorage.getItem("loggedInUser")!)).subscribe({
+          next: (user: Profile) => {
+            this.profileService.loggedInUser = user;
+            console.log(user)
+
+            this.portfolioService.getPortfolioById(user.id).subscribe(portfolio => {
+              this.portfolioService.currPortfolio = portfolio;
+              console.log(portfolio);
+            })
+          }
+        });
+      } else {
+        this.router.navigate(["/"]);
+      }
+
+    } else {
+      if(sessionStorage.getItem("loggedInUser") !== null) {
+        this.profileService.loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser")!);
+      } else {
+        this.router.navigate(["/"]);
+      }
+    }
   }
 
   showSideNavBar(): boolean{

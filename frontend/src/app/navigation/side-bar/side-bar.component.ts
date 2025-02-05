@@ -24,9 +24,7 @@ import {PortfolioService} from "../../services/portfolio.service";
   styleUrl: './side-bar.component.css',
 
 })
-export class SideBarComponent implements OnInit {
-  profileService: ProfileService = inject(ProfileService);
-  portfolioService: PortfolioService = inject(PortfolioService);
+export class SideBarComponent {
   router: Router = inject(Router);
   hamburgerIconClicked : boolean = false;
   isAnimating: boolean = false;
@@ -48,33 +46,5 @@ export class SideBarComponent implements OnInit {
   }
 
   constructor(private dialogRef: MatDialog) {}
-
-  ngOnInit() {
-    if(localStorage.getItem("rememberUser") === "true") {
-
-      if(localStorage.getItem("loggedInUser") !== null) {
-        this.profileService.handleUserLogin(JSON.parse(localStorage.getItem("loggedInUser")!)).subscribe({
-          next: (user: Profile) => {
-            this.profileService.loggedInUser = user;
-            console.log(user)
-
-            this.portfolioService.getPortfolioById(user.id).subscribe(portfolio => {
-              this.portfolioService.currPortfolio = portfolio;
-              console.log(portfolio);
-            })
-        }
-        });
-      } else {
-        this.router.navigate(["/"]);
-      }
-
-    } else {
-      if(sessionStorage.getItem("loggedInUser") !== null) {
-        this.profileService.loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser")!);
-      } else {
-        this.router.navigate(["/"]);
-      }
-    }
-  }
 
 }
