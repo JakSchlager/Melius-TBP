@@ -38,10 +38,25 @@ export class PortfolioViewComponent implements OnInit {
   disabledInputs: boolean = true;
   buttonClass!: string;
 
-  generalInfoBox!: HTMLElement
+  generalInfoBox!: any;
+  educationsBox!: any;
+  workExperiencesBox!: any;
+  characteristicsBox!: any;
+  knownLanguagesBox!: any;
+  programmingKnowledgesBox!: any;
+  softwareKnowledgesBox!: any;
+
 
   ngOnInit() {
     const id = Number(this.route.snapshot.params['id']);
+
+    this.generalInfoBox = document.getElementById("generalInfoBox");
+    this.educationsBox = document.getElementById("educationsBox");
+    this.workExperiencesBox = document.getElementById("workExperiencesBox");
+    this.characteristicsBox = document.getElementById("characteristicsBox");
+    this.knownLanguagesBox = document.getElementById("knownLanguagesBox");
+    this.programmingKnowledgesBox = document.getElementById("programmingKnowledgesBox");
+    this.softwareKnowledgesBox = document.getElementById("softwareKnowledgesBox");
 
     this.portfolioService.getPortfolioById(id).subscribe(p => {
       this.portfolio = p;
@@ -49,19 +64,42 @@ export class PortfolioViewComponent implements OnInit {
       this.genRepo(this.portfolio.profile.githubUser!)
     })
 
+    setTimeout(() =>{
+      if (this.portfolio.generalInfoPosition) {
+      this.moveToColumn(this.generalInfoBox, this.portfolio.generalInfoPosition);
+    }
+
+    if (this.portfolio.educationsPosition) {
+      this.moveToColumn(this.educationsBox, this.portfolio.educationsPosition);
+    }
+
+    if (this.portfolio.workExperiencesPosition) {
+      this.moveToColumn(this.workExperiencesBox, this.portfolio.workExperiencesPosition);
+    }
+
+    if(this.portfolio.characteristicsPosition) {
+      this.moveToColumn(this.characteristicsBox, this.portfolio.characteristicsPosition)
+    }
+
+    if(this.portfolio.knownLanguagesPosition) {
+      this.moveToColumn(this.knownLanguagesBox, this.portfolio.knownLanguagesPosition)
+    }
+
+    if(this.portfolio.programmingKnowledgesPosition) {
+      this.moveToColumn(this.programmingKnowledgesBox, this.portfolio.programmingKnowledgesPosition)
+    }
+
+    if(this.portfolio.softwareKnowledgesPosition) {
+      this.moveToColumn(this.softwareKnowledgesBox, this.portfolio.softwareKnowledgesPosition)
+    }
+    }, 200)
 
   }
 
-  constructor() {
-
-  }
-
-
-  moveToColumn(item: HTMLElement, targetContainerId: string) {
-    const targetElement = document.getElementById(targetContainerId);
-    targetElement!.appendChild(item);
-
-
+  moveToColumn(draggedItem: any, targetContainerId: string) {
+      const targetElement = document.getElementById(targetContainerId)!;
+      // Füge das gezogene Element dem Ziel hinzu
+      targetElement.appendChild(draggedItem);
   }
 
   genRepo(user: string) {

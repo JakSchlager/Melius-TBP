@@ -18,7 +18,7 @@
          (drop)="onDrop($event, 'middleSkillCol')">
 
       <!-- Allgemein Kenntnisse -->
-      <div [ngClass]="dragBox" [draggable]="checkDraggable()" (dragstart)="onDragStart($event, $event.target)" class="colListItem grid animate-in slide-in-from-bottom-32 duration-500">
+      <div id="characteristics" [ngClass]="dragBox" [draggable]="checkDraggable()" (dragstart)="onDragStart($event, $event.target)" class="colListItem grid animate-in slide-in-from-bottom-32 duration-500">
           <div class="w-fit bg-white px-10 py-4 rounded-lg shadow-md">
             <h1 class="text-center font-bold text-2xl py-2">{{'home.compPage.personal.title' | translate}}</h1>
             <div class="mt-2 grid space-y-2 hover:cursor-default">
@@ -39,7 +39,7 @@
       </div>
 
       <!-- Sprachliche Kenntnisse -->
-      <div [ngClass]="dragBox" [draggable]="checkDraggable()" (dragstart)="onDragStart($event, $event.target)" class="colListItem bg-white rounded-lg px-2 py-1 shadow-md animate-in slide-in-from-bottom-32 duration-500">
+      <div id="knownLanguages" [ngClass]="dragBox" [draggable]="checkDraggable()" (dragstart)="onDragStart($event, $event.target)" class="colListItem bg-white rounded-lg px-2 py-1 shadow-md animate-in slide-in-from-bottom-32 duration-500">
         <h1 class="text-center font-bold text-2xl py-2 pb-4">{{'home.compPage.languages.title' | translate}}</h1>
 
         <div [formGroup]="knownLanguagesForm" class="mt-2 hover:cursor-default">
@@ -77,7 +77,7 @@
       </div>
 
       <!-- Programmier Kenntnisse -->
-      <div [ngClass]="dragBox" [draggable]="checkDraggable()" (dragstart)="onDragStart($event, $event.target)" class="animate-in slide-in-from-bottom-32 duration-500">
+      <div id="programmingKnowledges" [ngClass]="dragBox" [draggable]="checkDraggable()" (dragstart)="onDragStart($event, $event.target)" class="animate-in slide-in-from-bottom-32 duration-500">
 
           <div class="flex flex-col space-y-2 bg-white rounded-lg px-2 py-1 shadow-md">
             <h1 class="text-center font-bold text-2xl py-6">{{'home.compPage.programming.title' | translate}}</h1>
@@ -127,7 +127,7 @@
 
 
       <!-- Software Kenntnisse -->
-      <div [ngClass]="dragBox" [draggable]="checkDraggable()" (dragstart)="onDragStart($event, $event.target)" class="colListItem bg-white rounded-lg px-2 py-1 shadow-md animate-in slide-in-from-bottom-32 duration-500">
+      <div id="softwareKnowledges" [ngClass]="dragBox" [draggable]="checkDraggable()" (dragstart)="onDragStart($event, $event.target)" class="colListItem bg-white rounded-lg px-2 py-1 shadow-md animate-in slide-in-from-bottom-32 duration-500">
         <h1 class="text-center font-bold text-2xl py-6">{{'home.compPage.edv.title' | translate}}</h1>
 
         <div [formGroup]="softwareKnowledgeForm" class="mt-2 hover:cursor-default">

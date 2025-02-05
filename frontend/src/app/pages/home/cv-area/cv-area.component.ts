@@ -3,7 +3,16 @@ import {HomeNavbarComponent} from "../../../navigation/home-navbar/home-navbar.c
 import {SideBarComponent} from "../../../navigation/side-bar/side-bar.component";
 import {formatDate, NgClass, NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
 import {MatDateRangeInput} from "@angular/material/datepicker";
-import {Form, FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
+import {
+  Form,
+  FormArray,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators
+} from "@angular/forms";
 import {MatIcon} from "@angular/material/icon";
 import {GeneralInfoService} from "../../../services/general-info.service";
 import {ProfileService} from "../../../services/profile.service";
@@ -22,16 +31,12 @@ import {PortfolioService} from "../../../services/portfolio.service";
   selector: 'app-cv-area',
   standalone: true,
   imports: [
-    HomeNavbarComponent,
-    SideBarComponent,
-    NgOptimizedImage,
-    MatDateRangeInput,
     ReactiveFormsModule,
     NgForOf,
-    MatIcon,
     DropdownMenuHomeComponent,
     NgClass,
     NgIf,
+    FormsModule,
     NgClass,
     TranslatePipe
   ],
@@ -44,10 +49,14 @@ export class CvAreaComponent implements OnInit{
   educationService: EducationService = inject(EducationService);
   workExperienceService: WorkExperienceService = inject(WorkExperienceService);
   portfolioService: PortfolioService = inject(PortfolioService);
-  currGeneralInfo: GeneralInfo | undefined;
   router: Router = inject(Router);
-  dragBox !: string;
-  showBorders !: string;
+  dragBox!: string;
+
+  generalInfoBox!: any;
+  educationsBox!: any;
+  workExperienceBox!: any;
+
+  showBorders!: string;
   homePageService : HomePageServiceService = inject(HomePageServiceService);
 
   generalInfoForm: FormGroup = new FormGroup({
@@ -62,9 +71,16 @@ export class CvAreaComponent implements OnInit{
     address: new FormControl(''),
 });
 
-  constructor(private fb: FormBuilder, private cdRef: ChangeDetectorRef) {}
+  constructor(private fb: FormBuilder, private cdRef: ChangeDetectorRef) {
+
+  }
 
   ngOnInit() {
+
+    this.generalInfoBox = document.getElementById("generalInfoBox");
+    this.educationsBox = document.getElementById("educationsBox");
+    this.workExperienceBox = document.getElementById("workExperienceBox");
+
     setTimeout(() => {
       let generalInfo: GeneralInfo = this.portfolioService.currPortfolio!.generalInfo;
 
@@ -91,6 +107,8 @@ export class CvAreaComponent implements OnInit{
       for (let currWorkExperience of workExperiences) {
         this.addJobExperiencesInfo(currWorkExperience);
       }
+
+      this.moveBoxes()
 
     }, 200)
 
@@ -256,6 +274,20 @@ export class CvAreaComponent implements OnInit{
     if (targetElement && this.draggedItem) {
       // Füge das gezogene Element dem Ziel hinzu
       targetElement.appendChild(this.draggedItem);
+
+      switch (this.draggedItem) {
+        case this.generalInfoBox:
+          this.portfolioService.currPortfolio!.generalInfoPosition = targetContainerId;
+          break;
+        case this.educationsBox:
+          this.portfolioService.currPortfolio!.educationsPosition = targetContainerId;
+          break;
+        case this.workExperienceBox:
+          this.portfolioService.currPortfolio!.workExperiencesPosition = targetContainerId;
+          break;
+      }
+      this.portfolioService.updatePortfolio(this.portfolioService.currPortfolio!).subscribe();
+
       this.draggedItem = null;
     }
   }
@@ -299,5 +331,22 @@ export class CvAreaComponent implements OnInit{
     setTimeout(() => {
       window.location.reload()
     }, 100);
+  }
+
+  moveBoxes() {
+    if (this.portfolioService.currPortfolio!.generalInfoPosition) {
+      this.draggedItem = this.generalInfoBox
+      this.onDrop(new DragEvent("drag"), this.portfolioService.currPortfolio!.generalInfoPosition);
+    }
+
+    if (this.portfolioService.currPortfolio!.educationsPosition) {
+      this.draggedItem = this.educationsBox;
+      this.onDrop(new DragEvent("drag"), this.portfolioService.currPortfolio!.educationsPosition);
+    }
+
+    if (this.portfolioService.currPortfolio!.workExperiencesPosition) {
+      this.draggedItem = this.workExperienceBox;
+      this.onDrop(new DragEvent("drag"), this.portfolioService.currPortfolio!.workExperiencesPosition);
+    }
   }
 }

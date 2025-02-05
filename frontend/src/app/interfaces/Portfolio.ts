@@ -10,10 +10,18 @@ import {Selectable} from "./Selectable";
 export interface Portfolio {
   profile: Profile,
   generalInfo: GeneralInfo,
-  characteristics: Selectable[]
+  generalInfoPosition?: string,
+  characteristics: Selectable[],
+  characteristicsPosition?: string,
   educations: Education[],
+  educationsPosition?: string,
   workExperiences: WorkExperience[],
+  workExperiencesPosition?: string,
   knownLanguages: KnownLanguage[],
+  knownLanguagesPosition?: string,
   programmingKnowledges: ProgrammingKnowledge[],
+  programmingKnowledgesPosition?: string,
   softwareKnowledges: SoftwareKnowledge[],
+  softwareKnowledgesPosition?: string,
+
 }
