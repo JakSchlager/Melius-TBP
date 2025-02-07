@@ -63,6 +63,10 @@ public class Portfolio {
 
     private String softwareKnowledgesPosition;
 
+    private String languageCode;
+
+    private String color;
+
     public Set<Characteristic> getCharacteristics() {
         return characteristics;
     }
@@ -161,6 +165,22 @@ public class Portfolio {
 
     public String getKnownLanguagesPosition() {
         return knownLanguagesPosition;
+    }
+
+    public String getLanguageCode() {
+        return languageCode;
+    }
+
+    public void setLanguageCode(String languageCode) {
+        this.languageCode = languageCode;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 
     public void setKnownLanguagesPosition(String knownLanguagesPosition) {

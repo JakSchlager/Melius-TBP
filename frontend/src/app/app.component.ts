@@ -31,7 +31,6 @@ export class AppComponent implements OnInit{
   constructor(private router: Router, private translate: TranslateService) {
     this.translate.addLangs(['de', 'en']);
     this.translate.setDefaultLang('de');
-    this.translate.use('de');
   }
 
   ngOnInit() {
@@ -45,6 +44,8 @@ export class AppComponent implements OnInit{
 
             this.portfolioService.getPortfolioById(user.id).subscribe(portfolio => {
               this.portfolioService.currPortfolio = portfolio;
+              this.translate.use(portfolio.languageCode);
+              this.portfolioService.backgroundColorSubject.next(portfolio.color);
               console.log(portfolio);
             })
           }

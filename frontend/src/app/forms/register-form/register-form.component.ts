@@ -69,14 +69,10 @@ export class RegisterFormComponent {
 
         this.generalInfoService.addGeneralInfo(generalInfo).subscribe(g => {
           let portfolio: Portfolio = {
-            characteristics: [],
-            educations: [],
-            knownLanguages: [],
-            programmingKnowledges: [],
-            softwareKnowledges: [],
-            workExperiences: [],
             profile: p,
-            generalInfo: g
+            generalInfo: g,
+            languageCode: "de",
+            color: "#fff"
           }
 
           console.log(portfolio);

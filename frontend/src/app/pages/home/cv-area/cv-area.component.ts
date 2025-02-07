@@ -94,18 +94,22 @@ export class CvAreaComponent implements OnInit{
       this.generalInfoForm.controls['city'].setValue(generalInfo!.city);
       this.generalInfoForm.controls['address'].setValue(generalInfo!.address);
 
-      let educations: Education[] = this.portfolioService.currPortfolio!.educations.slice().sort((a: Education, b: Education) => {
-        return new Date(a.fromDate).getTime() - new Date(b.fromDate).getTime();
-      });
-      for (let currEducation of educations) {
-        this.addEducationInfo(currEducation);
+      if(this.portfolioService.currPortfolio!.educations != undefined) {
+        let educations: Education[] = this.portfolioService.currPortfolio!.educations.slice().sort((a: Education, b: Education) => {
+          return new Date(a.fromDate).getTime() - new Date(b.fromDate).getTime();
+        });
+        for (let currEducation of educations) {
+          this.addEducationInfo(currEducation);
+        }
       }
 
-      let workExperiences = this.portfolioService.currPortfolio!.workExperiences.slice().sort((a: WorkExperience, b: WorkExperience) => {
-        return new Date(a.fromDate).getTime() - new Date(b.fromDate).getTime();
-      });
-      for (let currWorkExperience of workExperiences) {
-        this.addJobExperiencesInfo(currWorkExperience);
+      if(this.portfolioService.currPortfolio!.workExperiences != undefined) {
+        let workExperiences = this.portfolioService.currPortfolio!.workExperiences.slice().sort((a: WorkExperience, b: WorkExperience) => {
+          return new Date(a.fromDate).getTime() - new Date(b.fromDate).getTime();
+        });
+        for (let currWorkExperience of workExperiences) {
+          this.addJobExperiencesInfo(currWorkExperience);
+        }
       }
 
       this.moveBoxes()
