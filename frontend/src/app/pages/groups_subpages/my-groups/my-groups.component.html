@@ -47,7 +47,7 @@
             <h1 class="text-center">{{ group.department }}</h1>
             <h1 class="text-center">{{ group.members.length || 0 }} / {{group.maxMembers}}</h1>
             <div class="flex justify-center">
-              <button routerLink="/groups/{{group.id}}" class="bg-primary-color text-white px-2 py-1 rounded-lg shadow-md hover:bg-accent-blue hover:text-primary-color duration-150">{{'groups.createdGroup.memberInfos.lookup' | translate}}</button>
+              <button routerLink="/groups/{{group.id}}" class="bg-white text-primary-color px-2 py-1 rounded-lg shadow-md hover:bg-primary-color hover:text-white duration-150">{{'groups.createdGroup.memberInfos.lookup' | translate}}</button>
             </div>
           </div>
         </div>
