@@ -118,7 +118,7 @@
         "name": "Gruppenname",
         "comp": "Unternehmen",
         "dept": "Abteilung",
-        "released": "Veröffentlicht am",
+        "maxMembers": "Max. Mitglieder",
         "joinBtn": "Beitreten",
         "noFound": "Es konnten keine Gruppen gefunden werden."
       },

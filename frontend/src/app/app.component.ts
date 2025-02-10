@@ -48,6 +48,11 @@ export class AppComponent implements OnInit{
               this.portfolioService.backgroundColorSubject.next(portfolio.color);
               console.log(portfolio);
             })
+          },
+          error: error => {
+            localStorage.removeItem("loggedInUser");
+            sessionStorage.removeItem("loggedInUser");
+            this.router.navigate(["/"]);
           }
         });
       } else {
@@ -64,7 +69,7 @@ export class AppComponent implements OnInit{
   }
 
   showSideNavBar(): boolean{
-    return this.router.url === '/home' || this.router.url === '/home/cv' || this.router.url === '/home/projects' || this.router.url === '/home/strengths' || this.router.url === '/groups' || this.router.url === '/settings' || this.router.url === '/groups/myGroup';
+    return this.router.url === '/home' || this.router.url === '/home/cv' || this.router.url === '/home/projects' || this.router.url === '/home/strengths' || this.router.url === '/groups' || this.router.url === '/settings' || this.router.url.includes('/groups/');
   }
 
 

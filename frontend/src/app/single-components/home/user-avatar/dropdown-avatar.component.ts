@@ -43,7 +43,7 @@ export class DropdownAvatarComponent implements OnInit {
 
         console.log(fileBlobForUpload);
         // Upload des Blobs an das Backend
-        this.profileService.uploadProfileImg({"byte": byteArray, "type": file.type}).subscribe();
+        this.profileService.uploadProfileImg({"file": byteArray, "type": file.type}).subscribe();
       })
     }
   }

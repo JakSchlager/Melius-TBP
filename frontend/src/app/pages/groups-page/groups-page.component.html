@@ -52,16 +52,20 @@
                   <h1 class="min-w-fit flex justify-start">{{ 'groups.startPage.searchResultBox.name' | translate}}</h1>
                   <h1 class="text-center">{{ 'groups.startPage.searchResultBox.comp' | translate}}</h1>
                   <h1 class="text-center">{{ 'groups.startPage.searchResultBox.dept' | translate}}</h1>
-                  <h1 class="text-center">{{ 'groups.startPage.searchResultBox.released' | translate}}</h1>
+                  <h1 class="text-center">{{ 'groups.startPage.searchResultBox.maxMembers' | translate}}</h1>
                 </div>
                 <div class="dropdown-list min-h-64">
                   <div *ngFor="let group of filteredGroups" class="grid grid-cols-5 items-center text-gray-500 p-4 hover:bg-gray-50">
-                    <h1 class="min-w-fit flex justify-start">{{ group }}</h1>
-                    <h1 class="text-center">Unternehmen</h1>
-                    <h1 class="text-center">Abteilung</h1>
-                    <h1 class="text-center">01.01.2024</h1>
+                    <h1 class="min-w-fit flex justify-start">{{ group.name }}</h1>
+                    <h1 class="text-center">{{ group.company }}</h1>
+                    <h1 class="text-center">{{ group.department }}</h1>
+                    <h1 class="text-center">{{ group.members.length || 0 }} / {{group.maxMembers}}</h1>
                     <div class="flex justify-center">
-                      <button (click)="showPasswordInputBox(true)" class="bg-primary-color text-white px-2 py-1 rounded-lg shadow-md hover:bg-accent-blue hover:text-primary-color duration-150">{{ 'groups.startPage.searchResultBox.joinBtn' | translate}}</button>
+                      @if(isMemberOfGroup(group)) {
+                        <button routerLink="/groups/{{group.id}}" class="bg-white text-primary-color px-2 py-1 rounded-lg shadow-md hover:bg-primary-color hover:text-white duration-150">{{'groups.createdGroup.memberInfos.lookup' | translate}}</button>
+                      } @else {
+                        <button (click)="showPasswordInputBox(true, group)" class="bg-primary-color text-white px-2 py-1 rounded-lg shadow-md hover:bg-accent-blue hover:text-primary-color duration-150">{{ 'groups.startPage.searchResultBox.joinBtn' | translate}}</button>
+                      }
                     </div>
                   </div>
 
@@ -107,7 +111,7 @@
       </div>
 
       <div class="w-full h-full flex justify-center items-center absolute" *ngIf="showPasswordLoginField">
-        <app-group-password-input-field class="w-full"></app-group-password-input-field>
+        <app-group-password-input-field [group]="this.activeGroup!" class="w-full"></app-group-password-input-field>
       </div>
 
     </div>

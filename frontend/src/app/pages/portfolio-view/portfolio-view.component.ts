@@ -5,7 +5,7 @@ import {Portfolio} from "../../interfaces/Portfolio";
 import {HomeNavbarComponent} from "../../navigation/home-navbar/home-navbar.component";
 import {DropdownAvatarComponent} from "../../single-components/home/user-avatar/dropdown-avatar.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {NgForOf, NgIf} from "@angular/common";
+import {NgForOf, NgIf, NgStyle} from "@angular/common";
 import {DropStrEdvComponent} from "../../single-components/home/strengths/drop-str-edv/drop-str-edv.component";
 import {DropStrProgrComponent} from "../../single-components/home/strengths/drop-str-progr/drop-str-progr.component";
 import {MultiSelectModule} from "primeng/multiselect";
@@ -25,7 +25,8 @@ import $ from "jquery";
     DropStrEdvComponent,
     DropStrProgrComponent,
     MultiSelectModule,
-    StarRatingComponent
+    StarRatingComponent,
+    NgStyle
   ],
   templateUrl: './portfolio-view.component.html',
   styleUrl: './portfolio-view.component.css'
@@ -37,6 +38,9 @@ export class PortfolioViewComponent implements OnInit {
   pictureUrl!: string;
   disabledInputs: boolean = true;
   buttonClass!: string;
+
+  backgroundColor!: string;
+  backgroundImageUrl: string | ArrayBuffer | null = null;
 
   generalInfoBox!: any;
   educationsBox!: any;
@@ -61,7 +65,7 @@ export class PortfolioViewComponent implements OnInit {
     this.portfolioService.getPortfolioById(id).subscribe(p => {
       this.portfolio = p;
       console.log(this.portfolio);
-      if(this.portfolioService.currPortfolio!.ghRepos != undefined && this.portfolioService.currPortfolio!.ghRepos!.length > 0) {
+      if(this.portfolioService.currPortfolio!.ghRepos !== undefined && this.portfolioService.currPortfolio!.ghRepos.length > 0) {
         this.placeRepos();
       }
     })
@@ -94,6 +98,8 @@ export class PortfolioViewComponent implements OnInit {
     if(this.portfolio.softwareKnowledgesPosition) {
       this.moveToColumn(this.softwareKnowledgesBox, this.portfolio.softwareKnowledgesPosition)
     }
+
+    this.backgroundColor = this.portfolio.color;
     }, 200)
 
   }

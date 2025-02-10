@@ -55,7 +55,6 @@ export class RegisterFormComponent {
       this.profileService.handelUserRegistration(newProfile).subscribe(p => {
 
         //this.profileService.loggedInUser = response;
-        this.router.navigate(['/home']);
         localStorage.setItem("loggedInUser", JSON.stringify(p));
         console.log('Profile registered successfully.', p);
 
@@ -77,7 +76,9 @@ export class RegisterFormComponent {
 
           console.log(portfolio);
 
-          this.portfolioService.addPortfolio(portfolio).subscribe()
+          this.portfolioService.addPortfolio(portfolio).subscribe(() => {
+            this.router.navigate(['/home']);
+          })
         })
 
 

@@ -3,11 +3,11 @@ import {ProfileService} from "../../services/profile.service";
 import {NgIf, NgOptimizedImage, NgStyle} from "@angular/common";
 import {HomeNavbarComponent} from "../../navigation/home-navbar/home-navbar.component";
 import {ActivatedRoute, NavigationEnd, Router, RouterLink, RouterOutlet} from "@angular/router";
-import {filter} from "rxjs";
+import {BehaviorSubject, filter} from "rxjs";
 import {FormsModule} from "@angular/forms";
 import {DropdownAvatarComponent} from "../../single-components/home/user-avatar/dropdown-avatar.component";
-import {BackgroundServiceService} from "../../services/background-service.service";
 import {TranslatePipe} from "@ngx-translate/core";
+import {PortfolioService} from "../../services/portfolio.service";
 
 @Component({
   selector: 'app-home-preview-page',
@@ -27,9 +27,10 @@ import {TranslatePipe} from "@ngx-translate/core";
   styleUrl: './home-page.component.css'
 })
 export class HomePageComponent implements OnInit{
+  portfolioService: PortfolioService = inject(PortfolioService);
   isChildRoute: boolean = false;
   profileService: ProfileService = inject(ProfileService);
-  newBackgroundColor: string = '';
+  newBackgroundColor!: string;
   newBackgroundImageUrl: string | ArrayBuffer | null = null;
 
   /*
@@ -58,7 +59,7 @@ export class HomePageComponent implements OnInit{
     fileInput.click();
   }
 */
-  constructor(private route: ActivatedRoute, private router: Router, private backgroundService: BackgroundServiceService) {}
+  constructor(private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
     // Listens for navigation events
@@ -73,13 +74,13 @@ export class HomePageComponent implements OnInit{
     // Initial check to see if you are on one of the three subpages
     this.isChildRoute = !!this.route.firstChild;
 
-    this.backgroundService.getBackgroundColor().subscribe(color => {
-      this.newBackgroundColor = color;
-    });
 
-    this.backgroundService.getBackgroundImageUrl().subscribe(imageUrl => {
+
+    /*this.backgroundService.getBackgroundImageUrl().subscribe(imageUrl => {
       this.newBackgroundImageUrl = imageUrl;
-    })
+    })*/
+
+    setTimeout(() => {this.newBackgroundColor = this.portfolioService.currPortfolio!.color}, 200)
   }
 
 

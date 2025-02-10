@@ -6,8 +6,9 @@ import {DropdownAvatarComponent} from "../../../single-components/home/user-avat
 import {GroupsPageComponent} from "../../groups-page/groups-page.component";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {Group} from "../../../interfaces/group";
-import {GroupPageService} from "../../../services/group-page.service";
 import {TranslatePipe} from "@ngx-translate/core";
+import {GroupService} from "../../../services/group.service";
+import {ProfileService} from "../../../services/profile.service";
 
 @Component({
   selector: 'app-create-group-form',
@@ -17,15 +18,14 @@ import {TranslatePipe} from "@ngx-translate/core";
     GroupAvatarComponent,
     ReactiveFormsModule,
     NgIf,
-    NgClass,
     TranslatePipe
   ],
   templateUrl: './create-own-group.component.html',
   styleUrl: './create-own-group.component.css'
 })
 export class CreateOwnGroupComponent {
-  groupService: GroupPageService = inject(GroupPageService);
-  isAvailable : string | undefined;
+  groupService: GroupService = inject(GroupService);
+  profileService: ProfileService = inject(ProfileService);
 
   newGroupForm = new FormGroup({
     groupName: new FormControl<string>('', Validators.required),
@@ -39,22 +39,18 @@ export class CreateOwnGroupComponent {
   onSubmit(): void {
     if (this.newGroupForm.valid) {
       const newGroup: Group = {
-        groupName: this.newGroupForm.controls.groupName.value || '',
+        id: 0,
+        name: this.newGroupForm.controls.groupName.value || '',
         company: this.newGroupForm.controls.companyName.value || '',
         department: this.newGroupForm.controls.departmentName.value || '',
-        releaseDate: new Date(),
-        amountOfEMPs: this.newGroupForm.controls.amountOfMembers.value || 0
+        password: this.newGroupForm.controls.password.value || '',
+        maxMembers: this.newGroupForm.controls.amountOfMembers.value || 0,
+        members: [this.profileService.loggedInUser!]
       }
 
-      //TODO: richtige Rückmeldung an den User geben!
-      this.groupService.createNewGroup(newGroup).subscribe(
-        () => {
-          console.log("Gruppe wurde erfolgreich erstellt!", newGroup)
-        },
-        error => {
-          console.log("Gruppe konnte NICHT erstellt werden!");
-        }
-      );
+      this.groupService.createNewGroup(newGroup).subscribe();
+
+      this.reloadPage();
     }
   }
 
@@ -65,5 +61,11 @@ export class CreateOwnGroupComponent {
 
   closeCreationForm(): void {
     this.groupsPage.createGroupBtnPressed = false;
+  }
+
+  reloadPage() {
+    setTimeout(() => {
+      window.location.reload()
+    }, 100);
   }
 }

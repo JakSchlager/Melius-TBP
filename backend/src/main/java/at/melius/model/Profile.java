@@ -40,6 +40,17 @@ public class Profile {
     @Lob
     private Blob profileImage;
 
+    @ManyToMany(mappedBy = "members")
+    private Set<Group> groups;
+
+    public Set<Group> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(Set<Group> groups) {
+        this.groups = groups;
+    }
+
     public int getId() {
         return id;
     }
