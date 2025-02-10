@@ -86,8 +86,16 @@ export class StrengthsAreaComponent implements OnInit{
     });
 
     setTimeout(() => {
-      this.selectedCharacteristic = this.portfolioService.currPortfolio!.characteristics || [];
-
+      this.selectedCharacteristic = [];
+      if(this.portfolioService.currPortfolio!.characteristics !== undefined) {
+        for (let currChar of this.portfolioService.currPortfolio!.characteristics) {
+          this.selectedCharacteristic.push({
+            id: currChar.id,
+            label: currChar.label,
+            value: currChar.value,
+          })
+        }
+      }
 
       let knownLanguages = this.portfolioService.currPortfolio!.knownLanguages;
       if(knownLanguages != undefined) {
