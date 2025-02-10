@@ -10,7 +10,6 @@ export interface Profile {
   email: string
   phoneNumber: string
   password: string
-  githubUser?: string
   profileImage?: Blob
   portfolio?: Portfolio
 }
