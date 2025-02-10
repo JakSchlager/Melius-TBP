@@ -1,7 +1,7 @@
 import {inject, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Profile} from "../interfaces/profile";
-import {Observable} from "rxjs";
+import {BehaviorSubject, Observable, Subject} from "rxjs";
 import {Portfolio} from "../interfaces/Portfolio";
 
 @Injectable({
@@ -10,6 +10,8 @@ import {Portfolio} from "../interfaces/Portfolio";
 export class PortfolioService {
   currPortfolio: Portfolio | undefined;
   httpClient: HttpClient = inject(HttpClient);
+  backgroundColorSubject: Subject<string> = new Subject<string>()
+
   private readonly url = "http://localhost:8080/portfolio/";
 
   addPortfolio(portfolio: Portfolio) {
