@@ -47,6 +47,8 @@ import {PortfolioService} from "../../../services/portfolio.service";
     DropStrProgrComponent,
     DropStrEdvComponent,
     StarRatingComponent,
+    TranslatePipe,
+    NgIf,
   ],
   templateUrl: './strengths-area.component.html',
   styleUrl: './strengths-area.component.css'
@@ -84,21 +86,36 @@ export class StrengthsAreaComponent implements OnInit{
     });
 
     setTimeout(() => {
-      this.selectedCharacteristic = this.portfolioService.currPortfolio!.characteristics || [];
+      this.selectedCharacteristic = [];
+      if(this.portfolioService.currPortfolio!.characteristics !== undefined) {
+        for (let currChar of this.portfolioService.currPortfolio!.characteristics) {
+          this.selectedCharacteristic.push({
+            id: currChar.id,
+            label: currChar.label,
+            value: currChar.value,
+          })
+        }
+      }
 
       let knownLanguages = this.portfolioService.currPortfolio!.knownLanguages;
-      for(let currKnownLanguage of knownLanguages) {
-        this.addKnownLanguage(currKnownLanguage)
+      if(knownLanguages != undefined) {
+        for (let currKnownLanguage of knownLanguages) {
+          this.addKnownLanguage(currKnownLanguage)
+        }
       }
 
       let programmingKnowledges = this.portfolioService.currPortfolio!.programmingKnowledges
-      for(let currProgrammingKnowledge of programmingKnowledges) {
-        this.addProgrammingLanguage(currProgrammingKnowledge)
+      if(programmingKnowledges != undefined) {
+        for (let currProgrammingKnowledge of programmingKnowledges) {
+          this.addProgrammingLanguage(currProgrammingKnowledge)
+        }
       }
 
       let softwareKnowledges = this.portfolioService.currPortfolio!.softwareKnowledges
-      for(let currSoftwareKnowledge of softwareKnowledges) {
-        this.addSoftware(currSoftwareKnowledge)
+      if(softwareKnowledges != undefined) {
+        for (let currSoftwareKnowledge of softwareKnowledges) {
+          this.addSoftware(currSoftwareKnowledge)
+        }
       }
 
       this.moveBoxes();

@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {MatIcon} from "@angular/material/icon";
 import {NgClass, NgIf} from "@angular/common";
 import {HomePageComponent} from "../../../pages/home-preview-page/home-page.component";
@@ -43,7 +43,7 @@ export class DropdownAvatarComponent implements OnInit {
 
         console.log(fileBlobForUpload);
         // Upload des Blobs an das Backend
-        this.profileService.uploadProfileImg({"byte": byteArray, "type": file.type}).subscribe();
+        this.profileService.uploadProfileImg({"file": byteArray, "type": file.type}).subscribe();
       })
     }
   }

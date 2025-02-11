@@ -1,7 +1,11 @@
+import {Profile} from "./profile";
+
 export interface Group {
-  groupName: string;
-  company: string;
-  department: string;
-  releaseDate: Date;
-  amountOfEMPs: number;
+  id: number,
+  name: string,
+  company: string,
+  department: string,
+  password: string,
+  maxMembers: number,
+  members: Profile[]
 }

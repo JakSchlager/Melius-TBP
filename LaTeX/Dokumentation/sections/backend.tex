@@ -46,20 +46,147 @@ Die Kombination aus der Vertrautheit des Teams mit der Umgebung, der leistungsst
 
 \newpage
 
-\subsection{Entitäten}
+\subsection{Model}
+
+Im Melius-Backend erfolgt die Erstellung und Verwaltung aller Datenbanktabellen unter Zuhilfenahme der Jakarta Persistence API (JPA) in Kombination mit Hibernate als Object-Relational Mapping (ORM)-Framework. Dies impliziert, dass jede in der Anwendung definierte Java-Entitätsklasse einer eigenen Tabelle in der Datenbank entspricht.
+
+Dies hat den Vorteil, dass die Verwaltung der Daten erheblich vereinfacht wird, da Entwickler nicht direkt mit SQL-Abfragen arbeiten müssen, sondern auf objektorientierte Weise mit den Daten interagieren können.
+
+Durch diese ORM-Technologie können Datenbankoperationen wie Erstellen, Lesen, Aktualisieren und Löschen (CRUD-Operationen) direkt über Java-Klassen durchgeführt werden. Hibernate übernimmt dabei automatisch die Zuordnung der Java-Objekte zu den entsprechenden Tabellen und Spalten, sodass eine enge Integration zwischen der Anwendung und der Datenbank entsteht.
+
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.35\linewidth]{entities.png}
+    \includegraphics[width=0.5\linewidth]{pics/Backend/Entitäten/entities.png}
     \caption{Entität - Klassen}
     \label{fig:entities}
 \end{figure}
 
-\subsubsection{Portfolio}
-Die Portfolio-Entität kann als "Mittelpunkt" der Datenstruktur im Backend betrachtet werden. Diese Tabelle verweist auf nahezu alle anderen Entitäten, die auf der Portfolio-Seite angezeigt werden können.  
+\subsubsection{Beispiele}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.3\linewidth]{pics//Backend//Entitäten/Portfolio.png}
-    \caption{Portfolio - Klasse}
-    \label{fig:portfolio}
-\end{figure}
+\subsubsection{Portfolio - Klasse}
+Die Portfolio-Klasse konstituiert das zentrale Element der Datenstruktur im Backend. Sie fungiert als Hauptentität und verweist auf nahezu alle anderen Entitäten, die auf der Portfolio-Seite dargestellt werden. In dieser Funktion verknüpft sie verschiedene Datenbereiche miteinander und ermöglicht eine strukturierte Verwaltung sowie eine effiziente Abfrage der relevanten Informationen.
+
+\subsubsection{Annotationen}
+
+\subsubsection{@Id}
+Diese Annotation kennzeichnet das Primärschlüsselfeld der Entität.
+In dieser Klasse fehlt jedoch die @GeneratedValue-Annotation, die für die automatische Generierung eines Primärschlüssels sorgen könnte.
+
+\subsubsection{@OneToOne}
+Diese Annotation beschreibt eine 1:1-Beziehung zwischen der Portfolio-Entität und einer anderen Entität.
+
+\begin{lstlisting}[caption=Beispiel,label=lst:impl:foo]
+    @OneToOne
+    @JoinColumn(name="profile_id", referencedColumnName = "id")
+    private Profile profile;
+\end{lstlisting}
+
+\begin{itemize}
+    \item
+    Diese Beziehung bedeutet, dass jedes Portfolio genau ein Profile-Objekt besitzt.
+
+    \item
+\begin{verbatim}
+@JoinColumn(name="profile_id", referencedColumnName = "id")
+profile_id ist der Fremdschlüssel in der Portfolio-Tabelle,
+der auf die id-Spalte der Profile-Tabelle verweist.
+\end{verbatim}
+
+    \item
+\begin{verbatim}
+@JsonIgnoreProperties(value = {"portfolio"}, allowSetters = true)
+stellt sicher, dass bei JSON-Serialisierung rekursive Referenzen
+zwischen Portfolio und Profile vermieden werden.
+\end{verbatim}
+
+\end{itemize}
+
+\begin{lstlisting}[caption=Ähnliche 1:1-Beziehung:,label=lst:impl:foo]
+    @OneToOne
+    @JoinColumn(name="generalInfo_id", referencedColumnName = "id")
+    private GeneralInfo generalInfo;
+\end{lstlisting}
+
+
+\subsubsection{@OneToMany}
+Diese Annotation beschreibt eine 1:n-Beziehung, bei der ein Portfolio mehrere abhängige Entitäten besitzt.
+
+\begin{lstlisting}[caption=Beispiel:,label=lst:impl:foo]
+    @OneToMany(mappedBy = "portfolio")
+    @JsonIgnoreProperties({"portfolio"})
+    private Set<Education> educations;
+\end{lstlisting}
+
+
+\begin{itemize}
+    \item
+    Ein Portfolio kann mehrere Education-Einträge haben.
+
+    \item
+    \textbf{mappedBy = "portfolio"} zeigt, dass die Education-Entität eine portfolio-Referenz besitzt.
+
+    \item
+\begin{verbatim}
+@JsonIgnoreProperties({"portfolio"})
+verhindert rekursive JSON-Serialisierung.
+\end{verbatim}
+
+\end{itemize}
+
+\textbf{Weitere 1:n-Beziehungen:}
+\begin{itemize}
+    \item
+    Set<WorkExperience> workExperiences
+
+    \item
+    Set<KnownLanguage> knownLanguages
+
+    \item
+    Set<ProgrammingKnowledge> programmingKnowledges
+
+    \item
+    Set<SoftwareKnowledge> softwareKnowledges
+\end{itemize}
+
+Diese Beziehungen ermöglichen, dass ein Portfolio mehrere berufliche Erfahrungen, Sprachen, Programmierkenntnisse oder Softwarekenntnisse speichern kann.
+
+\subsubsection{@ManyToMany}
+Diese Annotation beschreibt eine n:m-Beziehung, bei der mehrere Portfolios mehrere Eigenschaften (Characteristic) haben können.
+
+\begin{lstlisting}[caption=Beispiel:,label=lst:impl:foo]
+    @ManyToMany
+    @JoinTable(
+        name="portfolio_characteristic",
+        joinColumns = @JoinColumn(name="portfolio_id"),
+        inverseJoinColumns = @JoinColumn(name="characteristic_id")
+    )
+    @JsonIgnoreProperties({"portfolio"})
+    private Set<Characteristic> characteristics;
+\end{lstlisting}
+
+
+\begin{itemize}
+    \item
+    Dies bedeutet, dass eine separate Join-Tabelle (portfolio\_characteristic) existiert,
+    die die Verknüpfung zwischen Portfolio und Characteristic speichert.
+
+    \item
+\begin{verbatim}
+joinColumns = @JoinColumn(name="portfolio_id"):
+Verweist auf die portfolio_id-Spalte in der Join-Tabelle.
+\end{verbatim}
+
+    \item
+\begin{verbatim}
+inverseJoinColumns = @JoinColumn(name="characteristic_id"):
+Verweist auf die characteristic_id-Spalte.
+\end{verbatim}
+\end{itemize}
+
+\subsubsection{Zusätzliche String-Felder}
+Die Klasse enthält mehrere String-Attribute für Positionen wie:
+private String generalInfoPosition;
+private String educationsPosition;
+private String workExperiencesPosition;
+Diese Felder werden verwendet, um die Spalten - Positionen der einzelnen Boxen im Portfolio zu speichern.
+

@@ -6,22 +6,25 @@ import {KnownLanguage} from "./KnownLanguage";
 import {ProgrammingKnowledge} from "./ProgrammingKnowledge";
 import {SoftwareKnowledge} from "./SoftwareKnowledge";
 import {Selectable} from "./Selectable";
+import {GHRepo} from "./GHRepo";
 
 export interface Portfolio {
   profile: Profile,
   generalInfo: GeneralInfo,
   generalInfoPosition?: string,
-  characteristics: Selectable[],
+  characteristics?: Selectable[],
   characteristicsPosition?: string,
-  educations: Education[],
+  educations?: Education[],
   educationsPosition?: string,
-  workExperiences: WorkExperience[],
+  workExperiences?: WorkExperience[],
   workExperiencesPosition?: string,
-  knownLanguages: KnownLanguage[],
+  knownLanguages?: KnownLanguage[],
   knownLanguagesPosition?: string,
-  programmingKnowledges: ProgrammingKnowledge[],
+  programmingKnowledges?: ProgrammingKnowledge[],
   programmingKnowledgesPosition?: string,
-  softwareKnowledges: SoftwareKnowledge[],
+  softwareKnowledges?: SoftwareKnowledge[],
   softwareKnowledgesPosition?: string,
-
+  languageCode: string,
+  color: string,
+  ghRepos?: GHRepo[],
 }
