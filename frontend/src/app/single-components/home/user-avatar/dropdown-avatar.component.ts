@@ -1,5 +1,4 @@
 import {Component, inject, OnInit} from '@angular/core';
-import {MatIcon} from "@angular/material/icon";
 import {NgClass, NgIf} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {TranslatePipe} from "@ngx-translate/core";
