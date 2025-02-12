@@ -1,19 +1,25 @@
-<div class="flex">
-  <div class="relative inline-block text-center">
+<div class="flex ml-12 mt-5">
+  <div class="flex flex-col justify-center">
     <label class="cursor-pointer" for="fileInput">
-      <img class="h-56 w-56 rounded-full" [src]="url ? url : './assets/icons/no-user-icon.svg'"  alt="user_img"/>
+      <div *ngIf="url == ''" class="w-fit">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-52">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+        </svg>
+      </div>
+
+      <img *ngIf="url != ''" class="h-48 w-48 rounded-full" [src]="url"  alt="user_img"/>
     </label>
     <br />
     <input
       id="fileInput"
       type="file"
       [(ngModel)]="url"
-      class="absolute top-0 left-0 z-40 opacity-0 w-full h-full cursor-pointer"
+      class="absolute top-0 left-0 z-40 opacity-0 w-fit h-fit cursor-pointer"
       (change)="onSelectFile($event)"
     />
   </div>
 
-  <div class="relative top-3">
+  <div class="">
     <button (click)="showOptions()" class="cursor-pointer text-gray-500 hover:text-gray-600 duration-150">
       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#00000"><path d="M240-400q-33 0-56.5-23.5T160-480q0-33 23.5-56.5T240-560q33 0 56.5 23.5T320-480q0 33-23.5 56.5T240-400Zm240 0q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm240 0q-33 0-56.5-23.5T640-480q0-33 23.5-56.5T720-560q33 0 56.5 23.5T800-480q0 33-23.5 56.5T720-400Z"/></svg>
     </button>

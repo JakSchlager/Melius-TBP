@@ -1,11 +1,13 @@
 <div class="relative w-full">
-  <button (click)="toggleList()" class="flex bg-white justify-between space-x-2 rounded-lg border-2 text-white px-2 py-1 items-center hover:bg-gray-100 ease-in-out duration-150">
+  <button (click)="toggleList()" class="flex mb-2 bg-white shadow-lg justify-between space-x-2 rounded-lg border-2 text-white px-2.5 py-1.5 items-center hover:bg-accent-blue ease-in-out duration-150">
     <h1 class="text-gray-400">{{'home.settingsButton.title' | translate}}</h1>
-    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#989898"><path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="#9ca3af" class="size-4">
+      <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+    </svg>
   </button>
 
-  <div *ngIf="isOpen || isAnimating" [ngClass]="{'animate-fade-down duration-150': isOpen, 'animate-out fade-out': !isOpen && isAnimating}" (animationend)="onAnimationEnd()" class="absolute mt-2 right-0 w-fit flex flex-col justify-between h-fit px-2 py-1.5 bg-white border rounded-lg shadow-md ">
-    <div class="flex min-w-36 justify-between items-center px-1 py-2 bg-white rounded-lg text-start hover:bg-accent-blue ease-in-out duration-150">
+  <div *ngIf="isOpen || isAnimating" [ngClass]="{'animate-fade-down duration-150': isOpen, 'animate-out fade-out': !isOpen && isAnimating}" (animationend)="onAnimationEnd()" class="absolute right-0 w-fit flex flex-col justify-between h-fit px-2 py-1 border rounded-lg shadow-md bg-white hover:bg-accent-blue ease-in-out duration-150">
+    <div class="flex space-x-2 justify-between items-center py-1 rounded-lg text-start">
       <h1 class="min-w-fit text-gray-400">{{'home.settingsButton.dad' | translate}}</h1>
       <label class="switch">
         <input type="checkbox" id="dadCheckbox" (change)="isDaDChecked($event)" [checked]="false">

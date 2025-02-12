@@ -1,19 +1,15 @@
-<div class=" py-1 relative">
-
-  <div class="w-full bg-white h-fit shadow-md rounded-b-lg font-bold box-content absolute">
-    <div class="w-auto h-fit items-center grid grid-cols-3 text-center">
+<div class="w-full rounded-b-xl font-bold box-content bg-white shadow-lg">
+    <div class="w-auto h-full items-center grid grid-cols-3  text-center">
       <a class="cursor-pointer col-start-1">
-        <h1 class="text-2xl px-40 hover:border-b-2 border-primary-color duration-150 ease-in-out" [routerLinkActive]="['activeHomeCVNavTap']" [routerLink]="['/home/cv']">{{'home.nav.cv' | translate}}</h1>
+        <h1 class="text-xl px-36 py-2 rounded-bl-xl hover:bg-gray-50 duration-150 ease-in-out" [routerLinkActive]="['activeHomeCVNavTap']" [routerLink]="['/home/cv']">{{'home.nav.cv' | translate}}</h1>
       </a>
 
       <a class="cursor-pointer col-start-2">
-        <h1 class="text-2xl px-40 hover:border-b-2 border-intermediate-color duration-150 ease-in-out" [routerLinkActive]="['activeHomeProjectsNavTap']" [routerLink]="['/home/projects']">{{'home.nav.projects' | translate}}</h1>
+        <h1 class="text-xl px-36 py-2 hover:bg-gray-50 duration-150 ease-in-out" [routerLinkActive]="['activeHomeProjectsNavTap']" [routerLink]="['/home/projects']">{{'home.nav.projects' | translate}}</h1>
       </a>
 
       <a class=" cursor-pointer col-start-3">
-        <h1 class="text-2xl px-40 hover:border-b-2 border-secondary-color duration-150 ease-in-out" [routerLinkActive]="['activeHomeStrengthsNavTap']" [routerLink]="['/home/strengths']">{{'home.nav.comps' | translate}}</h1>
+        <h1 class="text-xl px-36 py-2 rounded-br-xl hover:bg-gray-50 duration-150 ease-in-out" [routerLinkActive]="['activeHomeStrengthsNavTap']" [routerLink]="['/home/strengths']">{{'home.nav.comps' | translate}}</h1>
       </a>
     </div>
-  </div>
-
 </div>
