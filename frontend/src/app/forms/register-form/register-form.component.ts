@@ -55,7 +55,6 @@ export class RegisterFormComponent {
       this.profileService.handelUserRegistration(newProfile).subscribe(p => {
 
         //this.profileService.loggedInUser = response;
-        this.router.navigate(['/home']);
         localStorage.setItem("loggedInUser", JSON.stringify(p));
         console.log('Profile registered successfully.', p);
 
@@ -69,19 +68,17 @@ export class RegisterFormComponent {
 
         this.generalInfoService.addGeneralInfo(generalInfo).subscribe(g => {
           let portfolio: Portfolio = {
-            characteristics: [],
-            educations: [],
-            knownLanguages: [],
-            programmingKnowledges: [],
-            softwareKnowledges: [],
-            workExperiences: [],
             profile: p,
-            generalInfo: g
+            generalInfo: g,
+            languageCode: "de",
+            color: "#fff"
           }
 
           console.log(portfolio);
 
-          this.portfolioService.addPortfolio(portfolio).subscribe()
+          this.portfolioService.addPortfolio(portfolio).subscribe(() => {
+            this.router.navigate(['/home']);
+          })
         })
 
 

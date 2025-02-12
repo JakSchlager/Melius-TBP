@@ -40,7 +40,7 @@ public class Portfolio {
             joinColumns = @JoinColumn(name="portfolio_id"),
             inverseJoinColumns = @JoinColumn(name="characteristic_id")
     )
-    @JsonIgnoreProperties({"portfolio"})
+    @JsonIgnoreProperties({"portfolios"})
     private Set<Characteristic> characteristics;
 
     private String characteristicsPosition;
@@ -62,6 +62,22 @@ public class Portfolio {
     private Set<SoftwareKnowledge> softwareKnowledges;
 
     private String softwareKnowledgesPosition;
+
+    private String languageCode;
+
+    private String color;
+
+    @OneToMany(mappedBy = "portfolio")
+    @JsonIgnoreProperties({"portfolio"})
+    private Set<GHRepo> ghRepos;
+
+    public Set<GHRepo> getGhRepos() {
+        return ghRepos;
+    }
+
+    public void setGhRepos(Set<GHRepo> ghRepos) {
+        this.ghRepos = ghRepos;
+    }
 
     public Set<Characteristic> getCharacteristics() {
         return characteristics;
@@ -161,6 +177,22 @@ public class Portfolio {
 
     public String getKnownLanguagesPosition() {
         return knownLanguagesPosition;
+    }
+
+    public String getLanguageCode() {
+        return languageCode;
+    }
+
+    public void setLanguageCode(String languageCode) {
+        this.languageCode = languageCode;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 
     public void setKnownLanguagesPosition(String knownLanguagesPosition) {

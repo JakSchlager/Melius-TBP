@@ -1,6 +1,10 @@
-<div class="w-full">
-    <div class="p-10 h-1/4 mt-6 flex justify-around drop-shadow-md">
-      <div class="h-full block space-y-2 items-center">
+<div class="absolute top-0 left-0 w-full h-full -z-10" [ngStyle]="{'background-color': backgroundImageUrl ? 'white' : backgroundColor,
+                'background-image': backgroundImageUrl ? 'url(' + backgroundImageUrl + ')' : 'none',
+                'background-size': 'cover', 'background-position': 'center', 'background-repeat': 'no-repeat', 'background-attachment': 'fixed', 'overflow': 'auto'}">>
+
+  <div class="w-full">
+      <div class="p-10 h-1/4 mt-6 flex justify-around drop-shadow-md">
+        <div class="h-full block space-y-2 items-center">
         <div class="w-full flex justify-center rounded-full">
           <div class="w-fit drop-shadow-lg">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-32">
@@ -9,6 +13,12 @@
           </div>
         </div>
 
+          <div class="flex flex-col justify-center space-y-2">
+            <h1 class="text-5xl">{{this.portfolio.profile.firstName}} {{this.portfolio.profile.lastName}}</h1>
+          </div>
+        </div>
+      </div>
+    </div>
 
         <div class="flex flex-col justify-center space-y-2">
           <h1 class="text-5xl">{{this.portfolio.profile.firstName}} {{this.portfolio.profile.lastName}}</h1>
@@ -17,184 +27,185 @@
     </div>
   </div>
 
-<div class="w-full h-fit flex justify-center border-y-2 py-10 px-20">
+  <div class="w-full h-fit flex justify-center border-y-2 py-10 px-20">
 
-  <div class="w-full grid grid-cols-3 space-x-4 justify-center">
+    <div class="w-full grid grid-cols-3 space-x-4 justify-center">
 
-    <div class="col-start-1 space-y-10" id="leftSkillCol">
+      <div class="col-start-1 space-y-10" id="leftSkillCol">
 
-    </div>
-
-    <div class="col-start-2 space-y-10" id="middleSkillCol">
-
-      <!-- Allgemeine Informationen -->
-      <div id="generalInfoBox" class="drop-shadow-lg animate-in slide-in-from-bottom-32 duration-500">
-        <div class="bg-white rounded-xl px-10 py-6">
-          <h1 class="text-center font-bold text-2xl py-2">Allgemein</h1>
-
-          <div class="space-y-10 hover:cursor-default">
-            <form class="space-y-4">
-              <span class="row-start-1 col-start-1 text-gray-500">Ansprache</span>
-
-              <div class="flex items-center pb-2">
-                <div class="grid">
-                  <svg class="pointer-events-none z-10 right-1 relative col-start-1 row-start-1 h-4 w-4 self-center justify-self-end forced-colors:hidden" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"></path>
-                  </svg>
-                  <select [disabled]="disabledInputs" class="w-20 appearance-none forced-colors:appearance-auto border row-start-1 col-start-1 rounded-lg bg-accent-blue text-black px-2">
-                    <option>{{this.portfolio.generalInfo.gender}}</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="grid grid-cols-2">
-                <div class="w-11/12 col-start-1">
-                  <span class="text-gray-500">Vorname</span>
-                  <div class="border-b-2">
-                    <input type="text" [disabled]="disabledInputs" [value]="portfolio.profile.firstName" class="w-11/12">
-                  </div>
-                </div>
-
-                <div class="w-11/12 col-start-2">
-                  <span class="text-gray-500">Nachname</span>
-                  <div class=" border-b-2">
-                    <input type="text" [disabled]="disabledInputs" [value]="portfolio.profile.lastName" class="w-11/12">
-                  </div>
-                </div>
-              </div>
-
-              <div class="grid grid-cols-1">
-                <span class="text-gray-500">Email</span>
-                <input type="text" [disabled]="disabledInputs" [value]="portfolio.profile.email" class="w-11/12">
-              </div>
-
-              <div class="grid grid-cols-1">
-                <span class="text-gray-500">Telefonnummer</span>
-                <input type="text" [disabled]="disabledInputs" [value]="portfolio.profile.phoneNumber" class="w-11/12">
-              </div>
-
-              <div class="grid grid-cols-2">
-                <div class="w-11/12 col-start-1">
-                  <span class="text-gray-500">PLZ</span>
-                  <div class="border-b-2">
-                    <input type="text" [disabled]="disabledInputs" [value]="portfolio.generalInfo.zipCode" class="w-11/12">
-                  </div>
-                </div>
-
-                <div class="w-11/12 col-start-2">
-                  <span class="text-gray-500">Ort</span>
-                  <div class=" border-b-2">
-                    <input type="text" [disabled]="disabledInputs" [value]="portfolio.generalInfo.city" class="w-11/12">
-                  </div>
-                </div>
-              </div>
-
-
-              <div class="grid grid-cols-1">
-                <span class="text-gray-500">Addresse</span>
-                <input type="text" [disabled]="disabledInputs" [value]="portfolio.generalInfo.address" class="w-11/12">
-              </div>
-            </form>
-          </div>
-        </div>
       </div>
 
-      <!--Ausbildung Informationen -->
-      <div id="educationsBox" class="drop-shadow-lg animate-in slide-in-from-bottom-32 duration-700">
-        <div class="bg-white rounded-xl px-10 py-4">
-          <h1 class="text-center font-bold text-2xl py-2">Ausbildungen</h1>
+      <div class="col-start-2 space-y-10" id="middleSkillCol">
 
-          <div class="mt-8 hover:cursor-default">
-            <div class="space-y-8">
-              <div *ngFor="let educationItem of this.portfolio.educations; let i = index">
+        <!-- Allgemeine Informationen -->
+        <div id="generalInfoBox" class="drop-shadow-lg animate-in slide-in-from-bottom-32 duration-500">
+          <div class="bg-white rounded-xl px-10 py-6">
+            <h1 class="text-center font-bold text-2xl py-2">Allgemein</h1>
 
-                <div class="flex justify-between space-x-6 animate-in fade-in zoom-in duration-500">
-                  <div class="w-full grid space-y-4">
-                    <div class="grid grid-cols-1">
-                      <span class="text-gray-500">Bildungseinrichtung/Ort</span>
-                      <input [disabled]="disabledInputs" [value]="educationItem.name" class="border-b-2">
+            <div class="space-y-10 hover:cursor-default">
+              <form class="space-y-4">
+                <span class="row-start-1 col-start-1 text-gray-500">Ansprache</span>
+
+                <div class="flex items-center pb-2">
+                  <div class="grid">
+                    <svg class="pointer-events-none z-10 right-1 relative col-start-1 row-start-1 h-4 w-4 self-center justify-self-end forced-colors:hidden" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"></path>
+                    </svg>
+                    <select [disabled]="disabledInputs" class="w-20 appearance-none forced-colors:appearance-auto border row-start-1 col-start-1 rounded-lg bg-accent-blue text-black px-2">
+                      <option>{{this.portfolio.generalInfo.gender}}</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-2">
+                  <div class="w-11/12 col-start-1">
+                    <span class="text-gray-500">Vorname</span>
+                    <div class="border-b-2">
+                      <input type="text" [disabled]="disabledInputs" [value]="portfolio.profile.firstName" class="w-11/12">
                     </div>
+                  </div>
+
+                  <div class="w-11/12 col-start-2">
+                    <span class="text-gray-500">Nachname</span>
+                    <div class=" border-b-2">
+                      <input type="text" [disabled]="disabledInputs" [value]="portfolio.profile.lastName" class="w-11/12">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1">
+                  <span class="text-gray-500">Email</span>
+                  <input type="text" [disabled]="disabledInputs" [value]="portfolio.profile.email" class="w-11/12">
+                </div>
+
+                <div class="grid grid-cols-1">
+                  <span class="text-gray-500">Telefonnummer</span>
+                  <input type="text" [disabled]="disabledInputs" [value]="portfolio.profile.phoneNumber" class="w-11/12">
+                </div>
+
+                <div class="grid grid-cols-2">
+                  <div class="w-11/12 col-start-1">
+                    <span class="text-gray-500">PLZ</span>
+                    <div class="border-b-2">
+                      <input type="text" [disabled]="disabledInputs" [value]="portfolio.generalInfo.zipCode" class="w-11/12">
+                    </div>
+                  </div>
+
+                  <div class="w-11/12 col-start-2">
+                    <span class="text-gray-500">Ort</span>
+                    <div class=" border-b-2">
+                      <input type="text" [disabled]="disabledInputs" [value]="portfolio.generalInfo.city" class="w-11/12">
+                    </div>
+                  </div>
+                </div>
 
 
-                    <div class="w-full grid grid-cols-3">
-                      <div class="w-full">
-                        <div class="w-fit grid grid-cols-1">
-                          <span class="text-gray-500">Von</span>
-                          <input [disabled]="disabledInputs" [value]="educationItem.fromDate" type="date" class="border-b-2">
-                        </div>
+                <div class="grid grid-cols-1">
+                  <span class="text-gray-500">Addresse</span>
+                  <input type="text" [disabled]="disabledInputs" [value]="portfolio.generalInfo.address" class="w-11/12">
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!--Ausbildung Informationen -->
+        <div id="educationsBox" class="drop-shadow-lg animate-in slide-in-from-bottom-32 duration-700">
+          <div class="bg-white rounded-xl px-10 py-4">
+            <h1 class="text-center font-bold text-2xl py-2">Ausbildungen</h1>
+
+            <div class="mt-8 hover:cursor-default">
+              <div class="space-y-8">
+                <div *ngFor="let educationItem of this.portfolio.educations; let i = index">
+
+                  <div class="flex justify-between space-x-6 animate-in fade-in zoom-in duration-500">
+                    <div class="w-full grid space-y-4">
+                      <div class="grid grid-cols-1">
+                        <span class="text-gray-500">Bildungseinrichtung/Ort</span>
+                        <input [disabled]="disabledInputs" [value]="educationItem.name" class="border-b-2">
                       </div>
 
-                      <div class="w-full">
-                        <div class="w-fit grid grid-cols-1">
-                          <span class="text-gray-500">Bis</span>
-                          <input [disabled]="disabledInputs" [value]="educationItem.toDate" type="date" class="border-b-2">
-                        </div>
-                      </div>
 
-                      <div class="w-full flex justify-end">
-                        <div class="grid grid-cols-1">
-                          <span class="row-start-1 col-start-1 text-gray-500">Absolviert</span>
-                          <div class="flex items-center pb-2">
-                            <div class="grid">
-                              <svg class="pointer-events-none z-10 right-1 relative col-start-1 row-start-1 h-4 w-4 self-center justify-self-end forced-colors:hidden" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                                <path fill-rule="evenodd" d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"></path>
-                              </svg>
-                              <select [disabled]="disabledInputs" class="w-fit appearance-none forced-colors:appearance-auto border row-start-1 col-start-1 rounded-lg bg-accent-blue text-black px-2">
-                                <option>{{educationItem.finished}}</option>
-                              </select>
+                      <div class="w-full grid grid-cols-3">
+                        <div class="w-full">
+                          <div class="w-fit grid grid-cols-1">
+                            <span class="text-gray-500">Von</span>
+                            <input [disabled]="disabledInputs" [value]="educationItem.fromDate" type="date" class="border-b-2">
+                          </div>
+                        </div>
+
+                        <div class="w-full">
+                          <div class="w-fit grid grid-cols-1">
+                            <span class="text-gray-500">Bis</span>
+                            <input [disabled]="disabledInputs" [value]="educationItem.toDate" type="date" class="border-b-2">
+                          </div>
+                        </div>
+
+                        <div class="w-full flex justify-end">
+                          <div class="grid grid-cols-1">
+                            <span class="row-start-1 col-start-1 text-gray-500">Absolviert</span>
+                            <div class="flex items-center pb-2">
+                              <div class="grid">
+                                <svg class="pointer-events-none z-10 right-1 relative col-start-1 row-start-1 h-4 w-4 self-center justify-self-end forced-colors:hidden" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                                  <path fill-rule="evenodd" d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"></path>
+                                </svg>
+                                <select [disabled]="disabledInputs" class="w-fit appearance-none forced-colors:appearance-auto border row-start-1 col-start-1 rounded-lg bg-accent-blue text-black px-2">
+                                  <option>{{educationItem.finished}}</option>
+                                </select>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
+
+
                 </div>
-
-
               </div>
-            </div>
 
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Berufserfahrungen Informationen -->
-      <div id="workExperiencesBox" class="drop-shadow-lg animate-in slide-in-from-bottom-32 duration-700">
-        <div class="bg-white rounded-xl  px-10 py-4">
-          <h1 class="text-center font-bold text-2xl py-2">Berufserfahrungen</h1>
+        <!-- Berufserfahrungen Informationen -->
+        <div id="workExperiencesBox" class="drop-shadow-lg animate-in slide-in-from-bottom-32 duration-700">
+          <div class="bg-white rounded-xl  px-10 py-4">
+            <h1 class="text-center font-bold text-2xl py-2">Berufserfahrungen</h1>
 
-          <div class="mt-8 hover:cursor-default">
-            <div class="space-y-8">
-              <div *ngFor="let jobExperienceItem of this.portfolio.workExperiences; let i = index" class="space-y-4">
+            <div class="mt-8 hover:cursor-default">
+              <div class="space-y-8">
+                <div *ngFor="let jobExperienceItem of this.portfolio.workExperiences; let i = index" class="space-y-4">
 
-                <div class="h-full flex justify-between space-x-6 animate-in fade-in zoom-in duration-500">
-                  <div class="w-full grid space-y-4">
+                  <div class="h-full flex justify-between space-x-6 animate-in fade-in zoom-in duration-500">
+                    <div class="w-full grid space-y-4">
 
-                    <div class="w-full grid grid-cols-1">
-                      <span class="text-gray-500">Firma/Ort</span>
-                      <input [disabled]="disabledInputs" [value]="jobExperienceItem.company" class="border-b-2">
-                    </div>
+                      <div class="w-full grid grid-cols-1">
+                        <span class="text-gray-500">Firma/Ort</span>
+                        <input [disabled]="disabledInputs" [value]="jobExperienceItem.company" class="border-b-2">
+                      </div>
 
 
-                    <div class="w-full grid grid-cols-2 justify-between">
-                      <div class="w-full">
-                        <div class="w-fit grid grid-cols-1">
-                          <span class="text-gray-500">Von</span>
-                          <input [disabled]="disabledInputs" [value]="jobExperienceItem.fromDate" type="date" class="border-b-2">
+                      <div class="w-full grid grid-cols-2 justify-between">
+                        <div class="w-full">
+                          <div class="w-fit grid grid-cols-1">
+                            <span class="text-gray-500">Von</span>
+                            <input [disabled]="disabledInputs" [value]="jobExperienceItem.fromDate" type="date" class="border-b-2">
+                          </div>
+                        </div>
+
+                        <div class="w-full">
+                          <div class="w-fit grid grid-cols-1">
+                            <span class="text-gray-500">Bis</span>
+                            <input [disabled]="disabledInputs" [value]="jobExperienceItem.toDate" type="date" class="border-b-2">
+                          </div>
                         </div>
                       </div>
 
-                      <div class="w-full">
-                        <div class="w-fit grid grid-cols-1">
-                          <span class="text-gray-500">Bis</span>
-                          <input [disabled]="disabledInputs" [value]="jobExperienceItem.toDate" type="date" class="border-b-2">
-                        </div>
+                      <div class="w-full grid grid-cols-1">
+                        <span class="text-gray-500">Zusätzliche Informationen: </span>
+                        <textarea [disabled]="disabledInputs" [value]="jobExperienceItem.information" class="bg-accent-blue resize-y rounded-md border-2"></textarea>
                       </div>
-                    </div>
-
-                    <div class="w-full grid grid-cols-1">
-                      <span class="text-gray-500">Zusätzliche Informationen: </span>
-                      <textarea [disabled]="disabledInputs" [value]="jobExperienceItem.information" class="bg-accent-blue resize-y rounded-md border-2"></textarea>
                     </div>
                   </div>
                 </div>
@@ -202,63 +213,97 @@
             </div>
           </div>
         </div>
-      </div>
 
-      <div id="characteristicsBox" class="colListItem grid animate-in slide-in-from-bottom-32 duration-500">
-        <div class="bg-white px-10 py-4 rounded-lg shadow-md">
-          <h1 class="text-center font-bold text-2xl py-2">Persönliche Eigenschaften</h1>
-          <div class="w-full relative mt-2 grid grid-cols-1 space-y-2 hover:cursor-default">
-            <div class="max-w-full relative border rounded-lg">
-              <p-multiSelect [disabled]="disabledInputs" class="max-w-full"
-                             [(ngModel)]="this.portfolio.characteristics"
-                             placeholder="Stärken auswählen"
-                             optionLabel="label"
-                             display="chip"
-                             [showClear]="true"
-              />
+        <div id="characteristicsBox" class="colListItem grid animate-in slide-in-from-bottom-32 duration-500">
+          <div class="bg-white px-10 py-4 rounded-lg shadow-md">
+            <h1 class="text-center font-bold text-2xl py-2">Persönliche Eigenschaften</h1>
+            <div class="w-full relative mt-2 grid grid-cols-1 space-y-2 hover:cursor-default">
+              <div class="max-w-full relative border rounded-lg">
+                <p-multiSelect [disabled]="disabledInputs" class="max-w-full"
+                               [(ngModel)]="this.portfolio.characteristics"
+                               placeholder="Stärken auswählen"
+                               optionLabel="label"
+                               display="chip"
+                               [showClear]="true"
+                />
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Sprachliche Kenntnisse -->
-      <div id="knownLanguagesBox" class="colListItem bg-white rounded-lg px-2 py-10 shadow-md animate-in slide-in-from-bottom-32 duration-500">
-        <h1 class="text-center font-bold text-2xl py-2 pb-4">Sprachliche Stärken</h1>
+        <!-- Sprachliche Kenntnisse -->
+        <div id="knownLanguagesBox" class="colListItem bg-white rounded-lg px-2 py-10 shadow-md animate-in slide-in-from-bottom-32 duration-500">
+          <h1 class="text-center font-bold text-2xl py-2 pb-4">Sprachliche Stärken</h1>
 
-        <div class="mt-2 hover:cursor-default">
-          <div class="">
-            <div *ngFor="let langauge of this.portfolio.knownLanguages; let i = index">
+          <div class="mt-2 hover:cursor-default">
+            <div class="">
+              <div *ngFor="let langauge of this.portfolio.knownLanguages; let i = index">
 
-              <div class="w-auto mx-10 flex items-center space-x-10 animate-in fade-in zoom-in duration-500">
-                <div>
-                  <input [disabled]="disabledInputs" type="text" [value]="langauge.language" placeholder="Sprache" class="w-4/5 bg-white shadow-md rounded px-1 py-2 font-bold">
+                <div class="w-auto mx-10 flex items-center space-x-10 animate-in fade-in zoom-in duration-500">
+                  <div>
+                    <input [disabled]="disabledInputs" type="text" [value]="langauge.language" placeholder="Sprache" class="w-4/5 bg-white shadow-md rounded px-1 py-2 font-bold">
+                  </div>
+
+                  <div>
+                    <app-star-rating [rating]="langauge.rating"></app-star-rating>
+                  </div>
                 </div>
 
-                <div>
-                  <app-star-rating [rating]="langauge.rating"></app-star-rating>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Programmier Kenntnisse -->
+        <div id="programmingKnowledgesBox" class="animate-in slide-in-from-bottom-32 duration-500">
+
+          <div class="flex flex-col space-y-2 bg-white rounded-lg px-2 py-10 shadow-md">
+            <h1 class="text-center font-bold text-2xl py-6">Programmier Kenntnisse</h1>
+            <div class="mt-2 hover:cursor-default" >
+              <div class="space-y-8">
+                <div *ngFor="let programmingItem of this.portfolio.programmingKnowledges; let i = index">
+
+                  <div class="w-auto mx-2 flex items-center justify-between space-x-10 animate-in fade-in zoom-in duration-500">
+                    <app-drop-str-progr [selectedLanguage]="programmingItem.programming.value"></app-drop-str-progr>
+
+                    <div class="flex-grow" draggable="false">
+                      <div class="flex flex-col" draggable="false">
+                        <input [value]="programmingItem.rating" class="rounded-lg overflow-hidden appearance-none bg-gray-400 h-3 w-full" type="range" min="1" max="100" step="1" draggable="false"/>
+
+                        <div class="w-full flex justify-between mt-1">
+                          <span class="text-sm text-intermediate-color">Schlecht</span>
+                          <span class="text-sm text-intermediate-color">Meh</span>
+                          <span class="text-sm text-intermediate-color">Okay</span>
+                          <span class="text-sm text-intermediate-color">Gut</span>
+                          <span class="text-sm text-intermediate-color">Sehr Gut</span>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
                 </div>
               </div>
 
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Programmier Kenntnisse -->
-      <div id="programmingKnowledgesBox" class="animate-in slide-in-from-bottom-32 duration-500">
 
-        <div class="flex flex-col space-y-2 bg-white rounded-lg px-2 py-10 shadow-md">
-          <h1 class="text-center font-bold text-2xl py-6">Programmier Kenntnisse</h1>
-          <div class="mt-2 hover:cursor-default" >
+        <!-- Software Kenntnisse -->
+        <div id="softwareKnowledgesBox" class="colListItem bg-white rounded-lg px-2 py-10 shadow-md animate-in slide-in-from-bottom-32 duration-500">
+          <h1 class="text-center font-bold text-2xl py-6">EDV Kenntnisse</h1>
+
+          <div class="mt-2 hover:cursor-default">
             <div class="space-y-8">
-              <div *ngFor="let programmingItem of this.portfolio.programmingKnowledges; let i = index">
+              <div *ngFor="let softwareItem of this.portfolio.softwareKnowledges; let i = index">
 
                 <div class="w-auto mx-2 flex items-center justify-between space-x-10 animate-in fade-in zoom-in duration-500">
-                  <app-drop-str-progr [selectedLanguage]="programmingItem.programming.value"></app-drop-str-progr>
+                  <app-drop-str-edv inputmode="" [selectedSoftware]="softwareItem.software.value"></app-drop-str-edv>
 
-                  <div class="flex-grow" draggable="false">
-                    <div class="flex flex-col" draggable="false">
-                      <input [value]="programmingItem.rating" class="rounded-lg overflow-hidden appearance-none bg-gray-400 h-3 w-full" type="range" min="1" max="100" step="1" draggable="false"/>
+                  <div class="flex-grow">
+                    <div class="flex flex-col">
+                      <input [value]="softwareItem.rating" class="rounded-lg overflow-hidden appearance-none bg-gray-400 h-3 w-full" type="range" min="1" max="100" step="1" />
 
                       <div class="w-full flex justify-between mt-1">
                         <span class="text-sm text-intermediate-color">Schlecht</span>
@@ -269,57 +314,24 @@
                       </div>
                     </div>
                   </div>
-
-                </div>
-
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-
-      <!-- Software Kenntnisse -->
-      <div id="softwareKnowledgesBox" class="colListItem bg-white rounded-lg px-2 py-10 shadow-md animate-in slide-in-from-bottom-32 duration-500">
-        <h1 class="text-center font-bold text-2xl py-6">EDV Kenntnisse</h1>
-
-        <div class="mt-2 hover:cursor-default">
-          <div class="space-y-8">
-            <div *ngFor="let softwareItem of this.portfolio.softwareKnowledges; let i = index">
-
-              <div class="w-auto mx-2 flex items-center justify-between space-x-10 animate-in fade-in zoom-in duration-500">
-                <app-drop-str-edv inputmode="" [selectedSoftware]="softwareItem.software.value"></app-drop-str-edv>
-
-                <div class="flex-grow">
-                  <div class="flex flex-col">
-                    <input [value]="softwareItem.rating" class="rounded-lg overflow-hidden appearance-none bg-gray-400 h-3 w-full" type="range" min="1" max="100" step="1" />
-
-                    <div class="w-full flex justify-between mt-1">
-                      <span class="text-sm text-intermediate-color">Schlecht</span>
-                      <span class="text-sm text-intermediate-color">Meh</span>
-                      <span class="text-sm text-intermediate-color">Okay</span>
-                      <span class="text-sm text-intermediate-color">Gut</span>
-                      <span class="text-sm text-intermediate-color">Sehr Gut</span>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      <div class="col-start-3 space-y-10" id="rightSkillCol"></div>
+
     </div>
-
-    <div class="col-start-3 space-y-10" id="rightSkillCol"></div>
 
   </div>
 
-</div>
+  <div>
+    <h1 class="w-full text-center text-4xl font-bold my-20">Projekte</h1>
 
-<div>
-  <h1 class="w-full text-center text-4xl font-bold my-20">Projekte</h1>
+    <div id="repo-box" class="w-full grid grid-cols-3 gap-5"></div>
+  </div>
 
-  <div id="repo-box" class="w-full grid grid-cols-3 gap-5"></div>
 </div>
 

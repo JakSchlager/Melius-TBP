@@ -1,12 +1,13 @@
-import {ChangeDetectorRef, Component} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {LanguageSelectComponent} from "../../single-components/settings/language-select/language-select.component";
 import {ColorPickerModule} from "primeng/colorpicker";
 import {
   BackgroundSelectComponent
 } from "../../single-components/settings/background-select/background-select.component";
 import {NgClass, NgIf, NgStyle} from "@angular/common";
-import {BackgroundServiceService} from "../../services/background-service.service";
 import {TranslatePipe} from "@ngx-translate/core";
+import {PortfolioService} from "../../services/portfolio.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-settings-page',
@@ -23,14 +24,20 @@ import {TranslatePipe} from "@ngx-translate/core";
   templateUrl: './settings-page.component.html',
   styleUrl: './settings-page.component.css'
 })
-export class SettingsPageComponent {
+export class SettingsPageComponent implements OnInit {
+  router: Router = inject(Router);
+  portfolioService: PortfolioService = inject(PortfolioService);
   isBackgroundSelectionVisible = false;
   isAnimating = false;
   selectedBackgroundColor: string = '';
   selectedBackgroundImageUrl: string | ArrayBuffer | null = null;
+  selectedLanguage = this.portfolioService.currPortfolio!.languageCode;
 
+  constructor() {}
 
-  constructor(private cd: ChangeDetectorRef, private backgroundService: BackgroundServiceService) {}
+  ngOnInit() {
+    this.openBackgroundSelection();
+  }
 
   openBackgroundSelection() {
     this.isAnimating = true;
@@ -44,21 +51,30 @@ export class SettingsPageComponent {
   }
 
   removeBackgroundSelection() {
-    this.selectedBackgroundColor = '';
+    this.selectedBackgroundColor = '#fff';
     this.selectedBackgroundImageUrl = null;
   }
 
   confirmSettings() {
+    let portfolio = this.portfolioService.currPortfolio!;
     if (this.selectedBackgroundImageUrl != null) {
-      this.backgroundService.setBackgroundColor('');
-      this.backgroundService.setBackgroundImageUrl(this.selectedBackgroundImageUrl);
+
     }
 
     if (this.selectedBackgroundColor != '') {
-      this.backgroundService.setBackgroundImageUrl(null);
-      this.backgroundService.setBackgroundColor(this.selectedBackgroundColor);
+      portfolio.color = this.selectedBackgroundColor;
     }
 
-    this.cd.detectChanges();
+    portfolio.languageCode = this.selectedLanguage;
+    console.log(portfolio);
+    this.portfolioService.updatePortfolio(portfolio).subscribe();
+
+    this.reloadPage()
+  }
+
+  reloadPage() {
+    setTimeout(() => {
+      window.location.reload()
+    }, 100);
   }
 }

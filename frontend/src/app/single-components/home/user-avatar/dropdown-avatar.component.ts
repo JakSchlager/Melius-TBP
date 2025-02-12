@@ -1,4 +1,5 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
+import {MatIcon} from "@angular/material/icon";
 import {NgClass, NgIf} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {TranslatePipe} from "@ngx-translate/core";
@@ -16,7 +17,7 @@ import {ProfileService} from "../../../services/profile.service";
   templateUrl: './dropdown-avatar.component.html',
   styleUrl: './dropdown-avatar.component.css'
 })
-export class DropdownAvatarComponent {
+export class DropdownAvatarComponent implements OnInit {
   showAvatarOptions: boolean = false
   isAnimating: boolean = false;
   url: any = '';
@@ -40,7 +41,7 @@ export class DropdownAvatarComponent {
 
         console.log(fileBlobForUpload);
         // Upload des Blobs an das Backend
-        this.profileService.uploadProfileImg({"byte": byteArray, "type": file.type}).subscribe();
+        this.profileService.uploadProfileImg({"file": byteArray, "type": file.type}).subscribe();
       })
     }
   }

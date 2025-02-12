@@ -33,15 +33,23 @@ public class Profile {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "githubUser")
-    private String githubUser;
-
     @OneToOne(mappedBy = "profile")
     @JsonIgnoreProperties({"profile", "generalInfo"})
     private Portfolio portfolio;
 
     @Lob
     private Blob profileImage;
+
+    @ManyToMany(mappedBy = "members")
+    private Set<Group> groups;
+
+    public Set<Group> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(Set<Group> groups) {
+        this.groups = groups;
+    }
 
     public int getId() {
         return id;
@@ -86,15 +94,7 @@ public class Profile {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public String getGithubUser() {
-        return githubUser;
-    }
-
-    public void setGithubUser(String githubUser) {
-        this.githubUser = githubUser;
-    }
-
+    
     public Portfolio getPortfolio() {
         return portfolio;
     }

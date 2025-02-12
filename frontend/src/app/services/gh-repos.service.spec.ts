@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { MyGroupService } from './my-group.service';
+import { GhReposService } from './gh-repos.service';
 
-describe('MyGroupService', () => {
-  let service: MyGroupService;
+describe('GhReposService', () => {
+  let service: GhReposService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(MyGroupService);
+    service = TestBed.inject(GhReposService);
   });
 
   it('should be created', () => {

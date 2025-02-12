@@ -117,7 +117,7 @@
         "name": "Group name",
         "comp": "Company",
         "dept": "Department",
-        "released": "Release date",
+        "maxMembers": "Max. Members",
         "joinBtn": "Join group",
         "noFound": "No groups could be found."
       },

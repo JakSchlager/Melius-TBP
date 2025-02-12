@@ -1,9 +1,10 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject, Inject, OnInit} from '@angular/core';
 import {NgClass, NgForOf, NgIf} from "@angular/common";
 import {SettingsPageComponent} from "../../../pages/settings-page/settings-page.component";
 import {ColorPickerModule} from "primeng/colorpicker";
 import {FormsModule} from "@angular/forms";
 import {ToggleButton, ToggleButtonModule} from 'primeng/togglebutton';
+import {PortfolioService} from "../../../services/portfolio.service";
 
 @Component({
   selector: 'app-background-select',
@@ -19,15 +20,25 @@ import {ToggleButton, ToggleButtonModule} from 'primeng/togglebutton';
   templateUrl: './background-select.component.html',
   styleUrl: './background-select.component.css'
 })
-export class BackgroundSelectComponent {
+export class BackgroundSelectComponent implements OnInit {
   isAnimating: boolean = false;
   selectedColor: string = '#ff0000';
   isStaticColorEnabled: boolean = false;
   isBackgroundPictureEnabled: boolean =false
+  portfolioService: PortfolioService = inject(PortfolioService);
   selectedImageUrl: string | ArrayBuffer | null = null; // Speichert die Bild-URL
 
 
   constructor(@Inject(SettingsPageComponent) public settingsPage: SettingsPageComponent) {}
+
+  ngOnInit() {
+    setTimeout(() => {
+      this.activateButton('staticColor');
+      this.selectedColor = this.portfolioService.currPortfolio!.color;
+      this.apply();
+    },200)
+
+  }
 
   closeBackgroundSelection() {
     this.isAnimating = true; // Animation wird gestartet

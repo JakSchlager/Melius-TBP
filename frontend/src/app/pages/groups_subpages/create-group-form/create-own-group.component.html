@@ -54,7 +54,7 @@
           </div>
 
           <div class="w-full h-full flex justify-center">
-            <button [disabled]="newGroupForm.invalid || !newGroupForm.dirty" class="bg-primary-color font-semibold text-lg text-white rounded-lg shadow-lg px-4 py-1.5 hover:bg-accent-blue hover:text-primary-color duration-150 ease-in-out" (click)="onSubmit()" [routerLink]="['/groups/myGroup']">
+            <button [disabled]="newGroupForm.invalid || !newGroupForm.dirty" class="bg-primary-color font-semibold text-lg text-white rounded-lg shadow-lg px-4 py-1.5 hover:bg-accent-blue hover:text-primary-color duration-150 ease-in-out" (click)="onSubmit()">
               {{ 'groups.startPage.create.createBtn' | translate}}
             </button>
           </div>
