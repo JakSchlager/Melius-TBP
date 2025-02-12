@@ -1,21 +1,17 @@
-import {ChangeDetectorRef, Component, inject, OnInit} from '@angular/core';
+import { Component, inject, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {NgClass, NgForOf, NgIf} from "@angular/common";
-import {MatSlider, MatSliderThumb, MatSliderVisualThumb} from "@angular/material/slider";
-import {MatIcon} from "@angular/material/icon";
 import {MultiSelectModule} from "primeng/multiselect";
 import {FloatLabelModule} from "primeng/floatlabel";
 import {ChipsModule} from "primeng/chips";
 import {CheckboxModule} from "primeng/checkbox";
 import {DropdownMenuHomeComponent} from "../../../single-components/home/dropdown-menu-home/dropdown-menu-home.component";
-import {Rating, RatingModule} from 'primeng/rating';
-import { SelectItemGroup } from 'primeng/api';
+import { RatingModule} from 'primeng/rating';
 import {DropdownModule} from "primeng/dropdown";
 import {DropStrProgrComponent} from "../../../single-components/home/strengths/drop-str-progr/drop-str-progr.component";
 import {DropStrEdvComponent} from "../../../single-components/home/strengths/drop-str-edv/drop-str-edv.component";
 import {CharacteristicService} from "../../../services/characteristic.service";
 import {Selectable} from "../../../interfaces/Selectable";
-import {ProfileService} from "../../../services/profile.service";
 import {HomePageServiceService} from "../../../services/home-page-service.service";
 import {StarRatingComponent} from "../../../single-components/home/star-rating/star-rating.component";
 import {ProgrammingKnowledgeService} from "../../../services/programming-knowledge.service";
@@ -47,6 +43,8 @@ import {PortfolioService} from "../../../services/portfolio.service";
     DropStrProgrComponent,
     DropStrEdvComponent,
     StarRatingComponent,
+    TranslatePipe,
+    NgIf,
   ],
   templateUrl: './strengths-area.component.html',
   styleUrl: './strengths-area.component.css'
@@ -106,7 +104,7 @@ export class StrengthsAreaComponent implements OnInit{
     },200)
   }
 
-  constructor(private fb: FormBuilder, private cdRef: ChangeDetectorRef) {
+  constructor(private fb: FormBuilder) {
 
   }
 

@@ -8,34 +8,34 @@
 
         <form [formGroup]="saveForm" class="space-y-4 md:space-y-6" action="#">
 
-          <div class="flex justify-evenly space-x-5">
+          <div class="flex justify-evenly space-x-4 py-0.5">
             <div>
-              <label class="block mb-2 text-sm font-medium text-gray-900">* Vorname</label>
+              <label class="block mb-2 text-sm font-medium text-gray-900">Vorname</label>
               <input type="text" formControlName="firstName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Max">
               <span *ngIf="saveForm.get('firstName')?.touched && !saveForm.get('firstName')?.valid" class="form-text text-xs text-muted text-red-600">*Vorname darf nicht leer sein</span>
             </div>
 
             <div>
-              <label class="block mb-2 text-sm font-medium text-gray-900">* Nachname</label>
+              <label class="block mb-2 text-sm font-medium text-gray-900">Nachname</label>
               <input type="text" formControlName="lastName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Mustermann">
               <span *ngIf="saveForm.get('lastName')?.touched && !saveForm.get('lastName')?.valid" class="form-text text-xs text-muted text-red-600">*Nachname darf nicht leer sein</span>
             </div>
           </div>
 
           <div>
-            <label for="mail" class="block mb-2 text-sm font-medium text-gray-900">* Email</label>
+            <label for="mail" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
             <input type="email" formControlName="email" id="mail" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="max.mustermann@gmail.com" required="">
             <span *ngIf="saveForm.get('email')?.touched && !saveForm.get('email')?.valid" class="form-text text-xs text-muted text-red-600">*Email muss gültig sein</span>
           </div>
 
           <div>
-            <label for="terms" class="block mb-2 text-sm font-medium text-gray-900">* Telefonnummer</label>
+            <label for="terms" class="block mb-2 text-sm font-medium text-gray-900">Telefonnummer</label>
             <input type="tel" formControlName="phoneNumber" id="telefon" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="1234 567 890" required="">
             <span *ngIf="saveForm.get('phoneNumber')?.touched && !saveForm.get('phoneNumber')?.valid" class="form-text text-xs text-muted text-red-600">*Telefonnummer muss vorhanden sein</span>
           </div>
 
           <div>
-            <label for="password" class="block mb-2 text-sm font-medium text-gray-900">* Passwort</label>
+            <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Passwort</label>
             <input type="password" formControlName="password" id="password" placeholder="123•••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required="">
             <span *ngIf="saveForm.get('password')?.touched && !saveForm.get('password')?.valid" class="form-text text-xs text-muted text-red-600">*Passwort muss mind. 8 Zeichen lang sein, einen Groß- und Kleinbuchstaben enthalten, sowie ein Sonderzeichen beinhalten</span>
           </div>

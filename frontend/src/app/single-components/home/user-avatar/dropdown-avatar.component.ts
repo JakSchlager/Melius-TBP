@@ -1,7 +1,5 @@
 import {Component, inject} from '@angular/core';
-import {MatIcon} from "@angular/material/icon";
 import {NgClass, NgIf} from "@angular/common";
-import {HomePageComponent} from "../../../pages/home-preview-page/home-page.component";
 import {FormsModule} from "@angular/forms";
 import {TranslatePipe} from "@ngx-translate/core";
 import {ProfileService} from "../../../services/profile.service";
@@ -10,7 +8,6 @@ import {ProfileService} from "../../../services/profile.service";
   selector: 'app-dropdown-avatar',
   standalone: true,
   imports: [
-    MatIcon,
     NgIf,
     FormsModule,
     NgClass,
@@ -19,7 +16,7 @@ import {ProfileService} from "../../../services/profile.service";
   templateUrl: './dropdown-avatar.component.html',
   styleUrl: './dropdown-avatar.component.css'
 })
-export class DropdownAvatarComponent implements OnInit {
+export class DropdownAvatarComponent {
   showAvatarOptions: boolean = false
   isAnimating: boolean = false;
   url: any = '';
