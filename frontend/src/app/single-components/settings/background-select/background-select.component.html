@@ -7,9 +7,10 @@
   <div class="w-full h-fit flex justify-between items-center">
     <h1 class="text-lg font-semibold">Wähle deinen Hintergrund</h1>
     <button (click)="closeBackgroundSelection()">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-400 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#9ca3af" class="size-7">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
       </svg>
+
     </button>
   </div>
 
@@ -47,9 +48,11 @@
         />
         <label
           for="fileUpload"
-          class="w-full h-full space-x-1 flex items-center justify-center cursor-pointer">
+          class="w-full h-full space-x-2 flex items-center justify-center cursor-pointer">
           <span class="text-white font-semibold">Bild hochladen</span>
-          <svg xmlns="http://www.w3.org/2000/svg" height="22px" viewBox="0 -960 960 960" width="22px" fill="#FFFFFF"><path d="M440-320v-326L336-542l-56-58 200-200 200 200-56 58-104-104v326h-80ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="#FFFFFF" class="size-4">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
+          </svg>
         </label>
       </div>
 
@@ -74,9 +77,9 @@
         <img [src]="selectedImageUrl" alt="" class="w-full h-full border-2 rounded-lg object-cover">
 
         <div class="h-full items-start">
-          <div class="p-1 w-fit h-fit bg-white hover:bg-gray-50 rounded-lg cursor-pointer" (click)="removeSelectedImage()">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-400 font-bold cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          <div class="p-1 w-fit h-fit bg-white rounded-md hover:shadow-md ease-in-out duration-150 cursor-pointer" (click)="removeSelectedImage()">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#f87171" class="size-7">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
             </svg>
           </div>
         </div>

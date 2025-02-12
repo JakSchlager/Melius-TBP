@@ -7,19 +7,23 @@
 
       <div class="w-full py-2 flex justify-end absolute -ml-2">
         <button class="w-fit" (click)="closeMyGroupsForm()">
-          <svg xmlns="http://www.w3.org/2000/svg" height="34px" width="34px" class="text-gray-400 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#9ca3af" class="size-7">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
           </svg>
         </button>
       </div>
     </div>
 
     <!-- Search Bar for filtering User Groups -->
-    <div class="w-full ml-4 h-fit flex justify-start">
-      <div class="w-fit h-fit font-semibold bg-white px-1 py-0.5 shadow-md rounded-lg flex">
-        <input class="" placeholder="{{ 'groups.startPage.myGroups.searchBarSmall' | translate}}">
+    <div class="w-full ml-4 h-fit flex justify-start mb-4">
+      <div class="w-fit space-x-2 h-fit font-semibold bg-white px-1 py-0.5 shadow-md rounded-lg flex">
+        <div class="px-1 py-2">
+          <input class="rounded-md" placeholder="{{ 'groups.startPage.myGroups.searchBarSmall' | translate}}">
+        </div>
         <button>
-          <svg xmlns="http://www.w3.org/2000/svg" height="38px" viewBox="0 -960 960 960" width="38px" fill="#CECECE"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#9ca3af" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+          </svg>
         </button>
       </div>
     </div>
@@ -34,14 +38,14 @@
           </div>
         </div>
       } @else {
-        <div class="grid grid-cols-5 items-center bg-accent-blue p-4 border-b-2">
+        <div class="grid grid-cols-5 items-center bg-accent-blue p-4 border-b-2 rounded-t-lg">
           <h1 class="min-w-fit flex justify-start">{{ 'groups.startPage.searchResultBox.name' | translate}}</h1>
           <h1 class="text-center">{{ 'groups.startPage.searchResultBox.comp' | translate}}</h1>
           <h1 class="text-center">{{ 'groups.startPage.searchResultBox.dept' | translate}}</h1>
           <h1 class="text-center">{{ 'groups.startPage.searchResultBox.maxMembers' | translate}}</h1>
         </div>
         <div class="dropdown-list min-h-64">
-          <div *ngFor="let group of this.profileService.loggedInUser!.groups" class="grid grid-cols-5 items-center text-gray-500 p-4 hover:bg-gray-50">
+          <div *ngFor="let group of this.profileService.loggedInUser!.groups" class="rounded-lg mb-1 grid grid-cols-5 items-center text-gray-500 p-4 hover:bg-gray-50">
             <h1 class="min-w-fit flex justify-start">{{ group.name }}</h1>
             <h1 class="text-center">{{ group.company }}</h1>
             <h1 class="text-center">{{ group.department }}</h1>

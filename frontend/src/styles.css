@@ -32,15 +32,26 @@ body { margin: 0; }
   background-color: rgba(13, 145, 250, 0.2);
   font-weight: bold;
 }
+.activeHomeCVNavTap:hover {
+  background-color: rgba(13, 145, 250, 0.2);
+}
 
 .activeHomeProjectsNavTap {
   background-color: rgba(151, 157, 255, 0.2);
   font-weight: bold;
 }
+.activeHomeProjectsNavTap:hover {
+  background-color: rgba(151, 157, 255, 0.2);
+}
+
 
 .activeHomeStrengthsNavTap {
   background-color: rgba(78, 60, 255, 0.22);
   font-weight: bold;
+}
+
+.activeHomeStrengthsNavTap:hover {
+  background-color: rgba(78, 60, 255, 0.22);
 }
 
 
