@@ -1,25 +1,33 @@
 <div class="w-full rounded-b-xl font-bold box-content bg-white shadow-lg">
   <div class="w-auto h-full items-center grid grid-cols-3 text-center">
-    <a class="cursor-pointer col-start-1 relative after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:h-4 after:w-px after:bg-gray-400">
+
+
+    <a [routerLinkActive]="['activeHomeCVNavTap']"
+       [routerLink]="['/home/cv']"
+       #rlaCV="routerLinkActive" class="cursor-pointer col-start-1 relative after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:h-4 after:w-px after:bg-gray-400">
+
       <h1 class="text-xl px-36 py-2 rounded-bl-xl hover:bg-gray-50 duration-150 ease-in-out"
-          [routerLinkActive]="['activeHomeCVNavTap']"
-          [routerLink]="['/home/cv']">
+           [ngClass]="{'hover:bg-gray-50': !rlaCV.isActive}">
         {{'home.nav.cv' | translate}}
       </h1>
     </a>
 
-    <a class="cursor-pointer col-start-2 relative after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:h-4 after:w-px after:bg-gray-400">
+    <a [routerLinkActive]="['activeHomeProjectsNavTap']"
+       [routerLink]="['/home/projects']"
+       #rlaProjects="routerLinkActive"
+       class="cursor-pointer col-start-2 relative after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:h-4 after:w-px after:bg-gray-400">
       <h1 class="text-xl px-36 py-2 hover:bg-gray-50 duration-150 ease-in-out"
-          [routerLinkActive]="['activeHomeProjectsNavTap']"
-          [routerLink]="['/home/projects']">
+          [ngClass]="{'hover:bg-gray-50': !rlaProjects.isActive}">
         {{'home.nav.projects' | translate}}
       </h1>
     </a>
 
-    <a class="cursor-pointer col-start-3">
+    <a [routerLinkActive]="['activeHomeStrengthsNavTap']"
+       [routerLink]="['/home/strengths']"
+       #rlaStrengths="routerLinkActive"
+       class="cursor-pointer col-start-3">
       <h1 class="text-xl px-36 py-2 rounded-br-xl hover:bg-gray-50 duration-150 ease-in-out"
-          [routerLinkActive]="['activeHomeStrengthsNavTap']"
-          [routerLink]="['/home/strengths']">
+          [ngClass]="{'hover:bg-gray-50': !rlaStrengths.isActive}">
         {{'home.nav.comps' | translate}}
       </h1>
     </a>
