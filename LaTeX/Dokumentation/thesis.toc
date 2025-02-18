@@ -36,30 +36,39 @@
 \contentsline {subsubsection}{\nonumberline Die Anmeldeseite}{18}{subsubsection*.29}%
 \contentsline {subsubsection}{\nonumberline Die Registrierungsseite}{19}{subsubsection*.32}%
 \contentsline {subsection}{\numberline {4.3.3}Die Startseite}{20}{subsection.4.3.3}%
-\contentsline {subsubsection}{\nonumberline Willkommen-Bereichs}{20}{subsubsection*.36}%
-\contentsline {subsubsection}{\nonumberline Die Navigation}{20}{subsubsection*.38}%
-\contentsline {subsubsection}{\nonumberline Interaktive Boxen}{21}{subsubsection*.41}%
-\contentsline {subsubsection}{\nonumberline Allgemeine Informationen des Benutzers}{22}{subsubsection*.43}%
-\contentsline {subsubsection}{\nonumberline Projekte des Benutzers}{22}{subsubsection*.45}%
-\contentsline {subsubsection}{\nonumberline Kompetenzen des Benutzers}{22}{subsubsection*.47}%
-\contentsline {subsection}{\numberline {4.3.4}Die Gruppen-Seite}{22}{subsection.4.3.4}%
-\contentsline {subsection}{\numberline {4.3.5}Die Einstellungen}{22}{subsection.4.3.5}%
-\contentsline {chapter}{\numberline {5}Umsetzung}{23}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Frontend}{23}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Backend}{23}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Entwicklungsumgebung}{23}{subsection.5.2.1}%
-\contentsline {subsection}{\numberline {5.2.2}Model}{25}{subsection.5.2.2}%
-\contentsline {subsubsection}{\nonumberline Beispiele}{26}{subsubsection*.51}%
-\contentsline {subsubsection}{\nonumberline Portfolio - Klasse}{26}{subsubsection*.53}%
-\contentsline {subsubsection}{\nonumberline Annotationen}{26}{subsubsection*.55}%
-\contentsline {subsubsection}{\nonumberline @Id}{26}{subsubsection*.57}%
-\contentsline {subsubsection}{\nonumberline @OneToOne}{26}{subsubsection*.59}%
-\contentsline {subsubsection}{\nonumberline @OneToMany}{27}{subsubsection*.61}%
-\contentsline {subsubsection}{\nonumberline @ManyToMany}{27}{subsubsection*.63}%
-\contentsline {subsubsection}{\nonumberline Zusätzliche String-Felder}{28}{subsubsection*.65}%
-\contentsline {chapter}{\numberline {6}Zusammenfassung}{29}{chapter.6}%
-\contentsline {chapter}{\nonumberline Abbildungsverzeichnis}{III}{chapter*.66}%
-\contentsline {chapter}{\nonumberline Tabellenverzeichnis}{IV}{chapter*.67}%
-\contentsline {chapter}{\nonumberline List of Listings}{V}{chapter*.68}%
-\contentsline {chapter}{\nonumberline Anhang}{VI}{chapter*.69}%
+\contentsline {subsubsection}{\nonumberline Der Willkommens-Bereich}{20}{subsubsection*.36}%
+\contentsline {subsubsection}{\nonumberline Die interaktiven Boxen}{21}{subsubsection*.39}%
+\contentsline {subsubsection}{\nonumberline Die Navigation}{21}{subsubsection*.41}%
+\contentsline {subsection}{\numberline {4.3.4}Lebenslauf}{22}{subsection.4.3.4}%
+\contentsline {subsubsection}{\nonumberline Ausbildungen}{23}{subsubsection*.45}%
+\contentsline {subsubsection}{\nonumberline Allgemein}{23}{subsubsection*.47}%
+\contentsline {subsubsection}{\nonumberline Berufserfahrungen}{24}{subsubsection*.49}%
+\contentsline {subsubsection}{\nonumberline Benutzerfreundlichkeit und Anpassungsmöglichkeiten}{24}{subsubsection*.51}%
+\contentsline {subsubsection}{\nonumberline Die Drag and Drop Funktion}{25}{subsubsection*.53}%
+\contentsline {subsection}{\numberline {4.3.5}Projekte}{26}{subsection.4.3.5}%
+\contentsline {subsection}{\numberline {4.3.6}Kompetenzen}{29}{subsection.4.3.6}%
+\contentsline {subsection}{\numberline {4.3.7}Preview}{31}{subsection.4.3.7}%
+\contentsline {subsection}{\numberline {4.3.8}Die Gruppen-Seite}{31}{subsection.4.3.8}%
+\contentsline {subsubsection}{\nonumberline Suchleiste}{32}{subsubsection*.61}%
+\contentsline {subsubsection}{\nonumberline Gruppen erstellen}{34}{subsubsection*.65}%
+\contentsline {subsubsection}{\nonumberline Meine Gruppen}{34}{subsubsection*.67}%
+\contentsline {subsection}{\numberline {4.3.9}Die Einstellungen}{34}{subsection.4.3.9}%
+\contentsline {chapter}{\numberline {5}Umsetzung}{35}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Frontend}{35}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Backend}{35}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Entwicklungsumgebung}{35}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Model}{37}{subsection.5.2.2}%
+\contentsline {subsubsection}{\nonumberline Beispiele}{38}{subsubsection*.71}%
+\contentsline {subsubsection}{\nonumberline Portfolio - Klasse}{38}{subsubsection*.73}%
+\contentsline {subsubsection}{\nonumberline Annotationen}{38}{subsubsection*.75}%
+\contentsline {subsubsection}{\nonumberline @Id}{38}{subsubsection*.77}%
+\contentsline {subsubsection}{\nonumberline @OneToOne}{38}{subsubsection*.79}%
+\contentsline {subsubsection}{\nonumberline @OneToMany}{39}{subsubsection*.81}%
+\contentsline {subsubsection}{\nonumberline @ManyToMany}{39}{subsubsection*.83}%
+\contentsline {subsubsection}{\nonumberline Zusätzliche String-Felder}{40}{subsubsection*.85}%
+\contentsline {chapter}{\numberline {6}Zusammenfassung}{41}{chapter.6}%
+\contentsline {chapter}{\nonumberline Abbildungsverzeichnis}{III}{chapter*.86}%
+\contentsline {chapter}{\nonumberline Tabellenverzeichnis}{IV}{chapter*.87}%
+\contentsline {chapter}{\nonumberline List of Listings}{V}{chapter*.88}%
+\contentsline {chapter}{\nonumberline Anhang}{VI}{chapter*.89}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
