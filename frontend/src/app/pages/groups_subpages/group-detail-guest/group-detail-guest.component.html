@@ -1,0 +1,125 @@
+<div class="w-screen h-screen flex justify-center">
+  <!-- Background Image -->
+  <div class="absolute -z-10 w-screen h-screen overflow-hidden bg-fixed bg-no-repeat object-fill">
+    <svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" class="opacity-10">
+      <defs>
+        <style>
+          .cls-1 {
+            fill: #5e4dfc;
+          }
+
+          .cls-1, .cls-2, .cls-3 {
+            stroke-width: 0px;
+          }
+
+          .cls-2 {
+            fill: #0d91fa;
+          }
+
+          .cls-3 {
+            fill: #8087fd;
+          }
+        </style>
+      </defs>
+      <rect class="cls-2" x="1072.84" y="-367.51" width="249.49" height="1815.85" transform="translate(-31.37 1005.1) rotate(-45)"/>
+      <rect class="cls-3" x="1249.25" y="-543.92" width="249.49" height="1815.85" transform="translate(145.05 1078.18) rotate(-45)"/>
+      <rect class="cls-1" x="1425.67" y="-720.34" width="249.49" height="1815.85" transform="translate(321.46 1151.25) rotate(-45)"/>
+    </svg>
+  </div>
+
+
+  <div class="w-5/6">
+    <!-- Header -->
+    <div class="w-full h-1/4 mt-6 p-10">
+      <div class="flex justify-between items-center">
+        <div class="flex space-x-10 items-center animate-fade-up fade-in-0 duration-500">
+          <div>
+            <app-group-avatar></app-group-avatar>
+          </div>
+
+          <div class="space-y-3 items-center mb-6">
+            <h1 class="text-6xl font-bold">{{'groups.createdGroup.title' | translate}}</h1>
+            <h1 class="text-5xl font-bold">{{this.group.name}}</h1>
+          </div>
+        </div>
+
+        <div class="h-fit w-1/4 animate-fade-up fade-in-0 duration-700">
+          <div class="space-y-4 bg-white py-4 px-4 rounded-xl drop-shadow-lg border border-gray-100">
+            <!-- Informations about the group -->
+            <div class="mx-5 space-y-5">
+              <div class="grid grid-cols-2 row-span-1">
+                <div class="grid justify-start">
+                  <h1 class="text-2xl font-semibold">{{'groups.createdGroup.infoBox.compTitle' | translate}}</h1>
+                  <h1 class="font-semibold text-lg text-intermediate-color">{{ this.group.company }}</h1>
+                </div>
+                <div class="grid ml-8">
+                  <h1 class="text-2xl font-semibold">{{'groups.createdGroup.infoBox.deptTitle' | translate}}</h1>
+                  <h1 class="font-semibold text-lg text-intermediate-color">{{ this.group.department }}</h1>
+                </div>
+              </div>
+
+              <div>
+                <h1 class="text-2xl font-semibold">{{'groups.createdGroup.infoBox.amtOfMembers.title' | translate}}</h1>
+                <div class="grid grid-cols-2 row-span-2">
+                  <div class="grid justify-start">
+                    <h1 class="font-semibold text-lg">{{'groups.createdGroup.infoBox.amtOfMembers.current' | translate}}</h1>
+                    <h1 class="font-semibold text-md text-green-400">{{ this.group.members.length }}</h1>
+                  </div>
+                  <div class="grid ml-8">
+                    <h1 class="font-semibold text-lg">{{'groups.createdGroup.infoBox.amtOfMembers.max' | translate}}</h1>
+                    <h1 class="font-semibold text-md text-red-400">{{ this.group.maxMembers }}</h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="w-full flex justify-center">
+              <button class="bg-intermediate-color text-white px-2.5 py-1.5 rounded-lg hover:bg-secondary-color duration-150 ease-in-out">{{'groups.createdGroup.infoBox.saveBtn' | translate}}</button>
+            </div>
+          </div>
+
+          <!-- DropDown Menu Buttons -->
+          <div class="flex justify-evenly mt-4">
+            <div>
+              <!-- Filter Members DropDown -->
+              <app-filter-members></app-filter-members>
+            </div>
+            <div>
+              <!-- Create Roles DropDown -->
+              <app-create-roles></app-create-roles>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!--*ngIf="myGroupService.getAllMembers() > 0"-->
+    <!-- Main Content (Display Members with their Roles )-->
+
+      <div class="w-full mt-40 animate-fade-up fade-in-0 duration-1000">
+        <div *ngFor="let currMember of this.group.members" class="w-full mt-10 flex justify-center">
+          <div class="w-4/6 p-1 py-3 items-center flex justify-evenly bg-white rounded-lg shadow-md">
+            <h1 class="p-10 bg-white rounded-full shadow-lg"></h1>
+            <h1 class="text-gray-500">{{ currMember.firstName }}</h1>
+            <h1 class="text-gray-500">{{ currMember.lastName }}</h1>
+            <h1 class="text-gray-500">{{ currMember.email }}</h1>
+            <h1 class="text-gray-500">Mitarbeiter</h1>
+            <h1 class="text-gray-500">01.01.2024</h1>
+            <div>
+              <button (click)="openPortfolio('/portfolio/'+currMember.id)" class="bg-primary-color text-white px-2 py-1 rounded-lg shadow-md hover:bg-accent-blue hover:text-primary-color duration-150">{{'groups.createdGroup.memberInfos.lookup' | translate}}</button>
+            </div>
+          </div>
+        </div>
+
+
+      <!--
+      <div class="py-24 space-y-4 text-center mt-20" *ngIf="myGroupService.getAllMembers() == 0">
+        <h1 class="font-semibold text-2xl">Derzeit gibt es noch <strong class="text-intermediate-color">keine</strong> Mitglieder.</h1>
+        <div class="w-full flex justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" height="50px" viewBox="0 -960 960 960" width="50px" fill="#000000"><path d="M640-600q8 0 14-6t6-14v-120q0-8-6-14t-14-6q-8 0-14 6t-6 14v120q0 8 6 14t14 6Zm0 80q8 0 14-6t6-14q0-8-6-14t-14-6q-8 0-14 6t-6 14q0 8 6 14t14 6ZM160-160q-17 0-28.5-11.5T120-200q0-17 11.5-28.5T160-240h400q17 0 28.5 11.5T600-200q0 17-11.5 28.5T560-160H160Zm480-280q-83 0-141.5-58.5T440-640q0-83 58.5-141.5T640-840q83 0 141.5 58.5T840-640q0 83-58.5 141.5T640-440Zm-480-40q-17 0-28.5-11.5T120-520q0-17 11.5-28.5T160-560h187q17 0 28.5 11.5T387-520q0 16-11.5 28T347-480H160Zm0 160q-17 0-28.5-11.5T120-360q0-17 11.5-28.5T160-400h317q17 0 28.5 11.5T517-360q0 16-11 28t-29 12H160Z"/></svg>
+        </div>
+      </div>
+      -->
+    </div>
+  </div>
+</div>

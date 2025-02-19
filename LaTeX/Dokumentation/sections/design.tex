@@ -572,7 +572,183 @@ Diese Beitrittsfunktion stellt sicher dsn ans d, dass Gruppen geschützt bleiben
 
 \subsubsection{Gruppen erstellen}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{pics//Design/Website/Gruppen/createGroups.png}
+    \caption{Eigene Gruppen erstellen}
+    \label{fig:Create Groups}
+\end{figure}
+
+Betätigt man den Button \"Eine Gruppe erstellen +\", so öffnet sich ein modales Fenster, das es dem Nutzer ermöglicht, eine eigene Gruppe zu erstellen. In dem Formular werden alle relevanten Informationen für die Gruppenerstellung erfasst. Gleichzeitig besteht die Möglichkeit, das Gruppenprofilbild visuell anzupassen.
+\\
+\textbf{Design & visuelle Aufteilugn}
+Das Formular präsentiert sich als zentriertes Popup-Fenster, das sich über der bestehenden Gruppen-Seite öffnet.Die Gestaltung ist in zwei Hauptbereiche unterteilt:
+
+Das Formular präsentiert sich als zentriertes Popup-Fenster, das sich über der bestehenden Gruppen-Seite öffnet.Es ist in zwei Hauptbereiche unterteilt:
+
+Visueller Bereich (links)
+Der visuelle Bereich auf der linken Seite des Formulars enthält ein rundes Gruppenprofilbild mit einem Platzhalterbild. Gleich aufgebaut wie bei dem Profilbild des Benutzers hat man auf Rechts neben dem Bild ein kleines Menü, das die Optionen zum Ändern, Löschen oder Hochladen eines neuen Profilbildes bietet. Die Bilddarstellung trägt zur klaren visuellen Differenzierung zwischen den verschiedenen Gruppen sowie zur einfachen Personalisierung bei.
+\\
+Der Formularbereich auf der rechten Seite besteht aus mehreren logisch untereinander angeordneten Eingabefeldern. Die Eingabefelder sind schlicht und minimalistisch gehalten, mit abgerundeten Ecken und einer klaren Schrift für bessere Lesbarkeit. Beschriftungen über den Eingabefeldern stellen sicher, dass der Nutzer weiß, welche Information jeweils eingetragen werden muss.
+
+
+\textbf{Funktionale Komponenten des Formulars}
+
+
+\begin{itemize}
+    \item Gruppenname: Freitextfeld, in das der Nutzer den Namen seiner Gruppe eingeben kann.
+\end{itemize}
+
+\begin{itemize}
+    \item Unternehmen: Eingabefeld zur Angabe der zugehörigen Organisation oder Firma.
+\end{itemize}
+
+\begin{itemize}
+    \item Abteilung: Ermöglicht eine detailliertere Zuordnung innerhalb eines Unternehmens.
+\end{itemize}
+
+\begin{itemize}
+    \item Einschreibeschlüssel: Passwortfeld zur Eingabe eines Beitrittsschlüssels für User um der Gruppe später beitreten zu können. Wichtig hier ist dass das Passwort mindestens 6 Zeichen lang sein muss.
+\end{itemize}
+
+\begin{itemize}
+    \item Anzahl der Mitglieder: Drop-down-Menü, mit dem die maximale Mitgliederanzahl definiert werden kann. Auch hier ist es wieder wichtig zu wissen, dass man keine Gruppe mit weniger als 2 Personen erstellen kann.
+\end{itemize}
+
+\begin{itemize}
+    \item „Gruppe gründen“-Button: Zu guter letzt, natürlich ein deutlich in Blau hervorgehobener Button, um die Gruppe dann final zu erstellen.
+\end{itemize}
+
+Das Design ist als modern und benutzerfreundlich zu bezeichnen, wobei der Fokus auf einer intuitiven Bedienbarkeit liegt.
+Der Popup-Charakter gewährleistet, dass Nutzer nicht die aktuelle Seite verlassen müssen, sondern direkt zur Gruppenerstellung zurückkehren können.
+Das runde Profilbild und die optionale Personalisierung tragen zur visuellen Unterscheidbarkeit der Gruppen bei.
+Die Anordnung der Felder folgt einer logischen Reihenfolge, sodass Nutzer ohne Umwege alle notwendigen Informationen eingeben können.
+
+
 \subsubsection{Meine Gruppen}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{pics//Design/Website/Gruppen/myGroups_Liste.png}
+    \caption{Meine Gruppen}
+    \label{fig:myGroups}
+\end{figure}
+
+Wird eine Gruppe angelegt, so kann sie nach Betätigung des "Meine Gruppen"-Buttons in einer separaten Liste angezeigt werden. Es wird eine Auflistung aller vom Benutzer erstellten Gruppen angezeigt, wie sie auch bei den separaten Suchergebnissen zu sehen ist. Diese können entweder wieder entfernt werden, wenn sie nicht mehr benötigt werden, oder durch Betätigung von \textbf{Ansehen} in der Admin-Ansicht der Gruppe nachträglich bearbeitet werden.
+
+\subsubsection{Admin Ansicht einer Gruppe}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{pics//Design/Website/Gruppen/Gruppe_Admin-Ansicht.png}
+    \caption{Admin Anischt}
+    \label{fig:admin-Ansicht}
+\end{figure}
+
+Die Gruppen-Admin-Seite von Melius ist durch ein modernes, minimalistisches und strukturiertes Design gekennzeichnet, das eine intuitive Verwaltung von Gruppen und Mitgliedern ermöglicht. Die klare Trennung von Inhalten, die durchdachte Farbgestaltung und die gezielten Interaktionsmöglichkeiten bieten Administratoren eine effiziente Möglichkeit, ihre Gruppen zu organisieren.
+
+Das Interface präsentiert sich in einem klaren, hellen Stil, der durch dezente Farbverläufe in Blau und Violett im Hintergrund eine zeitgemäße Ästhetik aufbaut. Diese Farbgebung fördert nicht nur eine angenehme Lesbarkeit, sondern hebt auch verschiedene Bereiche der Seite subtil hervor.
+
+Das Design der Admin-Ansicht folgt den Prinzipien der Klarheit und Benutzerfreundlichkeit. Die Farbpalette ist bewusst auf ein schlichtes, professionelles Weiß mit sanften blauen und violetten Akzenten reduziert, was für eine angenehme, nicht überladene Optik sorgt. Große, gut lesbare Schriften und ausreichend Abstände zwischen den einzelnen Elementen tragen dazu bei, dass alle Inhalte leicht erfassbar sind.
+
+\textbf{Gruppen Informationen}
+\\
+In der oberen rechten Ecke befindet sich eine kompakte Box, die zentrale Informationen über die Gruppe zusammenfasst. Diese enthält:Den Namen des Unternehmens (in diesem Fall "HTBLA Leonding") mit einer verlinkten Darstellung, die eine direkte Navigation zu relevanten Informationen ermöglicht.Die zugehörige Abteilung ("Medientechnik") ist ebenfalls als Link formatiert.Eine Übersicht über die Mitgliederzahl, wobei die aktuelle Anzahl der Mitglieder farblich hervorgehoben wird:
+Die aktuelle Anzahl ist in grün gehalten, um eine positive, aktive Darstellung zu gewährleisten. Die maximal zulässige Mitgliederzahl ist in rot formatiert, um Administratoren darauf hinzuweisen, falls eine Grenze erreicht oder überschritten wird.Direkt darunter befindet sich ein gut sichtbarer "Änderungen speichern"-Button, mit dem Administratoren Modifikationen an der Gruppe sichern können. Der Button ist in einem klaren, auffälligen Blau gehalten, sodass er als primäre Handlungsaufforderung wahrgenommen wird.
+
+\textbf{Mitgliederverwaltung}
+\\
+Ein zentrales Element der Seite ist die übersichtliche Liste der Gruppenmitglieder. Diese wird in einer horizontalen Zeile dargestellt und bietet alle relevanten Informationen in einer aufgeräumten Form. Für jedes Mitglied werden folgende Daten angezeigt:
+
+\begin{itemize}
+    \item Ein rundes Profilbild (bei fehlendem Bild ein Platzhalter-Icon), das für eine persönliche Identifikation sorgt.
+\end{itemize}
+
+\begin{itemize}
+    \item Der Vor- und Nachname des Mitglieds in einer klaren Typografie.
+\end{itemize}
+
+\begin{itemize}
+    \item Die hinterlegte E-Mail-Adresse, die eine direkte Kontaktaufnahme ermöglicht.
+\end{itemize}
+
+\begin{itemize}
+    \item Die Rolle des Nutzers innerhalb der Gruppe (z. B. „Mitarbeiter“), was eine schnelle Einordnung der Zuständigkeiten erleichtert.
+\end{itemize}
+
+\begin{itemize}
+    \item Das Beitrittsdatum, das den Zeitpunkt der Mitgliedschaft anzeigt.
+\end{itemize}
+
+\begin{itemize}
+    \item Ein „Ansehen“-Button, der in einem kräftigen Blau gehalten ist, um auf zusätzliche Details des Nutzers zuzugreifen.
+\end{itemize}
+
+
+\textbf{Filter Methoden und Rollen}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{pics//Design/Website/Gruppen/Gruppe_Filter-Möglichkeiten.png}
+    \caption{Filter-Methode und Rollen}
+    \label{fig:filterAndRoles}
+\end{figure}
+
+
+Filter-Bereich (links)
+\begin{itemize}
+    \item Dieser Bereich ist als Dropdown-Menü gestaltet, das sich nach einem Klick auf den „Filter“-Button mit einem Trichter-Symbol öffnet.
+\end{itemize}
+
+\begin{itemize}
+    \item Das Design nutzt eine klare Struktur mit Eingabefeldern, um verschiedene Filterkriterien festzulegen.
+\end{itemize}
+
+\begin{itemize}
+    \item Enthält folgende interaktive Elemente:
+    \subitem - Beitrittsdatum (Von/Bis): Auswahlfelder mit einem deaktivierten Zustand, die derzeit auf den 19.02.2025 gesetzt sind.
+    \subitem - Rollen-Filter: Ein Suchfeld zur Eingabe spezifischer Rollen.
+    \subitem - Pr.-Kenntnisse & EDV-Kenntnisse: Jeweils eigene Filterfelder zur gezielten Suche nach Mitarbeitern mit bestimmten Fähigkeiten.
+    \subitem - „Suchen“-Button: Auffällig in Lila, um die Filteraktion klar erkennbar zu machen.
+\end{itemize}
+
+Rollen-Verwaltung (rechts)
+\begin{itemize}
+    \item Ebenfalls als Dropdown-Menü gestaltet, das nach einem Klick auf den „Rollen“-Button mit einem Tag-Symbol erscheint.
+\end{itemize}
+
+\begin{itemize}
+    \item Der Bereich enthält:
+    \subitem - Ein Eingabefeld zur Erstellung neuer Rollen, das in einem hellgrauen Zustand ist.
+    \subitem - Ein „+“-Button, um eine neue Rolle hinzuzufügen.
+    \subitem - Liste bestehender Rollen (z. B. „Admin“ und „Mitarbeiter“), die in einem schlichten, zeilenweisen Format angezeigt werden.
+    \subitem - Rote Papierkorb-Symbole, die klar als Lösch-Icons erkennbar sind.
+\end{itemize}
+
+Die Interaktionselemente sind konsistent gestaltet: Primäre Aktionen werden in Blau hervorgehoben, während informative Elemente in Schwarz oder Grau dargestellt werden. Diese Farbkodierung erzeugt eine klare visuelle Hierarchie und erleichtert die Orientierung.
+
+
+\subsubsection{Gast Ansicht einer Gruppe}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{pics//Design/Website/Gruppen/Gruppe_Gast-Ansicht.png}
+    \caption{Gast Ansicht}
+    \label{fig:gast-Ansicht}
+\end{figure}
+
+Im Falle einer Aufnahme in eine Gruppe ist die Ansicht des Gastes in den meisten Fällen deckungsgleich mit der des Administrators. Die einzigen Abweichungen zur Administrator-Ansicht sind darin begründet, dass folgende Veränderungen nicht vorgenommen werden können:
+\begin{itemize}
+    \item Änderungen an der maximalen Gruppenmitglieder
+\end{itemize}
+
+\begin{itemize}
+    \item Änderungen am Profilbild
+\end{itemize}
+
+\begin{itemize}
+    \item Rollen erstellen oder löschen
+\end{itemize}
+
+Dennoch besteht für jeden Gast die Möglichkeit, eine Filterung nach verschiedenen Benutzern vorzunehmen.
 \subsection{Die Einstellungen}
 

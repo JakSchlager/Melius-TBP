@@ -50,11 +50,11 @@
               <div class="grid grid-cols-2 row-span-1">
                 <div class="grid justify-start">
                   <h1 class="text-2xl font-semibold">{{'groups.createdGroup.infoBox.compTitle' | translate}}</h1>
-                  <h1 class="font-semibold text-lg">{{ this.group.company }}</h1>
+                  <h1 class="font-semibold text-lg text-intermediate-color">{{ this.group.company }}</h1>
                 </div>
                 <div class="grid ml-8">
                   <h1 class="text-2xl font-semibold">{{'groups.createdGroup.infoBox.deptTitle' | translate}}</h1>
-                  <h1 class="font-semibold text-lg">{{ this.group.department }}</h1>
+                  <h1 class="font-semibold text-lg text-intermediate-color">{{ this.group.department }}</h1>
                 </div>
               </div>
 
@@ -63,11 +63,11 @@
                 <div class="grid grid-cols-2 row-span-2">
                   <div class="grid justify-start">
                     <h1 class="font-semibold text-lg">{{'groups.createdGroup.infoBox.amtOfMembers.current' | translate}}</h1>
-                    <h1 class="font-semibold text-md">{{ this.group.members.length }}</h1>
+                    <h1 class="font-semibold text-md text-green-400">{{ this.group.members.length }}</h1>
                   </div>
                   <div class="grid ml-8">
                     <h1 class="font-semibold text-lg">{{'groups.createdGroup.infoBox.amtOfMembers.max' | translate}}</h1>
-                    <h1 class="font-semibold text-md">{{ this.group.maxMembers }}</h1>
+                    <h1 class="font-semibold text-md text-red-400">{{ this.group.maxMembers }}</h1>
                   </div>
                 </div>
               </div>
