@@ -177,7 +177,8 @@
           "current": "Momentan",
           "max": "Max. zulässig"
         },
-        "saveBtn": "Änderungen speichern"
+        "saveBtn": "Speichern",
+        "editBtn": "Bearbeiten"
       },
       "filterBtn": {
         "joined": "Beigetreten",

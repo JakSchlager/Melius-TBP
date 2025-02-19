@@ -3,13 +3,14 @@ import {CreateRoleComponent} from "../../../single-components/group/create-roles
 import {FilterMembersComponent} from "../../../single-components/group/filter-members/filter-members.component";
 import {GroupAvatarComponent} from "../../../single-components/group/group-avatar/group-avatar.component";
 import {TranslatePipe} from "@ngx-translate/core";
-import {ActivatedRoute, RouterLink} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 import {Group} from "../../../interfaces/group";
 import {GroupService} from "../../../services/group.service";
-import {NgForOf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
+import {FormsModule} from "@angular/forms";
 
 @Component({
-  selector: 'app-group-detail',
+  selector: 'app-group-detail-admin',
   standalone: true,
   imports: [
     CreateRoleComponent,
@@ -17,7 +18,8 @@ import {NgForOf} from "@angular/common";
     GroupAvatarComponent,
     TranslatePipe,
     NgForOf,
-    RouterLink
+    NgIf,
+    FormsModule
   ],
   templateUrl: './group-detail.component.html',
   styleUrl: './group-detail.component.css'
@@ -26,6 +28,7 @@ export class GroupDetailComponent implements OnInit {
   route: ActivatedRoute = inject(ActivatedRoute);
   group!: Group;
   groupService: GroupService = inject(GroupService);
+  isEditingForm: boolean = false;
 
   ngOnInit() {
     let id = Number(this.route.snapshot.params['id']);
@@ -37,5 +40,13 @@ export class GroupDetailComponent implements OnInit {
 
   openPortfolio(url: string) {
     window.open(url, '_blank');
+  }
+
+  updateGroupCredentials(groupToSave: Group) {
+    this.isEditingForm = false;
+  }
+
+  editGroupForm() {
+    this.isEditingForm = true;
   }
 }

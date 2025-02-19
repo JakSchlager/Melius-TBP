@@ -30,8 +30,8 @@
 
   <div class="w-5/6">
     <!-- Header -->
-    <div class="w-full h-1/4 mt-6 p-10">
-      <div class="flex justify-between items-center">
+    <div class="w-full h-1/4 mt-6 px-6 py-4 overflow-y-hidden">
+      <div class="flex justify-between items-start">
         <div class="flex space-x-10 items-center animate-fade-up fade-in-0 duration-500">
           <div>
             <app-group-avatar></app-group-avatar>
@@ -43,55 +43,127 @@
           </div>
         </div>
 
-        <div class="h-fit w-1/4 animate-fade-up fade-in-0 duration-700">
+        <div class="h-fit w-1/4 animate-fade-up fade-in-0 duration-700 p-4">
           <div class="space-y-4 bg-white py-4 px-4 rounded-xl drop-shadow-lg border border-gray-100">
             <!-- Informations about the group -->
             <div class="mx-5 space-y-5">
               <div class="grid grid-cols-2 row-span-1">
+
+                <!-- Unternehmen -->
                 <div class="grid justify-start">
                   <h1 class="text-2xl font-semibold">{{'groups.createdGroup.infoBox.compTitle' | translate}}</h1>
-                  <h1 class="font-semibold text-lg text-intermediate-color">{{ this.group.company }}</h1>
+
+                  <ng-container *ngIf="isEditingForm; else displayCompany">
+                    <div class="flex items-center space-x-2 w-44">
+                      <input [(ngModel)]="group.company" class="border border-gray-300 rounded-md p-1"/>
+                      <!--
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#0d91fa" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
+                      </svg>
+                      -->
+                    </div>
+                  </ng-container>
+
+                  <ng-template #displayCompany>
+                    <h1 class="font-semibold text-lg text-intermediate-color">
+                      {{ group.company }}
+                    </h1>
+                  </ng-template>
                 </div>
+
+                <!-- Abteilung -->
                 <div class="grid ml-8">
                   <h1 class="text-2xl font-semibold">{{'groups.createdGroup.infoBox.deptTitle' | translate}}</h1>
-                  <h1 class="font-semibold text-lg text-intermediate-color">{{ this.group.department }}</h1>
+
+                  <ng-container *ngIf="isEditingForm; else displayDept" class="">
+                    <div class="flex items-center space-x-2 w-44">
+                      <input [(ngModel)]="group.department" class="border border-gray-300 rounded-md p-1"/>
+                      <!--
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#0d91fa" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
+                      </svg>
+                      -->
+                    </div>
+                  </ng-container>
+                  <ng-template #displayDept>
+                    <h1 class="font-semibold text-lg text-intermediate-color">
+                      {{ group.department }}
+                    </h1>
+                  </ng-template>
                 </div>
               </div>
 
               <div>
                 <h1 class="text-2xl font-semibold">{{'groups.createdGroup.infoBox.amtOfMembers.title' | translate}}</h1>
                 <div class="grid grid-cols-2 row-span-2">
+
+                  <!-- Anzahl an Mitgliedern -->
                   <div class="grid justify-start">
                     <h1 class="font-semibold text-lg">{{'groups.createdGroup.infoBox.amtOfMembers.current' | translate}}</h1>
                     <h1 class="font-semibold text-md text-green-400">{{ this.group.members.length }}</h1>
                   </div>
+
+                  <!-- Anzahl an max. Mitgliedern -->
                   <div class="grid ml-8">
                     <h1 class="font-semibold text-lg">{{'groups.createdGroup.infoBox.amtOfMembers.max' | translate}}</h1>
-                    <h1 class="font-semibold text-md text-red-400">{{ this.group.maxMembers }}</h1>
+
+                    <ng-container *ngIf="isEditingForm; else displayMaxMembers">
+                      <div class="flex items-center space-x-2">
+                        <input type="number" [(ngModel)]="group.maxMembers" class="border border-gray-300 rounded-md p-1 w-20"/>
+                        <!--
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#0d91fa" class="size-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
+                        </svg>
+                        -->
+                      </div>
+                    </ng-container>
+                    <ng-template #displayMaxMembers>
+                      <h1 class="font-semibold text-md text-red-400">
+                        {{ group.maxMembers }}
+                      </h1>
+                    </ng-template>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="w-full flex justify-center">
-              <button class="bg-intermediate-color text-white px-2.5 py-1.5 rounded-lg hover:bg-secondary-color duration-150 ease-in-out">{{'groups.createdGroup.infoBox.saveBtn' | translate}}</button>
-            </div>
-          </div>
 
-          <!-- DropDown Menu Buttons -->
-          <div class="flex justify-evenly mt-4">
-            <div>
-              <!-- Filter Members DropDown -->
-              <app-filter-members></app-filter-members>
-            </div>
-            <div>
-              <!-- Create Roles DropDown -->
-              <app-create-roles></app-create-roles>
+
+
+            <div class="w-full flex justify-center space-x-4">
+              <div *ngIf="isEditingForm" class="flex bg-intermediate-color px-2.5 py-1.5 rounded-lg hover:bg-secondary-color duration-150 ease-in-out space-x-2">
+                <button (click)="updateGroupCredentials(this.group)" class="text-white">{{'groups.createdGroup.infoBox.saveBtn' | translate}}</button>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" class="size-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
+                </svg>
+
+              </div>
+              <div *ngIf="!isEditingForm" class="flex bg-red-400 px-2.5 py-1.5 rounded-lg hover:bg-red-500 duration-150 ease-in-out space-x-2">
+                <button (click)="editGroupForm()" class="text-white">{{'groups.createdGroup.infoBox.editBtn' | translate}}</button>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" class="size-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+                </svg>
+
+              </div>
             </div>
           </div>
         </div>
-
       </div>
     </div>
+
+    <!-- DropDown Menu Buttons -->
+    <div class="flex justify-end  animate-fade-up fade-in-0 duration-700">
+      <div class="flex justify-evenly w-96">
+        <div>
+          <!-- Filter Members DropDown -->
+          <app-filter-members></app-filter-members>
+        </div>
+        <div>
+          <!-- Create Roles DropDown -->
+          <app-create-roles></app-create-roles>
+        </div>
+      </div>
+    </div>
+
 
     <!--*ngIf="myGroupService.getAllMembers() > 0"-->
     <!-- Main Content (Display Members with their Roles )-->

@@ -176,7 +176,8 @@
           "current": "Current",
           "max": "Max. capacity"
         },
-        "saveBtn": "Save Changes"
+        "saveBtn": "Save",
+        "editBtn": "Edit"
       },
       "filterBtn": {
         "joined": "Joined",
