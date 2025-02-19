@@ -8,6 +8,10 @@ import {Group} from "../../../interfaces/group";
 import {GroupService} from "../../../services/group.service";
 import {NgForOf, NgIf} from "@angular/common";
 import {FormsModule} from "@angular/forms";
+import {TESTrolesService} from "../../../services/testroles.service";
+import {
+  createRxjsEsmResolutionPlugin
+} from "@angular-devkit/build-angular/src/tools/esbuild/rxjs-esm-resolution-plugin";
 
 @Component({
   selector: 'app-group-detail-admin',
@@ -25,10 +29,12 @@ import {FormsModule} from "@angular/forms";
   styleUrl: './group-detail.component.css'
 })
 export class GroupDetailComponent implements OnInit {
+  testRoleService: TESTrolesService = inject(TESTrolesService);
   route: ActivatedRoute = inject(ActivatedRoute);
   group!: Group;
   groupService: GroupService = inject(GroupService);
   isEditingForm: boolean = false;
+  memberSelected : boolean = false;
 
   ngOnInit() {
     let id = Number(this.route.snapshot.params['id']);
@@ -48,5 +54,19 @@ export class GroupDetailComponent implements OnInit {
 
   editGroupForm() {
     this.isEditingForm = true;
+  }
+
+  closeListMemberList() {
+    this.testRoleService.isListOpen = false;
+  }
+
+  protected readonly createRxjsEsmResolutionPlugin = createRxjsEsmResolutionPlugin;
+
+  selectMember() {
+    this.memberSelected = true;
+  }
+
+  deselectMember() {
+    this.memberSelected = false;
   }
 }
