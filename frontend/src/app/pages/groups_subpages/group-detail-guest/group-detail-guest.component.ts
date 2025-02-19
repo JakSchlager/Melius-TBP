@@ -3,7 +3,7 @@ import {CreateRoleComponent} from "../../../single-components/group/create-roles
 import {FilterMembersComponent} from "../../../single-components/group/filter-members/filter-members.component";
 import {GroupAvatarComponent} from "../../../single-components/group/group-avatar/group-avatar.component";
 import {TranslatePipe} from "@ngx-translate/core";
-import {ActivatedRoute, RouterLink} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 import {Group} from "../../../interfaces/group";
 import {GroupService} from "../../../services/group.service";
 import {NgForOf} from "@angular/common";
@@ -16,13 +16,12 @@ import {NgForOf} from "@angular/common";
     FilterMembersComponent,
     GroupAvatarComponent,
     TranslatePipe,
-    NgForOf,
-    RouterLink
+    NgForOf
   ],
-  templateUrl: './group-detail.component.html',
-  styleUrl: './group-detail.component.css'
+  templateUrl: './group-detail-guest.component.html',
+  styleUrl: './group-detail-guest.component.css'
 })
-export class GroupDetailComponent implements OnInit {
+export class GroupDetailGuestComponent implements OnInit {
   route: ActivatedRoute = inject(ActivatedRoute);
   group!: Group;
   groupService: GroupService = inject(GroupService);

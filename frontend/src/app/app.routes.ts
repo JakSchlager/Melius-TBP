@@ -10,8 +10,8 @@ import {StrengthsAreaComponent} from "./pages/home/strengths-area/strengths-area
 import {StartPageComponent} from "./pages/landing-page/start-page.component";
 import {PortfolioViewComponent} from "./pages/portfolio-view/portfolio-view.component";
 import {GroupDetailComponent} from "./pages/groups_subpages/group-detail-admin/group-detail.component";
-import {GroupDetailGuestComponent} from "./pages/groups_subpages/group-detail-guest/group-detail-guest.component";
-
+import {GroupDetailGuestComponent} from "./pages/groups_subpages/group-detail-guest/group-detail-guest.component"
+/* TODO: Gescheite Benennung... */
 export const routes: Routes = [
   {path: "", component: StartPageComponent, title: 'Start Page'},
   {path: "home", component: HomePageComponent, title: 'Home',
@@ -24,7 +24,6 @@ export const routes: Routes = [
 
   {path: "groups", component: GroupsPageComponent, title: 'Groups'},
   {path: "groups/:id", component: GroupDetailComponent, title: 'My Group'},
-  /* TODO: Gescheite Benennung... */
   {path: "groups/stranger/:id", component: GroupDetailGuestComponent, title: 'Strangers Group'},
   {path: "settings", component: SettingsPageComponent, title: 'Settings'},
   {path: "portfolio/:id", component: PortfolioViewComponent, title: 'Portfolio'},
