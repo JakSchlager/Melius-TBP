@@ -1,10 +1,20 @@
 <div class="relative w-full min-h-screen flex justify-center">
 
   <!-- Aktualisierter Hintergrund -->
-  <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 blur-2xl" [ngStyle]="{'background-color': newBackgroundImageUrl ? 'white' : newBackgroundColor,
-                'background-image': newBackgroundImageUrl ? 'url(' + newBackgroundImageUrl + ')' : 'url(assets/melius_default-wallpaper2.png)',
-                'background-size': 'cover', 'background-position': 'center', 'background-repeat': 'no-repeat', 'background-attachment': 'fixed', 'overflow': 'auto'}">
+  <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10">
+    <!-- Ebene für die Hintergrundfarbe (ohne Blur) -->
+    <div class="absolute inset-0" [ngStyle]="{'background-color': newBackgroundColor ? newBackgroundColor : 'white'}"></div>
+
+    <!-- Ebene für das Hintergrundbild (mit Blur) -->
+    <div class="absolute inset-0 blur-xl scale-110" [ngStyle]="{'background-image': newBackgroundImageUrl ? 'url(' + newBackgroundImageUrl + ')' : 'url(assets/melius_default-wallpaper.png)',
+      'background-size': 'cover',
+      'background-position': 'center',
+      'background-repeat': 'no-repeat',
+      'background-attachment': 'fixed'
+    }">
+    </div>
   </div>
+
 
   <div class="w-5/6">
 
