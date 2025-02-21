@@ -44,3 +44,323 @@ Die Entscheidung beruhte auf zahlreichen Vorteilen, die Webstorm speziell für d
 
 
 \subsection{Anmeldung und Registrierung - Form Validation}
+
+\subsubsection{register-form.html}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{pics//Frontend/register-form-html.png}
+    \caption{Eingabefelder der FormGroup}
+    \label{fig:inputFields}
+\end{figure}
+
+In diesem Ausschnitt sieht man das HTML-Template für das Formular. Das saveForm wird über \textbf{[formGroup]=\textquotedblleft saveForm\textquotedblright} eingebunden. Jedes Eingabefeld ist mit formControlName an ein entsprechendes FormControl in der TypeScript-Datei gebunden. Zusätzlich besitzt jedes Feld, das validiert wird, ein entsprechendes \textbf{*ngIf}, das nur dann eine Fehlermeldung anzeigt, wenn die jeweilige Validierung fehlschlägt \textbf{(z. B. bei Validators.required, Validators.email usw.)}.
+Auch die eigenen erstellen Validations wie beispielsweise für das Überprüfen ob das Passwort erneut richtig eingegeben wurde, wird hier mittels *ngIf überprüft. Hier wird dann ein einfaches \textbf{saveForm.hasError('passwordDoesNotMatch')} zusätzlich dazu geschrieben.
+Der Submit-Button wird mittels \textbf{[disabled]=\textquotedblleft!saveForm.valid\textquotedblright} solange deaktiviert, bis alle Validierungen erfolgreich sind. Sobald das Formular korrekt ausgefüllt ist, wird der Button aktiviert und das \textbf{(click)=\textquotedblleft onRegister()\textquotedblright}-Event kann ausgeführt werden, um das Formular abzusenden.
+
+\subsubsection{register-form.ts}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{pics//Frontend/register-form-ts_FormGroup.png}
+    \caption{Aufbau und Validation der FormGroup}
+    \label{fig:Validation FormGroup}
+\end{figure}
+
+In diesem Code wird das FormGroup namens saveForm erstellt und konfiguriert. Jedes Feld wie firstName, lastName, email, phoneNumber, password usw. erhält ein eigenes FormControl mit passenden Validierungen. Zum Beispiel sorgt Validators.required dafür, dass ein Feld nicht leer sein darf, und Validators.email prüft das E-Mail-Format.
+Darüber hinaus wird der benutzerdefinierte Validator this.checkPasswordMatch() auf das confirmPassword, sodass die Passwörter als Kombination validiert werden können. Damit stellt man sicher, dass password und confirmPassword übereinstimmen, bevor das Formular abgesendet werden kann.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{pics//Frontend/register-form-ts_checkPasswordMatch.png}
+    \caption{Validation für die erneute Eingabe des Passwords}
+    \label{fig:checkPasswordMatch}
+\end{figure}
+
+In diesem Code wird das FormGroup namens saveForm erstellt und konfiguriert. Jedes Feld (z. B. firstName, lastName, email, phoneNumber, password, confirmPassword) erhält ein eigenes FormControl mit passenden Validierungen:
+
+\begin{itemize}
+    \item \textbf{Validators.required} stellt sicher, dass ein Feld nicht leer bleibt.
+\end{itemize}
+
+\begin{itemize}
+    \item \textbf{Validators.email} überprüft das korrekte E-Mail-Format.
+\end{itemize}
+
+\begin{itemize}
+    \item \textbf{Validators.pattern} kann komplexere Regeln (z. B. für das Passwort) abbilden.
+\end{itemize}
+
+Auffällig ist, dass der benutzerdefinierte Validator this.checkPasswordMatch direkt beim confirmPassword-FormControl angewendet wird:
+
+\begin{lstlisting}[caption=Einbindung eines benutzerdefinierten Validators,label=lst:impl:foo]
+    confirmPassword: new FormControl<string>('', [Validators.required, this.checkPasswordMatch]),
+\end{lstlisting}
+
+
+\subsection{Drag und Drop Funktion}
+Die Drag und Drop Funktion ist auf der Melius Website eine essentielle und wichtige Funktion die vor allem für die Personalisierung eine wichtige Rolle spielt.
+
+\subsubsection{Möglichkeiten für Interaktion des Benutzers}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{pics//Frontend/D&D/D&D_html-settings.png}
+    \caption{Benutzer}
+    \label{fig:user-uses}
+\end{figure}
+
+
+\textbf{Die Spalten}
+
+In der vorliegenden Datei werden die Klassen sowie die Attribute des HTML-Formulars dargestellt. Die Interaktion mit den Formularen und den drei Spalten erfolgt durch den Benutzer. Die Spalten ermöglichen dem Benutzer das Hin- und Herschieben der Formulare. 
+
+Jede Spalte ist mit einer der folgenden Klassen assoziiert:
+
+\begin{lstlisting}[caption=Klassen die von den Spalten benutzt werden,label=lst:impl:foo]
+    [ngClass]="showBorder"
+    (dragover)="onDragOver($event)
+    (drop)=onDrop($event, 'columnId')
+\end{lstlisting}
+
+
+\textbf{[ngClass]=\textquotedblleft showBorder\textquotedblright}
+\begin{itemize}
+    \item  wird verwendet um den Benutzer habtisches bzw. visuelles Feedback mittels gestrichelten Linien zu geben, so dass er erkennt, wo genau sich die Spalten befinden und wo er die Formulare hinverschieben kann
+\end{itemize}
+
+\textbf{(dragover)=\textquotedblleft onDragOver(\$event)\textquotedblright }
+\begin{itemize}
+    \item Ruft bei jedem dragover-Ereignis (wenn ein Element über das Ziel bewegt wird) die Methode \textbf{onDragOver()} auf.
+\end{itemize}
+
+\textbf{(drop)=\textquotedblleft onDrop(\$event, 'columnId')\textquotedblright}
+\begin{itemize}
+    \item Reagiert auf das drop-Ereignis (wenn ein Element tatsächlich losgelassen wird).
+    \item Ruft die Methode onDrop() auf und übergibt das Ereignis sowie eine zusätzliche Information (z. B. 'columnId').
+\end{itemize}
+
+
+\textbf{Die Formulare}
+\\
+Alle Formulare sind mit den Klassen:
+
+\begin{itemize}
+    \item \text{[ngClass]=\textquotedblleft dragBox \textquotedblright}
+\end{itemize}
+
+\begin{itemize}
+    \item \text{[draggable]=\textquotedblleft checkDraggable() \textquotedblright}
+\end{itemize}
+
+\begin{itemize}
+    \item \text{[dragstart]=\textquotedblleft onDragStart(\$event, \$event.target) \textquotedblright}
+\end{itemize}
+
+ausgestatted.
+
+\subsubsection{Was im Hintergrund passiert}
+
+In diesem Code werden drei zentrale Methoden zur Implementierung der Drag-and-Drop-Funktionalität genutzt:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{pics//Frontend/D&D/D&D_DragStart.png}
+    \caption{DragStart Funktion der Funktionalität}
+    \label{fig:startD&D}
+\end{figure}
+
+Diese Methode wird aufgerufen, sobald der Benutzer beginnt, ein Element zu ziehen.
+Durch this.draggedItem = item; wird das aktuell gezogene Element in einer Variable gespeichert, damit später – beispielsweise beim Ablegen – bekannt ist, welches Element bewegt wurde.
+Mit \textbf{event.dataTransfer?.setData('text/plain', event.target?.toString() || '');} wird zusätzlich ein Text (hier in Form einer Zeichenkette) im dataTransfer-Objekt hinterlegt. Dadurch kann das Ziel (Drop-Ziel) später erkennen, welches Element gezogen wurde.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{pics//Frontend/D&D/D&D_DragOver.png}
+    \caption{DragOver Funktion der Funktionalität}
+    \label{fig:dragOverD&D}
+\end{figure}
+
+Diese Methode wird jedes Mal aufgerufen, wenn ein gezogenes Element über ein potenzielles Ziel bewegt wird.
+Durch \textbf{event.preventDefault();} wird verhindert, dass der Browser die Standardaktion ausführt (die das Ablegen in vielen Fällen blockieren würde). Nur wenn preventDefault() aufgerufen wird, ist ein Drop-Event überhaupt möglich.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{pics//Frontend/D&D/D&D_Drop.png}
+    \caption{Drop Funktion der Funktionalität}
+    \label{fig:dropD&D}
+\end{figure}
+
+\textbf{Ereignis auslösen und Standardaktion verhindern}
+\\
+Sobald ein gezogenes Element über einem Drop-Ziel losgelassen wird, ruft der Browser die Methode onDrop() auf. Mit event.preventDefault(); wird die Standardaktion verhindert, damit das Ablegen (Drop) im gewünschten Bereich funktioniert.
+
+\textbf{Ziel-Container ermitteln}
+\\
+Über document.getElementById(targetContainerId) wird das DOM-Element gesucht, in das das gezogene Element eingefügt werden soll. So weiß der Code, an welcher Stelle das Element abgelegt werden soll.
+
+\textbf{Element in Ziel-Container einfügen}
+\\
+Wenn sowohl das Ziel-Element als auch das gezogene Element (this.draggedItem) existieren, wird das gezogene Element via appendChild() dem Ziel-Container hinzugefügt. Damit wird es optisch und strukturell in die neue Position verschoben.
+
+\textbf{Aktualisierung der Positionsdaten}
+In der anschließenden switch-Anweisung wird geprüft, ob das gezogene Element eines der speziellen Box-Elemente (generalInfoBox, educationsBox, workExperienceBox) ist. Je nach Fall wird die entsprechende Position in this.portfolioService.currPortfolio! auf die neue Ziel-ID (targetContainerId) gesetzt. Das bedeutet, dass das Portfolio-Objekt weiß, wo sich das jeweilige Element nun befindet.
+
+\textbf{Speichern der Änderungen}
+Mit this.portfolioService.updatePortfolio(...) werden die aktualisierten Daten an den Server oder eine Datenbank geschickt (bzw. gespeichert), damit die Änderungen auch nach einem Neuladen der Seite bestehen bleiben.
+
+\textbf{Zurücksetzen des gezogenen Elements}
+\\
+Abschließend wird this.draggedItem = null; gesetzt, um anzuzeigen, dass momentan kein Element mehr gezogen wird. Damit ist der Drag-and-Drop-Vorgang abgeschlossen.
+
+
+\subsection{Auswahl der Sprache bzw. die Mehrsparchigkeit}
+
+\subsubsection{Auswahl der Sprache}
+
+\textbf{Settings Component}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{pics//Frontend/language/Lanugage_settings-comp-html.png}
+    \caption{Auswahl der Sprache}
+    \label{fig:chooseLanguage}
+\end{figure}
+
+Auf der Einstellungen Setite wird auf eine benutzerdefinierte Angular-Komponente für die Sprachauswahl zugegriffen. 
+\\
+(eventEmitter)=\textquotedblleft this.selectedLanguage = \$event\textquotedblright:
+\begin{itemize}
+    \item Hier wird ein Event-Emitter verwendet, um die ausgewählte Sprache (\$event) in der Komponente zu speichern.    
+\end{itemize}
+\begin{itemize}
+    \item Das bedeutet, dass die selectedLanguage-Variable in der TypeScript-Datei bei jeder Änderung automatisch aktualisiert wird.
+\end{itemize}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{pics//Frontend/language/Language_settings-comp-ts.png}
+    \caption{Auswahl der Sprache}
+    \label{fig:chooseLanguage}
+\end{figure}
+
+Die Datei \textquotedblleft Language_settings-comp.ts\textquotedblright beinhaltet die Logik zur Verwaltung der Spracheinstellungen innerhalb der Anwendung. Im Fokus steht hierbei die Methode \textbf{confirmSettings()}, deren Funktion darin besteht, den Hintergund des Benutzers, sowie die vom Nutzer ausgewählte Sprache im Portfolio zu speichern und an das Backend zu übermitteln. Zu diesem Zweck wird zunächst das aktuelle Portfolio-Objekt aus dem "portfolioService" geladen. Im Anschluss wird die ausgewählte Sprache durch die Zeile \textbf{portfolio.languageCode = this.selectedLanguage} in das Objekt übernommen. Es wird sichergestellt, dass die Nutzerauswahl korrekt im Portfolio hinterlegt wird.Um die geänderten Einstellungen zu speichern, wird die Methode \textbf{updatePortfolio(portfolio).subscribe()} auf dem \textbf{portfolioService} aufgerufen. Dadurch wird das aktualisierte Portfolio-Objekt an das Backend gesendet und die neue Sprache dauerhaft gespeichert. Zum Abschluss wird mit \textbf{this.reloadPage()} die Seite neu geladen, um die Änderungen sofort sichtbar zu machen.
+
+Diese Datei stellt eine essenzielle Verbindung zwischen der Benutzeroberfläche und dem Backend dar, indem sie die Sprachauswahl des Nutzers entgegennimmt, speichert und sicherstellt, dass die Anwendung stets die korrekte Sprache anzeigt.
+
+
+\textbf{Lanugage Select Component}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{pics//Frontend/language/Language_languageSelect-comp-html.png}
+    \caption{Liste and Sprachen}
+    \label{fig:ListOfLanguages}
+\end{figure}
+
+In diesem Kontext wird mit *ngFor über das languages-Array iteriert, um für jede verfügbare Sprache einen Button zu erstellen.Jeder Button repräsentiert eine Sprache und zeigt sowohl ein Flaggen-Symbol (language.flag) als auch den Namen der Sprache (language.name) an.Beim Klicken auf einen Button wird die Methode selectLanguage(language) aufgerufen, wodurch die ausgewählte Sprache an die übergeordnete Komponente weitergegeben wird.
+
+Diese Struktur gestattet es dem Nutzer, eine Sprache durch einfachen Klick auszuwählen, wodurch die Auswahl direkt übernommen und verarbeitet werden kann.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{pics//Frontend/language/Language_lanugageSelect-comp-ts.png}
+    \caption{Bestätigung der Auswahl sowie Weiterleitung an Settings Component}
+    \label{fig:savedLanguage}
+\end{figure}
+
+Die in diesem TypeScript-Code enthaltene Methode \textbf{selectLanguage(language: any)} ist für die Speicherung und Weitergabe der ausgewählten Sprache an die übergeordnete Komponente verantwortlich.Die Funktionsweise ist wie folgt:
+
+\\
+\textbf{Speichern der ausgewählten Sprache:}
+\begin{itemize}
+    \item Die Zeile \textbf{this.selectedLanguage = language;} weist der selectedLanguage-Eigenschaft das übergebene language-Objekt zu, wodurch die gewählte Sprache in der Komponente gespeichert wird.
+\end{itemize}
+
+
+\textbf{Event-Emitter zur Weitergabe der Sprache:}
+\begin{itemize}
+    \item Mittels \textbf{this.eventEmitter.emit(language.code);} wird das Sprachcode-Attribut der ausgewählten Sprache (language.code) über den Event-Emitter an die übergeordnete Komponente gesendet.Dies ermöglicht es anderen Komponenten, auf die Änderung der Sprache zu reagieren und die Sprache gegebenenfalls anzupassen.
+\end{itemize}
+
+
+\textbf{App Component}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{pics//Frontend/language/Language_app-comp-constructor.png}
+    \caption{Setzen der Auswahlmöglichkeiten im Konstruktor}
+    \label{fig:setLanguagePossibilities}
+\end{figure}
+
+Beim Erstellen der AppComponent wird die Sprachverwaltung über den TranslateService eingerichtet.
+
+\begin{itemize}
+    \item \textbf{this.translate.addLangs(['de', 'en']);} definiert die verfügbaren Sprachen – in diesem Fall Deutsch (de) und Englisch (en).
+\end{itemize}
+
+\begin{itemize}
+    \item \textbf{this.translate.setDefaultLang('de');} legt Deutsch als Standardsprache fest, falls keine andere Sprache gewählt wurde.
+\end{itemize}
+
+Damit wird sichergestellt, dass die Anwendung von Beginn an Mehrsprachigkeit unterstützt.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{pics//Frontend/language/Lanugage_app-comp-ts.png}
+    \caption{Übernehmen der ausgewählten Sprache im System}
+    \label{fig:saveChoosenLanguage}
+\end{figure}
+
+Hier wird beim Laden der Anwendung das Portfolio des aktuellen Nutzers abgerufen:
+
+\begin{itemize}
+    \item \textbf{this.portfolioService.getPortfolioById(user.id).subscribe(portfolio => { ... })} ruft die gespeicherten Daten des Nutzers aus dem Backend ab.
+\end{itemize}
+
+\begin{itemize}
+    \item \textbf{this.portfolioService.currPortfolio = portfolio;} speichert das Portfolio in der portfolioService-Instanz für die weitere Nutzung.
+\end{itemize}
+
+\begin{itemize}
+    \item \textbf{this.translate.use(portfolio.languageCode);} setzt die Sprache der Anwendung auf die im Portfolio gespeicherte Sprache (portfolio.languageCode). Dadurch wird sichergestellt, dass die Benutzeroberfläche sofort in der bevorzugten Sprache des Nutzers geladen wird.
+\end{itemize}
+
+\begin{itemize}
+    \item \textbf{this.portfolioService.backgroundColorSubject.next(portfolio.color);} aktualisiert die Hintergrundfarbe basierend auf den gespeicherten Nutzereinstellungen.
+\end{itemize}
+
+\begin{itemize}
+    \item \textbf{console.log(portfolio);} gibt die geladenen Portfolio-Daten zur Überprüfung in der Konsole aus.
+\end{itemize}
+
+
+\subsubsection{Übersetzungsdatein}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.5\textwidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{pics/Frontend/language/Language_de-json.png}
+      \captionof{figure}{Übersetzungsdatei in Deutsch}
+    \end{minipage}%
+    \begin{minipage}{.5\textwidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{pics/Frontend/language/Language_en-json.png}
+      \captionof{figure}{Übersetzungsdatei in Englisch}
+    \end{minipage}
+\end{figure}
+
+Für die Gewährleistung der Mehrsprachigkeit sind zwei .json-Dateien von essentieller Relevanz, in welchen sämtliche statischen Texte übersetzt werden. Im vorliegenden Fall von Melius befinden sich in diesen Dateien die Texte jeweils in deutscher und englischer Sprache. Die Pfade zu den Texten müssen schließlich lediglich in die .html-Datei übernommen werden, um die Übersetzung des Textes abzuschließen.
+
+\subsubsection{Nutzung der translate-pipe in den .html Datein}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{pics//Frontend/language/Language_home-example.png}
+    \caption{Beispiel für die Verwendung der Sprachübersetzun}
+    \label{fig:translatePipe}
+\end{figure}
+
+Abschließend wird lediglich der statische Text mit den Pfaden der Übersetzungsdatei ausgetauscht und die "Translate Pipe" hinzugefügt. 
+In der Folge wird der Text je nach Auswahl des Benutzers in die jeweilige Sprache übersetzt und angezeigt.

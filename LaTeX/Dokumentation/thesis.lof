@@ -36,6 +36,22 @@
 \contentsline {figure}{\numberline {35}{\ignorespaces Formular zum auswählen der Hintergrundfarbe oder -bild}}{42}{figure.caption.84}%
 \contentsline {figure}{\numberline {36}{\ignorespaces Hintergrund wurde ausgewählt}}{43}{figure.caption.85}%
 \contentsline {figure}{\numberline {37}{\ignorespaces Webstorm - JetBrains}}{44}{figure.caption.86}%
-\contentsline {figure}{\numberline {38}{\ignorespaces Intellij IDEA - Jetbrains}}{47}{figure.caption.87}%
-\contentsline {figure}{\numberline {39}{\ignorespaces Entität - Klassen}}{48}{figure.caption.88}%
+\contentsline {figure}{\numberline {38}{\ignorespaces Eingabefelder der FormGroup}}{46}{figure.caption.89}%
+\contentsline {figure}{\numberline {39}{\ignorespaces Aufbau und Validation der FormGroup}}{46}{figure.caption.92}%
+\contentsline {figure}{\numberline {40}{\ignorespaces Validation für die erneute Eingabe des Passwords}}{47}{figure.caption.93}%
+\contentsline {figure}{\numberline {41}{\ignorespaces Benutzer}}{48}{figure.caption.96}%
+\contentsline {figure}{\numberline {42}{\ignorespaces DragStart Funktion der Funktionalität}}{49}{figure.caption.99}%
+\contentsline {figure}{\numberline {43}{\ignorespaces DragOver Funktion der Funktionalität}}{49}{figure.caption.100}%
+\contentsline {figure}{\numberline {44}{\ignorespaces Drop Funktion der Funktionalität}}{50}{figure.caption.101}%
+\contentsline {figure}{\numberline {45}{\ignorespaces Auswahl der Sprache}}{51}{figure.caption.104}%
+\contentsline {figure}{\numberline {46}{\ignorespaces Auswahl der Sprache}}{51}{figure.caption.105}%
+\contentsline {figure}{\numberline {47}{\ignorespaces Liste and Sprachen}}{52}{figure.caption.106}%
+\contentsline {figure}{\numberline {48}{\ignorespaces Bestätigung der Auswahl sowie Weiterleitung an Settings Component}}{52}{figure.caption.107}%
+\contentsline {figure}{\numberline {49}{\ignorespaces Setzen der Auswahlmöglichkeiten im Konstruktor}}{53}{figure.caption.108}%
+\contentsline {figure}{\numberline {50}{\ignorespaces Übernehmen der ausgewählten Sprache im System}}{53}{figure.caption.109}%
+\contentsline {figure}{\numberline {51}{\ignorespaces Übersetzungsdatei in Deutsch}}{54}{figure.caption.112}%
+\contentsline {figure}{\numberline {52}{\ignorespaces Übersetzungsdatei in Englisch}}{54}{figure.caption.112}%
+\contentsline {figure}{\numberline {53}{\ignorespaces Beispiel für die Verwendung der Sprachübersetzun}}{54}{figure.caption.115}%
+\contentsline {figure}{\numberline {54}{\ignorespaces Intellij IDEA - Jetbrains}}{56}{figure.caption.116}%
+\contentsline {figure}{\numberline {55}{\ignorespaces Entität - Klassen}}{57}{figure.caption.117}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
