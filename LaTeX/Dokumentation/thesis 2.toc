@@ -82,23 +82,9 @@
 \contentsline {subsubsection}{\nonumberline @ManyToMany}{59}{subsubsection*.134}%
 \contentsline {subsubsection}{\nonumberline Zusätzliche String-Felder}{60}{subsubsection*.137}%
 \contentsline {subsection}{\numberline {5.2.3}Repository}{61}{subsection.5.2.3}%
-\contentsline {subsubsection}{\nonumberline Beispiele}{61}{subsubsection*.141}%
-\contentsline {subsubsection}{\nonumberline ProfileRepository - Klasse}{61}{subsubsection*.143}%
-\contentsline {subsubsection}{\nonumberline Annotationen}{62}{subsubsection*.145}%
-\contentsline {subsubsection}{\nonumberline @ApplicationScoped}{62}{subsubsection*.147}%
-\contentsline {subsubsection}{\nonumberline @Transactional}{62}{subsubsection*.150}%
-\contentsline {subsubsection}{\nonumberline Wichtige Funktionen}{63}{subsubsection*.153}%
-\contentsline {subsubsection}{\nonumberline addProfile}{63}{subsubsection*.155}%
-\contentsline {subsubsection}{\nonumberline checkProfile}{64}{subsubsection*.158}%
-\contentsline {subsubsection}{\nonumberline getProfileByEmail}{64}{subsubsection*.161}%
-\contentsline {subsection}{\numberline {5.2.4}Resource}{65}{subsection.5.2.4}%
-\contentsline {subsubsection}{\nonumberline Beispiele}{66}{subsubsection*.165}%
-\contentsline {subsubsection}{\nonumberline ProfileResource - Klasse}{66}{subsubsection*.167}%
-\contentsline {subsubsection}{\nonumberline Annotationen}{66}{subsubsection*.169}%
-\contentsline {subsubsection}{\nonumberline @Path}{66}{subsubsection*.171}%
-\contentsline {chapter}{\numberline {6}Zusammenfassung}{68}{chapter.6}%
-\contentsline {chapter}{\nonumberline Abbildungsverzeichnis}{III}{chapter*.174}%
-\contentsline {chapter}{\nonumberline Tabellenverzeichnis}{IV}{chapter*.175}%
-\contentsline {chapter}{\nonumberline List of Listings}{V}{chapter*.176}%
-\contentsline {chapter}{\nonumberline Anhang}{VI}{chapter*.177}%
+\contentsline {chapter}{\numberline {6}Zusammenfassung}{62}{chapter.6}%
+\contentsline {chapter}{\nonumberline Abbildungsverzeichnis}{III}{chapter*.140}%
+\contentsline {chapter}{\nonumberline Tabellenverzeichnis}{IV}{chapter*.141}%
+\contentsline {chapter}{\nonumberline List of Listings}{V}{chapter*.142}%
+\contentsline {chapter}{\nonumberline Anhang}{VI}{chapter*.143}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

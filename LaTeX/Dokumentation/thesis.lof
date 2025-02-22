@@ -53,5 +53,19 @@
 \contentsline {figure}{\numberline {52}{\ignorespaces Übersetzungsdatei in Englisch}}{54}{figure.caption.112}%
 \contentsline {figure}{\numberline {53}{\ignorespaces Beispiel für die Verwendung der Sprachübersetzun}}{54}{figure.caption.115}%
 \contentsline {figure}{\numberline {54}{\ignorespaces Intellij IDEA - Jetbrains}}{56}{figure.caption.116}%
-\contentsline {figure}{\numberline {55}{\ignorespaces Entität - Klassen}}{57}{figure.caption.117}%
+\contentsline {figure}{\numberline {55}{\ignorespaces Enitity - Klassen}}{57}{figure.caption.117}%
+\contentsline {figure}{\numberline {56}{\ignorespaces OneToOne}}{58}{figure.caption.128}%
+\contentsline {figure}{\numberline {57}{\ignorespaces OneToOne}}{59}{figure.caption.129}%
+\contentsline {figure}{\numberline {58}{\ignorespaces OneToMany}}{59}{figure.caption.132}%
+\contentsline {figure}{\numberline {59}{\ignorespaces ManyToMany}}{60}{figure.caption.135}%
+\contentsline {figure}{\numberline {60}{\ignorespaces Portfolio - Strings}}{60}{figure.caption.138}%
+\contentsline {figure}{\numberline {61}{\ignorespaces Repository - Klassen}}{61}{figure.caption.139}%
+\contentsline {figure}{\numberline {62}{\ignorespaces ApplicationScoped}}{62}{figure.caption.148}%
+\contentsline {figure}{\numberline {63}{\ignorespaces Transactional}}{63}{figure.caption.151}%
+\contentsline {figure}{\numberline {64}{\ignorespaces addProfile}}{64}{figure.caption.156}%
+\contentsline {figure}{\numberline {65}{\ignorespaces checkProfile}}{64}{figure.caption.159}%
+\contentsline {figure}{\numberline {66}{\ignorespaces getProfileByEmail}}{65}{figure.caption.162}%
+\contentsline {figure}{\numberline {67}{\ignorespaces Resource - Klassen}}{66}{figure.caption.163}%
+\contentsline {figure}{\numberline {68}{\ignorespaces Resource - Klassen}}{67}{figure.caption.172}%
+\contentsline {figure}{\numberline {69}{\ignorespaces Resource - Klassen}}{67}{figure.caption.173}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

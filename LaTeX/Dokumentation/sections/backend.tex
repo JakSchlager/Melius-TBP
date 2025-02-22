@@ -57,7 +57,7 @@ Durch diese ORM-Technologie können Datenbankoperationen wie Erstellen, Lesen, A
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{pics/Backend/Entitäten/entities.png}
-    \caption{Entität - Klassen}
+    \caption{Enitity - Klassen}
     \label{fig:entities}
 \end{figure}
 
@@ -74,12 +74,12 @@ In dieser Klasse fehlt jedoch die @GeneratedValue-Annotation, die für die autom
 
 \subsubsection{@OneToOne}
 Diese Annotation beschreibt eine 1:1-Beziehung zwischen der Portfolio-Entität und einer anderen Entität.
-
-\begin{lstlisting}[caption=Beispiel,label=lst:impl:foo]
-    @OneToOne
-    @JoinColumn(name="profile_id", referencedColumnName = "id")
-    private Profile profile;
-\end{lstlisting}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{pics/Backend/Entitäten/one-to-one-profile.png}
+    \caption{OneToOne}
+    \label{fig:entities}
+\end{figure}
 
 \begin{itemize}
     \item
@@ -87,35 +87,39 @@ Diese Annotation beschreibt eine 1:1-Beziehung zwischen der Portfolio-Entität u
 
     \item
 \begin{verbatim}
-@JoinColumn(name="profile_id", referencedColumnName = "id")
-profile_id ist der Fremdschlüssel in der Portfolio-Tabelle,
-der auf die id-Spalte der Profile-Tabelle verweist.
+@JoinColumn(name="profile_id", referencedColumnName = "id"):
 \end{verbatim}
+profileId ist der Fremdschlüssel in der Portfolio-Tabelle,
+der auf die id-Spalte der Profile-Tabelle verweist.
+
 
     \item
 \begin{verbatim}
-@JsonIgnoreProperties(value = {"portfolio"}, allowSetters = true)
+@JsonIgnoreProperties(value = {"portfolio"}, allowSetters = true):
+\end{verbatim}
 stellt sicher, dass bei JSON-Serialisierung rekursive Referenzen
 zwischen Portfolio und Profile vermieden werden.
-\end{verbatim}
+
 
 \end{itemize}
 
-\begin{lstlisting}[caption=Ähnliche 1:1-Beziehung:,label=lst:impl:foo]
-    @OneToOne
-    @JoinColumn(name="generalInfo_id", referencedColumnName = "id")
-    private GeneralInfo generalInfo;
-\end{lstlisting}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{pics/Backend/Entitäten/one-to-one-general.png}
+    \caption{OneToOne}
+    \label{fig:entities}
+\end{figure}
 
 
 \subsubsection{@OneToMany}
 Diese Annotation beschreibt eine 1:n-Beziehung, bei der ein Portfolio mehrere abhängige Entitäten besitzt.
 
-\begin{lstlisting}[caption=Beispiel:,label=lst:impl:foo]
-    @OneToMany(mappedBy = "portfolio")
-    @JsonIgnoreProperties({"portfolio"})
-    private Set<Education> educations;
-\end{lstlisting}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{pics/Backend/Entitäten/one-to-many.png}
+    \caption{OneToMany}
+    \label{fig:entities}
+\end{figure}
 
 
 \begin{itemize}
@@ -127,9 +131,10 @@ Diese Annotation beschreibt eine 1:n-Beziehung, bei der ein Portfolio mehrere ab
 
     \item
 \begin{verbatim}
-@JsonIgnoreProperties({"portfolio"})
-verhindert rekursive JSON-Serialisierung.
+@JsonIgnoreProperties({"portfolio"}):
 \end{verbatim}
+verhindert rekursive JSON-Serialisierung.
+
 
 \end{itemize}
 
@@ -153,16 +158,12 @@ Diese Beziehungen ermöglichen, dass ein Portfolio mehrere berufliche Erfahrunge
 \subsubsection{@ManyToMany}
 Diese Annotation beschreibt eine n:m-Beziehung, bei der mehrere Portfolios mehrere Eigenschaften (Characteristic) haben können.
 
-\begin{lstlisting}[caption=Beispiel:,label=lst:impl:foo]
-    @ManyToMany
-    @JoinTable(
-        name="portfolio_characteristic",
-        joinColumns = @JoinColumn(name="portfolio_id"),
-        inverseJoinColumns = @JoinColumn(name="characteristic_id")
-    )
-    @JsonIgnoreProperties({"portfolio"})
-    private Set<Characteristic> characteristics;
-\end{lstlisting}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{pics/Backend/Entitäten/many-to-many.png}
+    \caption{ManyToMany}
+    \label{fig:entities}
+\end{figure}
 
 
 \begin{itemize}
@@ -173,14 +174,16 @@ Diese Annotation beschreibt eine n:m-Beziehung, bei der mehrere Portfolios mehre
     \item
 \begin{verbatim}
 joinColumns = @JoinColumn(name="portfolio_id"):
-Verweist auf die portfolio_id-Spalte in der Join-Tabelle.
 \end{verbatim}
+Verweist auf die portfolio_id-Spalte in der Join-Tabelle.
+
 
     \item
 \begin{verbatim}
 inverseJoinColumns = @JoinColumn(name="characteristic_id"):
-Verweist auf die characteristic_id-Spalte.
 \end{verbatim}
+Verweist auf die characteristic_id-Spalte.
+
 \end{itemize}
 
 \subsubsection{Zusätzliche String-Felder}
@@ -190,3 +193,138 @@ private String educationsPosition;
 private String workExperiencesPosition;
 Diese Felder werden verwendet, um die Spalten - Positionen der einzelnen Boxen im Portfolio zu speichern.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{pics/Backend/Entitäten/portfolio-strings.png}
+    \caption{Portfolio - Strings}
+    \label{fig:entities}
+\end{figure}
+
+\newpage
+
+\subsection{Repository}
+Zur Gewährleistung einer effizienten Verwaltung und Interaktion mit den verschiedenen Entity-Klassen wurde für nahezu jede Entitätsklasse eine entsprechende Repository-Klasse implementiert.Die Repository-Klassen fungieren als Schnittstelle zwischen der Anwendung und der Datenbank und ermöglichen grundlegende CRUD-Operationen (Create, Read, Update, Delete) sowie komplexe Datenabfragen.
+
+Die Verwendung von Spring Data JPA ermöglicht die Durchführung vieler dieser Abfragen ohne umfangreiche manuelle SQL-Statements, da Spring Data automatisch Methoden zur Datenverarbeitung bereitstellt. Zudem lassen sich individuelle Abfragen mithilfe von JPQL (Java Persistence Query Language) oder der Criteria API definieren, um spezifische Datenanforderungen effizient umzusetzen.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{pics/Backend/Repositories/Repos.png}
+    \caption{Repository - Klassen}
+    \label{fig:entities}
+\end{figure}
+
+\subsubsection{Beispiele}
+
+\subsubsection{ProfileRepository - Klasse}
+Die ProfileRepository-Klasse spielt eine zentrale Rolle in der Verwaltung von Benutzerprofilen innerhalb der Anwendung. Sie ist für grundlegende CRUD-Operationen (Erstellen, Lesen, Aktualisieren und Löschen) von Profilen verantwortlich und stellt sicher, dass diese effizient in der Datenbank gespeichert und verwaltet werden.
+
+Neben diesen Standardfunktionen übernimmt die ProfileRepository-Klasse auch wichtige Überprüfungen und Sicherheitsmaßnahmen. Beispielsweise wird bei einem Benutzer-Login das eingegebene Passwort mit dem in der Datenbank gespeicherten Hash-Wert verglichen, um die Identität des Nutzers zu bestätigen. Darüber hinaus wird bei der Registrierung neuer Nutzer überprüft, ob bereits ein Profil mit der gleichen E-Mail-Adresse existiert, um Doppelregistrierungen zu verhindern und die Datenintegrität zu gewährleisten.
+
+Dank dieser Funktionen trägt das Repository maßgeblich zur Sicherheit, Datenkonsistenz und Benutzerverwaltung innerhalb der Anwendung bei. Es ermöglicht eine reibungslose Interaktion mit der Datenbank und bildet eine essenzielle Schnittstelle zwischen Backend-Logik und Datenpersistenz.
+
+\subsubsection{Annotationen}
+
+\subsubsection{@ApplicationScoped}
+Die Annotation @ApplicationScoped, die aus Jakarta CDI (Contexts and Dependency Injection) stammt, gewährleistet, dass eine Klasse während der gesamten Laufzeit der Anwendung lediglich einmal instanziiert wird. Dies impliziert, dass sämtliche Beans, welche diese Klasse verwenden, auf die identische Instanz zugreifen und folglich ein Singleton-Verhalten erzielen.In Bezug auf die ProfileRepository-Klasse resultiert daraus eine Vielzahl an Vorteilen. Da das Repository für den Zugriff auf die Datenbank zuständig ist, sorgt @ApplicationScoped dafür, dass nicht bei jeder Anfrage eine neue Instanz erstellt wird, sondern alle Datenbankoperationen über eine einzige, wiederverwendbare Instanz laufen.Dies verbessert die Effizienz, da weniger Ressourcen für das Erstellen neuer Objekte verbraucht werden. Darüber hinaus bleibt der Zustand der Bean während der gesamten Laufzeit der Anwendung erhalten. Dies kann sich beispielsweise positiv auf Caching-Mechanismen oder optimierte Datenbankverbindungen auswirken.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{pics/Backend/Repositories/applicationscoped.png}
+    \caption{ApplicationScoped}
+    \label{fig:entities}
+\end{figure}
+
+\subsubsection{@Transactional}
+Der Einsatz von @Transactional in den Methoden addProfile und updateProfile gewährleistet folglich die Aufrechterhaltung der Datenkonsistenz und verhindert das Auftreten inkonsistenter oder unvollständiger Datenbankzustände. Im Falle eines Fehlers während der Ausführungsphase der Methoden wird die gesamte Transaktion automatisch zurückgesetzt, wodurch fehlerhafte oder unvollständige Änderungen in der Datenbank verhindert werden.
+
+\begin{itemize}
+    \item 
+    \textbf{addProfile(Profile profile)}
+    Diese Methode prüft zunächst, ob bereits ein Profil mit der angegebenen E-Mail existiert. Falls nicht, wird das neue profile mit entityManager.persist(profile) in die Datenbank eingefügt. Sollte jedoch bereits ein Profil existieren, wird eine BadRequestException ausgelöst. Durch @Transactional wird sichergestellt, dass die gesamte Methode entweder komplett erfolgreich durchläuft oder im Fehlerfall keine Teildaten gespeichert werden.
+
+    \item
+    \textbf{updateProfile(Profile profile)}
+    Hier wird das übergebene profile mit entityManager.merge(profile) aktualisiert. Auch diese Methode ist mit @Transactional versehen, wodurch sichergestellt wird, dass alle Änderungen an der Datenbank entweder vollständig übernommen oder – falls ein Fehler auftritt – zurückgesetzt werden.
+
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{pics/Backend/Repositories/Transactional.png}
+    \caption{Transactional}
+    \label{fig:entities}
+\end{figure}
+
+\subsubsection{Wichtige Funktionen}
+
+\subsubsection{addProfile}
+Die Methode `addProfile()` dient dazu, ein neues Profil in die Datenbank zu speichern. Bevor das Profil jedoch eingefügt wird, erfolgt eine Überprüfung, ob bereits ein anderes Profil mit derselben E-Mail-Adresse existiert. Dadurch wird verhindert, dass sich mehrere Benutzer mit identischen E-Mail-Adressen registrieren, was die Datenkonsistenz und Eindeutigkeit der Benutzerprofile sicherstellt.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{pics/Backend/Repositories/addProfile.png}
+    \caption{addProfile}
+    \label{fig:entities}
+\end{figure}
+
+\subsubsection{checkProfile}
+Die Methode "checkProfile()" findet Anwendung im Rahmen des Autorisierungsprozesses für ein Login. Im ersten Schritt wird das Profil des Nutzers anhand der von ihm eingegebenen E-Mail-Adresse aus der Datenbank abgerufen. Daraufhin erfolgt ein Abgleich zwischen dem von dem Nutzer eingegebenen Passwort und dem im Profil gespeicherten Passwort. Diese Methode wird nicht nur beim eigentlichen Login-Prozess verwendet, sondern auch bei jedem Neuladen der Seite, um die Authentifizierung des Nutzers sicherzustellen.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{pics/Backend/Repositories/checkProfile.png}
+    \caption{checkProfile}
+    \label{fig:entities}
+\end{figure}
+
+\subsubsection{getProfileByEmail}
+Die Methode "getProfileByEmail()" nimmt eine signifikante Rolle im Kontext der Verwaltung von Benutzerprofilen ein. Sie wird unter anderem bei der Erstellung eines neuen Profils eingesetzt, um die Existenz doppelter Profile mit identischer E-Mail-Adresse zu verhindern. Dies dient dazu, die Vergabe identischer Anmeldedaten an mehrere Benutzer zu unterbinden. 
+
+Darüber hinaus ist diese Funktion von entscheidender Bedeutung für den Login-Prozess. Da beim Einloggen die eindeutige ID des Profils nicht bekannt ist, sondern lediglich die E-Mail-Adresse des Nutzers vorliegt, kann das zugehörige Profil nicht direkt über den Primärschlüssel mit entityManager.find() ermittelt werden. Stattdessen durchsucht getProfileByEmail() die gespeicherten Profile nach der angegebenen E-Mail-Adresse und gibt das entsprechende Profil zurück. Diese Vorgehensweise gewährleistet, dass die Anmeldeinformationen korrekt sind und die Authentifizierung des korrekten Nutzers sichergestellt werden kann.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{pics/Backend/Repositories/getProfileByEmail.png}
+    \caption{getProfileByEmail}
+    \label{fig:entities}
+\end{figure}
+
+\subsection{Resource}
+Die Resource-Klassen nehmen eine zentrale Rolle in der Kommunikation zwischen dem Frontend und dem Backend ein. Sie fungieren als Vermittler, indem sie über REST-Endpunkte Anfragen aus dem Frontend entgegennehmen und die entsprechenden Daten aus der Datenbank abrufen oder speichern.
+
+Jede Resource-Klasse ist dabei speziell für eine bestimmte Entität zuständig und bildet eine Schnittstelle zu einem zugehörigen Repository. Dies gewährleistet, dass sämtliche Datenbankoperationen effizient und strukturiert durchgeführt werden.Das Frontend kann über die definierten Endpunkte beispielsweise neue Einträge erstellen, bestehende Daten abrufen, aktualisieren oder löschen.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{pics/Backend/Resource/Resources.png}
+    \caption{Resource - Klassen}
+    \label{fig:entities}
+\end{figure}
+
+\subsubsection{Beispiele}
+
+\subsubsection{ProfileResource - Klasse}
+Die ProfileResource-Klasse fungiert als zentrale Schnittstelle zwischen dem Frontend und den Datenbankoperationen, die mit den Profilen assoziiert sind. Sie stellt verschiedene REST-Endpunkte bereit, über die das Frontend mit dem Backend kommunizieren kann.
+
+Mittels dieser Endpunkte können unterschiedliche Aktionen ausgeführt werden, wie beispielsweise das Erstellen, Abrufen und Aktualisieren von Profilen in der Datenbank. Die Klasse nutzt dazu Methoden des ProfileRepositorys, um die gewünschten Datenbankabfragen effizient durchzuführen.
+
+Die ProfileResource-Klasse gewährleistet eine klare Trennung zwischen der Präsentations- und der Datenzugriffsschicht und ermöglicht eine strukturierte und sichere Verwaltung der Profildaten.
+
+\subsubsection{Annotationen}
+
+\subsubsection{@Path}
+Die @Path-Annotation stellt eine zentrale Annotation in Jakarta RESTful Web Services (JAX-RS) dar. Ihre Funktion besteht in der Festlegung einer URI-Ressource (Uniform Resource Identifier) für eine bestimmte Klasse oder Methode. Somit definiert sie den Endpunkt, unter dem eine bestimmte Ressource oder Funktionalität über eine HTTP-Anfrage erreichbar ist.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{pics/Backend/Resource/path-class.png}
+    \caption{Resource - Klassen}
+    \label{fig:entities}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{pics/Backend/Resource/path-method.png}
+    \caption{Resource - Klassen}
+    \label{fig:entities}
+\end{figure}
