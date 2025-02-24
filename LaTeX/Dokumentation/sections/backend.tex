@@ -318,13 +318,69 @@ Die @Path-Annotation stellt eine zentrale Annotation in Jakarta RESTful Web Serv
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{pics/Backend/Resource/path-class.png}
-    \caption{Resource - Klassen}
+    \caption{Path - Klasse}
     \label{fig:entities}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\linewidth]{pics/Backend/Resource/path-method.png}
-    \caption{Resource - Klassen}
+    \caption{Path - Methode}
+    \label{fig:entities}
+\end{figure}
+
+\subsubsection{@Produces}
+
+Die @Produces-Annotation in Jakarta RESTful Web Services (JAX-RS) wird verwendet, um anzugeben, in welchem Format eine Methode eine Antwort zurückgibt. Sie definiert also den MIME-Typ (z. B. JSON oder XML), den der Server an den Client sendet. Wird diese Annotation in einer REST-API-Methode verwendet, stellt sie sicher, dass die zurückgegebenen Daten in einem bestimmten Format vorliegen. Beispielsweise kann @Produces(MediaType.APPLICATION\_JSON) verwendet werden, um sicherzustellen, dass die Antwort als JSON formatiert ist. Dies ist besonders nützlich, da moderne Webanwendungen oft JSON als Standardformat für den Datenaustausch nutzen. Wenn keine @Produces-Annotation angegeben ist, entscheidet der Server anhand der Standardkonfiguration oder der Anfrage des Clients, welches Format zurückgegeben wird.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{pics/Backend/Resource/produces.png}
+    \caption{Produces}
+    \label{fig:entities}
+\end{figure}
+
+\subsubsection{@Consumes}
+
+Die @Consumes-Annotation in Jakarta RESTful Web Services (JAX-RS) spezifiziert das Datenformat, welches von einer REST-API-Methode unterstützt wird. Demnach definiert sie die MIME-Typen, die von der Methode verarbeitet werden können. So impliziert @Consumes(MediaType.APPLICATION\_JSON) die Akzeptanz von Anfragen, die mit JSON-Daten angereichert sind. Diese Annotation erweist sich insbesondere dann als vorteilhaft, wenn der Server strukturierte Daten, beispielsweise aus einer Webanwendung oder einer mobilen Applikation, erhält und diese verarbeitet, bevor sie in die Datenbank gespeichert oder weiterverarbeitet werden.Wird @Consumes nicht angegeben, entscheidet der Server anhand der Standardkonfiguration oder der Anfrage des Clients, welches Format akzeptiert wird.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{pics/Backend/Resource/consumes.png}
+    \caption{Consumes}
+    \label{fig:entities}
+\end{figure}
+
+\subsection{Docker-Compose}
+
+Um die Datenbank für Melius zu starten, wird ein docker-compose.yaml-File verwendet, das es ermöglicht, die benötigten Dienste einfach zu konfigurieren und zu starten. In diesem Fall definiert die Datei zwei Hauptservices: Adminer und PostgreSQL.
+
+Der Adminer-Service verwendet das Docker-Image adminer und stellt eine Weboberfläche bereit, über die die PostgreSQL-Datenbank verwaltet werden kann. Der Service wird so konfiguriert, dass er immer neu startet, falls er ausfällt, und ist unter dem Port 5431 zugänglich, der auf den internen Port 8080 des Adminer-Containers weitergeleitet wird.
+
+Der PostgreSQL-Service verwendet das Docker-Image postgres:16-alpine und stellt die tatsächliche Datenbank für Melius bereit. Auch dieser Service wird so konfiguriert, dass er im Falle eines Ausfalls immer neu startet. Die PostgreSQL-Datenbank wird unter dem Standardport 5432 betrieben, das auf den gleichen Port des Hosts weitergeleitet wird. Die volumes-Direktive sorgt dafür, dass die Daten persistent gespeichert werden, indem sie ein Verzeichnis auf dem Host (./data/postgres) mit dem internen Verzeichnis der Datenbank verbindet. Dadurch bleiben die Daten auch nach dem Neustart des Containers erhalten.
+
+Zudem werden Umgebungsvariablen gesetzt, darunter POSTGRES\_PASSWORD, das für den Zugang zur Datenbank verwendet wird, sowie PGDATA, das den Speicherort der Datenbankdateien innerhalb des Containers festlegt. Schließlich wird der Container so konfiguriert, dass er mit den vom System definierten UID und GID läuft, um Berechtigungsprobleme zu vermeiden, was besonders in Teamumgebungen wichtig sein kann, in denen unterschiedliche Benutzer auf die Docker-Container zugreifen.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{pics/Backend/docker-compose.png}
+    \caption{Docker - Compose}
+    \label{fig:entities}
+\end{figure}
+
+\subsection{Verwendungen im Frontend}
+
+Das Frontend wurde mit Angular entwickelt, weshalb für alle Backend-Anfragen der HTTPClient genutzt wird. Ähnlich wie bei den Resource-Klassen im Backend, wird für jede Entität ein eigener Service im Frontend verwendet, um die entsprechenden Daten zu verwalten und mit dem Backend zu kommunizieren.
+
+\subsubsection{HttpClient}
+
+Der HttpClient von Angular ist ein Service, der es ermöglicht, HTTP-Anfragen zu stellen, um mit externen APIs oder Backend-Servern zu kommunizieren. Er basiert auf dem RxJS-Bibliothek und bietet eine einfache Möglichkeit, asynchrone Anfragen zu stellen, Daten zu empfangen und darauf zu reagieren.
+
+Der HttpClient unterstützt verschiedene HTTP-Methoden wie GET, POST, PUT, DELETE und PATCH und verarbeitet die Antworten in Form von Observables, was bedeutet, dass er auf die Antwort warten kann, ohne den UI-Thread zu blockieren. Durch die Verwendung von Observables können Entwickler einfach mit den zurückgegebenen Daten arbeiten, Fehler behandeln und auf den Status der Anfrage reagieren (z. B. Erfolg oder Fehler).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{pics/Backend/Verwendungen/httpclient-beispiel.png}
+    \caption{Docker - Compose}
     \label{fig:entities}
 \end{figure}

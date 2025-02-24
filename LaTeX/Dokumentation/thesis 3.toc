@@ -108,11 +108,9 @@
 \contentsline {subsubsection}{\nonumberline @Produces}{71}{subsubsection*.180}%
 \contentsline {subsubsection}{\nonumberline @Consumes}{71}{subsubsection*.183}%
 \contentsline {subsection}{\numberline {5.2.5}Docker-Compose}{72}{subsection.5.2.5}%
-\contentsline {subsection}{\numberline {5.2.6}Verwendungen im Frontend}{73}{subsection.5.2.6}%
-\contentsline {subsubsection}{\nonumberline HttpClient}{73}{subsubsection*.187}%
-\contentsline {chapter}{\numberline {6}Zusammenfassung}{75}{chapter.6}%
-\contentsline {chapter}{\nonumberline Abbildungsverzeichnis}{III}{chapter*.189}%
-\contentsline {chapter}{\nonumberline Tabellenverzeichnis}{IV}{chapter*.190}%
-\contentsline {chapter}{\nonumberline List of Listings}{V}{chapter*.191}%
-\contentsline {chapter}{\nonumberline Anhang}{VI}{chapter*.192}%
+\contentsline {chapter}{\numberline {6}Zusammenfassung}{74}{chapter.6}%
+\contentsline {chapter}{\nonumberline Abbildungsverzeichnis}{III}{chapter*.186}%
+\contentsline {chapter}{\nonumberline Tabellenverzeichnis}{IV}{chapter*.187}%
+\contentsline {chapter}{\nonumberline List of Listings}{V}{chapter*.188}%
+\contentsline {chapter}{\nonumberline Anhang}{VI}{chapter*.189}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
