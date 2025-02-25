@@ -1,15 +1,17 @@
 import { Component } from '@angular/core';
 import {NgClass, NgIf} from "@angular/common";
 import {PaginatorModule} from "primeng/paginator";
+import {TranslatePipe} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-group-avatar',
   standalone: true,
-  imports: [
-    NgIf,
-    PaginatorModule,
-    NgClass
-  ],
+    imports: [
+        NgIf,
+        PaginatorModule,
+        NgClass,
+        TranslatePipe
+    ],
   templateUrl: './group-avatar.component.html',
   styleUrl: './group-avatar.component.css'
 })

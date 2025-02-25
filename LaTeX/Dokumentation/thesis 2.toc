@@ -1,0 +1,90 @@
+\babel@toc {ngerman}{}\relax 
+\contentsline {chapter}{\numberline {1}Einleitung}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Beschreibung}{1}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Grundfunktion}{1}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Gruppenfunktion}{3}{subsection.1.1.2}%
+\contentsline {section}{\numberline {1.2}Namensfindung}{4}{section.1.2}%
+\contentsline {chapter}{\numberline {2}Umfeldanalyse}{5}{chapter.2}%
+\contentsline {chapter}{\numberline {3}Technologien}{6}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Backend}{6}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Quarkus}{6}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Datenmodellierung mit Jakarta}{6}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}PostgreSQL-Datenbank}{6}{subsection.3.1.3}%
+\contentsline {subsection}{\numberline {3.1.4}Docker und Docker-Composer}{7}{subsection.3.1.4}%
+\contentsline {subsection}{\numberline {3.1.5}Zusammenspiel der Technologien}{7}{subsection.3.1.5}%
+\contentsline {section}{\numberline {3.2}Frontend}{8}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}TypeScript}{8}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Angular}{8}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Tailwind CSS}{9}{subsection.3.2.3}%
+\contentsline {chapter}{\numberline {4}Design}{10}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Grundidee}{10}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Das Logo und die ersten Entwürfe}{11}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Erster Entwurf}{12}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Zweiter Entwurf}{13}{subsection.4.2.2}%
+\contentsline {subsubsection}{\nonumberline Veränderungen und Verbesserungen}{13}{subsubsection*.9}%
+\contentsline {subsubsection}{\nonumberline Verwendung von Farbverläufen}{13}{subsubsection*.11}%
+\contentsline {subsubsection}{\nonumberline Das Farbschema}{13}{subsubsection*.13}%
+\contentsline {subsection}{\numberline {4.2.3}Finaler Entwurf}{14}{subsection.4.2.3}%
+\contentsline {section}{\numberline {4.3}Entwürfe der Website}{15}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Die Landing page}{15}{subsection.4.3.1}%
+\contentsline {subsubsection}{\nonumberline Design und Struktur}{15}{subsubsection*.16}%
+\contentsline {subsubsection}{\nonumberline Das Logo als zentrales Element}{15}{subsubsection*.18}%
+\contentsline {subsubsection}{\nonumberline Variation 1: Minimalistisch und Schlicht}{16}{subsubsection*.20}%
+\contentsline {subsubsection}{\nonumberline Variation 2: Integration kreativer Elemente}{16}{subsubsection*.23}%
+\contentsline {subsubsection}{\nonumberline Variation 3: Finalisierte, strukturierte Darstellung}{17}{subsubsection*.26}%
+\contentsline {subsection}{\numberline {4.3.2}Anmeldung und Registrierung}{17}{subsection.4.3.2}%
+\contentsline {subsubsection}{\nonumberline Die Anmeldeseite}{18}{subsubsection*.29}%
+\contentsline {subsubsection}{\nonumberline Die Registrierungsseite}{19}{subsubsection*.32}%
+\contentsline {subsection}{\numberline {4.3.3}Die Startseite}{20}{subsection.4.3.3}%
+\contentsline {subsubsection}{\nonumberline Der Willkommens-Bereich}{20}{subsubsection*.36}%
+\contentsline {subsubsection}{\nonumberline Die interaktiven Boxen}{21}{subsubsection*.39}%
+\contentsline {subsubsection}{\nonumberline Die Navigation}{21}{subsubsection*.41}%
+\contentsline {subsection}{\numberline {4.3.4}Lebenslauf}{22}{subsection.4.3.4}%
+\contentsline {subsubsection}{\nonumberline Ausbildungen}{23}{subsubsection*.45}%
+\contentsline {subsubsection}{\nonumberline Allgemein}{23}{subsubsection*.47}%
+\contentsline {subsubsection}{\nonumberline Berufserfahrungen}{24}{subsubsection*.49}%
+\contentsline {subsubsection}{\nonumberline Benutzerfreundlichkeit und Anpassungsmöglichkeiten}{24}{subsubsection*.51}%
+\contentsline {subsubsection}{\nonumberline Die Drag and Drop Funktion}{25}{subsubsection*.53}%
+\contentsline {subsection}{\numberline {4.3.5}Projekte}{26}{subsection.4.3.5}%
+\contentsline {subsection}{\numberline {4.3.6}Kompetenzen}{29}{subsection.4.3.6}%
+\contentsline {subsection}{\numberline {4.3.7}Preview}{31}{subsection.4.3.7}%
+\contentsline {subsection}{\numberline {4.3.8}Die Gruppen-Seite}{31}{subsection.4.3.8}%
+\contentsline {subsubsection}{\nonumberline Suchleiste}{32}{subsubsection*.61}%
+\contentsline {subsubsection}{\nonumberline Gruppen erstellen}{34}{subsubsection*.65}%
+\contentsline {subsubsection}{\nonumberline Meine Gruppen}{36}{subsubsection*.68}%
+\contentsline {subsubsection}{\nonumberline Admin Ansicht einer Gruppe}{36}{subsubsection*.71}%
+\contentsline {subsubsection}{\nonumberline Gast Ansicht einer Gruppe}{39}{subsubsection*.75}%
+\contentsline {subsection}{\numberline {4.3.9}Die Einstellungen}{40}{subsection.4.3.9}%
+\contentsline {subsubsection}{\nonumberline Auswahl der Sprache}{41}{subsubsection*.79}%
+\contentsline {subsubsection}{\nonumberline Auswahl des Hintergrundes}{42}{subsubsection*.83}%
+\contentsline {chapter}{\numberline {5}Umsetzung}{44}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Frontend}{44}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Entiwcklungsumgebung}{44}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Anmeldung und Registrierung - Form Validation}{46}{subsection.5.1.2}%
+\contentsline {subsubsection}{\nonumberline register-form.html}{46}{subsubsection*.88}%
+\contentsline {subsubsection}{\nonumberline register-form.ts}{46}{subsubsection*.91}%
+\contentsline {subsection}{\numberline {5.1.3}Drag und Drop Funktion}{47}{subsection.5.1.3}%
+\contentsline {subsubsection}{\nonumberline Möglichkeiten für Interaktion des Benutzers}{48}{subsubsection*.95}%
+\contentsline {subsubsection}{\nonumberline Was im Hintergrund passiert}{49}{subsubsection*.98}%
+\contentsline {subsection}{\numberline {5.1.4}Auswahl der Sprache bzw. die Mehrsparchigkeit}{51}{subsection.5.1.4}%
+\contentsline {subsubsection}{\nonumberline Auswahl der Sprache}{51}{subsubsection*.103}%
+\contentsline {subsubsection}{\nonumberline Übersetzungsdatein}{54}{subsubsection*.111}%
+\contentsline {subsubsection}{\nonumberline Nutzung der translate-pipe in den .html Datein}{54}{subsubsection*.114}%
+\contentsline {section}{\numberline {5.2}Backend}{55}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Entwicklungsumgebung}{55}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Model}{57}{subsection.5.2.2}%
+\contentsline {subsubsection}{\nonumberline Beispiele}{58}{subsubsection*.119}%
+\contentsline {subsubsection}{\nonumberline Portfolio - Klasse}{58}{subsubsection*.121}%
+\contentsline {subsubsection}{\nonumberline Annotationen}{58}{subsubsection*.123}%
+\contentsline {subsubsection}{\nonumberline @Id}{58}{subsubsection*.125}%
+\contentsline {subsubsection}{\nonumberline @OneToOne}{58}{subsubsection*.127}%
+\contentsline {subsubsection}{\nonumberline @OneToMany}{59}{subsubsection*.131}%
+\contentsline {subsubsection}{\nonumberline @ManyToMany}{59}{subsubsection*.134}%
+\contentsline {subsubsection}{\nonumberline Zusätzliche String-Felder}{60}{subsubsection*.137}%
+\contentsline {subsection}{\numberline {5.2.3}Repository}{61}{subsection.5.2.3}%
+\contentsline {chapter}{\numberline {6}Zusammenfassung}{62}{chapter.6}%
+\contentsline {chapter}{\nonumberline Abbildungsverzeichnis}{III}{chapter*.140}%
+\contentsline {chapter}{\nonumberline Tabellenverzeichnis}{IV}{chapter*.141}%
+\contentsline {chapter}{\nonumberline List of Listings}{V}{chapter*.142}%
+\contentsline {chapter}{\nonumberline Anhang}{VI}{chapter*.143}%
+\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

@@ -1,10 +1,6 @@
-import {Component, ElementRef, HostListener, inject, OnInit, ViewChild} from '@angular/core';
-import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
+import {Component, inject, OnInit, ViewChild} from '@angular/core';
+import {Router, RouterOutlet} from '@angular/router';
 import {SideBarComponent} from "./navigation/side-bar/side-bar.component";
-import {MatButton} from "@angular/material/button";
-import {MatIcon} from "@angular/material/icon";
-import {NotFoundComponent} from "./pages/not-found/not-found.component";
-import {filter} from "rxjs";
 import {Profile} from "./interfaces/profile";
 import {ProfileService} from "./services/profile.service";
 import {PortfolioService} from "./services/portfolio.service";

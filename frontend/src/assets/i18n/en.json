@@ -1,4 +1,8 @@
 {
+  "landing": {
+    "registerBtn": "Start now!",
+    "loginBtn": "Login"
+  },
   "home": {
     "avatar": {
       "add": "Add",

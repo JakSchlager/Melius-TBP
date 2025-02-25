@@ -1,5 +1,5 @@
 import {Component, inject} from '@angular/core';
-import {Router, RouterLink} from "@angular/router";
+import {Router} from "@angular/router";
 import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule, ValidatorFn, Validators} from "@angular/forms";
 import {NgIf} from "@angular/common";
 import {ProfileService} from "../../services/profile.service";
@@ -13,7 +13,6 @@ import {Portfolio} from "../../interfaces/Portfolio";
   selector: 'app-register-form',
   standalone: true,
   imports: [
-    RouterLink,
     ReactiveFormsModule,
     NgIf
   ],
@@ -34,7 +33,7 @@ export class RegisterFormComponent {
     password: new FormControl<string>('', [Validators.required, Validators.pattern(
       /(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*#?&^_-]).{8,}/
     ),]),
-    confirmPassword: new FormControl<string>('', Validators.required),
+    confirmPassword: new FormControl<string>('', [Validators.required, this.checkPasswordMatch]),
     termsAndServiceBox: new FormControl<boolean>(false, Validators.requiredTrue),
   }, { validators: this.checkPasswordMatch() });
 
