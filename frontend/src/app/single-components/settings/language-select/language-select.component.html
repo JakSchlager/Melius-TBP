@@ -1,4 +1,4 @@
-<div class="relative inline-block text-left">
+<div class="relative inline-block text-left w-fit">
   <!-- Button für die ausgewählte Sprache -->
   <button
     class="items-center font-semibold flex justify-between w-36 rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm text-gray-700 hover:bg-gray-100 duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
@@ -28,16 +28,16 @@
 
   <!-- Dropdown Menü -->
   <div
-    class="origin-top-left absolute left-0 mt-2 px-1 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+    class="w-full origin-top-left absolute left-0 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
     role="menu"
     aria-orientation="vertical"
     aria-labelledby="menu-button"
     *ngIf="showAvatarOptions || isAnimating" [ngClass]="{'animate-fade-down duration-150': showAvatarOptions, 'animate-out fade-out': !showAvatarOptions && isAnimating}" (animationend)="onAnimationEnd()"
   >
-    <div class="py-2" role="none">
+    <div class="" role="none">
       <button
         *ngFor="let language of languages"
-        class="flex items-center px-6 py-2 rounded-md font-semibold text-gray-700 hover:bg-accent-blue duration-150 w-full"
+        class="flex items-center px-6 py-2 rounded-md text-sm bg-white text-gray-700 hover:bg-gray-100 duration-150 w-full"
         (click)="selectLanguage(language)"
         role="menuitem"
       >

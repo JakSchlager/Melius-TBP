@@ -88,8 +88,8 @@
     -->
 
     <div class="flex flex-col">
-      <div *ngIf="!isChildRoute" class="flex space-x-8 justify-between columns-3 mt-10">
-        <div class="w-full py-10 flex flex-col justify-center bg-white shadow-custom-shadow border-4 border-primary-color rounded-lg animate-in fade-in zoom-in duration-500 hover:-translate-y-2 hover:bg-gray-100 transition-duration-150" [routerLink]="['/home/cv']">
+      <div *ngIf="!isChildRoute" class="flex space-x-8 justify-between columns-3 mt-20">
+        <div class="w-full py-10 flex flex-col justify-center bg-white shadow-custom-shadow rounded-lg animate-in fade-in zoom-in duration-500 hover:-translate-y-2 hover:bg-gray-100 transition-duration-150" [routerLink]="['/home/cv']">
           <div class="py-4 flex justify-center">
             <img ngSrc="assets/icons/home-page/profile.svg" alt="home_cv_icon" class="w-60 h-60 " height="16" width="16">
           </div>
@@ -98,7 +98,7 @@
           </div>
         </div>
 
-        <div class="w-full py-10 flex flex-col justify-center bg-white shadow-custom-shadow border-4 border-intermediate-color rounded-lg animate-in fade-in zoom-in duration-700 hover:-translate-y-2 hover:bg-gray-100 transition-duration-150" [routerLink]="['/home/projects']">
+        <div class="w-full py-10 flex flex-col justify-center bg-white shadow-custom-shadow rounded-lg animate-in fade-in zoom-in duration-700 hover:-translate-y-2 hover:bg-gray-100 transition-duration-150" [routerLink]="['/home/projects']">
           <div class="py-4 flex justify-center">
             <img ngSrc="assets/icons/home-page/projects.svg" alt="home_cv_icon" class="w-60 h-60 " height="16"
                  width="16">
@@ -109,7 +109,7 @@
           </div>
         </div>
 
-        <div class="w-full py-10 flex flex-col justify-center bg-white shadow-custom-shadow border-4 border-secondary-color rounded-lg animate-in fade-in zoom-in duration-1000 hover:-translate-y-2 hover:bg-gray-100 transition-duration-150" [routerLink]="['/home/strengths']">
+        <div class="w-full py-10 flex flex-col justify-center bg-white shadow-custom-shadow rounded-lg animate-in fade-in zoom-in duration-1000 hover:-translate-y-2 hover:bg-gray-100 transition-duration-150" [routerLink]="['/home/strengths']">
           <div class="py-4 flex justify-center">
             <img ngSrc="assets/icons/home-page/skills.svg" alt="home_cv_icon" class="w-60 h-60 " height="16" width="16">
           </div>
@@ -120,8 +120,17 @@
         </div>
       </div>
 
-      <div class="w-full h-full pb-10">
+      <div class="w-full h-full">
         <router-outlet></router-outlet>
+      </div>
+    </div>
+
+    <!-- footer -->
+
+    <div class="w-full flex justify-center mt-16 py-10">
+      <div class="flex items-center space-x-2 h-fit">
+        <small class="text-gray-500">All rights reserved to ©Melius-TBP.</small>
+        <img class="w-6 h-6" src="assets/Melius-TBP_Logo_Simple.svg" alt="melius_logo" >
       </div>
     </div>
   </div>
