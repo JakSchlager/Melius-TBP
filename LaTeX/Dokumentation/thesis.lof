@@ -56,25 +56,25 @@
 \contentsline {figure}{\numberline {55}{\ignorespaces Übernehmen der ausgewählten Sprache im System}}{57}{figure.caption.114}%
 \contentsline {figure}{\numberline {56}{\ignorespaces Übersetzungsdatei in Deutsch}}{58}{figure.caption.117}%
 \contentsline {figure}{\numberline {57}{\ignorespaces Übersetzungsdatei in Englisch}}{58}{figure.caption.117}%
-\contentsline {figure}{\numberline {58}{\ignorespaces Beispiel für die Verwendung der Sprachübersetzun}}{58}{figure.caption.120}%
-\contentsline {figure}{\numberline {59}{\ignorespaces Intellij IDEA - Jetbrains}}{60}{figure.caption.121}%
-\contentsline {figure}{\numberline {60}{\ignorespaces Enitity - Klassen}}{61}{figure.caption.122}%
-\contentsline {figure}{\numberline {61}{\ignorespaces OneToOne}}{62}{figure.caption.133}%
-\contentsline {figure}{\numberline {62}{\ignorespaces OneToOne}}{63}{figure.caption.134}%
-\contentsline {figure}{\numberline {63}{\ignorespaces OneToMany}}{63}{figure.caption.137}%
-\contentsline {figure}{\numberline {64}{\ignorespaces ManyToMany}}{64}{figure.caption.140}%
-\contentsline {figure}{\numberline {65}{\ignorespaces Portfolio - Strings}}{64}{figure.caption.143}%
-\contentsline {figure}{\numberline {66}{\ignorespaces Repository - Klassen}}{65}{figure.caption.144}%
-\contentsline {figure}{\numberline {67}{\ignorespaces ApplicationScoped}}{66}{figure.caption.153}%
-\contentsline {figure}{\numberline {68}{\ignorespaces Transactional}}{67}{figure.caption.156}%
-\contentsline {figure}{\numberline {69}{\ignorespaces addProfile}}{68}{figure.caption.161}%
-\contentsline {figure}{\numberline {70}{\ignorespaces checkProfile}}{68}{figure.caption.164}%
-\contentsline {figure}{\numberline {71}{\ignorespaces getProfileByEmail}}{69}{figure.caption.167}%
-\contentsline {figure}{\numberline {72}{\ignorespaces Resource - Klassen}}{70}{figure.caption.168}%
-\contentsline {figure}{\numberline {73}{\ignorespaces Path - Klasse}}{71}{figure.caption.177}%
-\contentsline {figure}{\numberline {74}{\ignorespaces Path - Methode}}{71}{figure.caption.178}%
-\contentsline {figure}{\numberline {75}{\ignorespaces Produces}}{71}{figure.caption.181}%
-\contentsline {figure}{\numberline {76}{\ignorespaces Consumes}}{72}{figure.caption.184}%
-\contentsline {figure}{\numberline {77}{\ignorespaces Docker - Compose}}{73}{figure.caption.185}%
-\contentsline {figure}{\numberline {78}{\ignorespaces Docker - Compose}}{74}{figure.caption.188}%
+\contentsline {figure}{\numberline {58}{\ignorespaces Beispiel für die Verwendung der Sprachübersetzun}}{59}{figure.caption.120}%
+\contentsline {figure}{\numberline {59}{\ignorespaces Intellij IDEA - Jetbrains}}{61}{figure.caption.121}%
+\contentsline {figure}{\numberline {60}{\ignorespaces Enitity - Klassen}}{62}{figure.caption.122}%
+\contentsline {figure}{\numberline {61}{\ignorespaces OneToOne}}{63}{figure.caption.133}%
+\contentsline {figure}{\numberline {62}{\ignorespaces OneToOne}}{64}{figure.caption.134}%
+\contentsline {figure}{\numberline {63}{\ignorespaces OneToMany}}{64}{figure.caption.137}%
+\contentsline {figure}{\numberline {64}{\ignorespaces ManyToMany}}{65}{figure.caption.140}%
+\contentsline {figure}{\numberline {65}{\ignorespaces Portfolio - Strings}}{65}{figure.caption.143}%
+\contentsline {figure}{\numberline {66}{\ignorespaces Repository - Klassen}}{66}{figure.caption.144}%
+\contentsline {figure}{\numberline {67}{\ignorespaces ApplicationScoped}}{67}{figure.caption.153}%
+\contentsline {figure}{\numberline {68}{\ignorespaces Transactional}}{68}{figure.caption.156}%
+\contentsline {figure}{\numberline {69}{\ignorespaces addProfile}}{69}{figure.caption.161}%
+\contentsline {figure}{\numberline {70}{\ignorespaces checkProfile}}{69}{figure.caption.164}%
+\contentsline {figure}{\numberline {71}{\ignorespaces getProfileByEmail}}{70}{figure.caption.167}%
+\contentsline {figure}{\numberline {72}{\ignorespaces Resource - Klassen}}{71}{figure.caption.168}%
+\contentsline {figure}{\numberline {73}{\ignorespaces Path - Klasse}}{72}{figure.caption.177}%
+\contentsline {figure}{\numberline {74}{\ignorespaces Path - Methode}}{72}{figure.caption.178}%
+\contentsline {figure}{\numberline {75}{\ignorespaces Produces}}{72}{figure.caption.181}%
+\contentsline {figure}{\numberline {76}{\ignorespaces Consumes}}{73}{figure.caption.184}%
+\contentsline {figure}{\numberline {77}{\ignorespaces Docker - Compose}}{74}{figure.caption.185}%
+\contentsline {figure}{\numberline {78}{\ignorespaces Docker - Compose}}{75}{figure.caption.188}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
