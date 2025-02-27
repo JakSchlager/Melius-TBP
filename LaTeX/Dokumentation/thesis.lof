@@ -60,9 +60,9 @@
 \contentsline {figure}{\numberline {59}{\ignorespaces Intellij IDEA - Jetbrains}}{61}{figure.caption.121}%
 \contentsline {figure}{\numberline {60}{\ignorespaces Enitity - Klassen}}{62}{figure.caption.122}%
 \contentsline {figure}{\numberline {61}{\ignorespaces OneToOne}}{63}{figure.caption.133}%
-\contentsline {figure}{\numberline {62}{\ignorespaces OneToOne}}{64}{figure.caption.134}%
-\contentsline {figure}{\numberline {63}{\ignorespaces OneToMany}}{64}{figure.caption.137}%
-\contentsline {figure}{\numberline {64}{\ignorespaces ManyToMany}}{65}{figure.caption.140}%
+\contentsline {figure}{\numberline {62}{\ignorespaces OneToOne}}{63}{figure.caption.134}%
+\contentsline {figure}{\numberline {63}{\ignorespaces OneToMany}}{63}{figure.caption.137}%
+\contentsline {figure}{\numberline {64}{\ignorespaces ManyToMany}}{64}{figure.caption.140}%
 \contentsline {figure}{\numberline {65}{\ignorespaces Portfolio - Strings}}{65}{figure.caption.143}%
 \contentsline {figure}{\numberline {66}{\ignorespaces Repository - Klassen}}{66}{figure.caption.144}%
 \contentsline {figure}{\numberline {67}{\ignorespaces ApplicationScoped}}{67}{figure.caption.153}%
@@ -76,5 +76,9 @@
 \contentsline {figure}{\numberline {75}{\ignorespaces Produces}}{72}{figure.caption.181}%
 \contentsline {figure}{\numberline {76}{\ignorespaces Consumes}}{73}{figure.caption.184}%
 \contentsline {figure}{\numberline {77}{\ignorespaces Docker - Compose}}{74}{figure.caption.185}%
-\contentsline {figure}{\numberline {78}{\ignorespaces Docker - Compose}}{75}{figure.caption.188}%
+\contentsline {figure}{\numberline {78}{\ignorespaces HttpClient}}{75}{figure.caption.188}%
+\contentsline {figure}{\numberline {79}{\ignorespaces onRegister1}}{78}{figure.caption.195}%
+\contentsline {figure}{\numberline {80}{\ignorespaces onRegister2}}{78}{figure.caption.195}%
+\contentsline {figure}{\numberline {81}{\ignorespaces onLogin}}{79}{figure.caption.198}%
+\contentsline {figure}{\numberline {82}{\ignorespaces Laden der Daten aus dem Backend}}{80}{figure.caption.201}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

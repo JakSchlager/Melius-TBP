@@ -44,8 +44,6 @@ Die Kombination aus der Vertrautheit des Teams mit der Umgebung, der leistungsst
     \label{fig:intelij}
 \end{figure}
 
-\newpage
-
 \subsection{Model}
 
 Im Melius-Backend erfolgt die Erstellung und Verwaltung aller Datenbanktabellen unter Zuhilfenahme der Jakarta Persistence API (JPA) in Kombination mit Hibernate als Object-Relational Mapping (ORM)-Framework. Dies impliziert, dass jede in der Anwendung definierte Java-Entitätsklasse einer eigenen Tabelle in der Datenbank entspricht.
@@ -182,7 +180,7 @@ Verweist auf die portfolio_id-Spalte in der Join-Tabelle.
 \begin{verbatim}
 inverseJoinColumns = @JoinColumn(name="characteristic_id"):
 \end{verbatim}
-Verweist auf die characteristic_id-Spalte.
+Verweist auf die characteristic\_id-Spalte.
 
 \end{itemize}
 
@@ -199,8 +197,6 @@ Diese Felder werden verwendet, um die Spalten - Positionen der einzelnen Boxen i
     \caption{Portfolio - Strings}
     \label{fig:entities}
 \end{figure}
-
-\newpage
 
 \subsection{Repository}
 Zur Gewährleistung einer effizienten Verwaltung und Interaktion mit den verschiedenen Entity-Klassen wurde für nahezu jede Entitätsklasse eine entsprechende Repository-Klasse implementiert.Die Repository-Klassen fungieren als Schnittstelle zwischen der Anwendung und der Datenbank und ermöglichen grundlegende CRUD-Operationen (Create, Read, Update, Delete) sowie komplexe Datenabfragen.
@@ -274,7 +270,7 @@ Die Methode "checkProfile()" findet Anwendung im Rahmen des Autorisierungsprozes
     \centering
     \includegraphics[width=0.75\linewidth]{pics/Backend/Repositories/checkProfile.png}
     \caption{checkProfile}
-    \label{fig:entities}
+    \label{fig:checkProfile}
 \end{figure}
 
 \subsubsection{getProfileByEmail}
@@ -286,7 +282,7 @@ Darüber hinaus ist diese Funktion von entscheidender Bedeutung für den Login-P
     \centering
     \includegraphics[width=0.75\linewidth]{pics/Backend/Repositories/getProfileByEmail.png}
     \caption{getProfileByEmail}
-    \label{fig:entities}
+    \label{fig:getProfileByEmail}
 \end{figure}
 
 \subsection{Resource}
@@ -298,7 +294,7 @@ Jede Resource-Klasse ist dabei speziell für eine bestimmte Entität zuständig 
     \centering
     \includegraphics[width=0.5\linewidth]{pics/Backend/Resource/Resources.png}
     \caption{Resource - Klassen}
-    \label{fig:entities}
+    \label{fig:resources}
 \end{figure}
 
 \subsubsection{Beispiele}
@@ -319,14 +315,14 @@ Die @Path-Annotation stellt eine zentrale Annotation in Jakarta RESTful Web Serv
     \centering
     \includegraphics[width=0.5\linewidth]{pics/Backend/Resource/path-class.png}
     \caption{Path - Klasse}
-    \label{fig:entities}
+    \label{fig:pathClass}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\linewidth]{pics/Backend/Resource/path-method.png}
     \caption{Path - Methode}
-    \label{fig:entities}
+    \label{fig:pathMethod}
 \end{figure}
 
 \subsubsection{@Produces}
@@ -337,7 +333,7 @@ Die @Produces-Annotation in Jakarta RESTful Web Services (JAX-RS) wird verwendet
     \centering
     \includegraphics[width=0.75\linewidth]{pics/Backend/Resource/produces.png}
     \caption{Produces}
-    \label{fig:entities}
+    \label{fig:produces}
 \end{figure}
 
 \subsubsection{@Consumes}
@@ -348,7 +344,7 @@ Die @Consumes-Annotation in Jakarta RESTful Web Services (JAX-RS) spezifiziert d
     \centering
     \includegraphics[width=0.75\linewidth]{pics/Backend/Resource/consumes.png}
     \caption{Consumes}
-    \label{fig:entities}
+    \label{fig:consumes}
 \end{figure}
 
 \subsection{Docker-Compose}
@@ -365,10 +361,10 @@ Zudem werden Umgebungsvariablen gesetzt, darunter POSTGRES\_PASSWORD, das für d
     \centering
     \includegraphics[width=0.75\linewidth]{pics/Backend/docker-compose.png}
     \caption{Docker - Compose}
-    \label{fig:entities}
+    \label{fig:dockerCompose}
 \end{figure}
 
-\subsection{Verwendungen im Frontend}
+\subsection{Implementierung im Frontend}
 
 Das Frontend wurde mit Angular entwickelt, weshalb für alle Backend-Anfragen der HTTPClient genutzt wird. Ähnlich wie bei den Resource-Klassen im Backend, wird für jede Entität ein eigener Service im Frontend verwendet, um die entsprechenden Daten zu verwalten und mit dem Backend zu kommunizieren.
 
@@ -381,6 +377,132 @@ Der HttpClient unterstützt verschiedene HTTP-Methoden wie GET, POST, PUT, DELET
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\linewidth]{pics/Backend/Verwendungen/httpclient-beispiel.png}
-    \caption{Docker - Compose}
-    \label{fig:entities}
+    \caption{HttpClient}
+    \label{fig:httpClient}
+\end{figure}
+
+\subsubsection{LocalStorage}
+
+LocalStorage ist eine Web-Storage-API, die es ermöglicht, Daten dauerhaft im Browser zu speichern. Im Gegensatz zum SessionStorage, bei dem die gespeicherten Daten nach dem Schließen des Browser-Tabs oder -Fensters gelöscht werden, bleiben die Daten im LocalStorage erhalten, bis sie explizit gelöscht werden oder der Benutzer den Browser-Cache leert.
+
+LocalStorage eignet sich besonders für persistente Benutzereinstellungen, Sitzungsdaten oder die Zwischenspeicherung von Formulardaten, da diese nicht durch ein einfaches Neuladen der Seite verloren gehen. Die gespeicherten Informationen sind domänenspezifisch, d.h. sie können nur von der Website gelesen werden, von der sie gespeichert wurden (aus Sicherheitsgründen, um Cross-Site-Scripting-Angriffe zu verhindern).
+
+Die Daten werden im Key-Value-Format als Strings gespeichert. Um komplexere Daten wie Objekte oder Arrays speichern zu können, müssen diese zunächst mit JSON.stringify() in einen String umgewandelt und beim Abruf mit JSON.parse() wieder in ihre ursprüngliche Form zurückverwandelt werden.
+
+Da LocalStorage nur Strings speichert und eine Größenbeschränkung von ca. 5 MB pro Domain hat, eignet es sich nicht zum Speichern großer Datenmengen. Dennoch ist es ein sehr praktisches Werkzeug für viele Webanwendungen, insbesondere für die Persistenz von Benutzerinformationen und die Optimierung der Benutzererfahrung.
+
+\subsubsection{SessionStorage}
+
+SessionStorage ist ebenfalls eine Web-Storage-API, das die temporäre Speicherung von Daten im Browser ermöglicht, solange die aktuelle Browsersitzung aktiv ist. Im Gegensatz zum LocalStorage, bei dem die gespeicherten Daten dauerhaft erhalten bleiben, werden die Daten im SessionStorage gelöscht, sobald der Benutzer den Browser-Tab oder das Fenster schließt.
+
+SessionStorage wird häufig verwendet, um sitzungsbezogene Daten zu speichern, wie z. B:
+
+\begin{itemize}
+    \item 
+    Temporäre Benutzerdaten, die nur während einer Sitzung benötigt werden
+
+    \item 
+    Zwischengespeicherte Formulareingaben, um Datenverluste während der Navigation zu vermeiden
+
+    \item
+    Session-spezifische Einstellungen oder Statusinformationen innerhalb einer Web-Anwendung
+
+\end{itemize}
+
+Ähnlich wie beim LocalStorage werden die Daten als Schlüssel-Wert-Paare gespeichert und sind nur für die Domain und den Tab/Fenster zugänglich, in dem sie gespeichert wurden. Das bedeutet, dass sie nicht auf andere Tabs oder Fenster der gleichen Website übertragen werden können.
+
+Ein wesentlicher Vorteil des SessionStorage ist, dass er eine einfache Möglichkeit bietet, temporäre Daten sicher zu speichern, ohne dass sich der Benutzer um das manuelle Löschen kümmern muss. Es eignet sich besonders für Anwendungen, bei denen die Daten nur während einer einzigen Sitzung benötigt werden, wie z.B. temporäre Authentifizierungsdaten oder Cache-Daten während der Nutzung einer Web-Anwendung.
+
+
+
+\subsubsection{Registrierung}
+
+Nachdem das Registrierungsformular vollständig ausgefüllt wurde, wird die Methode onRegister() in der entsprechenden Component aufgerufen. Diese Funktion durchläuft dann Schritt für Schritt den Prozess der Erstellung eines neuen Benutzerprofils und eines neuen Portfolios.
+
+Zuerst wird geprüft, ob das Formular gültig ist. Ist das Formular ungültig - z.B. weil Pflichtfelder nicht ausgefüllt sind oder ungültige Eingaben gemacht wurden - wird die Registrierung abgebrochen und eine entsprechende Fehlermeldung ausgegeben. Ist das Formular hingegen gültig, wird ein neues Profilobjekt mit den eingegebenen Daten erzeugt.
+
+Anschließend wird eine Methode im profileService aufgerufen, die dieses neu erstellte Profil mit einem POST-Request an das Backend sendet. Das Backend verarbeitet die Anfrage, speichert das Profil in der Datenbank und gibt eine Bestätigung über den erfolgreichen Vorgang zurück.
+
+Nachdem das Profil erfolgreich in der Datenbank angelegt wurde, müssen noch die 1-zu-1-Beziehungen zwischen dem Profil und anderen Entitäten, insbesondere dem Portfolio, hergestellt werden. Da das Profil bereits existiert, muss zunächst ein zugehöriges GeneralInfo-Objekt angelegt werden. Dieses Objekt enthält allgemeine Informationen über das Portfolio und ist direkt mit dem Profil verknüpft.
+
+Für die Erstellung des GeneralInfo-Objekts wird der entsprechende Service verwendet, der seinerseits eine POST-Anfrage an das Backend sendet. Dadurch wird ein leeres GeneralInfo-Objekt in der Datenbank angelegt, das später mit weiteren Informationen gefüllt werden kann.
+
+Im nächsten Schritt wird das Portfolio-Objekt angelegt. Ein Portfolio ist in Melius fest mit einem Profil und einem GeneralInfo-Objekt verknüpft. Daher wird das neu angelegte Portfolio so konfiguriert, dass es sowohl das zugehörige Profil als auch das GeneralInfo-Objekt referenziert. Auch dieses Portfolio-Objekt wird schließlich mit einem POST-Request an das Backend übertragen und dauerhaft in der Datenbank gespeichert.
+
+Damit der Benutzer nach der Registrierung angemeldet bleibt, wird das erstellte Profil im LocalStorage des Browsers gespeichert. Dies hat den Vorteil, dass der Benutzer auch bei einem Reload der Seite nicht sofort ausgeloggt wird und sich erneut anmelden muss. Stattdessen wird das gespeicherte Profil aus dem LocalStorage geladen und in der Anwendung verwendet.
+
+Durch diesen mehrstufigen Prozess werden die Grundstrukturen für ein neues Portfolio erfolgreich angelegt. Die Kombination aus Profil, GeneralInfo und Portfolio bildet die Grundlage für weitere Anpassungen und Ergänzungen innerhalb der Plattform.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.5\textwidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{pics/Backend/Verwendungen/onregister1.png}
+      \captionof{figure}{onRegister1}
+    \end{minipage}%
+    \begin{minipage}{.5\textwidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{pics/Backend/Verwendungen/onregister2.png}
+      \captionof{figure}{onRegister2}
+    \end{minipage}
+\end{figure}
+
+\subsubsection{Login}
+
+Der Login-Prozess in Melius folgt einem sehr ähnlichen Ablauf wie der Registrierungsprozess, mit dem Unterschied, dass hier ein bereits bestehendes Profil authentifiziert wird, anstatt ein neues Profil zu erstellen.
+
+Nachdem der Benutzer das Login-Formular ausgefüllt hat, wird die Methode onLogin() in der entsprechenden Component aufgerufen. Diese Funktion übernimmt die gesamte Steuerung des Anmeldevorgangs. Zunächst werden die vom Benutzer eingegebene E-Mail-Adresse und das Passwort aus dem Formular ausgelesen und per POST-Request an das Backend gesendet.
+
+Das Backend prüft dann, ob ein Profil mit der angegebenen E-Mail-Adresse existiert und ob das eingegebene Passwort mit dem in der Datenbank gespeicherten Passwort übereinstimmt. Wenn die Anmeldedaten korrekt sind, sendet das Backend das entsprechende Profilobjekt zurück. Wenn die E-Mail-Adresse nicht existiert oder das Passwort falsch ist, wird eine Fehlermeldung zurückgegeben und die Anmeldung abgebrochen.
+
+Sobald das Backend ein gültiges Profil zurückgibt, muss dieses auf der Client-Seite gespeichert werden, damit der Benutzer für die aktuelle Sitzung angemeldet bleibt und sich nicht bei jeder Interaktion erneut authentifizieren muss. Dabei wird unterschieden, ob sich der Benutzer nur für die aktuelle Sitzung anmelden möchte oder ob seine Anmeldeinformationen dauerhaft gespeichert werden sollen.
+
+Zu diesem Zweck enthält das Anmeldeformular eine Checkbox mit der Option „Benutzerdaten speichern“. Die Entscheidung des Benutzers beeinflusst, wo das Profil gespeichert wird:
+
+\begin{itemize}
+
+    \item 
+    Wird die Checkbox aktiviert, werden die Profildaten im LocalStorage gespeichert. Dies bedeutet, dass die Anmeldeinformationen auch nach dem Schließen des Browsers erhalten bleiben, so dass sich der Benutzer bei einem späteren Besuch der Website nicht erneut anmelden muss.
+
+    \item 
+    Wenn das Kontrollkästchen nicht aktiviert ist, wird das Profil nur im SessionStorage gespeichert. Der SessionStorage ist nur so lange gültig, wie der Browser-Tab geöffnet ist. Sobald der Benutzer den Tab oder den gesamten Browser schließt, werden die gespeicherten Daten automatisch gelöscht.
+
+\end{itemize}
+
+Durch diese flexible Speicherung wird sichergestellt, dass der Login-Prozess den individuellen Präferenzen des Nutzers entspricht. Gleichzeitig bleibt die Benutzerfreundlichkeit erhalten, da nicht bei jedem Seitenneuaufbau eine erneute Anmeldung erforderlich ist.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{pics/Backend/Verwendungen/onLogin.png}
+    \caption{onLogin}
+    \label{fig:login}
+\end{figure}
+
+\subsubsection{Laden der Daten aus dem Backend}
+
+Bei jedem Redirect oder Reload der Seite werden die Daten aus dem Portfolio-Objekt in der ngOnInit-Methode geladen. Dies geschieht praktisch auf jeder Seite, da das Portfolio-Objekt alle Informationen für die verschiedenen Unterseiten enthält. Um eine zentrale Datenhaltung zu gewährleisten, wird das Portfolio-Objekt direkt in der app.component.ts geladen.
+
+Die Entscheidung, diesen Vorgang in der app.component.ts durchzuführen, liegt darin begründet, dass die app.component.ts als übergeordnete Komponente für alle Unterseiten dient. Dadurch wird sichergestellt, dass die Daten für jede Seite direkt zur Verfügung stehen, ohne dass jede Unterseite sie einzeln abrufen muss.
+
+In der Methode ngOnInit der app.component.ts läuft der Prozess wie folgt ab:
+
+\begin{itemize}
+    \item 
+    Zuerst wird die ID des Profils aus dem localStorage bzw. sessionStorage geholt.
+
+    \item 
+    Anschließend wird mit dieser ID das entsprechende Profil aus dem Backend geladen. Wird ein Fehler beim Laden des Profils geworfen, wird der Benutzer aus dem Local Storage gelöscht und man wird zu Login Page geschickt.
+
+    \item 
+    Unmittelbar danach wird das zugehörige Portfolio-Objekt ebenfalls mit der gleichen ID aus dem Backend geholt.
+
+\end{itemize}
+
+Diese Methode stellt sicher, dass alle benötigten Daten direkt nach einem Seitenneuaufbau oder einer Weiterleitung zur Verfügung stehen, so dass die Benutzer nahtlos weiterarbeiten können, ohne sich erneut anmelden oder Daten neu laden zu müssen.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{pics/Backend/Verwendungen/ngoninit-appcomponent.png}
+    \caption{Laden der Daten aus dem Backend}
+    \label{fig:laden}
 \end{figure}
