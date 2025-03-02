@@ -77,8 +77,15 @@
 \contentsline {figure}{\numberline {76}{\ignorespaces Consumes}}{73}{figure.caption.184}%
 \contentsline {figure}{\numberline {77}{\ignorespaces Docker - Compose}}{74}{figure.caption.185}%
 \contentsline {figure}{\numberline {78}{\ignorespaces HttpClient}}{75}{figure.caption.188}%
-\contentsline {figure}{\numberline {79}{\ignorespaces onRegister1}}{78}{figure.caption.195}%
-\contentsline {figure}{\numberline {80}{\ignorespaces onRegister2}}{78}{figure.caption.195}%
-\contentsline {figure}{\numberline {81}{\ignorespaces onLogin}}{79}{figure.caption.198}%
-\contentsline {figure}{\numberline {82}{\ignorespaces Laden der Daten aus dem Backend}}{80}{figure.caption.201}%
+\contentsline {figure}{\numberline {79}{\ignorespaces Implements OnInit}}{77}{figure.caption.195}%
+\contentsline {figure}{\numberline {80}{\ignorespaces onRegister1}}{79}{figure.caption.198}%
+\contentsline {figure}{\numberline {81}{\ignorespaces onRegister2}}{79}{figure.caption.198}%
+\contentsline {figure}{\numberline {82}{\ignorespaces onLogin}}{80}{figure.caption.201}%
+\contentsline {figure}{\numberline {83}{\ignorespaces Laden der Daten aus dem Backend}}{81}{figure.caption.204}%
+\contentsline {figure}{\numberline {84}{\ignorespaces Lebenslauf ngOnInit - Methode (1)}}{83}{figure.caption.211}%
+\contentsline {figure}{\numberline {85}{\ignorespaces Lebenslauf ngOnInit - Methode (2)}}{84}{figure.caption.212}%
+\contentsline {figure}{\numberline {86}{\ignorespaces Projekte - GitHub Repos laden und speichern}}{85}{figure.caption.215}%
+\contentsline {figure}{\numberline {87}{\ignorespaces Gruppen - ngOnInit}}{85}{figure.caption.218}%
+\contentsline {figure}{\numberline {88}{\ignorespaces Gruppen - HTML}}{85}{figure.caption.218}%
+\contentsline {figure}{\numberline {89}{\ignorespaces Settings - Speichern}}{86}{figure.caption.221}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

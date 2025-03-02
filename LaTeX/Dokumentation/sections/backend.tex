@@ -413,7 +413,22 @@ SessionStorage wird häufig verwendet, um sitzungsbezogene Daten zu speichern, w
 
 Ein wesentlicher Vorteil des SessionStorage ist, dass er eine einfache Möglichkeit bietet, temporäre Daten sicher zu speichern, ohne dass sich der Benutzer um das manuelle Löschen kümmern muss. Es eignet sich besonders für Anwendungen, bei denen die Daten nur während einer einzigen Sitzung benötigt werden, wie z.B. temporäre Authentifizierungsdaten oder Cache-Daten während der Nutzung einer Web-Anwendung.
 
+\subsubsection{ngOnInit - Methode}
 
+Die Methode ngOnInit ist eine zentrale Lebenszyklusmethode in Angular, die automatisch aufgerufen wird, sobald die Komponente vollständig initialisiert wurde. Sie ist Teil der von Angular bereitgestellten OnInit-Schnittstelle und dient dazu, wichtige Vorbereitungen und Initialisierungen durchzuführen, die erst nach dem Laden der Komponente erfolgen sollten. Im Gegensatz zum Konstruktor, der hauptsächlich für die Instanziierung von Variablen und die Bereitstellung von Abhängigkeiten verwendet wird, ist ngOnInit besonders nützlich für asynchrone Operationen oder das Abrufen von Daten, die erst nach der Konstruktion der Komponente zur Verfügung stehen sollen.
+
+Ein typisches Anwendungsbeispiel für ngOnInit ist das Laden von Daten aus einer API, indem ein HTTP-Request an das Backend gesendet wird, um z.B. Benutzerdaten oder Konfigurationswerte abzurufen. Ebenso wird ngOnInit häufig zum Laden von Werten aus dem localStorage oder sessionStorage verwendet, was besonders nützlich ist, um gespeicherte Benutzerdaten beim Laden der Anwendung wiederherzustellen. Eine weitere häufige Anwendung ist das Registrieren von Event-Listenern oder das Aufrufen bestimmter Dienste, um initiale Zustände zu setzen.
+
+Ein entscheidender Vorteil von ngOnInit ist, dass es nur einmal pro Instanz einer Komponente ausgeführt wird. Das bedeutet, dass alle enthaltenen Initialisierungsschritte nicht mehrfach ausgeführt werden, auch wenn sich Daten innerhalb der Komponente ändern. Dies erhöht die Effizienz der Anwendung, da keine unnötigen Operationen wiederholt werden. Darüber hinaus stellt ngOnInit sicher, dass bestimmte Aufgaben erst dann ausgeführt werden, wenn die Komponente tatsächlich bereit ist, wodurch Fehler vermieden werden, die beim Zugriff auf noch nicht vorhandene Abhängigkeiten auftreten können.
+
+Damit Angular erkennt, dass die Methode ngOnInit existiert und korrekt ausgeführt werden kann, muss die Komponente das OnInit-Interface implementieren. Dies bedeutet, dass in der Klassendefinition implements OnInit angegeben wird, was Angular dazu veranlasst, ngOnInit als Teil des Lebenszyklus der Komponente zu behandeln und sie automatisch zum richtigen Zeitpunkt aufzurufen. Diese Struktur stellt sicher, dass Entwickler eine klare Trennung zwischen der reinen Konstruktion der Klasse und ihrer tatsächlichen Initialisierung aufrechterhalten können.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{pics/Backend/Verwendungen/implements-oninit.png}
+    \caption{Implements OnInit}
+    \label{fig:onInit}
+\end{figure}
 
 \subsubsection{Registrierung}
 
@@ -505,4 +520,80 @@ Diese Methode stellt sicher, dass alle benötigten Daten direkt nach einem Seite
     \includegraphics[width=0.75\linewidth]{pics/Backend/Verwendungen/ngoninit-appcomponent.png}
     \caption{Laden der Daten aus dem Backend}
     \label{fig:laden}
+\end{figure}
+
+\subsubsection{Verwendung der Daten}
+
+Nachdem die benötigten Daten in der Methode ngOnInit der app.component.ts aus dem Backend geladen und im lokalen Speicher bzw. in Variablen abgelegt wurden, müssen sie auf den jeweiligen Unterseiten weiterverarbeitet und für die Anzeige aufbereitet werden. Dies geschieht ebenfalls in der ngOnInit-Methode der jeweiligen Komponente, die für die einzelnen Seiten zuständig ist.
+
+Um sicherzustellen, dass die Daten tatsächlich vollständig aus dem Backend geladen wurden, bevor sie auf den Unterseiten weiterverwendet werden, wird für alle Seiten eine setTimeout-Funktion mit einer Verzögerung von mindestens 200 Millisekunden verwendet. Diese kurze Verzögerung gibt dem System genügend Zeit, um die asynchronen Anfragen an das Backend abzuschließen und die zurückgegebenen Daten korrekt in den Speicher zu übernehmen, bevor sie weiterverarbeitet oder gerendert werden.
+
+Dieser zusätzliche Sicherheitsmechanismus ist besonders wichtig, da Angular sehr schnell arbeitet und asynchrone Prozesse, wie z.B. HTTP-Anfragen an das Backend, nicht immer genau zum Zeitpunkt des Aufrufs der ngOnInit-Methode abgeschlossen sind. Würde man versuchen, direkt auf die Daten zuzugreifen, bevor diese tatsächlich verfügbar sind, könnte dies zu Fehlermeldungen oder leeren Anzeigen auf den Seiten führen. Durch den kurzen setTimeout wird dieses Problem umgangen, da die Verarbeitung der Daten erst nach einer minimalen Wartezeit erfolgt, in der sichergestellt wird, dass alle relevanten Informationen vom Backend eingetroffen sind.
+
+Insbesondere bei komplexeren Datenstrukturen, wie z.B. verschachtelten Objekten oder Beziehungen zwischen verschiedenen Entitäten in der Datenbank, kann es vorkommen, dass einzelne Abfragen länger dauern als andere. Durch die Verwendung von Delays wird die Konsistenz der Daten auf allen Seiten gewährleistet und verhindert, dass Benutzer auf eine Seite gelangen, bevor der gewünschte Inhalt tatsächlich verfügbar ist.
+
+\subsubsection{Home Seite:}
+
+\subsubsection{Lebenslauf}
+
+Auf der CV-Seite werden zunächst die HTML-Elemente für die jeweiligen Datenboxen mittels getElementById() erfasst und gespeichert. Dieser Schritt ist wichtig, da die Boxen später im Frontend an den richtigen Spaltenpositionen platziert werden müssen.
+
+Anschließend wird in der setTimeout-Funktion das generalInfo-Objekt aus dem gespeicherten Portfolio geladen. Die darin enthaltenen Daten werden dann Schritt für Schritt in die entsprechenden Felder des Formulars eingetragen. Dabei werden einige Werte direkt aus dem generalInfo-Objekt übernommen, während andere wie Vorname, Nachname, E-Mail-Adresse und Telefonnummer aus dem Profil des aktuell angemeldeten Benutzers (loggedInUser) stammen.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{pics/Backend/Verwendungen/cv-oninit1.png}
+    \caption{Lebenslauf ngOnInit - Methode (1)}
+    \label{fig:cvOnInit1}
+\end{figure}
+
+Im nächsten Schritt werden die im Portfolio gespeicherten education- und workExperience-Objekte sortiert und in die entsprechenden Bereiche eingefügt. Zuerst wird geprüft, ob die Daten zu education im currPortfolio vorhanden sind. Wenn ja, werden die Daten kopiert, nach dem fromDate-Wert sortiert und anschließend mit addEducationInfo() verarbeitet.
+
+Dasselbe geschieht mit den workExperience-Daten: Falls vorhanden, werden diese kopiert, ebenfalls nach fromDate sortiert und dann mit der Methode addJobExperiencesInfo() verarbeitet. Schließlich wird moveBoxes() aufgerufen, um sicherzustellen, dass die Boxen richtig positioniert sind.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{pics/Backend/Verwendungen/cv-oninit2.png}
+    \caption{Lebenslauf ngOnInit - Methode (2)}
+    \label{fig:cvOnInit2}
+\end{figure}
+
+\subsubsection{Projekte}
+
+Auf der Projektseite durchläuft ngOnInit die Liste der gespeicherten GitHub-Repositories und platziert jedes Repo. Die Repositories werden von einer GitHub API geholt und dann in der Datenbank selbst gespeichert. Der Grund dafür ist, dass die GitHub API eine begrenzte Anzahl von Aufrufen pro Stunde hat und es daher sein kann, dass die Repositories zu einem bestimmten Zeitpunkt nicht angezeigt werden können, da die Repositories nicht mehr von der API abgerufen werden können. Aus diesem Grund werden die Repositories nach dem ersten Fetch in der Datenbank gespeichert, so dass sie immer verfügbar sind.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{pics/Backend/Verwendungen/projekte-genRepos.png}
+    \caption{Projekte - GitHub Repos laden und speichern}
+    \label{fig:genRepos}
+\end{figure}
+
+\subsubsection{Gruppen Seite}
+
+Auf der Gruppenseite findet in der Methode ngOnInit nur eine minimale Verarbeitung statt. Hier wird lediglich die Gruppenliste des aktuell angemeldeten Benutzers aus dem entsprechenden Dienst geladen und gespeichert. Anschließend werden die benötigten Daten direkt im HTML-Template verwendet, so dass keine weitere Verarbeitung oder Manipulation in ngOnInit notwendig ist. Diese Vorgehensweise stellt sicher, dass die Anzeige der Gruppen dynamisch und effizient erfolgt. Die Gruppendaten werden direkt aus der gespeicherten Liste ausgelesen und ohne weitere Zwischenschritte an den entsprechenden Stellen in der Benutzeroberfläche angezeigt.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.5\textwidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{pics/Backend/Verwendungen/groups-ngOnInit.png}
+      \captionof{figure}{Gruppen - ngOnInit}
+    \end{minipage}%
+    \begin{minipage}{.5\textwidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{pics/Backend/Verwendungen/groups-html.png}
+      \captionof{figure}{Gruppen - HTML}
+    \end{minipage}
+\end{figure}
+
+\subsubsection{Settings Seite}
+
+Auf der Seite Einstellungen gibt es nur wenige Elemente, die angezeigt werden können, da der Schwerpunkt hier auf dem Speichern der Portfolio Einstellungen liegt. Die einzigen sichtbaren Informationen sind bereits gespeicherte Einstellungen aus dem Portfolio, nämlich die Sprache und die Hintergrundfarbe. Beide Einstellungen werden in separaten Unterkomponenten verwaltet, in denen die gespeicherten Werte direkt aus dem Portfolio geladen und angezeigt werden. Die Seite verfügt über einen zentralen „Speichern“-Button, mit dem alle Änderungen, die der Benutzer vornimmt, gleichzeitig gespeichert werden.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{pics/Backend/Verwendungen/settings-confirm.png}
+    \caption{Settings - Speichern}
+    \label{fig:settingsConf}
 \end{figure}

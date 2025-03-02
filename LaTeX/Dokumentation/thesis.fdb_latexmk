@@ -1,19 +1,19 @@
 # Fdb version 4
-["bibtex thesis"] 1740671795.98277 "thesis.aux" "thesis.bbl" "thesis" 1740672862.3496 2
+["bibtex thesis"] 1740918235.65493 "thesis.aux" "thesis.bbl" "thesis" 1740921366.82894 2
   "./bib.bib" 1739317006.44035 787 72a5fd8d7662c934d85c456a5df18811 ""
   "./ieeetrande.bst" 1739317006.44111 59552 fd293e0adca6cd19772e5be38250514f ""
-  "thesis.aux" 1740672861.9834 37708 c3f3b3a6286b1aa9ce4bdf4c04b800d9 "pdflatex"
+  "thesis.aux" 1740921366.36077 40065 b48e72b18954686dcb1b98e7db841bb6 "pdflatex"
   (generated)
   "thesis.bbl"
   "thesis.blg"
   (rewritten before read)
-["makeindex thesis.idx"] 1740672830.43051 "thesis.idx" "thesis.ind" "thesis" 1740672862.34583 0
-  "thesis.idx" 1740672848.22301 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+["makeindex thesis.idx"] 1740916991.41637 "thesis.idx" "thesis.ind" "thesis" 1740921366.82427 2
+  "thesis.idx" 1740921351.20547 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   (generated)
   "thesis.ilg"
   "thesis.ind"
   (rewritten before read)
-["pdflatex"] 1740672846.70978 "/Users/sebb/Desktop/Melius/Melius-TBP/LaTeX/Dokumentation/thesis.tex" "thesis.pdf" "thesis" 1740672862.34594 2
+["pdflatex"] 1740921349.47344 "/Users/sebb/Desktop/Melius/Melius-TBP/LaTeX/Dokumentation/thesis.tex" "thesis.pdf" "thesis" 1740921366.82448 2
   "/Users/sebb/Desktop/Melius/Melius-TBP/LaTeX/Dokumentation/thesis.tex" 1740671601.63235 2225 e6e43c0af126d20e127d51960ed2d280 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1254269338 2375 baa924870cfb487815765f9094cf3728 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc" 1202520719 2405 5dcf2c1b967ee25cc46c58cd52244aed ""
@@ -248,7 +248,7 @@
   "glossary.tex" 1739317006.44085 349 e64a8b5f0cec1dade6fdd9693504eada ""
   "header.tex" 1739317006.44094 4593 ddd0c7d1eabf3561ae21baecd7d02c4c ""
   "oath.tex" 1739317006.44132 729 4186d4db663bc8c1f61d2d7c5321995b ""
-  "pdfa.xmpi" 1740672848.09977 5335 ccf55955d2e257a90ddc22dbde09dea7 "pdflatex"
+  "pdfa.xmpi" 1740921351.06219 5335 cd7844be1b1c1a88d026cb28af636101 "pdflatex"
   "pics//Backend/JetBrains_IntelliJ_IDEA_Icon.png" 1739317006.44453 56789 a8b5ab3528884d686f8277d474d42333 ""
   "pics//Design/Logo_Final_justPerfect.png" 1739317006.44543 112102 e38a3d66e886aa4a3108c79165f715a7 ""
   "pics//Design/Logo_Vers1_macLookalike.png" 1739317006.44598 57714 719745bc92798e4c5e04661c1e82af9e ""
@@ -310,11 +310,18 @@
   "pics/Backend/Resource/path-class.png" 1740263900.85292 24088 c17f37fa1d73e16db333fea07e262698 ""
   "pics/Backend/Resource/path-method.png" 1740264285.86886 50380 6e42d09866a74dfde1e3e86f1b8bcbb4 ""
   "pics/Backend/Resource/produces.png" 1740399455.48848 45637 5226238af2f36640f38a41e57cb593b4 ""
+  "pics/Backend/Verwendungen/cv-oninit1.png" 1740916155.14487 344733 d713984f753adfa818000fdcb4232929 ""
+  "pics/Backend/Verwendungen/cv-oninit2.png" 1740916192.70605 259030 26e559def13c484e7a35e3fb313a2a56 ""
+  "pics/Backend/Verwendungen/groups-html.png" 1740917953.8894 229132 a966d323502447421015ee3a2085775c ""
+  "pics/Backend/Verwendungen/groups-ngOnInit.png" 1740917911.73812 44060 732b358c272cbda29dd8222b2fb9da64 ""
   "pics/Backend/Verwendungen/httpclient-beispiel.png" 1740406743.98137 142211 fe5df4ca1a3ea4a0b2f995abdfda8f68 ""
+  "pics/Backend/Verwendungen/implements-oninit.png" 1740914938.82085 59816 6de7b6a2896f5b349fc9b956a1e0fed9 ""
   "pics/Backend/Verwendungen/ngoninit-appcomponent.png" 1740672693.15127 376937 cb268c842931eaf53008be0d083fa8d7 ""
   "pics/Backend/Verwendungen/onLogin.png" 1740670926.12095 290512 694ddeee0048e65530bf0c742ec7e40a ""
   "pics/Backend/Verwendungen/onregister1.png" 1740669944.8658 162249 0fdf3bf230100b903e8dffadd8e580ec ""
   "pics/Backend/Verwendungen/onregister2.png" 1740669999.42933 203251 d7aea84e495ec7d6956f73c3ae61db64 ""
+  "pics/Backend/Verwendungen/projekte-genRepos.png" 1740921045.81343 244961 aaebf06135e3807a4d1e0e63ceb44a02 ""
+  "pics/Backend/Verwendungen/settings-confirm.png" 1740920244.26083 138093 7a42b23ec0525f73706dd8160592f594 ""
   "pics/Backend/docker-compose.png" 1740405417.30143 101681 665bd295035abc5c3dbd614e20b64d4a ""
   "pics/Design/NotionShowcase2.png" 1739317006.45474 645561 8e037b497faa7a91561638c594fb2944 ""
   "pics/Design/Website/Settings/Settings_Home-Englisch.png" 1740153262.99461 1890887 5d6d517e216fa7e064be22e5ee6198fe ""
@@ -332,7 +339,7 @@
   "pics/Umfeldanalyse/squarespace.jpg" 1740404364.29527 203999 01f36e88b06d92f05db216edf89c5d92 ""
   "pics/Umfeldanalyse/wix.jpg" 1740404401.81154 111211 38e4dc0b50be8495adc280d4fa271ddb ""
   "sections/appendix.tex" 1739317006.53025 0 d41d8cd98f00b204e9800998ecf8427e ""
-  "sections/backend.tex" 1740672828.57963 34622 56b6e04db53564d518bfd5f1acb41659 ""
+  "sections/backend.tex" 1740921329.41831 44030 54a0fb2207863d2ac951382a2f7bf835 ""
   "sections/design.tex" 1740671601.59062 58091 9d9a405c7cb423852172666ac1348442 ""
   "sections/frontend.tex" 1740671601.59109 21171 00a9c845199d07189289bbc588380060 ""
   "sections/implementation.tex" 1740671601.59149 1294 743afe97b979b909917d3a820fe3f735 ""
@@ -340,17 +347,17 @@
   "sections/related_work.tex" 1740404729.14698 7100 665d7822621f99808ca5eedd2157ee66 ""
   "sections/summary.tex" 1739317006.53117 749 24f8eaf4cd6cc4da62bd71efefbd8ccc ""
   "sections/technologies.tex" 1739317006.5313 6980 154fe609620b9bf4dff943ebfec6db5d ""
-  "thesis.aux" 1740672861.9834 37708 c3f3b3a6286b1aa9ce4bdf4c04b800d9 "pdflatex"
-  "thesis.bbl" 1740671796.09448 0 d41d8cd98f00b204e9800998ecf8427e "bibtex thesis"
+  "thesis.aux" 1740921366.36077 40065 b48e72b18954686dcb1b98e7db841bb6 "pdflatex"
+  "thesis.bbl" 1740918235.85017 0 d41d8cd98f00b204e9800998ecf8427e "bibtex thesis"
   "thesis.gls" 0 -1 0 ""
-  "thesis.glsdefs" 1740672861.98226 2074 982e6c0610b12fd59d7a8058fc1679f0 "pdflatex"
+  "thesis.glsdefs" 1740921366.35922 2074 982e6c0610b12fd59d7a8058fc1679f0 "pdflatex"
   "thesis.ind" 0 -1 0 "makeindex thesis.idx"
-  "thesis.lof" 1740672861.98834 8679 9a289e7d5f62f741094bfb65f87dc8c8 "pdflatex"
-  "thesis.lol" 1740672861.98864 346 be64da2cd480fd82d925a8730a1875e0 "pdflatex"
-  "thesis.lot" 1740672861.98862 95 266fb778c506bbca413fec0c0a8f3005 "pdflatex"
-  "thesis.out" 1740672848.30083 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "thesis.lof" 1740921366.36693 9431 a451947b48c9237e9e055bc6f3fd841c "pdflatex"
+  "thesis.lol" 1740921366.36706 346 be64da2cd480fd82d925a8730a1875e0 "pdflatex"
+  "thesis.lot" 1740921366.36704 95 266fb778c506bbca413fec0c0a8f3005 "pdflatex"
+  "thesis.out" 1740921351.2915 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   "thesis.tex" 1740671601.63235 2225 e6e43c0af126d20e127d51960ed2d280 ""
-  "thesis.toc" 1740672861.98827 10594 f6fa991d6b3f2a23307e8fe621b83be6 "pdflatex"
+  "thesis.toc" 1740921366.36679 11185 fb2597de9ac960272ae098135c5278b2 "pdflatex"
   "thesis.xmpdata" 1739317006.55424 115 a9e9a49b721e0c1d7b3860f5ea2addf5 ""
   "titlepage/coversheet.pdf" 1739317150.04375 162795 44627fccf6eb852c965f84c3416a2d3c ""
   (generated)
