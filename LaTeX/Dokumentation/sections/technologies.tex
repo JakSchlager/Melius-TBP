@@ -6,36 +6,64 @@
 \author{'Josef Stieg'}
 
 \section{Backend}
-Das Backend wurde in der Programmiersprache Java entwickelt und nutzt moderne Technologien, um eine robuste und effiziente Architektur bereitzustellen. Es basiert auf dem Quarkus Framework, bietet eine RESTful API und arbeitet mit einer PostgreSQL Datenbank, die in einem Docker Container betrieben wird.
+Das Backend wurde in der Programmiersprache Java entwickelt und nutzt moderne Technologien wie \textit{Hibernate ORM und Jakarta}, um eine robuste und effiziente Architektur bereitzustellen. Es basiert auf dem \textit{Quarkus} Framework, bietet eine RESTful API und arbeitet mit einer PostgreSQL Datenbank, die in einem Docker Container betrieben wird.
 
 \subsection{Quarkus}
-Quarkus ist ein modernes, Java-basiertes Framework, das speziell für Cloud-native Anwendungen und Microservices entwickelt wurde. Es zeichnet sich durch hohe Performance und geringen Speicherbedarf aus, was es ideal für containerisierte und serverlose Umgebungen macht. Quarkus unterstützt die Erstellung von RESTful APIs und bietet eine Vielzahl integrierter Erweiterungen, die die Entwicklung beschleunigen. Darüber hinaus ist Quarkus kompatibel mit Standards wie Jakarta EE und MicroProfile, was die Nutzung bewährter Java-Technologien ermöglicht.
+\textit{Quarkus} ist ein modernes, Java-basiertes Framework, das speziell für Cloud-native Anwendungen und Microservices entwickelt wurde. Es zeichnet sich durch hohe Performance und geringen Speicherbedarf aus, was es ideal für containerisierte und serverlose Umgebungen macht. \textit{Quarkus} unterstützt die Erstellung von RESTful APIs und bietet eine Vielzahl integrierter Erweiterungen, die die Entwicklung beschleunigen. Darüber hinaus ist \textit{Quarkus} kompatibel mit Standards wie Jakarta EE und MicroProfile, was die Nutzung bewährter Java-Technologien ermöglicht.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.25\linewidth]{pics/Technologien/quarkus.png}
+    \caption{Quarkus}
+    \label{fig:quarkus}
+\end{figure}
 
 \subsection{Datenmodellierung mit Jakarta}
-Für die Datenmodellierung und die Anbindung an die Datenbank werden im Backend die Standards von Jakarta EE verwendet. Mit Jakarta werden Entitäten (Objekte, die Tabellen in der Datenbank repräsentieren), Repository-Klassen (für Datenbankoperationen) und Ressourcenklassen (für die REST-API-Endpunkte) implementiert. Dies gewährleistet eine klare Trennung der Verantwortlichkeiten und erleichtert die Wartung und Erweiterung des Codes.
+Für die Datenmodellierung und die Anbindung an die Datenbank werden im Backend die Standards von \textit{Jakarta EE} verwendet. Mit Jakarta werden Entitäten (Objekte, die Tabellen in der Datenbank repräsentieren), Repository-Klassen (für Datenbankoperationen) und Ressourcenklassen (für die REST-API-Endpunkte) implementiert. Dies gewährleistet eine klare Trennung der Verantwortlichkeiten und erleichtert die Wartung und Erweiterung des Codes.
 
 \subsection{PostgreSQL-Datenbank}
-Die Anwendung verwendet PostgreSQL, ein leistungsfähiges objektrelationales Datenbankmanagementsystem (ORDBMS). PostgreSQL ist bekannt für seine Zuverlässigkeit, Skalierbarkeit und erweiterten Funktionen wie Unterstützung für JSON, geografische Daten (PostGIS) und benutzerdefinierte Datentypen. Es ist ideal für Anwendungen mit komplexen Datenstrukturen und hohen Anforderungen an die Datenintegrität.
+Die Anwendung verwendet \textit{PostgreSQL}, ein leistungsfähiges objektrelationales Datenbankmanagementsystem (ORDBMS). \textit{PostgreSQL} ist bekannt für seine Zuverlässigkeit, Skalierbarkeit und erweiterten Funktionen wie Unterstützung für JSON, geografische Daten (PostGIS) und benutzerdefinierte Datentypen. Es ist ideal für Anwendungen mit komplexen Datenstrukturen und hohen Anforderungen an die Datenintegrität.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.25\linewidth]{pics/Technologien/postgresql.png}
+    \caption{Postgresql}
+    \label{fig:postgres}
+\end{figure}
 
 \subsection{Docker und Docker-Composer}
 Die PostgreSQL Datenbank läuft in einem Docker Container. Docker ist eine Containerisierungsplattform, die es ermöglicht, Anwendungen und ihre Abhängigkeiten in isolierten Umgebungen (Containern) zu betreiben. Container sind leichtgewichtig und portabel, was eine konsistente Ausführung der Anwendung in verschiedenen Umgebungen gewährleistet.
 
 Um die Container-Umgebung zu konfigurieren und zu starten, wird eine Docker-Compose-Datei verwendet. Docker Compose ist ein Werkzeug, mit dem mehrere Containerdienste definiert und orchestriert werden können. In diesem Fall wird es verwendet, um die PostgreSQL-Datenbank zu starten und alle notwendigen Parameter wie Netzwerkverbindungen und Volumes zu setzen.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.25\linewidth]{pics/Technologien/docker.png}
+    \caption{Docker}
+    \label{fig:docker}
+\end{figure}
+
 \subsection{Zusammenspiel der Technologien}
-Der Backend-Technologie-Stack kombiniert diese Komponenten, um eine effiziente, skalierbare und wartbare Architektur zu schaffen. Quarkus bildet die Basis für die Geschäftslogik und API-Implementierung, während PostgreSQL als zuverlässige und hochperformante Datenbanklösung dient. Docker sorgt für eine flexible Bereitstellung der Infrastruktur und Jakarta EE stellt sicher, dass die Interaktion zwischen Code und Datenbank auf bewährten Standards basiert.
+Der Backend-Technologie-Stack kombiniert diese Komponenten, um eine effiziente, skalierbare und wartbare Architektur zu schaffen. \textit{Quarkus} bildet die Basis für die Geschäftslogik und API-Implementierung, während PostgreSQL als zuverlässige und hochperformante Datenbanklösung dient. Docker sorgt für eine flexible Bereitstellung der Infrastruktur und Jakarta EE stellt sicher, dass die Interaktion zwischen Code und Datenbank auf bewährten Standards basiert.
 
 \newpage
 
 \section{Frontend}
 
-Das Frontend basiert auf modernen Web-Technologien und setzt auf TypeScript, Angular und Tailwind CSS, um eine performante, wartbare und benutzerfreundliche Benutzeroberfläche zu entwickeln.
+Das Frontend basiert auf modernen Web-Technologien und setzt auf TypeScript, \textit{Angular} und Tailwind CSS, um eine performante, wartbare und benutzerfreundliche Benutzeroberfläche zu entwickeln.
 
 \subsection{TypeScript}
 TypeScript ist eine Open-Source-Programmiersprache, die auf JavaScript basiert, jedoch zusätzliche Funktionen wie statische Typisierung und moderne ECMAScript-Features bietet.Die Einführung von Typen erhöht die Sicherheit und Lesbarkeit des Codes erheblich, was insbesondere bei umfangreichen Projekten die Wartung vereinfacht. Die Übersetzung von TypeScript in standardmäßiges JavaScript durch den Compiler gewährleistet die Ausführung in allen Webbrowsern.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.25\linewidth]{pics/Technologien/typescript.png}
+    \caption{Typescript}
+    \label{fig:ts}
+\end{figure}
+
 \subsection{Angular}
-Das von Google entwickelte Framework Angular stellt eine der leistungsstärksten Plattformen für die Erstellung von Single-Page Applications (SPAs) dar. Es basiert auf TypeScript und bietet eine umfangreiche Struktur, die Entwicklern dabei hilft, komplexe Anwendungen zu erstellen und zu organisieren. Zu den Hauptmerkmalen von Angular gehören:
+Das von Google entwickelte Framework \textit{Angular} stellt eine der leistungsstärksten Plattformen für die Erstellung von Single-Page Applications (SPAs) dar. Es basiert auf TypeScript und bietet eine umfangreiche Struktur, die Entwicklern dabei hilft, komplexe Anwendungen zu erstellen und zu organisieren. Zu den Hauptmerkmalen von \textit{Angular} gehören:
 
 \begin{itemize}
     \item 
@@ -44,11 +72,11 @@ Das von Google entwickelte Framework Angular stellt eine der leistungsstärksten
 
     \item
     \textbf{Datenbindung:} 
-    Angular unterstützt Zwei-Wege-Datenbindung, wodurch Änderungen im Model automatisch in der Benutzeroberfläche reflektiert werden und umgekehrt.
+    \textit{Angular} unterstützt Zwei-Wege-Datenbindung, wodurch Änderungen im Model automatisch in der Benutzeroberfläche reflektiert werden und umgekehrt.
 
     \item 
     \textbf{Integrierte Tools:}
-    Angular bietet direkt integrierte Funktionen wie Routing, Formulare, HTTP-Client und Dependency Injection.
+    \textit{Angular} bietet direkt integrierte Funktionen wie Routing, Formulare, HTTP-Client und Dependency Injection.
     
     \item
     \textbf{RxJS:} 
@@ -56,10 +84,16 @@ Das von Google entwickelte Framework Angular stellt eine der leistungsstärksten
             
 \end{itemize}
 
-Die Entscheidung für Angular basierte auf den bisherigen Erfahrungen des Entwicklerteams, welches Angular im Rahmen des Softwareentwicklungsunterrichts erlernt hatte. Dadurch waren die Teammitglieder bereits mit den grundlegenden Konzepten und der Arbeitsweise des Frameworks vertraut, was einen schnellen Einstieg in die Entwicklung ermöglichte und die Notwendigkeit reduzierte, neue Technologien von Grund auf zu erlernen.
+Die Entscheidung für \textit{Angular} basierte auf den bisherigen Erfahrungen des Entwicklerteams, welches Angular im Rahmen des Softwareentwicklungsunterrichts erlernt hatte. Dadurch waren die Teammitglieder bereits mit den grundlegenden Konzepten und der Arbeitsweise des Frameworks vertraut, was einen schnellen Einstieg in die Entwicklung ermöglichte und die Notwendigkeit reduzierte, neue Technologien von Grund auf zu erlernen.
 
-Zusätzlich bot Angular durch seine umfassende Plattform und integrierte Funktionen wie Routing, Formularverwaltung und Dependency Injection eine strukturierte und effiziente Entwicklungsumgebung, was sich positiv auf die Arbeitsatmosphäre auswirkte. Die Vertrautheit mit dem Framework und die damit verbundene Sicherheit im Umgang trugen entscheidend dazu bei, dass sich das Team in der Arbeit mit Angular wohlfühlte.
+Zusätzlich bot \textit{Angular} durch seine umfassende Plattform und integrierte Funktionen wie Routing, Formularverwaltung und Dependency Injection eine strukturierte und effiziente Entwicklungsumgebung, was sich positiv auf die Arbeitsatmosphäre auswirkte. Die Vertrautheit mit dem Framework und die damit verbundene Sicherheit im Umgang trugen entscheidend dazu bei, dass sich das Team in der Arbeit mit \textit{Angular} wohlfühlte.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.25\linewidth]{pics/Technologien/angular.png}
+    \caption{Angular}
+    \label{fig:angular}
+\end{figure}
 
 \subsection{Tailwind CSS}
 Tailwind CSS ist ein Utility-First-Framework für die Gestaltung von Benutzeroberflächen. Es divergiert von klassischen CSS-Ansätzen insofern, als dass es eine große Anzahl vorgefertigter CSS-Klassen bereitstellt, die direkt in HTML verwendet werden können. In der Konsequenz wird der Bedarf, eigene CSS-Dateien zu schreiben, oft eliminiert, was zu einer Beschleunigung der Entwicklung und einer Sicherstellung der Konsistenz des Designs führt.
@@ -79,4 +113,11 @@ Tailwind CSS ist ein Utility-First-Framework für die Gestaltung von Benutzerobe
     \textbf{Optimierung:} 
     Tailwind bietet eine automatische Optimierung und entfernt ungenutzte CSS-Klassen in der Produktionsumgebung, was die Dateigröße reduziert und die Ladezeit verbessert.
 \end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.25\linewidth]{pics/Technologien/tailwind.png}
+    \caption{Tailwind}
+    \label{fig:tailwind}
+\end{figure}
 

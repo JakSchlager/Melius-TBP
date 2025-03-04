@@ -10,7 +10,7 @@ Darüber hinaus bietet IntelliJ IDEA zahlreiche Vorteile, die es zu einer ausgez
 \begin{itemize}
     \item 
     \textbf{Umfassende Unterstützung für Java und Frameworks: }
-    IntelliJ IDEA ist speziell auf die Java-Entwicklung zugeschnitten und bietet erstklassige Unterstützung für Frameworks wie Quarkus, Spring und Jakarta EE. Dadurch werden Konfigurationsaufgaben erleichtert, und die Arbeit mit modernen Frameworks wird durch eingebaute Tools und Assistenten optimiert.
+    IntelliJ IDEA ist speziell auf die Java-Entwicklung zugeschnitten und bietet erstklassige Unterstützung für Frameworks wie Quarkus, Spring und \textit{Jakarta EE}. Dadurch werden Konfigurationsaufgaben erleichtert, und die Arbeit mit modernen Frameworks wird durch eingebaute Tools und Assistenten optimiert.
 
     \item 
     \textbf{Intelligente Code-Navigation:} 
@@ -46,11 +46,11 @@ Die Kombination aus der Vertrautheit des Teams mit der Umgebung, der leistungsst
 
 \subsection{Model}
 
-Im Melius-Backend erfolgt die Erstellung und Verwaltung aller Datenbanktabellen unter Zuhilfenahme der Jakarta Persistence API (JPA) in Kombination mit Hibernate als Object-Relational Mapping (ORM)-Framework. Dies impliziert, dass jede in der Anwendung definierte Java-Entitätsklasse einer eigenen Tabelle in der Datenbank entspricht.
+Im \textit{Melius}-Backend erfolgt die Erstellung und Verwaltung aller Datenbanktabellen unter Zuhilfenahme der \textit{Jakarta Persistence API (JPA)} in Kombination mit \textit{Hibernate} als Object-Relational Mapping (ORM)-Framework. Dies impliziert, dass jede in der Anwendung definierte Java-Entitätsklasse einer eigenen Tabelle in der Datenbank entspricht.
 
 Dies hat den Vorteil, dass die Verwaltung der Daten erheblich vereinfacht wird, da Entwickler nicht direkt mit SQL-Abfragen arbeiten müssen, sondern auf objektorientierte Weise mit den Daten interagieren können.
 
-Durch diese ORM-Technologie können Datenbankoperationen wie Erstellen, Lesen, Aktualisieren und Löschen (CRUD-Operationen) direkt über Java-Klassen durchgeführt werden. Hibernate übernimmt dabei automatisch die Zuordnung der Java-Objekte zu den entsprechenden Tabellen und Spalten, sodass eine enge Integration zwischen der Anwendung und der Datenbank entsteht.
+Durch diese ORM-Technologie können Datenbankoperationen wie Erstellen, Lesen, Aktualisieren und Löschen (CRUD-Operationen) direkt über Java-Klassen durchgeführt werden. \textit{Hibernate} übernimmt dabei automatisch die Zuordnung der Java-Objekte zu den entsprechenden Tabellen und Spalten, sodass eine enge Integration zwischen der Anwendung und der Datenbank entsteht.
 
 \begin{figure}[H]
     \centering
@@ -222,7 +222,7 @@ Dank dieser Funktionen trägt das Repository maßgeblich zur Sicherheit, Datenko
 \subsubsection{Annotationen}
 
 \subsubsection{@ApplicationScoped}
-Die Annotation @ApplicationScoped, die aus Jakarta CDI (Contexts and Dependency Injection) stammt, gewährleistet, dass eine Klasse während der gesamten Laufzeit der Anwendung lediglich einmal instanziiert wird. Dies impliziert, dass sämtliche Beans, welche diese Klasse verwenden, auf die identische Instanz zugreifen und folglich ein Singleton-Verhalten erzielen.In Bezug auf die ProfileRepository-Klasse resultiert daraus eine Vielzahl an Vorteilen. Da das Repository für den Zugriff auf die Datenbank zuständig ist, sorgt @ApplicationScoped dafür, dass nicht bei jeder Anfrage eine neue Instanz erstellt wird, sondern alle Datenbankoperationen über eine einzige, wiederverwendbare Instanz laufen.Dies verbessert die Effizienz, da weniger Ressourcen für das Erstellen neuer Objekte verbraucht werden. Darüber hinaus bleibt der Zustand der Bean während der gesamten Laufzeit der Anwendung erhalten. Dies kann sich beispielsweise positiv auf Caching-Mechanismen oder optimierte Datenbankverbindungen auswirken.
+Die Annotation @ApplicationScoped, die aus \textit{Jakarta CDI (Contexts and Dependency Injection)} stammt, gewährleistet, dass eine Klasse während der gesamten Laufzeit der Anwendung lediglich einmal instanziiert wird. Dies impliziert, dass sämtliche Beans, welche diese Klasse verwenden, auf die identische Instanz zugreifen und folglich ein Singleton-Verhalten erzielen.In Bezug auf die ProfileRepository-Klasse resultiert daraus eine Vielzahl an Vorteilen. Da das Repository für den Zugriff auf die Datenbank zuständig ist, sorgt @ApplicationScoped dafür, dass nicht bei jeder Anfrage eine neue Instanz erstellt wird, sondern alle Datenbankoperationen über eine einzige, wiederverwendbare Instanz laufen.Dies verbessert die Effizienz, da weniger Ressourcen für das Erstellen neuer Objekte verbraucht werden. Darüber hinaus bleibt der Zustand der Bean während der gesamten Laufzeit der Anwendung erhalten. Dies kann sich beispielsweise positiv auf Caching-Mechanismen oder optimierte Datenbankverbindungen auswirken.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\linewidth]{pics/Backend/Repositories/applicationscoped.png}
@@ -309,7 +309,7 @@ Die ProfileResource-Klasse gewährleistet eine klare Trennung zwischen der Präs
 \subsubsection{Annotationen}
 
 \subsubsection{@Path}
-Die @Path-Annotation stellt eine zentrale Annotation in Jakarta RESTful Web Services (JAX-RS) dar. Ihre Funktion besteht in der Festlegung einer URI-Ressource (Uniform Resource Identifier) für eine bestimmte Klasse oder Methode. Somit definiert sie den Endpunkt, unter dem eine bestimmte Ressource oder Funktionalität über eine HTTP-Anfrage erreichbar ist.
+Die @Path-Annotation stellt eine zentrale Annotation in \textit{Jakarta RESTful} Web Services (JAX-RS) dar. Ihre Funktion besteht in der Festlegung einer URI-Ressource (Uniform Resource Identifier) für eine bestimmte Klasse oder Methode. Somit definiert sie den Endpunkt, unter dem eine bestimmte Ressource oder Funktionalität über eine HTTP-Anfrage erreichbar ist.
 
 \begin{figure}[H]
     \centering
@@ -327,7 +327,7 @@ Die @Path-Annotation stellt eine zentrale Annotation in Jakarta RESTful Web Serv
 
 \subsubsection{@Produces}
 
-Die @Produces-Annotation in Jakarta RESTful Web Services (JAX-RS) wird verwendet, um anzugeben, in welchem Format eine Methode eine Antwort zurückgibt. Sie definiert also den MIME-Typ (z. B. JSON oder XML), den der Server an den Client sendet. Wird diese Annotation in einer REST-API-Methode verwendet, stellt sie sicher, dass die zurückgegebenen Daten in einem bestimmten Format vorliegen. Beispielsweise kann @Produces(MediaType.APPLICATION\_JSON) verwendet werden, um sicherzustellen, dass die Antwort als JSON formatiert ist. Dies ist besonders nützlich, da moderne Webanwendungen oft JSON als Standardformat für den Datenaustausch nutzen. Wenn keine @Produces-Annotation angegeben ist, entscheidet der Server anhand der Standardkonfiguration oder der Anfrage des Clients, welches Format zurückgegeben wird.
+Die @Produces-Annotation in \textit{Jakarta RESTful Web Services (JAX-RS)} wird verwendet, um anzugeben, in welchem Format eine Methode eine Antwort zurückgibt. Sie definiert also den MIME-Typ (z. B. JSON oder XML), den der Server an den Client sendet. Wird diese Annotation in einer REST-API-Methode verwendet, stellt sie sicher, dass die zurückgegebenen Daten in einem bestimmten Format vorliegen. Beispielsweise kann @Produces(MediaType.APPLICATION\_JSON) verwendet werden, um sicherzustellen, dass die Antwort als JSON formatiert ist. Dies ist besonders nützlich, da moderne Webanwendungen oft JSON als Standardformat für den Datenaustausch nutzen. Wenn keine @Produces-Annotation angegeben ist, entscheidet der Server anhand der Standardkonfiguration oder der Anfrage des Clients, welches Format zurückgegeben wird.
 
 \begin{figure}[H]
     \centering
@@ -338,7 +338,7 @@ Die @Produces-Annotation in Jakarta RESTful Web Services (JAX-RS) wird verwendet
 
 \subsubsection{@Consumes}
 
-Die @Consumes-Annotation in Jakarta RESTful Web Services (JAX-RS) spezifiziert das Datenformat, welches von einer REST-API-Methode unterstützt wird. Demnach definiert sie die MIME-Typen, die von der Methode verarbeitet werden können. So impliziert @Consumes(MediaType.APPLICATION\_JSON) die Akzeptanz von Anfragen, die mit JSON-Daten angereichert sind. Diese Annotation erweist sich insbesondere dann als vorteilhaft, wenn der Server strukturierte Daten, beispielsweise aus einer Webanwendung oder einer mobilen Applikation, erhält und diese verarbeitet, bevor sie in die Datenbank gespeichert oder weiterverarbeitet werden.Wird @Consumes nicht angegeben, entscheidet der Server anhand der Standardkonfiguration oder der Anfrage des Clients, welches Format akzeptiert wird.
+Die @Consumes-Annotation in \textit{Jakarta RESTful Web Services (JAX-RS)} spezifiziert das Datenformat, welches von einer REST-API-Methode unterstützt wird. Demnach definiert sie die MIME-Typen, die von der Methode verarbeitet werden können. So impliziert @Consumes(MediaType.APPLICATION\_JSON) die Akzeptanz von Anfragen, die mit JSON-Daten angereichert sind. Diese Annotation erweist sich insbesondere dann als vorteilhaft, wenn der Server strukturierte Daten, beispielsweise aus einer Webanwendung oder einer mobilen Applikation, erhält und diese verarbeitet, bevor sie in die Datenbank gespeichert oder weiterverarbeitet werden.Wird @Consumes nicht angegeben, entscheidet der Server anhand der Standardkonfiguration oder der Anfrage des Clients, welches Format akzeptiert wird.
 
 \begin{figure}[H]
     \centering
@@ -349,11 +349,11 @@ Die @Consumes-Annotation in Jakarta RESTful Web Services (JAX-RS) spezifiziert d
 
 \subsection{Docker-Compose}
 
-Um die Datenbank für Melius zu starten, wird ein docker-compose.yaml-File verwendet, das es ermöglicht, die benötigten Dienste einfach zu konfigurieren und zu starten. In diesem Fall definiert die Datei zwei Hauptservices: Adminer und PostgreSQL.
+Um die Datenbank für \textit{Melius} zu starten, wird ein docker-compose.yaml-File verwendet, das es ermöglicht, die benötigten Dienste einfach zu konfigurieren und zu starten. In diesem Fall definiert die Datei zwei Hauptservices: Adminer und PostgreSQL.
 
 Der Adminer-Service verwendet das Docker-Image adminer und stellt eine Weboberfläche bereit, über die die PostgreSQL-Datenbank verwaltet werden kann. Der Service wird so konfiguriert, dass er immer neu startet, falls er ausfällt, und ist unter dem Port 5431 zugänglich, der auf den internen Port 8080 des Adminer-Containers weitergeleitet wird.
 
-Der PostgreSQL-Service verwendet das Docker-Image postgres:16-alpine und stellt die tatsächliche Datenbank für Melius bereit. Auch dieser Service wird so konfiguriert, dass er im Falle eines Ausfalls immer neu startet. Die PostgreSQL-Datenbank wird unter dem Standardport 5432 betrieben, das auf den gleichen Port des Hosts weitergeleitet wird. Die volumes-Direktive sorgt dafür, dass die Daten persistent gespeichert werden, indem sie ein Verzeichnis auf dem Host (./data/postgres) mit dem internen Verzeichnis der Datenbank verbindet. Dadurch bleiben die Daten auch nach dem Neustart des Containers erhalten.
+Der PostgreSQL-Service verwendet das Docker-Image postgres:16-alpine und stellt die tatsächliche Datenbank für \textit{Melius} bereit. Auch dieser Service wird so konfiguriert, dass er im Falle eines Ausfalls immer neu startet. Die PostgreSQL-Datenbank wird unter dem Standardport 5432 betrieben, das auf den gleichen Port des Hosts weitergeleitet wird. Die volumes-Direktive sorgt dafür, dass die Daten persistent gespeichert werden, indem sie ein Verzeichnis auf dem Host (./data/postgres) mit dem internen Verzeichnis der Datenbank verbindet. Dadurch bleiben die Daten auch nach dem Neustart des Containers erhalten.
 
 Zudem werden Umgebungsvariablen gesetzt, darunter POSTGRES\_PASSWORD, das für den Zugang zur Datenbank verwendet wird, sowie PGDATA, das den Speicherort der Datenbankdateien innerhalb des Containers festlegt. Schließlich wird der Container so konfiguriert, dass er mit den vom System definierten UID und GID läuft, um Berechtigungsprobleme zu vermeiden, was besonders in Teamumgebungen wichtig sein kann, in denen unterschiedliche Benutzer auf die Docker-Container zugreifen.
 
@@ -366,11 +366,11 @@ Zudem werden Umgebungsvariablen gesetzt, darunter POSTGRES\_PASSWORD, das für d
 
 \subsection{Implementierung im Frontend}
 
-Das Frontend wurde mit Angular entwickelt, weshalb für alle Backend-Anfragen der HTTPClient genutzt wird. Ähnlich wie bei den Resource-Klassen im Backend, wird für jede Entität ein eigener Service im Frontend verwendet, um die entsprechenden Daten zu verwalten und mit dem Backend zu kommunizieren.
+Das Frontend wurde mit \textit{Angular} entwickelt, weshalb für alle Backend-Anfragen der HTTPClient genutzt wird. Ähnlich wie bei den Resource-Klassen im Backend, wird für jede Entität ein eigener Service im Frontend verwendet, um die entsprechenden Daten zu verwalten und mit dem Backend zu kommunizieren.
 
 \subsubsection{HttpClient}
 
-Der HttpClient von Angular ist ein Service, der es ermöglicht, HTTP-Anfragen zu stellen, um mit externen APIs oder Backend-Servern zu kommunizieren. Er basiert auf dem RxJS-Bibliothek und bietet eine einfache Möglichkeit, asynchrone Anfragen zu stellen, Daten zu empfangen und darauf zu reagieren.
+Der HttpClient von \textit{Angular} ist ein Service, der es ermöglicht, HTTP-Anfragen zu stellen, um mit externen APIs oder Backend-Servern zu kommunizieren. Er basiert auf dem RxJS-Bibliothek und bietet eine einfache Möglichkeit, asynchrone Anfragen zu stellen, Daten zu empfangen und darauf zu reagieren.
 
 Der HttpClient unterstützt verschiedene HTTP-Methoden wie GET, POST, PUT, DELETE und PATCH und verarbeitet die Antworten in Form von Observables, was bedeutet, dass er auf die Antwort warten kann, ohne den UI-Thread zu blockieren. Durch die Verwendung von Observables können Entwickler einfach mit den zurückgegebenen Daten arbeiten, Fehler behandeln und auf den Status der Anfrage reagieren (z. B. Erfolg oder Fehler).
 
@@ -415,13 +415,13 @@ Ein wesentlicher Vorteil des SessionStorage ist, dass er eine einfache Möglichk
 
 \subsubsection{ngOnInit - Methode}
 
-Die Methode ngOnInit ist eine zentrale Lebenszyklusmethode in Angular, die automatisch aufgerufen wird, sobald die Komponente vollständig initialisiert wurde. Sie ist Teil der von Angular bereitgestellten OnInit-Schnittstelle und dient dazu, wichtige Vorbereitungen und Initialisierungen durchzuführen, die erst nach dem Laden der Komponente erfolgen sollten. Im Gegensatz zum Konstruktor, der hauptsächlich für die Instanziierung von Variablen und die Bereitstellung von Abhängigkeiten verwendet wird, ist ngOnInit besonders nützlich für asynchrone Operationen oder das Abrufen von Daten, die erst nach der Konstruktion der Komponente zur Verfügung stehen sollen.
+Die Methode ngOnInit ist eine zentrale Lebenszyklusmethode in \textit{Angular}, die automatisch aufgerufen wird, sobald die Komponente vollständig initialisiert wurde. Sie ist Teil der von \textit{Angular} bereitgestellten OnInit-Schnittstelle und dient dazu, wichtige Vorbereitungen und Initialisierungen durchzuführen, die erst nach dem Laden der Komponente erfolgen sollten. Im Gegensatz zum Konstruktor, der hauptsächlich für die Instanziierung von Variablen und die Bereitstellung von Abhängigkeiten verwendet wird, ist ngOnInit besonders nützlich für asynchrone Operationen oder das Abrufen von Daten, die erst nach der Konstruktion der Komponente zur Verfügung stehen sollen.
 
 Ein typisches Anwendungsbeispiel für ngOnInit ist das Laden von Daten aus einer API, indem ein HTTP-Request an das Backend gesendet wird, um z.B. Benutzerdaten oder Konfigurationswerte abzurufen. Ebenso wird ngOnInit häufig zum Laden von Werten aus dem localStorage oder sessionStorage verwendet, was besonders nützlich ist, um gespeicherte Benutzerdaten beim Laden der Anwendung wiederherzustellen. Eine weitere häufige Anwendung ist das Registrieren von Event-Listenern oder das Aufrufen bestimmter Dienste, um initiale Zustände zu setzen.
 
 Ein entscheidender Vorteil von ngOnInit ist, dass es nur einmal pro Instanz einer Komponente ausgeführt wird. Das bedeutet, dass alle enthaltenen Initialisierungsschritte nicht mehrfach ausgeführt werden, auch wenn sich Daten innerhalb der Komponente ändern. Dies erhöht die Effizienz der Anwendung, da keine unnötigen Operationen wiederholt werden. Darüber hinaus stellt ngOnInit sicher, dass bestimmte Aufgaben erst dann ausgeführt werden, wenn die Komponente tatsächlich bereit ist, wodurch Fehler vermieden werden, die beim Zugriff auf noch nicht vorhandene Abhängigkeiten auftreten können.
 
-Damit Angular erkennt, dass die Methode ngOnInit existiert und korrekt ausgeführt werden kann, muss die Komponente das OnInit-Interface implementieren. Dies bedeutet, dass in der Klassendefinition implements OnInit angegeben wird, was Angular dazu veranlasst, ngOnInit als Teil des Lebenszyklus der Komponente zu behandeln und sie automatisch zum richtigen Zeitpunkt aufzurufen. Diese Struktur stellt sicher, dass Entwickler eine klare Trennung zwischen der reinen Konstruktion der Klasse und ihrer tatsächlichen Initialisierung aufrechterhalten können.
+Damit \textit{Angular} erkennt, dass die Methode ngOnInit existiert und korrekt ausgeführt werden kann, muss die Komponente das OnInit-Interface implementieren. Dies bedeutet, dass in der Klassendefinition implements OnInit angegeben wird, was \textit{Angular} dazu veranlasst, ngOnInit als Teil des Lebenszyklus der Komponente zu behandeln und sie automatisch zum richtigen Zeitpunkt aufzurufen. Diese Struktur stellt sicher, dass Entwickler eine klare Trennung zwischen der reinen Konstruktion der Klasse und ihrer tatsächlichen Initialisierung aufrechterhalten können.
 
 \begin{figure}[H]
     \centering
@@ -442,7 +442,7 @@ Nachdem das Profil erfolgreich in der Datenbank angelegt wurde, müssen noch die
 
 Für die Erstellung des GeneralInfo-Objekts wird der entsprechende Service verwendet, der seinerseits eine POST-Anfrage an das Backend sendet. Dadurch wird ein leeres GeneralInfo-Objekt in der Datenbank angelegt, das später mit weiteren Informationen gefüllt werden kann.
 
-Im nächsten Schritt wird das Portfolio-Objekt angelegt. Ein Portfolio ist in Melius fest mit einem Profil und einem GeneralInfo-Objekt verknüpft. Daher wird das neu angelegte Portfolio so konfiguriert, dass es sowohl das zugehörige Profil als auch das GeneralInfo-Objekt referenziert. Auch dieses Portfolio-Objekt wird schließlich mit einem POST-Request an das Backend übertragen und dauerhaft in der Datenbank gespeichert.
+Im nächsten Schritt wird das Portfolio-Objekt angelegt. Ein Portfolio ist in \textit{Melius} fest mit einem Profil und einem GeneralInfo-Objekt verknüpft. Daher wird das neu angelegte Portfolio so konfiguriert, dass es sowohl das zugehörige Profil als auch das GeneralInfo-Objekt referenziert. Auch dieses Portfolio-Objekt wird schließlich mit einem POST-Request an das Backend übertragen und dauerhaft in der Datenbank gespeichert.
 
 Damit der Benutzer nach der Registrierung angemeldet bleibt, wird das erstellte Profil im LocalStorage des Browsers gespeichert. Dies hat den Vorteil, dass der Benutzer auch bei einem Reload der Seite nicht sofort ausgeloggt wird und sich erneut anmelden muss. Stattdessen wird das gespeicherte Profil aus dem LocalStorage geladen und in der Anwendung verwendet.
 
@@ -464,7 +464,7 @@ Durch diesen mehrstufigen Prozess werden die Grundstrukturen für ein neues Port
 
 \subsubsection{Login}
 
-Der Login-Prozess in Melius folgt einem sehr ähnlichen Ablauf wie der Registrierungsprozess, mit dem Unterschied, dass hier ein bereits bestehendes Profil authentifiziert wird, anstatt ein neues Profil zu erstellen.
+Der Login-Prozess in \textit{Melius} folgt einem sehr ähnlichen Ablauf wie der Registrierungsprozess, mit dem Unterschied, dass hier ein bereits bestehendes Profil authentifiziert wird, anstatt ein neues Profil zu erstellen.
 
 Nachdem der Benutzer das Login-Formular ausgefüllt hat, wird die Methode onLogin() in der entsprechenden Component aufgerufen. Diese Funktion übernimmt die gesamte Steuerung des Anmeldevorgangs. Zunächst werden die vom Benutzer eingegebene E-Mail-Adresse und das Passwort aus dem Formular ausgelesen und per POST-Request an das Backend gesendet.
 
@@ -528,7 +528,7 @@ Nachdem die benötigten Daten in der Methode ngOnInit der app.component.ts aus d
 
 Um sicherzustellen, dass die Daten tatsächlich vollständig aus dem Backend geladen wurden, bevor sie auf den Unterseiten weiterverwendet werden, wird für alle Seiten eine setTimeout-Funktion mit einer Verzögerung von mindestens 200 Millisekunden verwendet. Diese kurze Verzögerung gibt dem System genügend Zeit, um die asynchronen Anfragen an das Backend abzuschließen und die zurückgegebenen Daten korrekt in den Speicher zu übernehmen, bevor sie weiterverarbeitet oder gerendert werden.
 
-Dieser zusätzliche Sicherheitsmechanismus ist besonders wichtig, da Angular sehr schnell arbeitet und asynchrone Prozesse, wie z.B. HTTP-Anfragen an das Backend, nicht immer genau zum Zeitpunkt des Aufrufs der ngOnInit-Methode abgeschlossen sind. Würde man versuchen, direkt auf die Daten zuzugreifen, bevor diese tatsächlich verfügbar sind, könnte dies zu Fehlermeldungen oder leeren Anzeigen auf den Seiten führen. Durch den kurzen setTimeout wird dieses Problem umgangen, da die Verarbeitung der Daten erst nach einer minimalen Wartezeit erfolgt, in der sichergestellt wird, dass alle relevanten Informationen vom Backend eingetroffen sind.
+Dieser zusätzliche Sicherheitsmechanismus ist besonders wichtig, da \textit{Angular} sehr schnell arbeitet und asynchrone Prozesse, wie z.B. HTTP-Anfragen an das Backend, nicht immer genau zum Zeitpunkt des Aufrufs der ngOnInit-Methode abgeschlossen sind. Würde man versuchen, direkt auf die Daten zuzugreifen, bevor diese tatsächlich verfügbar sind, könnte dies zu Fehlermeldungen oder leeren Anzeigen auf den Seiten führen. Durch den kurzen setTimeout wird dieses Problem umgangen, da die Verarbeitung der Daten erst nach einer minimalen Wartezeit erfolgt, in der sichergestellt wird, dass alle relevanten Informationen vom Backend eingetroffen sind.
 
 Insbesondere bei komplexeren Datenstrukturen, wie z.B. verschachtelten Objekten oder Beziehungen zwischen verschiedenen Entitäten in der Datenbank, kann es vorkommen, dass einzelne Abfragen länger dauern als andere. Durch die Verwendung von Delays wird die Konsistenz der Daten auf allen Seiten gewährleistet und verhindert, dass Benutzer auf eine Seite gelangen, bevor der gewünschte Inhalt tatsächlich verfügbar ist.
 
@@ -553,20 +553,57 @@ Dasselbe geschieht mit den workExperience-Daten: Falls vorhanden, werden diese k
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\linewidth]{pics/Backend/Verwendungen/cv-oninit2.png}
+    \includegraphics[width=0.5\linewidth]{pics/Backend/Verwendungen/cv-oninit2.png}
     \caption{Lebenslauf ngOnInit - Methode (2)}
     \label{fig:cvOnInit2}
 \end{figure}
 
 \subsubsection{Projekte}
 
-Auf der Projektseite durchläuft ngOnInit die Liste der gespeicherten GitHub-Repositories und platziert jedes Repo. Die Repositories werden von einer GitHub API geholt und dann in der Datenbank selbst gespeichert. Der Grund dafür ist, dass die GitHub API eine begrenzte Anzahl von Aufrufen pro Stunde hat und es daher sein kann, dass die Repositories zu einem bestimmten Zeitpunkt nicht angezeigt werden können, da die Repositories nicht mehr von der API abgerufen werden können. Aus diesem Grund werden die Repositories nach dem ersten Fetch in der Datenbank gespeichert, so dass sie immer verfügbar sind.
+Auf der Projektseite übernimmt ngOnInit die Aufgabe, die gespeicherten GitHub-Repositories abzurufen und entsprechend anzuzeigen. Diese Repositories stammen ursprünglich von der GitHub API, werden aber nach dem ersten Abruf in der Datenbank gespeichert. Der Grund dafür liegt in der begrenzten Anzahl von API-Anfragen, die GitHub pro Stunde zulässt. 
+
+Würden die Repositories bei jeder Aktualisierung direkt über die API abgerufen, könnte es passieren, dass sie vorübergehend nicht mehr verfügbar sind, sobald das Abruflimit erreicht ist. Um dieses Problem zu umgehen und eine kontinuierliche Anzeige der Projekte zu gewährleisten, werden die Repositories nach dem ersten Abruf lokal gespeichert. Dadurch bleiben sie unabhängig von den Einschränkungen der API jederzeit abrufbar und verfügbar, auch wenn die API vorübergehend nicht erreichbar ist.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\linewidth]{pics/Backend/Verwendungen/projekte-genRepos.png}
+    \includegraphics[width=0.5\linewidth]{pics/Backend/Verwendungen/projekte-genRepos.png}
     \caption{Projekte - GitHub Repos laden und speichern}
     \label{fig:genRepos}
+\end{figure}
+
+\subsubsection{Kompetenzen}
+
+Auf der Kompetenzseite wird zu Beginn der Methode ngOnInit ein ähnlicher Ansatz wie auf der Lebenslaufseite verwendet. Zuerst werden die verschiedenen Boxen, in denen die Kompetenzen dargestellt werden sollen, erfasst und mittels getElementById() gespeichert. Dies dient dazu, die Elemente später korrekt in den vorgesehenen Spalten auf der Seite anzuordnen.
+
+Im nächsten Schritt werden alle verfügbaren Eigenschaften, die der Benutzer auswählen kann, aus der Datenbank geholt. Diese Merkmale umfassen verschiedene Fähigkeiten oder Eigenschaften, die später über Checkboxen ausgewählt werden können. Nach dem erfolgreichen Laden werden die Daten für die Checkbox-Elemente gespeichert, so dass der Benutzer sie auswählen kann.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{pics/Backend/Verwendungen/komp-ngOnInit1.png}
+    \caption{Kompetenzen - ngOnInit (1)}
+    \label{fig:kompOnInit}
+\end{figure}
+
+Im nächsten Schritt wird geprüft, ob der Benutzer bereits bestimmte Merkmale in seinem Portfolio gespeichert hat. Dazu wird der bestehende Datenspeicher des Portfolios durchsucht, um festzustellen, ob dort bereits ausgewählte Merkmale gespeichert sind. Ist dies der Fall, werden diese gespeicherten Merkmale in das Array selectedCharacteristics eingefügt.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{pics/Backend/Verwendungen/komp-ngOnInit2.png}
+    \caption{Kompetenzen - ngOnInit (2)}
+    \label{fig:kompOnInit}
+\end{figure}
+
+Am Ende des Initialisierungsprozesses wird geprüft, ob bereits Daten zu bekannten Sprachen (knownLanguages), Programmierkenntnissen (programmingKnowledges) oder Softwarekenntnissen (softwareKnowledges) im Portfolio gespeichert sind.
+
+Wenn solche Informationen vorhanden sind, werden sie der Reihe nach durchlaufen und in die entsprechenden Abschnitte der Seite eingefügt. Dazu wird jedes gespeicherte Element iteriert und mit Hilfe der entsprechenden Methoden (addKnownLanguage, addProgrammingLanguage, addSoftware) in die dafür vorgesehenen Boxen eingefügt.
+
+Nachdem alle relevanten Kenntnisse des Benutzers geladen und dargestellt wurden, wird die Funktion moveBoxes aufgerufen. Diese sorgt für die korrekte Anordnung der einzelnen Boxen auf der Seite.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{pics/Backend/Verwendungen/komp-ngOnInit3.png}
+    \caption{Kompetenzen - ngOnInit (3)}
+    \label{fig:kompOnInit}
 \end{figure}
 
 \subsubsection{Gruppen Seite}
@@ -596,4 +633,30 @@ Auf der Seite Einstellungen gibt es nur wenige Elemente, die angezeigt werden k�
     \includegraphics[width=0.75\linewidth]{pics/Backend/Verwendungen/settings-confirm.png}
     \caption{Settings - Speichern}
     \label{fig:settingsConf}
+\end{figure}
+
+\subsubsection{Portfolio View Seite}
+
+Die Portfolio-View-Seite dient als zentrale Übersicht, in der alle relevanten Informationen aus den verschiedenen Startseiten zusammengeführt werden. Ziel ist es, dem Benutzer eine vollständige und übersichtliche Darstellung seines gesamten Portfolios auf einer einzigen Seite zu bieten.
+
+Zu Beginn des Ladevorgangs werden alle Datenboxen mit getElementById() erfasst und gespeichert. Dies stellt sicher, dass sie später an den richtigen Stellen auf der Seite platziert werden können, um eine strukturierte und ansprechende Darstellung zu gewährleisten.
+
+Ein weiterer wichtiger Schritt ist die Überprüfung, ob bereits gespeicherte GitHub-Repository-Daten im Portfolio vorhanden sind. Ist dies der Fall, werden diese direkt auf der Seite eingefügt, so dass sie für den Benutzer sichtbar sind.
+
+Anschließend wird über ein setTimeout sichergestellt, dass alle weiteren relevanten Daten aus den anderen Bereichen des Portfolios korrekt verarbeitet werden. Insbesondere wird hier geprüft, welche Objekte bereits auf der Lebenslaufseite und der Kompetenzseite vorhanden sind. Wenn solche Daten im Portfolio gespeichert sind, werden sie geladen und an den entsprechenden Stellen auf der Portfolio-Ansichtsseite angezeigt.
+
+Durch diesen strukturierten Ablauf wird sichergestellt, dass alle Informationen des Nutzers, sei es die Ausbildung, die Berufserfahrung, die technischen Fähigkeiten oder die GitHub-Projekte, vollständig und übersichtlich auf einer Seite dargestellt werden.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.5\textwidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{pics/Backend/Verwendungen/view-ngOnInit1.png}
+      \captionof{figure}{Portfolio View - ngOnInit (1)}
+    \end{minipage}%
+    \begin{minipage}{.5\textwidth}
+      \centering
+      \includegraphics[width=0.95\linewidth]{pics/Backend/Verwendungen/view-ngOnInit2.png}
+      \captionof{figure}{Portfolio View - ngOnInit (2)}
+    \end{minipage}
 \end{figure}
