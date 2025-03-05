@@ -7,7 +7,7 @@
         </svg>
       </div>
 
-      <img *ngIf="url != ''" class="h-48 w-48 rounded-full" [src]="url"  alt="user_img"/>
+      <div *ngIf="url != ''" class="h-48 w-48 rounded-full" [ngStyle]="{'background-image': 'url(' + this.url + ')', 'background-size':'cover', 'background-position':'center'}" alt="user_img"></div>
     </label>
     <br />
     <input

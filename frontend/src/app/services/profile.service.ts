@@ -48,11 +48,12 @@ export class ProfileService {
     return this.httpClient.put<Profile>(this.url + "update", profile);
   }
 
-  uploadProfileImg(file: any) {
-    const formData = new FormData();
+  uploadProfileImg(file: File) {
+    const formData = new FormData()
 
-    formData.append("file", file);
+    formData.append('file', file);
+    //formData.append('fileName', this.loggedInUser!.lastName);
 
-    return this.httpClient.patch<FormData>(this.url + "img/" + this.loggedInUser!.id, file)
+    return this.httpClient.patch<FormData>(this.url + "img/" + this.loggedInUser!.id, formData)
   }
 }

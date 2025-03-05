@@ -4,6 +4,7 @@ import at.melius.model.Portfolio;
 import at.melius.repository.PortfolioRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 
@@ -28,6 +29,7 @@ public class PortfolioResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{id}")
+    @Transactional
     public Portfolio getPortfolio(@PathParam("id") int id) {
         return this.portfolioRepository.getPortfolioById(id);
     }
