@@ -7,6 +7,7 @@ import {TranslatePipe} from "@ngx-translate/core";
 import {PortfolioService} from "../../../services/portfolio.service";
 import {GHRepo} from "../../../interfaces/GHRepo";
 import {GhReposService} from "../../../services/gh-repos.service";
+import {ImageService} from "../../../services/image.service";
 
 
 @Component({
@@ -23,11 +24,13 @@ import {GhReposService} from "../../../services/gh-repos.service";
   styleUrl: './projects-area.component.css'
 })
 export class ProjectsAreaComponent implements OnInit {
+  filesToUpload: File[] = [];
   selectedFiles: { name: string, url: string }[] = [];
-  uploadedFiles: { name: string, url: string }[] = [];
+  uploadedFiles: { id: number, url: string }[] = [];
   uploadBtnClicked: boolean = false;
   router: Router = inject(Router);
   portfolioService: PortfolioService = inject(PortfolioService);
+  imageService: ImageService = inject(ImageService);
   ghRepoService: GhReposService = inject(GhReposService);
   buttonClass = "hidden"
   showGhTitle: string = "";
@@ -37,15 +40,28 @@ export class ProjectsAreaComponent implements OnInit {
       if(this.portfolioService.currPortfolio!.ghRepos != undefined && this.portfolioService.currPortfolio!.ghRepos!.length > 0) {
         this.placeRepos();
       }
-    }, 200)
+
+      if(this.portfolioService.currPortfolio!.images != undefined && this.portfolioService.currPortfolio!.images.length != 0 ) {
+        this.uploadBtnClicked = true;
+
+        for(let image of this.portfolioService.currPortfolio!.images) {
+          this.uploadedFiles.push({
+            id: image.id,
+            url: this.imageService.getDecodedImage(image.image)
+          })
+        }
+      }
+      }, 200)
   }
 
   onFileSelected(event: any) {
     const files = event.target.files;
+    console.log(event.target.files)
     for (let file of files) {
       if (this.isValidFile(file)) {
       const reader = new FileReader();
       reader.onload = (e: any) => {
+        this.filesToUpload.push(file);
         this.selectedFiles.push({
           name: file.name,
           url: e.target.result
@@ -78,13 +94,17 @@ export class ProjectsAreaComponent implements OnInit {
   }
 
   uploadFiles() {
-    this.uploadBtnClicked = true;
-    this.uploadedFiles = this.uploadedFiles.concat(this.selectedFiles);
-    this.selectedFiles = [];
+    for(let file of this.filesToUpload) {
+      this.imageService.uploadToPortfolio(this.portfolioService.currPortfolio!.profile!.id, file).subscribe()
+    }
+
+    this.reloadPage();
+
   }
 
-  removeSpecificFile(index: number) {
-    this.uploadedFiles.splice(index, 1);
+  removeSpecificFile(id: number) {
+    this.imageService.deleteImage(id).subscribe();
+    this.reloadPage();
   }
 
   ghUserForm = new FormGroup( {

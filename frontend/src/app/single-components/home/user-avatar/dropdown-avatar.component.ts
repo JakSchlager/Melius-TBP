@@ -3,6 +3,7 @@ import {NgClass, NgIf, NgStyle} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {TranslatePipe} from "@ngx-translate/core";
 import {ProfileService} from "../../../services/profile.service";
+import {ImageService} from "../../../services/image.service";
 
 @Component({
   selector: 'app-dropdown-avatar',
@@ -22,6 +23,7 @@ export class DropdownAvatarComponent implements OnInit {
   isAnimating: boolean = false;
   url: string | null = null;
   profileService: ProfileService = inject(ProfileService);
+  imageService: ImageService = inject(ImageService);
 
   ngOnInit() {
     //this.url = URL.createObjectURL(this.profileService.loggedInUser!.profileImage!)
@@ -34,7 +36,7 @@ export class DropdownAvatarComponent implements OnInit {
         };
         reader.readAsDataURL(blob);*/
 
-        this.url = "data:image/png;base64," + this.profileService.loggedInUser!.profileImage;
+        this.url = this.imageService.getDecodedImage(this.profileService.loggedInUser!.profileImage);
       }
     }, 200)
 

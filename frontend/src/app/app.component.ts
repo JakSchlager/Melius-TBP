@@ -30,11 +30,11 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit() {
-    if(localStorage.getItem("rememberUser") === "true") {
+    if (localStorage.getItem("rememberUser") === "true") {
 
-      if(localStorage.getItem("loggedInUser") !== null) {
+      if (localStorage.getItem("loggedInUser") !== null) {
         this.profileService.handleUserLogin(JSON.parse(localStorage.getItem("loggedInUser")!)).subscribe({
-          next: (user: Profile) => {
+          next: async (user: Profile) => {
             this.profileService.loggedInUser = user;
             console.log(user)
 
@@ -56,7 +56,7 @@ export class AppComponent implements OnInit{
       }
 
     } else {
-      if(sessionStorage.getItem("loggedInUser") !== null) {
+      if (sessionStorage.getItem("loggedInUser") !== null) {
         this.profileService.loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser")!);
       } else {
         this.router.navigate(["/"]);

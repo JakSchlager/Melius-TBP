@@ -78,7 +78,7 @@ GET http://localhost:8080/profile/get/1
 
 ##PORTFOLIO
 
-GET http://localhost:8080/portfolio/101
+GET http://localhost:8080/portfolio/301
 
 #POST http://localhost:8080/programming
 #Content-Type: application/json

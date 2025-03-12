@@ -53,7 +53,7 @@ export class ProfileService {
 
     formData.append('file', file);
     //formData.append('fileName', this.loggedInUser!.lastName);
-
+    console.log(formData);
     return this.httpClient.patch<FormData>(this.url + "img/" + this.loggedInUser!.id, formData)
   }
 }
