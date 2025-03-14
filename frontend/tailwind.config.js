@@ -43,6 +43,10 @@ module.exports = {
             transform: "translate3d(0, 0, 0)",
           },
         },
+        'pulse-slow': {
+          '0%, 100%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.1)' },
+        },
       },
 
       animation: {
@@ -50,6 +54,18 @@ module.exports = {
         'fade-up-slower': 'fade-up 1s ease-out',
         'fade-down': 'fade-down 1s ease-out',
         'fade-in-left': 'fade-in-left 1s ease-in-out 0.25s 1',
+        'pulse-slow': 'pulse-slow 1.5s ease-in-out infinite',
+
+      },
+
+      transitionProperty: {
+        'opacity': 'opacity',
+      },
+      transitionTimingFunction: {
+        'ease-out': 'ease-out',
+      },
+      transitionDuration: {
+        '500': '500ms',
       }
     },
 
