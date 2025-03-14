@@ -1,5 +1,7 @@
 import {inject, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {Image} from "../interfaces/image";
+import {Portfolio} from "../interfaces/Portfolio";
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +12,11 @@ export class ImageService {
 
   constructor() { }
 
-  uploadToPortfolio(id: number, file: File) {
+  uploadToPortfolio(id: number, file: File, position: string) {
 
       let formData = new FormData();
       formData.append('file', file);
+      formData.append('position', position);
     //formData.append('fileName', this.loggedInUser!.lastName);
     return this.httpClient.post<FormData>(this.url + id, formData)
   }
@@ -27,4 +30,7 @@ export class ImageService {
   }
 
 
+  updateImage(id: number, position: string) {
+    return this.httpClient.patch<string>(this.url + "update/" + id, position);
+  }
 }

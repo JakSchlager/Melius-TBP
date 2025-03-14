@@ -1,6 +1,7 @@
 package at.melius.boundary;
 
 import at.melius.DTO.ImageUploadDTO;
+import at.melius.model.Image;
 import at.melius.repository.ImageRepository;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
@@ -25,6 +26,13 @@ public class ImageResource {
     @Path("/{id}")
     public void removeImage(@PathParam("id")int id) {
         imageRepository.removeImage(id);
+    }
+
+    @PATCH
+    @Path("/update/{id}")
+    @Consumes(MediaType.TEXT_PLAIN)
+    public void updateImagePosition(@PathParam("id")int id, String position) {
+        imageRepository.updateImagePosition(id, position);
     }
 
 }

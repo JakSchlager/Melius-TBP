@@ -1,5 +1,7 @@
 package at.melius.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import javax.sound.sampled.Port;
@@ -14,16 +16,22 @@ public class Image {
     @Lob
     private byte[] image;
 
-    @ManyToOne
-    @JoinColumn(name = "portfolio_id", referencedColumnName = "profile_id")
+    @ManyToOne(fetch = FetchType.LAZY)
     private Portfolio portfolio;
+
+    private String position;
 
     public Image() {
     }
 
-    public Image( byte[] image, Portfolio portfolio) {
+    public Image(byte[] image, Portfolio portfolio, String position) {
         setImage(image);
         setPortfolio(portfolio);
+        setPosition(position);
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getId() {
@@ -44,5 +52,13 @@ public class Image {
 
     public void setPortfolio(Portfolio portfolio) {
         this.portfolio = portfolio;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
     }
 }

@@ -77,7 +77,7 @@
                (dragover)="onDragOver($event)"
                (drop)="onDrop($event, 'firstFileProjectCol')">
 
-            <div *ngFor="let uploadedFile of uploadedFiles; let i = index" draggable="true" (dragstart)="onDragStart($event, $event.target)" class="bg-transparent p-2 animate-in fade-in zoom-in duration-700 flex flex-col w-fit h-fit overflow-hidden">
+            <div *ngFor="let uploadedFile of uploadedFiles; let i = index" draggable="true" (dragstart)="onDragStart($event, $event.target)" id="{{uploadedFile.id}}" class="bg-transparent p-2 animate-in fade-in zoom-in duration-700 flex flex-col w-fit h-fit overflow-hidden">
               <div class="w-fit h-fit">
                 <div class="w-full h-full flex justify-between items-center">
                   <div class="bg-white p-1 rounded-lg shadow-lg cursor-grab" (mouseenter)="allowDrag = true" (mouseleave)="allowDrag = false">
@@ -92,7 +92,7 @@
                   </button>
                 </div>
                 <div class="py-2" draggable="false">
-                  <img [src]="uploadedFile.url" alt="uploaded_file" class="rounded-lg shadow-lg"/>
+                  <img [src]="this.imageService.getDecodedImage(uploadedFile.image)" alt="uploaded_file" class="rounded-lg shadow-lg"/>
                 </div>
               </div>
             </div>

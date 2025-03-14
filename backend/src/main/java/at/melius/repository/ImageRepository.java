@@ -22,7 +22,7 @@ public class ImageRepository {
         try {
             byte[] imageBytes = image.file.readAllBytes();
 
-            entityManager.persist(new Image(imageBytes, portfolio));
+            entityManager.persist(new Image(imageBytes, portfolio, image.position));
         } catch (Exception e) {
             throw new BadRequestException();
         }
@@ -32,5 +32,12 @@ public class ImageRepository {
     @Transactional
     public void removeImage(int id) {
         this.entityManager.remove(entityManager.find(Image.class, id));
+    }
+
+    @Transactional
+    public void updateImagePosition(int id, String position) {
+        Image image = entityManager.find(Image.class, id);
+
+        image.setPosition(position);
     }
 }

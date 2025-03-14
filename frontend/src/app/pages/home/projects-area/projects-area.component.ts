@@ -8,6 +8,7 @@ import {PortfolioService} from "../../../services/portfolio.service";
 import {GHRepo} from "../../../interfaces/GHRepo";
 import {GhReposService} from "../../../services/gh-repos.service";
 import {ImageService} from "../../../services/image.service";
+import {Image} from "../../../interfaces/image";
 
 
 @Component({
@@ -26,7 +27,7 @@ import {ImageService} from "../../../services/image.service";
 export class ProjectsAreaComponent implements OnInit {
   filesToUpload: File[] = [];
   selectedFiles: { name: string, url: string }[] = [];
-  uploadedFiles: { id: number, url: string }[] = [];
+  uploadedFiles: Image[] = [];
   uploadBtnClicked: boolean = false;
   router: Router = inject(Router);
   portfolioService: PortfolioService = inject(PortfolioService);
@@ -43,13 +44,14 @@ export class ProjectsAreaComponent implements OnInit {
 
       if(this.portfolioService.currPortfolio!.images != undefined && this.portfolioService.currPortfolio!.images.length != 0 ) {
         this.uploadBtnClicked = true;
+        this.uploadedFiles = this.portfolioService.currPortfolio!.images;
 
-        for(let image of this.portfolioService.currPortfolio!.images) {
-          this.uploadedFiles.push({
-            id: image.id,
-            url: this.imageService.getDecodedImage(image.image)
-          })
-        }
+        setTimeout(() => {
+          for(let image of this.uploadedFiles) {
+            this.moveImage(image.id, image.position);
+          }
+        }, 200)
+
       }
       }, 200)
   }
@@ -95,7 +97,7 @@ export class ProjectsAreaComponent implements OnInit {
 
   uploadFiles() {
     for(let file of this.filesToUpload) {
-      this.imageService.uploadToPortfolio(this.portfolioService.currPortfolio!.profile!.id, file).subscribe()
+      this.imageService.uploadToPortfolio(this.portfolioService.currPortfolio!.profile!.id, file, "firstFileProjectCol").subscribe()
     }
 
     this.reloadPage();
@@ -140,6 +142,9 @@ export class ProjectsAreaComponent implements OnInit {
     if (targetElement && this.draggedItem) {
       // Füge das gezogene Element dem Ziel hinzu
       targetElement.appendChild(this.draggedItem);
+
+      this.imageService.updateImage(this.draggedItem.id, targetContainerId).subscribe();
+
       this.draggedItem = null;
     }
   }
@@ -225,6 +230,13 @@ export class ProjectsAreaComponent implements OnInit {
     setTimeout(() => {
       window.location.reload()
     }, 100);
+  }
+
+  moveImage(id: number, position: string) {
+    this.draggedItem = document.getElementById(id+"");
+
+    console.log(this.draggedItem)
+    this.onDrop(new DragEvent("drag"), position);
   }
 }
 

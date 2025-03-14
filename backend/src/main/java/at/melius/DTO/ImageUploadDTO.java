@@ -9,4 +9,6 @@ public class ImageUploadDTO {
     @FormParam("file")
     @PartType("image/png")
     public InputStream file;
+
+    public String position;
 }
