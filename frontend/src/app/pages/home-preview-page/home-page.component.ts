@@ -3,7 +3,7 @@ import {ProfileService} from "../../services/profile.service";
 import {NgIf, NgOptimizedImage, NgStyle} from "@angular/common";
 import {HomeNavbarComponent} from "../../navigation/home-navbar/home-navbar.component";
 import {ActivatedRoute, NavigationEnd, Router, RouterLink, RouterOutlet} from "@angular/router";
-import {BehaviorSubject, filter} from "rxjs";
+import {filter} from "rxjs";
 import {FormsModule} from "@angular/forms";
 import {DropdownAvatarComponent} from "../../single-components/home/user-avatar/dropdown-avatar.component";
 import {TranslatePipe} from "@ngx-translate/core";
@@ -85,4 +85,8 @@ export class HomePageComponent implements OnInit{
 
 
   protected readonly onscroll = onscroll;
+
+  exportData() {
+    console.log("Profile gets shared")
+  }
 }

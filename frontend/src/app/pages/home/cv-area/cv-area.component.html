@@ -22,7 +22,7 @@
       <!-- Allgemeine Informationen -->
       <div id="generalInfoBox" [ngClass]="dragBox" [draggable]="checkDraggable()" (dragstart)="onDragStart($event, $event.target)" class="drop-shadow-lg animate-in slide-in-from-bottom-32 duration-500">
         <div class="bg-white rounded-xl px-10 py-6">
-          <h1 class="text-center font-bold text-2xl py-2">{{'home.cvPage.generally.title' | translate}}</h1>
+          <h1 class="text-center font-bold text-2xl py-2 text-gray-800">{{'home.cvPage.generally.title' | translate}}</h1>
 
           <div class="space-y-10 hover:cursor-default">
             <form class="space-y-4" [formGroup]="generalInfoForm">
@@ -103,7 +103,7 @@
       <!-- Ausbildung Informationen -->
       <div id="educationsBox" [ngClass]="dragBox" [draggable]="checkDraggable()" (dragstart)="onDragStart($event, $event.target)" class="drop-shadow-lg animate-in slide-in-from-bottom-32 duration-700">
         <div class="bg-white rounded-xl px-10 py-4">
-          <h1 class="text-center font-bold text-2xl py-2">{{'home.cvPage.educations.title' | translate}}</h1>
+          <h1 class="text-center font-bold text-2xl py-2 text-gray-800">{{'home.cvPage.educations.title' | translate}}</h1>
 
           <div [formGroup]="educationForm" class="mt-8 hover:cursor-default">
             <div formArrayName="educationFormItems" class="space-y-8">
@@ -182,7 +182,7 @@
       <!-- Berufserfahrungen Informationen -->
       <div id="workExperienceBox" [ngClass]="dragBox" [draggable]="checkDraggable()" (dragstart)="onDragStart($event, $event.target)" class="drop-shadow-lg animate-in slide-in-from-bottom-32 duration-700">
         <div class="bg-white rounded-xl  px-10 py-4">
-          <h1 class="text-center font-bold text-2xl py-2">{{'home.cvPage.workExperience.title' | translate}}</h1>
+          <h1 class="text-center font-bold text-2xl py-2 text-gray-800">{{'home.cvPage.workExperience.title' | translate}}</h1>
 
           <div [formGroup]="jobExperiencesForm" class="mt-8 hover:cursor-default">
             <div formArrayName="jobExperiencesFormItems" class="space-y-8">
