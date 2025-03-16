@@ -32,8 +32,8 @@ export class AppComponent implements OnInit{
   ngOnInit() {
     if (localStorage.getItem("rememberUser") === "true") {
 
-      if (localStorage.getItem("loggedInUser") !== null) {
-        this.profileService.handleUserLogin(JSON.parse(localStorage.getItem("loggedInUser")!)).subscribe({
+      if (localStorage.getItem("meliusUserData") !== null) {
+        this.profileService.handleUserLogin(JSON.parse(localStorage.getItem("meliusUserData")!)).subscribe({
           next: async (user: Profile) => {
             this.profileService.loggedInUser = user;
             console.log(user)
@@ -46,8 +46,8 @@ export class AppComponent implements OnInit{
             })
           },
           error: error => {
-            localStorage.removeItem("loggedInUser");
-            sessionStorage.removeItem("loggedInUser");
+            localStorage.removeItem("meliusUserData");
+            sessionStorage.removeItem("meliusUserData");
             this.router.navigate(["/"]);
           }
         });
@@ -56,9 +56,25 @@ export class AppComponent implements OnInit{
       }
 
     } else {
-      if (sessionStorage.getItem("loggedInUser") !== null) {
-        this.profileService.loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser")!);
-      } else {
+      if (sessionStorage.getItem("meliusUserData") !== null) {
+        this.profileService.handleUserLogin(JSON.parse(sessionStorage.getItem("meliusUserData")!)).subscribe({
+          next: async (user: Profile) => {
+            this.profileService.loggedInUser = user;
+            console.log(user)
+
+            this.portfolioService.getPortfolioById(user.id).subscribe(portfolio => {
+              this.portfolioService.currPortfolio = portfolio;
+              this.translate.use(portfolio.languageCode);
+              this.portfolioService.backgroundColorSubject.next(portfolio.color);
+              console.log(portfolio);
+            })
+          },
+          error: error => {
+            localStorage.removeItem("meliusUserData");
+            sessionStorage.removeItem("meliusUserData");
+            this.router.navigate(["/"]);
+          }
+        });      } else {
         this.router.navigate(["/"]);
       }
     }

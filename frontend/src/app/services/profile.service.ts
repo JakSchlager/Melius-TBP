@@ -34,6 +34,7 @@ export class ProfileService {
   }
 
   handleUserLogin(loginData: UserLoginData): Observable<Profile> {
+    console.log(loginData);
     let user = this.httpClient.post<Profile>(this.url + "login", loginData);
 
     if(user !== null) {

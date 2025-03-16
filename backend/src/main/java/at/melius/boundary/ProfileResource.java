@@ -1,6 +1,7 @@
 package at.melius.boundary;
 
 import at.melius.DTO.ImageUploadDTO;
+import at.melius.DTO.LoginData;
 import at.melius.model.FileUploadForm;
 import at.melius.model.Profile;
 import at.melius.repository.ProfileRepository;
@@ -39,7 +40,7 @@ public class ProfileResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/login")
     @Transactional
-    public Profile loginProfile(Profile profile) {
+    public Profile loginProfile(LoginData profile) {
         if(this.profileRepository.checkProfile(profile.getEmail(), profile.getPassword())) {
             return this.profileRepository.getProfileByEmail(profile.getEmail());
         }

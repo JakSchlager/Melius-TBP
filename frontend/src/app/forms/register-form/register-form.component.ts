@@ -54,7 +54,10 @@ export class RegisterFormComponent {
       this.profileService.handelUserRegistration(newProfile).subscribe(p => {
 
         //this.profileService.loggedInUser = response;
-        localStorage.setItem("loggedInUser", JSON.stringify(p));
+        localStorage.setItem("meliusUserData", JSON.stringify({
+          "email": p.email,
+          "password": p.password,
+        }));
         console.log('Profile registered successfully.', p);
 
         let generalInfo: GeneralInfo = {
