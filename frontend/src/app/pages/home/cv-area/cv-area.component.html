@@ -8,16 +8,16 @@
   <div class="w-full grid grid-cols-3 space-x-4 justify-center">
 
     <!-- CV Column One -->
-    <div [ngClass]="showBorders" class="col-start-1 space-y-10" id="leftSkillCol"
+    <div [ngClass]="showBorders" class="col-start-1 space-y-10" id="cvColumnLeft"
          (dragover)="onDragOver($event)"
-         (drop)="onDrop($event, 'leftSkillCol')">
+         (drop)="onDrop($event, 'cvColumnLeft')">
     </div>
 
 
     <!-- CV Column Two -->
-    <div [ngClass]="showBorders" class="col-start-2 space-y-10" id="middleSkillCol"
+    <div [ngClass]="showBorders" class="col-start-2 space-y-10" id="cvColumnMiddle"
          (dragover)="onDragOver($event)"
-         (drop)="onDrop($event, 'middleSkillCol')">
+         (drop)="onDrop($event, 'cvColumnMiddle')">
 
       <!-- Allgemeine Informationen -->
       <div id="generalInfoBox" [ngClass]="dragBox" [draggable]="checkDraggable()" (dragstart)="onDragStart($event, $event.target)" class="drop-shadow-lg animate-in slide-in-from-bottom-32 duration-500">
@@ -244,9 +244,9 @@
 
 
     <!-- CV Column Three -->
-    <div [ngClass]="showBorders" class="col-start-3 space-y-10" id="rightSkillCol"
+    <div [ngClass]="showBorders" class="col-start-3 space-y-10" id="cvColumnRight"
          (dragover)="onDragOver($event)"
-         (drop)="onDrop($event, 'rightSkillCol')">
+         (drop)="onDrop($event, 'cvColumnRight')">
     </div>
   </div>
 

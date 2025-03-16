@@ -5,15 +5,15 @@
 
   <div class="w-full mt-5 content-center grid grid-cols-3 space-x-4 justify-center">
     <!-- Column 1 -->
-    <div [ngClass]="showBorders" class="col-start-1 space-y-10" id="leftSkillCol"
+    <div [ngClass]="showBorders" class="col-start-1 space-y-10" id="strengthsColumnLeft"
          (dragover)="onDragOver($event)"
-         (drop)="onDrop($event, 'leftSkillCol')">
+         (drop)="onDrop($event, 'strengthsColumnLeft')">
     </div>
 
     <!-- Column 2 -->
-    <div [ngClass]="showBorders" class="col-start-2 space-y-10" id="middleSkillCol"
+    <div [ngClass]="showBorders" class="col-start-2 space-y-10" id="strengthsColumnMiddle"
          (dragover)="onDragOver($event)"
-         (drop)="onDrop($event, 'middleSkillCol')">
+         (drop)="onDrop($event, 'strengthsColumnMiddle')">
 
       <!-- Allgemein Kenntnisse -->
       <div id="characteristics" [ngClass]="dragBox" [draggable]="checkDraggable()"
@@ -214,9 +214,9 @@
     </div>
 
     <!-- Column 3 -->
-    <div [ngClass]="showBorders" class="col-start-3 space-y-10" id="rightSkillCol"
+    <div [ngClass]="showBorders" class="col-start-3 space-y-10" id="strengthsColumnRight"
          (dragover)="onDragOver($event)"
-         (drop)="onDrop($event, 'rightSkillCol')">
+         (drop)="onDrop($event, 'strengthsColumnRight')">
     </div>
   </div>
 </div>
