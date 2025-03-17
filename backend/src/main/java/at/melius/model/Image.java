@@ -6,8 +6,12 @@ import jakarta.persistence.*;
 
 import javax.sound.sampled.Port;
 
+@NamedQuery(name = Image.QUERY_FIND_BY_PORTFOLIO_ID, query ="Select i FROM Image i WHERE portfolio = :portfolio" )
+
 @Entity
 public class Image {
+
+    public static final String QUERY_FIND_BY_PORTFOLIO_ID = "Image.findByPortfolioId";
 
     @Id
     @GeneratedValue

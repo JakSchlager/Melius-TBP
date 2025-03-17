@@ -6,8 +6,11 @@ import at.melius.model.Portfolio;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.BadRequestException;
+
+import java.util.List;
 
 @ApplicationScoped
 public class ImageRepository {
@@ -39,5 +42,13 @@ public class ImageRepository {
         Image image = entityManager.find(Image.class, id);
 
         image.setPosition(position);
+    }
+
+    public List<Image> getImagesByPortfolioId(int portfolioId) {
+        TypedQuery<Image> query = this.entityManager.createNamedQuery(Image.QUERY_FIND_BY_PORTFOLIO_ID, Image.class);
+
+        query.setParameter("portfolio", this.entityManager.find(Portfolio.class, portfolioId));
+
+        return query.getResultList();
     }
 }

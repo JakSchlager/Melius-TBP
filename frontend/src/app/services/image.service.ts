@@ -29,8 +29,11 @@ export class ImageService {
     return "data:image/png;base64," + image;
   }
 
-
   updateImage(id: number, position: string) {
     return this.httpClient.patch<string>(this.url + "update/" + id, position);
+  }
+
+  getImagesByPortfolioId(portfolioId: number) {
+    return this.httpClient.get<Image[]>(`${this.url}get/${portfolioId}`);
   }
 }

@@ -69,19 +69,7 @@ public class Portfolio {
 
     @OneToMany(mappedBy = "portfolio", fetch = FetchType.EAGER)
     @JsonIgnoreProperties({"portfolio"})
-    private Set<Image> images;
-
-    @OneToMany(mappedBy = "portfolio", fetch = FetchType.EAGER)
-    @JsonIgnoreProperties({"portfolio"})
     private Set<GHRepo> ghRepos;
-
-    public Set<Image> getImages() {
-        return images;
-    }
-
-    public void setImages(Set<Image> images) {
-        this.images = images;
-    }
 
     public Set<GHRepo> getGhRepos() {
         return ghRepos;

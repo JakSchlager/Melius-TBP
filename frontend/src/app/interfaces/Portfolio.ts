@@ -28,5 +28,4 @@ export interface Portfolio {
   languageCode: string,
   color: string,
   ghRepos?: GHRepo[],
-  images?: Image[]
 }

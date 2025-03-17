@@ -5,19 +5,20 @@ import {Portfolio} from "../../interfaces/Portfolio";
 import {HomeNavbarComponent} from "../../navigation/home-navbar/home-navbar.component";
 import {DropdownAvatarComponent} from "../../single-components/home/user-avatar/dropdown-avatar.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {NgForOf, NgIf, NgStyle} from "@angular/common";
+import {NgClass, NgForOf, NgIf, NgStyle} from "@angular/common";
 import {DropStrEdvComponent} from "../../single-components/home/strengths/drop-str-edv/drop-str-edv.component";
 import {DropStrProgrComponent} from "../../single-components/home/strengths/drop-str-progr/drop-str-progr.component";
 import {MultiSelectModule} from "primeng/multiselect";
 import {StarRatingComponent} from "../../single-components/home/star-rating/star-rating.component";
 import $ from "jquery";
+import {TranslatePipe} from "@ngx-translate/core";
+import {Image} from "../../interfaces/image";
+import {ImageService} from "../../services/image.service";
 
 @Component({
   selector: 'app-portfolio-view',
   standalone: true,
   imports: [
-    HomeNavbarComponent,
-    DropdownAvatarComponent,
     FormsModule,
     NgIf,
     NgForOf,
@@ -26,7 +27,9 @@ import $ from "jquery";
     DropStrProgrComponent,
     MultiSelectModule,
     StarRatingComponent,
-    NgStyle
+    NgStyle,
+    TranslatePipe,
+    NgClass
   ],
   templateUrl: './portfolio-view.component.html',
   styleUrl: './portfolio-view.component.css'
@@ -34,10 +37,14 @@ import $ from "jquery";
 export class PortfolioViewComponent implements OnInit {
   route: ActivatedRoute = inject(ActivatedRoute);
   portfolioService: PortfolioService = inject(PortfolioService);
+  imageService: ImageService = inject(ImageService);
   portfolio!: Portfolio;
   pictureUrl!: string;
   disabledInputs: boolean = true;
   buttonClass!: string;
+
+  isLoading: boolean = true;
+  fadeOut: boolean = false;
 
   backgroundColor!: string;
   backgroundImageUrl: string | ArrayBuffer | null = null;
@@ -49,10 +56,23 @@ export class PortfolioViewComponent implements OnInit {
   knownLanguagesBox!: any;
   programmingKnowledgesBox!: any;
   softwareKnowledgesBox!: any;
+  uploadedFiles: Image[] = []
 
 
   ngOnInit() {
+
     const id = Number(this.route.snapshot.params['id']);
+
+    this.portfolioService.getPortfolioById(id).subscribe(portfolio => {
+      this.portfolio = portfolio;
+    })
+
+    setTimeout(() => {
+      this.fadeOut = true;
+      setTimeout(() => {
+        this.isLoading = false;
+      }, 500); // Dauer der Animation (500ms) sollte mit der CSS-Transition übereinstimmen
+    }, 2000);
 
     this.generalInfoBox = document.getElementById("generalInfoBox");
     this.educationsBox = document.getElementById("educationsBox");
@@ -61,14 +81,6 @@ export class PortfolioViewComponent implements OnInit {
     this.knownLanguagesBox = document.getElementById("knownLanguagesBox");
     this.programmingKnowledgesBox = document.getElementById("programmingKnowledgesBox");
     this.softwareKnowledgesBox = document.getElementById("softwareKnowledgesBox");
-
-    this.portfolioService.getPortfolioById(id).subscribe(p => {
-      this.portfolio = p;
-      console.log(this.portfolio);
-      if(this.portfolioService.currPortfolio!.ghRepos !== undefined && this.portfolioService.currPortfolio!.ghRepos.length > 0) {
-        this.placeRepos();
-      }
-    })
 
     setTimeout(() =>{
       if (this.portfolio.generalInfoPosition) {
@@ -99,7 +111,22 @@ export class PortfolioViewComponent implements OnInit {
       this.moveToColumn(this.softwareKnowledgesBox, this.portfolio.softwareKnowledgesPosition)
     }
 
+    if(this.portfolio.ghRepos !== undefined && this.portfolio.ghRepos.length > 0) {
+      this.placeRepos();
+    }
+
+    this.imageService.getImagesByPortfolioId(this.portfolio.profile.id).subscribe(i => {
+      if(i != undefined && i.length != 0 ) {
+        this.uploadedFiles = i;
+        console.log("Loaded Images", this.uploadedFiles);
+        for(let image of this.uploadedFiles) {
+          this.moveToColumn(document.getElementById(image.id+""), image.position);
+        }
+      }
+    })
+
     this.backgroundColor = this.portfolio.color;
+
     }, 200)
 
   }

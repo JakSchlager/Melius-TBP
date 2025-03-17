@@ -42,18 +42,22 @@ export class ProjectsAreaComponent implements OnInit {
         this.placeRepos();
       }
 
-      if(this.portfolioService.currPortfolio!.images != undefined && this.portfolioService.currPortfolio!.images.length != 0 ) {
-        this.uploadBtnClicked = true;
-        this.uploadedFiles = this.portfolioService.currPortfolio!.images;
+      this.imageService.getImagesByPortfolioId(this.portfolioService.currPortfolio!.profile.id).subscribe(i => {
+        if(i != undefined && i.length != 0 ) {
+          this.uploadBtnClicked = true;
+          this.uploadedFiles = i;
 
-        setTimeout(() => {
-          for(let image of this.uploadedFiles) {
-            this.moveImage(image.id, image.position);
-          }
-        }, 200)
+          setTimeout(() => {
+            for(let image of this.uploadedFiles) {
+              this.moveImage(image.id, image.position);
+            }
+          }, 200)
 
-      }
-      }, 200)
+        }
+      })
+
+
+    }, 200)
   }
 
   onFileSelected(event: any) {
@@ -106,7 +110,6 @@ export class ProjectsAreaComponent implements OnInit {
 
   removeSpecificFile(id: number) {
     this.imageService.deleteImage(id).subscribe();
-    this.reloadPage();
   }
 
   ghUserForm = new FormGroup( {
@@ -205,7 +208,7 @@ export class ProjectsAreaComponent implements OnInit {
               portfolio: this.portfolioService.currPortfolio!
             })
           });
-
+          console.log(repos);
           this.ghRepoService.addAllRepos(repos).subscribe()
           this.reloadPage();
         }
