@@ -74,7 +74,8 @@
       "artworks": {
         "title": "Your Artworks",
         "uploadBtn": "Click here to upload your images!"
-      }
+      },
+      "removeGHUserBtn": "Remove User"
     },
     "compPage": {
       "personal": {

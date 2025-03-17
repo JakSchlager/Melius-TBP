@@ -51,7 +51,7 @@ export class SettingsPageComponent implements OnInit {
   }
 
   removeBackgroundSelection() {
-    this.selectedBackgroundColor = '#fff';
+    this.selectedBackgroundColor = '#f9fafb';
     this.selectedBackgroundImageUrl = null;
   }
 

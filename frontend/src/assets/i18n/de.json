@@ -74,7 +74,8 @@
       "artworks": {
         "title": "Deine Kunstwerke",
         "uploadBtn": "Hier klicken um deine Bilder hochzuladen!"
-      }
+      },
+      "removeGHUserBtn": "Benutzer entfernen"
     },
 
     "compPage": {

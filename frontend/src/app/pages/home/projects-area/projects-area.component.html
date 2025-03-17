@@ -1,11 +1,10 @@
 <div class="w-full animate-in slide-in-from-bottom-32 duration-500">
 
   <div class="w-full flex flex-col items-center">
-    <h1 [ngClass]="showGhTitle" class="text-center font-bold text-3xl py-2 my-5">{{'home.projectsPage.ghProjects.title' | translate}}</h1>
+    <h1 [ngClass]="showGhTitle" class="text-center font-bold text-3xl py-2 my-5 text-gray-800">{{'home.projectsPage.ghProjects.title' | translate}}</h1>
 
-    <!-- TODO: remove gh Projects Button überarbeiten -->
-    <button [ngClass]="buttonClass" (click)="deleteGithubUser()" class="bg-white hover:bg-gray-100 ease-in-out duration-150 rounded-2xl border-2 text-red-500 text-lg border-red-500 px-4 py-2">
-      Remove User
+    <button [ngClass]="buttonClass" (click)="deleteGithubUser()" class="font-semibold flex justify-between rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm text-red-700 hover:bg-gray-100 duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+      <h1>{{'home.projectsPage.removeGHUserBtn' | translate}}</h1>
     </button>
 
     <div id="ghUserForm" [formGroup]="ghUserForm" class=" my-10 box-content rounded-lg bg-white shadow-custom-shadow md:mt-0 sm:max-w-md xl:p-20 xl:py-10 flex flex-col justify-evenly items-center">
@@ -22,7 +21,7 @@
 
   <div class="w-full flex flex-col items-center mt-10">
     <div class="w-2/5">
-      <h1 class="text-center font-bold text-3xl py-2 my-5">{{'home.projectsPage.artworks.title' | translate}}</h1>
+      <h1 class="text-center font-bold text-3xl py-2 my-5 text-gray-800">{{'home.projectsPage.artworks.title' | translate}}</h1>
 
 
       <div class="bg-white border border-dashed border-gray-400 rounded-lg shadow-lg hover:bg-accent-blue ease-in-out duration-150">

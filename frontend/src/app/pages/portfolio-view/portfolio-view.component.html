@@ -20,14 +20,14 @@
 
   <div class="absolute top-0 left-0 w-full h-full -z-10" [ngStyle]="{'background-color': backgroundImageUrl ? 'white' : backgroundColor,
                 'background-image': backgroundImageUrl ? 'url(' + backgroundImageUrl + ')' : 'none',
-                'background-size': 'cover', 'background-position': 'center', 'background-repeat': 'no-repeat', 'background-attachment': 'fixed', 'overflow': 'auto'}">>
-  </div>
+                'background-size': 'cover', 'background-position': 'center', 'background-repeat': 'no-repeat', 'background-attachment': 'fixed', 'overflow': 'auto'}">
+</div>
 
-  <div class="w-screen h-screen">
+<div class="w-full h-screen
+">
 
-
-    <div class="w-full">
-      <div class="p-10 h-1/4 mt-6 flex justify-around drop-shadow-md">
+  <div class="w-full">
+      <div class="p-10 h-1/4 mt-20 flex justify-around drop-shadow-md">
         <div class="h-full block space-y-2 items-center">
           <div class="w-full flex justify-center rounded-full">
             <div class="w-fit drop-shadow-lg">
@@ -42,29 +42,68 @@
           </div>
         </div>
       </div>
-    </div>
+  </div>
 
-    <div class="w-full h-fit flex justify-center border py-10 px-20">
+  <!-- Mini Navbar auf der rechten Seite -->
+  <div class="fixed right-0 mt-14 top-2/5 backdrop-blur-xl space-y-4 px-4 py-2 rounded-l-lg z-20 max-w-[calc(100vw-16px)">
+    <ul class="space-y-4">
+      <li>
+        <button class="flex items-center space-x-2" (click)="scrollToElement('cvSection')">
+          <svg [ngClass]="{'text-primary-color': activeSection === 'cvSection', 'text-gray-500': activeSection !== 'cvSection'}" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z" />
+          </svg>
+          <a [routerLink]="[]" [ngClass]="{'text-black': activeSection === 'cvSection', 'text-gray-500': activeSection !== 'cvSection'}" class="text-lg font-semibold hover:text-gray-700 duration-150 ease-in-out">{{'home.nav.cv' | translate}}</a>
+        </button>
+      </li>
 
+      <li>
+        <button class="flex items-center space-x-2" (click)="scrollToElement('compsSection')">
+          <svg [ngClass]="{'text-orange-500': activeSection === 'compsSection', 'text-gray-500': activeSection !== 'compsSection'}" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.362 5.214A8.252 8.252 0 0 1 12 21 8.25 8.25 0 0 1 6.038 7.047 8.287 8.287 0 0 0 9 9.601a8.983 8.983 0 0 1 3.361-6.867 8.21 8.21 0 0 0 3 2.48Z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 18a3.75 3.75 0 0 0 .495-7.468 5.99 5.99 0 0 0-1.925 3.547 5.975 5.975 0 0 1-2.133-1.001A3.75 3.75 0 0 0 12 18Z" />
+          </svg>
+
+          <a [routerLink]="[]" [ngClass]="{'text-black': activeSection === 'compsSection', 'text-gray-500': activeSection !== 'compsSection'}" class="text-lg font-semibold hover:text-gray-700 duration-150 ease-in-out">{{'home.nav.comps' | translate}}</a>
+        </button>
+      </li>
+
+      <li>
+        <button class="flex items-center space-x-2" (click)="scrollToElement('projectsSection')">
+          <svg [ngClass]="{'text-green-500': activeSection === 'projectsSection', 'text-gray-500': activeSection !== 'projectsSection'}" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6 hover:'text-green-500">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m21 7.5-2.25-1.313M21 7.5v2.25m0-2.25-2.25 1.313M3 7.5l2.25-1.313M3 7.5l2.25 1.313M3 7.5v2.25m9 3 2.25-1.313M12 12.75l-2.25-1.313M12 12.75V15m0 6.75 2.25-1.313M12 21.75V19.5m0 2.25-2.25-1.313m0-16.875L12 2.25l2.25 1.313M21 14.25v2.25l-2.25 1.313m-13.5 0L3 16.5v-2.25" />
+          </svg>
+
+          <a [routerLink]="[]" [ngClass]="{'text-black': activeSection === 'projectsSection', 'text-gray-500': activeSection !== 'projectsSection'}" class="text-lg font-semibold hover:text-gray-700 duration-150 ease-in-out">{{'home.nav.projects' | translate}}</a>
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ================= -->
+  <!-- Lebenslauf Abteil -->
+  <!-- ================= -->
+  <div id="cvSection" class="border border-gray-100 pb-10">
+    <h1 class="text-7xl font-bold text-gray-200 ml-20 mt-10 mb-5">{{'home.nav.cv' | translate}}</h1>
+
+    <div class="w-full h-fit flex justify-center py-10 px-20">
       <div class="w-full grid grid-cols-3 space-x-4 justify-center">
 
         <!-- Left Column -->
-        <div class="col-start-1 space-y-10" id="leftSkillCol"></div>
-
+        <div class="col-start-1 space-y-10" id="cvColumnLeft">
+        </div>
 
 
         <!-- Middle Column -->
-        <div class="col-start-2 space-y-10" id="middleSkillCol">
+        <div class="col-start-2 space-y-10" id="cvColumnMiddle">
 
-          <!-- Lebenslauf Abteil -->
           <!-- Allgemeine Informationen -->
           <div id="generalInfoBox" class="drop-shadow-lg animate-in slide-in-from-bottom-32 duration-500">
             <div class="bg-white rounded-xl px-10 py-6">
-              <h1 class="text-center font-bold text-2xl py-2">Allgemein</h1>
+              <h1 class="text-center font-bold text-2xl py-2 text-gray-800">{{'home.cvPage.generally.title' | translate}}</h1>
 
               <div class="space-y-10 hover:cursor-default">
                 <form class="space-y-4">
-                  <span class="row-start-1 col-start-1 text-gray-500">Ansprache</span>
+                  <span class="row-start-1 col-start-1 text-gray-500">{{'home.cvPage.generally.salutationHeader' | translate}}</span>
 
                   <div class="flex items-center pb-2">
                     <div class="grid">
@@ -79,14 +118,14 @@
 
                   <div class="grid grid-cols-2">
                     <div class="w-11/12 col-start-1">
-                      <span class="text-gray-500">Vorname</span>
+                      <span class="text-gray-500">{{'home.cvPage.generally.firstName' | translate}}</span>
                       <div class="border-b-2">
                         <input type="text" [disabled]="disabledInputs" [value]="portfolio.profile.firstName" class="w-11/12">
                       </div>
                     </div>
 
                     <div class="w-11/12 col-start-2">
-                      <span class="text-gray-500">Nachname</span>
+                      <span class="text-gray-500">{{'home.cvPage.generally.lastName' | translate}}</span>
                       <div class=" border-b-2">
                         <input type="text" [disabled]="disabledInputs" [value]="portfolio.profile.lastName" class="w-11/12">
                       </div>
@@ -99,20 +138,20 @@
                   </div>
 
                   <div class="grid grid-cols-1">
-                    <span class="text-gray-500">Telefonnummer</span>
+                    <span class="text-gray-500">{{'home.cvPage.generally.tel' | translate}}</span>
                     <input type="text" [disabled]="disabledInputs" [value]="portfolio.profile.phoneNumber" class="w-11/12">
                   </div>
 
                   <div class="grid grid-cols-2">
                     <div class="w-11/12 col-start-1">
-                      <span class="text-gray-500">PLZ</span>
+                      <span class="text-gray-500">{{'home.cvPage.generally.postalCode' | translate}}</span>
                       <div class="border-b-2">
                         <input type="text" [disabled]="disabledInputs" [value]="portfolio.generalInfo.zipCode" class="w-11/12">
                       </div>
                     </div>
 
                     <div class="w-11/12 col-start-2">
-                      <span class="text-gray-500">Ort</span>
+                      <span class="text-gray-500">{{'home.cvPage.generally.location' | translate}}</span>
                       <div class=" border-b-2">
                         <input type="text" [disabled]="disabledInputs" [value]="portfolio.generalInfo.city" class="w-11/12">
                       </div>
@@ -121,7 +160,7 @@
 
 
                   <div class="grid grid-cols-1">
-                    <span class="text-gray-500">Addresse</span>
+                    <span class="text-gray-500">{{'home.cvPage.generally.address' | translate}}</span>
                     <input type="text" [disabled]="disabledInputs" [value]="portfolio.generalInfo.address" class="w-11/12">
                   </div>
                 </form>
@@ -132,7 +171,7 @@
           <!--Ausbildung Informationen -->
           <div id="educationsBox" class="drop-shadow-lg animate-in slide-in-from-bottom-32 duration-700">
             <div class="bg-white rounded-xl px-10 py-4">
-              <h1 class="text-center font-bold text-2xl py-2">Ausbildungen</h1>
+              <h1 class="text-center font-bold text-2xl py-2 text-gray-800">{{'home.cvPage.educations.title' | translate}}</h1>
 
               <div class="mt-8 hover:cursor-default">
                 <div class="space-y-8">
@@ -141,7 +180,7 @@
                     <div class="flex justify-between space-x-6 animate-in fade-in zoom-in duration-500">
                       <div class="w-full grid space-y-4">
                         <div class="grid grid-cols-1">
-                          <span class="text-gray-500">Bildungseinrichtung/Ort</span>
+                          <span class="text-gray-500">{{'home.cvPage.educations.location' | translate}}</span>
                           <input [disabled]="disabledInputs" [value]="educationItem.name" class="border-b-2">
                         </div>
 
@@ -149,21 +188,21 @@
                         <div class="w-full grid grid-cols-3">
                           <div class="w-full">
                             <div class="w-fit grid grid-cols-1">
-                              <span class="text-gray-500">Von</span>
+                              <span class="text-gray-500">{{'home.cvPage.educations.from' | translate}}</span>
                               <input [disabled]="disabledInputs" [value]="educationItem.fromDate" type="date" class="border-b-2">
                             </div>
                           </div>
 
                           <div class="w-full">
                             <div class="w-fit grid grid-cols-1">
-                              <span class="text-gray-500">Bis</span>
+                              <span class="text-gray-500">{{'home.cvPage.educations.until' | translate}}</span>
                               <input [disabled]="disabledInputs" [value]="educationItem.toDate" type="date" class="border-b-2">
                             </div>
                           </div>
 
                           <div class="w-full flex justify-end">
                             <div class="grid grid-cols-1">
-                              <span class="row-start-1 col-start-1 text-gray-500">Absolviert</span>
+                              <span class="row-start-1 col-start-1 text-gray-500">{{'home.cvPage.educations.complete' | translate}}</span>
                               <div class="flex items-center pb-2">
                                 <div class="grid">
                                   <svg class="pointer-events-none z-10 right-1 relative col-start-1 row-start-1 h-4 w-4 self-center justify-self-end forced-colors:hidden" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
@@ -190,8 +229,8 @@
 
           <!-- Berufserfahrungen Informationen -->
           <div id="workExperiencesBox" class="drop-shadow-lg animate-in slide-in-from-bottom-32 duration-700">
-            <div class="bg-white rounded-xl  px-10 py-4">
-              <h1 class="text-center font-bold text-2xl py-2">Berufserfahrungen</h1>
+            <div class="bg-white rounded-xl  px-10 py-4 mb-10">
+              <h1 class="text-center font-bold text-2xl py-2 text-gray-800">{{'home.cvPage.workExperience.title' | translate}}</h1>
 
               <div class="mt-8 hover:cursor-default">
                 <div class="space-y-8">
@@ -201,7 +240,7 @@
                       <div class="w-full grid space-y-4">
 
                         <div class="w-full grid grid-cols-1">
-                          <span class="text-gray-500">Firma/Ort</span>
+                          <span class="text-gray-500">{{'home.cvPage.workExperience.company' | translate}}</span>
                           <input [disabled]="disabledInputs" [value]="jobExperienceItem.company" class="border-b-2">
                         </div>
 
@@ -209,21 +248,21 @@
                         <div class="w-full grid grid-cols-2 justify-between">
                           <div class="w-full">
                             <div class="w-fit grid grid-cols-1">
-                              <span class="text-gray-500">Von</span>
+                              <span class="text-gray-500">{{'home.cvPage.workExperience.from' | translate}}</span>
                               <input [disabled]="disabledInputs" [value]="jobExperienceItem.fromDate" type="date" class="border-b-2">
                             </div>
                           </div>
 
                           <div class="w-full">
                             <div class="w-fit grid grid-cols-1">
-                              <span class="text-gray-500">Bis</span>
+                              <span class="text-gray-500">{{'home.cvPage.workExperience.until' | translate}}</span>
                               <input [disabled]="disabledInputs" [value]="jobExperienceItem.toDate" type="date" class="border-b-2">
                             </div>
                           </div>
                         </div>
 
                         <div class="w-full grid grid-cols-1">
-                          <span class="text-gray-500">Zusätzliche Informationen: </span>
+                          <span class="text-gray-500">{{'home.cvPage.workExperience.moreInfos' | translate}} </span>
                           <textarea [disabled]="disabledInputs" [value]="jobExperienceItem.information" class="bg-accent-blue resize-y rounded-md border-2"></textarea>
                         </div>
                       </div>
@@ -233,12 +272,32 @@
               </div>
             </div>
           </div>
+        </div>
+
+          <!-- Right Column -->
+          <div class="col-start-3 space-y-10" id="cvColumnRight"></div>
+      </div>
+    </div>
+  </div>
 
 
-          <!-- Kompetenzen Abteil -->
+
+  <!-- ================== -->
+  <!-- Kompetenzen Abteil -->
+  <!-- ================== -->
+  <div id="compsSection" class="border pb-10 border-gray-100">
+    <h1 class="text-7xl font-bold text-gray-200 ml-20 mt-10 mb-5">{{'home.nav.comps' | translate}}</h1>
+    <div class="w-full h-fit flex justify-center py-10 px-20">
+      <div class="w-full grid grid-cols-3 space-x-4 justify-center">
+        <!-- Left Column -->
+        <div class="col-start-1 space-y-10" id="strengthsColumnLeft"></div>
+
+
+        <!-- Middle Column -->
+        <div class="col-start-2 space-y-10" id="strengthsColumnMiddle">
           <div id="characteristicsBox" class="colListItem grid animate-in slide-in-from-bottom-32 duration-500">
             <div class="bg-white px-10 py-4 rounded-lg shadow-md">
-              <h1 class="text-center font-bold text-2xl py-2">Persönliche Eigenschaften</h1>
+              <h1 class="text-center font-bold text-2xl py-2 text-gray-800">{{ 'home.compPage.personal.title' | translate }}</h1>
               <div class="w-full relative mt-2 grid grid-cols-1 space-y-2 hover:cursor-default">
                 <div class="max-w-full relative border rounded-lg">
                   <p-multiSelect [disabled]="disabledInputs" class="max-w-full"
@@ -255,7 +314,7 @@
 
           <!-- Sprachliche Kenntnisse -->
           <div id="knownLanguagesBox" class="colListItem bg-white rounded-lg px-2 py-10 shadow-md animate-in slide-in-from-bottom-32 duration-500">
-            <h1 class="text-center font-bold text-2xl py-2 pb-4">Sprachliche Stärken</h1>
+            <h1 class="text-center font-bold text-2xl py-2 pb-4 text-gray-800">{{ 'home.compPage.languages.title' | translate }}</h1>
 
             <div class="mt-2 hover:cursor-default">
               <div class="">
@@ -280,7 +339,7 @@
           <div id="programmingKnowledgesBox" class="animate-in slide-in-from-bottom-32 duration-500">
 
             <div class="flex flex-col space-y-2 bg-white rounded-lg px-2 py-10 shadow-md">
-              <h1 class="text-center font-bold text-2xl py-6">Programmier Kenntnisse</h1>
+              <h1 class="text-center font-bold text-2xl py-6 text-gray-800">{{ 'home.compPage.programming.title' | translate }}</h1>
               <div class="mt-2 hover:cursor-default" >
                 <div class="space-y-8">
                   <div *ngFor="let programmingItem of this.portfolio.programmingKnowledges; let i = index">
@@ -293,11 +352,11 @@
                           <input [value]="programmingItem.rating" class="rounded-lg overflow-hidden appearance-none bg-gray-400 h-3 w-full" type="range" min="1" max="100" step="1" draggable="false"/>
 
                           <div class="w-full flex justify-between mt-1">
-                            <span class="text-sm text-intermediate-color">Schlecht</span>
-                            <span class="text-sm text-intermediate-color">Meh</span>
-                            <span class="text-sm text-intermediate-color">Okay</span>
-                            <span class="text-sm text-intermediate-color">Gut</span>
-                            <span class="text-sm text-intermediate-color">Sehr Gut</span>
+                            <span class="text-sm text-intermediate-color">{{ 'home.compPage.programming.slider.bad' | translate }}</span>
+                            <span class="text-sm text-intermediate-color">{{ 'home.compPage.programming.slider.meh' | translate }}</span>
+                            <span class="text-sm text-intermediate-color">{{ 'home.compPage.programming.slider.ok' | translate }}</span>
+                            <span class="text-sm text-intermediate-color">{{ 'home.compPage.programming.slider.good' | translate }}</span>
+                            <span class="text-sm text-intermediate-color">{{ 'home.compPage.programming.slider.vg' | translate }}</span>
                           </div>
                         </div>
                       </div>
@@ -313,8 +372,8 @@
 
 
           <!-- Software Kenntnisse -->
-          <div id="softwareKnowledgesBox" class="colListItem bg-white rounded-lg px-2 py-10 shadow-md animate-in slide-in-from-bottom-32 duration-500">
-            <h1 class="text-center font-bold text-2xl py-6">EDV Kenntnisse</h1>
+          <div id="softwareKnowledgesBox" class=" colListItem bg-white rounded-lg px-2 py-10 shadow-md animate-in slide-in-from-bottom-32 duration-500">
+            <h1 class="text-center font-bold text-2xl py-6 text-gray-800">{{ 'home.compPage.edv.title' | translate }}</h1>
 
             <div class="mt-2 hover:cursor-default">
               <div class="space-y-8">
@@ -328,11 +387,11 @@
                         <input [value]="softwareItem.rating" class="rounded-lg overflow-hidden appearance-none bg-gray-400 h-3 w-full" type="range" min="1" max="100" step="1" />
 
                         <div class="w-full flex justify-between mt-1">
-                          <span class="text-sm text-intermediate-color">Schlecht</span>
-                          <span class="text-sm text-intermediate-color">Meh</span>
-                          <span class="text-sm text-intermediate-color">Okay</span>
-                          <span class="text-sm text-intermediate-color">Gut</span>
-                          <span class="text-sm text-intermediate-color">Sehr Gut</span>
+                          <span class="text-sm text-intermediate-color">{{ 'home.compPage.edv.slider.bad' | translate }}</span>
+                          <span class="text-sm text-intermediate-color">{{ 'home.compPage.edv.slider.meh' | translate }}</span>
+                          <span class="text-sm text-intermediate-color">{{ 'home.compPage.edv.slider.ok' | translate }}</span>
+                          <span class="text-sm text-intermediate-color">{{ 'home.compPage.edv.slider.good' | translate }}</span>
+                          <span class="text-sm text-intermediate-color">{{ 'home.compPage.edv.slider.vg' | translate }}</span>
                         </div>
                       </div>
                     </div>
@@ -343,16 +402,21 @@
           </div>
         </div>
 
-
         <!-- Right Column -->
-        <div class="col-start-3 space-y-10" id="rightSkillCol"></div>
-
+        <div class="col-start-3 space-y-10" id="strengthsColumnRight"></div>
       </div>
-
     </div>
+  </div>
 
-    <div>
-      <h1 class="w-full text-center text-4xl font-bold my-20">Projekte</h1>
+
+
+
+
+  <!-- ================== -->
+  <!-- Projekte Abteil -->
+  <!-- ================== -->
+  <div id="projectsSection" class="mb-10 pb-20">
+    <h1 class="text-7xl font-bold text-gray-200 ml-20 mt-10 mb-5">{{'home.nav.projects' | translate}}</h1>
 
       <div id="repo-box" class="w-full grid grid-cols-3 gap-5"></div>
 
@@ -409,4 +473,3 @@
     </div>
   </div>
 </div>
-
