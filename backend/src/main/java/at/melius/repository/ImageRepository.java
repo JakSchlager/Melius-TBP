@@ -51,4 +51,6 @@ public class ImageRepository {
 
         return query.getResultList();
     }
+
+
 }

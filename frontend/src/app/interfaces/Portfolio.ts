@@ -27,5 +27,6 @@ export interface Portfolio {
   softwareKnowledgesPosition?: string,
   languageCode: string,
   color: string,
+  backgroundImage?: any,
   ghRepos?: GHRepo[],
 }

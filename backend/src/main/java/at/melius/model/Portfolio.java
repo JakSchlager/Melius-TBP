@@ -12,7 +12,7 @@ public class Portfolio {
     @Id
     @OneToOne
     @JoinColumn(name="profile_id", referencedColumnName = "id")
-    @JsonIgnoreProperties(value = {"portfolio", "profileImage"}, allowSetters = true)
+    @JsonIgnoreProperties(value = {"portfolio"}, allowSetters = true)
     private Profile profile;
 
     @OneToOne
@@ -67,9 +67,20 @@ public class Portfolio {
 
     private String color;
 
+    @Lob
+    private byte[] backgroundImage;
+
     @OneToMany(mappedBy = "portfolio", fetch = FetchType.EAGER)
     @JsonIgnoreProperties({"portfolio"})
     private Set<GHRepo> ghRepos;
+
+    public byte[] getBackgroundImage() {
+        return backgroundImage;
+    }
+
+    public void setBackgroundImage(byte[] backgroundImage) {
+        this.backgroundImage = backgroundImage;
+    }
 
     public Set<GHRepo> getGhRepos() {
         return ghRepos;

@@ -22,6 +22,14 @@ export class PortfolioService {
     return this.httpClient.put<Portfolio>(this.url, portfolio);
   }
 
+  uploadBackgroundImage(id: number, file: File) {
+    const formData = new FormData()
+
+    formData.append('file', file);
+
+    return this.httpClient.patch<FormData>(this.url+id+"/background", formData);
+  }
+
   getPortfolioById(id: number) {
     return this.httpClient.get<Portfolio>(`${this.url}${id}`);
   }

@@ -8,6 +8,7 @@ import {FormsModule} from "@angular/forms";
 import {DropdownAvatarComponent} from "../../single-components/home/user-avatar/dropdown-avatar.component";
 import {TranslatePipe} from "@ngx-translate/core";
 import {PortfolioService} from "../../services/portfolio.service";
+import {ImageService} from "../../services/image.service";
 
 @Component({
   selector: 'app-home-preview-page',
@@ -31,6 +32,7 @@ export class HomePageComponent implements OnInit{
   portfolioService: PortfolioService = inject(PortfolioService);
   isChildRoute: boolean = false;
   profileService: ProfileService = inject(ProfileService);
+  imageService: ImageService = inject(ImageService);
   newBackgroundColor!: string;
   newBackgroundImageUrl: string | ArrayBuffer | null = null;
 
@@ -85,14 +87,19 @@ export class HomePageComponent implements OnInit{
     })*/
 
     setTimeout(() => {
-
-      this.newBackgroundColor = this.portfolioService.currPortfolio!.color
     }, 200)
 
     setTimeout(() => {
       this.fadeOut = true;
       setTimeout(() => {
         this.isLoading = false;
+
+        if(this.portfolioService.currPortfolio!.backgroundImage == null) {
+          this.newBackgroundColor = this.portfolioService.currPortfolio!.color
+        } else {
+          this.newBackgroundImageUrl = this.imageService.getDecodedImage(this.portfolioService.currPortfolio!.backgroundImage);
+        }
+
       }, 500); // Dauer der Animation (500ms) sollte mit der CSS-Transition übereinstimmen
     }, 2000);
 

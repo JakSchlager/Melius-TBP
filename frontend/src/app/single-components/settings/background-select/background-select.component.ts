@@ -5,6 +5,7 @@ import {ColorPickerModule} from "primeng/colorpicker";
 import {FormsModule} from "@angular/forms";
 import {ToggleButton, ToggleButtonModule} from 'primeng/togglebutton';
 import {PortfolioService} from "../../../services/portfolio.service";
+import {ImageService} from "../../../services/image.service";
 
 @Component({
   selector: 'app-background-select',
@@ -26,7 +27,9 @@ export class BackgroundSelectComponent implements OnInit {
   isStaticColorEnabled: boolean = false;
   isBackgroundPictureEnabled: boolean =false
   portfolioService: PortfolioService = inject(PortfolioService);
-  selectedImageUrl: string | ArrayBuffer | null = null; // Speichert die Bild-URL
+  imageService: ImageService = inject(ImageService);
+  selectedImage: File | null = null; // Speichert die Bild-URL
+  reader = new FileReader();
 
 
   constructor(@Inject(SettingsPageComponent) public settingsPage: SettingsPageComponent) {}
@@ -68,34 +71,28 @@ export class BackgroundSelectComponent implements OnInit {
 
 
   // File selection for background
-  onFileSelected(event: Event): void {
-    const input = event.target as HTMLInputElement;
+  onFileSelected(event: any): void {
+    if (event.target.files && event.target.files[0]) {
+      let file: File = event.target.files[0];
 
-    if (input.files && input.files[0]) {
-      const file: File = input.files[0];
-      const reader = new FileReader();
+      this.selectedImage = file;
 
-      reader.onload = () => {
-        this.selectedImageUrl = reader.result; // Speichert die Base64-URL des Bildes
-      };
-
-      reader.readAsDataURL(file); // Liest die Datei als DataURL
     }
   }
 
   removeSelectedImage(): void {
-    this.selectedImageUrl = null;
+    this.selectedImage = null;
   }
 
   apply() {
     if (this.isStaticColorEnabled) {
-      this.settingsPage.selectedBackgroundImageUrl = null; // Hintergrundbild zurücksetzen
+      this.settingsPage.selectedBackgroundImage = null; // Hintergrundbild zurücksetzen
       this.settingsPage.selectedBackgroundColor = this.selectedColor;
     }
 
-    else if (this.isBackgroundPictureEnabled && this.selectedImageUrl) {
+    else if (this.isBackgroundPictureEnabled && this.selectedImage) {
       this.settingsPage.selectedBackgroundColor = ''; // Hintergrundfarbe zurücksetzen
-      this.settingsPage.selectedBackgroundImageUrl = this.selectedImageUrl;
+      this.settingsPage.selectedBackgroundImage = this.selectedImage;
     }
   }
 

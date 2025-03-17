@@ -34,8 +34,8 @@
               <div class="relative flex w-5/6">
                 <!-- Background Image Preview -->
                 <div
-                  [ngStyle]="{'background-color': selectedBackgroundImageUrl ? 'transparent' : selectedBackgroundColor,
-                'background-image': selectedBackgroundImageUrl ? 'url(' + selectedBackgroundImageUrl + ')' : 'none',
+                  [ngStyle]="{'background-color': selectedBackgroundImage ? 'transparent' : selectedBackgroundColor,
+                'background-image': selectedBackgroundImage ? 'url(' + this.imageService.getDecodedImage(this.selectedBackgroundImage) + ')' : 'none',
                 'background-size': 'cover', 'background-position': 'center'}"
                   class="w-11/12 py-10 rounded-xl border-2">
 

@@ -16,25 +16,35 @@
 </div>
 
 
-<div *ngIf="!isLoading">
+<div>
 
-  <div class="absolute top-0 left-0 w-full h-full -z-10" [ngStyle]="{'background-color': backgroundImageUrl ? 'white' : backgroundColor,
-                'background-image': backgroundImageUrl ? 'url(' + backgroundImageUrl + ')' : 'none',
-                'background-size': 'cover', 'background-position': 'center', 'background-repeat': 'no-repeat', 'background-attachment': 'fixed', 'overflow': 'auto'}">
-</div>
+  <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10">
 
-<div class="w-full h-screen
-">
+
+    <div class="bg-fixed h-screen transition-opacity duration-1000 ease-in-out absolute inset-0 blur-xl scale-110" [ngStyle]="{'background': backgroundImageUrl ? 'url(' + backgroundImageUrl + ')' : backgroundColor,
+        'background-size': 'cover',
+        'background-position': 'center',
+        'background-repeat': 'no-repeat',
+      }" [ngClass]="{ 'opacity-0': isLoading, 'opacity-100': !isLoading }">
+    </div>
+
+  </div>
+
+<div class="w-5/6 h-screen m-auto">
 
   <div class="w-full">
       <div class="p-10 h-1/4 mt-20 flex justify-around drop-shadow-md">
         <div class="h-full block space-y-2 items-center">
-          <div class="w-full flex justify-center rounded-full">
-            <div class="w-fit drop-shadow-lg">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-32">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-              </svg>
-            </div>
+          <div class="flex flex-col justify-center">
+            <label class="cursor-pointer">
+              <div *ngIf="this.portfolio.profile.profileImage == undefined" class="w-fit">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-52">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                </svg>
+              </div>
+
+              <div *ngIf="this.portfolio.profile.profileImage != undefined" class="h-48 w-48 rounded-full" [ngStyle]="{'background-image': 'url(' + this.imageService.getDecodedImage(this.portfolio.profile.profileImage) + ')', 'background-size':'cover', 'background-position':'center'}"></div>
+            </label>
           </div>
 
           <div class="flex flex-col justify-center space-y-2">
@@ -82,7 +92,7 @@
   <!-- ================= -->
   <!-- Lebenslauf Abteil -->
   <!-- ================= -->
-  <div id="cvSection" class="border border-gray-100 pb-10">
+  <div id="cvSection" class="border-t border-gray-100 pb-10">
     <h1 class="text-7xl font-bold text-gray-200 ml-20 mt-10 mb-5">{{'home.nav.cv' | translate}}</h1>
 
     <div class="w-full h-fit flex justify-center py-10 px-20">
@@ -169,7 +179,7 @@
           </div>
 
           <!--Ausbildung Informationen -->
-          <div id="educationsBox" class="drop-shadow-lg animate-in slide-in-from-bottom-32 duration-700">
+          <div *ngIf="this.portfolio.educations != undefined && this.portfolio.educations.length > 0" id="educationsBox" class="drop-shadow-lg animate-in slide-in-from-bottom-32 duration-700">
             <div class="bg-white rounded-xl px-10 py-4">
               <h1 class="text-center font-bold text-2xl py-2 text-gray-800">{{'home.cvPage.educations.title' | translate}}</h1>
 
@@ -228,7 +238,7 @@
           </div>
 
           <!-- Berufserfahrungen Informationen -->
-          <div id="workExperiencesBox" class="drop-shadow-lg animate-in slide-in-from-bottom-32 duration-700">
+          <div *ngIf="this.portfolio.workExperiences != undefined && this.portfolio.workExperiences.length > 0" id="workExperiencesBox" class="drop-shadow-lg animate-in slide-in-from-bottom-32 duration-700">
             <div class="bg-white rounded-xl  px-10 py-4 mb-10">
               <h1 class="text-center font-bold text-2xl py-2 text-gray-800">{{'home.cvPage.workExperience.title' | translate}}</h1>
 
@@ -285,7 +295,7 @@
   <!-- ================== -->
   <!-- Kompetenzen Abteil -->
   <!-- ================== -->
-  <div id="compsSection" class="border pb-10 border-gray-100">
+  <div id="compsSection" class="border-t pb-10 border-gray-100">
     <h1 class="text-7xl font-bold text-gray-200 ml-20 mt-10 mb-5">{{'home.nav.comps' | translate}}</h1>
     <div class="w-full h-fit flex justify-center py-10 px-20">
       <div class="w-full grid grid-cols-3 space-x-4 justify-center">
@@ -295,7 +305,7 @@
 
         <!-- Middle Column -->
         <div class="col-start-2 space-y-10" id="strengthsColumnMiddle">
-          <div id="characteristicsBox" class="colListItem grid animate-in slide-in-from-bottom-32 duration-500">
+          <div *ngIf="this.portfolio.characteristics != undefined && this.portfolio.characteristics.length > 0" id="characteristicsBox" class="colListItem grid animate-in slide-in-from-bottom-32 duration-500">
             <div class="bg-white px-10 py-4 rounded-lg shadow-md">
               <h1 class="text-center font-bold text-2xl py-2 text-gray-800">{{ 'home.compPage.personal.title' | translate }}</h1>
               <div class="w-full relative mt-2 grid grid-cols-1 space-y-2 hover:cursor-default">
@@ -313,7 +323,7 @@
           </div>
 
           <!-- Sprachliche Kenntnisse -->
-          <div id="knownLanguagesBox" class="colListItem bg-white rounded-lg px-2 py-10 shadow-md animate-in slide-in-from-bottom-32 duration-500">
+          <div *ngIf="this.portfolio.knownLanguages != undefined && this.portfolio.knownLanguages.length > 0" id="knownLanguagesBox" class="colListItem bg-white rounded-lg px-2 py-10 shadow-md animate-in slide-in-from-bottom-32 duration-500">
             <h1 class="text-center font-bold text-2xl py-2 pb-4 text-gray-800">{{ 'home.compPage.languages.title' | translate }}</h1>
 
             <div class="mt-2 hover:cursor-default">
@@ -336,7 +346,7 @@
           </div>
 
           <!-- Programmier Kenntnisse -->
-          <div id="programmingKnowledgesBox" class="animate-in slide-in-from-bottom-32 duration-500">
+          <div *ngIf="this.portfolio.programmingKnowledges != undefined && this.portfolio.programmingKnowledges.length > 0" id="programmingKnowledgesBox" class="animate-in slide-in-from-bottom-32 duration-500">
 
             <div class="flex flex-col space-y-2 bg-white rounded-lg px-2 py-10 shadow-md">
               <h1 class="text-center font-bold text-2xl py-6 text-gray-800">{{ 'home.compPage.programming.title' | translate }}</h1>
@@ -372,7 +382,7 @@
 
 
           <!-- Software Kenntnisse -->
-          <div id="softwareKnowledgesBox" class=" colListItem bg-white rounded-lg px-2 py-10 shadow-md animate-in slide-in-from-bottom-32 duration-500">
+          <div *ngIf="this.portfolio.softwareKnowledges != undefined && this.portfolio.softwareKnowledges.length > 0" id="softwareKnowledgesBox" class=" colListItem bg-white rounded-lg px-2 py-10 shadow-md animate-in slide-in-from-bottom-32 duration-500">
             <h1 class="text-center font-bold text-2xl py-6 text-gray-800">{{ 'home.compPage.edv.title' | translate }}</h1>
 
             <div class="mt-2 hover:cursor-default">
@@ -415,13 +425,28 @@
   <!-- ================== -->
   <!-- Projekte Abteil -->
   <!-- ================== -->
-  <div id="projectsSection" class="mb-10 pb-20">
+  <div id="projectsSection" class="border-t pb-10 border-gray-100">
     <h1 class="text-7xl font-bold text-gray-200 ml-20 mt-10 mb-5">{{'home.nav.projects' | translate}}</h1>
 
-      <div id="repo-box" class="w-full grid grid-cols-3 gap-5"></div>
+      <div *ngIf="this.portfolio.ghRepos != undefined && this.portfolio.ghRepos.length > 0" id="repo-box" class="w-full grid grid-cols-3 gap-5">
+        <div *ngFor="let currRepo of this.portfolio.ghRepos" class="w-4/5 m-auto animate-in fade-in zoom-in animation-duration-500 hover:-translate-y-2 duration-300">
+          <div id="repo-{{currRepo.id}}" class="bg-white w-full m-auto flex flex-col rounded-2xl overflow-hidden shadow-md hover:shadow-custom-shadow duration-150">
+            <div class="flex justify-around bg-gray-900">
+              <h1 id="repo-elements" class='text-white w-full p-3 font-bold'>{{ currRepo.username }}/{{ currRepo.repoName }}</h1>
+            </div>
+            <div class='p-3'>
+              <p>{{ currRepo.description }}</p>
+              <div>{{ currRepo.language }}</div>
+              <button id="repo-link-${currRepos.id}" class='w-1/3 mx-auto my-3 py-2 bg-primary-color rounded-md text-accent-blue flex align-middle justify-center font-bold hover:bg-blue-500 duration-150 ease-in-out'>
+                <a [href]='currRepo.url' target='_blank'>Zum Repo</a>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <div class="w-full flex flex-col items-center mt-10">
-        <div class="w-2/5">
+      <div *ngIf="this.uploadedFiles != undefined && this.uploadedFiles.length > 0" class="w-full flex flex-col items-center mt-10">
+        <div class="w-full">
           <h1 class="text-center font-bold text-3xl py-2 my-5">{{'home.projectsPage.artworks.title' | translate}}</h1>
 
 
@@ -432,21 +457,9 @@
                 <!-- File Column One -->
                 <div class="col-start-1 border-2 border-dashed border-gray-100  rounded-lg space-y-10" id="firstFileProjectCol">
 
-                  <div *ngFor="let uploadedFile of uploadedFiles; let i = index" draggable="true" id="{{uploadedFile.id}}" class="bg-transparent p-2 animate-in fade-in zoom-in duration-700 flex flex-col w-fit h-fit overflow-hidden">
-                    <div class="w-fit h-fit">
-                      <div class="w-full h-full flex justify-between items-center">
-                        <div class="bg-white p-1 rounded-lg shadow-lg cursor-grab">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M7.864 4.243A7.5 7.5 0 0 1 19.5 10.5c0 2.92-.556 5.709-1.568 8.268M5.742 6.364A7.465 7.465 0 0 0 4.5 10.5a7.464 7.464 0 0 1-1.15 3.993m1.989 3.559A11.209 11.209 0 0 0 8.25 10.5a3.75 3.75 0 1 1 7.5 0c0 .527-.021 1.049-.064 1.565M12 10.5a14.94 14.94 0 0 1-3.6 9.75m6.633-4.596a18.666 18.666 0 0 1-2.485 5.33" />
-                          </svg>
-                        </div>
-                        <button draggable="false" class="bg-white p-1 rounded-lg shadow-lg w-fit hover:bg-gray-100 duration-150 ease-in-out">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#EA3323" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
-                          </svg>
-                        </button>
-                      </div>
-                      <div class="py-2" draggable="false">
+                  <div *ngFor="let uploadedFile of uploadedFiles; let i = index" id="pic_{{uploadedFile.id}}" class="bg-transparent p-2 animate-in fade-in zoom-in duration-700 flex flex-col w-fit h-fit overflow-hidden">
+                    <div class="w-fit h-fit" >
+                      <div class="py-2">
                         <img [src]="this.imageService.getDecodedImage(uploadedFile.image)" alt="uploaded_file" class="rounded-lg shadow-lg"/>
                       </div>
                     </div>

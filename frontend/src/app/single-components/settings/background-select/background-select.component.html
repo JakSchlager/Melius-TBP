@@ -74,7 +74,7 @@
     <!-- Hier wird das geuploadete Bild angezeigt -->
     <div class="mt-1">
       <div class="flex space-x-2 w-full h-28 overflow-hidden">
-        <img [src]="selectedImageUrl" alt="" class="w-full h-full border-2 rounded-lg object-cover">
+        <img [src]="this.selectedImage" alt="" class="w-full h-full border-2 rounded-lg object-cover">
 
         <div class="h-full items-start">
           <div class="p-1 w-fit h-fit bg-white rounded-md hover:shadow-md ease-in-out duration-150 cursor-pointer" (click)="removeSelectedImage()">

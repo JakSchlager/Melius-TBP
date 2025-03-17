@@ -24,10 +24,10 @@
   <!-- Aktualisierter Hintergrund -->
   <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10">
     <!-- Ebene für die Hintergrundfarbe (ohne Blur) -->
-    <div class="absolute inset-0" [ngStyle]="{'background-color': newBackgroundColor ? newBackgroundColor : '#f9fafb'}"></div>
+    <!--<div class="absolute inset-0" [ngStyle]="{'background-color': newBackgroundColor ? newBackgroundColor : '#f9fafb'}"></div>-->
 
     <!-- Ebene für das Hintergrundbild (mit Blur) -->
-    <div class="transition-opacity duration-1000 ease-in-out absolute inset-0 blur-xl scale-110" [ngStyle]="{'background-image': newBackgroundImageUrl ? 'url(' + newBackgroundImageUrl + ')' : 'url(assets/melius_default-wallpaper.png)',
+    <div class="transition-opacity duration-1000 ease-in-out absolute inset-0 blur-xl scale-110" [ngStyle]="{'background': newBackgroundImageUrl ? 'url(' + newBackgroundImageUrl + ')' : newBackgroundColor,
       'background-size': 'cover',
       'background-position': 'center',
       'background-repeat': 'no-repeat',
