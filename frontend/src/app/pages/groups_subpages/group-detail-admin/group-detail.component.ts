@@ -48,6 +48,8 @@ export class GroupDetailComponent implements OnInit {
 
   updateGroupCredentials(groupToSave: Group) {
     this.isEditingForm = false;
+
+    this.groupService.updateGroup(groupToSave).subscribe();
   }
 
   editGroupForm() {

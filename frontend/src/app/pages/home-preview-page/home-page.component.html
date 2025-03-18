@@ -27,12 +27,11 @@
     <!--<div class="absolute inset-0" [ngStyle]="{'background-color': newBackgroundColor ? newBackgroundColor : '#f9fafb'}"></div>-->
 
     <!-- Ebene für das Hintergrundbild (mit Blur) -->
-    <div class="transition-opacity duration-1000 ease-in-out absolute inset-0 blur-xl scale-110" [ngStyle]="{'background': newBackgroundImageUrl ? 'url(' + newBackgroundImageUrl + ')' : newBackgroundColor,
-      'background-size': 'cover',
-      'background-position': 'center',
-      'background-repeat': 'no-repeat',
-      'background-attachment': 'fixed'
-    }" [ngClass]="{ 'opacity-0': isLoading, 'opacity-100': !isLoading }">
+    <div class="bg-fixed h-screen transition-opacity duration-1000 ease-in-out absolute inset-0 blur-xl scale-110" [ngStyle]="{'background': newBackgroundImageUrl ? 'url(' + newBackgroundImageUrl + ')' : newBackgroundColor,
+        'background-size': 'cover',
+        'background-position': 'center',
+        'background-repeat': 'no-repeat',
+      }" [ngClass]="{ 'opacity-0': isLoading, 'opacity-100': !isLoading }">
     </div>
   </div>
 

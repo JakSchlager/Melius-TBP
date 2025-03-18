@@ -1,5 +1,6 @@
 package at.melius.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -12,6 +13,7 @@ public class Education {
     int id;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
     private Portfolio portfolio;
 
     @Column(name="name")
