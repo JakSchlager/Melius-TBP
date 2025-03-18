@@ -34,6 +34,7 @@ export class ProfileService {
   }
 
   handleUserLogin(loginData: UserLoginData): Observable<Profile> {
+    console.log(loginData);
     let user = this.httpClient.post<Profile>(this.url + "login", loginData);
 
     if(user !== null) {
@@ -48,11 +49,12 @@ export class ProfileService {
     return this.httpClient.put<Profile>(this.url + "update", profile);
   }
 
-  uploadProfileImg(file: any) {
-    const formData = new FormData();
+  uploadProfileImg(file: File) {
+    const formData = new FormData()
 
-    formData.append("file", file);
-
-    return this.httpClient.patch<FormData>(this.url + "img/" + this.loggedInUser!.id, file)
+    formData.append('file', file);
+    //formData.append('fileName', this.loggedInUser!.lastName);
+    console.log(formData);
+    return this.httpClient.patch<FormData>(this.url + "img/" + this.loggedInUser!.id, formData)
   }
 }

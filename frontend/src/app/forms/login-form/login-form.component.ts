@@ -12,7 +12,6 @@ import {Profile} from "../../interfaces/profile";
   imports: [
     ReactiveFormsModule,
     NgIf,
-    RouterLink
   ],
   templateUrl: './login-form.component.html',
   styleUrl: './login-form.component.css'
@@ -38,10 +37,15 @@ export class LoginFormComponent {
         localStorage.setItem("rememberUser", this.saveForm.controls['remember'].value!.toString());
 
         if(localStorage.getItem("rememberUser") === "true") {
-          localStorage.setItem("loggedInUser", JSON.stringify(userInfo));
+          localStorage.setItem("meliusUserData", JSON.stringify({
+            "email": userInfo.email,
+            "password": userInfo.password,
+          }));
         } else {
-          sessionStorage.setItem("loggedInUser", JSON.stringify(userInfo));
-        }
+          sessionStorage.setItem("meliusUserData", JSON.stringify({
+            "email": userInfo.email,
+            "password": userInfo.password,
+          }));        }
 
         this.router.navigate(['/home']);
         console.log('Profile logged in successfully', userInfo);

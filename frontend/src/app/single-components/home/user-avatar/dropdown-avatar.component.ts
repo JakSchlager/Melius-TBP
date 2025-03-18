@@ -1,8 +1,9 @@
 import {Component, inject, OnInit} from '@angular/core';
-import {NgClass, NgIf} from "@angular/common";
+import {NgClass, NgIf, NgStyle} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {TranslatePipe} from "@ngx-translate/core";
 import {ProfileService} from "../../../services/profile.service";
+import {ImageService} from "../../../services/image.service";
 
 @Component({
   selector: 'app-dropdown-avatar',
@@ -11,7 +12,8 @@ import {ProfileService} from "../../../services/profile.service";
     NgIf,
     FormsModule,
     NgClass,
-    TranslatePipe
+    TranslatePipe,
+    NgStyle
   ],
   templateUrl: './dropdown-avatar.component.html',
   styleUrl: './dropdown-avatar.component.css'
@@ -19,18 +21,36 @@ import {ProfileService} from "../../../services/profile.service";
 export class DropdownAvatarComponent implements OnInit {
   showAvatarOptions: boolean = false
   isAnimating: boolean = false;
-  url: any = '';
+  url: string | null = null;
   profileService: ProfileService = inject(ProfileService);
+  imageService: ImageService = inject(ImageService);
 
   ngOnInit() {
     //this.url = URL.createObjectURL(this.profileService.loggedInUser!.profileImage!)
+    setTimeout(() => {
+      if(this.profileService.loggedInUser!.profileImage != undefined){
+        /*const blob = new Blob([this.profileService.loggedInUser!.profileImage!], { type: 'image/png' }); // Oder image/jpeg
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          this.url = reader.result as string;
+        };
+        reader.readAsDataURL(blob);*/
+
+        this.url = this.imageService.getDecodedImage(this.profileService.loggedInUser!.profileImage);
+      }
+    }, 200)
+
   }
 
   onSelectFile(event: any) {
     if (event.target.files && event.target.files[0]) {
       let file: File = event.target.files[0];
 
-      const fileBlob = new Blob([file], { type: file.type });
+      this.profileService.uploadProfileImg(file).subscribe();
+
+      this.reloadPage();
+
+      /*const fileBlob = new Blob([file], { type: file.type });
       fileBlob.arrayBuffer().then(arrayBuffer => {
         // Erstelle ein Uint8Array daraus
         const byteArray = new Uint8Array(arrayBuffer);
@@ -40,8 +60,8 @@ export class DropdownAvatarComponent implements OnInit {
 
         console.log(fileBlobForUpload);
         // Upload des Blobs an das Backend
-        this.profileService.uploadProfileImg({"file": byteArray, "type": file.type}).subscribe();
-      })
+        this.profileService.uploadProfileImg(fileBlobForUpload).subscribe();
+      })*/
     }
   }
   public deleteAvatar() {
@@ -64,5 +84,11 @@ export class DropdownAvatarComponent implements OnInit {
     if(!this.showAvatarOptions){
       this.isAnimating = false;
     }
+  }
+
+  reloadPage() {
+    setTimeout(() => {
+      window.location.reload()
+    }, 100);
   }
 }

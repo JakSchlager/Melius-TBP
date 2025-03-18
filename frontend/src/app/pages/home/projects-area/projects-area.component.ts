@@ -7,6 +7,8 @@ import {TranslatePipe} from "@ngx-translate/core";
 import {PortfolioService} from "../../../services/portfolio.service";
 import {GHRepo} from "../../../interfaces/GHRepo";
 import {GhReposService} from "../../../services/gh-repos.service";
+import {ImageService} from "../../../services/image.service";
+import {Image} from "../../../interfaces/image";
 
 
 @Component({
@@ -23,11 +25,13 @@ import {GhReposService} from "../../../services/gh-repos.service";
   styleUrl: './projects-area.component.css'
 })
 export class ProjectsAreaComponent implements OnInit {
+  filesToUpload: File[] = [];
   selectedFiles: { name: string, url: string }[] = [];
-  uploadedFiles: { name: string, url: string }[] = [];
+  uploadedFiles: Image[] = [];
   uploadBtnClicked: boolean = false;
   router: Router = inject(Router);
   portfolioService: PortfolioService = inject(PortfolioService);
+  imageService: ImageService = inject(ImageService);
   ghRepoService: GhReposService = inject(GhReposService);
   buttonClass = "hidden"
   showGhTitle: string = "";
@@ -37,15 +41,33 @@ export class ProjectsAreaComponent implements OnInit {
       if(this.portfolioService.currPortfolio!.ghRepos != undefined && this.portfolioService.currPortfolio!.ghRepos!.length > 0) {
         this.placeRepos();
       }
+
+      this.imageService.getImagesByPortfolioId(this.portfolioService.currPortfolio!.profile.id).subscribe(i => {
+        if(i != undefined && i.length != 0 ) {
+          this.uploadBtnClicked = true;
+          this.uploadedFiles = i;
+
+          setTimeout(() => {
+            for(let image of this.uploadedFiles) {
+              this.moveImage(image.id, image.position);
+            }
+          }, 200)
+
+        }
+      })
+
+
     }, 200)
   }
 
   onFileSelected(event: any) {
     const files = event.target.files;
+    console.log(event.target.files)
     for (let file of files) {
       if (this.isValidFile(file)) {
       const reader = new FileReader();
       reader.onload = (e: any) => {
+        this.filesToUpload.push(file);
         this.selectedFiles.push({
           name: file.name,
           url: e.target.result
@@ -78,13 +100,16 @@ export class ProjectsAreaComponent implements OnInit {
   }
 
   uploadFiles() {
-    this.uploadBtnClicked = true;
-    this.uploadedFiles = this.uploadedFiles.concat(this.selectedFiles);
-    this.selectedFiles = [];
+    for(let file of this.filesToUpload) {
+      this.imageService.uploadToPortfolio(this.portfolioService.currPortfolio!.profile!.id, file, "firstFileProjectCol").subscribe()
+    }
+
+    this.reloadPage();
+
   }
 
-  removeSpecificFile(index: number) {
-    this.uploadedFiles.splice(index, 1);
+  removeSpecificFile(id: number) {
+    this.imageService.deleteImage(id).subscribe();
   }
 
   ghUserForm = new FormGroup( {
@@ -120,6 +145,9 @@ export class ProjectsAreaComponent implements OnInit {
     if (targetElement && this.draggedItem) {
       // Füge das gezogene Element dem Ziel hinzu
       targetElement.appendChild(this.draggedItem);
+
+      this.imageService.updateImage(this.draggedItem.id, targetContainerId).subscribe();
+
       this.draggedItem = null;
     }
   }
@@ -180,7 +208,7 @@ export class ProjectsAreaComponent implements OnInit {
               portfolio: this.portfolioService.currPortfolio!
             })
           });
-
+          console.log(repos);
           this.ghRepoService.addAllRepos(repos).subscribe()
           this.reloadPage();
         }
@@ -205,6 +233,13 @@ export class ProjectsAreaComponent implements OnInit {
     setTimeout(() => {
       window.location.reload()
     }, 100);
+  }
+
+  moveImage(id: number, position: string) {
+    this.draggedItem = document.getElementById(id+"");
+
+    console.log(this.draggedItem)
+    this.onDrop(new DragEvent("drag"), position);
   }
 }
 

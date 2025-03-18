@@ -1,5 +1,6 @@
 package at.melius.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jdk.jfr.Name;
@@ -19,7 +20,7 @@ public class Characteristic extends Selectable {
             joinColumns = @JoinColumn(name="characteristic_id"),
             inverseJoinColumns = @JoinColumn(name="portfolio_id")
     )
-    @JsonIgnoreProperties({"characteristics"})
+    @JsonIgnore
     private Set<Portfolio> portfolios;
 
     public Set<Portfolio> getPortfolios() {

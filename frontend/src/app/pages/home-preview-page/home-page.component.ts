@@ -1,6 +1,6 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {ProfileService} from "../../services/profile.service";
-import {NgIf, NgOptimizedImage, NgStyle} from "@angular/common";
+import {NgClass, NgIf, NgOptimizedImage, NgStyle} from "@angular/common";
 import {HomeNavbarComponent} from "../../navigation/home-navbar/home-navbar.component";
 import {ActivatedRoute, NavigationEnd, Router, RouterLink, RouterOutlet} from "@angular/router";
 import {filter} from "rxjs";
@@ -8,6 +8,7 @@ import {FormsModule} from "@angular/forms";
 import {DropdownAvatarComponent} from "../../single-components/home/user-avatar/dropdown-avatar.component";
 import {TranslatePipe} from "@ngx-translate/core";
 import {PortfolioService} from "../../services/portfolio.service";
+import {ImageService} from "../../services/image.service";
 
 @Component({
   selector: 'app-home-preview-page',
@@ -21,7 +22,8 @@ import {PortfolioService} from "../../services/portfolio.service";
     DropdownAvatarComponent,
     RouterLink,
     NgStyle,
-    TranslatePipe
+    TranslatePipe,
+    NgClass
   ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'
@@ -30,8 +32,12 @@ export class HomePageComponent implements OnInit{
   portfolioService: PortfolioService = inject(PortfolioService);
   isChildRoute: boolean = false;
   profileService: ProfileService = inject(ProfileService);
+  imageService: ImageService = inject(ImageService);
   newBackgroundColor!: string;
   newBackgroundImageUrl: string | ArrayBuffer | null = null;
+
+  isLoading: boolean = true;
+  fadeOut: boolean = false;
 
   /*
   url: any = '';
@@ -80,7 +86,23 @@ export class HomePageComponent implements OnInit{
       this.newBackgroundImageUrl = imageUrl;
     })*/
 
-    setTimeout(() => {this.newBackgroundColor = this.portfolioService.currPortfolio!.color}, 200)
+    setTimeout(() => {
+    }, 200)
+
+    setTimeout(() => {
+      this.fadeOut = true;
+      setTimeout(() => {
+        this.isLoading = false;
+
+        if(this.portfolioService.currPortfolio!.backgroundImage == null) {
+          this.newBackgroundColor = this.portfolioService.currPortfolio!.color
+        } else {
+          this.newBackgroundImageUrl = this.imageService.getDecodedImage(this.portfolioService.currPortfolio!.backgroundImage);
+        }
+
+      }, 500); // Dauer der Animation (500ms) sollte mit der CSS-Transition übereinstimmen
+    }, 2000);
+
   }
 
 

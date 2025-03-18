@@ -3,6 +3,7 @@ package at.melius.boundary;
 import at.melius.model.Group;
 import at.melius.repository.GroupRepository;
 import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 
@@ -43,6 +44,7 @@ public class GroupResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{id}")
+    @Transactional
     public Group getGroup(@PathParam("id") int id) {
         return this.groupRepository.getGroupById(id);
     }

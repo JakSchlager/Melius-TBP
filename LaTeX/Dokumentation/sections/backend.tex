@@ -215,7 +215,7 @@ Die Verwendung von Spring Data JPA ermöglicht die Durchführung vieler dieser A
 \subsubsection{ProfileRepository - Klasse}
 Die ProfileRepository-Klasse spielt eine zentrale Rolle in der Verwaltung von Benutzerprofilen innerhalb der Anwendung. Sie ist für grundlegende CRUD-Operationen (Erstellen, Lesen, Aktualisieren und Löschen) von Profilen verantwortlich und stellt sicher, dass diese effizient in der Datenbank gespeichert und verwaltet werden.
 
-Neben diesen Standardfunktionen übernimmt die ProfileRepository-Klasse auch wichtige Überprüfungen und Sicherheitsmaßnahmen. Beispielsweise wird bei einem Benutzer-Login das eingegebene Passwort mit dem in der Datenbank gespeicherten Hash-Wert verglichen, um die Identität des Nutzers zu bestätigen. Darüber hinaus wird bei der Registrierung neuer Nutzer überprüft, ob bereits ein Profil mit der gleichen E-Mail-Adresse existiert, um Doppelregistrierungen zu verhindern und die Datenintegrität zu gewährleisten.
+Neben diesen Standardfunktionen übernimmt die ProfileRepository-Klasse auch wichtige Überprüfungen und Sicherheitsmaßnahmen. Beispielsweise wird beim Login das eingegebene Passwort mit dem in der Datenbank gespeicherten Hash-Wert verglichen, um die Identität zu bestätigen. Darüber hinaus wird bei der Registrierung neuer Nutzer:innen überprüft, ob bereits ein Profil mit der gleichen E-Mail-Adresse existiert, um Doppelregistrierungen zu verhindern und die Datenintegrität zu gewährleisten.
 
 Dank dieser Funktionen trägt das Repository maßgeblich zur Sicherheit, Datenkonsistenz und Benutzerverwaltung innerhalb der Anwendung bei. Es ermöglicht eine reibungslose Interaktion mit der Datenbank und bildet eine essenzielle Schnittstelle zwischen Backend-Logik und Datenpersistenz.
 
@@ -264,7 +264,7 @@ Die Methode `addProfile()` dient dazu, ein neues Profil in die Datenbank zu spei
 \end{figure}
 
 \subsubsection{checkProfile}
-Die Methode "checkProfile()" findet Anwendung im Rahmen des Autorisierungsprozesses für ein Login. Im ersten Schritt wird das Profil des Nutzers anhand der von ihm eingegebenen E-Mail-Adresse aus der Datenbank abgerufen. Daraufhin erfolgt ein Abgleich zwischen dem von dem Nutzer eingegebenen Passwort und dem im Profil gespeicherten Passwort. Diese Methode wird nicht nur beim eigentlichen Login-Prozess verwendet, sondern auch bei jedem Neuladen der Seite, um die Authentifizierung des Nutzers sicherzustellen.
+Die Methode `checkProfile()` findet Anwendung im Rahmen des Autorisierungsprozesses für ein Login. Im ersten Schritt wird das Profil des/der Nutzers/in anhand der von ihm eingegebenen E-Mail-Adresse aus der Datenbank abgerufen. Daraufhin erfolgt ein Abgleich zwischen dem von dem/der Nutzer/in eingegebenen Passwort und dem im Profil gespeicherten Passwort. Diese Methode wird nicht nur beim eigentlichen Login-Prozess verwendet, sondern auch bei jedem Neuladen der Seite, um die Authentifizierung des/der Nutzers/in sicherzustellen.
 
 \begin{figure}[H]
     \centering
@@ -274,9 +274,9 @@ Die Methode "checkProfile()" findet Anwendung im Rahmen des Autorisierungsprozes
 \end{figure}
 
 \subsubsection{getProfileByEmail}
-Die Methode "getProfileByEmail()" nimmt eine signifikante Rolle im Kontext der Verwaltung von Benutzerprofilen ein. Sie wird unter anderem bei der Erstellung eines neuen Profils eingesetzt, um die Existenz doppelter Profile mit identischer E-Mail-Adresse zu verhindern. Dies dient dazu, die Vergabe identischer Anmeldedaten an mehrere Benutzer zu unterbinden. 
+Die Methode `getProfileByEmail()`  nimmt eine signifikante Rolle im Kontext der Verwaltung von Benutzerprofilen ein. Sie wird unter anderem bei der Erstellung eines neuen Profils eingesetzt, um die Existenz doppelter Profile mit identischer E-Mail-Adresse zu verhindern. Dies dient dazu, die Vergabe identischer Anmeldedaten an mehrere Benutzer:innen zu unterbinden. 
 
-Darüber hinaus ist diese Funktion von entscheidender Bedeutung für den Login-Prozess. Da beim Einloggen die eindeutige ID des Profils nicht bekannt ist, sondern lediglich die E-Mail-Adresse des Nutzers vorliegt, kann das zugehörige Profil nicht direkt über den Primärschlüssel mit entityManager.find() ermittelt werden. Stattdessen durchsucht getProfileByEmail() die gespeicherten Profile nach der angegebenen E-Mail-Adresse und gibt das entsprechende Profil zurück. Diese Vorgehensweise gewährleistet, dass die Anmeldeinformationen korrekt sind und die Authentifizierung des korrekten Nutzers sichergestellt werden kann.
+Darüber hinaus ist diese Funktion von entscheidender Bedeutung für den Login-Prozess. Da beim Einloggen die eindeutige ID des Profils nicht bekannt ist, sondern lediglich die E-Mail-Adresse des Nutzers vorliegt, kann das zugehörige Profil nicht direkt über den Primärschlüssel mit entityManager.find() ermittelt werden. Stattdessen durchsucht getProfileByEmail() die gespeicherten Profile nach der angegebenen E-Mail-Adresse und gibt das entsprechende Profil zurück. Diese Vorgehensweise gewährleistet, dass die Anmeldeinformationen korrekt sind und die Authentifizierung des korrekten Users sichergestellt werden kann.
 
 \begin{figure}[H]
     \centering
@@ -444,7 +444,7 @@ Für die Erstellung des GeneralInfo-Objekts wird der entsprechende Service verwe
 
 Im nächsten Schritt wird das Portfolio-Objekt angelegt. Ein Portfolio ist in \textit{Melius} fest mit einem Profil und einem GeneralInfo-Objekt verknüpft. Daher wird das neu angelegte Portfolio so konfiguriert, dass es sowohl das zugehörige Profil als auch das GeneralInfo-Objekt referenziert. Auch dieses Portfolio-Objekt wird schließlich mit einem POST-Request an das Backend übertragen und dauerhaft in der Datenbank gespeichert.
 
-Damit der Benutzer nach der Registrierung angemeldet bleibt, wird das erstellte Profil im LocalStorage des Browsers gespeichert. Dies hat den Vorteil, dass der Benutzer auch bei einem Reload der Seite nicht sofort ausgeloggt wird und sich erneut anmelden muss. Stattdessen wird das gespeicherte Profil aus dem LocalStorage geladen und in der Anwendung verwendet.
+Damit der/die Benutzer/in nach der Registrierung angemeldet bleibt, wird das erstellte Profil im LocalStorage des Browsers gespeichert. Dies hat den Vorteil, dass auch bei einem Reload der Seite kein Ausloggen erfolgt, und somit kein neuer Anmeldeprozess notwendig ist. Stattdessen wird das gespeicherte Profil aus dem LocalStorage geladen und in der Anwendung verwendet.
 
 Durch diesen mehrstufigen Prozess werden die Grundstrukturen für ein neues Portfolio erfolgreich angelegt. Die Kombination aus Profil, GeneralInfo und Portfolio bildet die Grundlage für weitere Anpassungen und Ergänzungen innerhalb der Plattform.
 
@@ -466,25 +466,25 @@ Durch diesen mehrstufigen Prozess werden die Grundstrukturen für ein neues Port
 
 Der Login-Prozess in \textit{Melius} folgt einem sehr ähnlichen Ablauf wie der Registrierungsprozess, mit dem Unterschied, dass hier ein bereits bestehendes Profil authentifiziert wird, anstatt ein neues Profil zu erstellen.
 
-Nachdem der Benutzer das Login-Formular ausgefüllt hat, wird die Methode onLogin() in der entsprechenden Component aufgerufen. Diese Funktion übernimmt die gesamte Steuerung des Anmeldevorgangs. Zunächst werden die vom Benutzer eingegebene E-Mail-Adresse und das Passwort aus dem Formular ausgelesen und per POST-Request an das Backend gesendet.
+Nachdem der/die Benutzer/in das Login-Formular ausgefüllt hat, wird die Methode onLogin() in der entsprechenden Component aufgerufen. Diese Funktion übernimmt die gesamte Steuerung des Anmeldevorgangs. Zunächst werden die eingegebene E-Mail-Adresse und das Passwort aus dem Formular ausgelesen und per POST-Request an das Backend gesendet.
 
 Das Backend prüft dann, ob ein Profil mit der angegebenen E-Mail-Adresse existiert und ob das eingegebene Passwort mit dem in der Datenbank gespeicherten Passwort übereinstimmt. Wenn die Anmeldedaten korrekt sind, sendet das Backend das entsprechende Profilobjekt zurück. Wenn die E-Mail-Adresse nicht existiert oder das Passwort falsch ist, wird eine Fehlermeldung zurückgegeben und die Anmeldung abgebrochen.
 
-Sobald das Backend ein gültiges Profil zurückgibt, muss dieses auf der Client-Seite gespeichert werden, damit der Benutzer für die aktuelle Sitzung angemeldet bleibt und sich nicht bei jeder Interaktion erneut authentifizieren muss. Dabei wird unterschieden, ob sich der Benutzer nur für die aktuelle Sitzung anmelden möchte oder ob seine Anmeldeinformationen dauerhaft gespeichert werden sollen.
+Sobald das Backend ein gültiges Profil zurückgibt, muss dieses auf der Client-Seite gespeichert werden, damit der User für die aktuelle Sitzung angemeldet bleibt und sich nicht bei jeder Interaktion erneut authentifizieren muss. Dabei wird unterschieden, ob sich der/die Nutzer/in nur für die aktuelle Sitzung anmelden möchte oder ob seine Anmeldeinformationen dauerhaft gespeichert werden sollen.
 
-Zu diesem Zweck enthält das Anmeldeformular eine Checkbox mit der Option „Benutzerdaten speichern“. Die Entscheidung des Benutzers beeinflusst, wo das Profil gespeichert wird:
+Zu diesem Zweck enthält das Anmeldeformular eine Checkbox mit der Option „Benutzerdaten speichern“. Die Entscheidung beeinflusst, wo das Profil gespeichert wird:
 
 \begin{itemize}
 
     \item 
-    Wird die Checkbox aktiviert, werden die Profildaten im LocalStorage gespeichert. Dies bedeutet, dass die Anmeldeinformationen auch nach dem Schließen des Browsers erhalten bleiben, so dass sich der Benutzer bei einem späteren Besuch der Website nicht erneut anmelden muss.
+    Wird die Checkbox aktiviert, werden die Profildaten im LocalStorage gespeichert. Dies bedeutet, dass die Anmeldeinformationen auch nach dem Schließen des Browsers erhalten bleiben, so dass sich der/die Benutzer/in bei einem späteren Besuch der Website nicht erneut anmelden muss.
 
     \item 
-    Wenn das Kontrollkästchen nicht aktiviert ist, wird das Profil nur im SessionStorage gespeichert. Der SessionStorage ist nur so lange gültig, wie der Browser-Tab geöffnet ist. Sobald der Benutzer den Tab oder den gesamten Browser schließt, werden die gespeicherten Daten automatisch gelöscht.
+    Wenn das Kontrollkästchen nicht aktiviert ist, wird das Profil nur im SessionStorage gespeichert. Der SessionStorage ist nur so lange gültig, wie der Browser-Tab geöffnet ist. Sobald der Tab oder der gesamte Browser geschlossen werden sollten, werden die gespeicherten Daten automatisch gelöscht.
 
 \end{itemize}
 
-Durch diese flexible Speicherung wird sichergestellt, dass der Login-Prozess den individuellen Präferenzen des Nutzers entspricht. Gleichzeitig bleibt die Benutzerfreundlichkeit erhalten, da nicht bei jedem Seitenneuaufbau eine erneute Anmeldung erforderlich ist.
+Durch diese flexible Speicherung wird sichergestellt, dass der Login-Prozess den individuellen Präferenzen der Anwenderinnen und Anwender entspricht. Gleichzeitig bleibt die Benutzerfreundlichkeit erhalten, da nicht bei jedem Seitenneuaufbau eine erneute Anmeldung erforderlich ist.
 
 \begin{figure}[H]
     \centering
@@ -575,7 +575,7 @@ Würden die Repositories bei jeder Aktualisierung direkt über die API abgerufen
 
 Auf der Kompetenzseite wird zu Beginn der Methode ngOnInit ein ähnlicher Ansatz wie auf der Lebenslaufseite verwendet. Zuerst werden die verschiedenen Boxen, in denen die Kompetenzen dargestellt werden sollen, erfasst und mittels getElementById() gespeichert. Dies dient dazu, die Elemente später korrekt in den vorgesehenen Spalten auf der Seite anzuordnen.
 
-Im nächsten Schritt werden alle verfügbaren Eigenschaften, die der Benutzer auswählen kann, aus der Datenbank geholt. Diese Merkmale umfassen verschiedene Fähigkeiten oder Eigenschaften, die später über Checkboxen ausgewählt werden können. Nach dem erfolgreichen Laden werden die Daten für die Checkbox-Elemente gespeichert, so dass der Benutzer sie auswählen kann.
+Im nächsten Schritt werden alle verfügbaren Eigenschaften, die der User auswählen kann, aus der Datenbank geholt. Diese Merkmale umfassen verschiedene Fähigkeiten oder Eigenschaften, die später über Checkboxen ausgewählt werden können. Nach dem erfolgreichen Laden werden die Daten für die Checkbox-Elemente gespeichert, so dass der/die Benutzer/in sie auswählen kann.
 
 \begin{figure}[H]
     \centering
@@ -584,7 +584,7 @@ Im nächsten Schritt werden alle verfügbaren Eigenschaften, die der Benutzer au
     \label{fig:kompOnInit}
 \end{figure}
 
-Im nächsten Schritt wird geprüft, ob der Benutzer bereits bestimmte Merkmale in seinem Portfolio gespeichert hat. Dazu wird der bestehende Datenspeicher des Portfolios durchsucht, um festzustellen, ob dort bereits ausgewählte Merkmale gespeichert sind. Ist dies der Fall, werden diese gespeicherten Merkmale in das Array selectedCharacteristics eingefügt.
+Im nächsten Schritt wird geprüft, ob bereits bestimmte Merkmale im aktuellen Portfolio gespeichert sind. Dazu wird der bestehende Datenspeicher des Portfolios durchsucht, um festzustellen, ob dort bereits ausgewählte Merkmale gespeichert sind. Ist dies der Fall, werden diese gespeicherten Merkmale in das Array selectedCharacteristics eingefügt.
 
 \begin{figure}[H]
     \centering
@@ -597,7 +597,7 @@ Am Ende des Initialisierungsprozesses wird geprüft, ob bereits Daten zu bekannt
 
 Wenn solche Informationen vorhanden sind, werden sie der Reihe nach durchlaufen und in die entsprechenden Abschnitte der Seite eingefügt. Dazu wird jedes gespeicherte Element iteriert und mit Hilfe der entsprechenden Methoden (addKnownLanguage, addProgrammingLanguage, addSoftware) in die dafür vorgesehenen Boxen eingefügt.
 
-Nachdem alle relevanten Kenntnisse des Benutzers geladen und dargestellt wurden, wird die Funktion moveBoxes aufgerufen. Diese sorgt für die korrekte Anordnung der einzelnen Boxen auf der Seite.
+Nachdem alle relevanten Kenntnisse geladen und dargestellt wurden, wird die Funktion moveBoxes aufgerufen. Diese sorgt für die korrekte Anordnung der einzelnen Boxen auf der Seite.
 
 \begin{figure}[H]
     \centering
@@ -608,7 +608,7 @@ Nachdem alle relevanten Kenntnisse des Benutzers geladen und dargestellt wurden,
 
 \subsubsection{Gruppen Seite}
 
-Auf der Gruppenseite findet in der Methode ngOnInit nur eine minimale Verarbeitung statt. Hier wird lediglich die Gruppenliste des aktuell angemeldeten Benutzers aus dem entsprechenden Dienst geladen und gespeichert. Anschließend werden die benötigten Daten direkt im HTML-Template verwendet, so dass keine weitere Verarbeitung oder Manipulation in ngOnInit notwendig ist. Diese Vorgehensweise stellt sicher, dass die Anzeige der Gruppen dynamisch und effizient erfolgt. Die Gruppendaten werden direkt aus der gespeicherten Liste ausgelesen und ohne weitere Zwischenschritte an den entsprechenden Stellen in der Benutzeroberfläche angezeigt.
+Auf der Gruppenseite findet in der Methode ngOnInit nur eine minimale Verarbeitung statt. Hier wird lediglich die Gruppenliste des aktuell angemeldeten Profils aus dem entsprechenden Dienst geladen und gespeichert. Anschließend werden die benötigten Daten direkt im HTML-Template verwendet, so dass keine weitere Verarbeitung oder Manipulation in ngOnInit notwendig ist. Diese Vorgehensweise stellt sicher, dass die Anzeige der Gruppen dynamisch und effizient erfolgt. Die Gruppendaten werden direkt aus der gespeicherten Liste ausgelesen und ohne weitere Zwischenschritte an den entsprechenden Stellen in der Benutzeroberfläche angezeigt.
 
 \begin{figure}[H]
     \centering
@@ -637,11 +637,11 @@ Auf der Seite Einstellungen gibt es nur wenige Elemente, die angezeigt werden k�
 
 \subsubsection{Portfolio View Seite}
 
-Die Portfolio-View-Seite dient als zentrale Übersicht, in der alle relevanten Informationen aus den verschiedenen Startseiten zusammengeführt werden. Ziel ist es, dem Benutzer eine vollständige und übersichtliche Darstellung seines gesamten Portfolios auf einer einzigen Seite zu bieten.
+Die Portfolio-View-Seite dient als zentrale Übersicht, in der alle relevanten Informationen aus den verschiedenen Startseiten zusammengeführt werden. Ziel ist es, dem User eine vollständige und übersichtliche Darstellung seines gesamten Portfolios auf einer einzigen Seite zu bieten.
 
 Zu Beginn des Ladevorgangs werden alle Datenboxen mit getElementById() erfasst und gespeichert. Dies stellt sicher, dass sie später an den richtigen Stellen auf der Seite platziert werden können, um eine strukturierte und ansprechende Darstellung zu gewährleisten.
 
-Ein weiterer wichtiger Schritt ist die Überprüfung, ob bereits gespeicherte GitHub-Repository-Daten im Portfolio vorhanden sind. Ist dies der Fall, werden diese direkt auf der Seite eingefügt, so dass sie für den Benutzer sichtbar sind.
+Ein weiterer wichtiger Schritt ist die Überprüfung, ob bereits gespeicherte GitHub-Repository-Daten im Portfolio vorhanden sind. Ist dies der Fall, werden diese direkt auf der Seite eingefügt, so dass sie sichtbar sind.
 
 Anschließend wird über ein setTimeout sichergestellt, dass alle weiteren relevanten Daten aus den anderen Bereichen des Portfolios korrekt verarbeitet werden. Insbesondere wird hier geprüft, welche Objekte bereits auf der Lebenslaufseite und der Kompetenzseite vorhanden sind. Wenn solche Daten im Portfolio gespeichert sind, werden sie geladen und an den entsprechenden Stellen auf der Portfolio-Ansichtsseite angezeigt.
 

@@ -22,19 +22,19 @@ public class Portfolio {
 
     private String generalInfoPosition;
 
-    @OneToMany(mappedBy = "portfolio")
+    @OneToMany(mappedBy = "portfolio", fetch = FetchType.EAGER)
     @JsonIgnoreProperties({"portfolio"})
     private Set<Education> educations;
 
     private String educationsPosition;
 
-    @OneToMany(mappedBy = "portfolio")
+    @OneToMany(mappedBy = "portfolio", fetch = FetchType.EAGER)
     @JsonIgnoreProperties({"portfolio"})
     private Set<WorkExperience> workExperiences;
 
     private String workExperiencesPosition;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name="portfolio_characteristic",
             joinColumns = @JoinColumn(name="portfolio_id"),
@@ -45,19 +45,19 @@ public class Portfolio {
 
     private String characteristicsPosition;
 
-    @OneToMany(mappedBy = "portfolio")
+    @OneToMany(mappedBy = "portfolio", fetch = FetchType.EAGER)
     @JsonIgnoreProperties({"portfolio"})
     private Set<KnownLanguage> knownLanguages;
 
     private String knownLanguagesPosition;
 
-    @OneToMany(mappedBy = "portfolio")
+    @OneToMany(mappedBy = "portfolio", fetch = FetchType.EAGER)
     @JsonIgnoreProperties({"portfolio"})
     private Set<ProgrammingKnowledge> programmingKnowledges;
 
     private String programmingKnowledgesPosition;
 
-    @OneToMany(mappedBy = "portfolio")
+    @OneToMany(mappedBy = "portfolio", fetch = FetchType.EAGER)
     @JsonIgnoreProperties({"portfolio"})
     private Set<SoftwareKnowledge> softwareKnowledges;
 
@@ -67,9 +67,20 @@ public class Portfolio {
 
     private String color;
 
-    @OneToMany(mappedBy = "portfolio")
+    @Lob
+    private byte[] backgroundImage;
+
+    @OneToMany(mappedBy = "portfolio", fetch = FetchType.EAGER)
     @JsonIgnoreProperties({"portfolio"})
     private Set<GHRepo> ghRepos;
+
+    public byte[] getBackgroundImage() {
+        return backgroundImage;
+    }
+
+    public void setBackgroundImage(byte[] backgroundImage) {
+        this.backgroundImage = backgroundImage;
+    }
 
     public Set<GHRepo> getGhRepos() {
         return ghRepos;

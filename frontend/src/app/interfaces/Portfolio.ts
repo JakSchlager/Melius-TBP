@@ -7,6 +7,7 @@ import {ProgrammingKnowledge} from "./ProgrammingKnowledge";
 import {SoftwareKnowledge} from "./SoftwareKnowledge";
 import {Selectable} from "./Selectable";
 import {GHRepo} from "./GHRepo";
+import {Image} from "./image";
 
 export interface Portfolio {
   profile: Profile,
@@ -26,5 +27,6 @@ export interface Portfolio {
   softwareKnowledgesPosition?: string,
   languageCode: string,
   color: string,
+  backgroundImage?: any,
   ghRepos?: GHRepo[],
 }

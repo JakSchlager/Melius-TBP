@@ -30,7 +30,7 @@ public class Group {
 
     private int maxMembers;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name="GroupMember",
             joinColumns = @JoinColumn(name="groups_id"),

@@ -1,15 +1,19 @@
 package at.melius.boundary;
 
+import at.melius.DTO.ImageUploadDTO;
+import at.melius.DTO.LoginData;
 import at.melius.model.FileUploadForm;
 import at.melius.model.Profile;
 import at.melius.repository.ProfileRepository;
 import io.vertx.mutiny.ext.web.multipart.FormDataPart;
 import jakarta.inject.Inject;
 import jakarta.servlet.annotation.MultipartConfig;
+import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import org.jboss.resteasy.annotations.Body;
 import org.jboss.resteasy.annotations.providers.multipart.MultipartForm;
+import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 
 import java.io.File;
 import java.io.InputStream;
@@ -26,6 +30,7 @@ public class ProfileResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/register")
+    @Transactional
     public Profile registerProfile(Profile newProfile) {
         return this.profileRepository.addProfile(newProfile);
     }
@@ -34,7 +39,8 @@ public class ProfileResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/login")
-    public Profile loginProfile(Profile profile) {
+    @Transactional
+    public Profile loginProfile(LoginData profile) {
         if(this.profileRepository.checkProfile(profile.getEmail(), profile.getPassword())) {
             return this.profileRepository.getProfileByEmail(profile.getEmail());
         }
@@ -43,11 +49,11 @@ public class ProfileResource {
     }
 
     @PATCH
-    @Consumes(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Path("/img/{id}")
-    public void uploadProfileImg(@PathParam("id") int profileId, FileUploadForm form) {
+    public void uploadProfileImg(@PathParam("id") int profileId, @MultipartForm ImageUploadDTO form) {
         System.out.println(form);
-        //profileRepository.saveProfileImg(profileId, );
+        profileRepository.saveProfileImg(profileId, form.file);
     }
 
     @PUT
@@ -67,6 +73,7 @@ public class ProfileResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/get/{id}")
+    @Transactional
     public Profile getProfileById(@PathParam("id") Long id) {
         return this.profileRepository.getProfileById(id);
     }

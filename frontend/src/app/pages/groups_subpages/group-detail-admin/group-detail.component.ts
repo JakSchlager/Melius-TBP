@@ -6,8 +6,9 @@ import {TranslatePipe} from "@ngx-translate/core";
 import {ActivatedRoute} from "@angular/router";
 import {Group} from "../../../interfaces/group";
 import {GroupService} from "../../../services/group.service";
-import {NgForOf, NgIf} from "@angular/common";
+import {NgForOf, NgIf, NgStyle} from "@angular/common";
 import {FormsModule} from "@angular/forms";
+import {ImageService} from "../../../services/image.service";
 import {TESTrolesService} from "../../../services/testroles.service";
 import {
   createRxjsEsmResolutionPlugin
@@ -23,7 +24,8 @@ import {
     TranslatePipe,
     NgForOf,
     NgIf,
-    FormsModule
+    FormsModule,
+    NgStyle
   ],
   templateUrl: './group-detail.component.html',
   styleUrl: './group-detail.component.css'
@@ -33,6 +35,8 @@ export class GroupDetailComponent implements OnInit {
   route: ActivatedRoute = inject(ActivatedRoute);
   group!: Group;
   groupService: GroupService = inject(GroupService);
+  imageSevice: ImageService = inject(ImageService);
+
   isEditingForm: boolean = false;
   memberSelected : boolean = false;
 

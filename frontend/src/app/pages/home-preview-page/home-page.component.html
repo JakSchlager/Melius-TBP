@@ -1,17 +1,38 @@
-<div class="relative w-full min-h-screen flex justify-center">
+
+
+<!-- Loading Screen, so all the data can load correctly -->
+
+<div *ngIf="isLoading"
+     class="z-50 fixed inset-0 flex items-center justify-center bg-white transition-opacity duration-500 ease-out"
+     [ngClass]="{ 'opacity-0': fadeOut }">
+
+  <div class="text-xl flex flex-col items-center">
+    <!-- Pulsierendes Logo -->
+    <img src="assets/Melius-TBP_Logo_Simple.svg"
+         alt="melius_logo"
+         class="min-w-40 min-h-40 w-48 h-48 mb-4 animate-pulse-slow">
+    <div class="w-10 h-10 border-8 border-t-transparent border-black rounded-full animate-spin"></div>
+
+  </div>
+
+</div>
+
+
+
+<div *ngIf="!isLoading" class="relative w-full min-h-screen flex justify-center">
 
   <!-- Aktualisierter Hintergrund -->
   <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10">
     <!-- Ebene für die Hintergrundfarbe (ohne Blur) -->
-    <div class="absolute inset-0" [ngStyle]="{'background-color': newBackgroundColor ? newBackgroundColor : '#f9fafb'}"></div>
+    <!--<div class="absolute inset-0" [ngStyle]="{'background-color': newBackgroundColor ? newBackgroundColor : '#f9fafb'}"></div>-->
 
     <!-- Ebene für das Hintergrundbild (mit Blur) -->
-    <div class="absolute inset-0 blur-xl scale-110" [ngStyle]="{'background-image': newBackgroundImageUrl ? 'url(' + newBackgroundImageUrl + ')' : '#f9fafb',
+    <div class="transition-opacity duration-1000 ease-in-out absolute inset-0 blur-xl scale-110" [ngStyle]="{'background': newBackgroundImageUrl ? 'url(' + newBackgroundImageUrl + ')' : newBackgroundColor,
       'background-size': 'cover',
       'background-position': 'center',
       'background-repeat': 'no-repeat',
       'background-attachment': 'fixed'
-    }">
+    }" [ngClass]="{ 'opacity-0': isLoading, 'opacity-100': !isLoading }">
     </div>
   </div>
 
@@ -134,6 +155,7 @@
     </button>
 
     <!-- footer -->
+
     <div class="w-full flex justify-center mt-16 py-10">
       <div class="flex items-center space-x-2 h-fit">
         <small class="text-gray-500">All rights reserved to ©Melius-TBP.</small>

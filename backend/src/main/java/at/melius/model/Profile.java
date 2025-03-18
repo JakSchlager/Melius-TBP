@@ -38,9 +38,9 @@ public class Profile {
     private Portfolio portfolio;
 
     @Lob
-    private Blob profileImage;
+    private byte[] profileImage;
 
-    @ManyToMany(mappedBy = "members")
+    @ManyToMany(mappedBy = "members", fetch = FetchType.EAGER)
     private Set<Group> groups;
 
     public Set<Group> getGroups() {
@@ -103,11 +103,11 @@ public class Profile {
         this.portfolio = portfolio;
     }
 
-    public Blob getProfileImage() {
+    public byte[] getProfileImage() {
         return profileImage;
     }
 
-    public void setProfileImage(Blob profileImage) {
+    public void setProfileImage(byte[] profileImage) {
         this.profileImage = profileImage;
     }
 }

@@ -6,7 +6,8 @@ import {TranslatePipe} from "@ngx-translate/core";
 import {ActivatedRoute} from "@angular/router";
 import {Group} from "../../../interfaces/group";
 import {GroupService} from "../../../services/group.service";
-import {NgForOf} from "@angular/common";
+import {NgForOf, NgIf, NgStyle} from "@angular/common";
+import {ImageService} from "../../../services/image.service";
 
 @Component({
   selector: 'app-group-detail-admin',
@@ -16,7 +17,9 @@ import {NgForOf} from "@angular/common";
     FilterMembersComponent,
     GroupAvatarComponent,
     TranslatePipe,
-    NgForOf
+    NgForOf,
+    NgIf,
+    NgStyle
   ],
   templateUrl: './group-detail-guest.component.html',
   styleUrl: './group-detail-guest.component.css'
@@ -25,6 +28,7 @@ export class GroupDetailGuestComponent implements OnInit {
   route: ActivatedRoute = inject(ActivatedRoute);
   group!: Group;
   groupService: GroupService = inject(GroupService);
+  imageSevice: ImageService = inject(ImageService);
 
   ngOnInit() {
     let id = Number(this.route.snapshot.params['id']);

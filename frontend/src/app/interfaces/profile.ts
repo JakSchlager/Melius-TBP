@@ -11,7 +11,7 @@ export interface Profile {
   email: string
   phoneNumber: string
   password: string
-  profileImage?: Blob
+  profileImage?: any
   portfolio?: Portfolio
   groups?: Group[]
 }
