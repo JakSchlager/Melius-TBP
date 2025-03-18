@@ -210,6 +210,7 @@ export class CvAreaComponent implements OnInit{
     profile!.email = this.generalInfoForm!.controls["email"].value!
     profile!.phoneNumber = this.generalInfoForm!.controls["phoneNumber"].value!
 
+    console.log(profile)
     this.profileService.updateProfile(profile!).subscribe(p => {
       let newGeneralInfo: GeneralInfo = {
         id: this.generalInfoForm!.controls["id"].value!,

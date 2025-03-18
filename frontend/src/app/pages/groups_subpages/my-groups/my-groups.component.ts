@@ -1,4 +1,4 @@
-import {Component, Inject, inject, OnInit} from '@angular/core';
+import {Component, Inject, inject, Input, OnInit} from '@angular/core';
 import {Group} from "../../../interfaces/group";
 import {GroupsPageComponent} from "../../groups-page/groups-page.component";
 import {NgForOf, NgIf} from "@angular/common";
@@ -19,6 +19,8 @@ import {RouterLink} from "@angular/router";
   styleUrl: './my-groups.component.css'
 })
 export class MyGroupsComponent  {
+  @Input() groups: Group[] | undefined;
+
   profileService: ProfileService = inject(ProfileService);
 
   amountOfUserGroups : number = 0;
@@ -31,7 +33,18 @@ export class MyGroupsComponent  {
   }
 
   getAmountOfGroups() : number {
-    this.amountOfUserGroups = this.profileService.loggedInUser!.groups?.length || 0;
+    this.amountOfUserGroups = this.groups!.length || 0;
     return this.amountOfUserGroups;
+  }
+
+  getProfileGroups() {
+    return this.groups?.filter(group => {
+      for(let member of group.members) {
+        if(member.id === this.profileService.loggedInUser!.id) {
+          return true;
+        }
+      }
+      return false;
+    })
   }
 }
