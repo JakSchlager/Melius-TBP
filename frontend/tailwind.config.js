@@ -13,6 +13,7 @@ module.exports = {
       colors: {
         'accent-blue': '#F0F8FF',
         'primary-color': '#0D91FA',
+        'primary-color-light': '#239efd',
         'intermediate-color': '#8087FD',
         'secondary-color': '#5E4DFC',
       },

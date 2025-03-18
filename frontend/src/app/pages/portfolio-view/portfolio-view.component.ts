@@ -1,32 +1,33 @@
-import {Component, inject, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {Component, HostListener, inject, OnInit} from '@angular/core';
+import {ActivatedRoute, RouterLink} from "@angular/router";
 import {PortfolioService} from "../../services/portfolio.service";
 import {Portfolio} from "../../interfaces/Portfolio";
 import {HomeNavbarComponent} from "../../navigation/home-navbar/home-navbar.component";
 import {DropdownAvatarComponent} from "../../single-components/home/user-avatar/dropdown-avatar.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {NgForOf, NgIf, NgStyle} from "@angular/common";
+import {NgClass, NgForOf, NgIf, NgStyle, ViewportScroller} from "@angular/common";
 import {DropStrEdvComponent} from "../../single-components/home/strengths/drop-str-edv/drop-str-edv.component";
 import {DropStrProgrComponent} from "../../single-components/home/strengths/drop-str-progr/drop-str-progr.component";
 import {MultiSelectModule} from "primeng/multiselect";
 import {StarRatingComponent} from "../../single-components/home/star-rating/star-rating.component";
 import $ from "jquery";
+import {TranslatePipe} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-portfolio-view',
   standalone: true,
   imports: [
-    HomeNavbarComponent,
-    DropdownAvatarComponent,
     FormsModule,
-    NgIf,
     NgForOf,
     ReactiveFormsModule,
     DropStrEdvComponent,
     DropStrProgrComponent,
     MultiSelectModule,
     StarRatingComponent,
-    NgStyle
+    NgStyle,
+    TranslatePipe,
+    RouterLink,
+    NgClass
   ],
   templateUrl: './portfolio-view.component.html',
   styleUrl: './portfolio-view.component.css'
@@ -50,6 +51,7 @@ export class PortfolioViewComponent implements OnInit {
   programmingKnowledgesBox!: any;
   softwareKnowledgesBox!: any;
 
+  activeSection: string = '';
 
   ngOnInit() {
     const id = Number(this.route.snapshot.params['id']);
@@ -138,6 +140,35 @@ export class PortfolioViewComponent implements OnInit {
                  </div>
               </div>`
       );
+    }
+  }
+
+  scrollToElement(elementId: string) {
+    const element = document.getElementById(elementId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+  }
+
+  // Methode, um die aktuell sichtbare Sektion zu setzen
+  setActiveSection(section: string) {
+    this.activeSection = section;
+  }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    const sections = ['cvSection', 'compsSection', 'projectsSection'];
+    for (const section of sections) {
+      const element = document.getElementById(section);
+      if (element) {
+        const rect = element.getBoundingClientRect();
+        if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+          this.setActiveSection(section);
+          break;
+        }
+      }
     }
   }
 }
