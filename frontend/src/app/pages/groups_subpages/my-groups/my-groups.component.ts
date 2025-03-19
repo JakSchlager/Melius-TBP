@@ -14,31 +14,41 @@ import {FormsModule} from "@angular/forms";
     TranslatePipe,
     NgForOf,
     RouterLink,
-    FormsModule
+    FormsModule,
+    NgIf
   ],
   templateUrl: './my-groups.component.html',
   styleUrl: './my-groups.component.css'
 })
-export class MyGroupsComponent  {
+export class MyGroupsComponent implements OnInit {
   @Input() groups: Group[] | undefined;
   profileService: ProfileService = inject(ProfileService);
   amountOfUserGroups : number = 0;
   searchQuery: string = '';
+  filteredGroups: Group[] = [];
+  allUserGroups: Group[] | undefined = [];
 
   constructor(@Inject(GroupsPageComponent) private groupPage: GroupsPageComponent) {
+  }
+
+  ngOnInit() {
+    setTimeout(() => {
+      this.filteredGroups = this.getProfileGroups(this.groups!)
+    }, 500)
   }
 
   closeMyGroupsForm() {
     this.groupPage.myGroupsBtnPressed = false;
   }
 
-  getAmountOfGroups() : number {
-    this.amountOfUserGroups = this.groups!.length || 0;
-    return this.amountOfUserGroups;
+  filterSearchResults() {
+    this.filteredGroups = this.getProfileGroups(this.groups!).filter(group =>
+      group.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+    );
   }
 
-  getProfileGroups() {
-    return this.groups?.filter(group => {
+  getProfileGroups(groups: Group[]) {
+    return groups.filter(group => {
       for(let member of group.members) {
         if(member.id === this.profileService.loggedInUser!.id) {
           return true;

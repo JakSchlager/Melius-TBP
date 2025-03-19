@@ -30,7 +30,7 @@
 
     <!-- Main Content -->
     <div class="w-full h-full">
-      @if (getAmountOfGroups() == 0) {
+      @if (getProfileGroups(this.groups!).length == 0) {
         <div class="py-24 space-y-4 text-center">
           <h1 class="font-semibold text-xl">{{ 'groups.startPage.myGroups.nothingFound' | translate}}</h1>
           <div class="w-full flex justify-center">
@@ -45,7 +45,7 @@
           <h1 class="text-center">{{ 'groups.startPage.searchResultBox.maxMembers' | translate}}</h1>
         </div>
         <div class="dropdown-list min-h-64">
-          <div *ngFor="let group of this.getProfileGroups()" class="rounded-lg mb-1 grid grid-cols-5 items-center text-gray-500 p-4 hover:bg-gray-50">
+          <div *ngFor="let group of this.filteredGroups" class="rounded-lg mb-1 grid grid-cols-5 items-center text-gray-500 p-4 hover:bg-gray-50">
             <h1 class="min-w-fit flex justify-start">{{ group.name }}</h1>
             <h1 class="text-center">{{ group.company }}</h1>
             <h1 class="text-center">{{ group.department }}</h1>

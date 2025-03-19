@@ -1,6 +1,6 @@
-import {Component, createComponent, ElementRef, HostListener, inject, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, HostListener, inject, OnInit, ViewChild} from '@angular/core';
 import {RouterLink} from "@angular/router";
-import {NgClass, NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
+import {NgClass, NgForOf, NgIf} from "@angular/common";
 import {CreateOwnGroupComponent} from "../groups_subpages/create-group-form/create-own-group.component";
 import {MyGroupsComponent} from "../groups_subpages/my-groups/my-groups.component";
 import {FormsModule} from "@angular/forms";
@@ -83,11 +83,11 @@ export class GroupsPageComponent implements OnInit {
     }
   }
 
-  filterSearchResults() {
-    this.filteredGroups = this.groups.filter(group =>
-      group.name.toLowerCase().includes(this.searchQuery.toLowerCase())
-    );
-  }
+    filterSearchResults() {
+      this.filteredGroups = this.groups.filter(group =>
+        group.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    }
 
   @HostListener('document:click', ['$event'])
   onClickOutside(event: Event) {
