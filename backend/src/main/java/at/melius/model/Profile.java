@@ -1,5 +1,6 @@
 package at.melius.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import org.hibernate.jdbc.Work;
@@ -41,6 +42,7 @@ public class Profile {
     private byte[] profileImage;
 
     @ManyToMany(mappedBy = "members", fetch = FetchType.EAGER)
+    @JsonIgnore
     private Set<Group> groups;
 
     public Set<Group> getGroups() {

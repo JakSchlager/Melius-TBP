@@ -7,6 +7,7 @@ import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 
+import javax.print.attribute.standard.Media;
 import java.util.List;
 
 @Path("/groups")
@@ -37,6 +38,7 @@ public class GroupResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/getAll")
+    @Transactional
     public List<Group> getAllGroups() {
         return this.groupRepository.getAllGroups();
     }

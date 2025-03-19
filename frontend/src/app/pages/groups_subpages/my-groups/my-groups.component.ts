@@ -1,4 +1,4 @@
-import {Component, Inject, inject, OnInit} from '@angular/core';
+import {Component, Inject, inject, Input, OnInit} from '@angular/core';
 import {Group} from "../../../interfaces/group";
 import {GroupsPageComponent} from "../../groups-page/groups-page.component";
 import {NgForOf, NgIf} from "@angular/common";
@@ -20,9 +20,8 @@ import {FormsModule} from "@angular/forms";
   styleUrl: './my-groups.component.css'
 })
 export class MyGroupsComponent  {
+  @Input() groups: Group[] | undefined;
   profileService: ProfileService = inject(ProfileService);
-  groups!: Group[];
-  filteredGroups!: Group[];
   amountOfUserGroups : number = 0;
   searchQuery: string = '';
 
@@ -34,13 +33,18 @@ export class MyGroupsComponent  {
   }
 
   getAmountOfGroups() : number {
-    this.amountOfUserGroups = this.profileService.loggedInUser!.groups?.length || 0;
+    this.amountOfUserGroups = this.groups!.length || 0;
     return this.amountOfUserGroups;
   }
 
-  filterSearchResults() {
-    this.filteredGroups = this.groups.filter(group =>
-      group.name.toLowerCase().includes(this.searchQuery.toLowerCase())
-    );
+  getProfileGroups() {
+    return this.groups?.filter(group => {
+      for(let member of group.members) {
+        if(member.id === this.profileService.loggedInUser!.id) {
+          return true;
+        }
+      }
+      return false;
+    })
   }
 }
