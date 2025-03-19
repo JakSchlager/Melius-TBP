@@ -5,23 +5,26 @@ import {NgForOf, NgIf} from "@angular/common";
 import {TranslatePipe} from "@ngx-translate/core";
 import {ProfileService} from "../../../services/profile.service";
 import {RouterLink} from "@angular/router";
+import {FormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-my-groups',
   standalone: true,
   imports: [
-    NgIf,
     TranslatePipe,
     NgForOf,
-    RouterLink
+    RouterLink,
+    FormsModule
   ],
   templateUrl: './my-groups.component.html',
   styleUrl: './my-groups.component.css'
 })
 export class MyGroupsComponent  {
   profileService: ProfileService = inject(ProfileService);
-
+  groups!: Group[];
+  filteredGroups!: Group[];
   amountOfUserGroups : number = 0;
+  searchQuery: string = '';
 
   constructor(@Inject(GroupsPageComponent) private groupPage: GroupsPageComponent) {
   }
@@ -33,5 +36,11 @@ export class MyGroupsComponent  {
   getAmountOfGroups() : number {
     this.amountOfUserGroups = this.profileService.loggedInUser!.groups?.length || 0;
     return this.amountOfUserGroups;
+  }
+
+  filterSearchResults() {
+    this.filteredGroups = this.groups.filter(group =>
+      group.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+    );
   }
 }

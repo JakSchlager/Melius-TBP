@@ -218,7 +218,7 @@
                   </svg>
                 </div>
 
-                <div *ngIf="currMember.profileImage != undefined" class="h-20 w-20 rounded-full" [ngStyle]="{'background-image': 'url(' + this.imageSevice.getDecodedImage(currMember.profileImage) + ')', 'background-size':'cover', 'background-position':'center'}"></div>
+                <div *ngIf="currMember.profileImage != undefined" class="h-20 w-20 rounded-full" [ngStyle]="{'background-image': 'url(' + this.imageService.getDecodedImage(currMember.profileImage) + ')', 'background-size':'cover', 'background-position':'center'}"></div>
               </label>
             </div>
             <h1 class="text-gray-500">{{ currMember.firstName }}</h1>

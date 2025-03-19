@@ -160,15 +160,11 @@ export class ProjectsAreaComponent implements OnInit {
       $("#repo-box").append(
         `<div class="w-4/5 m-auto animate-in fade-in zoom-in animation-duration-500 hover:-translate-y-2 duration-300">
                   <div class="w-full flex justify-end">
-                    <button class="" (click)="toggleRepo(${currRepos.id})" id="toggle-btn-${currRepos.id}">
-                      <svg class='mt-2 mr-2' xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="#00000">
-                        <path d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-134 0-244.5-72T61-462q-5-9-7.5-18.5T51-500q0-10 2.5-19.5T61-538q64-118 174.5-190T480-800q134 0 244.5 72T899-538q5 9 7.5 18.5T909-500q0 10-2.5 19.5T899-462q-64 118-174.5 190T480-200Zm0-300Zm0 220q113 0 207.5-59.5T832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280Z"/>
-                      </svg>
-                    </button>
+
                   </div>
                   <div id="repo-${currRepos.id}" class="bg-white w-full m-auto flex flex-col rounded-2xl overflow-hidden shadow-md hover:shadow-custom-shadow duration-150">
-                   <div class="flex justify-around bg-gray-900">
-                     <h1 id="repo-elements" class='text-white w-full p-3 font-bold'>${currRepos.username}/${currRepos.repoName}</h1>
+                   <div class="flex justify-around bg-gray-100">
+                     <h1 id="repo-elements" class='text-gray-800 w-full p-3 font-bold'>${currRepos.username}/${currRepos.repoName}</h1>
                    </div>
                    <div class='p-3'>
                      <p>${currRepos.description}</p>

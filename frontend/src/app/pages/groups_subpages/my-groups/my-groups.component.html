@@ -18,7 +18,7 @@
     <div class="w-full ml-4 h-fit flex justify-start mb-4">
       <div class="w-fit space-x-2 h-fit font-semibold bg-white px-1 py-0.5 shadow-md rounded-lg flex">
         <div class="px-1 py-2">
-          <input class="rounded-md" placeholder="{{ 'groups.startPage.myGroups.searchBarSmall' | translate}}">
+          <input class="rounded-md" placeholder="{{ 'groups.startPage.myGroups.searchBarSmall' | translate}}" [(ngModel)]="searchQuery" (keyup)="filterSearchResults()">
         </div>
         <button>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#9ca3af" class="size-6">

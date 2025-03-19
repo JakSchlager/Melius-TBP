@@ -35,7 +35,7 @@ export class GroupDetailComponent implements OnInit {
   route: ActivatedRoute = inject(ActivatedRoute);
   group!: Group;
   groupService: GroupService = inject(GroupService);
-  imageSevice: ImageService = inject(ImageService);
+  imageService: ImageService = inject(ImageService);
 
   isEditingForm: boolean = false;
   memberSelected : boolean = false;
