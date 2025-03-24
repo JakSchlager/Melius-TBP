@@ -35,7 +35,7 @@
   <div class="w-full">
       <div class="p-10 h-1/4 mt-20 flex justify-around drop-shadow-md">
         <div class="h-full block space-y-2 items-center">
-          <div class="flex flex-col justify-center">
+          <div class="flex flex-col justify-center items-center">
             <label class="cursor-pointer">
               <div *ngIf="this.portfolio.profile.profileImage == undefined" class="w-fit">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-52">
@@ -390,11 +390,11 @@
                 <div *ngFor="let softwareItem of this.portfolio.softwareKnowledges; let i = index">
 
                   <div class="w-auto mx-2 flex items-center justify-between space-x-10 animate-in fade-in zoom-in duration-500">
-                    <app-drop-str-edv inputmode="" [selectedSoftware]="softwareItem.software.value"></app-drop-str-edv>
+                    <app-drop-str-edv [ngClass]="{'disable-click': 'disabled'}" inputmode="" [selectedSoftware]="softwareItem.software.value"></app-drop-str-edv>
 
                     <div class="flex-grow">
                       <div class="flex flex-col">
-                        <input [value]="softwareItem.rating" class="rounded-lg overflow-hidden appearance-none bg-gray-400 h-3 w-full" type="range" min="1" max="100" step="1" />
+                        <input class="rounded-lg overflow-hidden appearance-none bg-gray-400 h-3 w-full" type="range" min="1" max="100" step="1" />
 
                         <div class="w-full flex justify-between mt-1">
                           <span class="text-sm text-intermediate-color">{{ 'home.compPage.edv.slider.bad' | translate }}</span>
@@ -426,63 +426,73 @@
   <!-- Projekte Abteil -->
   <!-- ================== -->
   <div id="projectsSection" class="border-t pb-10 border-gray-100">
-    <h1 class="text-7xl font-bold text-gray-200 ml-20 mt-10 mb-5">{{'home.nav.projects' | translate}}</h1>
+    <h1 class="text-7xl font-bold text-gray-200 ml-20 mt-10 mb-14">{{'home.nav.projects' | translate}}</h1>
 
-      <div *ngIf="this.portfolio.ghRepos != undefined && this.portfolio.ghRepos.length > 0" id="repo-box" class="w-full grid grid-cols-3 gap-5">
-        <div *ngFor="let currRepo of this.portfolio.ghRepos" class="w-4/5 m-auto animate-in fade-in zoom-in animation-duration-500 hover:-translate-y-2 duration-300">
-          <div id="repo-{{currRepo.id}}" class="bg-white w-full m-auto flex flex-col rounded-2xl overflow-hidden shadow-md hover:shadow-custom-shadow duration-150">
-            <div class="flex justify-around bg-gray-900">
-              <h1 id="repo-elements" class='text-white w-full p-3 font-bold'>{{ currRepo.username }}/{{ currRepo.repoName }}</h1>
+      <div class="space-y-10">
+        <div *ngIf="this.portfolio.ghRepos != undefined && this.portfolio.ghRepos.length > 0" id="repo-box" class="w-full grid grid-cols-3 gap-5">
+          <div *ngFor="let currRepo of this.portfolio.ghRepos" class="w-4/5 m-auto animate-in fade-in zoom-in animation-duration-500 hover:-translate-y-2 duration-300">
+            <div class="w-full flex justify-end">
+
             </div>
-            <div class='p-3'>
-              <p>{{ currRepo.description }}</p>
-              <div>{{ currRepo.language }}</div>
-              <button id="repo-link-${currRepos.id}" class='w-1/3 mx-auto my-3 py-2 bg-primary-color rounded-md text-accent-blue flex align-middle justify-center font-bold hover:bg-blue-500 duration-150 ease-in-out'>
-                <a [href]='currRepo.url' target='_blank'>Zum Repo</a>
-              </button>
+            <div id="repo-{{currRepo.id}}" class="bg-white w-full m-auto flex flex-col rounded-2xl overflow-hidden shadow-md hover:shadow-custom-shadow duration-150">
+              <div class="flex justify-around bg-gray-100">
+                <h1 id="repo-elements" class='text-gray-800 w-full p-3 font-bold'>{{currRepo.username}}/{{ currRepo.repoName }}</h1>
+              </div>
+              <div class='p-3'>
+                <p>{{ currRepo.description }}</p>
+                <div>{{ currRepo.language }}</div>
+                <button id="repo-link-{{currRepo.id}}" class='p-1.5 mx-auto my-3 bg-primary-color rounded-lg text-accent-blue flex align-middle justify-center font-bold hover:bg-blue-500 duration-150 ease-in-out'>
+                  <a href='{{currRepo.url}}' target='_blank'>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-7">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="m20.893 13.393-1.135-1.135a2.252 2.252 0 0 1-.421-.585l-1.08-2.16a.414.414 0 0 0-.663-.107.827.827 0 0 1-.812.21l-1.273-.363a.89.89 0 0 0-.738 1.595l.587.39c.59.395.674 1.23.172 1.732l-.2.2c-.212.212-.33.498-.33.796v.41c0 .409-.11.809-.32 1.158l-1.315 2.191a2.11 2.11 0 0 1-1.81 1.025 1.055 1.055 0 0 1-1.055-1.055v-1.172c0-.92-.56-1.747-1.414-2.089l-.655-.261a2.25 2.25 0 0 1-1.383-2.46l.007-.042a2.25 2.25 0 0 1 .29-.787l.09-.15a2.25 2.25 0 0 1 2.37-1.048l1.178.236a1.125 1.125 0 0 0 1.302-.795l.208-.73a1.125 1.125 0 0 0-.578-1.315l-.665-.332-.091.091a2.25 2.25 0 0 1-1.591.659h-.18c-.249 0-.487.1-.662.274a.931.931 0 0 1-1.458-1.137l1.411-2.353a2.25 2.25 0 0 0 .286-.76m11.928 9.869A9 9 0 0 0 8.965 3.525m11.928 9.868A9 9 0 1 1 8.965 3.525" />
+                    </svg>
+                  </a>
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div *ngIf="this.uploadedFiles != undefined && this.uploadedFiles.length > 0" class="w-full flex flex-col items-center mt-10">
-        <div class="w-full">
-          <h1 class="text-center font-bold text-3xl py-2 my-5">{{'home.projectsPage.artworks.title' | translate}}</h1>
-
-
+        <div *ngIf="this.uploadedFiles != undefined && this.uploadedFiles.length > 0" class="w-full flex flex-col items-center mt-10">
           <div class="w-full">
-            <div *ngIf="uploadedFiles != undefined" class="relative top-0 w-full mt-6 h-fit ">
-              <div class="grid grid-cols-4 space-x-4">
+            <h1 class="text-center text-gray-200 font-bold text-3xl py-2 my-5">{{'home.projectsPage.artworks.title' | translate}}</h1>
 
-                <!-- File Column One -->
-                <div class="col-start-1 border-2 border-dashed border-gray-100  rounded-lg space-y-10" id="firstFileProjectCol">
 
-                  <div *ngFor="let uploadedFile of uploadedFiles; let i = index" id="pic_{{uploadedFile.id}}" class="bg-transparent p-2 animate-in fade-in zoom-in duration-700 flex flex-col w-fit h-fit overflow-hidden">
-                    <div class="w-fit h-fit" >
-                      <div class="py-2">
-                        <img [src]="this.imageService.getDecodedImage(uploadedFile.image)" alt="uploaded_file" class="rounded-lg shadow-lg"/>
+            <div class="w-full">
+              <div *ngIf="uploadedFiles != undefined" class="relative top-0 w-full mt-6 h-fit ">
+                <div class="grid grid-cols-4 space-x-4">
+
+                  <!-- File Column One -->
+                  <div class="col-start-1 border-2 border-dashed border-gray-100  rounded-lg space-y-10" id="firstFileProjectCol">
+
+                    <div *ngFor="let uploadedFile of uploadedFiles; let i = index" id="pic_{{uploadedFile.id}}" class="bg-transparent p-2 animate-in fade-in zoom-in duration-700 flex flex-col w-fit h-fit overflow-hidden">
+                      <div class="w-fit h-fit" >
+                        <div class="py-2">
+                          <img [src]="this.imageService.getDecodedImage(uploadedFile.image)" alt="uploaded_file" class="rounded-lg shadow-lg"/>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
 
 
-                <!-- File Column Two -->
-                <div class="col-start-2 border-2 border-dashed border-gray-100  rounded-lg space-y-10" id="secondFileProjectCol"></div>
+                  <!-- File Column Two -->
+                  <div class="col-start-2 border-2 border-dashed border-gray-100  rounded-lg space-y-10" id="secondFileProjectCol"></div>
 
 
-                <!-- File Column Three -->
-                <div class="col-start-3 border-2 border-dashed border-gray-100  rounded-lg space-y-10" id="thirdFileProjectCol"></div>
+                  <!-- File Column Three -->
+                  <div class="col-start-3 border-2 border-dashed border-gray-100  rounded-lg space-y-10" id="thirdFileProjectCol"></div>
 
 
-                <!-- File Column Four -->
-                <div class="col-start-4 border-2 border-dashed border-gray-100  rounded-lg space-y-10" id="fourthFileProjectCol">
+                  <!-- File Column Four -->
+                  <div class="col-start-4 border-2 border-dashed border-gray-100  rounded-lg space-y-10" id="fourthFileProjectCol">
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </div>

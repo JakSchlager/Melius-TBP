@@ -73,7 +73,7 @@ export class RegisterFormComponent {
             profile: p,
             generalInfo: g,
             languageCode: "de",
-            color: "#fff"
+            color: "#f9fafb"
           }
 
           console.log(portfolio);

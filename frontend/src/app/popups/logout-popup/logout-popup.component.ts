@@ -27,8 +27,8 @@ export class LogoutPopupComponent {
   router: Router = inject(Router);
 
   logOut() {
-    localStorage.removeItem("loggedInUser");
-    sessionStorage.removeItem("loggedInUser");
+    localStorage.removeItem("meliusUserData");
+    sessionStorage.removeItem("meliusUserData");
     this.router.navigate([""]);
   }
 

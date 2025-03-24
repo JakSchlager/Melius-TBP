@@ -108,7 +108,7 @@ export class HomePageComponent implements OnInit{
 
   protected readonly onscroll = onscroll;
 
-  exportData() {
-    console.log("Profile gets shared")
+  exportData(url: string) {
+    window.open(url, '_blank')
   }
 }

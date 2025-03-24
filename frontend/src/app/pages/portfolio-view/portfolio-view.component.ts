@@ -65,66 +65,79 @@ export class PortfolioViewComponent implements OnInit {
 
     const id = Number(this.route.snapshot.params['id']);
 
-    this.portfolioService.getPortfolioById(id).subscribe(portfolio => {
-      this.portfolio = portfolio;
+    this.portfolioService.getPortfolioById(id).subscribe({
+      next: portfolio => {
+        this.portfolio = portfolio;
 
-      this.generalInfoBox = document.getElementById("generalInfoBox");
-      this.educationsBox = document.getElementById("educationsBox");
-      this.workExperiencesBox = document.getElementById("workExperiencesBox");
-      this.characteristicsBox = document.getElementById("characteristicsBox");
-      this.knownLanguagesBox = document.getElementById("knownLanguagesBox");
-      this.programmingKnowledgesBox = document.getElementById("programmingKnowledgesBox");
-      this.softwareKnowledgesBox = document.getElementById("softwareKnowledgesBox");
+        setTimeout(() => {
+          this.generalInfoBox = document.getElementById("generalInfoBox");
+          this.educationsBox = document.getElementById("educationsBox");
+          this.workExperiencesBox = document.getElementById("workExperiencesBox");
+          this.characteristicsBox = document.getElementById("characteristicsBox");
+          this.knownLanguagesBox = document.getElementById("knownLanguagesBox");
+          this.programmingKnowledgesBox = document.getElementById("programmingKnowledgesBox");
+          this.softwareKnowledgesBox = document.getElementById("softwareKnowledgesBox");
 
-      if (this.portfolio.generalInfoPosition) {
-        this.moveToColumn(this.generalInfoBox, this.portfolio.generalInfoPosition);
-      }
+          if (this.portfolio.generalInfoPosition) {
+            this.moveToColumn(this.generalInfoBox, this.portfolio.generalInfoPosition);
+          }
 
-      if (this.portfolio.educationsPosition) {
-        this.moveToColumn(this.educationsBox, this.portfolio.educationsPosition);
-      }
+          if (this.portfolio.educationsPosition) {
+            console.log("WASSOLL DAS",this.educationsBox);
+            this.moveToColumn(this.educationsBox, this.portfolio.educationsPosition);
+          }
 
-      if (this.portfolio.workExperiencesPosition) {
-        this.moveToColumn(this.workExperiencesBox, this.portfolio.workExperiencesPosition);
-      }
+          if (this.portfolio.workExperiencesPosition) {
+            this.moveToColumn(this.workExperiencesBox, this.portfolio.workExperiencesPosition);
+          }
 
-      if(this.portfolio.characteristicsPosition) {
-        this.moveToColumn(this.characteristicsBox, this.portfolio.characteristicsPosition)
-      }
+          if(this.portfolio.characteristicsPosition) {
+            this.moveToColumn(this.characteristicsBox, this.portfolio.characteristicsPosition)
+          }
 
-      if(this.portfolio.knownLanguagesPosition) {
-        this.moveToColumn(this.knownLanguagesBox, this.portfolio.knownLanguagesPosition)
-      }
+          if(this.portfolio.knownLanguagesPosition) {
+            this.moveToColumn(this.knownLanguagesBox, this.portfolio.knownLanguagesPosition)
+          }
 
-      if(this.portfolio.programmingKnowledgesPosition) {
-        this.moveToColumn(this.programmingKnowledgesBox, this.portfolio.programmingKnowledgesPosition)
-      }
+          if(this.portfolio.programmingKnowledgesPosition) {
+            this.moveToColumn(this.programmingKnowledgesBox, this.portfolio.programmingKnowledgesPosition)
+          }
 
-      if(this.portfolio.softwareKnowledgesPosition) {
-        this.moveToColumn(this.softwareKnowledgesBox, this.portfolio.softwareKnowledgesPosition)
-      }
+          if(this.portfolio.softwareKnowledgesPosition) {
+            this.moveToColumn(this.softwareKnowledgesBox, this.portfolio.softwareKnowledgesPosition)
+          }
+        }, 500)
 
-      this.imageService.getImagesByPortfolioId(this.portfolio.profile.id).subscribe(i => {
-        if(i != undefined && i.length != 0 ) {
-          this.uploadedFiles = i;
-          console.log("Loaded Images", this.uploadedFiles);
 
-          setTimeout(() => {
-            for(let image of this.uploadedFiles) {
+        this.imageService.getImagesByPortfolioId(this.portfolio.profile.id).subscribe({
+          next: i => {
+            console.log("HALLOOOOOOO",i);
 
-              let position = "";
+            if(i != undefined && i.length != 0 ) {
+              this.uploadedFiles = i;
+              console.log("Loaded Images", this.uploadedFiles);
 
-              if(image.position == null) {
-                position = 'firstFileProjectCol';
-              } else {
-                position = image.position;
-              }
-              console.log(image.id)
-              this.moveToColumn(document.getElementById("pic_"+image.id), position);
+              setTimeout(() => {
+                for(let image of this.uploadedFiles) {
+
+                  let position = "";
+
+                  if(image.position == null) {
+                    position = 'firstFileProjectCol';
+                  } else {
+                    position = image.position;
+                  }
+                  console.log(image.id)
+                  this.moveToColumn(document.getElementById("pic_"+image.id), position);
+                }
+              }, 500)
             }
-          }, 200)
-        }
-      })
+          }
+
+
+        })
+      }
+
     })
 
     setTimeout(() => {
@@ -134,10 +147,10 @@ export class PortfolioViewComponent implements OnInit {
         this.isLoading = false;
 
 
-        if(this.portfolioService.currPortfolio!.backgroundImage == null) {
-          this.backgroundColor = this.portfolioService.currPortfolio!.color
+        if(this.portfolio.backgroundImage == null) {
+          this.backgroundColor = this.portfolio.color
         } else {
-          this.backgroundImageUrl = this.imageService.getDecodedImage(this.portfolioService.currPortfolio!.backgroundImage);
+          this.backgroundImageUrl = this.imageService.getDecodedImage(this.portfolio.backgroundImage);
         }
       }, 500);// Dauer der Animation (500ms) sollte mit der CSS-Transition übereinstimmen
     }, 2000);

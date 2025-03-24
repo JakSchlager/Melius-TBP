@@ -77,6 +77,8 @@ export class CvAreaComponent implements OnInit{
 
   ngOnInit() {
 
+    this.showBorders = 'border-2 border-dashed border-gray-200 rounded-lg'
+
     this.generalInfoBox = document.getElementById("generalInfoBox");
     this.educationsBox = document.getElementById("educationsBox");
     this.workExperienceBox = document.getElementById("workExperienceBox");
