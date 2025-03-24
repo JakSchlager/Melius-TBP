@@ -1,8 +1,8 @@
-PWD /Users/sebb/Downloads/Melius - The Better Profile/titlepage
+PWD /Users/sebb/Desktop/Melius/Melius-TBP/LaTeX/Dokumentation/titlepage
 INPUT /usr/local/texlive/2024/texmf.cnf
 INPUT /usr/local/texlive/2024/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /Users/sebb/Downloads/Melius - The Better Profile/titlepage/coversheet.tex
+INPUT /Users/sebb/Desktop/Melius/Melius-TBP/LaTeX/Dokumentation/titlepage/coversheet.tex
 OUTPUT coversheet.log
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/base/article.cls

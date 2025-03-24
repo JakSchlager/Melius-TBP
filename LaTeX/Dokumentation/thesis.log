@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.11)  15 MAR 2025 17:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.11)  24 MAR 2025 13:05
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1138,8 +1138,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 3--5
 
  []
 
-[1{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}])
-LaTeX Font Info:    Trying to load font information for T1+lmss on input line 42.
+[1{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}]) (./sections/abstract.tex
+LaTeX Font Info:    Trying to load font information for T1+lmss on input line 2.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/t1lmss.fd
 File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
@@ -1147,41 +1147,40 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmss' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-Package tocbasic Info: character protrusion at toc deactivated on input line 42.
-
-No file thesis.toc.
-\tf@toc=\write8
-\openout8 = `thesis.toc'.
-
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 43.
-(/usr/local/texlive/2024/texmf-dist/tex/latex/lm/ot1lmr.fd
+<pics/Logo_groß.png, id=48, 429.2838pt x 380.3811pt>
+File: pics/Logo_groß.png Graphic file (type png)
+<use pics/Logo_groß.png>
+Package pdftex.def Info: pics/Logo_groß.png  used on input line 6.
+(pdftex.def)             Requested size: 176.40439pt x 156.3055pt.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 11.
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 43.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 11.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 43.
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 11.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 43.
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 11.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 43.
+(Font)              <12> on input line 11.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 43.
+(Font)              <8> on input line 11.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 43.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 43.
+(Font)              <6> on input line 11.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 11.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 43.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 11.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-msb.cfg
@@ -1195,7 +1194,7 @@ Package scrlayer-scrpage Warning: \headheight to low.
 (scrlayer-scrpage)                processing, but you should do this yourself,
 (scrlayer-scrpage)                e.g., setting geometry's option
 (scrlayer-scrpage)                `head=20.77846pt'.
-(scrlayer-scrpage)                I'll also decrease \topmargin on input line 43.
+(scrlayer-scrpage)                I'll also decrease \topmargin on input line 11.
 
 
 Overfull \vbox (2.65346pt too high) has occurred while \output is active []
@@ -1210,14 +1209,33 @@ Package scrlayer-scrpage Warning: \footheight to low.
 (scrlayer-scrpage)                e.g., using
 (scrlayer-scrpage)                  \setlength{\footheight}{20.77846pt}
 (scrlayer-scrpage)                in your preamble.
-(scrlayer-scrpage)                I'll also increase \footskip on input line 43.
+(scrlayer-scrpage)                I'll also increase \footskip on input line 11.
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.I}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.43 \newpage
+l.11 \newpage
               [1
+
+ <./pics/Logo_groß.png>]
+
+Package wrapfig Warning: Collision between wrapping environments on input line 15.
+
+File: pics/Logo_groß.png Graphic file (type png)
+<use pics/Logo_groß.png>
+Package pdftex.def Info: pics/Logo_groß.png  used on input line 17.
+(pdftex.def)             Requested size: 176.40439pt x 156.3055pt.
+) [2
+
+]
+Package tocbasic Info: character protrusion at toc deactivated on input line 45.
+
+No file thesis.toc.
+\tf@toc=\write8
+\openout8 = `thesis.toc'.
+
+[3
 
 ]
 chapter 1.
@@ -1229,18 +1247,18 @@ l.17 \newpage
               [1
 
 ]
-<pics/Einführung/Melius_HomePage.png, id=60, 2031.59pt x 1114.1625pt>
+<pics/Einführung/Melius_HomePage.png, id=75, 2031.59pt x 1114.1625pt>
 File: pics/Einführung/Melius_HomePage.png Graphic file (type png)
 <use pics/Einführung/Melius_HomePage.png>
 Package pdftex.def Info: pics/Einführung/Melius_HomePage.png  used on input line 25.
 (pdftex.def)             Requested size: 304.72536pt x 167.11716pt.
-<pics/Einführung/Melius_Lebenslauf.png, id=62, 2042.63126pt x 1125.20375pt>
+<pics/Einführung/Melius_Lebenslauf.png, id=76, 2042.63126pt x 1125.20375pt>
 File: pics/Einführung/Melius_Lebenslauf.png Graphic file (type png)
 <use pics/Einführung/Melius_Lebenslauf.png>
 Package pdftex.def Info: pics/Einführung/Melius_Lebenslauf.png  used on input line 32.
 (pdftex.def)             Requested size: 306.38147pt x 168.77328pt.
  [2 <./pics/Einführung/Melius_HomePage.png> <./pics/Einführung/Melius_Lebenslauf.png>]
-<pics/Einführung/Melius_Gruppen.png, id=72, 1925.1925pt x 1079.03125pt>
+<pics/Einführung/Melius_Gruppen.png, id=87, 1925.1925pt x 1079.03125pt>
 File: pics/Einführung/Melius_Gruppen.png Graphic file (type png)
 <use pics/Einführung/Melius_Gruppen.png>
 Package pdftex.def Info: pics/Einführung/Melius_Gruppen.png  used on input line 50.
@@ -1250,29 +1268,29 @@ chapter 2.
 (./sections/related_work.tex [5
 
 ]
-<pics/Umfeldanalyse/pixpa.jpg, id=93, 154.176pt x 205.4877pt>
+<pics/Umfeldanalyse/pixpa.jpg, id=107, 154.176pt x 205.4877pt>
 File: pics/Umfeldanalyse/pixpa.jpg Graphic file (type jpg)
 <use pics/Umfeldanalyse/pixpa.jpg>
 Package pdftex.def Info: pics/Umfeldanalyse/pixpa.jpg  used on input line 21.
 (pdftex.def)             Requested size: 220.50887pt x 293.9016pt.
-<pics/Umfeldanalyse/Canva.jpg, id=94, 1606.0pt x 903.375pt>
+<pics/Umfeldanalyse/Canva.jpg, id=108, 1606.0pt x 903.375pt>
 File: pics/Umfeldanalyse/Canva.jpg Graphic file (type jpg)
 <use pics/Umfeldanalyse/Canva.jpg>
 Package pdftex.def Info: pics/Umfeldanalyse/Canva.jpg  used on input line 32.
 (pdftex.def)             Requested size: 220.50887pt x 124.0318pt.
  [6 <./pics/Umfeldanalyse/pixpa.jpg>]
-<pics/Umfeldanalyse/adobe.jpg, id=103, 873.2625pt x 555.07375pt>
+<pics/Umfeldanalyse/adobe.jpg, id=117, 873.2625pt x 555.07375pt>
 File: pics/Umfeldanalyse/adobe.jpg Graphic file (type jpg)
 <use pics/Umfeldanalyse/adobe.jpg>
 Package pdftex.def Info: pics/Umfeldanalyse/adobe.jpg  used on input line 43.
 (pdftex.def)             Requested size: 220.50887pt x 140.15712pt.
-<pics/Umfeldanalyse/squarespace.jpg, id=104, 1204.5pt x 799.98875pt>
+<pics/Umfeldanalyse/squarespace.jpg, id=118, 1204.5pt x 799.98875pt>
 File: pics/Umfeldanalyse/squarespace.jpg Graphic file (type jpg)
 <use pics/Umfeldanalyse/squarespace.jpg>
 Package pdftex.def Info: pics/Umfeldanalyse/squarespace.jpg  used on input line 54.
 (pdftex.def)             Requested size: 220.50887pt x 146.44533pt.
  [7 <./pics/Umfeldanalyse/Canva.jpg> <./pics/Umfeldanalyse/adobe.jpg>]
-<pics/Umfeldanalyse/wix.jpg, id=113, 828.09375pt x 578.16pt>
+<pics/Umfeldanalyse/wix.jpg, id=127, 828.09375pt x 578.16pt>
 File: pics/Umfeldanalyse/wix.jpg Graphic file (type jpg)
 <use pics/Umfeldanalyse/wix.jpg>
 Package pdftex.def Info: pics/Umfeldanalyse/wix.jpg  used on input line 65.
@@ -1280,7 +1298,7 @@ Package pdftex.def Info: pics/Umfeldanalyse/wix.jpg  used on input line 65.
  [8 <./pics/Umfeldanalyse/squarespace.jpg> <./pics/Umfeldanalyse/wix.jpg>]) [9]
 chapter 3.
 (./sections/technologies.tex
-<pics/Technologien/quarkus.png, id=126, 1027.84pt x 1027.84pt>
+<pics/Technologien/quarkus.png, id=141, 1027.84pt x 1027.84pt>
 File: pics/Technologien/quarkus.png Graphic file (type png)
 <use pics/Technologien/quarkus.png>
 Package pdftex.def Info: pics/Technologien/quarkus.png  used on input line 16.
@@ -1288,18 +1306,18 @@ Package pdftex.def Info: pics/Technologien/quarkus.png  used on input line 16.
  [10
 
  <./pics/Technologien/quarkus.png>]
-<pics/Technologien/postgresql.png, id=138, 1204.5pt x 1241.63875pt>
+<pics/Technologien/postgresql.png, id=152, 1204.5pt x 1241.63875pt>
 File: pics/Technologien/postgresql.png Graphic file (type png)
 <use pics/Technologien/postgresql.png>
 Package pdftex.def Info: pics/Technologien/postgresql.png  used on input line 29.
 (pdftex.def)             Requested size: 110.25443pt x 113.63725pt.
-<pics/Technologien/docker.png, id=139, 770.88pt x 194.7275pt>
+<pics/Technologien/docker.png, id=153, 770.88pt x 194.7275pt>
 File: pics/Technologien/docker.png Graphic file (type png)
 <use pics/Technologien/docker.png>
 Package pdftex.def Info: pics/Technologien/docker.png  used on input line 41.
 (pdftex.def)             Requested size: 110.25443pt x 27.84998pt.
  [11 <./pics/Technologien/postgresql.png> <./pics/Technologien/docker.png>] [12]
-<pics/Technologien/typescript.png, id=155, 1204.5pt x 1204.5pt>
+<pics/Technologien/typescript.png, id=169, 1204.5pt x 1204.5pt>
 File: pics/Technologien/typescript.png Graphic file (type png)
 <use pics/Technologien/typescript.png>
 Package pdftex.def Info: pics/Technologien/typescript.png  used on input line 60.
@@ -1308,13 +1326,13 @@ LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 70
  (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [13{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc} <./pics/Technologien/typescript.png>]
-<pics/Technologien/angular.png, id=167, 2055.68pt x 2055.68pt>
+<pics/Technologien/angular.png, id=181, 2055.68pt x 2055.68pt>
 File: pics/Technologien/angular.png Graphic file (type png)
 <use pics/Technologien/angular.png>
 Package pdftex.def Info: pics/Technologien/angular.png  used on input line 93.
 (pdftex.def)             Requested size: 110.25443pt x 110.22401pt.
  [14 <./pics/Technologien/angular.png>]
-<pics/Technologien/tailwind.png, id=175, 923.45pt x 554.07pt>
+<pics/Technologien/tailwind.png, id=190, 923.45pt x 554.07pt>
 File: pics/Technologien/tailwind.png Graphic file (type png)
 <use pics/Technologien/tailwind.png>
 Package pdftex.def Info: pics/Technologien/tailwind.png  used on input line 119.
@@ -1322,7 +1340,7 @@ Package pdftex.def Info: pics/Technologien/tailwind.png  used on input line 119.
 ) [15 <./pics/Technologien/tailwind.png>]
 chapter 4.
 (./sections/design.tex
-<pics/Design/NotionShowcase2.png, id=182, 1927.2pt x 1203.49625pt>
+<pics/Design/NotionShowcase2.png, id=197, 1927.2pt x 1203.49625pt>
 File: pics/Design/NotionShowcase2.png Graphic file (type png)
 <use pics/Design/NotionShowcase2.png>
 Package pdftex.def Info: pics/Design/NotionShowcase2.png  used on input line 13.
@@ -1330,41 +1348,40 @@ Package pdftex.def Info: pics/Design/NotionShowcase2.png  used on input line 13.
  [16
 
 ] [17 <./pics/Design/NotionShowcase2.png>]
-<pics//Design/Logo_Vers1_macLookalike.png, id=196, 775.89874pt x 276.03125pt>
+<pics//Design/Logo_Vers1_macLookalike.png, id=210, 775.89874pt x 276.03125pt>
 File: pics//Design/Logo_Vers1_macLookalike.png Graphic file (type png)
 <use pics//Design/Logo_Vers1_macLookalike.png>
 Package pdftex.def Info: pics//Design/Logo_Vers1_macLookalike.png  used on input line 31.
 (pdftex.def)             Requested size: 330.76329pt x 117.67183pt.
-<pics//Design/Logo_Vers2_primaryColors.png, id=197, 649.42625pt x 226.8475pt>
+<pics//Design/Logo_Vers2_primaryColors.png, id=211, 649.42625pt x 226.8475pt>
 File: pics//Design/Logo_Vers2_primaryColors.png Graphic file (type png)
 <use pics//Design/Logo_Vers2_primaryColors.png>
 Package pdftex.def Info: pics//Design/Logo_Vers2_primaryColors.png  used on input line 44.
-(pdftex.def)             Requested size: 330.76329pt x 115.53838pt.
- [18 <./pics//Design/Logo_Vers1_macLookalike.png>] [19 <./pics//Design/Logo_Vers2_primaryColors.png>]
-<pics//Design/Logo_Final_justPerfect.png, id=218, 631.35875pt x 272.01625pt>
+(pdftex.def)             Requested size: 308.71106pt x 107.83675pt.
+ [18 <./pics//Design/Logo_Vers1_macLookalike.png> <./pics//Design/Logo_Vers2_primaryColors.png>]
+<pics//Design/Logo_Final_justPerfect.png, id=222, 631.35875pt x 272.01625pt>
 File: pics//Design/Logo_Final_justPerfect.png Graphic file (type png)
 <use pics//Design/Logo_Final_justPerfect.png>
 Package pdftex.def Info: pics//Design/Logo_Final_justPerfect.png  used on input line 65.
 (pdftex.def)             Requested size: 330.76329pt x 142.50766pt.
- [20 <./pics//Design/Logo_Final_justPerfect.png>]
-<pics//Design/Website/LandingPage/LandingPage_vers1.png, id=226, 769.87625pt x 548.0475pt>
+ [19] [20 <./pics//Design/Logo_Final_justPerfect.png>]
+<pics//Design/Website/LandingPage/LandingPage_vers1.png, id=241, 769.87625pt x 548.0475pt>
 File: pics//Design/Website/LandingPage/LandingPage_vers1.png Graphic file (type png)
 <use pics//Design/Website/LandingPage/LandingPage_vers1.png>
 Package pdftex.def Info: pics//Design/Website/LandingPage/LandingPage_vers1.png  used on input line 96.
-(pdftex.def)             Requested size: 330.76329pt x 235.46349pt.
+(pdftex.def)             Requested size: 308.71106pt x 219.76704pt.
  [21]
-<pics//Design/Website/LandingPage/LandingPage_vers2.png, id=237, 765.86125pt x 543.02875pt>
+<pics//Design/Website/LandingPage/LandingPage_vers2.png, id=252, 765.86125pt x 543.02875pt>
 File: pics//Design/Website/LandingPage/LandingPage_vers2.png Graphic file (type png)
 <use pics//Design/Website/LandingPage/LandingPage_vers2.png>
 Package pdftex.def Info: pics//Design/Website/LandingPage/LandingPage_vers2.png  used on input line 106.
-(pdftex.def)             Requested size: 330.76329pt x 234.52525pt.
- [22 <./pics//Design/Website/LandingPage/LandingPage_vers1.png> <./pics//Design/Website/LandingPage/LandingPage_vers2.png>]
-<pics//Design/Website/LandingPage/LandingPage_versFinal.png, id=251, 766.865pt x 543.02875pt>
+(pdftex.def)             Requested size: 308.71106pt x 218.88968pt.
+<pics//Design/Website/LandingPage/LandingPage_versFinal.png, id=253, 766.865pt x 543.02875pt>
 File: pics//Design/Website/LandingPage/LandingPage_versFinal.png Graphic file (type png)
 <use pics//Design/Website/LandingPage/LandingPage_versFinal.png>
 Package pdftex.def Info: pics//Design/Website/LandingPage/LandingPage_versFinal.png  used on input line 115.
 (pdftex.def)             Requested size: 330.76329pt x 234.21867pt.
-
+ [22 <./pics//Design/Website/LandingPage/LandingPage_vers1.png> <./pics//Design/Website/LandingPage/LandingPage_vers2.png>]
 
 ./sections/design.tex:120: LaTeX Error: Unicode character   (U+2028)
                not set up for use with LaTeX.
@@ -1378,127 +1395,90 @@ l.120 ... Farbgebung Vertrauen und Stabilität. 
 You may provide a definition with
 \DeclareUnicodeCharacter 
 
-[23 <./pics//Design/Website/LandingPage/LandingPage_versFinal.png>]
-<pics//Design/Website/LandingPage/lp_Anmeldung.png, id=261, 1925.1925pt x 1066.98625pt>
+<pics//Design/Website/LandingPage/lp_Anmeldung.png, id=266, 1925.1925pt x 1066.98625pt>
 File: pics//Design/Website/LandingPage/lp_Anmeldung.png Graphic file (type png)
 <use pics//Design/Website/LandingPage/lp_Anmeldung.png>
 Package pdftex.def Info: pics//Design/Website/LandingPage/lp_Anmeldung.png  used on input line 130.
 (pdftex.def)             Requested size: 330.76329pt x 183.30641pt.
- [24 <./pics//Design/Website/LandingPage/lp_Anmeldung.png>]
-<pics//Design/Website/LandingPage/lp_Registrierung.png, id=270, 1925.1925pt x 1066.98625pt>
+[23 <./pics//Design/Website/LandingPage/LandingPage_versFinal.png>]
+<pics//Design/Website/LandingPage/lp_Registrierung.png, id=276, 1925.1925pt x 1066.98625pt>
 File: pics//Design/Website/LandingPage/lp_Registrierung.png Graphic file (type png)
 <use pics//Design/Website/LandingPage/lp_Registrierung.png>
 Package pdftex.def Info: pics//Design/Website/LandingPage/lp_Registrierung.png  used on input line 154.
 (pdftex.def)             Requested size: 330.76329pt x 183.30641pt.
- [25 <./pics//Design/Website/LandingPage/lp_Registrierung.png>]
-<pics//Design/Website/Startseite/Startseite.png, id=279, 1919.17pt x 1057.45062pt>
+ [24 <./pics//Design/Website/LandingPage/lp_Anmeldung.png>] [25 <./pics//Design/Website/LandingPage/lp_Registrierung.png>]
+<pics//Design/Website/Startseite/Startseite.png, id=293, 1919.17pt x 1057.45062pt>
 File: pics//Design/Website/Startseite/Startseite.png Graphic file (type png)
 <use pics//Design/Website/Startseite/Startseite.png>
 Package pdftex.def Info: pics//Design/Website/Startseite/Startseite.png  used on input line 186.
 (pdftex.def)             Requested size: 330.76329pt x 182.24907pt.
- [26 <./pics//Design/Website/Startseite/Startseite.png>]
-<pics//Design/Website/Startseite/Header.png, id=289, 1624.0675pt x 222.8325pt>
+<pics//Design/Website/Startseite/Header.png, id=294, 1624.0675pt x 222.8325pt>
 File: pics//Design/Website/Startseite/Header.png Graphic file (type png)
 <use pics//Design/Website/Startseite/Header.png>
 Package pdftex.def Info: pics//Design/Website/Startseite/Header.png  used on input line 208.
 (pdftex.def)             Requested size: 330.76329pt x 45.38174pt.
- [27 <./pics//Design/Website/Startseite/Header.png>]
-<pics//Design/Website/Startseite/HamburgerMenu.png, id=300, 87.82813pt x 328.22626pt>
+ [26 <./pics//Design/Website/Startseite/Startseite.png>] [27 <./pics//Design/Website/Startseite/Header.png>]
+<pics//Design/Website/Startseite/HamburgerMenu.png, id=315, 87.82813pt x 328.22626pt>
 File: pics//Design/Website/Startseite/HamburgerMenu.png Graphic file (type png)
 <use pics//Design/Website/Startseite/HamburgerMenu.png>
 Package pdftex.def Info: pics//Design/Website/Startseite/HamburgerMenu.png  used on input line 251.
 (pdftex.def)             Requested size: 44.10446pt x 164.8289pt.
-<pics//Design/Website/Startseite/Startseite_Lebenslauf.png, id=301, 1925.1925pt x 974.64125pt>
+<pics//Design/Website/Startseite/Startseite_Lebenslauf.png, id=316, 1925.1925pt x 974.64125pt>
 File: pics//Design/Website/Startseite/Startseite_Lebenslauf.png Graphic file (type png)
 <use pics//Design/Website/Startseite/Startseite_Lebenslauf.png>
 Package pdftex.def Info: pics//Design/Website/Startseite/Startseite_Lebenslauf.png  used on input line 262.
 (pdftex.def)             Requested size: 441.01773pt x 223.25558pt.
  [28 <./pics//Design/Website/Startseite/HamburgerMenu.png>] [29 <./pics//Design/Website/Startseite/Startseite_Lebenslauf.png>]
-<pics//Design/Website/Startseite/D&D_showcase.png, id=320, 1635.10875pt x 841.1425pt>
+<pics//Design/Website/Startseite/D&D_showcase.png, id=334, 1635.10875pt x 841.1425pt>
 File: pics//Design/Website/Startseite/D&D_showcase.png Graphic file (type png)
 <use pics//Design/Website/Startseite/D&D_showcase.png>
-Package pdftex.def Info: pics//Design/Website/Startseite/D&D_showcase.png  used on input line 328.
+Package pdftex.def Info: pics//Design/Website/Startseite/D&D_showcase.png  used on input line 344.
 (pdftex.def)             Requested size: 441.01773pt x 226.86765pt.
-
-./sections/design.tex:329: Misplaced alignment tab character &.
-<argument> ...ung der Formulare mittels der Drag &
-                                                   Drop Funktion
-l.329 ...rmulare mittels der Drag & Drop Funktion}
-                                                  
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-./sections/design.tex:329: Misplaced alignment tab character &.
-<argument> ...ung der Formulare mittels der Drag &
-                                                   Drop Funktion
-l.329 ...rmulare mittels der Drag & Drop Funktion}
-                                                  
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-[30]
-<pics//Design/Website/Startseite/Projekte/Startseite_Projekte.png, id=329, 1925.1925pt x 974.64125pt>
+ [30]
+<pics//Design/Website/Startseite/Projekte/Startseite_Projekte.png, id=343, 1925.1925pt x 974.64125pt>
 File: pics//Design/Website/Startseite/Projekte/Startseite_Projekte.png Graphic file (type png)
 <use pics//Design/Website/Startseite/Projekte/Startseite_Projekte.png>
-Package pdftex.def Info: pics//Design/Website/Startseite/Projekte/Startseite_Projekte.png  used on input line 344.
+Package pdftex.def Info: pics//Design/Website/Startseite/Projekte/Startseite_Projekte.png  used on input line 360.
 (pdftex.def)             Requested size: 441.01773pt x 223.25558pt.
  [31 <./pics//Design/Website/Startseite/D&D_showcase.png>]
-<pics//Design/Website/Startseite/Projekte/ghProjects_showcase.png, id=338, 1744.5175pt x 922.44624pt>
+<pics//Design/Website/Startseite/Projekte/ghProjects_showcase.png, id=352, 1744.5175pt x 922.44624pt>
 File: pics//Design/Website/Startseite/Projekte/ghProjects_showcase.png Graphic file (type png)
 <use pics//Design/Website/Startseite/Projekte/ghProjects_showcase.png>
-Package pdftex.def Info: pics//Design/Website/Startseite/Projekte/ghProjects_showcase.png  used on input line 356.
+Package pdftex.def Info: pics//Design/Website/Startseite/Projekte/ghProjects_showcase.png  used on input line 372.
 (pdftex.def)             Requested size: 441.01773pt x 233.18678pt.
  [32 <./pics//Design/Website/Startseite/Projekte/Startseite_Projekte.png>] [33 <./pics//Design/Website/Startseite/Projekte/ghProjects_showcase.png>]
-<pics/Design/Website/Startseite/Projekte/Kunst-Auswahl.png, id=352, 700.6175pt x 737.75626pt>
+<pics/Design/Website/Startseite/Projekte/Kunst-Auswahl.png, id=367, 700.6175pt x 737.75626pt>
 File: pics/Design/Website/Startseite/Projekte/Kunst-Auswahl.png Graphic file (type png)
 <use pics/Design/Website/Startseite/Projekte/Kunst-Auswahl.png>
-Package pdftex.def Info: pics/Design/Website/Startseite/Projekte/Kunst-Auswahl.png  used on input line 391.
+Package pdftex.def Info: pics/Design/Website/Startseite/Projekte/Kunst-Auswahl.png  used on input line 407.
 (pdftex.def)             Requested size: 110.25443pt x 116.0959pt.
-<pics/Design/Website/Startseite/Projekte/Kunst-Showcase.png, id=353, 1634.105pt x 907.39pt>
+<pics/Design/Website/Startseite/Projekte/Kunst-Showcase.png, id=368, 1634.105pt x 907.39pt>
 File: pics/Design/Website/Startseite/Projekte/Kunst-Showcase.png Graphic file (type png)
 <use pics/Design/Website/Startseite/Projekte/Kunst-Showcase.png>
-Package pdftex.def Info: pics/Design/Website/Startseite/Projekte/Kunst-Showcase.png  used on input line 396.
+Package pdftex.def Info: pics/Design/Website/Startseite/Projekte/Kunst-Showcase.png  used on input line 412.
 (pdftex.def)             Requested size: 220.50887pt x 122.43698pt.
  [34 <./pics/Design/Website/Startseite/Projekte/Kunst-Auswahl.png> <./pics/Design/Website/Startseite/Projekte/Kunst-Showcase.png>]
-<pics//Design/Website/Startseite/Projekte/Kompetenzen_showcase.png, id=362, 1754.555pt x 922.44624pt>
+<pics//Design/Website/Startseite/Projekte/Kompetenzen_showcase.png, id=376, 1754.555pt x 922.44624pt>
 File: pics//Design/Website/Startseite/Projekte/Kompetenzen_showcase.png Graphic file (type png)
 <use pics//Design/Website/Startseite/Projekte/Kompetenzen_showcase.png>
-Package pdftex.def Info: pics//Design/Website/Startseite/Projekte/Kompetenzen_showcase.png  used on input line 409.
+Package pdftex.def Info: pics//Design/Website/Startseite/Projekte/Kompetenzen_showcase.png  used on input line 425.
 (pdftex.def)             Requested size: 441.01773pt x 231.8637pt.
  [35 <./pics//Design/Website/Startseite/Projekte/Kompetenzen_showcase.png>]
 
-./sections/design.tex:439: LaTeX Error: There's no line here to end.
+./sections/design.tex:455: LaTeX Error: There's no line here to end.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.439 2
-       . EDV-Kenntnisse & Programmierkenntnisse
+l.455 2
+       . EDV-Kenntnisse | Programmierkenntnisse
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-./sections/design.tex:439: Misplaced alignment tab character &.
-l.439 2. EDV-Kenntnisse &
-                          Programmierkenntnisse
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-./sections/design.tex:459: Misplaced alignment tab character &.
-l.459 ...wie bei den Sprachkenntnissen (Löschen &
+./sections/design.tex:475: Misplaced alignment tab character &.
+l.475 ...wie bei den Sprachkenntnissen (Löschen &
                                                    Bestätigung).
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1508,45 +1488,45 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 
-./sections/design.tex:464: LaTeX Error: There's no line here to end.
+./sections/design.tex:480: LaTeX Error: There's no line here to end.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.464 3
+l.480 3
        . Persönliche Eigenschaften
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-<pics//Design/Website/Gruppen/Gruppen_Landing.png, id=370, 1927.2pt x 1060.96375pt>
+<pics//Design/Website/Gruppen/Gruppen_Landing.png, id=384, 1927.2pt x 1060.96375pt>
 File: pics//Design/Website/Gruppen/Gruppen_Landing.png Graphic file (type png)
 <use pics//Design/Website/Gruppen/Gruppen_Landing.png>
-Package pdftex.def Info: pics//Design/Website/Gruppen/Gruppen_Landing.png  used on input line 481.
+Package pdftex.def Info: pics//Design/Website/Gruppen/Gruppen_Landing.png  used on input line 497.
 (pdftex.def)             Requested size: 441.01773pt x 242.78616pt.
 [36] [37 <./pics//Design/Website/Gruppen/Gruppen_Landing.png>]
-<pics//Design/Website/Gruppen/Suchergebnisse.png, id=382, 931.48pt x 428.60126pt>
+<pics//Design/Website/Gruppen/Suchergebnisse.png, id=396, 931.48pt x 428.60126pt>
 File: pics//Design/Website/Gruppen/Suchergebnisse.png Graphic file (type png)
 <use pics//Design/Website/Gruppen/Suchergebnisse.png>
-Package pdftex.def Info: pics//Design/Website/Gruppen/Suchergebnisse.png  used on input line 509.
+Package pdftex.def Info: pics//Design/Website/Gruppen/Suchergebnisse.png  used on input line 525.
 (pdftex.def)             Requested size: 330.76329pt x 152.19048pt.
-<pics//Design/Website/Gruppen/GroupForm_Login.png, id=383, 818.05624pt x 422.57875pt>
+<pics//Design/Website/Gruppen/GroupForm_Login.png, id=397, 818.05624pt x 422.57875pt>
 File: pics//Design/Website/Gruppen/GroupForm_Login.png Graphic file (type png)
 <use pics//Design/Website/Gruppen/GroupForm_Login.png>
-Package pdftex.def Info: pics//Design/Website/Gruppen/GroupForm_Login.png  used on input line 537.
+Package pdftex.def Info: pics//Design/Website/Gruppen/GroupForm_Login.png  used on input line 553.
 (pdftex.def)             Requested size: 330.76329pt x 170.85974pt.
  [38 <./pics//Design/Website/Gruppen/Suchergebnisse.png>] [39 <./pics//Design/Website/Gruppen/GroupForm_Login.png>]
-<pics//Design/Website/Gruppen/createGroups.png, id=398, 1080.035pt x 600.2425pt>
+<pics//Design/Website/Gruppen/createGroups.png, id=413, 1080.035pt x 600.2425pt>
 File: pics//Design/Website/Gruppen/createGroups.png Graphic file (type png)
 <use pics//Design/Website/Gruppen/createGroups.png>
-Package pdftex.def Info: pics//Design/Website/Gruppen/createGroups.png  used on input line 573.
+Package pdftex.def Info: pics//Design/Website/Gruppen/createGroups.png  used on input line 589.
 (pdftex.def)             Requested size: 330.76329pt x 183.82014pt.
 
-./sections/design.tex:580: Misplaced alignment tab character &.
+./sections/design.tex:596: Misplaced alignment tab character &.
 <argument> Design &
                     visuelle Aufteilugn
-l.580 \textbf{Design & visuelle Aufteilugn}
+l.596 \textbf{Design & visuelle Aufteilugn}
                                            
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1556,26 +1536,26 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 [40 <./pics//Design/Website/Gruppen/createGroups.png>]
-<pics//Design/Website/Gruppen/myGroups_Liste.png, id=408, 1083.04625pt x 505.89pt>
+<pics//Design/Website/Gruppen/myGroups_Liste.png, id=422, 1083.04625pt x 505.89pt>
 File: pics//Design/Website/Gruppen/myGroups_Liste.png Graphic file (type png)
 <use pics//Design/Website/Gruppen/myGroups_Liste.png>
-Package pdftex.def Info: pics//Design/Website/Gruppen/myGroups_Liste.png  used on input line 628.
+Package pdftex.def Info: pics//Design/Website/Gruppen/myGroups_Liste.png  used on input line 642.
 (pdftex.def)             Requested size: 330.76329pt x 154.50078pt.
- [41]
-<pics//Design/Website/Gruppen/Gruppe_Admin-Ansicht.png, id=413, 2563.5775pt x 1279.78125pt>
+ [41 <./pics//Design/Website/Gruppen/myGroups_Liste.png>]
+<pics//Design/Website/Gruppen/Gruppe_Admin-Ansicht.png, id=431, 2563.5775pt x 1279.78125pt>
 File: pics//Design/Website/Gruppen/Gruppe_Admin-Ansicht.png Graphic file (type png)
 <use pics//Design/Website/Gruppen/Gruppe_Admin-Ansicht.png>
-Package pdftex.def Info: pics//Design/Website/Gruppen/Gruppe_Admin-Ansicht.png  used on input line 639.
+Package pdftex.def Info: pics//Design/Website/Gruppen/Gruppe_Admin-Ansicht.png  used on input line 653.
 (pdftex.def)             Requested size: 441.01773pt x 220.15714pt.
- [42 <./pics//Design/Website/Gruppen/myGroups_Liste.png> <./pics//Design/Website/Gruppen/Gruppe_Admin-Ansicht.png>] [43]
-<pics//Design/Website/Gruppen/Gruppe_Filter-Möglichkeiten.png, id=430, 602.25pt x 463.7325pt>
+ [42 <./pics//Design/Website/Gruppen/Gruppe_Admin-Ansicht.png>] [43]
+<pics//Design/Website/Gruppen/Gruppe_Filter-Möglichkeiten.png, id=444, 602.25pt x 463.7325pt>
 File: pics//Design/Website/Gruppen/Gruppe_Filter-Möglichkeiten.png Graphic file (type png)
 <use pics//Design/Website/Gruppen/Gruppe_Filter-Möglichkeiten.png>
-Package pdftex.def Info: pics//Design/Website/Gruppen/Gruppe_Filter-Möglichkeiten.png  used on input line 687.
+Package pdftex.def Info: pics//Design/Website/Gruppen/Gruppe_Filter-Möglichkeiten.png  used on input line 720.
 (pdftex.def)             Requested size: 220.50887pt x 169.79518pt.
 
-./sections/design.tex:706: Misplaced alignment tab character &.
-l.706     \subitem - Pr.-Kenntnisse &
+./sections/design.tex:739: Misplaced alignment tab character &.
+l.739     \subitem - Pr.-Kenntnisse &
                                       EDV-Kenntnisse: Jeweils eigene Filterf...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1585,61 +1565,62 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 [44 <./pics//Design/Website/Gruppen/Gruppe_Filter-Möglichkeiten.png>]
-<pics//Design/Website/Gruppen/Gruppe_Gast-Ansicht.png, id=437, 2563.5775pt x 1270.7475pt>
+<pics//Design/Website/Gruppen/Gruppe_Gast-Ansicht.png, id=452, 2563.5775pt x 1270.7475pt>
 File: pics//Design/Website/Gruppen/Gruppe_Gast-Ansicht.png Graphic file (type png)
 <use pics//Design/Website/Gruppen/Gruppe_Gast-Ansicht.png>
-Package pdftex.def Info: pics//Design/Website/Gruppen/Gruppe_Gast-Ansicht.png  used on input line 730.
+Package pdftex.def Info: pics//Design/Website/Gruppen/Gruppe_Gast-Ansicht.png  used on input line 763.
 (pdftex.def)             Requested size: 441.01773pt x 218.60309pt.
  [45 <./pics//Design/Website/Gruppen/Gruppe_Gast-Ansicht.png>]
-<pics//Design/Website/Settings/Settings_Landing.png, id=446, 1919.17pt x 1049.9225pt>
+<pics//Design/Website/Settings/Settings_Landing.png, id=461, 1919.17pt x 1049.9225pt>
 File: pics//Design/Website/Settings/Settings_Landing.png Graphic file (type png)
 <use pics//Design/Website/Settings/Settings_Landing.png>
-Package pdftex.def Info: pics//Design/Website/Settings/Settings_Landing.png  used on input line 755.
+Package pdftex.def Info: pics//Design/Website/Settings/Settings_Landing.png  used on input line 788.
 (pdftex.def)             Requested size: 441.01773pt x 241.26883pt.
-<pics//Design/Website/Settings/Settings_language-select.png, id=447, 161.60374pt x 183.68625pt>
+<pics//Design/Website/Settings/Settings_language-select.png, id=462, 161.60374pt x 183.68625pt>
 File: pics//Design/Website/Settings/Settings_language-select.png Graphic file (type png)
 <use pics//Design/Website/Settings/Settings_language-select.png>
-Package pdftex.def Info: pics//Design/Website/Settings/Settings_language-select.png  used on input line 766.
+Package pdftex.def Info: pics//Design/Website/Settings/Settings_language-select.png  used on input line 799.
 (pdftex.def)             Requested size: 110.25443pt x 125.3198pt.
  [46 <./pics//Design/Website/Settings/Settings_Landing.png>]
-<pics/Design/Website/Settings/Settings_Landing-Englisch.png, id=456, 1919.17pt x 1049.9225pt>
+<pics/Design/Website/Settings/Settings_Landing-Englisch.png, id=470, 1919.17pt x 1049.9225pt>
 File: pics/Design/Website/Settings/Settings_Landing-Englisch.png Graphic file (type png)
 <use pics/Design/Website/Settings/Settings_Landing-Englisch.png>
-Package pdftex.def Info: pics/Design/Website/Settings/Settings_Landing-Englisch.png  used on input line 780.
+Package pdftex.def Info: pics/Design/Website/Settings/Settings_Landing-Englisch.png  used on input line 813.
 (pdftex.def)             Requested size: 220.50887pt x 120.63441pt.
-<pics/Design/Website/Settings/Settings_Home-Englisch.png, id=457, 1919.17pt x 1049.9225pt>
+<pics/Design/Website/Settings/Settings_Home-Englisch.png, id=471, 1919.17pt x 1049.9225pt>
 File: pics/Design/Website/Settings/Settings_Home-Englisch.png Graphic file (type png)
 <use pics/Design/Website/Settings/Settings_Home-Englisch.png>
-Package pdftex.def Info: pics/Design/Website/Settings/Settings_Home-Englisch.png  used on input line 785.
+Package pdftex.def Info: pics/Design/Website/Settings/Settings_Home-Englisch.png  used on input line 818.
 (pdftex.def)             Requested size: 220.50887pt x 120.63441pt.
-<pics//Design/Website/Settings/Settings_background-form.png, id=458, 1068.99374pt x 597.23125pt>
+<pics//Design/Website/Settings/Settings_background-form.png, id=472, 1068.99374pt x 597.23125pt>
 File: pics//Design/Website/Settings/Settings_background-form.png Graphic file (type png)
 <use pics//Design/Website/Settings/Settings_background-form.png>
-Package pdftex.def Info: pics//Design/Website/Settings/Settings_background-form.png  used on input line 796.
+Package pdftex.def Info: pics//Design/Website/Settings/Settings_background-form.png  used on input line 829.
 (pdftex.def)             Requested size: 330.76329pt x 184.79347pt.
  [47 <./pics//Design/Website/Settings/Settings_language-select.png> <./pics/Design/Website/Settings/Settings_Landing-Englisch.png> <./pics/Design/Website/Settings/Settings_Home-Englisch.png>]
 
-./sections/design.tex:803: LaTeX Error: Unicode character   (U+2028)
+./sections/design.tex:836: LaTeX Error: Unicode character   (U+2028)
                not set up for use with LaTeX.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.803  
+l.836  
          Die Nutzer*innen haben die Auswahlmöglichkeit zwischen zwei Haupto...
 You may provide a definition with
 \DeclareUnicodeCharacter 
 
-<pics//Design/Website/Settings/Settings_background-selected.png, id=470, 1067.99pt x 589.20125pt>
+[48 <./pics//Design/Website/Settings/Settings_background-form.png>]
+<pics//Design/Website/Settings/Settings_background-selected.png, id=492, 1067.99pt x 589.20125pt>
 File: pics//Design/Website/Settings/Settings_background-selected.png Graphic file (type png)
 <use pics//Design/Website/Settings/Settings_background-selected.png>
-Package pdftex.def Info: pics//Design/Website/Settings/Settings_background-selected.png  used on input line 814.
+Package pdftex.def Info: pics//Design/Website/Settings/Settings_background-selected.png  used on input line 853.
 (pdftex.def)             Requested size: 330.76329pt x 182.47968pt.
-[48 <./pics//Design/Website/Settings/Settings_background-form.png>]) [49 <./pics//Design/Website/Settings/Settings_background-selected.png>]
+) [49 <./pics//Design/Website/Settings/Settings_background-selected.png>]
 chapter 5.
 (./sections/implementation.tex (./sections/frontend.tex
-<pics//Frontend/Webstorm_Logo.png, id=485, 2007.5pt x 2007.5pt>
+<pics//Frontend/Webstorm_Logo.png, id=499, 2007.5pt x 2007.5pt>
 File: pics//Frontend/Webstorm_Logo.png Graphic file (type png)
 <use pics//Frontend/Webstorm_Logo.png>
 Package pdftex.def Info: pics//Frontend/Webstorm_Logo.png  used on input line 7.
@@ -1647,19 +1628,19 @@ Package pdftex.def Info: pics//Frontend/Webstorm_Logo.png  used on input line 7.
  [50
 
  <./pics//Frontend/Webstorm_Logo.png>]
-<pics//Frontend/register-form-html.png, id=495, 1832.8475pt x 424.58624pt>
+<pics//Frontend/register-form-html.png, id=510, 1832.8475pt x 424.58624pt>
 File: pics//Frontend/register-form-html.png Graphic file (type png)
 <use pics//Frontend/register-form-html.png>
 Package pdftex.def Info: pics//Frontend/register-form-html.png  used on input line 51.
 (pdftex.def)             Requested size: 441.01773pt x 102.16193pt.
  [51]
-<pics//Frontend/register-form-ts_FormGroup.png, id=500, 851.18pt x 265.99374pt>
+<pics//Frontend/register-form-ts_FormGroup.png, id=515, 851.18pt x 265.99374pt>
 File: pics//Frontend/register-form-ts_FormGroup.png Graphic file (type png)
 <use pics//Frontend/register-form-ts_FormGroup.png>
 Package pdftex.def Info: pics//Frontend/register-form-ts_FormGroup.png  used on input line 63.
 (pdftex.def)             Requested size: 330.76329pt x 103.36372pt.
  [52 <./pics//Frontend/register-form-html.png> <./pics//Frontend/register-form-ts_FormGroup.png>]
-<pics//Frontend/register-form-ts_checkPasswordMatch.png, id=515, 793.96625pt x 266.9975pt>
+<pics//Frontend/register-form-ts_checkPasswordMatch.png, id=529, 793.96625pt x 266.9975pt>
 File: pics//Frontend/register-form-ts_checkPasswordMatch.png Graphic file (type png)
 <use pics//Frontend/register-form-ts_checkPasswordMatch.png>
 Package pdftex.def Info: pics//Frontend/register-form-ts_checkPasswordMatch.png  used on input line 74.
@@ -1677,7 +1658,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-<pics//Frontend/D&D/D&D_html-settings.png, id=516, 1095.09125pt x 182.6825pt>
+<pics//Frontend/D&D/D&D_html-settings.png, id=530, 1095.09125pt x 182.6825pt>
 File: pics//Frontend/D&D/D&D_html-settings.png Graphic file (type png)
 <use pics//Frontend/D&D/D&D_html-settings.png>
 Package pdftex.def Info: pics//Frontend/D&D/D&D_html-settings.png  used on input line 107.
@@ -1688,7 +1669,7 @@ Overfull \hbox (6.0pt too wide) in paragraph at lines 119--119
  []
 
 [54 <./pics//Frontend/D&D/D&D_html-settings.png>]
-<pics//Frontend/D&D/D&D_DragStart.png, id=540, 699.61375pt x 113.42375pt>
+<pics//Frontend/D&D/D&D_DragStart.png, id=554, 699.61375pt x 113.42375pt>
 File: pics//Frontend/D&D/D&D_DragStart.png Graphic file (type png)
 <use pics//Frontend/D&D/D&D_DragStart.png>
 Package pdftex.def Info: pics//Frontend/D&D/D&D_DragStart.png  used on input line 167.
@@ -1698,34 +1679,34 @@ Overfull \hbox (16.90504pt too wide) in paragraph at lines 172--175
 \T1/lmr/m/n/12 (-20) wegt wur-de. Mit \T1/lmr/bx/n/12 (-20) event.dataTransfer?.setData('text/plain', event.target?.toString()
  []
 
-<pics//Frontend/D&D/D&D_DragOver.png, id=541, 717.68124pt x 91.34125pt>
+<pics//Frontend/D&D/D&D_DragOver.png, id=555, 717.68124pt x 91.34125pt>
 File: pics//Frontend/D&D/D&D_DragOver.png Graphic file (type png)
 <use pics//Frontend/D&D/D&D_DragOver.png>
 Package pdftex.def Info: pics//Frontend/D&D/D&D_DragOver.png  used on input line 178.
 (pdftex.def)             Requested size: 330.76329pt x 42.09831pt.
-<pics//Frontend/D&D/D&D_Drop.png, id=542, 815.045pt x 532.99126pt>
+<pics//Frontend/D&D/D&D_Drop.png, id=556, 815.045pt x 532.99126pt>
 File: pics//Frontend/D&D/D&D_Drop.png Graphic file (type png)
 <use pics//Frontend/D&D/D&D_Drop.png>
 Package pdftex.def Info: pics//Frontend/D&D/D&D_Drop.png  used on input line 188.
 (pdftex.def)             Requested size: 330.76329pt x 216.29944pt.
 [55 <./pics//Frontend/D&D/D&D_DragStart.png> <./pics//Frontend/D&D/D&D_DragOver.png>] [56 <./pics//Frontend/D&D/D&D_Drop.png>]
-<pics//Frontend/language/Lanugage_settings-comp-html.png, id=559, 928.46875pt x 69.25874pt>
+<pics//Frontend/language/Lanugage_settings-comp-html.png, id=574, 928.46875pt x 69.25874pt>
 File: pics//Frontend/language/Lanugage_settings-comp-html.png Graphic file (type png)
 <use pics//Frontend/language/Lanugage_settings-comp-html.png>
 Package pdftex.def Info: pics//Frontend/language/Lanugage_settings-comp-html.png  used on input line 224.
 (pdftex.def)             Requested size: 330.76329pt x 24.67314pt.
-<pics//Frontend/language/Language_settings-comp-ts.png, id=560, 588.1975pt x 354.32375pt>
+<pics//Frontend/language/Language_settings-comp-ts.png, id=575, 588.1975pt x 354.32375pt>
 File: pics//Frontend/language/Language_settings-comp-ts.png Graphic file (type png)
 <use pics//Frontend/language/Language_settings-comp-ts.png>
 Package pdftex.def Info: pics//Frontend/language/Language_settings-comp-ts.png  used on input line 242.
 (pdftex.def)             Requested size: 330.76329pt x 199.24713pt.
  [57 <./pics//Frontend/language/Lanugage_settings-comp-html.png> <./pics//Frontend/language/Language_settings-comp-ts.png>]
-<pics//Frontend/language/Language_languageSelect-comp-html.png, id=572, 1071.00125pt x 196.735pt>
+<pics//Frontend/language/Language_languageSelect-comp-html.png, id=587, 1071.00125pt x 196.735pt>
 File: pics//Frontend/language/Language_languageSelect-comp-html.png Graphic file (type png)
 <use pics//Frontend/language/Language_languageSelect-comp-html.png>
 Package pdftex.def Info: pics//Frontend/language/Language_languageSelect-comp-html.png  used on input line 256.
 (pdftex.def)             Requested size: 330.76329pt x 60.75906pt.
-<pics//Frontend/language/Language_lanugageSelect-comp-ts.png, id=573, 579.16376pt x 92.345pt>
+<pics//Frontend/language/Language_lanugageSelect-comp-ts.png, id=588, 579.16376pt x 92.345pt>
 File: pics//Frontend/language/Language_lanugageSelect-comp-ts.png Graphic file (type png)
 <use pics//Frontend/language/Language_lanugageSelect-comp-ts.png>
 Package pdftex.def Info: pics//Frontend/language/Language_lanugageSelect-comp-ts.png  used on input line 267.
@@ -1749,18 +1730,18 @@ Overfull \hbox (1.05952pt too wide) in paragraph at lines 283--284
 []\T1/lmr/m/n/12 (-20) Mittels \T1/lmr/bx/n/12 (-20) this.eventEmitter.emit(language.code); \T1/lmr/m/n/12 (-20) wird das Sprachcode-Attribut
  []
 
-<pics//Frontend/language/Language_app-comp-constructor.png, id=583, 671.50874pt x 94.3525pt>
+<pics//Frontend/language/Language_app-comp-constructor.png, id=597, 671.50874pt x 94.3525pt>
 File: pics//Frontend/language/Language_app-comp-constructor.png Graphic file (type png)
 <use pics//Frontend/language/Language_app-comp-constructor.png>
 Package pdftex.def Info: pics//Frontend/language/Language_app-comp-constructor.png  used on input line 291.
 (pdftex.def)             Requested size: 330.76329pt x 46.47498pt.
-<pics//Frontend/language/Lanugage_app-comp-ts.png, id=584, 806.01125pt x 138.5175pt>
+<pics//Frontend/language/Lanugage_app-comp-ts.png, id=598, 806.01125pt x 138.5175pt>
 File: pics//Frontend/language/Lanugage_app-comp-ts.png Graphic file (type png)
 <use pics//Frontend/language/Lanugage_app-comp-ts.png>
 Package pdftex.def Info: pics//Frontend/language/Lanugage_app-comp-ts.png  used on input line 310.
 (pdftex.def)             Requested size: 330.76329pt x 56.84326pt.
 [59 <./pics//Frontend/language/Language_app-comp-constructor.png> <./pics//Frontend/language/Lanugage_app-comp-ts.png>]
-<pics/Frontend/language/Language_de-json.png, id=593, 526.96875pt x 551.05875pt>
+<pics/Frontend/language/Language_de-json.png, id=607, 526.96875pt x 551.05875pt>
 File: pics/Frontend/language/Language_de-json.png Graphic file (type png)
 <use pics/Frontend/language/Language_de-json.png>
 Package pdftex.def Info: pics/Frontend/language/Language_de-json.png  used on input line 344.
@@ -1770,48 +1751,48 @@ Underfull \hbox (badness 10000) in paragraph at lines 345--345
 [][][]|\T1/lmr/m/n/12 (+20) �ber-set-zungs-da-tei in
  []
 
-<pics/Frontend/language/Language_en-json.png, id=594, 505.89pt x 552.0625pt>
+<pics/Frontend/language/Language_en-json.png, id=608, 505.89pt x 552.0625pt>
 File: pics/Frontend/language/Language_en-json.png Graphic file (type png)
 <use pics/Frontend/language/Language_en-json.png>
 Package pdftex.def Info: pics/Frontend/language/Language_en-json.png  used on input line 349.
 (pdftex.def)             Requested size: 198.45662pt x 216.57549pt.
 [60 <./pics/Frontend/language/Language_de-json.png> <./pics/Frontend/language/Language_en-json.png>]
-<pics//Frontend/language/Language_home-example.png, id=604, 1168.365pt x 199.74625pt>
+<pics//Frontend/language/Language_home-example.png, id=618, 1168.365pt x 199.74625pt>
 File: pics//Frontend/language/Language_home-example.png Graphic file (type png)
 <use pics//Frontend/language/Language_home-example.png>
 Package pdftex.def Info: pics//Frontend/language/Language_home-example.png  used on input line 360.
 (pdftex.def)             Requested size: 441.01773pt x 75.3984pt.
 ) (./sections/backend.tex [61 <./pics//Frontend/language/Language_home-example.png>]
-<pics//Backend/JetBrains_IntelliJ_IDEA_Icon.png, id=615, 1204.5pt x 1204.5pt>
+<pics//Backend/JetBrains_IntelliJ_IDEA_Icon.png, id=629, 1204.5pt x 1204.5pt>
 File: pics//Backend/JetBrains_IntelliJ_IDEA_Icon.png Graphic file (type png)
 <use pics//Backend/JetBrains_IntelliJ_IDEA_Icon.png>
 Package pdftex.def Info: pics//Backend/JetBrains_IntelliJ_IDEA_Icon.png  used on input line 42.
 (pdftex.def)             Requested size: 110.25443pt x 110.23824pt.
  [62]
-<pics/Backend/Entitäten/entities.png, id=620, 246.9225pt x 349.305pt>
+<pics/Backend/Entitäten/entities.png, id=635, 246.9225pt x 349.305pt>
 File: pics/Backend/Entitäten/entities.png Graphic file (type png)
 <use pics/Backend/Entitäten/entities.png>
 Package pdftex.def Info: pics/Backend/Entitäten/entities.png  used on input line 57.
 (pdftex.def)             Requested size: 220.50887pt x 311.93579pt.
  [63 <./pics//Backend/JetBrains_IntelliJ_IDEA_Icon.png>]
-<pics/Backend/Entitäten/one-to-one-profile.png, id=628, 525.965pt x 116.435pt>
+<pics/Backend/Entitäten/one-to-one-profile.png, id=643, 525.965pt x 116.435pt>
 File: pics/Backend/Entitäten/one-to-one-profile.png Graphic file (type png)
 <use pics/Backend/Entitäten/one-to-one-profile.png>
 Package pdftex.def Info: pics/Backend/Entitäten/one-to-one-profile.png  used on input line 77.
 (pdftex.def)             Requested size: 330.76329pt x 73.22473pt.
  [64 <./pics/Backend/Entitäten/entities.png>]
-<pics/Backend/Entitäten/one-to-one-general.png, id=644, 524.96124pt x 94.3525pt>
+<pics/Backend/Entitäten/one-to-one-general.png, id=658, 524.96124pt x 94.3525pt>
 File: pics/Backend/Entitäten/one-to-one-general.png Graphic file (type png)
 <use pics/Backend/Entitäten/one-to-one-general.png>
 Package pdftex.def Info: pics/Backend/Entitäten/one-to-one-general.png  used on input line 106.
 (pdftex.def)             Requested size: 330.76329pt x 59.451pt.
-<pics/Backend/Entitäten/one-to-many.png, id=645, 348.30125pt x 72.27pt>
+<pics/Backend/Entitäten/one-to-many.png, id=659, 348.30125pt x 72.27pt>
 File: pics/Backend/Entitäten/one-to-many.png Graphic file (type png)
 <use pics/Backend/Entitäten/one-to-many.png>
 Package pdftex.def Info: pics/Backend/Entitäten/one-to-many.png  used on input line 117.
 (pdftex.def)             Requested size: 330.76329pt x 68.63403pt.
  [65 <./pics/Backend/Entitäten/one-to-one-profile.png> <./pics/Backend/Entitäten/one-to-one-general.png> <./pics/Backend/Entitäten/one-to-many.png>]
-<pics/Backend/Entitäten/many-to-many.png, id=661, 539.01375pt x 178.6675pt>
+<pics/Backend/Entitäten/many-to-many.png, id=675, 539.01375pt x 178.6675pt>
 File: pics/Backend/Entitäten/many-to-many.png Graphic file (type png)
 <use pics/Backend/Entitäten/many-to-many.png>
 Package pdftex.def Info: pics/Backend/Entitäten/many-to-many.png  used on input line 161.
@@ -1855,116 +1836,116 @@ you forgot something else, as in `\hbox{$x}'. In such cases
 the way to recover is to insert both the forgotten and the
 deleted material, e.g., by typing `I$}'.
 
-<pics/Backend/Entitäten/portfolio-strings.png, id=662, 408.52625pt x 290.08376pt>
+<pics/Backend/Entitäten/portfolio-strings.png, id=676, 408.52625pt x 290.08376pt>
 File: pics/Backend/Entitäten/portfolio-strings.png Graphic file (type png)
 <use pics/Backend/Entitäten/portfolio-strings.png>
 Package pdftex.def Info: pics/Backend/Entitäten/portfolio-strings.png  used on input line 196.
 (pdftex.def)             Requested size: 330.76329pt x 234.87802pt.
 [66{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc} <./pics/Backend/Entitäten/many-to-many.png>]
-<pics/Backend/Repositories/Repos.png, id=676, 315.1775pt x 311.1625pt>
+<pics/Backend/Repositories/Repos.png, id=690, 315.1775pt x 311.1625pt>
 File: pics/Backend/Repositories/Repos.png Graphic file (type png)
 <use pics/Backend/Repositories/Repos.png>
 Package pdftex.def Info: pics/Backend/Repositories/Repos.png  used on input line 208.
 (pdftex.def)             Requested size: 220.50887pt x 217.70306pt.
  [67 <./pics/Backend/Entitäten/portfolio-strings.png>]
-<pics/Backend/Repositories/applicationscoped.png, id=684, 283.0575pt x 47.17625pt>
+<pics/Backend/Repositories/applicationscoped.png, id=698, 283.0575pt x 47.17625pt>
 File: pics/Backend/Repositories/applicationscoped.png Graphic file (type png)
 <use pics/Backend/Repositories/applicationscoped.png>
 Package pdftex.def Info: pics/Backend/Repositories/applicationscoped.png  used on input line 228.
 (pdftex.def)             Requested size: 330.76329pt x 55.1319pt.
  [68 <./pics/Backend/Repositories/Repos.png>] [69 <./pics/Backend/Repositories/applicationscoped.png>]
-<pics/Backend/Repositories/Transactional.png, id=707, 458.71375pt x 331.2375pt>
+<pics/Backend/Repositories/Transactional.png, id=722, 458.71375pt x 331.2375pt>
 File: pics/Backend/Repositories/Transactional.png Graphic file (type png)
 <use pics/Backend/Repositories/Transactional.png>
 Package pdftex.def Info: pics/Backend/Repositories/Transactional.png  used on input line 249.
 (pdftex.def)             Requested size: 330.76329pt x 238.8547pt.
-<pics/Backend/Repositories/addProfile.png, id=708, 452.69125pt x 208.78pt>
+<pics/Backend/Repositories/addProfile.png, id=723, 452.69125pt x 208.78pt>
 File: pics/Backend/Repositories/addProfile.png Graphic file (type png)
 <use pics/Backend/Repositories/addProfile.png>
 Package pdftex.def Info: pics/Backend/Repositories/addProfile.png  used on input line 261.
 (pdftex.def)             Requested size: 330.76329pt x 152.54509pt.
  [70 <./pics/Backend/Repositories/Transactional.png>]
-<pics/Backend/Repositories/checkProfile.png, id=720, 613.29124pt x 95.35625pt>
+<pics/Backend/Repositories/checkProfile.png, id=734, 613.29124pt x 95.35625pt>
 File: pics/Backend/Repositories/checkProfile.png Graphic file (type png)
 <use pics/Backend/Repositories/checkProfile.png>
 Package pdftex.def Info: pics/Backend/Repositories/checkProfile.png  used on input line 271.
 (pdftex.def)             Requested size: 330.76329pt x 51.42757pt.
  [71 <./pics/Backend/Repositories/addProfile.png> <./pics/Backend/Repositories/checkProfile.png>]
-<pics/Backend/Repositories/getProfileByEmail.png, id=733, 514.92375pt x 248.93pt>
+<pics/Backend/Repositories/getProfileByEmail.png, id=747, 514.92375pt x 248.93pt>
 File: pics/Backend/Repositories/getProfileByEmail.png Graphic file (type png)
 <use pics/Backend/Repositories/getProfileByEmail.png>
 Package pdftex.def Info: pics/Backend/Repositories/getProfileByEmail.png  used on input line 283.
 (pdftex.def)             Requested size: 330.76329pt x 159.9034pt.
-<pics/Backend/Resource/Resources.png, id=734, 295.1025pt x 308.15125pt>
+<pics/Backend/Resource/Resources.png, id=748, 295.1025pt x 308.15125pt>
 File: pics/Backend/Resource/Resources.png Graphic file (type png)
 <use pics/Backend/Resource/Resources.png>
 Package pdftex.def Info: pics/Backend/Resource/Resources.png  used on input line 295.
 (pdftex.def)             Requested size: 220.50887pt x 230.2618pt.
  [72 <./pics/Backend/Repositories/getProfileByEmail.png>]
-<pics/Backend/Resource/path-class.png, id=742, 249.93375pt x 45.16875pt>
+<pics/Backend/Resource/path-class.png, id=756, 249.93375pt x 45.16875pt>
 File: pics/Backend/Resource/path-class.png Graphic file (type png)
 <use pics/Backend/Resource/path-class.png>
 Package pdftex.def Info: pics/Backend/Resource/path-class.png  used on input line 316.
 (pdftex.def)             Requested size: 220.50887pt x 39.85268pt.
  [73 <./pics/Backend/Resource/Resources.png>]
-<pics/Backend/Resource/path-method.png, id=757, 383.4325pt x 105.39375pt>
+<pics/Backend/Resource/path-method.png, id=771, 383.4325pt x 105.39375pt>
 File: pics/Backend/Resource/path-method.png Graphic file (type png)
 <use pics/Backend/Resource/path-method.png>
 Package pdftex.def Info: pics/Backend/Resource/path-method.png  used on input line 323.
 (pdftex.def)             Requested size: 264.61333pt x 72.73784pt.
-<pics/Backend/Resource/produces.png, id=758, 514.92375pt x 75.28125pt>
+<pics/Backend/Resource/produces.png, id=772, 514.92375pt x 75.28125pt>
 File: pics/Backend/Resource/produces.png Graphic file (type png)
 <use pics/Backend/Resource/produces.png>
 Package pdftex.def Info: pics/Backend/Resource/produces.png  used on input line 334.
 (pdftex.def)             Requested size: 330.76329pt x 48.35786pt.
  [74 <./pics/Backend/Resource/path-class.png> <./pics/Backend/Resource/path-method.png> <./pics/Backend/Resource/produces.png>]
-<pics/Backend/Resource/consumes.png, id=773, 513.92pt x 93.34875pt>
+<pics/Backend/Resource/consumes.png, id=788, 513.92pt x 93.34875pt>
 File: pics/Backend/Resource/consumes.png Graphic file (type png)
 <use pics/Backend/Resource/consumes.png>
 Package pdftex.def Info: pics/Backend/Resource/consumes.png  used on input line 345.
 (pdftex.def)             Requested size: 330.76329pt x 60.08057pt.
-<pics/Backend/docker-compose.png, id=774, 423.5825pt x 395.4775pt>
+<pics/Backend/docker-compose.png, id=789, 423.5825pt x 395.4775pt>
 File: pics/Backend/docker-compose.png Graphic file (type png)
 <use pics/Backend/docker-compose.png>
 Package pdftex.def Info: pics/Backend/docker-compose.png  used on input line 362.
 (pdftex.def)             Requested size: 330.76329pt x 308.82724pt.
  [75 <./pics/Backend/Resource/consumes.png>] [76 <./pics/Backend/docker-compose.png>]
-<pics/Backend/Verwendungen/httpclient-beispiel.png, id=792, 547.04375pt x 310.15875pt>
+<pics/Backend/Verwendungen/httpclient-beispiel.png, id=806, 547.04375pt x 310.15875pt>
 File: pics/Backend/Verwendungen/httpclient-beispiel.png Graphic file (type png)
 <use pics/Backend/Verwendungen/httpclient-beispiel.png>
 Package pdftex.def Info: pics/Backend/Verwendungen/httpclient-beispiel.png  used on input line 379.
 (pdftex.def)             Requested size: 330.76329pt x 187.5354pt.
  [77 <./pics/Backend/Verwendungen/httpclient-beispiel.png>] [78]
-<pics/Backend/Verwendungen/implements-oninit.png, id=809, 572.1375pt x 93.34875pt>
+<pics/Backend/Verwendungen/implements-oninit.png, id=823, 572.1375pt x 93.34875pt>
 File: pics/Backend/Verwendungen/implements-oninit.png Graphic file (type png)
 <use pics/Backend/Verwendungen/implements-oninit.png>
 Package pdftex.def Info: pics/Backend/Verwendungen/implements-oninit.png  used on input line 428.
 (pdftex.def)             Requested size: 330.76329pt x 53.9671pt.
  [79 <./pics/Backend/Verwendungen/implements-oninit.png>]
-<pics/Backend/Verwendungen/onregister1.png, id=818, 672.5125pt x 316.18124pt>
+<pics/Backend/Verwendungen/onregister1.png, id=832, 672.5125pt x 316.18124pt>
 File: pics/Backend/Verwendungen/onregister1.png Graphic file (type png)
 <use pics/Backend/Verwendungen/onregister1.png>
 Package pdftex.def Info: pics/Backend/Verwendungen/onregister1.png  used on input line 455.
 (pdftex.def)             Requested size: 209.48274pt x 98.48798pt.
-<pics/Backend/Verwendungen/onregister2.png, id=819, 633.36626pt x 577.15625pt>
+<pics/Backend/Verwendungen/onregister2.png, id=833, 633.36626pt x 577.15625pt>
 File: pics/Backend/Verwendungen/onregister2.png Graphic file (type png)
 <use pics/Backend/Verwendungen/onregister2.png>
 Package pdftex.def Info: pics/Backend/Verwendungen/onregister2.png  used on input line 460.
 (pdftex.def)             Requested size: 209.48274pt x 190.88486pt.
  [80] [81 <./pics/Backend/Verwendungen/onregister1.png> <./pics/Backend/Verwendungen/onregister2.png>]
-<pics/Backend/Verwendungen/onLogin.png, id=833, 766.865pt x 550.055pt>
+<pics/Backend/Verwendungen/onLogin.png, id=848, 766.865pt x 550.055pt>
 File: pics/Backend/Verwendungen/onLogin.png Graphic file (type png)
 <use pics/Backend/Verwendungen/onLogin.png>
 Package pdftex.def Info: pics/Backend/Verwendungen/onLogin.png  used on input line 491.
 (pdftex.def)             Requested size: 330.76329pt x 237.24924pt.
  [82 <./pics/Backend/Verwendungen/onLogin.png>]
-<pics/Backend/Verwendungen/ngoninit-appcomponent.png, id=843, 823.075pt x 752.8125pt>
+<pics/Backend/Verwendungen/ngoninit-appcomponent.png, id=857, 823.075pt x 752.8125pt>
 File: pics/Backend/Verwendungen/ngoninit-appcomponent.png Graphic file (type png)
 <use pics/Backend/Verwendungen/ngoninit-appcomponent.png>
 Package pdftex.def Info: pics/Backend/Verwendungen/ngoninit-appcomponent.png  used on input line 520.
 (pdftex.def)             Requested size: 330.76329pt x 302.52107pt.
  [83 <./pics/Backend/Verwendungen/ngoninit-appcomponent.png>] [84]
-<pics/Backend/Verwendungen/cv-oninit1.png, id=860, 830.10126pt x 403.5075pt>
+<pics/Backend/Verwendungen/cv-oninit1.png, id=874, 830.10126pt x 403.5075pt>
 File: pics/Backend/Verwendungen/cv-oninit1.png Graphic file (type png)
 <use pics/Backend/Verwendungen/cv-oninit1.png>
 Package pdftex.def Info: pics/Backend/Verwendungen/cv-oninit1.png  used on input line 545.
@@ -1974,57 +1955,57 @@ Overfull \hbox (3.84178pt too wide) in paragraph at lines 550--551
 []\T1/lmr/m/n/12 (-20) Im n�chs-ten Schritt wer-den die im Port-fo-lio ge-spei-cher-ten education- und workExperience-
  []
 
-<pics/Backend/Verwendungen/cv-oninit2.png, id=861, 858.20625pt x 477.785pt>
+<pics/Backend/Verwendungen/cv-oninit2.png, id=875, 858.20625pt x 477.785pt>
 File: pics/Backend/Verwendungen/cv-oninit2.png Graphic file (type png)
 <use pics/Backend/Verwendungen/cv-oninit2.png>
 Package pdftex.def Info: pics/Backend/Verwendungen/cv-oninit2.png  used on input line 556.
 (pdftex.def)             Requested size: 220.50887pt x 122.7558pt.
 [85 <./pics/Backend/Verwendungen/cv-oninit1.png> <./pics/Backend/Verwendungen/cv-oninit2.png>]
-<pics/Backend/Verwendungen/projekte-genRepos.png, id=870, 551.05875pt x 576.1525pt>
+<pics/Backend/Verwendungen/projekte-genRepos.png, id=884, 551.05875pt x 576.1525pt>
 File: pics/Backend/Verwendungen/projekte-genRepos.png Graphic file (type png)
 <use pics/Backend/Verwendungen/projekte-genRepos.png>
 Package pdftex.def Info: pics/Backend/Verwendungen/projekte-genRepos.png  used on input line 569.
 (pdftex.def)             Requested size: 220.50887pt x 230.55362pt.
  [86 <./pics/Backend/Verwendungen/projekte-genRepos.png>]
-<pics/Backend/Verwendungen/komp-ngOnInit1.png, id=881, 674.52pt x 230.8625pt>
+<pics/Backend/Verwendungen/komp-ngOnInit1.png, id=896, 674.52pt x 230.8625pt>
 File: pics/Backend/Verwendungen/komp-ngOnInit1.png Graphic file (type png)
 <use pics/Backend/Verwendungen/komp-ngOnInit1.png>
 Package pdftex.def Info: pics/Backend/Verwendungen/komp-ngOnInit1.png  used on input line 582.
 (pdftex.def)             Requested size: 330.76329pt x 113.20815pt.
-<pics/Backend/Verwendungen/komp-ngOnInit2.png, id=882, 652.4375pt x 254.9525pt>
+<pics/Backend/Verwendungen/komp-ngOnInit2.png, id=897, 652.4375pt x 254.9525pt>
 File: pics/Backend/Verwendungen/komp-ngOnInit2.png Graphic file (type png)
 <use pics/Backend/Verwendungen/komp-ngOnInit2.png>
 Package pdftex.def Info: pics/Backend/Verwendungen/komp-ngOnInit2.png  used on input line 591.
 (pdftex.def)             Requested size: 330.76329pt x 129.25766pt.
-<pics/Backend/Verwendungen/komp-ngOnInit3.png, id=883, 686.565pt x 539.01375pt>
+<pics/Backend/Verwendungen/komp-ngOnInit3.png, id=898, 686.565pt x 539.01375pt>
 File: pics/Backend/Verwendungen/komp-ngOnInit3.png Graphic file (type png)
 <use pics/Backend/Verwendungen/komp-ngOnInit3.png>
 Package pdftex.def Info: pics/Backend/Verwendungen/komp-ngOnInit3.png  used on input line 604.
 (pdftex.def)             Requested size: 264.61333pt x 207.73888pt.
  [87 <./pics/Backend/Verwendungen/komp-ngOnInit1.png> <./pics/Backend/Verwendungen/komp-ngOnInit2.png>]
-<pics/Backend/Verwendungen/groups-ngOnInit.png, id=892, 484.81125pt x 113.42375pt>
+<pics/Backend/Verwendungen/groups-ngOnInit.png, id=907, 484.81125pt x 113.42375pt>
 File: pics/Backend/Verwendungen/groups-ngOnInit.png Graphic file (type png)
 <use pics/Backend/Verwendungen/groups-ngOnInit.png>
 Package pdftex.def Info: pics/Backend/Verwendungen/groups-ngOnInit.png  used on input line 617.
 (pdftex.def)             Requested size: 209.48274pt x 49.01009pt.
-<pics/Backend/Verwendungen/groups-html.png, id=893, 828.09375pt x 319.1925pt>
+<pics/Backend/Verwendungen/groups-html.png, id=908, 828.09375pt x 319.1925pt>
 File: pics/Backend/Verwendungen/groups-html.png Graphic file (type png)
 <use pics/Backend/Verwendungen/groups-html.png>
 Package pdftex.def Info: pics/Backend/Verwendungen/groups-html.png  used on input line 622.
 (pdftex.def)             Requested size: 209.48274pt x 80.7428pt.
  [88 <./pics/Backend/Verwendungen/komp-ngOnInit3.png> <./pics/Backend/Verwendungen/groups-ngOnInit.png> <./pics/Backend/Verwendungen/groups-html.png>]
-<pics/Backend/Verwendungen/settings-confirm.png, id=908, 533.995pt x 348.30125pt>
+<pics/Backend/Verwendungen/settings-confirm.png, id=922, 533.995pt x 348.30125pt>
 File: pics/Backend/Verwendungen/settings-confirm.png Graphic file (type png)
 <use pics/Backend/Verwendungen/settings-confirm.png>
 Package pdftex.def Info: pics/Backend/Verwendungen/settings-confirm.png  used on input line 633.
 (pdftex.def)             Requested size: 330.76329pt x 215.7479pt.
  [89 <./pics/Backend/Verwendungen/settings-confirm.png>]
-<pics/Backend/Verwendungen/view-ngOnInit1.png, id=917, 579.16376pt x 492.84125pt>
+<pics/Backend/Verwendungen/view-ngOnInit1.png, id=931, 579.16376pt x 492.84125pt>
 File: pics/Backend/Verwendungen/view-ngOnInit1.png Graphic file (type png)
 <use pics/Backend/Verwendungen/view-ngOnInit1.png>
 Package pdftex.def Info: pics/Backend/Verwendungen/view-ngOnInit1.png  used on input line 654.
 (pdftex.def)             Requested size: 209.48274pt x 178.25743pt.
-<pics/Backend/Verwendungen/view-ngOnInit2.png, id=918, 565.11125pt x 574.145pt>
+<pics/Backend/Verwendungen/view-ngOnInit2.png, id=932, 565.11125pt x 574.145pt>
 File: pics/Backend/Verwendungen/view-ngOnInit2.png Graphic file (type png)
 <use pics/Backend/Verwendungen/view-ngOnInit2.png>
 Package pdftex.def Info: pics/Backend/Verwendungen/view-ngOnInit2.png  used on input line 659.
@@ -2039,40 +2020,36 @@ chapter 6.
 
 )
 No file thesis.gls.
-(./thesis.bbl) [2]
-Package tocbasic Info: character protrusion at lof deactivated on input line 91.
+(./thesis.bbl) [4]
+Package tocbasic Info: character protrusion at lof deactivated on input line 94.
 
 No file thesis.lof.
 \tf@lof=\write10
 \openout10 = `thesis.lof'.
 
-[3
+[5
 
 ]
-Package tocbasic Info: character protrusion at lot deactivated on input line 92.
+Package tocbasic Info: character protrusion at lot deactivated on input line 95.
 
 No file thesis.lot.
 \tf@lot=\write11
 \openout11 = `thesis.lot'.
 
-[4
+[6
 
 ]
-Package tocbasic Info: character protrusion at lol deactivated on input line 93.
+Package tocbasic Info: character protrusion at lol deactivated on input line 96.
  (./thesis.lol)
 \tf@lol=\write12
 \openout12 = `thesis.lol'.
 
- [5
 
-]
-chapter without number
-(./sections/appendix.tex)
 
 Package caption Warning: Unused \captionsetup[table] on input line 106.
 See the caption package documentation for explanation.
 
-[6
+[7
 
 ] (./thesis.aux)
  ***********
@@ -2094,20 +2071,20 @@ Package rerunfilecheck Info: Checksums for `thesis.out':
  )
 (\end occurred inside a group at level 1)
 
-### semi simple group (level 1) entered at line 86 (\begingroup)
+### semi simple group (level 1) entered at line 89 (\begingroup)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 35650 strings out of 474116
- 670866 string characters out of 5743682
+ 35664 strings out of 474116
+ 671219 string characters out of 5743682
  1942187 words of memory out of 5000000
- 56818 multiletter control sequences out of 15000+600000
- 616252 words of font info for 174 fonts, out of 8000000 for 9000
+ 56823 multiletter control sequences out of 15000+600000
+ 616478 words of font info for 176 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 108i,20n,107p,10973b,2608s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 108i,20n,108p,10973b,2608s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmri12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmro12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmtt12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmtt8.pfb>
-Output written on thesis.pdf (99 pages, 15659366 bytes).
+Output written on thesis.pdf (100 pages, 15709718 bytes).
 PDF statistics:
- 1164 PDF objects out of 1200 (max. 8388607)
- 398 named destinations out of 1000 (max. 500000)
- 32445 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 1172 PDF objects out of 1200 (max. 8388607)
+ 403 named destinations out of 1000 (max. 500000)
+ 32442 words of extra memory for PDF output out of 35830 (max. 10000000)
 
