@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, inject, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, inject, NgZone, OnInit} from '@angular/core';
 import {HomeNavbarComponent} from "../../../navigation/home-navbar/home-navbar.component";
 import {SideBarComponent} from "../../../navigation/side-bar/side-bar.component";
 import {formatDate, NgClass, NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
@@ -56,7 +56,10 @@ export class CvAreaComponent implements OnInit{
   educationsBox!: any;
   workExperienceBox!: any;
 
-  showBorders!: string;
+  showBordersColOne: string = "";
+  showBordersColTwo: string = "";
+  showBordersColThree: string = "";
+
   homePageService : HomePageServiceService = inject(HomePageServiceService);
 
   generalInfoForm: FormGroup = new FormGroup({
@@ -71,7 +74,7 @@ export class CvAreaComponent implements OnInit{
     address: new FormControl(''),
 });
 
-  constructor(private fb: FormBuilder, private cdRef: ChangeDetectorRef) {
+  constructor(private fb: FormBuilder) {
 
   }
 
@@ -261,41 +264,41 @@ export class CvAreaComponent implements OnInit{
 
   draggedItem: any;
 
-  // Wird ausgelöst, wenn das Ziehen beginnt
-  onDragStart(event: DragEvent, item: any) {
-    this.draggedItem = item;
-    event.dataTransfer?.setData('text/plain', event.target?.toString() || '');
-  }
-
-  // Wird ausgelöst, wenn das Element über ein gültiges Drop-Ziel gezogen wird
-  onDragOver(event: DragEvent) {
-    event.preventDefault(); // Muss aufgerufen werden, damit ein Drop möglich ist
-  }
-
-  // Wird ausgelöst, wenn das Element fallen gelassen wird
-  onDrop(event: DragEvent, targetContainerId: string) {
-    event.preventDefault();
-    const targetElement = document.getElementById(targetContainerId);
-    if (targetElement && this.draggedItem) {
-      // Füge das gezogene Element dem Ziel hinzu
-      targetElement.appendChild(this.draggedItem);
-
-      switch (this.draggedItem) {
-        case this.generalInfoBox:
-          this.portfolioService.currPortfolio!.generalInfoPosition = targetContainerId;
-          break;
-        case this.educationsBox:
-          this.portfolioService.currPortfolio!.educationsPosition = targetContainerId;
-          break;
-        case this.workExperienceBox:
-          this.portfolioService.currPortfolio!.workExperiencesPosition = targetContainerId;
-          break;
-      }
-      this.portfolioService.updatePortfolio(this.portfolioService.currPortfolio!).subscribe();
-
-      this.draggedItem = null;
+    // Wird ausgelöst, wenn das Ziehen beginnt
+    onDragStart(event: DragEvent, item: any) {
+      this.draggedItem = item;
+      event.dataTransfer?.setData('text/plain', event.target?.toString() || '');
     }
-  }
+
+    // Wird ausgelöst, wenn das Element über ein gültiges Drop-Ziel gezogen wird
+    onDragOver(event: DragEvent) {
+      event.preventDefault(); // Muss aufgerufen werden, damit ein Drop möglich ist
+    }
+
+    // Wird ausgelöst, wenn das Element fallen gelassen wird
+    onDrop(event: DragEvent, targetContainerId: string) {
+      event.preventDefault();
+      const targetElement = document.getElementById(targetContainerId);
+      if (targetElement && this.draggedItem) {
+        // Füge das gezogene Element dem Ziel hinzu
+        targetElement.appendChild(this.draggedItem);
+
+        switch (this.draggedItem) {
+          case this.generalInfoBox:
+            this.portfolioService.currPortfolio!.generalInfoPosition = targetContainerId;
+            break;
+          case this.educationsBox:
+            this.portfolioService.currPortfolio!.educationsPosition = targetContainerId;
+            break;
+          case this.workExperienceBox:
+            this.portfolioService.currPortfolio!.workExperiencesPosition = targetContainerId;
+            break;
+        }
+        this.portfolioService.updatePortfolio(this.portfolioService.currPortfolio!).subscribe();
+
+        this.draggedItem = null;
+      }
+    }
 
 
   // Saving Notification
@@ -319,14 +322,18 @@ export class CvAreaComponent implements OnInit{
   checkDraggable(): boolean {
     if (this.homePageService.isBoxDraggable) {
       this.dragBox = 'cursor-pointer';
-      this.showBorders = 'border-2 border-dashed border-gray-200 rounded-lg';
+      this.showBordersColOne = 'border-2 border-dashed border-gray-200 rounded-lg';
+      this.showBordersColTwo = 'border-2 border-dashed border-gray-200 rounded-lg';
+      this.showBordersColThree = 'border-2 border-dashed border-gray-200 rounded-lg';
 
       return true;
     }
 
     else {
       this.dragBox = 'cursor-default';
-      this.showBorders = 'border-none';
+      this.showBordersColOne = 'border-none';
+      this.showBordersColTwo = 'border-none';
+      this.showBordersColThree = 'border-none';
 
       return false;
     }

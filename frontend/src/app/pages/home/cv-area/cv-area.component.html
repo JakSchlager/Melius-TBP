@@ -8,14 +8,14 @@
   <div class="w-full grid grid-cols-3 space-x-4 justify-center">
 
     <!-- CV Column One -->
-    <div [ngClass]="showBorders" class="col-start-1 space-y-10" id="cvColumnLeft"
+    <div [ngClass]="showBordersColOne" class="col-start-1 space-y-10" id="cvColumnLeft"
          (dragover)="onDragOver($event)"
          (drop)="onDrop($event, 'cvColumnLeft')">
     </div>
 
 
     <!-- CV Column Two -->
-    <div [ngClass]="showBorders" class="col-start-2 space-y-10" id="cvColumnMiddle"
+    <div [ngClass]="showBordersColTwo" class="col-start-2 space-y-10" id="cvColumnMiddle"
          (dragover)="onDragOver($event)"
          (drop)="onDrop($event, 'cvColumnMiddle')">
 
@@ -25,7 +25,7 @@
           <h1 class="text-center font-bold text-2xl py-2 text-gray-800">{{'home.cvPage.generally.title' | translate}}</h1>
 
           <div class="space-y-10 hover:cursor-default">
-            <form class="space-y-4" [formGroup]="generalInfoForm">
+            <form class="space-y-4" [formGroup]="generalInfoForm">u
               <div class="grid space-y-1">
                 <span class="row-start-1 col-start-1 text-gray-500">{{'home.cvPage.generally.salutationHeader' | translate}}</span>
 
@@ -244,7 +244,7 @@
 
 
     <!-- CV Column Three -->
-    <div [ngClass]="showBorders" class="col-start-3 space-y-10" id="cvColumnRight"
+    <div [ngClass]="showBordersColThree" class="col-start-3 space-y-10" id="cvColumnRight"
          (dragover)="onDragOver($event)"
          (drop)="onDrop($event, 'cvColumnRight')">
     </div>
