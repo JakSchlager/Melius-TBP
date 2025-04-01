@@ -36,67 +36,67 @@
 \contentsline {figure}{\numberline {35}{\ignorespaces Suchergebnisse}}{38}{figure.caption.77}%
 \contentsline {figure}{\numberline {36}{\ignorespaces Eingabeformular zum beitreten einer Gruppe}}{39}{figure.caption.78}%
 \contentsline {figure}{\numberline {37}{\ignorespaces Eigene Gruppen erstellen}}{40}{figure.caption.81}%
-\contentsline {figure}{\numberline {38}{\ignorespaces Meine Gruppen}}{41}{figure.caption.84}%
+\contentsline {figure}{\numberline {38}{\ignorespaces Meine Gruppen}}{42}{figure.caption.84}%
 \contentsline {figure}{\numberline {39}{\ignorespaces Admin Anischt}}{42}{figure.caption.87}%
 \contentsline {figure}{\numberline {40}{\ignorespaces Filter-Methode und Rollen}}{44}{figure.caption.88}%
 \contentsline {figure}{\numberline {41}{\ignorespaces Gast Ansicht}}{45}{figure.caption.91}%
 \contentsline {figure}{\numberline {42}{\ignorespaces Einstellungen}}{46}{figure.caption.92}%
 \contentsline {figure}{\numberline {43}{\ignorespaces Einstellungen}}{47}{figure.caption.95}%
-\contentsline {figure}{\numberline {44}{\ignorespaces Einstellungen in Englisch}}{47}{figure.caption.96}%
-\contentsline {figure}{\numberline {45}{\ignorespaces Startseite in Englisch}}{47}{figure.caption.96}%
+\contentsline {figure}{\numberline {44}{\ignorespaces Einstellungen in Englisch}}{48}{figure.caption.96}%
+\contentsline {figure}{\numberline {45}{\ignorespaces Startseite in Englisch}}{48}{figure.caption.96}%
 \contentsline {figure}{\numberline {46}{\ignorespaces Formular zum Auswählen der Hintergrundfarbe oder -bild}}{48}{figure.caption.99}%
 \contentsline {figure}{\numberline {47}{\ignorespaces Hintergrund wurde ausgewählt}}{49}{figure.caption.100}%
 \contentsline {figure}{\numberline {48}{\ignorespaces Webstorm - JetBrains}}{50}{figure.caption.101}%
 \contentsline {figure}{\numberline {49}{\ignorespaces Eingabefelder der FormGroup}}{52}{figure.caption.104}%
 \contentsline {figure}{\numberline {50}{\ignorespaces Aufbau und Validation der FormGroup}}{52}{figure.caption.107}%
 \contentsline {figure}{\numberline {51}{\ignorespaces Validation für die erneute Eingabe des Passwords}}{53}{figure.caption.108}%
-\contentsline {figure}{\numberline {52}{\ignorespaces Benutzer}}{54}{figure.caption.111}%
+\contentsline {figure}{\numberline {52}{\ignorespaces Benutzer:in}}{53}{figure.caption.111}%
 \contentsline {figure}{\numberline {53}{\ignorespaces DragStart Funktion der Funktionalität}}{55}{figure.caption.114}%
 \contentsline {figure}{\numberline {54}{\ignorespaces DragOver Funktion der Funktionalität}}{55}{figure.caption.115}%
-\contentsline {figure}{\numberline {55}{\ignorespaces Drop Funktion der Funktionalität}}{56}{figure.caption.116}%
-\contentsline {figure}{\numberline {56}{\ignorespaces Auswahl der Sprache}}{57}{figure.caption.119}%
+\contentsline {figure}{\numberline {55}{\ignorespaces Drop Funktion der Funktionalität}}{55}{figure.caption.116}%
+\contentsline {figure}{\numberline {56}{\ignorespaces Auswahl der Sprache}}{56}{figure.caption.119}%
 \contentsline {figure}{\numberline {57}{\ignorespaces Auswahl der Sprache}}{57}{figure.caption.120}%
 \contentsline {figure}{\numberline {58}{\ignorespaces Liste and Sprachen}}{58}{figure.caption.121}%
 \contentsline {figure}{\numberline {59}{\ignorespaces Bestätigung der Auswahl sowie Weiterleitung an Settings Component}}{58}{figure.caption.122}%
 \contentsline {figure}{\numberline {60}{\ignorespaces Setzen der Auswahlmöglichkeiten im Konstruktor}}{59}{figure.caption.123}%
 \contentsline {figure}{\numberline {61}{\ignorespaces Übernehmen der ausgewählten Sprache im System}}{59}{figure.caption.124}%
-\contentsline {figure}{\numberline {62}{\ignorespaces Übersetzungsdatei in Deutsch}}{60}{figure.caption.127}%
-\contentsline {figure}{\numberline {63}{\ignorespaces Übersetzungsdatei in Englisch}}{60}{figure.caption.127}%
-\contentsline {figure}{\numberline {64}{\ignorespaces Beispiel für die Verwendung der Sprachübersetzun}}{61}{figure.caption.130}%
-\contentsline {figure}{\numberline {65}{\ignorespaces Intellij IDEA - Jetbrains}}{63}{figure.caption.131}%
-\contentsline {figure}{\numberline {66}{\ignorespaces Enitity - Klassen}}{64}{figure.caption.132}%
-\contentsline {figure}{\numberline {67}{\ignorespaces OneToOne}}{65}{figure.caption.143}%
-\contentsline {figure}{\numberline {68}{\ignorespaces OneToOne}}{65}{figure.caption.144}%
+\contentsline {figure}{\numberline {62}{\ignorespaces Übersetzungsdatei - Deutsch}}{60}{figure.caption.127}%
+\contentsline {figure}{\numberline {63}{\ignorespaces Übersetzungsdatei - Englisch}}{60}{figure.caption.127}%
+\contentsline {figure}{\numberline {64}{\ignorespaces Beispiel für die Verwendung der Sprachübersetzun}}{60}{figure.caption.130}%
+\contentsline {figure}{\numberline {65}{\ignorespaces Intellij IDEA - Jetbrains}}{62}{figure.caption.131}%
+\contentsline {figure}{\numberline {66}{\ignorespaces Enitity - Klassen}}{63}{figure.caption.132}%
+\contentsline {figure}{\numberline {67}{\ignorespaces OneToOne}}{64}{figure.caption.143}%
+\contentsline {figure}{\numberline {68}{\ignorespaces OneToOne}}{64}{figure.caption.144}%
 \contentsline {figure}{\numberline {69}{\ignorespaces OneToMany}}{65}{figure.caption.147}%
-\contentsline {figure}{\numberline {70}{\ignorespaces ManyToMany}}{66}{figure.caption.150}%
-\contentsline {figure}{\numberline {71}{\ignorespaces Portfolio - Strings}}{67}{figure.caption.153}%
-\contentsline {figure}{\numberline {72}{\ignorespaces Repository - Klassen}}{68}{figure.caption.154}%
-\contentsline {figure}{\numberline {73}{\ignorespaces ApplicationScoped}}{69}{figure.caption.163}%
-\contentsline {figure}{\numberline {74}{\ignorespaces Transactional}}{70}{figure.caption.166}%
-\contentsline {figure}{\numberline {75}{\ignorespaces addProfile}}{71}{figure.caption.171}%
-\contentsline {figure}{\numberline {76}{\ignorespaces checkProfile}}{71}{figure.caption.174}%
-\contentsline {figure}{\numberline {77}{\ignorespaces getProfileByEmail}}{72}{figure.caption.177}%
-\contentsline {figure}{\numberline {78}{\ignorespaces Resource - Klassen}}{73}{figure.caption.178}%
-\contentsline {figure}{\numberline {79}{\ignorespaces Path - Klasse}}{74}{figure.caption.187}%
-\contentsline {figure}{\numberline {80}{\ignorespaces Path - Methode}}{74}{figure.caption.188}%
-\contentsline {figure}{\numberline {81}{\ignorespaces Produces}}{74}{figure.caption.191}%
-\contentsline {figure}{\numberline {82}{\ignorespaces Consumes}}{75}{figure.caption.194}%
-\contentsline {figure}{\numberline {83}{\ignorespaces Docker - Compose}}{76}{figure.caption.195}%
-\contentsline {figure}{\numberline {84}{\ignorespaces HttpClient}}{77}{figure.caption.198}%
-\contentsline {figure}{\numberline {85}{\ignorespaces Implements OnInit}}{79}{figure.caption.205}%
-\contentsline {figure}{\numberline {86}{\ignorespaces onRegister1}}{81}{figure.caption.208}%
-\contentsline {figure}{\numberline {87}{\ignorespaces onRegister2}}{81}{figure.caption.208}%
-\contentsline {figure}{\numberline {88}{\ignorespaces onLogin}}{82}{figure.caption.211}%
-\contentsline {figure}{\numberline {89}{\ignorespaces Laden der Daten aus dem Backend}}{83}{figure.caption.214}%
-\contentsline {figure}{\numberline {90}{\ignorespaces Lebenslauf ngOnInit - Methode (1)}}{85}{figure.caption.221}%
-\contentsline {figure}{\numberline {91}{\ignorespaces Lebenslauf ngOnInit - Methode (2)}}{85}{figure.caption.222}%
-\contentsline {figure}{\numberline {92}{\ignorespaces Projekte - GitHub Repos laden und speichern}}{86}{figure.caption.225}%
-\contentsline {figure}{\numberline {93}{\ignorespaces Kompetenzen - ngOnInit (1)}}{87}{figure.caption.228}%
-\contentsline {figure}{\numberline {94}{\ignorespaces Kompetenzen - ngOnInit (2)}}{87}{figure.caption.229}%
-\contentsline {figure}{\numberline {95}{\ignorespaces Kompetenzen - ngOnInit (3)}}{88}{figure.caption.230}%
-\contentsline {figure}{\numberline {96}{\ignorespaces Gruppen - ngOnInit}}{88}{figure.caption.233}%
-\contentsline {figure}{\numberline {97}{\ignorespaces Gruppen - HTML}}{88}{figure.caption.233}%
-\contentsline {figure}{\numberline {98}{\ignorespaces Settings - Speichern}}{89}{figure.caption.236}%
-\contentsline {figure}{\numberline {99}{\ignorespaces Portfolio View - ngOnInit (1)}}{90}{figure.caption.239}%
-\contentsline {figure}{\numberline {100}{\ignorespaces Portfolio View - ngOnInit (2)}}{90}{figure.caption.239}%
+\contentsline {figure}{\numberline {70}{\ignorespaces ManyToMany}}{65}{figure.caption.150}%
+\contentsline {figure}{\numberline {71}{\ignorespaces Portfolio - Strings}}{66}{figure.caption.153}%
+\contentsline {figure}{\numberline {72}{\ignorespaces Repository - Klassen}}{67}{figure.caption.154}%
+\contentsline {figure}{\numberline {73}{\ignorespaces ApplicationScoped}}{68}{figure.caption.163}%
+\contentsline {figure}{\numberline {74}{\ignorespaces Transactional}}{69}{figure.caption.166}%
+\contentsline {figure}{\numberline {75}{\ignorespaces addProfile}}{70}{figure.caption.171}%
+\contentsline {figure}{\numberline {76}{\ignorespaces checkProfile}}{70}{figure.caption.174}%
+\contentsline {figure}{\numberline {77}{\ignorespaces getProfileByEmail}}{71}{figure.caption.177}%
+\contentsline {figure}{\numberline {78}{\ignorespaces Resource - Klassen}}{72}{figure.caption.178}%
+\contentsline {figure}{\numberline {79}{\ignorespaces Path - Klasse}}{73}{figure.caption.187}%
+\contentsline {figure}{\numberline {80}{\ignorespaces Path - Methode}}{73}{figure.caption.188}%
+\contentsline {figure}{\numberline {81}{\ignorespaces Produces}}{73}{figure.caption.191}%
+\contentsline {figure}{\numberline {82}{\ignorespaces Consumes}}{74}{figure.caption.194}%
+\contentsline {figure}{\numberline {83}{\ignorespaces Docker - Compose}}{75}{figure.caption.195}%
+\contentsline {figure}{\numberline {84}{\ignorespaces HttpClient}}{76}{figure.caption.198}%
+\contentsline {figure}{\numberline {85}{\ignorespaces Implements OnInit}}{78}{figure.caption.205}%
+\contentsline {figure}{\numberline {86}{\ignorespaces onRegister1}}{80}{figure.caption.208}%
+\contentsline {figure}{\numberline {87}{\ignorespaces onRegister2}}{80}{figure.caption.208}%
+\contentsline {figure}{\numberline {88}{\ignorespaces onLogin}}{81}{figure.caption.211}%
+\contentsline {figure}{\numberline {89}{\ignorespaces Laden der Daten aus dem Backend}}{82}{figure.caption.214}%
+\contentsline {figure}{\numberline {90}{\ignorespaces Lebenslauf ngOnInit - Methode (1)}}{84}{figure.caption.221}%
+\contentsline {figure}{\numberline {91}{\ignorespaces Lebenslauf ngOnInit - Methode (2)}}{84}{figure.caption.222}%
+\contentsline {figure}{\numberline {92}{\ignorespaces Projekte - GitHub Repos laden und speichern}}{85}{figure.caption.225}%
+\contentsline {figure}{\numberline {93}{\ignorespaces Kompetenzen - ngOnInit (1)}}{86}{figure.caption.228}%
+\contentsline {figure}{\numberline {94}{\ignorespaces Kompetenzen - ngOnInit (2)}}{86}{figure.caption.229}%
+\contentsline {figure}{\numberline {95}{\ignorespaces Kompetenzen - ngOnInit (3)}}{87}{figure.caption.230}%
+\contentsline {figure}{\numberline {96}{\ignorespaces Gruppen - ngOnInit}}{87}{figure.caption.233}%
+\contentsline {figure}{\numberline {97}{\ignorespaces Gruppen - HTML}}{87}{figure.caption.233}%
+\contentsline {figure}{\numberline {98}{\ignorespaces Settings - Speichern}}{88}{figure.caption.236}%
+\contentsline {figure}{\numberline {99}{\ignorespaces Portfolio View - ngOnInit (1)}}{89}{figure.caption.239}%
+\contentsline {figure}{\numberline {100}{\ignorespaces Portfolio View - ngOnInit (2)}}{89}{figure.caption.239}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
