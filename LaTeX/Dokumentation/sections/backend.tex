@@ -254,7 +254,7 @@ Der Einsatz von @Transactional in den Methoden addProfile und updateProfile gew�
 \subsubsection{Wichtige Funktionen}
 
 \subsubsection{addProfile}
-Die Methode `addProfile()` dient dazu, ein neues Profil in die Datenbank zu speichern. Bevor das Profil jedoch eingefügt wird, erfolgt eine Überprüfung, ob bereits ein anderes Profil mit derselben E-Mail-Adresse existiert. Dadurch wird verhindert, dass sich mehrere Benutzer mit identischen E-Mail-Adressen registrieren, was die Datenkonsistenz und Eindeutigkeit der Benutzerprofile sicherstellt.
+Die Methode `addProfile()` dient dazu, ein neues Profil in die Datenbank zu speichern. Bevor das Profil jedoch eingefügt wird, erfolgt eine Überprüfung, ob bereits ein anderes Profil mit derselben E-Mail-Adresse existiert. Dadurch wird verhindert, dass sich mehrere Benutzer:innen mit identischen E-Mail-Adressen registrieren, was die Datenkonsistenz und Eindeutigkeit der Benutzerprofile sicherstellt.
 
 \begin{figure}[H]
     \centering
@@ -276,7 +276,7 @@ Die Methode `checkProfile()` findet Anwendung im Rahmen des Autorisierungsprozes
 \subsubsection{getProfileByEmail}
 Die Methode `getProfileByEmail()`  nimmt eine signifikante Rolle im Kontext der Verwaltung von Benutzerprofilen ein. Sie wird unter anderem bei der Erstellung eines neuen Profils eingesetzt, um die Existenz doppelter Profile mit identischer E-Mail-Adresse zu verhindern. Dies dient dazu, die Vergabe identischer Anmeldedaten an mehrere Benutzer:innen zu unterbinden. 
 
-Darüber hinaus ist diese Funktion von entscheidender Bedeutung für den Login-Prozess. Da beim Einloggen die eindeutige ID des Profils nicht bekannt ist, sondern lediglich die E-Mail-Adresse des Nutzers vorliegt, kann das zugehörige Profil nicht direkt über den Primärschlüssel mit entityManager.find() ermittelt werden. Stattdessen durchsucht getProfileByEmail() die gespeicherten Profile nach der angegebenen E-Mail-Adresse und gibt das entsprechende Profil zurück. Diese Vorgehensweise gewährleistet, dass die Anmeldeinformationen korrekt sind und die Authentifizierung des korrekten Users sichergestellt werden kann.
+Darüber hinaus ist diese Funktion von entscheidender Bedeutung für den Login-Prozess. Da beim Einloggen die eindeutige ID des Profils nicht bekannt ist, sondern lediglich die E-Mail-Adresse des/der Nutzer/in vorliegt, kann das zugehörige Profil nicht direkt über den Primärschlüssel mit entityManager.find() ermittelt werden. Stattdessen durchsucht getProfileByEmail() die gespeicherten Profile nach der angegebenen E-Mail-Adresse und gibt das entsprechende Profil zurück. Diese Vorgehensweise gewährleistet, dass die Anmeldeinformationen korrekt sind und die Authentifizierung des korrekten Users sichergestellt werden kann.
 
 \begin{figure}[H]
     \centering
@@ -355,7 +355,7 @@ Der Adminer-Service verwendet das Docker-Image adminer und stellt eine Weboberfl
 
 Der PostgreSQL-Service verwendet das Docker-Image postgres:16-alpine und stellt die tatsächliche Datenbank für \textit{Melius} bereit. Auch dieser Service wird so konfiguriert, dass er im Falle eines Ausfalls immer neu startet. Die PostgreSQL-Datenbank wird unter dem Standardport 5432 betrieben, das auf den gleichen Port des Hosts weitergeleitet wird. Die volumes-Direktive sorgt dafür, dass die Daten persistent gespeichert werden, indem sie ein Verzeichnis auf dem Host (./data/postgres) mit dem internen Verzeichnis der Datenbank verbindet. Dadurch bleiben die Daten auch nach dem Neustart des Containers erhalten.
 
-Zudem werden Umgebungsvariablen gesetzt, darunter POSTGRES\_PASSWORD, das für den Zugang zur Datenbank verwendet wird, sowie PGDATA, das den Speicherort der Datenbankdateien innerhalb des Containers festlegt. Schließlich wird der Container so konfiguriert, dass er mit den vom System definierten UID und GID läuft, um Berechtigungsprobleme zu vermeiden, was besonders in Teamumgebungen wichtig sein kann, in denen unterschiedliche Benutzer auf die Docker-Container zugreifen.
+Zudem werden Umgebungsvariablen gesetzt, darunter POSTGRES\_PASSWORD, das für den Zugang zur Datenbank verwendet wird, sowie PGDATA, das den Speicherort der Datenbankdateien innerhalb des Containers festlegt. Schließlich wird der Container so konfiguriert, dass er mit den vom System definierten UID und GID läuft, um Berechtigungsprobleme zu vermeiden, was besonders in Teamumgebungen wichtig sein kann, in denen unterschiedliche Benutzer:innen auf die Docker-Container zugreifen.
 
 \begin{figure}[H]
     \centering
@@ -383,7 +383,7 @@ Der HttpClient unterstützt verschiedene HTTP-Methoden wie GET, POST, PUT, DELET
 
 \subsubsection{LocalStorage}
 
-LocalStorage ist eine Web-Storage-API, die es ermöglicht, Daten dauerhaft im Browser zu speichern. Im Gegensatz zum SessionStorage, bei dem die gespeicherten Daten nach dem Schließen des Browser-Tabs oder -Fensters gelöscht werden, bleiben die Daten im LocalStorage erhalten, bis sie explizit gelöscht werden oder der Benutzer den Browser-Cache leert.
+LocalStorage ist eine Web-Storage-API, die es ermöglicht, Daten dauerhaft im Browser zu speichern. Im Gegensatz zum SessionStorage, bei dem die gespeicherten Daten nach dem Schließen des Browser-Tabs oder -Fensters gelöscht werden, bleiben die Daten im LocalStorage erhalten, bis sie explizit gelöscht werden oder der/die Benutzer/in den Browser-Cache leert.
 
 LocalStorage eignet sich besonders für persistente Benutzereinstellungen, Sitzungsdaten oder die Zwischenspeicherung von Formulardaten, da diese nicht durch ein einfaches Neuladen der Seite verloren gehen. Die gespeicherten Informationen sind domänenspezifisch, d.h. sie können nur von der Website gelesen werden, von der sie gespeichert wurden (aus Sicherheitsgründen, um Cross-Site-Scripting-Angriffe zu verhindern).
 
@@ -393,7 +393,7 @@ Da LocalStorage nur Strings speichert und eine Größenbeschränkung von ca. 5 M
 
 \subsubsection{SessionStorage}
 
-SessionStorage ist ebenfalls eine Web-Storage-API, das die temporäre Speicherung von Daten im Browser ermöglicht, solange die aktuelle Browsersitzung aktiv ist. Im Gegensatz zum LocalStorage, bei dem die gespeicherten Daten dauerhaft erhalten bleiben, werden die Daten im SessionStorage gelöscht, sobald der Benutzer den Browser-Tab oder das Fenster schließt.
+SessionStorage ist ebenfalls eine Web-Storage-API, das die temporäre Speicherung von Daten im Browser ermöglicht, solange die aktuelle Browsersitzung aktiv ist. Im Gegensatz zum LocalStorage, bei dem die gespeicherten Daten dauerhaft erhalten bleiben, werden die Daten im SessionStorage gelöscht, sobald der/die Benutzer/in den Browser-Tab oder das Fenster schließt.
 
 SessionStorage wird häufig verwendet, um sitzungsbezogene Daten zu speichern, wie z. B:
 
@@ -411,7 +411,7 @@ SessionStorage wird häufig verwendet, um sitzungsbezogene Daten zu speichern, w
 
 Ähnlich wie beim LocalStorage werden die Daten als Schlüssel-Wert-Paare gespeichert und sind nur für die Domain und den Tab/Fenster zugänglich, in dem sie gespeichert wurden. Das bedeutet, dass sie nicht auf andere Tabs oder Fenster der gleichen Website übertragen werden können.
 
-Ein wesentlicher Vorteil des SessionStorage ist, dass er eine einfache Möglichkeit bietet, temporäre Daten sicher zu speichern, ohne dass sich der Benutzer um das manuelle Löschen kümmern muss. Es eignet sich besonders für Anwendungen, bei denen die Daten nur während einer einzigen Sitzung benötigt werden, wie z.B. temporäre Authentifizierungsdaten oder Cache-Daten während der Nutzung einer Web-Anwendung.
+Ein wesentlicher Vorteil des SessionStorage ist, dass er eine einfache Möglichkeit bietet, temporäre Daten sicher zu speichern, ohne dass sich der/die Benutzer/in um das manuelle Löschen kümmern muss. Es eignet sich besonders für Anwendungen, bei denen die Daten nur während einer einzigen Sitzung benötigt werden, wie z.B. temporäre Authentifizierungsdaten oder Cache-Daten während der Nutzung einer Web-Anwendung.
 
 \subsubsection{ngOnInit - Methode}
 
@@ -506,14 +506,14 @@ In der Methode ngOnInit der app.component.ts läuft der Prozess wie folgt ab:
     Zuerst wird die ID des Profils aus dem localStorage bzw. sessionStorage geholt.
 
     \item 
-    Anschließend wird mit dieser ID das entsprechende Profil aus dem Backend geladen. Wird ein Fehler beim Laden des Profils geworfen, wird der Benutzer aus dem Local Storage gelöscht und man wird zu Login Page geschickt.
+    Anschließend wird mit dieser ID das entsprechende Profil aus dem Backend geladen. Wird ein Fehler beim Laden des Profils geworfen, wird der/die Benutzer/in aus dem Local Storage gelöscht und man wird zu Login Page geschickt.
 
     \item 
     Unmittelbar danach wird das zugehörige Portfolio-Objekt ebenfalls mit der gleichen ID aus dem Backend geholt.
 
 \end{itemize}
 
-Diese Methode stellt sicher, dass alle benötigten Daten direkt nach einem Seitenneuaufbau oder einer Weiterleitung zur Verfügung stehen, so dass die Benutzer nahtlos weiterarbeiten können, ohne sich erneut anmelden oder Daten neu laden zu müssen.
+Diese Methode stellt sicher, dass alle benötigten Daten direkt nach einem Seitenneuaufbau oder einer Weiterleitung zur Verfügung stehen, so dass die Benutzer:innen nahtlos weiterarbeiten können, ohne sich erneut anmelden oder Daten neu laden zu müssen.
 
 \begin{figure}[H]
     \centering
@@ -530,7 +530,7 @@ Um sicherzustellen, dass die Daten tatsächlich vollständig aus dem Backend gel
 
 Dieser zusätzliche Sicherheitsmechanismus ist besonders wichtig, da \textit{Angular} sehr schnell arbeitet und asynchrone Prozesse, wie z.B. HTTP-Anfragen an das Backend, nicht immer genau zum Zeitpunkt des Aufrufs der ngOnInit-Methode abgeschlossen sind. Würde man versuchen, direkt auf die Daten zuzugreifen, bevor diese tatsächlich verfügbar sind, könnte dies zu Fehlermeldungen oder leeren Anzeigen auf den Seiten führen. Durch den kurzen setTimeout wird dieses Problem umgangen, da die Verarbeitung der Daten erst nach einer minimalen Wartezeit erfolgt, in der sichergestellt wird, dass alle relevanten Informationen vom Backend eingetroffen sind.
 
-Insbesondere bei komplexeren Datenstrukturen, wie z.B. verschachtelten Objekten oder Beziehungen zwischen verschiedenen Entitäten in der Datenbank, kann es vorkommen, dass einzelne Abfragen länger dauern als andere. Durch die Verwendung von Delays wird die Konsistenz der Daten auf allen Seiten gewährleistet und verhindert, dass Benutzer auf eine Seite gelangen, bevor der gewünschte Inhalt tatsächlich verfügbar ist.
+Insbesondere bei komplexeren Datenstrukturen, wie z.B. verschachtelten Objekten oder Beziehungen zwischen verschiedenen Entitäten in der Datenbank, kann es vorkommen, dass einzelne Abfragen länger dauern als andere. Durch die Verwendung von Delays wird die Konsistenz der Daten auf allen Seiten gewährleistet und verhindert, dass Benutzer:innen auf eine Seite gelangen, bevor der gewünschte Inhalt tatsächlich verfügbar ist.
 
 \subsubsection{Home Seite:}
 
@@ -538,7 +538,7 @@ Insbesondere bei komplexeren Datenstrukturen, wie z.B. verschachtelten Objekten 
 
 Auf der CV-Seite werden zunächst die HTML-Elemente für die jeweiligen Datenboxen mittels getElementById() erfasst und gespeichert. Dieser Schritt ist wichtig, da die Boxen später im Frontend an den richtigen Spaltenpositionen platziert werden müssen.
 
-Anschließend wird in der setTimeout-Funktion das generalInfo-Objekt aus dem gespeicherten Portfolio geladen. Die darin enthaltenen Daten werden dann Schritt für Schritt in die entsprechenden Felder des Formulars eingetragen. Dabei werden einige Werte direkt aus dem generalInfo-Objekt übernommen, während andere wie Vorname, Nachname, E-Mail-Adresse und Telefonnummer aus dem Profil des aktuell angemeldeten Benutzers (loggedInUser) stammen.
+Anschließend wird in der setTimeout-Funktion das generalInfo-Objekt aus dem gespeicherten Portfolio geladen. Die darin enthaltenen Daten werden dann Schritt für Schritt in die entsprechenden Felder des Formulars eingetragen. Dabei werden einige Werte direkt aus dem generalInfo-Objekt übernommen, während andere wie Vorname, Nachname, E-Mail-Adresse und Telefonnummer aus dem Profil des aktuell angemeldeten Profils (loggedInUser) stammen.
 
 \begin{figure}[H]
     \centering
@@ -626,7 +626,7 @@ Auf der Gruppenseite findet in der Methode ngOnInit nur eine minimale Verarbeitu
 
 \subsubsection{Settings Seite}
 
-Auf der Seite Einstellungen gibt es nur wenige Elemente, die angezeigt werden können, da der Schwerpunkt hier auf dem Speichern der Portfolio Einstellungen liegt. Die einzigen sichtbaren Informationen sind bereits gespeicherte Einstellungen aus dem Portfolio, nämlich die Sprache und die Hintergrundfarbe. Beide Einstellungen werden in separaten Unterkomponenten verwaltet, in denen die gespeicherten Werte direkt aus dem Portfolio geladen und angezeigt werden. Die Seite verfügt über einen zentralen „Speichern“-Button, mit dem alle Änderungen, die der Benutzer vornimmt, gleichzeitig gespeichert werden.
+Auf der Seite Einstellungen gibt es nur wenige Elemente, die angezeigt werden können, da der Schwerpunkt hier auf dem Speichern der Portfolio Einstellungen liegt. Die einzigen sichtbaren Informationen sind bereits gespeicherte Einstellungen aus dem Portfolio, nämlich die Sprache und die Hintergrundfarbe. Beide Einstellungen werden in separaten Unterkomponenten verwaltet, in denen die gespeicherten Werte direkt aus dem Portfolio geladen und angezeigt werden. Die Seite verfügt über einen zentralen „Speichern“-Button, mit dem alle Änderungen, die der/die Benutzer/in vornimmt, gleichzeitig gespeichert werden.
 
 \begin{figure}[H]
     \centering
